@@ -1,0 +1,53 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  fac/.style={tn tensor,minimum width=6.5mm,minimum height=6mm,inner sep=0.5mm,font=\scriptsize},
+  noise/.style={fac,fill=tnorange},
+  jn/.style={tn intermediate,circle,minimum size=5.2mm,inner sep=0pt,font=\tiny},
+  bub/.style={line width=.7pt,rounded corners=3mm},
+  num/.style={font=\scriptsize,anchor=south,inner sep=1pt},
+  c1/.style={draw=tngreen!90!black,fill=tngreen!45,text=tngreen!60!black},
+  c2/.style={draw=tnblue!90!black,fill=tnblue!35,text=tnblue!80!black},
+  cd/.style={draw=pppurple!90!black,fill=pppurple!30,text=pppurple!80!black,dotted,line width=.9pt},
+  c3/.style={draw=orange!90!black,fill=orange!40,text=orange!80!black},
+  c4/.style={draw=yellow!80!black,fill=yellow!50,text=yellow!50!black},
+  elab/.style={tn label,inner sep=0.5pt}]
+\node[tn heading] at (2.1,2.25) {\textbf{(a)} order as nested bubbles};
+\node[fac] (w) at (0,0.5) {$W$};
+\node[noise] (g1) at (0.9,0.5) {$g_1$};
+\node[noise] (g2) at (1.8,0.5) {$g_2$};
+\node[tn label] (dd) at (2.6,0.5) {$\cdots$};
+\node[noise] (g3) at (3.4,0.5) {$g_{567}$};
+\node[fac] (f) at (4.4,0.5) {$F_O$};
+\node[tn constraint,minimum width=48mm,minimum height=5mm,font=\scriptsize] (d0) at (2.2,-1.2) {$\Delta_0=\ind{\ell_0\oplus\cdots\oplus\ell_{568}=0}$};
+\foreach \n in {w,g1,g2,g3,f}{\draw[tn leg] (\n.south)--(\n.south |- d0.north);}
+\begin{scope}[on background layer]
+\node[bub,c4,fit=(w)(f),inner sep=6.2mm] (b4) {};
+\node[bub,c3,fit=(w)(g3),inner sep=4.6mm] (b3) {};
+\node[bub,cd,fit=(w)(dd),inner sep=3.2mm] (bd) {};
+\node[bub,c2,fit=(w)(g2),inner sep=2.0mm] (b2) {};
+\node[bub,c1,fit=(w)(g1),inner sep=1.0mm] (b1) {};
+\end{scope}
+\node[num,c1,fill=none,draw=none] at (g1 |- b4.north) {1};
+\node[num,c2,fill=none,draw=none] at (g2 |- b4.north) {2};
+\node[num,cd,fill=none,draw=none,line width=0pt] at (dd |- b4.north) {$\cdots$};
+\node[num,c3,fill=none,draw=none] at (g3 |- b4.north) {567};
+\node[num,c4,fill=none,draw=none] at (f |- b4.north) {568};
+\node[tn heading] at (7.9,2.25) {\textbf{(b)} the same order as a tree};
+\node[fac] (tw) at (5.8,-1.2) {$W$};
+\node[noise] (t1) at (6.6,-1.2) {$g_1$};
+\node[noise] (t2) at (7.4,-1.2) {$g_2$};
+\node[tn label] (tdd) at (8.2,-1.2) {$\cdots$};
+\node[noise] (t3) at (9.0,-1.2) {$g_{567}$};
+\node[fac] (tf) at (10.0,-1.2) {$F_O$};
+\node[jn,fill=tngreen!80] (j1) at (6.2,-0.45) {1};
+\node[jn,fill=tnblue!85] (j2) at (6.8,0.15) {2};
+\node[jn,fill=pppurple!80,draw=pppurple!60!black,dotted,line width=.9pt] (jd) at (7.5,0.6) {$\cdots$};
+\node[jn,fill=orange!90!black] (j3) at (8.3,1.1) {567};
+\node[jn,fill=yellow!80,text=black] (j4) at (9.2,1.65) {568};
+\draw[tn leg] (tw)--(j1); \draw[tn leg] (t1)--(j1);
+\draw[tn leg] (j1)--(j2); \draw[tn leg] (t2)--(j2);
+\draw[tn leg,dotted,line width=.8pt] (j2)--(jd); \draw[tn leg,dotted,line width=.8pt] (jd)--(j3);
+\draw[tn leg,dotted,line width=.8pt] (tdd.north)--(jd);
+\draw[tn leg] (t3)--(j3);
+\draw[tn leg] (j3)--node[elab,above left=-1pt] {$2^{d_{567}}$}(j4); \draw[tn leg] (tf)--node[elab,right=2.5pt,pos=0.45] {$2^{19}$}(j4);
+\node[tn label,text=black!60,align=center,text width=104mm,anchor=north] at (5.0,-1.75) {a bubble is one join: its table is indexed by the XOR of its members' labels, restricted to what the factors outside can still cancel, and has $2^{d_J}$ entries, $d_J\le23$. Node $=$ one stored table, edge label $=$ its size. The dotted bubble and node stand for joins 3 to 566. $F_O$ is joined last, as in the tree actually used};
+\end{tikzpicture}

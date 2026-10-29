@@ -1,0 +1,14 @@
+\begin{tabular}{lcccccccc}\toprule
+case & $\boldsymbol a$ & $\boldsymbol b$ & $\boldsymbol u$ & $\boldsymbol z$ & $s$ & formula $(A,B)$ & code $(A,B)$ & simulation $(A,B)$ \\\midrule
+fault-free & $\varnothing$ & $\varnothing$ & $\varnothing$ & $\varnothing$ & $+1$ & $(1,0)$ & $(1,0)$ & $(1,0)$ \\
+incoming X7 only & $7$ & $\varnothing$ & $\varnothing$ & $\varnothing$ & $+1$ & $(0,0)$ & $(0,0)$ & $(0,0)$ \\
+incoming X7, internal X7 & $7$ & $\varnothing$ & $7$ & $\varnothing$ & $+1$ & $(1/2,0)$ & $(1/2,0)$ & $(0.5,0)$ \\
+incoming X7, internal X7, $s=-1$ & $7$ & $\varnothing$ & $7$ & $\varnothing$ & $-1$ & $(0,0)$ & $(0,0)$ & $(0,0)$ \\
+incoming $X_L$ & $\text{all}$ & $\varnothing$ & $\varnothing$ & $\varnothing$ & $+1$ & $(1/2,0)$ & $(1/2,0)$ & $(0.5,0)$ \\
+incoming $X_L$, $s=-1$ & $\text{all}$ & $\varnothing$ & $\varnothing$ & $\varnothing$ & $-1$ & $(1/2,1/2)$ & $(1/2,1/2)$ & $(0.5,0.5)$ \\
+internal Z7 & $\varnothing$ & $\varnothing$ & $\varnothing$ & $7$ & $+1$ & $(0,0)$ & $(0,0)$ & $(0,0)$ \\
+incoming $Z_L$ & $\varnothing$ & $\text{all}$ & $\varnothing$ & $\varnothing$ & $+1$ & $(0,0)$ & $(0,0)$ & $(0,0)$ \\
+incoming $Z_L$, $s=-1$ & $\varnothing$ & $\text{all}$ & $\varnothing$ & $\varnothing$ & $-1$ & $(1,1)$ & $(1,1)$ & $(1,1)$ \\
+moved X0 X3 Y9 (Fig. 7 pattern) & $\varnothing$ & $\varnothing$ & $0,3,9$ & $9$ & $+1$ & $(1/4,1/4)$ & $(1/4,1/4)$ & $(0.25,0.25)$ \\
+literal X3 fold, Y9 unfold & $\varnothing$ & $\varnothing$ & $\varnothing$ & $\varnothing$ & $+1$ & $(1/4,1/4)$ & $(1/4,1/4)$ & $(0.25,0.25)$ \\
+\bottomrule\end{tabular}

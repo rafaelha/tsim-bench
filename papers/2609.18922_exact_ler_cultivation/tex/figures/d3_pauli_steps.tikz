@@ -1,0 +1,54 @@
+\begin{minipage}{7.9cm}
+\centering
+{\small\bfseries (a) A portion of the $d=3$ double-checking circuit}\par\smallskip
+\begin{adjustbox}{width=.93\linewidth}
+\begin{tikzpicture}[font=\small]
+\begin{yquant}[operator/separation=7mm,operator/minimum width=7mm,
+  register/separation=4mm]
+qubit {$14$} q14;
+qubit {$13$} q13;
+cnot q13 | q14;
+box {$\mathcal N_2$} (q14,q13);
+box {$T$} q13;
+align q14,q13;
+box {$\mathcal N_1$} q14,q13;
+output {$X_{13}$} q13;
+\end{yquant}
+\end{tikzpicture}
+\end{adjustbox}\par\smallskip
+{\small The circuit runs left to right; the observable starts at the right.}
+\par\medskip
+{\small\bfseries (b) Follow the observable backwards, from right to left}\par
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize,
+  term/.style={pauli,minimum size=11mm,inner sep=0pt,font=\footnotesize},
+  start term/.style={initial pauli,minimum size=11mm,inner sep=0pt,font=\footnotesize},
+  weight/.style={font=\footnotesize,fill=white,inner sep=.5pt},
+  stage/.style={align=center,font=\footnotesize},
+  step arrow/.style={-{Stealth[length=1.6mm]},line width=.6pt}]
+\node[start term] (o) at (7.35,0) {$X_{13}$};
+\node[term] (n1) at (5.65,0) {$X_{13}$};
+\node[term] (tx) at (3.95,.8) {$X_{13}$};
+\node[term] (ty) at (3.95,-.8) {$Y_{13}$};
+\node[term] (nx) at (2.25,.8) {$X_{13}$};
+\node[term] (ny) at (2.25,-.8) {$Y_{13}$};
+\node[term] (cx) at (.55,.8) {$X_{13}$};
+\node[term] (cy) at (.55,-.8) {$Z_{14}Y_{13}$};
+\node[stage] at (6.5,1.9) {through\\$\mathcal N_1$};
+\node[stage] at (4.8,1.9) {through\\$T_{13}$};
+\node[stage] at (3.1,1.9) {through\\$\mathcal N_2$};
+\node[stage] at (1.4,1.9) {through\\CNOT};
+\draw[step arrow] (o)--node[weight,above=2pt] {$\lambda_1$}(n1);
+\draw[step arrow,blue!75!black] (n1)--node[weight,fill=none,above=8pt,sloped] {$+1/\sqrt2$}(tx);
+\draw[step arrow,red!80!black] (n1)--node[weight,fill=none,below=8pt,sloped] {$-1/\sqrt2$}(ty);
+\draw[step arrow] (tx)--node[weight,above=2pt] {$\lambda_2$}(nx);
+\draw[step arrow] (ty)--node[weight,below=2pt] {$\lambda_2$}(ny);
+\draw[step arrow] (nx)--node[weight,above=2pt] {$1$}(cx);
+\draw[step arrow] (ny)--node[weight,below=2pt] {$1$}(cy);
+\node[align=center,text width=7.5cm,font=\small] at (3.95,-2.05)
+  {Multiply the weights along each path, then add the resulting Pauli terms.};
+\node[draw,inner sep=3mm,font=\normalsize] at (3.95,-4.05)
+  {$\displaystyle X_{13}\longmapsto
+    \frac{\lambda_1\lambda_2}{\sqrt2}
+    \bigl(X_{13}{\color{red}-}Z_{14}Y_{13}\bigr)$};
+\end{tikzpicture}
+\end{minipage}

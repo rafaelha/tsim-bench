@@ -1,0 +1,61 @@
+
+\section{Validation and numerical details}\label{app:numerics}
+\subsection{Validations}
+\begin{enumerate}
+\item The response tables of Appendix~\ref{app:response} were computed two ways, by the Gauss sums of Eq.~\eqref{eq:gauss} and by direct codeword amplitudes, on thousands of frames at both distances, and the $d=3$ window was simulated as a 13-qubit state vector with the faults at their literal positions. All three agree on every case.
+\item The two-fault $d=3$ pattern of Fig.~\ref{fig:d3-fault-expansion}
+was checked with both doubled probability diagrams in bloqade-tsim~\cite{tsim} and
+amplitude diagrams in pyzx\_param~\cite{pyzx_param}. The three-fault $d=5$ pattern of
+Appendix~\ref{app:d5-fault-v2} was checked with pyzx\_param, using the spider cutting with like-term collection of Ref.~\cite{wan} followed by stabiliser decomposition. The results agree with $(A,B)=(1/4,1/4)$ at $d=3$ and $(1/16,1/16)$ at $d=5$.
+These are floating-point scalar checks of fixed fault patterns, not
+independent rational certificates for the full noisy circuits.
+\item Every fixed-$p$ reconstruction passes the prime-product bound, an unused-prime check and reverse-order CRT, and the repeat at $p=10^{-3}$ with a new contraction order reproduces $A$, $B$ and $\PL$ exactly.
+\item The degree-ten coefficients agree with the earlier calculation through degree seven, and multiplying the quotient back into $a(x)$ reproduces $e(x)$ through degree ten, Eq.~\eqref{eq:recursion}.
+\end{enumerate}
+
+\subsection{Published comparisons}
+Clifft values are read from Fig.~6 of Ref.~\cite{clifft} and SOFT values from Fig.~2 of Ref.~\cite{soft}. At every shared $p$ the exact value lies within their sampling uncertainty. The $d=3$ series expansion also matches with state-vector data from~\cite{msc} in Fig.~\ref{fig:d3comparison}.
+
+\subsection{Measured cost}
+Table~\ref{tab:cost} lists the worker time per point, including final-response preparation, cache construction, growth contraction and assembly, on single-threaded C++ code executed on an Apple Macbook (M4)\footnote{In today's value: $<1000\text{USD}$.}. The $p=10^{-3}$ repeat, which reused the cached endpoint tables of Appendix~\ref{app:F-reuse}, took 1.710 worker core-hours and the complete degree-ten calculation 9.857 worker core-hours.
+
+{\color{black}
+\begin{table*}[b]\centering\small
+\captionsetup{position=above,skip=4pt}
+\caption{Prime counts are reconstruction plus held-out checks; bound bits refer to the sufficient full denominator.}
+\label{tab:cost}
+\begin{adjustbox}{max width=\linewidth}\input{data/costs.tex}\end{adjustbox}
+\end{table*}}
+
+\subsection{Exact coefficients}
+Table~\ref{tab:d3coeff} and ~\ref{tab:d3raw} gives the $d=3$ series expanded coefficients, while Table~\ref{tab:d5raw} gives the $d=5$ numbers.
+\begin{table}[H]\centering\small
+\captionsetup{position=above,skip=4pt}
+\caption{The $d=3$ coefficients in $P^{(3)}_\text{L}(x)=\sum_kL_kx^k$.}
+\label{tab:d3coeff}
+\input{data/d3_coefficients.tex}
+\end{table}
+
+\begin{table*}[p]\centering\small
+\captionsetup{position=above,skip=4pt}
+\caption{The $d=3$ raw acceptance and accepted-error coefficients.}
+\label{tab:d3raw}
+\begin{minipage}[t]{.48\linewidth}\centering
+\input{data/d3_acceptance.tex}
+\end{minipage}\hfill
+\begin{minipage}[t]{.48\linewidth}\centering
+\input{data/d3_accepted_error.tex}
+\end{minipage}
+\end{table*}
+
+\begin{table*}[p]\centering\small
+\captionsetup{position=above,skip=4pt}
+\caption{Whole-circuit $d=5$ raw acceptance and accepted-error coefficients.}
+\label{tab:d5raw}
+\begin{minipage}[t]{.48\linewidth}\centering
+\input{data/d5_acceptance.tex}
+\end{minipage}\hfill
+\begin{minipage}[t]{.48\linewidth}\centering
+\input{data/d5_accepted_error.tex}
+\end{minipage}
+\end{table*}

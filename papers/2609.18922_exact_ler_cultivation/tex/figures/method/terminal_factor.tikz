@@ -1,0 +1,32 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  tensor/.style={tn tensor,minimum width=25mm,minimum height=10mm,
+                 inner sep=1.5mm,font=\small},
+  bundle/.style={tn bundle},
+  copy bit/.style={tn copy}]
+\node[note] at (3.7,4.43)
+ {example: incoming bit $a_q=1$, central character $c=0$};
+\node[tensor,tn constraint] (R) at (3.7,2.65)
+ {$R^{(j)}$\\\scriptsize selection and support};
+\node[tensor] (P) at (3.7,.25)
+ {$\Phi$\\\scriptsize phase sign};
+\draw[bundle] (3.7,3.9)--(R.north);
+\node[note,anchor=west] at (3.88,3.65) {remaining code\\and character bits};
+\coordinate (xdot) at (1.35,2.05);
+\coordinate (sdot) at (6.05,2.05);
+\draw[wire] (.65,2.05)--(xdot) node[midway,above,note] {$x_q$};
+\draw[wire] (xdot)|-([yshift=1.8mm]R.west);
+\draw[wire] (xdot)|-(P.west);
+\draw[wire] (6.75,2.05)--(sdot) node[midway,above,note] {$s_q$};
+\draw[wire] (sdot)|-([yshift=1.8mm]R.east);
+\draw[wire] (sdot)|-(P.east);
+\node[copy bit] at (xdot) {};
+\node[copy bit] at (sdot) {};
+\node[note] at (3.7,1.43)
+ {$R^{(j)}=0$ for forbidden labels\\$R^{(j)}=1$ for permitted labels};
+\node[note,font=\small] at (3.7,-1.15)
+ {$\Phi(x_q,s_q)=(-1)^{x_qs_q}
+   =\begin{pmatrix}+1&+1\\+1&-1\end{pmatrix}_{x_q,s_q}$};
+\node[note] at (3.7,-2.05)
+ {the same $x_q,s_q$ enter both factors;\\
+  keep the minus sign when summing them};
+\end{tikzpicture}

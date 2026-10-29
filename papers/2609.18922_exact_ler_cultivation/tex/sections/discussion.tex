@@ -1,0 +1,36 @@
+\section{Discussion}
+The full distance $d=5$ magic state cultivation circuit's LER can be calculated exactly on
+an everyday device (Apple Macbook M4). The structure exploited is the small syndrome and logical
+interface around each non-Clifford double-checking stage (which dominates the non-Clifford cost). 
+Pauli propagation reduces each non-Clifford double-checking stage to a response table indexed by the incoming error, 
+with stabiliser-equivalent strings merged. Tensor network methods then join these tables to the injection and growth noise, 
+whose faults act linearly on the small syndrome-and-logical interface between the stages, so the complete noise average is an exact arithmetic contraction. 
+\input{sections/semiweb_discussion.tex}
+Our method was loosely inspired by early Pauli-propagation papers based on structured Pauli expansions \cite{lowesa,noisylowesa}. SyQMA~\cite{syqma} previously computed symbolic, noise-averaged LER and inferred circuit fault distances from their leading orders in $p$.
+Its Steane-code encoding and verification (akin to magic state cultivation but not exactly) example has $p^2$ scaling, under a different circuit and noise conventions.
+
+In addition, the fault-count coefficients $a_k,e_k$ are related to the per-stratum acceptance and accepted-error probabilities that Clifft's stratified importance sampling
+estimates~\cite{clifft} and that the Pauli-frame reweighting of~\cite{pfsr} organises by fault number. Here every stratum is summed
+exactly rather than sampled. In~\cite{pfsr}, they restricts their $d=5$ sampling
+to $k\ge5$ faults on the premise that fewer than $d$ faults cannot yield an
+accepted logical error. For the circuits studied here that premise fails,
+since $e_3$ and $e_4$ are non-zero and supply about a third of the accepted errors at $p=10^{-3}$ when faults are counted over all 3,564 physical locations, and four fifths when only the 1,996 locations with a non-identity response are counted, Appendix~\ref{app:circuits}.
+
+\begin{figure}[h]\centering
+\includegraphics[width=.98\linewidth]{figures/d5_t_vs_s.pdf}
+\caption{$d=5$ cultivation with unitary injection, without escape.
+The {\color{red}$T$ curve} uses exact series coefficients through $x^{10}$. The {\color{blue}$S$-proxy data (blue)} and {\color{green}green curve} (that retains detector-error-model terms of at most weight five) are both from~\cite{msc}.}
+\label{fig:d5-s-proxy}
+\end{figure}
+
+Fig.~\ref{fig:d5-s-proxy} compares the $d=5$ $T$-state series with the
+unitary-injection $S$-gate proxy of~\cite{msc}.
+At $p=10^{-3}$, the proxy is $\sim 9.6$ times lower (nearly one order of
+magnitude). 
+Using the proxy to infer a quantum algorithmic estimate will produce an over-optimistic resource count, as the proxy may substantially underestimate the LER of actual $T$-state cultivation.
+
+The leading orders of the series expansion reveal the LER scales as $p^{2}$ at $d=3$ and $p^{3}$ at $d=5$ (see Acknowledgements), not as the intended $p^{3}$ and $p^{5}$ the code distances suggest. 
+This explains the apparent distance-degrading behaviour observed in the companion code of~\cite{wan}, albeit with a slightly different injection scheme. 
+In a Clifford circuit, detectors are equivalent to closed Pauli webs of its ZX diagram. In the $S$-gate proxy this holds for all 20 declared $d=3$ detectors, but in the $T$-gate circuit only 16 of them are Pauli webs (93 of 107 at $d=5$), and a fault pattern that the $T$-gate circuit accepts can be rejected by the proxy only through the other detectors (Appendix~\ref{app:detector-webs}).
+Appendix~\ref{app:other-cultivation} provides exact series coefficients for other flavours of magic state cultivation such as: $\mathbb{RP}^{2}$~\cite{RP2_prxq}, fold-transversal~\cite{fold_msc_prxq} and repaired cultivation~\cite{chan2026diagnosingrestoringdegradedfault}, with comparisons against available numerical results.
+Extensions to the escape and grafting stages of cultivation~\cite{msc} are left for future work.

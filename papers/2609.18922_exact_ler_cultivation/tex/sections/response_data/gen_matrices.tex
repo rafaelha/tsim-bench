@@ -1,0 +1,102 @@
+\newcommand{\matbw}{k=0,\ e_{\rm bit}=0,\ \ell=(0,0,1,0,0,0,0),\qquad M=\begin{pmatrix}1&1&1&1\\1&1&1&1\\1&1&1&1\\1&1&1&1\end{pmatrix},\quad b'=\begin{pmatrix}1\\1\\1\\1\end{pmatrix}}
+\newcommand{\solbw}{(0,0,0,1), (0,0,1,0), (0,1,0,0), (0,1,1,1), (1,0,0,0), (1,0,1,1), (1,1,0,1), (1,1,1,0)}
+\newcommand{\resAbw}{1/2}\newcommand{\resBbw}{0}
+\newcommand{\mattwofault}{k=1,\ e_{\rm bit}=1,\ \ell=(0,0,0,1,0,0,0),\qquad M=\begin{pmatrix}0&1&0&0\\1&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix},\quad b'=\begin{pmatrix}0\\1\\0\\0\end{pmatrix}}
+\newcommand{\soltwofault}{(1,0,0,0), (1,0,0,1), (1,0,1,0), (1,0,1,1)}
+\newcommand{\resAtwofault}{1/4}\newcommand{\resBtwofault}{1/4}
+\newcommand{\matxl}{k=1,\ e_{\rm bit}=0,\ \ell=(0,0,0,0,0,0,0),\qquad M=\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&1\end{pmatrix},\quad b'=\begin{pmatrix}0\\0\\0\\0\end{pmatrix}}
+\newcommand{\solxl}{(0,0,0,0), (0,0,1,0), (0,1,0,0), (0,1,1,0), (1,0,0,0), (1,0,1,0), (1,1,0,0), (1,1,1,0)}
+\newcommand{\resAxl}{1/2}\newcommand{\resBxl}{0}
+\newcommand{\matxlminus}{k=1,\ e_{\rm bit}=1,\ \ell=(0,0,0,0,0,0,0),\qquad M=\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&1\end{pmatrix},\quad b'=\begin{pmatrix}0\\0\\0\\1\end{pmatrix}}
+\newcommand{\solxlminus}{(0,0,0,1), (0,0,1,1), (0,1,0,1), (0,1,1,1), (1,0,0,1), (1,0,1,1), (1,1,0,1), (1,1,1,1)}
+\newcommand{\resAxlminus}{1/2}\newcommand{\resBxlminus}{1/2}
+\newcommand{\matzs}{k=0,\ e_{\rm bit}=1,\ \ell=(0,0,1,0,0,0,0),\qquad M=\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix},\quad b'=\begin{pmatrix}1\\1\\1\\0\end{pmatrix}}
+\newcommand{\solzs}{}
+\newcommand{\resAzs}{0}\newcommand{\resBzs}{0}
+\newcommand{\scanexit}{210}\newcommand{\scanentry}{210}\newcommand{\scanincoming}{210}\newcommand{\scancases}{210}
+\newcommand{\Hthree}{\begin{pmatrix}1&1&1&0&1&0&0\\0&1&1&1&0&1&0\\0&0&1&0&1&1&1\end{pmatrix}}
+\newcommand{\Gfour}{\begin{pmatrix}1&1&1&0&1&0&0\\0&1&1&1&0&1&0\\0&0&1&0&1&1&1\\1&1&1&1&1&1&1\end{pmatrix}}
+\newcommand{\masksbw}{\begin{pmatrix}0&0&1&0&0&0&0\\0&0&0&0&0&0&0\\0&0&1&0&0&0&0\\0&0&0&0&0&0&0\end{pmatrix}}
+\newcommand{\interbw}{\begin{pmatrix}1&1&1&1\\1&1&1&1\\1&1&1&1\\1&1&1&1\end{pmatrix}}
+\newcommand{\elloverbw}{(1,1,1,1)}
+\newcommand{\augbw}{\left(\begin{array}{cccc|c}1&1&1&1&1\\1&1&1&1&1\\1&1&1&1&1\\1&1&1&1&1\end{array}\right)}
+\newcommand{\rrefbw}{\left(\begin{array}{cccc|c}1&1&1&1&1\\0&0&0&0&0\\0&0&0&0&0\\0&0&0&0&0\end{array}\right)}
+\newcommand{\rankbw}{1}\newcommand{\consbw}{consistent}
+\newcommand{\phasecountsbw}{8/8/0/0}
+\newcommand{\gsumbw}{0.5+0.5i}\newcommand{\gabsbw}{0.5}
+\newcommand{\synbw}{(0,0,0)}
+\newcommand{\maskstwofault}{\begin{pmatrix}0&0&0&0&0&0&0\\0&0&0&0&0&0&0\\1&1&0&1&0&0&0\\0&0&0&1&0&0&0\end{pmatrix}}
+\newcommand{\intertwofault}{\begin{pmatrix}2&1&0&2\\1&2&0&2\\0&0&0&0\\2&2&0&3\end{pmatrix}}
+\newcommand{\ellovertwofault}{(0,1,0,1)}
+\newcommand{\augtwofault}{\left(\begin{array}{cccc|c}0&1&0&0&0\\1&0&0&0&1\\0&0&0&0&0\\0&0&0&0&0\end{array}\right)}
+\newcommand{\rreftwofault}{\left(\begin{array}{cccc|c}1&0&0&0&1\\0&1&0&0&0\\0&0&0&0&0\\0&0&0&0&0\end{array}\right)}
+\newcommand{\ranktwofault}{2}\newcommand{\constwofault}{consistent}
+\newcommand{\phasecountstwofault}{12/0/4/0}
+\newcommand{\gsumtwofault}{0.5}\newcommand{\gabstwofault}{0.25}
+\newcommand{\syntwofault}{(0,0,0)}
+\newcommand{\masksxl}{\begin{pmatrix}1&1&1&1&1&1&1\\0&0&0&0&0&0&0\\0&0&0&0&0&0&0\\0&0&0&0&0&0&0\end{pmatrix}}
+\newcommand{\interxl}{\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix}}
+\newcommand{\elloverxl}{(0,0,0,0)}
+\newcommand{\augxl}{\left(\begin{array}{cccc|c}0&0&0&0&0\\0&0&0&0&0\\0&0&0&0&0\\0&0&0&1&0\end{array}\right)}
+\newcommand{\rrefxl}{\left(\begin{array}{cccc|c}0&0&0&1&0\\0&0&0&0&0\\0&0&0&0&0\\0&0&0&0&0\end{array}\right)}
+\newcommand{\rankxl}{1}\newcommand{\consxl}{consistent}
+\newcommand{\phasecountsxl}{8/0/0/8}
+\newcommand{\gsumxl}{0.5-0.5i}\newcommand{\gabsxl}{0.5}
+\newcommand{\synxl}{(0,0,0)}
+\newcommand{\maskszs}{\begin{pmatrix}0&0&0&0&0&0&0\\0&0&0&0&0&0&0\\0&0&0&0&0&0&0\\0&0&1&0&0&0&0\end{pmatrix}}
+\newcommand{\interzs}{\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix}}
+\newcommand{\elloverzs}{(1,1,1,1)}
+\newcommand{\augzs}{\left(\begin{array}{cccc|c}0&0&0&0&1\\0&0&0&0&1\\0&0&0&0&1\\0&0&0&0&0\end{array}\right)}
+\newcommand{\rrefzs}{\left(\begin{array}{cccc|c}0&0&0&0&1\\0&0&0&0&1\\0&0&0&0&1\\0&0&0&0&0\end{array}\right)}
+\newcommand{\rankzs}{0}\newcommand{\conszs}{inconsistent}
+\newcommand{\phasecountszs}{8/0/8/0}
+\newcommand{\gsumzs}{0}\newcommand{\gabszs}{0}
+\newcommand{\synzs}{(0,0,0)}
+\newcommand{\masksxseven}{\begin{pmatrix}0&0&1&0&0&0&0\\0&0&0&0&0&0&0\\0&0&0&0&0&0&0\\0&0&0&0&0&0&0\end{pmatrix}}
+\newcommand{\interxseven}{\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix}}
+\newcommand{\synxseven}{(1,1,1)}
+\newcommand{\bmattwofault}{\begin{pmatrix}0&-0.3536+0.3536i\\-0.3536-0.3536i&0\end{pmatrix}}
+\newcommand{\binsttwofault}{(0.25,0.25)}
+\newcommand{\bmatzs}{\begin{pmatrix}0&0\\0&0\end{pmatrix}}
+\newcommand{\binstzs}{(0,0)}
+\newcommand{\bmatident}{\begin{pmatrix}1&0\\0&1\end{pmatrix}}
+\newcommand{\binstident}{(1,0)}
+\newcommand{\dfivephase}{7}
+\newcommand{\dfivesites}{0,3,7,9,11,13,15,17,19,21,23,25,27,29,32,34,36,38,40}
+\newcommand{\dfivegrid}{{1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,1,0,1,1,0,1,1,0,0,1,0,0,0,0,0,0},{0,0,0,0,0,0,0,1,0,0,0,1,0,0,1,0,1,0,0},{0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,1,0,0,1,1,0,0,1,0,0,0,0,0},{0,0,0,0,0,0,0,0,1,0,0,1,1,0,1,1,0,1,0},{0,0,1,0,1,1,0,1,1,0,0,1,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,1,0,0,0},{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,1},{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},{1,0,0,0,1,0,0,1,1,0,0,0,0,0,0,0,1,0,1}}
+\newcommand{\dfivesw}{(0,4,0,4,4,4,0,4,0)}
+\newcommand{\dfiveuniform}{rejected: The requested check pattern does not preserve the code}
+\newcommand{\cperpgrid}{{0,0,0,0,0,0,0},{0,0,1,0,1,1,1},{0,1,1,1,0,1,0},{0,1,0,1,1,0,1},{1,1,1,0,1,0,0},{1,1,0,0,0,1,1},{1,0,0,1,1,1,0},{1,0,1,1,0,0,1},{1,1,1,1,1,1,1},{1,1,0,1,0,0,0},{1,0,0,0,1,0,1},{1,0,1,0,0,1,0},{0,0,0,1,0,1,1},{0,0,1,1,1,0,0},{0,1,1,0,0,0,1},{0,1,0,0,1,1,0}}
+\newcommand{\cperplabels}{0000,0010,0100,0110,1000,1010,1100,1110,0001,0011,0101,0111,1001,1011,1101,1111}
+\newcommand{\HthreeC}{\begin{pmatrix}\textcolor{tnblue}{1}&\textcolor{tnblue}{1}&\textcolor{tnblue}{1}&0&\textcolor{tnblue}{1}&0&0\\0&\textcolor{red!80!black}{1}&\textcolor{red!80!black}{1}&\textcolor{red!80!black}{1}&0&\textcolor{red!80!black}{1}&0\\0&0&\textcolor{tngreen}{1}&0&\textcolor{tngreen}{1}&\textcolor{tngreen}{1}&\textcolor{tngreen}{1}\end{pmatrix}}
+\newcommand{\GfourC}{\begin{pmatrix}\textcolor{tnblue}{1}&\textcolor{tnblue}{1}&\textcolor{tnblue}{1}&0&\textcolor{tnblue}{1}&0&0\\0&\textcolor{red!80!black}{1}&\textcolor{red!80!black}{1}&\textcolor{red!80!black}{1}&0&\textcolor{red!80!black}{1}&0\\0&0&\textcolor{tngreen}{1}&0&\textcolor{tngreen}{1}&\textcolor{tngreen}{1}&\textcolor{tngreen}{1}\\1&1&1&1&1&1&1\end{pmatrix}}
+\newcommand{\masksCbw}{\begin{pmatrix}0&0&\colorbox{tnblue!22}{$1$}&0&0&0&0\\0&0&0&0&0&0&0\\0&0&\colorbox{tnblue!22}{$1$}&0&0&0&0\\0&0&0&0&0&0&0\end{pmatrix}}
+\newcommand{\interCbw}{\begin{pmatrix}\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}\\\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}\\\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}\\\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}\end{pmatrix}}
+\newcommand{\MCbw}{\begin{pmatrix}\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}\\\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}\\\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}\\\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\fcolorbox{tngreen}{tngreen!18}{$1$}\end{pmatrix}}
+\newcommand{\bpCbw}{\begin{pmatrix}\colorbox{tnorange!22}{$1$}\\\colorbox{tnorange!22}{$1$}\\\colorbox{tnorange!22}{$1$}\\\fcolorbox{tngreen}{tngreen!18}{$1$}\end{pmatrix}}
+\newcommand{\augCbw}{\left(\begin{array}{cccc|c}\colorbox{black!22}{$1$}&1&1&1&\colorbox{tnorange!22}{$1$}\\\colorbox{black!22}{$1$}&1&1&1&\colorbox{tnorange!22}{$1$}\\\colorbox{black!22}{$1$}&1&1&1&\colorbox{tnorange!22}{$1$}\\\colorbox{black!22}{$1$}&1&1&1&\colorbox{tnorange!22}{$1$}\end{array}\right)}
+\newcommand{\rrefCbw}{\left(\begin{array}{cccc|c}\colorbox{black!22}{$1$}&1&1&1&\colorbox{tnorange!22}{$1$}\\0&0&0&0&0\\0&0&0&0&0\\0&0&0&0&0\end{array}\right)}
+\newcommand{\pivotsbw}{h_0}
+\newcommand{\masksCtwofault}{\begin{pmatrix}0&0&0&0&0&0&0\\0&0&0&0&0&0&0\\\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&0&\colorbox{tnblue!22}{$1$}&0&0&0\\0&0&0&\colorbox{tnorange!22}{$1$}&0&0&0\end{pmatrix}}
+\newcommand{\interCtwofault}{\begin{pmatrix}2&\colorbox{tnblue!22}{$1$}&0&2\\\colorbox{tnblue!22}{$1$}&2&0&2\\0&0&0&0\\2&2&0&\colorbox{tnblue!22}{$3$}\end{pmatrix}}
+\newcommand{\MCtwofault}{\begin{pmatrix}0&\colorbox{tnblue!22}{$1$}&0&0\\\colorbox{tnblue!22}{$1$}&0&0&0\\0&0&0&0\\0&0&0&\fcolorbox{tngreen}{tngreen!18}{$0$}\end{pmatrix}}
+\newcommand{\bpCtwofault}{\begin{pmatrix}0\\\colorbox{tnorange!22}{$1$}\\0\\\fcolorbox{tngreen}{tngreen!18}{$0$}\end{pmatrix}}
+\newcommand{\augCtwofault}{\left(\begin{array}{cccc|c}0&\colorbox{black!22}{$1$}&0&0&0\\\colorbox{black!22}{$1$}&0&0&0&\colorbox{tnorange!22}{$1$}\\0&0&0&0&0\\0&0&0&0&0\end{array}\right)}
+\newcommand{\rrefCtwofault}{\left(\begin{array}{cccc|c}\colorbox{black!22}{$1$}&0&0&0&\colorbox{tnorange!22}{$1$}\\0&\colorbox{black!22}{$1$}&0&0&0\\0&0&0&0&0\\0&0&0&0&0\end{array}\right)}
+\newcommand{\pivotstwofault}{h_0, h_1}
+\newcommand{\masksCxl}{\begin{pmatrix}\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}&\colorbox{tnblue!22}{$1$}\\0&0&0&0&0&0&0\\0&0&0&0&0&0&0\\0&0&0&0&0&0&0\end{pmatrix}}
+\newcommand{\interCxl}{\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix}}
+\newcommand{\MCxl}{\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&\fcolorbox{tngreen}{tngreen!18}{$1$}\end{pmatrix}}
+\newcommand{\bpCxl}{\begin{pmatrix}0\\0\\0\\\fcolorbox{tngreen}{tngreen!18}{$0$}\end{pmatrix}}
+\newcommand{\augCxl}{\left(\begin{array}{cccc|c}0&0&0&0&0\\0&0&0&0&0\\0&0&0&0&0\\0&0&0&\colorbox{black!22}{$1$}&0\end{array}\right)}
+\newcommand{\rrefCxl}{\left(\begin{array}{cccc|c}0&0&0&\colorbox{black!22}{$1$}&0\\0&0&0&0&0\\0&0&0&0&0\\0&0&0&0&0\end{array}\right)}
+\newcommand{\pivotsxl}{h_3}
+\newcommand{\masksCzs}{\begin{pmatrix}0&0&0&0&0&0&0\\0&0&0&0&0&0&0\\0&0&0&0&0&0&0\\0&0&\colorbox{tnorange!22}{$1$}&0&0&0&0\end{pmatrix}}
+\newcommand{\interCzs}{\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix}}
+\newcommand{\MCzs}{\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&\fcolorbox{tngreen}{tngreen!18}{$0$}\end{pmatrix}}
+\newcommand{\bpCzs}{\begin{pmatrix}\colorbox{tnorange!22}{$1$}\\\colorbox{tnorange!22}{$1$}\\\colorbox{tnorange!22}{$1$}\\\fcolorbox{tngreen}{tngreen!18}{$0$}\end{pmatrix}}
+\newcommand{\augCzs}{\left(\begin{array}{cccc|c}0&0&0&0&\colorbox{tnorange!22}{$1$}\\0&0&0&0&\colorbox{tnorange!22}{$1$}\\0&0&0&0&\colorbox{tnorange!22}{$1$}\\0&0&0&0&0\end{array}\right)}
+\newcommand{\rrefCzs}{\left(\begin{array}{cccc|c}0&0&0&0&\colorbox{tnorange!22}{$1$}\\0&0&0&0&\colorbox{tnorange!22}{$1$}\\0&0&0&0&\colorbox{tnorange!22}{$1$}\\0&0&0&0&0\end{array}\right)}
+\newcommand{\pivotszs}{none}
+\newcommand{\masksCxseven}{\begin{pmatrix}0&0&\colorbox{tnblue!22}{$1$}&0&0&0&0\\0&0&0&0&0&0&0\\0&0&0&0&0&0&0\\0&0&0&0&0&0&0\end{pmatrix}}
+\newcommand{\interCxseven}{\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix}}

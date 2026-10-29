@@ -1,0 +1,47 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn heading,anchor=west] at (0,3.4)
+  {\textbf{(a)} A tensor with $r$ indices};
+\node[tn tensor,minimum width=28mm] (R) at (1.65,2.5) {$\mathcal T$};
+\draw[tn leg] ([xshift=-10mm]R.south)--++(0,-.65)
+  node[below,tn label] {$i_1$};
+\draw[tn leg] ([xshift=-3mm]R.south)--++(0,-.65)
+  node[below,tn label] {$i_2$};
+\draw[tn leg] ([xshift=10mm]R.south)--++(0,-.65)
+  node[below,tn label] {$i_r$};
+\node[font=\small] at (2.0,1.45) {$\cdots$};
+\node[font=\large] at (3.65,2.5) {$\longleftrightarrow$};
+\node[font=\small] at (5.05,2.5) {$\mathcal T_{i_1i_2\cdots i_r}$};
+\node[tn label] at (5.05,1.9) {one index per leg};
+\node[tn label] at (5.05,1.45) {$i_s\in\{0,1\}$: $2^r$ entries};
+
+\node[tn heading,anchor=west] at (0,.75)
+  {\textbf{(b)} Contracting a shared index};
+\node[tn tensor,minimum width=10mm,minimum height=15mm] (T) at (.9,-.5) {$T$};
+\node[tn tensor,fill=tnorange,minimum width=10mm,minimum height=15mm]
+  (U) at (2.9,-.5) {$U$};
+\draw[tn leg] (0,-.1)--node[above,tn label] {$i_1$}
+  ([yshift=4mm]T.west);
+\draw[tn leg] (0,-.9)--node[below,tn label] {$i_m$}
+  ([yshift=-4mm]T.west);
+\node[tn label] at (.17,-.5) {$\vdots$};
+\draw[tn leg] (T.east)--node[above,tn label] {$j$} (U.west);
+\draw[tn leg] ([yshift=4mm]U.east)--node[above,tn label] {$k_1$} (3.8,-.1);
+\draw[tn leg] ([yshift=-4mm]U.east)--node[below,tn label] {$k_n$} (3.8,-.9);
+\node[tn label] at (3.63,-.5) {$\vdots$};
+
+\node[font=\large] at (4.25,-.5) {$=$};
+\node[tn intermediate,minimum width=11mm,minimum height=15mm]
+  (C) at (5.6,-.5) {$C$};
+\draw[tn leg] (4.55,-.1)--node[above,tn label] {$i_1$}
+  ([yshift=4mm]C.west);
+\draw[tn leg] (4.55,-.9)--node[below,tn label] {$i_m$}
+  ([yshift=-4mm]C.west);
+\node[tn label] at (4.78,-.5) {$\vdots$};
+\draw[tn leg] ([yshift=4mm]C.east)--node[above,tn label] {$k_1$} (6.65,-.1);
+\draw[tn leg] ([yshift=-4mm]C.east)--node[below,tn label] {$k_n$} (6.65,-.9);
+\node[tn label] at (6.42,-.5) {$\vdots$};
+
+\node[font=\small] at (3.325,-1.95)
+  {$\displaystyle C_{i_1\cdots i_m k_1\cdots k_n}
+    =\sum_{j=0}^{1}T_{i_1\cdots i_m j}\,U_{j k_1\cdots k_n}$};
+\end{tikzpicture}

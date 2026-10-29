@@ -1,0 +1,20 @@
+\begin{tikzpicture}[font=\small]
+\begin{yquant}[operator/separation=3mm,register/separation=5mm]
+qubits {data} d;
+[name=nin,fill=tnorange!20] box {$\mathcal N$} d;
+[name=dentry] box {$D^\dagger$} d;
+[name=cl] box {CNOT circuit,\\readouts, resets} d;
+[name=dexit] box {$D$} d;
+[name=nout,fill=tnorange!20] box {$\mathcal N$} d;
+measure d;
+\end{yquant}
+\begin{scope}[on background layer]
+\node[draw=black!45,fill=black!10,rounded corners=3pt,inner sep=2.2mm,fit=(cl-0),
+      label={[font=\scriptsize,text=black!60,align=center]below:Clifford part: every fault is a Pauli,\\
+      the internal faults combine into $P(\boldsymbol u,\boldsymbol z)$}] (bubble) {};
+\end{scope}
+\draw[dashed,black!60] ([xshift=-1.6mm,yshift=-3mm]nin-0.south) -- ([xshift=-1.6mm,yshift=6.5mm]nin-0.north)
+  node[anchor=south east,xshift=1mm,font=\scriptsize,align=center] {entrance\\$P(\boldsymbol a,\boldsymbol b)$};
+\draw[flow,black!60] (nin-0.north) to[bend left=35] ([xshift=-1.5mm]cl-0.north west);
+\draw[flow,black!60] (nout-0.north) to[bend right=35] ([xshift=1.5mm]cl-0.north east);
+\end{tikzpicture}

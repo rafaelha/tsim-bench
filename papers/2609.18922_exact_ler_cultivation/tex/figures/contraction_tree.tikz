@@ -1,0 +1,66 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  original/.style={tn tensor,fill=tnorange,minimum width=8mm,minimum height=8mm,inner sep=1mm},
+  merged/.style={tn intermediate,minimum width=14mm,inner sep=1.5mm},
+  index/.style={tn label,fill=white,inner sep=.5mm}]
+\node[tn heading] at (2.8,5.65) {\textbf{(a)} Group neighbouring tensors};
+\node[tn heading] at (10.3,5.65) {\textbf{(b)} Group opposite tensors};
+\node[original] (t1) at (1.1,4.4) {$T_1$};
+\node[original] (t2) at (4.5,4.4) {$T_2$};
+\node[original] (t4) at (1.1,2.6) {$T_4$};
+\node[original] (t3) at (4.5,2.6) {$T_3$};
+\begin{scope}[on background layer]
+\node[draw=tngreen!70,fill=tngreen!5,dashed,rounded corners=5mm,
+  fit=(t1)(t2),inner sep=4mm] {};
+\node[draw=tngreen!70,fill=tngreen!5,dashed,rounded corners=5mm,
+  fit=(t4)(t3),inner sep=4mm] {};
+\end{scope}
+\draw[tn leg] (t1)--node[index,above] {$b$}(t2);
+\draw[tn leg] (t4)--node[index,below] {$d$}(t3);
+\draw[tn leg] (t1)--node[index,left] {$a$}(t4);
+\draw[tn leg] (t2)--node[index,right] {$c$}(t3);
+\draw[tn operation] (2.8,1.75)--node[tn label,right] {sum the internal $b,d$}(2.8,1.0);
+\node[merged,minimum height=12mm] (m12) at (1.1,.15) {$M_{12}$};
+\node[merged,minimum height=12mm] (m34) at (4.5,.15) {$M_{34}$};
+\draw[tn leg] ([yshift=2.5mm]m12.east)--node[index,above] {$a$}
+  ([yshift=2.5mm]m34.west);
+\draw[tn leg] ([yshift=-2.5mm]m12.east)--node[index,below] {$c$}
+  ([yshift=-2.5mm]m34.west);
+\node[tn label] at (2.8,-.85) {two binary indices per tensor: \textbf{4 entries}};
+\draw[tn operation] (2.8,-1.2)--node[tn label,right] {sum $a,c$}(2.8,-1.8);
+\node[tn label,font=\small] at (2.8,-2.45) {$Z=\displaystyle\sum_{a,c}\underbrace{\textstyle\sum_b T_1(a,b)T_2(b,c)}_{M_{12}(a,c)}\;\underbrace{\textstyle\sum_d T_3(c,d)T_4(d,a)}_{M_{34}(c,a)}$};
+
+\node[original] (s1) at (8.6,4.4) {$T_1$};
+\node[original] (s2) at (12,4.4) {$T_2$};
+\node[original] (s4) at (8.6,2.6) {$T_4$};
+\node[original] (s3) at (12,2.6) {$T_3$};
+\begin{scope}[on background layer]
+\foreach \angle in {-27.897,27.897}{
+  \begin{scope}[shift={(10.3,3.5)},rotate=\angle]
+  \path[draw=tnorange!75,fill=tnorange!5,dashed,line width=.6pt]
+    (-2.62,0)
+    .. controls (-2.62,.48) and (-2.31,.74) .. (-1.92,.74)
+    .. controls (-1.25,.74) and (-.98,.16) .. (0,.16)
+    .. controls (.98,.16) and (1.25,.74) .. (1.92,.74)
+    .. controls (2.31,.74) and (2.62,.48) .. (2.62,0)
+    .. controls (2.62,-.48) and (2.31,-.74) .. (1.92,-.74)
+    .. controls (1.25,-.74) and (.98,-.16) .. (0,-.16)
+    .. controls (-.98,-.16) and (-1.25,-.74) .. (-1.92,-.74)
+    .. controls (-2.31,-.74) and (-2.62,-.48) .. cycle;
+  \end{scope}
+}
+\end{scope}
+\draw[tn leg] (s1)--node[index,above] {$b$}(s2);
+\draw[tn leg] (s4)--node[index,below] {$d$}(s3);
+\draw[tn leg] (s1)--node[index,left] {$a$}(s4);
+\draw[tn leg] (s2)--node[index,right] {$c$}(s3);
+\draw[tn operation] (10.3,1.75)--node[tn label,right] {no internal index to sum}(10.3,1.0);
+\node[merged,minimum height=17mm] (k13) at (8.6,.05) {$K_{13}$};
+\node[merged,minimum height=17mm] (k24) at (12,.05) {$K_{24}$};
+\foreach \y/\lab in {6/a,2/b,-2/c,-6/d}{
+  \draw[tn leg] ([yshift=\y mm]k13.east)--node[index] {$\lab$}
+    ([yshift=\y mm]k24.west);
+}
+\node[tn label] at (10.3,-1.15) {four binary indices per tensor: \textbf{16 entries}};
+\draw[tn operation] (10.3,-1.5)--node[tn label,right] {sum $a,b,c,d$}(10.3,-1.9);
+\node[tn label,font=\small] at (10.3,-2.55) {$Z=\displaystyle\sum_{a,b,c,d}\underbrace{T_1(a,b)T_3(c,d)}_{K_{13}(a,b,c,d)}\;\underbrace{T_2(b,c)T_4(d,a)}_{K_{24}(a,b,c,d)}$};
+\end{tikzpicture}

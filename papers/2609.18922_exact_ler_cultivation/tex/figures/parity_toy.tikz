@@ -1,0 +1,21 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\foreach \i/\x in {1/0,2/3,3/6}{
+  \node[tn noise] (g\i) at (\x,1.5) {$g_{\i}$};
+  \node[tn copy] (f\i) at (\x,.25) {};
+  \draw[tn leg] (g\i.south)--node[right,tn label] {$f_{\i}$}(f\i);
+}
+\node[tn constraint] (c1) at (1.5,-.95) {$\Delta_{12}$};
+\node[tn constraint] (c2) at (4.5,-.95) {$\Delta_{23}$};
+\draw[tn leg] (f1)--([xshift=-3mm]c1.north);
+\draw[tn leg] (f2)--([xshift=3mm]c1.north);
+\draw[tn leg] (f2)--([xshift=-3mm]c2.north);
+\draw[tn leg] (f3)--([xshift=3mm]c2.north);
+\node[tn label] at (3,2.4) {$g_i(0)=1-p,\quad g_i(1)=p$};
+\node[tn label] at (3,-1.85)
+  {$\Delta_{12}=\mathbf1[f_1\oplus f_2=0],\quad
+    \Delta_{23}=\mathbf1[f_2\oplus f_3=0]$};
+\node[tn label,font=\small] at (3,-2.65)
+  {$A_{\rm toy}=\sum_{f_1,f_2,f_3}g_1g_2g_3\Delta_{12}\Delta_{23}$};
+\node[tn label] at (3,-3.35)
+  {only $000$ and $111$ contribute: $A_{\rm toy}=(1-p)^3+p^3$};
+\end{tikzpicture}

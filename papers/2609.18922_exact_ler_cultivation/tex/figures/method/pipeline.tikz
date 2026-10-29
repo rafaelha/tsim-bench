@@ -1,0 +1,29 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{
+ stagebox/.style={box,text width=64mm,inner sep=1.6mm},
+ leafbox/.style={box,text width=29mm,inner sep=1.4mm,minimum height=9.5mm}}
+\node[stagebox] (circ) at (0,0)
+ {the noisy cultivation circuit, stage by stage\\ {\scriptsize\color{black!60}(Fig.~\ref{fig:overview})}};
+\node[stagebox,below=3.2mm of circ] (pp)
+ {Pauli propagation through a double-checking stage:\\
+  response $F_A(E;p),F_B(E;p)$ to each incoming error $E$\\ {\scriptsize\color{black!60}(Sec.~\ref{sec:pp})}};
+\node[stagebox,below=3.2mm of pp] (grp)
+ {group the errors with equal response:\\ one small table per stage\\ {\scriptsize\color{black!60}(Sec.~\ref{sec:grouping})}};
+\node[stagebox,below=3.2mm of grp] (tn)
+ {tensor network of gates, noise and post-selection:\\ fills each table and joins the stages\\ {\scriptsize\color{black!60}(Sec.~\ref{sec:tensor-contraction})}};
+\node[leafbox] (rat) at ($(tn.south)+(-1.75,-1.0)$)
+ {rational $p$,\\ modular primes\\ {\scriptsize\color{black!60}(App.~\ref{app:F-fixedp})}};
+\node[leafbox] (ser) at ($(tn.south)+(1.75,-1.0)$)
+ {polynomials in $x$,\\ degrees $0,\ldots,10$\\ {\scriptsize\color{black!60}(App.~\ref{app:F-series})}};
+\node[leafbox,below=3.2mm of rat] (ab)
+ {exact $A(p),B(p)$\\ $\PL=B/A$\\ {\scriptsize\color{black!60}(Table~\ref{tab:grid})}};
+\node[leafbox,below=3.2mm of ser] (ak)
+ {exact $a_k,e_k$\\ series for $\PL$\\ {\scriptsize\color{black!60}(Eq.~\eqref{eq:fullseries})}};
+\draw[flow] (circ)--(pp);
+\draw[flow] (pp)--(grp);
+\draw[flow] (grp)--(tn);
+\draw[flow] (tn.south)--(rat.north);
+\draw[flow] (tn.south)--(ser.north);
+\draw[flow] (rat)--(ab);
+\draw[flow] (ser)--(ak);
+\end{tikzpicture}

@@ -1,0 +1,17 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn endpoint] (w) at (.45,1.5) {$W$};
+\node[tn noise] (g1) at (2.2,1.5) {$g_1$};
+\node[tn label] at (3.5,1.5) {$\cdots$};
+\node[tn noise] (gm) at (4.8,1.5) {$g_{567}$};
+\node[tn endpoint] (f) at (6.85,1.5) {$F_O$};
+\node[tn constraint,minimum width=75mm] (zero) at (3.65,-.25) {$\Delta_0$};
+\foreach \name/\lab in {w/\ell_0,g1/\ell_1,gm/\ell_{567},f/\ell_{568}}{
+  \draw[tn bundle] (\name.south)--node[right,tn label] {$\lab$}
+    (\name.south |- zero.north);
+}
+\node[tn label] at (3.65,-1.2)
+  {$\Delta_0=\mathbf1[\ell_0\oplus\ell_1\oplus\cdots\oplus\ell_{568}=0]$};
+\node[tn label] at (3.65,-2.05)
+  {each label has 49 compatibility bits and 26 interface bits\\
+   multiply the tensor entries and sum the connected labels};
+\end{tikzpicture}

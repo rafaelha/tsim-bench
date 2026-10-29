@@ -1,0 +1,43 @@
+\section{Pauli webs of the declared detectors}
+\label{app:detector-webs}
+We draw all the Pauli semiwebs that correspond to checks, one for each declared detector, in
+the full $d=3$ and $d=5$ cultivation circuits of Gidney et al.~\cite{msc}, as provided by
+SOFT~\cite{soft}, in the accompanying \texttt{detector\_webs.pdf}.
+
+Some of the declared detectors are not Pauli webs of the $T$ circuit,
+Table~\ref{tab:detector-webs}. Their closed semiwebs have defects on $T$ spiders,
+Fig.~\ref{fig:detector-web}, so they depend on the phases of individual $T$ gates. An $X$ or $Y$
+fault next to a $T$ gate turns it into $T^\dagger$ and can make them random. The other
+detectors respond to every Pauli fault in the same deterministic way in the $T$ circuit and the
+$S$ proxy. In the proxy every declared detector is a Pauli web, so it flips deterministically
+and the proxy always rejects a pattern that flips one of them, while the $T$ circuit may accept
+the same pattern. The detectors in Table~\ref{tab:detector-webs} are therefore the only ones that
+separate the two, perhaps explaining the lower fault distances.
+
+\begin{table}[h]
+\centering
+\caption{Declared detectors of the full circuits, numbered from 0 in source order.
+Pauli-web detectors hold whatever the phase of each $T$ gate. The others depend on those
+phases.}
+\label{tab:detector-webs}
+\begin{tabular}{lrrrl}
+\toprule
+ & Declared & Pauli webs & Not Pauli webs & Detectors that are not Pauli webs\\
+\midrule
+$d=3$ & 20 & 16 & 4 & 7, 14, 16, 18\\
+$d=5$ & 107 & 93 & 14 & 7, 19, 20, 23, 69, 89, 91, 93, 95, 97, 99, 101, 103, 105\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\semiwebinput[.98\linewidth]{figures/detector_webs/d3_det014_check.tikz}
+\caption{Closed semiweb for the $d=3$ detector $r_7\oplus r_{15}=0$, the central
+readout and the stabilizer $X_0X_3X_7X_{10}$, from the double check to the end of the circuit.
+Red, green and blue overlays are $X$, $Z$ and $Y$ labels, and wires cut at the left edge
+continue into the injection. The 16 violet stars are defects of $-\pi/2$ at the entry and
+readout $T^\dagger$ gates and $+\pi/2$ at the exit and readout $T$ gates. With every $T$
+replaced by $S$ the same labels form a Pauli web.}
+\label{fig:detector-web}
+\end{figure}

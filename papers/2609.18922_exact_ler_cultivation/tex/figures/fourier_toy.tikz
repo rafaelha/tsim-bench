@@ -1,0 +1,10 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[box,text width=31mm] (zero) at (0,1)
+ {$\chi=0$\\$C_0=(1-p)^2+p^2$};
+\node[box,text width=31mm] (one) at (0,-1)
+ {$\chi=1$\\$C_1=(1-2p)^2$};
+\node[box,text width=35mm] (mean) at (5.3,0)
+ {restore the omitted parity\\$A_{\rm toy}=(C_0+C_1)/2$};
+\draw[flow] (zero)--node[note,above,sloped] {$1/2$}(mean);
+\draw[flow] (one)--node[note,below,sloped] {$1/2$}(mean);
+\end{tikzpicture}

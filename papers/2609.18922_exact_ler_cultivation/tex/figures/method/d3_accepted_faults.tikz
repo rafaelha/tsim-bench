@@ -1,0 +1,99 @@
+\begingroup
+\usetikzlibrary{decorations.pathreplacing}
+\definecolor{faultorange}{RGB}{199,97,0}
+\definecolor{faultpurple}{RGB}{123,55,156}
+\begin{tikzpicture}[font=\scriptsize,line width=.45pt]
+\begin{yquant}[register/minimum height=1.7mm,register/minimum depth=1.7mm,register/separation=1.3mm,operator/minimum width=3.6mm,operator/separation=1.2mm,every wire/.style={draw=black!45}]
+[name=row6] qubit {$6\,\ket{+}$} q6;
+[name=row7] qubit {$7$} q7;
+[name=row8] qubit {$8\,\ket{+}$} q8;
+[name=row9] qubit {$9$} q9;
+[name=row2] qubit {$2\,\ket{+}$} q2;
+[name=row3] qubit {$3$} q3;
+[name=row1] qubit {$1\,\ket{+}$} q1;
+[name=row0] qubit {$0$} q0;
+[name=row11] qubit {$11\,\ket{+}$} q11;
+[name=row10] qubit {$10$} q10;
+[name=row14] qubit {$14\,\ket{+}$} q14;
+[name=row13] qubit {$13$} q13;
+[name=row12] qubit {$12$} q12;
+[name=entry] box {$T^\dagger$} q0;
+box {$T^\dagger$} q3;
+box {$T^\dagger$} q7;
+box {$T^\dagger$} q9;
+box {$T^\dagger$} q10;
+box {$T^\dagger$} q12;
+box {$T^\dagger$} q13;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=g138n0] cnot q0 | q1;
+[name=g138n1] cnot q3 | q2;
+[name=g138n2] cnot q7 | q6;
+[name=g138n3] cnot q9 | q8;
+[name=g138n4] cnot q10 | q11;
+[name=g138n5] cnot q13 | q14;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=g142n0] cnot q1 | q3;
+[name=g142n1] cnot q8 | q7;
+[name=g142n2] cnot q14 | q11;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=F1,draw=faultorange,fill=faultorange!13,text=faultorange,line width=.8pt] box {$X_3$} q3;
+setstyle {draw=faultorange,line width=1.1pt} q3;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=g146n0] cnot q3 | q7;
+[name=g146n1] cnot q12 | q11;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=g150n0] cnot q11 | q7;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=hubmeasure,type=qubit] measure {$X$} q7;
+[name=hubreset] box {$R_X$} q7;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=g161n0] cnot q11 | q7;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=g165n0] cnot q3 | q7;
+[name=g165n1] cnot q12 | q11;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=g169n0,style={color=faultorange,draw=faultorange,line width=1.1pt},control style={fill=faultorange}] cnot q1 | q3;
+setstyle {draw=faultorange,line width=1.1pt} q1;
+[name=g169n1] cnot q8 | q7;
+[name=g169n2] cnot q14 | q11;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=g173n0,style={color=faultorange,draw=faultorange,line width=1.1pt},control style={fill=faultorange}] cnot q0 | q1;
+setstyle {draw=faultorange,line width=1.1pt} q0;
+[name=g173n1] cnot q3 | q2;
+[name=g173n2] cnot q7 | q6;
+[name=g173n3] cnot q9 | q8;
+[name=g173n4] cnot q10 | q11;
+[name=g173n5] cnot q13 | q14;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=F2,draw=faultpurple,fill=faultpurple!13,text=faultpurple,line width=.8pt] box {$Y_9$} q9;
+setstyle {draw=faultpurple,line width=1.1pt} q9;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[name=exit] box {$T$} q0;
+setstyle {draw=black!45,line width=.45pt} q0;
+box {$T$} q3;
+setstyle {draw=black!45,line width=.45pt} q3;
+box {$T$} q7;
+box {$T$} q9;
+setstyle {draw=black!45,line width=.45pt} q9;
+box {$T$} q10;
+box {$T$} q12;
+box {$T$} q13;
+align q6,q7,q8,q9,q2,q3,q1,q0,q11,q10,q14,q13,q12;
+[type=qubit] measure {$X$} q14;
+[type=qubit] measure {$X$} q11;
+[type=qubit] measure {$X$} q6;
+[type=qubit] measure {$X$} q2;
+[type=qubit] measure {$X$} q8;
+[type=qubit] measure {$X$} q1;
+setstyle {draw=black!45,line width=.45pt} q1;
+\end{yquant}
+\coordinate (heading) at ($(row6)+(0,8mm)$);
+\node[anchor=south,font=\small] at (entry |- heading) {$D^\dagger$};
+\node[anchor=south,font=\small] at (exit |- heading) {$D$};
+\draw[black!60,decorate,decoration={brace,amplitude=2.5pt}] (g138n0 |- heading) -- (g150n0 |- heading) node[midway,above=3pt,font=\small] {fold};
+\draw[black!60,decorate,decoration={brace,amplitude=2.5pt}] (g161n0 |- heading) -- (F2.east |- heading) node[midway,above=3pt,font=\small] {unfold};
+\end{tikzpicture}
+
+\endgroup

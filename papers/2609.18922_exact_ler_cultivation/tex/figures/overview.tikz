@@ -1,0 +1,16 @@
+\begin{tikzpicture}[font=\small]
+\begin{yquant}[operator/separation=5mm,register/separation=8mm]
+qubit {7 data\\ qubits} a;
+qubit {12 data\\ qubits} b;
+box {injection} a;
+[name=d3box] box {\rule{0pt}{0.92cm}\makebox[2.4cm]{$d=3$ double-}\\\makebox[2.4cm]{checking}\rule[-0.76cm]{0pt}{0.76cm}} a;
+align a,b;
+box {code\\ growth} (a,b);
+[name=d5box] box {\rule{0pt}{1.4cm}\makebox[2.2cm]{$d=5$ double-}\\\makebox[2.2cm]{checking}\rule[-1.24cm]{0pt}{1.24cm}} (a,b);
+box {noiseless\\ readout} (a,b);
+\end{yquant}
+\begin{scope}[opacity=0.3,every node/.style={inner sep=0pt}]
+\node at (d3box-0) {\includegraphics[width=2.32cm]{figures/d3_circuit_faint.pdf}};
+\node at (d5box-0) {\includegraphics[height=2.96cm]{figures/d5_circuit_faint.pdf}};
+\end{scope}
+\end{tikzpicture}

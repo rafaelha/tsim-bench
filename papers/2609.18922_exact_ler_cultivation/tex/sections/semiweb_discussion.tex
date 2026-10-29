@@ -1,0 +1,31 @@
+\begin{semiwebaddition}
+Pauli propagation also has a graphical interpretation using the Pauli
+semiwebs of Ref.~\cite{zxflow}. Fig.~\ref{fig:semiweb-main} shows an
+incoming $X_7$ on the $d=3$ double-checking circuit. The red Pauli semiweb in
+Fig.~\ref{fig:semiweb-main} shows the Pauli operators on the wires, while the stars mark changes to the $T$-gate phases.
+Instead of expanding into signed Pauli terms, this identity keeps a
+Pauli string and changes the phases of the circuit it passes through.
+Multiplying semiwebs shows where shared Pauli operators and phase changes
+cancel. Appendix~\ref{app:semiwebs} defines the notation and gives two
+examples.
+\end{semiwebaddition}
+
+\begin{figure*}[t]
+\centering
+\semiwebinput{figures/semiwebs/x7.tikz}
+\semiwebcaption{A Pauli semiweb for incoming $X_7$ on the $d=3$
+double-checking circuit. Red dashed overlays show $X$ Pauli semiwebs;
+unhighlighted wires carry $I$. Stars mark phase changes: $+\pi/2$ at the
+entry $T^\dagger_7$, and $-\pi/2$ at the six highlighted exit $T$ gates.
+\textbf{Legend (up to normalisation):}
+\semiwebCaptionGate{\frac{\pi}{4}} ${}=T$ ($-\pi/4$: $T^\dagger$);
+\semiwebCaptionGate{\frac{\pi}{2}} ${}=S$ ($-\pi/2$: $S^\dagger$);
+\semiwebCaptionCnot ${}={\rm CNOT}$;
+measurement outcome $0$: \semiwebCaptionEffect{Z} ${}=\langle+|$ ($X$ basis),
+\semiwebCaptionEffect{X} ${}=\langle0|$ ($Z$ basis);
+preparations \semiwebCaptionState{X} ${}=|0\rangle$
+and \semiwebCaptionState{Z} ${}=|+\rangle$;
+resources \semiwebCaptionPhaseState{\frac{\pi}{4}} ${}=|T\rangle$,
+\semiwebCaptionPhaseState{\frac{\pi}{2}} ${}=|Y\rangle$.}
+\label{fig:semiweb-main}
+\end{figure*}

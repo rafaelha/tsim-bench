@@ -1,0 +1,73 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  leaf/.style={tn noise,minimum width=9mm,minimum height=7mm,font=\small,inner sep=1mm},
+  endl/.style={tn endpoint,minimum width=9mm,minimum height=7mm,font=\small},
+  node/.style={tn intermediate,minimum width=9mm,minimum height=8mm,font=\scriptsize,align=center,inner sep=1mm},
+  root/.style={tn intermediate,minimum width=11mm,minimum height=8mm,font=\small,draw=black,line width=1.3pt},
+  elab/.style={tn label,align=center,inner sep=1pt}]
+\node[tn heading,anchor=west] at (-1.2,9.9) {\textbf{(a)} the three-fault toy example, Eq.~\eqref{eq:toy}};
+\node[leaf] (f1) at (0,2.40) {$g_1$};
+\node[leaf] (f2) at (1.6,2.40) {$g_2$};
+\node[leaf] (f3) at (3.6,2.40) {$g_3$};
+\node[tn label,anchor=north] at (0,1.95) {label $(1,0)$};
+\node[tn label,anchor=north] at (1.6,1.95) {label $(1,1)$};
+\node[tn label,anchor=north] at (3.6,1.95) {label $(0,1)$};
+\node[node] (m12) at (0.8,4.00) {$M_{12}$};
+\node[root] (r) at (2.2,5.60) {$O$};
+\draw[tn leg] (f1)--(m12); \draw[tn leg] (f2)--(m12);
+\draw[tn leg] (m12)--node[elab,left=1pt] {$\mathcal B_{12}=\{00,01\}$,\\2 entries}(r);
+\draw[tn leg] (f3)--node[elab,right=1pt] {$\{00,01\}$,\\2 entries}(r);
+\node[tn label,anchor=north,align=center] at (1.8,1.45) {$O=M_{123}(0)=(1-p)M_{12}(00)+p\,M_{12}(01)$\\$=(1-p)^3+p^3$};
+\node[tn label,anchor=east,align=right] at (0.15,4.00) {$M_{12}(00)=(1-p)^2$\\$M_{12}(01)=p^2$};
+\node[tn heading,anchor=west] at (5.9,9.9) {\textbf{(b)} the selected tree of the growth sum, one branch followed down to its leaves};
+\node[root] (R) at (13.0,9.0) {$O$};
+\node[endl] (FO) at (16.2,7.6) {$F_O$};
+\node[node] (n568) at (11.0,7.6) {568\\leaves};
+\node[node] (n60) at (8.6,6.2) {60\\leaves};
+\node[node] (n508) at (13.6,6.2) {508\\leaves};
+\node[node] (n18) at (7.4,4.8) {18\\leaves};
+\node[node] (n42) at (10.0,4.8) {42\\leaves};
+\node[node] (n62) at (12.0,4.8) {62\\leaves};
+\node[node] (n446) at (15.2,4.8) {446\\leaves};
+\node[node] (n12) at (6.2,3.4) {12\\leaves};
+\node[node] (n6) at (8.8,3.4) {6\\leaves};
+\node[node] (n18b) at (13.9,3.4) {18\\leaves};
+\node[node] (n428) at (16.6,3.4) {428\\leaves};
+\node[node] (n3a) at (7.6,2.0) {3\\leaves};
+\node[node] (n3b) at (10.3,2.0) {3\\leaves};
+\node[leaf] (g494) at (6.7,0.6) {$g_{494}$};
+\node[node] (n2a) at (8.5,0.6) {2\\leaves};
+\node[leaf] (g475) at (9.7,0.6) {$g_{475}$};
+\node[node] (n2b) at (11.5,0.6) {2\\leaves};
+\node[leaf] (g515) at (7.9,-0.8) {$g_{515}$};
+\node[leaf] (g540) at (9.2,-0.8) {$g_{540}$};
+\node[leaf] (g412) at (10.9,-0.8) {$g_{412}$};
+\node[leaf] (g421) at (12.2,-0.8) {$g_{421}$};
+\draw[tn leg] (R)--node[elab,right=1pt,pos=0.5] {19}(FO);
+\draw[tn leg] (R)--node[elab,left=1pt,pos=0.5] {19}(n568);
+\draw[tn leg] (n568)--node[elab,left=1pt,pos=0.5] {18}(n60);
+\draw[tn leg] (n568)--node[elab,right=1pt,pos=0.5] {22}(n508);
+\draw[tn leg] (n60)--node[elab,left=1pt,pos=0.5] {13}(n18);
+\draw[tn leg] (n60)--node[elab,right=1pt,pos=0.5] {14}(n42);
+\draw[tn leg] (n508)--node[elab,left=1pt,pos=0.5] {21}(n62);
+\draw[tn leg] (n508)--node[elab,right=1pt,pos=0.5] {23}(n446);
+\draw[tn leg] (n18)--node[elab,left=1pt,pos=0.5] {10}(n12);
+\draw[tn leg] (n18)--node[elab,right=1pt,pos=0.5] {9}(n6);
+\draw[tn leg] (n446)--node[elab,left=1pt,pos=0.5] {14}(n18b);
+\draw[tn leg] (n446)--node[elab,right=1pt,pos=0.5] {22}(n428);
+\draw[tn leg] (n6)--node[elab,left=1pt,pos=0.5] {6}(n3a);
+\draw[tn leg] (n6)--node[elab,right=1pt,pos=0.5] {6}(n3b);
+\draw[tn leg] (n3a)--node[elab,left=1pt,pos=0.5] {4}(g494);
+\draw[tn leg] (n3a)--node[elab,right=1pt,pos=0.5] {4}(n2a);
+\draw[tn leg] (n3b)--node[elab,left=1pt,pos=0.5] {4}(g475);
+\draw[tn leg] (n3b)--node[elab,right=1pt,pos=0.5] {4}(n2b);
+\draw[tn leg] (n2a)--node[elab,left=1pt,pos=0.5] {4}(g515);
+\draw[tn leg] (n2a)--node[elab,right=1pt,pos=0.5] {2}(g540);
+\draw[tn leg] (n2b)--node[elab,left=1pt,pos=0.5] {2}(g412);
+\draw[tn leg] (n2b)--node[elab,right=1pt,pos=0.5] {4}(g421);
+\node[tn label,text=black!60] at (6.2,2.8) {$\vdots$};
+\node[tn label,text=black!60] at (10.0,4.2) {$\vdots$};
+\node[tn label,text=black!60] at (12.0,4.2) {$\vdots$};
+\node[tn label,text=black!60] at (13.9,2.8) {$\vdots$};
+\node[tn label,text=black!60,align=center] at (16.6,2.5) {$\vdots$\\$W$ eleven joins\\further down, $d=7$};
+\node[tn label,anchor=north,align=center,text width=44mm] at (15.4,1.35) {an edge carries the table $M_J(z)$ of the subtree below it, $2^{d_J}$ entries, and its number is $d_J$. The largest, $2^{23}$, first appears on the 446-leaf subtree. $F_O$ is joined last, so only the root join carries both $A$ and $B$. Run once per Fourier character $\chi$};
+\end{tikzpicture}

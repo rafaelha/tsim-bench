@@ -1,0 +1,112 @@
+\section{Circuit, code and post-selection conventions}\label{app:circuits}
+This appendix specifies the circuits, code conventions and the post-selection criteria needed to reproduce the numbers in the main text.
+The $d=5$ circuit is the corrected cultivation circuit distributed with \href{https://github.com/unitaryfoundation/clifft/blob/main/tests/fixtures/cultivation_d5.stim}{Clifft} and \href{https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/circuit/msc_d5_inject_cultivate_p1e-3.stim}{SymFT}. The standalone $d=3$ circuit is the \href{https://github.com/unitaryfoundation/clifft/blob/main/docs/guide/circuits/circuit_d3_t_gate_p0.001.stim}{Clifft example}, with its \href{https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/circuit/msc_d3_inject_cultivate_p1e-3.stim}{SymFT counterpart}.\footnote{The exact $d=5$ file used has SHA-256 checksum \nolinkurl{859d925c74712efaae8bab1d944f9e5be4e042e226eeafcc6d7bef9d6fbfbae5}. A copy with this checksum is exactly the circuit analysed, byte-for-byte.} The distributed file carries a fixed noise value in its annotations. For each result we replace it, at every location, by the value of $p$ quoted with that result, taken as an exact fraction (for example $p=1/1000$), so that the fixed-$p$ probabilities are rational numbers.
+
+
+There are 3,564 fault locations in the full $d=5$ cultivation circuit of Refs.~\cite{clifft,soft}. Exactly 1,568 of them have identity response, meaning that none of their outcomes changes $A$ or $B$, so summing over their outcomes gives $(1-p)+p=1$ and they drop out exactly without being set noiseless. The remaining 1,996 consist of
+\begin{itemize}
+\item injection: 244,
+\item $d=3$ double checking: 158,
+\item code growth: 908,
+\item $d=5$ double checking: 686.
+\end{itemize}
+The standalone $d=3$ circuit has 518 fault locations, of which 402 have non-identity response.
+
+
+\subsection{The colour code and the \texorpdfstring{$T$}{T} layers}
+For a colour code with face operators $X_f,Z_f$, the terminal code projector and
+wrong-outcome projector are
+\begin{equation}
+ \begin{gathered}
+ \Pi_0=\prod_f\frac{I+X_f}{2}\frac{I+Z_f}{2},\\
+ \Pi_{\rm bad}=\Pi_0\frac{I-M_L}{2},\qquad
+ M_L=\frac{X_L-Y_L}{\sqrt2}.
+ \end{gathered}
+ \label{eq:projectors}
+\end{equation}
+In this circuit the target state is $\ket{T_L^\dagger}=(\ket{0_L}+e^{-i\pi/4}\ket{1_L})/\sqrt2$, the $+1$ eigenstate of $M_L$, and the terminal readout that tests it is noiseless.
+
+For $d=3$, order the data sites as $(0,3,7,9,10,12,13)$ and write the parity-check matrix of the $[[7,1,3]]$ colour code as\footnote{The $X$ and $Z$ parity-check matrices are the same.}:
+\begin{equation}
+ H^{(3)}=\begin{pmatrix}
+ 1&1&1&0&1&0&0\\
+ 0&1&1&1&0&1&0\\
+ 0&0&1&0&1&1&1
+ \end{pmatrix}.
+ \label{eq:H3}
+\end{equation}
+Each row gives the support of both an $X$ and a $Z$ face stabiliser.
+If $C$ is the row span of $H$, the logical basis is
+\begin{equation}
+ \ket{0_L}=|C|^{-1/2}\sum_{c\in C}\ket c,\qquad
+ \ket{1_L}=X_{\rm all}\ket{0_L}.
+ \label{eq:codebasis}
+\end{equation}
+Here $X_{\rm all}=\prod_{q}X_q$, the product over all data sites, is the transversal $X$, which is $X_L$ for these codes.
+Write an $X$ operator on the data qubits as a mask, the binary vector $\boldsymbol a$ of Eq.~\eqref{eq:address} with $a_q=1$ where the operator acts. In the site order $(0,3,7,9,10,12,13)$, for example, $X_7$ has mask $\boldsymbol a=(0,0,1,0,0,0,0)$, the blue face $X_0X_3X_7X_{10}$ has mask $(1,1,1,0,1,0,0)$, the first row of $H^{(3)}$, and $X_L$ has mask $\boldsymbol1=(1,1,1,1,1,1,1)$. The masks of the $X$ stabilisers form the row span $C$ of $H$, and the masks that no $Z$ face detects form its orthogonal complement $C^\perp$. Every face has even weight and even overlap with every other face, so $C$ contains only even-weight masks, while the all-ones mask $\boldsymbol1$, the support of $X_L$, is orthogonal to every face and has odd weight. Hence $C^\perp=C\oplus\spann\{\boldsymbol1\}$: an undetected $X$ mask is either a stabiliser or a stabiliser times $X_L$, and its weight parity, the bit $\boldsymbol1\cdot\boldsymbol a$ of Eq.~\eqref{eq:address}, tells which. The same holds for $Z$ masks with $Z_L$, since the code is self-dual, and Appendix~\ref{app:response} uses this decomposition again.
+
+\begin{table}[htbp]\centering
+\captionsetup{position=above,skip=4pt}
+\caption{Face supports defining the $d=5$ incidence matrix.}
+\label{tab:faces}
+\begin{tabular}{rll}\toprule
+Face & Colour & $d=5$ source sites\\\midrule
+1 & Blue & $0,3,7,11$\\
+2 & Blue & $9,13,15,19,21,27$\\
+3 & Blue & $17,25,32,36$\\
+4 & Red & $3,7,9,13$\\
+5 & Red & $15,21,23,29$\\
+6 & Red & $19,25,27,32,34,38$\\
+7 & Green & $7,11,13,17,19,25$\\
+8 & Green & $21,27,29,34$\\
+9 & Green & $32,36,38,40$\\\bottomrule
+\end{tabular}
+\end{table}
+
+Let $D$ be the exit layer of signed $T$ gates, highlighted in Fig.~\ref{fig:d3circuit}, and $D^\dagger$ the entry layer.
+For $d=3$, $D=T^{\otimes7}$. For $d=5$, $D^\dagger$ has $T$ on
+sites $0,11,17,19,36,40$ and $T^\dagger$ on the other thirteen data sites,
+as drawn in Fig.~\ref{fig:patches}. The encoded check observable is
+\begin{equation}
+ U=D X_{\rm all}D^\dagger,\qquad K_+=\frac{I+U}{2}.
+ \label{eq:idealU}
+\end{equation}
+Figure~\ref{fig:ideal} is the idealised version of this projector on the code space, with one ancillary qubit and one readout. The double-checking sub-circuits actually used are the CNOT circuits in Figs.~\ref{fig:d3circuit} and~\ref{fig:d5circuit}. The noisy calculation uses those circuits in full, with all their measurement outcomes and fault locations, one fault location at every operation as in the standard circuit-level noise model.
+
+\diagram{ideal_check}{The ideal encoded projector associated with double checking.}{fig:ideal}
+
+\subsection{Double checking circuits}
+Figures~\ref{fig:d3circuit} and \ref{fig:d5circuit} show the gate sequences of the cultivation double-checking sub-circuits.
+In the $d=3$ double-checking circuit, there are four layers of CNOTs, followed by the
+central $X$ measurement$+$reset and then reverse unfolding CNOT circuit and final measurements.
+Similarly, the $d=5$ double-checking circuit has seven fold layers with varying number of CNOT(s) in each layer followed by similar fold, unfold and measurements.
+
+
+
+
+These double-checking circuits produce many measured bits and post-selection is a set of modulo 2 addition conditions on these measured bits. 
+In the $d=3$ sub-circuit, the central readout bit $r_8$ and the auxiliary readout bits enter conditions such as:
+\[r_6\oplus r_7\oplus r_8=0 \ , \]
+\[r_{11}\oplus r_8=0 \ \text{etc} \ ,\]
+these conditions/constraints are known as \textit{detectors}.
+Post-selection acceptance occurs when all these detectors return bit 0. 
+However, a fault pattern (consisting of many faults) can flips a logical operator but bypasses these detector constraints, as these faults can collectively cancel out in the $\oplus$ addition. 
+This leads to a malignant fault pattern that is not caught by post-selection.
+This is how the two-fault logical error of Fig.~\ref{fig:d3-fixed-faults} passes post-selection.
+
+\begin{figure}[htbp]\centering
+\begin{adjustbox}{max width=.98\linewidth,max totalheight=.82\textheight}
+\input{figures/d3_double_check.tikz}
+\end{adjustbox}
+\caption{The standalone $d=3$ double checking circuit. The entry layer $D^\dagger$ and the exit layer $D$ of $T$ gates are highlighted. Readouts are labelled by binary outcome $r_i$. 
+}
+\label{fig:d3circuit}
+\end{figure}
+\begin{figure}[p]\centering
+\begin{adjustbox}{max width=.98\linewidth,max totalheight=.88\textheight}
+\input{figures/d5_double_check.tikz}
+\end{adjustbox}
+\caption{The $d=5$ double checking circuit, with its corrected $T$ pattern. Wires are ordered by the fold-layer components, and four sites idle in this window are not drawn. The central $X$ measurement on site 25 is highlighted.
+}
+\label{fig:d5circuit}
+\end{figure}

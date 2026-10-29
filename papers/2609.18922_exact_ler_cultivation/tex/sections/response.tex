@@ -1,0 +1,598 @@
+\input{sections/response_data/gen_matrices.tex}
+\section{An explicit double-checking response}\label{app:response}
+
+The main text needs two tables per double-checking stage, $F_A(\alpha,\beta;p)$ and $F_B(\alpha,\beta;p)$, indexed by the incoming error $(\alpha,\beta)$. $F_A$ is the probability that the stage passes post-selection, and $F_B$ the probability that it passes with a logical error left uncaught.
+The open network of Sec.~\ref{app:B-open} computes the whole table at once. This appendix works through smaller examples explicitly. It gives a closed form for \emph{one} entry, at a fixed incoming error and a fixed pattern of internal faults, and then shows how averaging over the internal faults builds the table.
+Every example uses the $d=3$ cultivation circuit in full, with every matrix written out, and Sec.~\ref{app:B-dfive} explains changes needed for the $d=5$ circuit (only size changes).
+Ultimately, the use of these tables is to perform the contraction of Fig.~\ref{fig:response}(b), drawn here with its summation written out:
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[font=\Large] at (-1.4,0) {$\displaystyle\sum_{\alpha,\beta}$};
+\node[tn noise,minimum width=11mm,minimum height=13mm,font=\large] (mu) at (0,0) {$\mu$};
+\node[tn endpoint,minimum width=12mm,minimum height=13mm,font=\large] (F) at (2.4,0) {$F_O$};
+\draw[tn bundle] ([yshift=3mm]mu.east)--node[above,tn label] {$\alpha$}([yshift=3mm]F.west);
+\draw[tn bundle] ([yshift=-3mm]mu.east)--node[below,tn label] {$\beta$}([yshift=-3mm]F.west);
+\node[font=\large] at (3.7,0) {$=$};
+\node[tn intermediate,minimum width=9mm,minimum height=9mm,font=\large] (O) at (4.8,0) {$O$};
+\node[tn label,scale = 1.08] at (1.6,-1.50) {$\displaystyle\sum_{\alpha,\beta}\mu(\alpha,\beta;p)\,F_O(\alpha,\beta;p)=O(p)$ \ , \\ with $O=A$ or $B$ \ .};
+\end{tikzpicture}
+\end{center}
+At $d=3$ both tensors ($\mu$ and $F_O$) are $16\times16$ tables of probabilities, $\alpha$ and $\beta$ are four bits each, and the tensor contraction above is a sum of 256 products. 
+Note that tensors here follow the conventions of Sec.~\ref{sec:tensor-contraction}. 
+We will now go through the notation used throughout this appendix section, then derive one entry of the table (Secs.~\ref{app:B-window} to~\ref{app:B-checks}), before averaging over the internal faults to fill the whole table (Secs.~\ref{app:response-average} and~\ref{app:B-open}), and finally, talk about the $d=5$ extension (Sec.~\ref{app:B-dfive}).
+
+\subsection{Notation, all of it}\label{app:B-notation}
+
+\paragraph{Sites, masks, faces.} For the $d=3$ colour code, the seven data sites are ordered $(0,3,7,9,10,12,13)$. A Pauli string on the data is written as two \emph{masks}, binary vectors with one bit per site,
+\[
+P(\boldsymbol a,\boldsymbol b)\ \propto\ \prod_q X_q^{a_q}Z_q^{b_q},\qquad
+a_q=1 \text{ where the string has } X \text{ or } Y,\qquad b_q=1 \text{ where it has } Z \text{ or } Y,
+\]
+so $X_7$ maps to $\boldsymbol a=(0,0,1,0,0,0,0)$, $\boldsymbol b=\boldsymbol0$, and $Y_9$ has $\boldsymbol a=\boldsymbol b=(0,0,0,1,0,0,0)$. 
+The overall phase of a Pauli string is dropped. This simplification is benign as each fault pattern is one fixed operator and the probability is invariant to a global phase change. 
+The relative signs between terms of the coherent sum below are retained\footnote{Each Pauli of a fault pattern is an operator $e^{i\varphi}X^{\boldsymbol a}Z^{\boldsymbol b}$ inserted at a fixed place, and a record amplitude is linear in each of them, so these phases multiply the whole amplitude and cancel in $|{\cal G}|^2$. The sum ${\cal G}=2^{-m}\sum_h i^{f(h)}$ of Eq.~\eqref{eq:gauss} is different: its terms run over the masks $v(h)\in C^\perp$, and $f(h)$ gives them different phases $\pm1,\pm i$ that interfere.}.
+The three faces of the $[[7,1,3]]$ colour code are the rows of $H^{(3)}$ in Eq.~\eqref{eq:H3}:
+\[
+\begin{aligned}
+g_0&=(1,1,1,0,1,0,0)=\{0,3,7,10\}\ \text{(blue)},\\
+g_1&=(0,1,1,1,0,1,0)=\{3,7,9,12\}\ \text{(red)},\\
+g_2&=(0,0,1,0,1,1,1)=\{7,10,12,13\}\ \text{(green)} .
+\end{aligned}
+\]
+Each face is both an $X$ stabiliser and a $Z$ stabiliser. 
+Two sets built from the faces recur everywhere: 
+\begin{enumerate}
+  \item $C=\spann\{g_0,g_1,g_2\}$, the eight $X$-stabiliser masks, and 
+  \item $C^\perp$, the masks with even overlap with every face, that is the $X$ masks no $Z$ face detects. 
+\end{enumerate}
+For this code $C^\perp=C\oplus\spann\{\boldsymbol1\}$ with $\boldsymbol1=(1,\ldots,1)$ being the support of $X_L$. 
+We use the four generators $g_0,g_1,g_2$ and $g_3=\boldsymbol1$ of $C^\perp$, write $r=3$ for the number of faces and $m=r+1=4$. 
+As matrices, one column per site,
+\[
+H^{(3)}=\HthreeC,\qquad
+\begin{pmatrix}g_0\\g_1\\g_2\\g_3\end{pmatrix}=\GfourC ,
+\]
+ones coloured by face, logical row in black. A bit vector $h=(h_0,h_1,h_2,h_3)$ names the mask $v(h)=h_0g_0\oplus h_1g_1\oplus h_2g_2\oplus h_3\boldsymbol1$. The four generators are independent, so the sixteen $h$ are exactly the sixteen masks of $C^\perp$, and $h_3$ says whether the mask lies in the logical coset. Figure~\ref{fig:cperp} draws all sixteen masks.
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[x=4.2mm,y=4.2mm]
+\foreach \row [count=\r from 0] in \cperpgrid {
+  \foreach \bit [count=\c from 0] in \row {
+    \ifnum\bit=1 \fill[tnblue!80] (\c,-\r) rectangle ++(0.9,0.9); \else \draw[black!25] (\c,-\r) rectangle ++(0.9,0.9); \fi
+  }
+}
+\foreach \site [count=\c from 0] in {0,3,7,9,10,12,13} {\node[font=\scriptsize] at (\c+0.45,1.35) {$\site$};}
+\foreach \h [count=\r from 0] in \cperplabels {\node[font=\scriptsize,anchor=east] at (-0.3,-\r+0.45) {$h=\h$};}
+\draw[black!50] (-3.6,-7.1) -- (18.3,-7.1);
+\node[font=\scriptsize,anchor=west,align=left,text=black!60] at (7.4,-3.5) {$h_3=0$: the eight stabilisers, \\even row ({\color{tnblue!80}blue}) weight};
+\node[font=\scriptsize,anchor=west,align=left,text=black!60] at (7.4,-11.5) {$h_3=1$: stabiliser times $X_L$, \\odd row ({\color{tnblue!80}blue}) weight};
+\end{tikzpicture}
+\caption{The sixteen masks of $C^\perp$ at $d=3$, one row per coordinate vector $h=h_0h_1h_2h_3$, a filled square where the mask has a 1. The top half is $C$, the bottom half is $C\oplus\boldsymbol1$.}
+\label{fig:cperp}
+\end{figure}
+
+In short, an error is nothing but a pair of bit masks, and the sixteen masks of $C^\perp$ are the only $X$ errors the code cannot see, which is exactly the set the counting formula below runs over. Before carryin on, we will list out the notation in a table, which will be use throughout this appendix section.
+
+\paragraph{Symbols used below.}
+\begin{center}\small
+\begin{tabular}{ll}\toprule
+symbol & meaning \\\midrule
+$\oplus$ & bitwise XOR of two masks, or addition mod 2 of two bits \\
+$\wedge$ & bitwise AND of two masks (entrywise product) \\
+$\boldsymbol a\cdot\boldsymbol b$ & $\sum_q a_qb_q \bmod 2$, the parity of the overlap \\
+$|\boldsymbol a|$ & the number of ones in $\boldsymbol a$, its weight \\
+$\ind{\text{cond}}$ & $1$ if the condition holds, $0$ otherwise \\
+$\#\{h\in\F^m: Mh=b'\}$ & the number of bit vectors $h$ that solve the system, $\F=\{0,1\}$ \\
+$\epsilon_q=\pm1$ & the exponent of $T$ on site $q$ in the exit layer $D=\prod_qT_q^{\epsilon_q}$, all $+1$ at $d=3$ \\
+$w_\epsilon(\boldsymbol v)=\sum_q\epsilon_qv_q$ & signed weight: ones of $\boldsymbol v$ on $T$ sites minus ones on $T^\dagger$ sites, $=|\boldsymbol v|$ at $d=3$ \\
+$t=\sum_q\epsilon_q\bmod8$ & $7$ for both circuits \\
+$s=\pm1$ & the outcome of the central $X$ measurement, bit $r_8$ in Fig.~\ref{fig:d3circuit}, $s=(-1)^{r_8}$ \\
+$H\boldsymbol a$ & the $Z$-check syndrome of an $X$ mask, the three parities $g_i\cdot\boldsymbol a$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Coloured boxes in the matrices.} This boxed colour scheme in matrices applies to this appendix only, the later appendices state their own where they start. Every highlighted matrix below is generated from the same computation, and the colours follow one rule. \colorbox{tnblue!22}{Blue} marks anything that comes from an $X$ mask: the masks $\boldsymbol a,\boldsymbol u$, the intersection counts $|\boldsymbol u\wedge g_i\wedge g_j|$, and the ones of $M$. \colorbox{tnorange!22}{Orange} marks anything that comes from a $Z$ mask: the masks $\boldsymbol b,\boldsymbol z$, the overlaps $|\ell\wedge g_i|$, and the ones of $b'$. A \fcolorbox{tngreen}{tngreen!18}{green box} marks the logical slot, index $r=3$, the only place where $k$ and $e_{\rm bit}$ enter. In row reductions, \colorbox{black!22}{grey} marks the pivot columns, the bits of $h$ the system determines. Reading rule: blue decides the shape of the constraints, orange decides whether they can be satisfied, green is where the logical information lives.
+
+\subsection{Where the two Paulis sit}\label{app:B-window}
+
+Figure~\ref{fig:window} is the $d=3$ double-checking circuit of Fig.~\ref{fig:d3circuit}, drawn with the line numbers of the source file, which we call the \textit{window}.
+The incoming error $P(\boldsymbol a,\boldsymbol b)$ acts on the ideal encoded state $\ket{T_L^\dagger}$ at the entrance, before the entry layer $D^\dagger$. Inside, every operation is followed by a depolarising channel. Depolarising covariance lets the channels beside the $T$ layers be commuted through them,
+\begin{equation}
+ {\cal N}_{1,p}(V\rho V^\dagger)=V{\cal N}_{1,p}(\rho)V^\dagger ,
+ \label{eq:covariance}
+\end{equation}
+for any one-qubit unitary $V$, here $T$ or $T^\dagger$. It holds because $X\rho X+Y\rho Y+Z\rho Z=2I-\rho$ for unit-trace $\rho$, so
+\begin{equation}
+ {\cal N}_{1,p}(\rho)=(1-p)\rho+\tfrac p3\big(2I-\rho\big)=\Big(1-\tfrac{4p}{3}\Big)\rho+\tfrac{4p}{3}\,\tfrac I2 ,
+ \label{eq:nonidentity}
+\end{equation}
+and a unitary commutes with both terms. Three consequences of applying Eq.~\eqref{eq:covariance} to the channels beside the $T$ layers matter below.
+\begin{enumerate}
+\item The nonidentity part $\mathcal E(\rho)=\tfrac13\sum_{P\ne I}P\rho P=\tfrac13(2I-\rho)$ obeys the same identity on its own, so in the expansion over fault sets
+\begin{equation}
+ \prod_{j}\mathcal N^{(j)}_{1,p}=\sum_{S}(1-p)^{N-|S|}{\color{magenta}p^{|S|}}\prod_{j\in S}\mathcal E^{(j)}
+ \label{eq:faultcount}
+\end{equation}
+every term keeps its factor {\color{magenta}$p^{|S|}$}, which is why the series coefficients are unaffected.
+\item Only the averaged channel is commuted through, not its individual Pauli terms. With $\rho'=T^\dagger\rho T$,
+\begin{equation}
+ T^\dagger(X\rho X)T=\tfrac12\,(X-Y)\,\rho'\,(X-Y),
+ \label{eq:singleterm}
+\end{equation}
+which has cross terms $X\rho'Y$ and is not one Pauli conjugation, because $T^\dagger XT=(X-Y)/\sqrt2$ is not a Pauli.
+\item Once Eq.~\eqref{eq:covariance} has been applied, all internal noise lives in the Clifford part, where every fault is a Pauli and Paulis propagate to Paulis.
+\end{enumerate}
+The formula below therefore summarises all internal faults by one data Pauli $P(\boldsymbol u,\boldsymbol z)$, the net error just before the exit layer $D$, with the ancilla effects handled by the detectors. The covariance identity fails for any channel that is not a mixture of identity and full depolarisation, for instance pure dephasing.
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[font=\small]
+\begin{yquant}[operator/separation=3.2mm,register/separation=6mm]
+qubits {data} d;
+qubits {anc.} c;
+[name=dentry] box {$D^\dagger$} d;
+[name=fold] box {fold CX} (d,c);
+[name=mx] box {$M_X$} c;
+[name=unfold] box {unfold CX} (d,c);
+[name=dexit] box {$D$} d;
+align -;
+hspace {2.5mm} -;
+[name=meas] measure c;
+\end{yquant}
+\node[draw=black!40,fill=black!10,fill opacity=.35,rounded corners=3pt,inner sep=2mm,fit=(fold-0) (unfold-0)] (cliff) {};
+\node[note,text=black!60,above=0.5mm of cliff.north] {Clifford part};
+\foreach \n/\t in {dentry/135, fold/138--150, mx/{154, $r_8$}, unfold/161--173, dexit/177}{
+  \node[note,text=black!60] at ($(\n-0 |- meas-0.south)+(0,-4.5mm)$) {\t};
+}
+\node[note,text=black!60,anchor=west] at ($(meas-0.west |- meas-0.south)+(0,-4.5mm)$) {180, $r_9..r_{14}$};
+\draw[dashed,black!60] ([xshift=-2mm,yshift=-16mm]dentry-0.west) -- ([xshift=-2mm,yshift=8mm]dentry-0.west)
+  node[above=1mm,note,align=center] {entrance\\$P(\boldsymbol a,\boldsymbol b)$};
+\draw[dashed,black!60] ([xshift=-1.6mm,yshift=-16mm]dexit-0.west) -- ([xshift=-1.6mm,yshift=8mm]dexit-0.west)
+  node[above=1mm,note,align=center] {exit side of the Clifford part\\$P(\boldsymbol u,\boldsymbol z)$};
+\end{tikzpicture}
+\caption{The $d=3$ window after Eq.~\eqref{eq:covariance} has been applied to the channels beside the $T$ layers. The numbers under the boxes are the line numbers in the standalone $d=3$ source file of Appendix~\ref{app:circuits}. The central measurement on site 7 sits between the fold and unfold CNOT layers, with an implicit reset (not drawn). Figure~\ref{fig:move} shows the same step on one wire.}
+\label{fig:window}
+\end{figure}
+
+Two positions are natural for $P(\boldsymbol u,\boldsymbol z)$, the entry side or the exit side of the Clifford part, and a simulation decides it (Sec.~\ref{app:B-checks}). The main text's two-fault pattern of Eq.~\eqref{eq:v2-fixed-fault} and Fig.~\ref{fig:d3-fault-expansion}, $X_3$ in the fold and $Y_9$ in the unfold, has net data error $Q=X_0X_3Y_9$ before the exit layer. Inserting $Q$ at the exit side reproduces the actual pattern exactly, $A=B=1/4$. Inserting it at the entry side does not: its $Z_9$ part would propagate onto ancilla 8 and fire a detector. 
+Figure~\ref{fig:qposition} draws the three cases.
+
+\begin{figure}[H]\centering
+\begin{adjustbox}{max width=\linewidth}\input{figures/q_position.tikz}\end{adjustbox}
+\caption{Where the internal Pauli is inserted. Top: the actual two-fault pattern and $Q=X_0X_3Y_9$ at the exit side of the Clifford part give the same numbers. Bottom: $Q$ at the entry side does not, its $Z_9$ part reaches ancilla 8 and a detector fires.}
+\label{fig:qposition}
+\end{figure}
+
+\diagram{covariance_move}{Equation~\eqref{eq:covariance} compressed. The noise beside the $T$ layers is commuted through into the Clifford part, where every fault is a Pauli.}{fig:move}
+With both Paulis placed, one entry of the table is a single coherent sum, which the next section evaluates.
+
+\subsection{One entry: a coherent sum, then a bit count}\label{app:B-entry}
+
+\paragraph{Where the sum comes from.} Fix $P(\boldsymbol a,\boldsymbol b)$, $P(\boldsymbol u,\boldsymbol z)$ and $s$. The exit layer expands every $X$ into $(X\pm Y)/\sqrt2$, and the entry layer does the same backwards, so a single Pauli fault pattern becomes a sum of Pauli strings with amplitudes $2^{-|\mathrm{support}|/2}$ and eighth-root-of-unity phases. The final code readout projects onto the code space. On the code space an $X$ string acts as $X_L$ or as the identity depending on its mask, and it is killed unless its mask is in $C^\perp$. What is left is a sum over the sixteen masks $v(h)$ with a phase $i^{f(h)}$ each,
+\begin{equation}
+ \begin{aligned}
+ {\cal G}&=2^{-m}\sum_{h\in\F^m}i^{f(h)},\\
+ f(h)&=\underbrace{2\,\ell\cdot v(h)}_{\text{$Z$ part vs the mask}}\ \underbrace{-\,w_\epsilon(\boldsymbol u\wedge v(h))}_{\text{$T$ phases on the $X$ overlap}}\ +\ \underbrace{(tk+2e_{\rm bit})\,h_r}_{\text{logical slot}}\pmod 4 ,
+ \end{aligned}
+ \label{eq:gauss}
+\end{equation}
+with $k$, $e_{\rm bit}$ and $\ell$ defined in Eq.~\eqref{eq:binaryparameters} below and $v(h)=\bigoplus_ih_ig_i$. The three pieces are: a sign $(-1)^{\ell\cdot v}$ from commuting the total $Z$ mask $\ell$ past the string, a power of $i$ from the $T$ gates acting where the internal $X$ mask overlaps the string, and a term that only the logical coset ($h_r=1$) sees. The acceptance probability of the pattern is $|\mathcal G|^2$.
+
+\paragraph{The same sum, concretely, for the two-fault pattern.} Take $Q=X_0X_3Y_9$, so $\boldsymbol u=\{0,3,9\}$, $\boldsymbol z=\{9\}$, no incoming error, $s=+1$. The exit layer conjugates each factor, $TXT^\dagger=(X+Y)/\sqrt2$ and $TYT^\dagger=(Y-X)/\sqrt2$, so
+\[
+DQD^\dagger=\frac{(X_0+Y_0)(X_3+Y_3)(Y_9-X_9)}{\sqrt8},
+\]
+eight signed strings, Fig.~\ref{fig:d3-fault-expansion} of the main text. The final code readout keeps a string only if it commutes with every stabiliser, that is if both its $X$ mask and its $Z$ mask have even overlap with every face. The $X$ mask is $\{0,3,9\}$ for all eight terms and passes. The $Z$ mask is the set of sites carrying $Y$, and only two of the eight pass:
+\begin{center}\small\input{sections/response_data/tab_expansion.tex}\end{center}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[box,text width=26mm,font=\small] (q) at (0,0) {one Pauli\\$Q=X_0X_3Y_9$};
+\node[box,text width=30mm,font=\small] (e) at (4.2,0) {exit layer $D$\\$2^{3}=8$ signed strings};
+\node[box,text width=30mm,font=\small] (p) at (8.4,0) {code readout $\Pi_0$\\2 strings survive};
+\node[box,text width=26mm,font=\small] (m) at (12.4,0) {$2\times2$ logical matrix\\$-(X_L+Y_L)/\sqrt8$};
+\draw[flow] (q)--(e); \draw[flow] (e)--(p); \draw[flow] (p)--(m);
+\node[note,below=1mm of e] {amplitudes $\pm2^{-3/2}$};
+\node[note,below=1mm of p] {masks in $C^\perp$ only};
+\node[note,below=1mm of m] {$A=\|\cdot\|^2=\tfrac14$};
+\end{tikzpicture}
+\end{center}
+\textbf{Why only two of the eight strings survive.} $Y_9$ alone has $Z$ mask $\{9\}$, and site 9 lies in the red face, so the red $X$ check flips. Adding $Y_0Y_3$ puts $\{0,3\}$ into the blue face as well, and now every face is overlapped an even number of times. 
+This is the even-overlap condition of B.1 again, applied to a $Z$ mask against the $X$ checks, which have the same supports: a string survives the code readout exactly when its $Z$ mask lies in $C^\perp$.
+The surviving pair $-X_0X_3X_9+Y_0Y_3Y_9$ acts on the code space as $-(X_L+Y_L)/\sqrt8$. Our implementation computes exactly this restriction, keeping every interfering phase as an exact eighth root of unity, and works in the basis $\ket{0_L},\ket{1_L}$. The restricted operator is
+\[
+\bmattwofault\;=\;-\frac{1}{\sqrt8}\begin{pmatrix}0&1-i\\1+i&0\end{pmatrix}=-\frac{X_L+Y_L}{\sqrt8},
+\]
+which applied to the ideal input and projected on the central readout outcome $s=+1$ gives $(A,B)=\binsttwofault$. With no fault at all the same computation gives the identity and $(A,B)=\binstident$. This is the coherent sum evaluated directly. The bit count below is the shortcut that gives the same numbers without listing strings.
+
+\paragraph{The bit count.} The probability is $|{\cal G}|^2$ with ${\cal G}$ the sum of $2^m$ fourth roots of unity in Eq.~\eqref{eq:gauss}\footnote{The string amplitudes and the magic input carry eighth roots of unity, $e^{\pm i\pi/4}$. Each term of ${\cal G}$ is a product of two of them, so ${\cal G}$ is a sum of fourth roots, $i^{f(h)}\in\{\pm1,\pm i\}$.}, and squaring it term by term would mean $4^m$ products. But $f$ of Eq.~\eqref{eq:gauss} is a \emph{quadratic} function of $h$ over the integers mod 4 (it has the form of $q(x)$, like Eq.~(69) from~\cite{Bravyi_2019}), and its polarisation $f(h\oplus d)-f(h)-f(d)=2h^{\!\top}Md \pmod 4$ is linear with a symmetric binary matrix $M$.
+Summing over $h$ first in $|\mathcal G|^2=2^{-2m}\sum_{h,d}i^{f(h\oplus d)-f(h)}$ makes every $d\notin\ker M$ cancel, since $\sum_{h}(-1)^{h\cdot Md}=2^m\ind{Md=0}$,
+\begin{equation}
+ |{\cal G}|^2=2^{-m}\sum_{d\in\ker M}i^{f(d)} .
+ \label{eq:gausssquare}
+\end{equation}
+For $d\in\ker M$ the mask $\boldsymbol u\wedge v(d)$ lies in $C^\perp$ and has parity $kd_r$, and the corrected code obeys $w_\epsilon(w)=t(|w|\bmod2)\pmod4$ for every $w\in C^\perp$, so $f(d)=2b'\cdot d\pmod 4$ with $b'$ as below. The same orthogonality then leaves $|{\cal G}|^2=0$ or $|{\cal G}|^2=2^{-m}|\ker M|=2^{-\rank M}$, and since $M$ is symmetric this is exactly the consistency condition for $Mh=b'$. The ingredients are
+\begin{equation}
+ \begin{aligned}
+ k&=|\boldsymbol u\oplus\boldsymbol a|\bmod2,\\
+ e_{\rm bit}&=\ind{s=-1}\oplus(|\boldsymbol z|\bmod2),\\
+ \ell&=\boldsymbol b\oplus\boldsymbol z\oplus(\boldsymbol u\wedge\boldsymbol a),
+ \end{aligned}
+ \label{eq:binaryparameters}
+\end{equation}
+\begin{equation}
+ \begin{aligned}
+ M_{ij}&=|\boldsymbol u\wedge g_i\wedge g_j|\bmod2\ \oplus\ k\,\ind{i=j=r},\\
+ b'_i&=\ell\cdot g_i\oplus e_{\rm bit}\ind{i=r},
+ \end{aligned}
+ \label{eq:countmatrix}
+\end{equation}
+and the result is: if $H(\boldsymbol u\oplus\boldsymbol a)\ne0$ the final code readout rejects the fault pattern, otherwise
+\begin{equation}
+ A_{\rm frame}=2^{-m}\,\#\{h\in\F^m: Mh=b'\},\qquad B_{\rm frame}=e_{\rm bit}\,A_{\rm frame}.
+ \label{eq:positivecount}
+\end{equation}
+A failed ancillary detector also sets both responses to zero, $A_{\rm frame}=B_{\rm frame}=0$. A consistent system has $A_{\rm frame}=2^{-\rank M}$, an inconsistent one has zero response. The matrix is $4\times4$ at $d=3$ and $10\times10$ at $d=5$, so one entry costs practically nothing. As a tensor, the count is one grey indicator with $m$ legs, every leg summed:
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[font=\large,anchor=east] at (-1.6,0) {$A_{\rm frame}=\dfrac{1}{2^{m}}$};
+\node[font=\Large] at (-0.7,0) {$\displaystyle\sum_{h\in\F^m}$};
+\node[tn constraint,minimum width=34mm,minimum height=10mm] (M) at (2.2,0) {$\ind{Mh=b'}$};
+\foreach \i/\xx in {0/1.0,1/1.8,2/2.6,3/3.4}{
+  \draw[tn leg] (\xx,1.0)--(\xx,0.5);
+  \node[tn label,anchor=south] at (\xx,1.0) {$h_\i$};
+}
+\node[font=\large,anchor=west] at (4.2,0) {$,\qquad B_{\rm frame}=e_{\rm bit}\,A_{\rm frame}.$};
+\end{tikzpicture}
+\end{center}
+The grey box has $2^m$ binary numbers, and the contraction is their sum. Each row of $M$ is itself a parity constraint, so $\ind{Mh=b'}$ factorises into $m$ smaller grey tensors, one per row, joined through the legs they share.
+Where two rows use the same bit the leg carries a black dot, the copy tensor
+\begin{equation}
+ \vcenter{\hbox{\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[tn copy] (d) at (0,0) {};
+  \draw[tn leg] (d)--(-0.45,0.4) node[tn label,anchor=south east,inner sep=1pt] {$a$};
+  \draw[tn leg] (d)--(0.45,0.4) node[tn label,anchor=south west,inner sep=1pt] {$b$};
+  \draw[tn leg] (d)--(0,-0.45) node[tn label,anchor=north,inner sep=1pt] {$c$};
+ \end{tikzpicture}}}\;=\;\delta_{abc}=\ind{a=b=c},
+ \label{eq:copytensor}
+\end{equation}
+which hands one bit to every row that needs it. Figure~\ref{fig:countfactor} draws the factorised form, and the examples below use it.
+\begin{figure}[H]\centering
+\begin{adjustbox}{max width=.9\linewidth}\input{figures/count_factor.tikz}\end{adjustbox}
+\caption{The indicator $\ind{Mh=b'}$ as one grey tensor, drawn transparent so that its factorisation into one grey tensor per row of $M$ is visible. (a) The rule on a generic example, with the copy tensor of Eq.~\eqref{eq:copytensor} on the shared leg. (b) The two-fault pattern.}
+\label{fig:countfactor}
+\end{figure}
+
+\paragraph{Every symbol of the count, with its reason.}
+\begin{description}
+\item[$k$.] Parity of the total $X$ mask. On the code space an $X$ string of even weight in $C^\perp$ is a stabiliser and of odd weight is a stabiliser times $X_L$, so $k=1$ means the combined $X$ error is a logical $X$ up to a stabiliser. It enters only the logical slot $(r,r)$ of $M$.
+\item[$e_{\rm bit}$.] The logical-error flag. Each internal $Z$ on a data site flips the sign of $M_L$ once and a $-1$ central outcome flips it again, so the surviving state has $M_L=s(-1)^{|\boldsymbol z|}$. The accepted part is entirely good or entirely bad, which is why $B=e_{\rm bit}A$. An \emph{incoming} $Z$ does not enter $e_{\rm bit}$: it enters $\ell$ and is caught by the $X$ checks, or, if logical, by the linear system, see the examples. This all-or-nothing rule holds once Eq.~\eqref{eq:covariance} has been applied. An individual fault at its original position can carry a fractional conditional error.
+\item[$\ell$.] The total $Z$ mask, incoming plus internal, plus a correction on the sites where the two $X$ masks overlap: there $X_qX_q=I$ but the $T$ phases between the two errors leave a $Z_q$ behind. It supplies the right-hand side $b'$.
+\item[$M$.] Off the diagonal, the quadratic part of $f$: the $T$ phases on the intersection of two generators with the internal $X$ mask. On the diagonal, the parity of the internal $X$ mask on each generator, with the logical slot corrected by $k$. Without an internal $X$ mask, $M$ is zero apart from the logical slot.
+\item[$b'$.] The right-hand side of the linear system, with $f(d)=2\,b'\cdot d$ on $\ker M$: for a face, the parity of the total $Z$ mask on that face, which is exactly the $X$-check syndrome bit. For the logical row, the parity on $\boldsymbol1$ corrected by the flag.
+\item[Rejection.] It has two faces. A $Z$-check syndrome, $H(\boldsymbol u\oplus\boldsymbol a)\ne0$, is an early exit. An $X$-check syndrome shows up as an inconsistent system, $b'\notin\operatorname{im}M$.
+\end{description}
+
+\subsection{Worked examples with all the matrices}\label{app:B-examples}
+The formula is compact enough that its content is best seen by running it. This section does so on five cases, every matrix written out. The first, an incoming $X_7$ cancelled by an internal $X_7$, is a pattern that is trivial as a Pauli yet accepted only half the time, because the $T$ layer between the two errors turns their product into a phase. The second is the main text's two-fault pattern, accepted with probability $1/4$ and always wrong, the smallest failure of the $d=3$ check. The three short ones exercise the remaining branches of the formula: the early exit on a $Z$ syndrome, an internal $Z$ that sets the logical flag, and the logical slot with both central signs.
+
+Legend for the matrices: \colorbox{tnblue!22}{blue} from an $X$ mask, \colorbox{tnorange!22}{orange} from a $Z$ mask, \fcolorbox{tngreen}{tngreen!18}{green} the logical slot, \colorbox{black!22}{grey} a pivot column.
+
+
+\paragraph{Incoming $X_7$, internal $X_7$, $s=+1$.} The incoming $X_7$ is the example of Fig.~\ref{fig:d3-incoming} in the main text, and the second $X_7$ sits at the exit side of the Clifford part of Fig.~\ref{fig:window}. The four masks, rows $\boldsymbol a,\boldsymbol b,\boldsymbol u,\boldsymbol z$:
+\[
+\masksCbw .
+\]
+Site 7 lies in all three faces. $\boldsymbol u\oplus\boldsymbol a=\boldsymbol0$, so the $Z$-check syndrome is $\synbw$ and nothing is rejected early. The intersection counts that build $M$ and the overlaps that build $b'$ are
+\[
+\big(|\boldsymbol u\wedge g_i\wedge g_j|\big)_{ij}=\interCbw,\qquad \big(|\ell\wedge g_i|\big)_i=\elloverbw ,
+\]
+all odd (blue) because site 7 is in every generator, so every entry of $M$ will be 1. Reducing mod 2 and adding the logical corrections, here none since $k=e_{\rm bit}=0$,
+\begin{equation}
+ k=0,\ e_{\rm bit}=0,\ \ell=(0,0,1,0,0,0,0),\qquad M=\MCbw,\quad b'=\bpCbw .
+ \label{eq:workedmatrix}
+\end{equation}
+Blue marks the ones of $M$, orange the ones of $b'$, the green boxes are the logical slot. The augmented system and its row reduction over $\F$:
+\[
+\augCbw\ \longrightarrow\ \rrefCbw .
+\]
+Pivot $\pivotsbw$ (grey), $\rank M=\rankbw$, \consbw, so $2^{4-\rankbw}=8$ solutions: all four rows are the same constraint $h_0\oplus h_1\oplus h_2\oplus h_3=1$, and the reduction makes that visible by wiping three rows. The solutions are
+\[ h\in\{\solbw\}, \]
+eight of sixteen, so $A_{\rm frame}=\resAbw$ and $B_{\rm frame}=\resBbw$. The Gauss sum tells the same story with phases, $f(h)=|h|^2\bmod4$, eight terms equal to $1$, eight equal to $i$, and $|(1+i)/2|^2=1/2$:
+\begin{center}\small\input{sections/response_data/tab_f_b2.tex}\end{center}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[black!40] (0,0) circle (1.2);
+\draw[black!30] (-1.4,0)--(1.4,0); \draw[black!30] (0,-1.4)--(0,1.4);
+\node[font=\scriptsize,anchor=east] at (-1.25,0) {$-1$};
+\node[font=\scriptsize,anchor=north] at (0,-1.25) {$-i$};
+\fill[tnblue] (1.2,0) circle (2.5pt) node[right=4pt,font=\small] {$1$: 8 terms};
+\fill[tnblue] (0,1.2) circle (2.5pt) node[above=4pt,font=\small] {$i$: 8 terms};
+\draw[flow,tnorange,thick] (0,0)--(0.6,0.6);
+\node[font=\small] at (0,-1.9) {$\mathcal G=\tfrac{8+8i}{16}=\gsumbw$};
+\node[font=\small] at (0,-2.4) {phase counts $1/i/-1/-i$: $\phasecountsbw$, so $|\mathcal G|^2=\gabsbw$};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn constraint,minimum width=58mm,minimum height=11mm] (odd) at (3,0) {$\Delta_{\rm odd}(h_0,h_1,h_2,h_3)=\ind{h_0\oplus h_1\oplus h_2\oplus h_3=1}$};
+\foreach \i in {0,1,2,3}{
+  \draw[tn leg] (1+1.33*\i,1.15)--(1+1.33*\i,0.57);
+  \node[tn label,anchor=south] at (1+1.33*\i,1.15) {$h_{\i}$};
+}
+\node[tn label,font=\small] at (3,-1.1) {$\displaystyle A_{\rm frame}=\frac1{16}\sum_{h}\Delta_{\rm odd}(h)=\frac8{16}$};
+\end{tikzpicture}
+\end{center}
+The left-hand picture is the complex plane. The unit circle carries the four values $1,i,-1,-i$ that $i^{f(h)}$ can take, each blue dot is labelled with how many of the sixteen terms of Eq.~\eqref{eq:gauss} land there, and the orange arrow is their average, ${\cal G}$. The right-hand picture is the count as a tensor: one grey box whose sixteen entries are the last column of the table, eight ones, summed over all four legs and divided by sixteen. It is the factorised form of Fig.~\ref{fig:countfactor} with the four identical rows of $M$ merged into one four-leg tensor. The four legs are the bits $h_i$, not qubits. Physically, the incoming $X_7$ and the internal $X_7$ cancel as $X$ errors but not as phases: the $T^\dagger$ layer sits between them and $X_7T_7^\dagger X_7\propto T_7$, so the pattern behaves like a $Z$-type phase on site 7 that leaves the state half inside and half outside the target. The check accepts with probability $1/2$, and every accepted output is the correct state, so $(A,B)=(1/2,0)$.
+
+\paragraph{The main text's two-fault pattern.} The pattern of Fig.~\ref{fig:d3-fault-expansion}, with its net Pauli moved to the exit side as in Fig.~\ref{fig:qposition}. $\boldsymbol u=\{0,3,9\}$, $\boldsymbol z=\{9\}$, $\boldsymbol a=\boldsymbol b=\boldsymbol0$, $s=+1$:
+\[
+\masksCtwofault .
+\]
+The $Z$ checks: $g_0\cap\boldsymbol u=\{0,3\}$, $g_1\cap\boldsymbol u=\{3,9\}$, $g_2\cap\boldsymbol u=\varnothing$, all even, syndrome $\syntwofault$, no early rejection. Intersection counts and overlaps:
+\[
+\big(|\boldsymbol u\wedge g_i\wedge g_j|\big)_{ij}=\interCtwofault,\qquad \big(|\ell\wedge g_i|\big)_i=\ellovertwofault .
+\]
+Mod 2, with the logical corrections $k=1$ in $M_{33}$ and $e_{\rm bit}=1$ in $b'_3$:
+\[ k=1,\ e_{\rm bit}=1,\ \ell=(0,0,0,1,0,0,0),\qquad M=\MCtwofault,\quad b'=\bpCtwofault . \]
+Blue: the odd intersection counts $(0,1)$ and $(1,0)$ became the two ones of $M$. Orange: the overlap of $\ell=\{9\}$ with the red face became $b'_1=1$. Green: $M_{33}=|\boldsymbol u\wedge\boldsymbol1\wedge\boldsymbol1|\bmod2\oplus k=1\oplus1=0$ and $b'_3=|\ell\wedge\boldsymbol1|\bmod2\oplus e_{\rm bit}=1\oplus1=0$, the two logical corrections cancel the raw values there.
+\[
+\augCtwofault\ \longrightarrow\ \rrefCtwofault .
+\]
+Pivots $\pivotstwofault$ (grey), $\rank M=\ranktwofault$, \constwofault, so $2^{4-\ranktwofault}=4$ solutions. Row 0 says $h_1=0$, row 1 says $h_0=1$, rows 2 and 3 are empty. The solutions are
+\[ h\in\{\soltwofault\}, \]
+four of sixteen, so $A_{\rm frame}=\resAtwofault$ and, since $e_{\rm bit}=1$, $B_{\rm frame}=\resBtwofault$. This is the acceptance $1/4$ with a logical error of Fig.~\ref{fig:d3-fault-expansion} in the main text.
+\begin{center}\small\input{sections/response_data/tab_f_twofault.tex}\end{center}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn label,anchor=south] at (0.6,1.2) {$h_0$}; \node[tn label,anchor=south] at (2.0,1.2) {$h_1$};
+\node[tn label,anchor=south] at (3.4,1.2) {$h_2$}; \node[tn label,anchor=south] at (4.8,1.2) {$h_3$};
+\node[tn constraint,minimum width=11mm,minimum height=7mm,font=\scriptsize] (r1) at (0.6,0) {$h_0=1$};
+\node[tn constraint,minimum width=11mm,minimum height=7mm,font=\scriptsize] (r0) at (2.0,0) {$h_1=0$};
+\draw[tn leg] (0.6,1.2)--(r1.north); \draw[tn leg] (2.0,1.2)--(r0.north);
+\draw[tn leg] (3.4,1.2)--(3.4,0.2); \draw[tn leg] (4.8,1.2)--(4.8,0.2);
+\node[tn label,align=center] at (4.1,-0.55) {free legs\\(rows 2 and 3 are empty)};
+\node[tn label,font=\small] at (2.7,-1.3) {$A_{\rm frame}=\tfrac1{16}\sum_h \ind{h_0=1}\ind{h_1=0}=\tfrac{4}{16}$};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[black!40] (0,0) circle (1.2);
+\draw[black!30] (-1.4,0)--(1.4,0); \draw[black!30] (0,-1.4)--(0,1.4);
+\node[font=\scriptsize,anchor=south] at (0,1.25) {$i$}; \node[font=\scriptsize,anchor=north] at (0,-1.25) {$-i$};
+\fill[tnblue] (1.2,0) circle (2.5pt) node[right=4pt,font=\small] {$1$: 12 terms};
+\fill[tnblue] (-1.2,0) circle (2.5pt) node[left=4pt,font=\small] {$-1$: 4 terms};
+\draw[flow,tnorange,thick] (0,0)--(0.6,0);
+\node[font=\small,anchor=south west] at (0.1,0.08) {$\mathcal G=\tfrac{12-4}{16}$};
+\node[font=\small] at (0,-1.9) {phase counts $1/i/-1/-i$: $\phasecountstwofault$};
+\node[font=\small] at (0,-2.4) {$\mathcal G=\gsumtwofault$, $|\mathcal G|^2=\gabstwofault$};
+\end{tikzpicture}
+\end{center}
+On the left, the linear system as a tensor network: each nonzero row of $M$ is one grey constraint on the legs it touches. It is Fig.~\ref{fig:countfactor}(b). Here each grey box is a one-leg tensor, $(0,1)$ for $h_0=1$ and $(1,0)$ for $h_1=0$, and a free open leg summed contributes a factor $2$, so the contraction is $1\cdot1\cdot2\cdot2=4$ and $A_{\rm frame}=4/16$. On the right, the same answer from the phases, in the complex-plane picture of the previous example: the sixteen terms of Eq.~\eqref{eq:gauss} are spread over $1$ and $-1$ and cancel down to $|\mathcal G|^2=1/4$.
+
+\paragraph{Three short ones.} Three single errors, each worked the same way: write the masks, apply the formula, read off $(A,B)$. They show what the two long examples did not: an error the code readout rejects, an internal $Z$ that makes the accepted output wrong, and a logical $X$ read out with both values of the central sign $s$.
+\begin{itemize}
+\item \emph{Incoming $X_7$ alone.} Masks $\masksCxseven$, syndrome $H(\boldsymbol a)=\synxseven\ne0$: rejected before anything else, $A=B=0$. This is the main text's $F_A(X_7;0)=0$. $M$ and $b'$ are never formed. The mask is not one of the sixteen of Fig.~\ref{fig:cperp}.
+\item \emph{Internal $Z_7$.} Placed at the exit side of the Clifford part as in Fig.~\ref{fig:window}. Masks $\masksCzs$. $\boldsymbol u=\boldsymbol0$, so the intersection table is $\interCzs$ and $M=0$, while $\ell=\{7\}$ has overlaps $\elloverzs$, giving $b'=(1,1,1,0)$ after the $e_{\rm bit}=1$ correction in the last slot:
+\[ M=\MCzs,\quad b'=\bpCzs, \qquad \augCzs\ \longrightarrow\ \rrefCzs, \]
+\conszs, no solution, $A=0$. The three ones in $b'$ are the $X$-check syndrome of $Z_7$: rejection by a syndrome shows up as inconsistency, not as an early exit. The coherent-sum computation agrees, its $2\times2$ matrix is $\bmatzs$ and the result $\binstzs$.
+\item \emph{Incoming $X_L$, both outcomes.} $\boldsymbol1$ is the last generator row of Fig.~\ref{fig:cperp}, and the two outcomes are those of the central readout $r_8$ highlighted in Fig.~\ref{fig:d3circuit}. $\boldsymbol a=\boldsymbol1$, $k=1$, only the logical slot of $M$ is set:
+\[ k=1,\ e_{\rm bit}=0,\ \ell=\boldsymbol0,\qquad M=\MCxl,\quad b'=\bpCxl \]
+for $s=+1$, eight solutions, $A=\resAxl$, $B=\resBxl$. For $s=-1$ the flag flips, $b'=(0,0,0,1)$, again eight solutions, $A=\resAxlminus$, $B=\resBxlminus$. Physically $X_L\ket{T_L^\dagger}\propto\ket{T_L}$ is an equal superposition of the $M_L=\pm1$ states: half the time the check projects onto the good state, half the time onto the bad one, and the central bit records which.
+\end{itemize}
+
+The next subsection provides a few independent computations that are sanity tests for the $(A,B)$ computed in this subsection's examples.
+
+
+\subsection{Sanity tests of the worked examples}\label{app:B-checks}
+
+Every probability of the previous subsection (for the $d=3$ circuit) was evaluated in three independent ways, which agree in every case:
+\begin{enumerate}
+\item the formula, Eqs.~\eqref{eq:binaryparameters} to \eqref{eq:positivecount}, written out directly,
+\item the coherent sum, which builds the exact $2\times2$ code-restricted matrix of $DQD^\dagger$ over the eighth roots of unity and applies it to the ideal input, and
+\item a 13-qubit state-vector simulation of the actual $d=3$ window from the source file, with the ideal encoded input, the incoming Pauli at the entrance and the internal Pauli at the exit side of the Clifford part, acceptance being every measured bit equal to the fault-free reference.
+\end{enumerate}
+The Gauss sum of Eq.~\eqref{eq:gauss} was evaluated term by term as well.
+\begin{center}\adjustbox{max width=\linewidth}{\input{sections/response_data/tab_examples.tex}}\end{center}
+Beyond these cases, 40 random $(\boldsymbol a,\boldsymbol b,\boldsymbol u,\boldsymbol z)$ and all \scancases\ one- and two-site Paulis, internal at either side of the Clifford part and incoming at the entrance, agree case by case. 
+The row ``literal $X_3$ fold, $Y_9$ unfold'' is the two-fault pattern simulated at its actual positions, compared with Eqs.~\eqref{eq:binaryparameters} to \eqref{eq:positivecount} evaluated on its net Pauli $Q=X_0X_3Y_9$ at the exit side.
+These two conventions have to match, and they do. 
+Inserting $Q$ at the exit side of the Clifford part reproduces the pattern at its actual positions. For $s=-1$ the source's detectors require the $X$ faces to read $-1$ and one ancilla, compared with $r_8$, to read $1$, with the logical readout frame following $r_8$. 
+In the standalone $d=3$ circuit the detector $r_6\oplus r_7\oplus r_8=0$ with $r_6=r_7=0$ forces $s=+1$, so only that branch is ever accepted there.
+
+So far one entry at a time, for one fixed pattern of internal faults. The table needs the average over all internal fault patterns, and the next subsection shows how local tensors perform that average without enumerating patterns: each depolarising channel becomes a small kernel, each CNOT a rule for combining kernels, and the whole check an open network whose contraction is the table.
+
+\subsection{Averaging the channels with local tensors}\label{app:response-average}
+The tensor pictures follow the conventions of Sec.~\ref{sec:tensor-contraction}. A rounded box is a function of the bits on its legs, grey an indicator, orange-red a noise weight, blue an input, green an intermediate sum. A leg joining two boxes is summed, an open leg is an output index, a black dot is the copy tensor of Eq.~\eqref{eq:copytensor}, and a double line carries several bits.
+
+
+\paragraph{The mixed kernel.} A Pauli channel on one qubit has four probabilities $P(e_x,e_z)$, for depolarising noise $P(0,0)=1-p$ and $P(1,0)=P(0,1)=P(1,1)=p/3$. We keep the $X$ increment $e_x$ as it is and Fourier-transform the $Z$ increment,
+\begin{equation}
+ H(e_x,v)=\sum_{e_z}P(e_x,e_z)(-1)^{v\cdot e_z},\qquad
+ H_{1,p}=\begin{pmatrix}1-\tfrac{2p}{3}&1-\tfrac{4p}{3}\\[.3ex]\tfrac{2p}{3}&0\end{pmatrix}
+ \label{eq:mixed}
+\end{equation}
+with rows $e_x=0,1$ and columns $v=0,1$. Check one entry: $e_x=1$, $v=1$ collects the $X$ and $Y$ events with signs $+$ and $-$, $\tfrac p3-\tfrac p3=0$. As a matrix product, with $P$ indexed by $(e_x,e_z)$ and $W$ the one-bit Walsh matrix,
+\begin{equation}
+ H_{1,p}=P\,W=\begin{pmatrix}1-p&\tfrac p3\\[.2ex]\tfrac p3&\tfrac p3\end{pmatrix}\begin{pmatrix}1&1\\1&-1\end{pmatrix} .
+ \label{eq:depol1}
+\end{equation}
+The picture below is Eq.~\eqref{eq:depol1} as a contraction: the orange box is the channel $P$, the blue box the Walsh matrix $W$, and summing their shared leg $e_z$ gives the kernel $H_{1,p}$, the object every later picture is built from.
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn noise,minimum width=12mm,minimum height=9mm] (P) at (0,0) {$P$};
+\node[tn tensor,minimum width=9mm,minimum height=9mm] (W) at (2.2,0) {$W$};
+\node[font=\large] at (1.1,0.75) {$\sum_{e_z}$};
+\draw[tn leg] (-1.3,0)--node[above,tn label] {$e_x$}(P.west);
+\draw[tn leg] (P.east)--node[above,tn label] {$e_z$}(W.west);
+\draw[tn leg] (W.east)--node[above,tn label] {$v$}(3.5,0);
+\node[font=\large] at (4.3,0) {$=$};
+\node[tn noise,minimum width=14mm,minimum height=9mm] (H) at (6.0,0) {$H_{1,p}$};
+\draw[tn leg] (4.9,0)--node[above,tn label] {$e_x$}(H.west);
+\draw[tn leg] (H.east)--node[above,tn label] {$v$}(7.2,0);
+\end{tikzpicture}
+\end{center}
+In the picture the leg $e_z$ is the summed index of the matrix product. 
+For two qubits, $e_x,v\in\F^2$ and the joint kernel is
+\begin{equation}
+ H_{2,p}(e_x,v)=(1-16p/15)\ind{e_x=0}+\frac{4p}{15}\ind{v=0} .
+ \label{eq:depol2}
+\end{equation}
+Specified $X,Y,Z$ flips give, respectively,
+\begin{equation}
+ H_X=\begin{pmatrix}1-p&1-p\\p&p\end{pmatrix},\qquad
+ H_Y=\begin{pmatrix}1-p&1-p\\p&-p\end{pmatrix},\qquad
+ H_Z=\begin{pmatrix}1&1-2p\\0&0\end{pmatrix}.
+ \label{eq:flipkernels}
+\end{equation}
+The minus signs in $H$ are not interference: $H$ is the Walsh transform of a classical distribution, unlike the amplitude sum of Eq.~\eqref{eq:gauss}. The reason for the transform is that a CNOT maps $X$ masks forward and $Z$ masks backward, and in the Fourier variable $v$ dual to $z$ the backward rule becomes the same forward rule as for $x$, the control bit added to the target, Eq.~\eqref{eq:mixedCNOT}. One grey parity tensor per bit then serves both components, and the channel weight is a plain factor in $(e_x,v)$. The next paragraph pushes one CNOT with its noise through this rule.
+
+\paragraph{One gate with its noise.} A CNOT with control $c$ and target $t$ updates the mixed coordinates as
+\begin{equation}
+ (x_c,x_t)\mapsto(x_c,x_t\oplus x_c),\qquad
+ (v_c,v_t)\mapsto(v_c,v_t\oplus v_c),
+ \label{eq:mixedCNOT}
+\end{equation}
+that is, in matrix form over $\F$,
+\[
+\begin{pmatrix}x_c\\x_t\end{pmatrix}\mapsto\begin{pmatrix}1&0\\1&1\end{pmatrix}\begin{pmatrix}x_c\\x_t\end{pmatrix},\qquad
+\begin{pmatrix}v_c\\v_t\end{pmatrix}\mapsto\begin{pmatrix}1&0\\1&1\end{pmatrix}\begin{pmatrix}v_c\\v_t\end{pmatrix},\qquad
+\text{whereas}\quad\begin{pmatrix}z_c\\z_t\end{pmatrix}\mapsto\begin{pmatrix}1&1\\0&1\end{pmatrix}\begin{pmatrix}z_c\\z_t\end{pmatrix}.
+\]
+The $v$ matrix is the transpose of the $z$ matrix, which is what ``dual character'' means, and it happens to equal the $x$ matrix. The $v$ bits are dual characters, not forward $Z$-error masks. The rule preserves the pairing $v\cdot e_z$. The tensor $C$ in Fig.~\ref{fig:response-network}(a) is the indicator that both rules hold. Joining it to the following depolarising channel gives
+\begin{equation}
+ \sum_{\boldsymbol u}
+ C(\boldsymbol u,\boldsymbol v';\boldsymbol x,\boldsymbol v)\,
+ H_{2,p}(\boldsymbol x'\oplus\boldsymbol u,\boldsymbol v').
+ \label{eq:gate-noise-tensor}
+\end{equation}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn constraint,minimum width=14mm,minimum height=13mm] (C) at (2,1.05) {$C$\\\scriptsize CNOT};
+\node[tn noise,minimum width=16mm,minimum height=10mm] (N) at (5.15,1.35) {$H_{2,p}$\\\scriptsize noise};
+\draw[tn bundle] (.1,1.35)--node[above,tn label] {$\boldsymbol x$} ([yshift=3mm]C.west);
+\draw[tn bundle] (.1,.75)--node[below,tn label] {$\boldsymbol v$} ([yshift=-3mm]C.west);
+\draw[tn bundle] ([yshift=3mm]C.east)--node[above,tn label] {$\boldsymbol u$}(N.west);
+\node[font=\large] at (3.55,2.2) {$\sum_{\boldsymbol u}$};
+\draw[tn bundle] (N.east)--node[above,tn label] {$\boldsymbol x'$}(7.5,1.35);
+\draw[tn bundle] ([yshift=-3mm]C.east)--(3.15,.75)--(3.15,-.15)--(7.5,-.15);
+\draw[tn bundle] (5.15,-.15)--(N.south);
+\node[tn copy] at (5.15,-.15) {};
+\node[tn label,anchor=north east,inner sep=1pt] at (5.05,-.25) {$\delta$, Eq.~\eqref{eq:copytensor}};
+\node[tn label,anchor=north] at (6.35,-.2) {$\boldsymbol v'$};
+\end{tikzpicture}
+\end{center}
+Here $\boldsymbol u$ is the $X$ label just after the gate and $\boldsymbol x'$ the label after the noise; their XOR is the error increment supplied to the noise kernel, and $\boldsymbol v'$ appears in $C$, in $H_{2,p}$ and on the output leg, so the three are joined by the copy tensor $\delta$ of Eq.~\eqref{eq:copytensor}. Take an example at $p=10^{-3}$: $\boldsymbol x=(1,0)$ and $\boldsymbol v=(0,0)$ on the pair (control, target). $C$ forces $\boldsymbol u=(1,1)$ and $\boldsymbol v'=(0,0)$, so the block has one term: its value is $H_{2,p}(\boldsymbol x'\oplus(1,1),(0,0))$, which is $1-4p/5=0.9992$ at $\boldsymbol x'=(1,1)$ (the $X$ mask is unchanged, while all possible $Z$ errors are included in the noise average) and $4p/15\approx0.00027$ at $\boldsymbol x'=(1,0)$ (an $X$-mask flip on the target). Any $\boldsymbol v'\ne(0,0)$ gives $0$. Summing $\boldsymbol u$ is the noise average for this gate.
+
+One gate with its noise is thus one small tensor, and chaining them along the CNOT circuit averages over every internal fault pattern at once. After all this work the mission has not changed: the tables $F_A$ and $F_B$, which give $A$ and $B$ and hence $\PL$. We are now one step from them.
+
+\subsection{The open network that fills the table}\label{app:B-open}
+
+Everything so far produced one entry of the table for one incoming error. Here the incoming labels are left open and everything else is contracted, so a single contraction returns the whole of $F_A$ and $F_B$, the objects that Eq.~\eqref{eq:responseaverage} turns into $A$, $B$ and $\PL$. We do it in a Fourier-transformed basis for the incoming $Z$ label. With $y=(y_0,\ldots,y_{r-1},c)\in\F^m$ define
+\begin{equation}
+ G^{(j)}(\alpha,y)=\sum_\beta(-1)^{\beta\cdot y}\big[F_A(\alpha,\beta)-2jF_B(\alpha,\beta)\big],\qquad j=0,1,
+ \label{eq:G}
+\end{equation}
+so $G^{(0)}$ is the transformed acceptance $P_{\rm good}+P_{\rm bad}$ and $G^{(1)}$ the transformed difference $P_{\rm good}-P_{\rm bad}$. The bit $c$ is a Fourier coordinate, not a measured outcome. 
+The Fourier transform is used because the tensor network is a sum over binary variables of products of small factors, and the $Z$ side of the incoming error enters the count only through parities such as $\ell\cdot g_i$, that is through characters, so it is cheaper to compute the characters $(-1)^{y\cdot h}$ directly, indexed by $y$, and transform once at the end than to keep the incoming $Z$ label $\beta$ as an open index on every intermediate tensor. The same applies to the central sign $s$, it enters only through a character, so the network is built with its Fourier partner $c$ and transformed at the end.
+
+\paragraph{The site factor, term by term.} Choose a binary right inverse $R$ of the label map $\boldsymbol a\mapsto\alpha$ in Eq.~\eqref{eq:address} and fix the representative $\boldsymbol a=R\alpha$. At site $q$ let $s_q=\bigoplus_{i:q\in g_i}y_i$, and introduce summed face bits $u_i,w_i$ and a logical-coset bit $\lambda$. The terminal site factor is
+\begin{equation}\small
+ {\cal C}_q=\underbrace{\ind{v_q\oplus s_q=j}}_{\text{sector }j}\,
+ \underbrace{\ind{x_q\oplus a_q\oplus\lambda\oplus\textstyle\bigoplus_{i:q\in g_i}\!u_i=0}}_{\text{code projection}}\,
+ \underbrace{\ind{x_qs_q\oplus a_qc\oplus\textstyle\bigoplus_{i:q\in g_i}\!w_i=0}}_{\text{linear system}}\,
+ \underbrace{(-1)^{a_qx_q(s_q\oplus c)}}_{\text{sign}} .
+ \label{eq:sitefactor}
+\end{equation}
+In Eq.\eqref{eq:sitefactor}, the first indicator selects the character sector $j$, the same $j$ as in $G^{(j)}$. The second is $H(\boldsymbol u\oplus\boldsymbol a)=0$ in disguise: the total $X$ mask must be a sum of faces ($u_i$) plus optionally the logical mask ($\lambda$), site by site. The third is the linear system $Mh=b'$ site by site, with $w_i$ playing the role of the row multipliers. The sign is the leftover of the $\boldsymbol u\wedge\boldsymbol a$ correction in $\ell$. Its products are binary AND operations and the sign is retained in the contraction.
+Figure~\ref{fig:terminalsplit} separates the three indicators from the sign.
+{\color{black}
+\begin{figure}[H]\centering
+\begin{adjustbox}{max width=.7\linewidth}\input{figures/method/terminal_factor.tikz}\end{adjustbox}
+\caption{The site factor of Eq.~\eqref{eq:sitefactor} for $a_q=1$, $c=0$, split into the three indicators $R^{(j)}$ (grey) and the sign $\Phi=(-1)^{x_qs_q}$ (blue). The dots copy $x_q$ and $s_q$ into both factors, so the product is taken entry by entry and the negative entry survives.}
+\label{fig:terminalsplit}
+\end{figure}}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn tensor,minimum width=22mm,minimum height=14mm,font=\large] (Cq) at (0,0) {$\mathcal C_q$};
+\draw[tn leg] (-2.6,0.45)--node[above,tn label] {$x_q$}([yshift=4.5mm]Cq.west);
+\draw[tn leg] (-2.6,-0.45)--node[below,tn label] {$v_q$}([yshift=-4.5mm]Cq.west);
+\draw[tn leg] ([xshift=-6mm]Cq.north)--++(0,1.1) node[above,tn label] {$a_q$};
+\draw[tn leg] (Cq.north)--++(0,1.1) node[above,tn label] {$s_q$};
+\draw[tn leg] ([xshift=6mm]Cq.north)--++(0,1.1) node[above,tn label] {$c$};
+\draw[tn bundle] ([xshift=-8mm]Cq.south)--++(0,-1.1) node[below left,tn label] {$u_i,\ q\in g_i$};
+\draw[tn bundle] ([xshift=8mm]Cq.south)--++(0,-1.1) node[below right,tn label] {$w_i,\ q\in g_i$};
+\draw[tn leg] (Cq.east)--++(1.3,0) node[right,tn label] {$\lambda$};
+\node[tn label,text=black!60] at (0,-2.9) {one such tensor per data site, all seven share $\lambda$, $c$ and the face bits};
+\end{tikzpicture}
+\end{center}
+For a site in three faces this tensor has $2^{12}$ entries. The three parity indicators each halve the support, leaving $512$ nonzero entries, and the sign turns an entry into $-1$ exactly when $a_qx_q(s_q\oplus c)=1$. At the central measurement the insertion is $v_{\rm old}\oplus v_{\rm new}\oplus c=j$. Fourier expansion of the ancillary conditions then gives
+\begin{equation}
+ G_c^{(j)}(\alpha,y_0,\ldots,y_{r-1};p)=2^{-n_{\rm aux}}\sum_{\text{internal bits}}\prod_\nu{\cal T}_\nu,\qquad
+ n_{\rm aux}=6\ (d=3),\quad19\ (d=5),
+ \label{eq:opennetwork}
+\end{equation}
+where the factors ${\cal T}_\nu$ are the channel kernels, the CNOT constraints, the central insertion and Eq.~\eqref{eq:sitefactor}. Several $X$ masks share one label $\alpha$, but the condition $\boldsymbol a=R\alpha$ picks exactly one of them per $\alpha$, so each open value of $\alpha$ is counted once and no entry is multiplied by the size of the coset. For fixed $c,j$ the output has $2^{4+3}$ entries at $d=3$ and $2^{10+9}$ at $d=5$.
+\begin{figure}[H]\centering
+\begin{adjustbox}{max width=\linewidth}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\begin{scope}[scale=0.82,transform shape,shift={(0.4,0.7)}]
+\node[tn constraint,minimum width=95mm,minimum height=10mm,font=\small] (L) at (6,4.2) {label maps and shared code indices ($\boldsymbol a=R\alpha$, $s_q$, $\lambda$, $u_i$, $w_i$)};
+\foreach \i/\dy in {0/.3,1/.1,2/-.1,3/-.3}{
+ \draw[tn leg] (0.4,4.2+\dy)--([yshift=\dy cm]L.west);
+ \draw[tn leg] ([yshift=\dy cm]L.east)--(11.6,4.2+\dy);
+}
+\node[tn label] at (0.25,4.85) {$\alpha$};
+\node[tn label] at (11.75,4.85) {$y$};
+\foreach \q/\xx in {0/2.2,3/3.45,7/4.7,9/5.95,10/7.2,12/8.45,13/9.7}{
+ \node[tn tensor,minimum width=9mm,minimum height=8mm,font=\small] (C\q) at (\xx,2.3) {$\mathcal C_{\q}$};
+ \draw[tn bundle] (\xx,3.7)--(C\q.north);
+ \draw[tn bundle] (C\q.south)--(\xx,1.35);
+}
+\node[tn intermediate,minimum width=95mm,minimum height=10mm,font=\small] (K) at (6,0.85) {CNOT constraints, noise kernels, central insertion};
+\node[font=\Large,anchor=east] at (-0.1,2.5) {$G^{(j)}(\alpha,y;p)=\dfrac{1}{2^{6}}\mathop{\scalebox{1.2}{$\displaystyle\sum$}}\limits_{\substack{\text{\scriptsize internal}\\\text{\scriptsize bits}}}$};
+\node[tn label] at (6,-0.1) {one number per open label pair $(\alpha,y)$};
+\end{scope}
+\end{tikzpicture}
+\end{adjustbox}
+\caption{The open network of Eq.~\eqref{eq:opennetwork} at $d=3$, the incoming labels $\alpha$ and $y$ left open. Its contraction is the table $G^{(j)}(\alpha,y;p)$, one number per open label pair, which Eq.~\eqref{eq:inverseF} turns into $F_A$ and $F_B$.}
+\label{fig:opennet}
+\end{figure}
+Figure~\ref{fig:opennet} is the network of Eq.~\eqref{eq:opennetwork} at $d=3$, its three layers described from the top down. Top bar: the incoming labels and the bits shared between sites. Middle: one site factor per data site. Bottom bar: the Clifford part with its noise, exactly the gate-plus-noise blocks of the previous subsection. At $d=3$ the network has $2^{4}$ open values of $\alpha$ and $2^{4}$ of $y$ for each $j$, so one contraction returns $512$ numbers, and the factor $1/2^{6}$ is the six ancilla projections. Finally invert the incoming $Z$ transform,
+\begin{align}
+ F_A(\alpha,\beta)&=2^{-m}\sum_y(-1)^{\beta\cdot y}G^{(0)}(\alpha,y),
+ \nonumber\\
+ F_B(\alpha,\beta)&=2^{-m-1}\sum_y(-1)^{\beta\cdot y}\big[G^{(0)}(\alpha,y)-G^{(1)}(\alpha,y)\big],
+ \label{eq:inverseF}
+\end{align}
+one more contraction with $W^{\otimes m}$, the Walsh matrix of Eq.~\eqref{eq:depol1} on every $y$ leg, a $16\times16$ matrix of $\pm1$ entries at $d=3$ applied to each row $G^{(0)}(\alpha,\cdot)$. The factor $\tfrac12$ turns $(P_{\rm good}+P_{\rm bad})-(P_{\rm good}-P_{\rm bad})$ into the wrong probability $P_{\rm bad}$.
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[font=\large] at (-1.3,0) {$F_A(\alpha,\beta)=\dfrac{1}{2^{m}}$};
+\node[font=\Large] at (0.5,0) {$\displaystyle\sum_{y}$};
+\node[tn intermediate,minimum width=15mm,minimum height=13mm,font=\large] (G) at (2.4,0) {$G^{(0)}$};
+\draw[tn bundle] (1.2,0)--node[above,tn label] {$\alpha$}(G.west);
+\node[tn tensor,minimum width=8mm,minimum height=8mm] (W) at (4.6,0) {$W^{\otimes m}$};
+\draw[tn bundle] (G.east)--node[above,tn label] {$y$}(W.west);
+\draw[tn bundle] (W.east)--node[above,tn label] {$\beta$}(6.0,0);
+\node[tn label] at (2.6,-1.2) {$W_{\beta_iy_i}=(-1)^{\beta_iy_i}$ on each of the $m$ bits, and $F_B$ uses $(G^{(0)}-G^{(1)})/2$ instead};
+\end{tikzpicture}
+\end{center}
+The resulting $F_A,F_B$ are nonnegative ordinary probabilities for each incoming label pair $(\alpha,\beta)$ and are the tables used in Eq.~\eqref{eq:physicalgrowth}.
+
+\subsection{The same objects at \texorpdfstring{$d=5$}{d=5}}\label{app:B-dfive}
+
+Nothing changes in the formula except the sizes: nineteen data sites, the nine faces of Table~\ref{tab:faces}, $r=9$, $m=10$, and $\epsilon_q=-1$ on the six sites $0,11,17,19,36,40$ where the exit layer applies $T^\dagger$, Fig.~\ref{fig:dfive}. The signed face weights $\dfivesw$ are all divisible by four and $t=13-6=\dfivephase$, which is the condition for $DX_{\rm all}D^\dagger$ to be a logical operator. The implementation checks it and rejects the all-$T$ pattern.
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[x=3.6mm,y=3.6mm]
+\foreach \row [count=\r from 0] in \dfivegrid {
+  \foreach \bit [count=\c from 0] in \row {
+    \ifnum\bit=1
+      \ifnum\r=10 \fill[tnorange!80] (\c,-\r) rectangle ++(0.9,0.9); \else \fill[tnblue!80] (\c,-\r) rectangle ++(0.9,0.9); \fi
+    \else \draw[black!25] (\c,-\r) rectangle ++(0.9,0.9); \fi
+  }
+}
+\foreach \site [count=\c from 0] in \dfivesites {\node[font=\tiny,rotate=90,anchor=west] at (\c+0.45,1.1) {$\site$};}
+\foreach \lab [count=\r from 0] in {$g_0$ blue,$g_1$ blue,$g_2$ blue,$g_3$ red,$g_4$ red,$g_5$ red,$g_6$ green,$g_7$ green,$g_8$ green,$g_9=\boldsymbol1$,$T^\dagger$ sites} {\node[font=\scriptsize,anchor=east] at (-0.3,-\r+0.45) {\lab};}
+\end{tikzpicture}
+\caption{The $d=5$ incidence matrix $H^{(5)}$ (nine faces), the logical row $\boldsymbol1$, and the sites where the exit layer applies $T^\dagger$ (orange). Face sizes are $(4,6,4,4,4,6,6,4,4)$.}
+\label{fig:dfive}
+\end{figure}

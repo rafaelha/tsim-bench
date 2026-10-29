@@ -1,0 +1,22 @@
+\subsection*{4. Chan et al.: repaired circuits accompanying arXiv version 2}
+
+The new repaired circuit adds a fourth noisy stabiliser round before final
+$d=5$ double checking. The complete series, including injection, both
+double-checking stages and all growth noise, is now:
+\input{sections/other_msc_eq/new_series}
+All lower-order coefficients vanish. Thus the circuit fault distance is finally restored to 5.
+
+\begin{center}
+\input{figures/other_msc/chan_rounds.tikz}
+\captionof{figure}{The supplied repair. The additional noisy stabiliser
+round is green. Boxes group physical gates; the wire represents the data register.}
+\end{center}
+
+\fig{chan_four_round_plot_only}{.93}{The new four-round series plotted over the arXiv v1
+comparison. Sampling points belong to arXiv v1 only. The inset compares both
+circuits truncated at sixth order.}
+
+An independent ZX calculus contraction confirmed rejection of the earlier weight-four fault.
+At $p=10^{-3}$, the series through $x^6$ differ by only $0.57\%$, so the
+shorter three-round circuit gives nearly the same LER here, although the
+fourth round raises the fault distance from $4 \rightarrow 5$, but is somewhat not impactful in the only fruitful figure of merit - LER.

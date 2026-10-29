@@ -1,0 +1,19 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[note] at (0,2) {prime};
+\node[note] at (2.1,2) {$\chi=000$};
+\node[note] at (4,2) {$\cdots$};
+\node[note] at (5.9,2) {$\chi=111$};
+\node[note] at (9.1,2) {average all eight};
+\foreach \y/\label in {1/{q_1},0/{q_2},-1/{q_m}}{
+ \node[note] at (0,\y) {$\label$};
+ \node[box] (a\y) at (2.1,\y) {$(A_0,B_0)$};
+ \node[note] at (4,\y) {$\cdots$};
+ \node[box] (b\y) at (5.9,\y) {$(A_7,B_7)$};
+ \node[box] (r\y) at (9.1,\y) {$(A,B)\bmod\label$};
+ \draw[flow] (b\y)--(r\y);
+}
+\node[box,text width=71mm] (crt) at (5.5,-2.6)
+ {reconstruct the two integers\\$N_A=D A,\quad N_B=D B$\\then $P_{\rm L}=N_B/N_A$};
+\foreach \y in {1,0,-1}{\draw[wire] (r\y.east)--(11.3,\y);}
+\draw[flow] (11.3,1)--(11.3,-2.6)--(crt.east);
+\end{tikzpicture}

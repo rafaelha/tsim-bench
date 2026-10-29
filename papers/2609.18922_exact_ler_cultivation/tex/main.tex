@@ -1,0 +1,98 @@
+\documentclass[a4paper,twocolumn,11pt,unpublished,allowtoday]{quantumarticle}
+\pdfoutput=1
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,booktabs,graphicx,microtype,tikz,xurl,adjustbox,placeins}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric}
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage[compat=0.8]{yquant}
+\input{styles.tex}
+\input{figure_colours.tex}
+\input{semiweb_preamble.tex}
+\input{semiweb_caption_legend.tex}
+\definecolor{paperpurple}{HTML}{53257F}
+\definecolor{newround}{HTML}{277D46}
+\providecommand{\ket}[1]{\lvert#1\rangle}
+\providecommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\PL}{P_{\mathrm L}}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\spann}{\operatorname{span}}
+\newcommand{\ind}[1]{\mathbf1\!\left[#1\right]}
+\newcommand{\xor}{\oplus}
+\newcommand{\arxiv}[1]{[\href{https://arxiv.org/abs/#1}{arXiv:#1}]}
+\newcommand{\diagram}[4][htbp]{%
+ \begin{figure}[#1]\centering
+ \begin{adjustbox}{max width=.98\linewidth}\input{figures/#2.tikz}\end{adjustbox}
+ \caption{#3}\label{#4}\end{figure}}
+\newcommand{\widediagram}[3]{%
+ \begin{figure*}[tp]\centering
+ \begin{adjustbox}{max width=.98\linewidth}\input{figures/#1.tikz}\end{adjustbox}
+ \caption{#2}\label{#3}\end{figure*}}
+\newcommand{\fig}[3]{%
+ \begin{center}
+ \includegraphics[width=#2\linewidth]{figures/other_msc/#1.pdf}
+ \captionof{figure}{#3}
+ \end{center}}
+\setcounter{topnumber}{3}\setcounter{bottomnumber}{3}\setcounter{totalnumber}{6}
+\setcounter{dbltopnumber}{3}
+\renewcommand{\topfraction}{.92}\renewcommand{\bottomfraction}{.85}
+\renewcommand{\textfraction}{.08}\renewcommand{\floatpagefraction}{.65}
+\renewcommand{\dbltopfraction}{.92}\renewcommand{\dblfloatpagefraction}{.8}
+\raggedbottom
+\setlength{\emergencystretch}{1em}
+\title{Exact logical error rates for magic state cultivation}
+\author{Kwok Ho Wan}
+\orcid{0000-0002-1762-1001}
+\affiliation{Blackett Laboratory, Imperial College London, South Kensington, London SW7 2AZ, UK}
+\affiliation{Mathematical Institute, University of Oxford, Andrew Wiles Building, Woodstock Road, Oxford OX2 6GG, UK}
+\email{((initials))1496((at))((9.81))mail.com}
+\thanks{current affiliation: PsiQuantum, Palo Alto.}
+\author{Ainhoa Zapirain}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{abstract}
+We compute exactly the acceptance and logical error rates for the distance $d=3$ and $d=5$ magic state cultivation circuits from Clifft \arxiv{2604.27058} and 
+SOFT \arxiv{2512.23037} using Pauli propagation and binary tensor contraction. Actual $T$-gates are studied, not the $S$-gate proxy used for sampling. The calculation includes every fault order at several circuit-level noise strengths ($p$). 
+We provide a series expansion form to the logical error rates, through order $(p/(1-p))^{10}$. 
+The analytical results recover the numerical values from Clifft and SOFT at both $d=3$ and $d=5$ to within their sampling uncertainty. Then, we show that the $d=3$ and $d=5$ circuits actually have fault distances of $d_{\text{fault}}=2$ and $d_{\text{fault}}=3$ respectively, explaining the similar distance degrading effects from the companion code of [\href{https://doi.org/10.22331/q-2026-06-12-2134}{Quantum \textbf{10}, 2134 (2026)}].
+\end{abstract}
+\input{sections/results.tex}
+\input{sections/method.tex}
+\input{sections/discussion.tex}
+\section{Acknowledgements}
+We thank Tim Chan for notifying us of their results~\cite{chan_msc} (paper~\cite{chan2026diagnosingrestoringdegradedfault}) on the reduced fault distance of magic state cultivation circuits. To the best of our knowledge, Chan et al. were the first to identify this reduced fault distance of the cultivation circuits studied in this manuscript. 
+We also thank Zhenghao (William) Zhong for the invitation to Oxford as a visitor.
+We acknowledge useful discussions with Austin Fowler and Zoë Holmes.
+We acknowledge the use of large language models in the refinement of the methods (especially the use of ChatGPT 6 Astra in extending the human-made $d=3$ results to the $d=5$ circuits) and wording of this manuscript. The code generated was checked and tested and we take responsibility for all contents, to the best of our abilities.
+The companion code and data are available in~\cite{exact_msc_code}.
+\FloatBarrier
+\bibliographystyle{quantum}
+\bibliography{main}
+\appendix
+\input{sections/circuits.tex}
+\clearpage
+\input{sections/three_fault_d5.tex}
+\clearpage
+\onecolumn
+\input{sections/response.tex}
+\clearpage
+\input{sections/contraction_orders.tex}
+\clearpage
+\input{sections/growth.tex}
+\clearpage
+\input{sections/arithmetic.tex}
+\clearpage
+\twocolumn
+\input{sections/numerical_details.tex}
+\clearpage
+\onecolumn
+\input{sections/other_msc.tex}
+\clearpage
+\input{sections/semiwebs.tex}
+\clearpage
+\input{sections/detector_webs.tex}
+\end{document}

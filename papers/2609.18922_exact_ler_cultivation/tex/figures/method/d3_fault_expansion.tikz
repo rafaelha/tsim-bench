@@ -1,0 +1,26 @@
+\begin{tikzpicture}[x=1cm,y=1cm,text=black,
+pauli/.append style={minimum size=17mm,font=\scriptsize,inner sep=0pt},
+label/.style={note,font=\scriptsize}]
+\node[initial pauli,minimum size=17mm,font=\scriptsize] (r) at (10.5,0) {$X_0X_3Y_9$};
+\node[pauli] (a) at (4.5,-2.15) {$X_0X_3Y_9$};
+\node[pauli] (b) at (16.5,-2.15) {$Y_0X_3Y_9$};
+\draw[flow] (r)--node[above left,label] {$+1/\sqrt2$}(a);
+\draw[flow] (r)--node[above right,label] {$+1/\sqrt2$}(b);
+\foreach \name/\x/\txt in {c/1.5/X_0X_3Y_9,d/7.5/X_0Y_3Y_9,e/13.5/Y_0X_3Y_9,f/19.5/Y_0Y_3Y_9}
+ {\node[pauli] (\name) at (\x,-4.3) {$\txt$};}
+\foreach \from/\to in {a/c,a/d,b/e,b/f}
+ {\draw[flow] (\from)--node[midway,sloped,above=4pt,label] {$+1/\sqrt2$}(\to);}
+\foreach \name/\x/\txt in {g/0/X_0X_3Y_9,h/3/X_0X_3X_9,i/6/X_0Y_3Y_9,j/9/X_0Y_3X_9,k/12/Y_0X_3Y_9,l/15/Y_0X_3X_9,m/18/Y_0Y_3Y_9,n/21/Y_0Y_3X_9}
+ {\node[pauli] (\name) at (\x,-6.5) {$\txt$};}
+\foreach \from/\to in {c/g,d/i,e/k,f/m}
+ {\draw[flow,blue!70!black] (\from)--node[above left,label] {$+$}(\to);}
+\foreach \from/\to in {c/h,d/j,e/l,f/n}
+ {\draw[flow,red!75!black] (\from)--node[above right,label] {$-$}(\to);}
+\foreach \name in {g,i,j,k,l,n}
+ {\node[label,text=black!55] at ($(\name)+(0,-1.25)$) {$0$ after projection};}
+\node[label,text=green!45!black] at ($(h)+(0,-1.25)$) {$-X_L/\sqrt8$};
+\node[label,text=green!45!black] at ($(m)+(0,-1.25)$) {$-Y_L/\sqrt8$};
+\node[label,anchor=east] at (-1.5,-2.15) {$T_0$};
+\node[label,anchor=east] at (-1.5,-4.3) {$T_3$};
+\node[label,anchor=east] at (-1.5,-6.5) {$T_9$};
+\end{tikzpicture}

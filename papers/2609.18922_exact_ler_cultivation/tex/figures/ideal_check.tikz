@@ -1,0 +1,12 @@
+\begin{tikzpicture}[font=\small]
+\begin{yquant}[operator/separation=6mm,register/separation=5mm]
+qubit {$\ket+$} a;
+qubits {$\ket{\psi_L}$} d;
+box {$D^\dagger$} d;
+box {$X_{\rm all}$} d | a;
+box {$D$} d;
+measure {$X$} a;
+output {$+1$} a;
+\end{yquant}
+\end{tikzpicture}
+\qquad $K_+=\dfrac{I+D X_{\rm all}D^\dagger}{2}$

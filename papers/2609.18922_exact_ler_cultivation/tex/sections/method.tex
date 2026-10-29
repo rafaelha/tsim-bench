@@ -1,0 +1,399 @@
+\section{Method}\label{sec:method}
+Pauli propagation~\cite{ppframework} and tensor contraction~\cite{itensor} are central to our exact approach in deriving the LER. 
+In short, Pauli propagation expresses the observables as sums of Pauli strings and tracks
+their transformations under the operations. 
+Firstly, we use Pauli propagation to calculate the effects of the \textit{incoming} error through the heavily non-Clifford gates dominated double-checking circuits. 
+Then we encode the gates, noise and post-selection conditions in a tensor network, contract said tensor network to obtain $A(p)$ and $B(p)$ from Eqs.~\eqref{eq:probabilities}, which are then used to compute the LER.
+
+\diagram[H]{method/pipeline}
+{Steps of the calculation. Pauli propagation gives the response of each double-checking stage to an incoming error, grouping keeps the tables small, and one tensor network joins the stages. The network is contracted in two arithmetics, giving exact fractions at fixed $p$ and exact series coefficients.}
+{fig:pipeline}
+Figure~\ref{fig:pipeline} summarises the steps. Section~\ref{sec:pp} carries the check observables backwards through a double-checking stage, which gives the response of that stage to each incoming Pauli error. Section~\ref{sec:grouping} groups the errors that share a response, so that each stage becomes a small table. Section~\ref{sec:tensor-contraction} writes the gates, noise and post-selection as tensors, contracts them with the incoming labels open to fill each table, and joins the stages into $A(p)$ and $B(p)$. The same network is evaluated twice: with a rational $p$ in modular arithmetic, which gives the exact fractions, and with polynomials in $x=p/(1-p)$ truncated at degree ten, which gives the series coefficients.
+
+\subsection{Method overview}
+The $d=5$ cultivation circuit has two non-Clifford checking stages separated by a purely Clifford (code growth) sub-circuit, see Fig.~\ref{fig:overview} for an overview of the $d=5$ cultivation circuit and its stages/sub-circuits. 
+Fig.~\ref{fig:d3-incoming} shows one of the smaller double-checking sub-circuit and incoming Pauli error (see Appendix~\ref{app:circuits} for both double-checking circuits). 
+
+\widediagram{overview}{Stages of the full $d=5$ cultivation circuit. Ancillary sub-systems to perform measurements are dropped for simplicity.}{fig:overview}
+
+\diagram[H]{method/d3_incoming_column}
+{The $d=3$ double-checking circuit and the earlier stages.
+The dashed boundary marks this circuit's input and the purple $X_7$ specifies an `incoming error'
+present.}
+{fig:d3-incoming}
+
+Apart from the single injection gate, the non-Clifford gates occur in the two double-checking stages, and everything between them is Clifford, although the Clifford growth stage still requires the exact average of Appendix~\ref{app:growth}.
+
+Here, `incoming' means present at the entrance to the double-checking stage, before its first $T$/$T^\dagger$ layer, after injection and any earlier stages. For the $d=3$ stage the earlier stages are Clifford apart from the injected state, so their effect on the ideal encoded magic state is a Pauli error $E$ occurring with some probability. The same description holds for the $d=5$ stage, because within each syndrome block the $d=3$ check leaves the ideal state up to a logical Pauli, see Appendix~\ref{app:growth}. We therefore describe the input as a fixed $E$ applied to the ideal state. For example, $E=X_7$ places an $X$ error on data qubit 7, marked in Fig.~\ref{fig:d3-incoming}. The probability of $E$ comes from the earlier stages. The noise inside double checking is averaged separately.
+
+In these double-checking sub-circuits, for each incoming Pauli error $E$, we calculate two numbers (probabilities):
+\begin{itemize}
+\item $F_A$: the probability of passing post-selection, i.e. all trivial detectors and the specified noiseless final code readout, and
+\item $F_B$: the probability of passing post-selection with a logical error in the output state.
+\end{itemize}
+We call the pair $(F_A,F_B)$ the \emph{response} to that error $E$.
+The incoming error is held fixed, while the noise within the double-checking stage is averaged. This separation is what makes the response reusable: one table serves every fault pattern of the earlier stages.
+
+In the full $d=5$ circuit, we retain the probabilities of the
+different error labels leaving the earlier $d=3$ double-checking stage.
+We then include the noise and post-selection during code growth
+to obtain the probabilities of errors entering the final $d=5$ double-checking stage.
+We multiply each final $d=5$ double-checking response by the
+probability that its incoming error occurs and no earlier
+post-selection detector fires. Summing these contributions
+gives $A(p)$ and $B(p)$.
+
+We will illustrate Pauli propagation briefly before describing the full calculation next.
+
+\subsection{Pauli propagation}\label{sec:pp}
+
+Pauli propagation~\cite{ppframework} computes an expectation value by carrying the measured observable backwards through the circuit and evaluating it on the input state, so a readout probability becomes a weighted sum of Pauli expectation values. For cultivation, Clifford gates do not increase the number of terms, and the structure of the double-checking stages lets us merge equivalent terms and sum over the noise directly. Rare logical errors therefore never need to be sampled: the LER is computed exactly, or as a series.
+{\color{black}For a ZX-calculus description using Pauli semiwebs~\cite{zxflow}, see the discussion and Appendix~\ref{app:semiwebs}.}
+
+As an example, we start by using $\rho$ as the input state to a circuit, $U$ the circuit unitary and
+$O$ the observable to be measured. For a unitary circuit,
+\begin{equation}
+ \begin{gathered}
+ \langle O\rangle=\Tr(U\rho U^\dagger O)
+ =\Tr(\rho\,U^\dagger O U),\\
+ U^\dagger O U=\sum_P c_P P.
+ \end{gathered}
+ \label{eq:heisenberg}
+\end{equation}
+The sum runs over tensor products of Pauli operators: $I,X,Y,Z$. A Clifford gate transforms
+a Pauli string to another, possibly with a $\pm$ sign. A non-Clifford $T=\text{diag}(1,e^{i\pi/4})$ gate can
+split one string into two `paths':
+\begin{equation}
+ \begin{gathered}
+ T^\dagger X T=\frac{X{\color{red}-}Y}{\sqrt2},\quad
+ T^\dagger Y T=\frac{X{\color{blue}+}Y}{\sqrt2},\\
+ T=\operatorname{diag}(1,e^{i\pi/4}) \ .
+ \end{gathered}
+ \label{eq:T}
+\end{equation}
+The {\color{blue}blue ($+$)} and {\color{red}red ($-$)} signs in
+Eq.~\eqref{eq:T} belong to the coefficients multiplying the Pauli
+operators. Both terms are kept with their signs with nothing sampled. Each propagation path contributes the product
+of its coefficients. Contributions to the same Pauli string are added
+with their signs, so they can cancel.
+
+Fig.~\ref{fig:pauli} follows an observable backwards through an actual
+portion of the $d=3$ double-checking circuit, a single CNOT with circuit-level noise. Starting at $X_{13}$ on the
+right to the left. The $T$ gate forks two
+terms $X_{13}$ and $Y_{13}$, with coefficients ${\color{blue}+1/\sqrt2}$ and
+${\color{red}-1/\sqrt2}$ respecitvely. The CNOT leaves $X_{13}$ unchanged and turns $Y_{13}$
+into $Z_{14}Y_{13}$.
+
+\diagram[h]{d3_pauli_steps}
+{A $d=3$ double-checking circuit portion and its backward Pauli propagation.
+The arrows carry coefficients.}
+{fig:pauli}
+
+\begingroup\color{black}
+\begin{subequations}\label{eq:depolarising-channels}
+The one-qubit depolarising channel is
+\begin{equation}
+\begin{aligned}
+\mathcal N_1(\rho)
+&=(1-p)\rho\\
+&\quad+\frac{p}{3}(X\rho X+Y\rho Y+Z\rho Z).
+\end{aligned}
+\label{eq:depolarising-one}
+\end{equation}
+The two-qubit depolarising channel is
+\begin{equation}
+\begin{aligned}
+\mathcal N_2(\rho)
+&=(1-p)\rho\\
+&\quad+\frac{p}{15}
+\sum_{\substack{P,Q\in\{I,X,Y,Z\}\\(P,Q)\neq(I,I)}}
+(P\otimes Q)\rho(P\otimes Q).
+\end{aligned}
+\label{eq:depolarising-two}
+\end{equation}
+\end{subequations}
+\par\endgroup
+Their physical Pauli faults have positive
+probabilities, which we sum exactly. For example, 
+\begin{equation}
+ \mathcal N_1^\dagger(X)
+ =(1-p)X+\frac p3(X-X-X)
+ =\lambda_1X,
+\end{equation}
+where $\lambda_1=1-4p/3$. The dagger here means the adjoint channel, which propagates
+the observable backwards through the noise operators~\cite{ppframework}. Similarly,
+$\lambda_2=1-16p/15$ for a non-identity two-qubit Pauli operator\footnote{Explicitly, for $P,Q\in\{I,X,Y,Z\}$ and $(P,Q)\neq(I,I)$,
+$\mathcal N_2^\dagger(P\otimes Q) =\lambda_2(P\otimes Q)$, where $\lambda_2=1-\frac{16p}{15}$.}. Following all four steps in Fig.~\ref{fig:pauli} gives
+\begin{equation}
+ X_{13}\longmapsto\frac{\lambda_1\lambda_2}{\sqrt2}
+       (X_{13}-Z_{14}Y_{13}).
+ \label{eq:localexample}
+\end{equation}
+To obtain a scalar, one can evaluate the resultant Pauli terms on an input
+state and add their weighted contributions. For a Pauli measurement readout with outcome parities $\pm 1$,
+the mean outcome determines the two probabilities:
+\begin{equation}
+ \Pr(O=\pm1)=\frac{1\pm\langle O\rangle}{2}.
+ \label{eq:pauli-probability}
+\end{equation}
+For illustration, one can use input $\ket0_{14}\ket+_{13}$;
+$\langle X_{13}\rangle=1$ and $\langle Z_{14}Y_{13}\rangle=0$.
+The output mean is therefore $\lambda_1\lambda_2/\sqrt2$.
+
+\subsubsection{Pauli propagation on the double-checking circuit}
+
+We now follow the observable through the whole $d=3$ check of Fig.~\ref{fig:d3-incoming} at $p=0$, to show how the 128 terms produced by the entry layer collapse to a single logical observable. This collapse is what keeps the response tables small. Consider the central $X$-basis measurement on qubit $7$. 
+Propagating $X_7$ backwards through the four CNOT layers $\mathtt{C}_4,\mathtt{C}_3,\mathtt{C}_2,\mathtt{C}_1$ gives the strings in
+Fig.~\ref{fig:d3-full-propagation}(a). Every step still returns one Pauli string, and the CNOTs spread its support without introducing a sum.
+
+Write $\mathcal D=\{0,3,7,9,10,12,13\}$ for the data qubits.
+At the entry layer $D^\dagger=\prod_{q\in\mathcal D}T_q^\dagger$,
+backward propagation uses $TXT^\dagger=(X+Y)/\sqrt2$.
+The four ancillary $X$ factors have expectation $+1$ on their prepared
+$\ket{+}$ states. The operator left on the data is:
+\begin{equation}
+ R=2^{-7/2}\prod_{q\in\mathcal D}(X_q+Y_q) \ .
+ \label{eq:v2-central-operator}
+\end{equation}
+This product contains 128 Pauli strings. On a codespace input, 112 of the 128 Pauli strings flip one or more code stabiliser
+and hence have zero expectation on the ideal encoded state.
+Of the remaining 16 Pauli strings, eight act as $X_L$ and eight as $-Y_L$.
+Their coefficients combine, forming the logical observable: $M_L$,
+\begin{equation}
+ \Pi_0R\Pi_0=M_L\Pi_0,\qquad M_L=\frac{X_L-Y_L}{\sqrt2} \ .
+ \label{eq:v2-central-logical}
+\end{equation}
+The ideal state is then:
+$\ket{T_L^\dagger}=(\ket{0_L}+e^{-i\pi/4}\ket{1_L})/\sqrt2$,
+which has $\langle M_L\rangle=1$\footnote{Pauli operators: $X_L=\prod_{q\in\mathcal D}X_q$, $Z_L=\prod_{q\in\mathcal D}Z_q$,
+and $Y_L=iX_LZ_L$.}.
+
+\diagram{method/d3_full_propagation}
+{(a) The central $X_7$ propagated backwards, with each string
+beside its node. (b) The entry layer and code projection reduce
+128 terms to two logical terms.}
+{fig:d3-full-propagation}
+
+The incoming error changes the state on which the propagated operator
+is evaluated. For a specified $E$, the central readout probability is
+\begin{equation}
+ \Pr(m_7=0\mid E)
+ =\frac{1+\langle T_L^\dagger|E^\dagger R E|T_L^\dagger\rangle}{2}.
+ \label{eq:v2-incoming-mean}
+\end{equation}
+Substituting $E=I$ gives probability 1, as expected. For $E=X_7$ the conjugation turns $(X_7+Y_7)$ in Eq.~\eqref{eq:v2-central-operator} into $(X_7-Y_7)$ and the probability drops to $1/2$. This is only the readout of the central measurement on qubit 7 in Fig.~\ref{fig:d3-incoming}, however: even when it passes, the six auxiliary measurements and the final code projection detect the syndrome of $X_7$, so with no further faults the check rejects and $F_A(X_7;0)=0$. For $p>0$ a second fault can cancel that syndrome and let $X_7$ pass, which is why every incoming $E$, rejected or not at $p=0$, has an entry $F_A(E;p)$, $F_B(E;p)$ in the table.
+
+With noise, the same backward propagation is averaged over every fault pattern inside the check, keeping only the measurement records with trivial detector parities (which means post-selection is successful). Call the resulting
+unnormalised output state $\sigma_E$. Its trace equals the probability of obtaining measurement records
+with trivial detector parities, for a fixed incoming error $E$ in either of the two double-checking subcircuits.
+The noiseless final readout uses the projector $\Pi_0$ onto the
+accepted code space and $\Pi_{\rm bad}$ onto the states within
+that code space with the wrong logical outcome. A projector's expectation is the probability
+of its event. Thus
+\begin{equation}
+ \begin{aligned}
+ F_A(E;p)&=\Tr(\Pi_0\sigma_E),\\
+ F_B(E;p)&=\Tr(\Pi_{\rm bad}\sigma_E).
+ \end{aligned}
+ \label{eq:response-projectors}
+\end{equation}
+We evaluate these traces by propagating the projectors backwards. The state $\sigma_E$ need not be stored.
+Their Pauli expansions can have negative coefficients, but the final
+traces are probabilities. See Appendix~\ref{app:circuits} for these projectors.
+
+So far the input carried the error and the check was noiseless. We now reverse the roles: an ideal input, and a fixed pattern of faults inside the check, $X_3$ in the `fold' layers and $Y_9$ in the `unfold' layer (Fig.~\ref{fig:d3-fixed-faults}), chosen because it is the smallest pattern that passes post-selection with a logical error.
+\diagram{method/d3_accepted_faults}
+{A fixed two-fault pattern in the $d=3$ double-checking circuit.
+Coloured boxes are $X_3$ and $Y_9$ errors with their propagation traced.}
+{fig:d3-fixed-faults}
+The first fault propagates to $X_0X_1X_3$, its ancillary $X_1$ does not
+flip the final $X$ readout. The data error before the exit layer is
+$Q=X_0X_3Y_9$. Forward propagation through that layer gives
+\begin{equation}
+ DQD^\dagger=\frac{(X_0+Y_0)(X_3+Y_3)(Y_9-X_9)}{\sqrt8}.
+ \label{eq:v2-fixed-fault}
+\end{equation}
+Fig.~\ref{fig:d3-fault-expansion} shows all eight terms.
+The code projection removes six. The surviving operator is
+$-(X_L+Y_L)/\sqrt8=-N_L/2$, where
+$N_L=(X_L+Y_L)/\sqrt2$ anticommutes with $M_L$.
+The accepted state is therefore logically wrong: two faults lead to an accepted logical error, hence the fault distance is $d_\text{fault}=2$. 
+A ZX-calculus contraction of the noiseless circuit with these two faults inserted~\cite{wan} confirms it. No detector fires with probability $1/4$, and every accepted output carries the logical error.
+
+\widediagram{method/d3_fault_expansion}
+{All eight signed terms for a fixed two-fault example.
+Every edge contributes $1/\sqrt2$ with its indicated sign. The two surviving terms give acceptance $1/4$ and a logical error.}
+{fig:d3-fault-expansion}
+
+
+\subsection{Grouping equivalent Pauli errors}\label{sec:grouping}
+\input{figures/tensor_styles.tex}
+
+The injected and then cultivated magic state is encoded in a triangular colour code.
+\begin{figure}%
+\centering
+\begin{minipage}[c]{.38\linewidth}\centering
+\begin{adjustbox}{max width=\linewidth}\input{figures/d3_patch.tikz}\end{adjustbox}
+\par\smallskip $d=3$: seven data sites
+\end{minipage}\hfill
+\begin{minipage}[c]{.58\linewidth}\centering
+\begin{adjustbox}{max width=\linewidth}\input{figures/d5_pattern.tikz}\end{adjustbox}
+\par\smallskip $d=5$: entry layer $D^\dagger$
+\end{minipage}
+\caption{Triangular colour codes, number are qubit indices from~\cite{clifft, soft}. On the right, each node shows its entry $T$ or $T^\dagger$ gate in one layer of gates in the $d=5$ double-checking stage.}
+\label{fig:patches}
+\end{figure}
+The $[[7,1,3]]$ ($d=3$) variant code uses seven data qubits, while the $d=5$ cultivation circuit
+grows this to a $[[19,1,5]]$ code. In Fig.~\ref{fig:patches}, each coloured face defines an
+$X$ and a $Z$ stabiliser, formed by multiplying the corresponding
+Pauli operators over the qubits on that face. The code space is the
+simultaneous $+1$ eigenspace of these stabilisers~\cite{albert2026handbookerrorcorrectingcodes}. There are six
+independent stabiliser generators at $d=3$ and eighteen at $d=5$,
+with one logical qubit encoded in either case. Pauli errors that differ by a stabiliser (or product of stabilisers) have the same action
+on the encoded magic state and share a response-table entry.
+
+We need one response for each distinguishable incoming error, rather than
+one for every Pauli string (or else we need to store exponentially many of them). 
+To identify errors that share a response, we first represent each
+incoming Pauli string by its $X$ and $Z$ components using two binary
+masks, $\boldsymbol a$ and $\boldsymbol b$\footnote{At each qubit $q$,
+the tuple $(a_q,b_q)$ maps to the Pauli operators:
+$I\leftrightarrow(0,0)$,
+$X\leftrightarrow(1,0)$,
+$Z\leftrightarrow(0,1)$ and
+$Y\leftrightarrow(1,1)$, ignoring the overall phase.}. 
+The syndrome records which code stabilisers have been flipped to $-1$ parity (represented by bit $1$)\footnote{Parity $+1$ is represented by bit $0$.}.
+For the $d=3$ patch in Fig.~\ref{fig:patches}, the parity-check matrix is
+\begin{equation}
+ H^{(3)}=
+ \begin{pmatrix}
+ 1&1&1&0&1&0&0\\
+ 0&1&1&1&0&1&0\\
+ 0&0&1&0&1&1&1
+ \end{pmatrix}.
+\end{equation}
+The columns follow qubit order $(0,\allowbreak3,\allowbreak7,\allowbreak9,\allowbreak10,\allowbreak12,\allowbreak13)$. The rows correspond to the blue, red and green faces.
+Each row marks the qubits belonging to that face.
+
+For either code, we label each incoming error by
+\begin{equation}
+ \begin{aligned}
+ \alpha&=(H\boldsymbol a,\ \boldsymbol1\cdot\boldsymbol a),\\
+ \beta&=(H\boldsymbol b,\ \boldsymbol1\cdot\boldsymbol b),
+ \end{aligned}
+ \label{eq:address}
+\end{equation}
+all in modulo two. Here $H\boldsymbol a$ and
+$H\boldsymbol b$ are the $Z$- and $X$-stabiliser syndromes,
+respectively. The final bit in each label is the parity of the
+corresponding mask, with $\boldsymbol1$ being the all-ones vector, 
+\[
+\boldsymbol1 = (1,1,\ldots,1)^{\text{T}} \ .
+\]
+These two additional bits distinguish logical Pauli classes
+with the same syndrome.
+Errors with the same $(\alpha,\beta)$ differ by a stabiliser, which acts trivially on the encoded state, so they have the same response.
+
+For example, $X_7$ and $X_0X_3X_{10}$ differ by the blue-face
+stabiliser $X_0X_3X_7X_{10}$ and therefore have the same effect
+on the encoded state.
+
+\diagram{frame_example}{Two Pauli errors share a response-table entry at $d=3$.}{fig:frames}
+
+At $d=3$, each label $\alpha$ or $\beta$ has four bits, so each response table has
+$16^2=256$ entries. At $d=5$, each label $\alpha$ or $\beta$ has ten bits and a table has
+$1024^2$ entries. Grouping stabiliser-equivalent errors reduces the number of
+response-table entries from $4^7=16\,384$ to $256$ at $d=3$,
+and from $4^{19}\approx2.75\times10^{11}$ to
+$1\,048\,576$ at $d=5$. We calculate and store one response
+for each equivalence class.
+These error labels become tensor indices. Contracting the tensors combines
+the double-checking responses with the noise from earlier stages to give
+$A(p)$ and $B(p)$.
+
+\subsection{Tensor contraction}\label{sec:tensor-contraction}
+The response of a check to an incoming error is a sum over every fault configuration inside the check. Writing the gates, noise and post-selection conditions as small tensors organises that sum: contracting them performs the noise average, and leaving the incoming labels open computes all table entries at once, sharing the internal sums between them.
+\diagram{tensor_definition}
+{(a) A tensor with $r$ indices. (b) Contracting $j$ leaves all
+$i_1,\ldots,i_m$ and $k_1,\ldots,k_n$ indices open.}
+{fig:tensor-definition}
+A tensor is an array whose entries are labelled by indices and defined as follows. For $r$ binary indices, the entries are written
+$\mathcal T_{i_1\cdots i_r}$, with $i_s\in\{0,1\}$.
+Each leg represents one index. Contracting tensors multiplies
+their entries and sums over the connected indices. Open legs
+label the indices that remain. A double line bundles several binary indices. Each leg is an index over error labels, not a physical qubit wire. Throughout this manuscript, we draw tensors as rounded boxes with legs as indices, contrasting with square white boxes elsewhere indicating calculation steps.
+
+\subsubsection{Response tables as tensors}
+For fixed $p$, the response table $F_A$ is a matrix where the row
+index groups the bits of $\alpha$ and column index
+groups the bits of $\beta$. Its entry gives the probability (for
+that fixed incoming error) that the double-checking stage and noiseless final code readout both pass. The corresponding entry of $F_B$ also requires
+a logical error. Both probabilities are averaged over the noise within the
+double-checking stage.
+
+Let $\mu(\alpha,\beta;p)$ be the joint probability that the earlier
+stages pass post-selection and supply that incoming error. Then
+\begin{equation}
+ \begin{aligned}
+ A(p)&=\sum_{\alpha,\beta}\mu(\alpha,\beta;p)F_A(\alpha,\beta;p),\\
+ B(p)&=\sum_{\alpha,\beta}\mu(\alpha,\beta;p)F_B(\alpha,\beta;p).
+ \end{aligned}
+ \label{eq:responseaverage}
+\end{equation}
+For each pair $(\alpha,\beta)$, multiply its weight $\mu$
+by the corresponding response $F_A$ or $F_B$, then sum over all pairs.
+This is a tensor contraction, shown in Fig.~\ref{fig:response}(b).
+Each weight $\mu$ is already the joint probability of passing the earlier post-selection and producing
+the specified incoming error. Because the weights sum to the earlier acceptance probability, no further normalisation is needed before taking $\PL=B/A$, giving the LER.
+
+\diagram{response}
+{(a) Eight binary indices label the $d=3$ response table.
+(b) Bundling them into $\alpha,\beta$ and summing with $\mu$ gives $A$ or $B$.
+Fig.~\ref{fig:opennet} in Appendix~\ref{app:response}
+shows the internal network.}
+{fig:response}
+
+\subsubsection{Tensors for the circuit operations}
+The eight open legs in the tensor from Fig.~\ref{fig:response}(a) label a completed
+response table. To calculate that table, we contract smaller tensors
+for the gates, noise and post-selection, keeping the incoming error
+labels open, so that the internal sums are shared between table entries. 
+We choose the tensor contraction order carefully to keep intermediate tensors small
+without changing the results (see Appendix~\ref{app:tensor-examples-v2} for details). Figure~\ref{fig:orderbubbles} shows one such order as nested bubbles and as a tree.
+\diagram[H]{order_bubbles}{A contraction order for the noisy growth stage of Fig.~\ref{fig:overview}, drawn two ways. Its 569 factors, the $d=3$ table $W$, 567 grouped noise factors $g_i$ and the $d=5$ response $F_O$, share one parity constraint on their labels (Appendix~\ref{app:growth}). $\dots$ stand for the omitted factors and joins. (a) Nested bubbles: each bubble is joined into one intermediate table, stored on the legs that cross its boundary. (b) The same order as a tree, one node per join, the dotted node standing for joins 3 to 566, the root being the scalar. The order changes the table sizes, not the contracted result.}{fig:orderbubbles}
+
+For example, the CNOT tensor $C$ in Fig.~\ref{fig:response-network}(a)
+contains the two parity tensors expanded in panel (b).
+An $x$ bit records the $X$ component
+of an error. A $v$ bit is a Fourier index for its $Z$ component.
+In Fourier form the CNOT acts on the $Z$ labels by the same parity rule as on the $X$ labels, and the noise becomes a multiplicative weight (Appendix~\ref{app:response}).
+Each grey tensor is $1$ when its three bits have even parity, and $0$
+otherwise. The vector $\boldsymbol u$ labels the error just after the
+gate; $\boldsymbol x'$ labels it after the noise. The repeated Fourier
+label $\boldsymbol v'$ is shared with the noise tensor $H_{2,p}$.
+Noise supplies its weights as defined in Appendix~\ref{app:response}.
+The two $T$ layers and final selection are compiled into signed
+terminal factors.
+Appendix~\ref{app:response} gives their equations and the final transform
+from the internal Fourier indices to $F_A,F_B$.
+
+\widediagram{method/cnot_factors}
+{(a) A circuit portion and its CNOT/noise tensors.
+(b) The faint box groups the two parity factors into $C$.
+Black dots reuse the same index. Eq.~\eqref{eq:gate-noise-tensor} and Fig.~\ref{fig:opennet} in Appendix~\ref{app:response} place this pair inside the response network.}
+{fig:response-network}
+
+
+
+\subsubsection{Exact fractions and series coefficients}
+We evaluate the tensor network in two ways to compute the LER. 
+\begin{enumerate}
+\item At a fixed circuit-level noise strength $p$ expressed as a fraction, we evaluate the whole contraction modulo several certified primes and reconstruct the acceptance and accepted-error probabilities as exact fractions. 
+Their ratio is $\PL(p)$ with every fault order included.
+Exact rational arithmetic on the whole network is impractical, the fractions run to thousands of digits, whereas modular arithmetic uses fixed-size integers and recovers the exact fraction at the end (Appendix~\ref{app:arithmetic}).
+\item As a series expansion, we remove the common no-fault factor and use
+polynomials in parameter $x=p/(1-p)$. We keep degrees 0 to 10 in $x$ in every factor, including the earlier-stage weights and final responses. This returns the exact raw acceptance and
+accepted-error coefficients through that order. Dividing their series
+gives Eq.~\eqref{eq:fullseries}. The contribution of the higher-order terms is bounded (Appendix~\ref{app:arithmetic}).
+\end{enumerate}
+

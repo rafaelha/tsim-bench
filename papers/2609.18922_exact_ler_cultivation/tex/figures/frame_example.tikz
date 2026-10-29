@@ -1,0 +1,9 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[box] (a) at (0,.8) {$X_7\ket{T_L}$};
+\node[box] (b) at (0,-.8) {$X_0X_3X_{10}\ket{T_L}$};
+\node[box,text width=41mm] (address) at (4.8,0)
+ {same error labels\\$\alpha=(1,1,1;1)$\\$\beta=(0,0,0;0)$};
+\draw[flow] (a)--(address);\draw[flow] (b)--(address);
+\node[note,align=center] at (1.6,-1.8)
+ {$X_0X_3X_7X_{10}$ is a stabiliser\\of the positive $d=3$ code};
+\end{tikzpicture}

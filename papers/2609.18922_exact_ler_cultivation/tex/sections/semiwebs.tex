@@ -1,0 +1,79 @@
+\begin{semiwebaddition}
+\section{Pauli semiwebs in double checking}
+\label{app:semiwebs}
+
+\subsection{Definition and relation to Pauli propagation}
+A Pauli semiweb assigns $I,X,Y$ or $Z$ to every wire of a ZX diagram.
+At each spider, the tensor product $w_v$ of the Pauli operators on its legs acts on its tensor as
+\begin{equation}
+ w_v|v(\theta_v)\rangle=\lambda_v|v(\theta_v+\delta_v)\rangle.
+ \label{eq:semiweb-local}
+\end{equation}
+Here $|v(\theta_v)\rangle$ is the spider tensor written as a state,
+$\lambda_v$ is a nonzero scalar, and a phase shift $\delta_v\ne0$
+modulo $2\pi$ is a \emph{defect}. The Pauli operators on each Hadamard tensor's legs must leave it unchanged
+up to a scalar. With no defects, the semiweb is a \emph{Pauli web}~\cite{zxflow}.
+A non-Clifford diagram can have both Pauli webs and semiwebs with defects.
+The accompanying \texttt{pauli\_semiwebs.pdf} gives a basis of the full
+semiweb space for each $d=3,5$ double-checking diagram, with editable TikZ sources.
+
+The relation to Pauli propagation is already apparent with only a single $T$ gate:
+\begin{equation}
+ T^\dagger X=e^{-i\pi/4}XT,
+ \qquad T^\dagger XT=\frac{X-Y}{\sqrt2}.
+ \label{eq:semiweb-T}
+\end{equation}
+The first identity keeps the Pauli label and changes the gate's phase;
+the second expands the conjugated observable into signed Pauli terms.
+Both retain the coherent phases.
+
+Let $K^{(3)}$ represent the noiseless $d=3$ double-checking stage with every $X$
+measurement selected as $+1$, before the terminal code projection.
+The local identities in Eq.~\eqref{eq:semiweb-local} give
+\begin{equation}
+ K^{(3)} P_{\rm in}=\lambda P_{\rm out}K^{(3)}_{\boldsymbol\delta},
+ \label{eq:semiweb-global}
+\end{equation}
+where $K^{(3)}_{\boldsymbol\delta}$ has the starred phases changed and $\lambda$
+includes the scalar phases from the local identities and contractions.
+For Fig.~\ref{fig:semiweb-main}, this is
+\begin{equation}
+ K^{(3)}X_7=e^{5i\pi/4}X_0X_3X_9X_{10}X_{12}X_{13}K^{(3)}_{\boldsymbol\delta}.
+ \label{eq:semiweb-X7}
+\end{equation}
+The diagram describes the selected branch. It shows changes to phases and measurement outcomes, including cancellations;
+full post-selection must still be checked.
+
+\subsection{Multiplication and cancellation}
+Products of semiwebs on the same diagram are semiwebs~\cite{zxflow}.
+To multiply two semiwebs, multiply their Pauli operators on each wire, including scalar phases such as
+$XZ=-iY$. Defect shifts must be composed, rather than added.
+
+\paragraph{A non-Clifford defect that cancels.}
+Both $W_{X_7}$ and $W_{X_0}$ put $X$ on both legs of the
+$\pi/4$ spider at the exit of qubit $0$. Their product gives $XX=I$,
+as shown in Fig.~\ref{fig:semiweb-red-local}. Its phase changes as
+\begin{equation}
+ \frac{\pi}{4}\xrightarrow{X\otimes X}-\frac{\pi}{4}
+ \xrightarrow{X\otimes X}\frac{\pi}{4}.
+ \label{eq:semiweb-phase-cancellation}
+\end{equation}
+The second change is $+\pi/2$ after the first has acted. Other defects remain.
+
+\input{sections/semiweb_red_cancellation_figure.tex}
+
+\paragraph{Two measurement defects that cancel.}
+The $Z_0$ and $Z_3$ semiwebs each flip the central $X$ measurement on
+qubit $7$ and the final ancilla $X$ measurement on qubit $6$.
+Their product cancels both measurement defects,
+Fig.~\ref{fig:semiweb-cancellation}:
+\begin{equation}
+ W_{Z_0}W_{Z_3}=W_{Z_0Z_3},\qquad K^{(3)}Z_0Z_3=Z_0Z_3K^{(3)}.
+ \label{eq:semiweb-Z-product}
+\end{equation}
+This product is a defect-free Pauli web.
+
+\input{sections/semiweb_cancellation_figure.tex}
+
+\FloatBarrier
+\end{semiwebaddition}

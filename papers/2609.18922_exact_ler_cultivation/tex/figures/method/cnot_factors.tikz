@@ -1,0 +1,96 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  tensor/.style={tn tensor,minimum width=14mm,minimum height=10mm,
+                 inner sep=1.5mm,font=\small},
+  bundle/.style={tn bundle},
+  copy bit/.style={tn copy}]
+
+\node[note,font=\small] at (3.4,5.05)
+  {\textbf{(a)} A $d=3$ circuit portion and its tensors};
+\node[note,font=\small] at (11.7,5.05)
+  {\textbf{(b)} The CNOT tensor and its factors};
+
+\node[inner sep=0pt] at (3.4,3.95) {%
+  \begin{tikzpicture}[font=\small]
+  \begin{yquant}[operator/separation=2.5mm,register/separation=3mm,
+    every wire/.append style={draw=black!35}]
+  qubit {\color{black!25}$11$} q11;
+  qubit {$14$} q14;
+  qubit {$13$} q13;
+  [style={opacity=.18}] cnot q14 | q11;
+  align q11,q14,q13;
+  [style={opacity=.38}] box {$\mathcal N_{2,p}$} (q11,q14);
+  [style={opacity=.38}] box {$\mathcal N_{1,p}$} q13;
+  align q11,q14,q13;
+  [style={opacity=.15}] text {$\cdots$} q11;
+  discard q11;
+  cnot q13 | q14;
+  box {$\mathcal N_{2,p}$} (q14,q13);
+  [style={opacity=.50}] box {$T$} q13;
+  align q14,q13;
+  [style={opacity=.25}] box {$\mathcal N_{1,p}$} q14,q13;
+  [style={opacity=.10}] text {$\cdots$} q14,q13;
+  \end{yquant}
+  \end{tikzpicture}};
+\draw[flow] (3.4,2.9)--(3.4,2.45)
+  node[midway,right,note] {write as binary factors};
+
+\node[tensor,tn constraint] (C) at (1.85,1.05) {$C$\\\scriptsize CNOT};
+\node[tensor,tn noise] (N) at (4.75,1.3) {$H_{2,p}$\\\scriptsize noise};
+\draw[bundle] (.15,1.3)--node[above,note] {$\boldsymbol x$}
+  ([yshift=2.5mm]C.west);
+\draw[bundle] (.15,.8)--node[below,note] {$\boldsymbol v$}
+  ([yshift=-2.5mm]C.west);
+\draw[bundle] ([yshift=2.5mm]C.east)--node[above,note]
+  {$\boldsymbol u$}(N.west);
+\draw[bundle] (N.east)--(6.65,1.3) node[right,note] {$\boldsymbol x'$};
+\draw[bundle] ([yshift=-2.5mm]C.east)--(2.95,.8)--(2.95,-.05)--(6.65,-.05)
+  node[right,note] {$\boldsymbol v'$};
+\draw[bundle] (4.75,-.05)--(N.south);
+\node[copy bit] at (4.75,-.05) {};
+\node[note] at (3.7,-.33) {$\boldsymbol v'$};
+\node[note] at (3.4,-.8)
+  {$C=1$ for the CNOT label update; $0$ otherwise};
+
+\node[note] at (3.4,-1.5)
+ {sum the intermediate label $\boldsymbol u$;\\
+  the noise increment is $\boldsymbol x'\oplus\boldsymbol u$};
+
+\node[tensor,tn constraint] (Cgroup) at (9.25,1.8) {$C$\\\scriptsize CNOT};
+\draw[bundle] (7.8,2.05)--node[above,note] {$\boldsymbol x$}
+  ([yshift=2.5mm]Cgroup.west);
+\draw[bundle] (7.8,1.55)--node[below,note] {$\boldsymbol v$}
+  ([yshift=-2.5mm]Cgroup.west);
+\draw[bundle] ([yshift=2.5mm]Cgroup.east)--node[above,note]
+  {$\boldsymbol u$}(10.55,2.05);
+\draw[bundle] ([yshift=-2.5mm]Cgroup.east)--node[below,note]
+  {$\boldsymbol v'$}(10.55,1.55);
+\node[font=\Large] at (10.95,1.8) {$=$};
+
+\begin{scope}[on background layer]
+ \path[rounded corners=2pt,draw=black!35,line width=1.1pt,
+       fill=black!12,fill opacity=.18]
+   (11.95,.05) rectangle (14.95,4.5);
+ \node[align=center,text=black!30,anchor=north east,
+       font=\scriptsize,inner sep=0pt]
+   at (14.7,4.30) {$C$\\[-1pt]CNOT};
+\end{scope}
+\foreach \xx/\yy/\a/\b/\ao/\bo/\name/\labelpos in
+ {12.65/3.55/x_{14}/x_{13}/u_{14}/u_{13}/x/.28,
+  14.10/2.00/v_{14}/v_{13}/v'_{14}/v'_{13}/v/.12}{
+ \begin{scope}[shift={(0,\yy)}]
+ \node[tn copy] (dot\name) at (\xx,0) {};
+ \draw[tn leg] (11.3,0)--node[pos=\labelpos,above,note] {$\a$}(dot\name);
+ \draw[tn leg] (dot\name)--node[pos=.86,above,note] {$\ao$}(16,0);
+ \node[tn constraint,minimum width=8mm,minimum height=5mm,
+       inner sep=.8mm,font=\scriptsize]
+   (xor\name) at (\xx,-.72) {$\oplus$};
+ \draw[tn leg] (dot\name)--(xor\name);
+ \draw[tn leg] (11.3,-.72)--node[pos=\labelpos,above,note] {$\b$}(xor\name);
+ \draw[tn leg] (xor\name)--node[pos=.86,above,note] {$\bo$}(16,-.72);
+ \end{scope}
+}
+\node[note] at (13.6,-.45) {$u_{13}\oplus x_{13}\oplus x_{14}=0$};
+\node[note] at (13.6,-1.0) {$v'_{13}\oplus v_{13}\oplus v_{14}=0$};
+\node[note] at (11.7,-1.7)
+ {each grey factor is $1$ for even parity, $0$ otherwise};
+\end{tikzpicture}

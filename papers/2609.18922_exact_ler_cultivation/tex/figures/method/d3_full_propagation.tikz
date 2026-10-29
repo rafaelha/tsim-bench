@@ -1,0 +1,44 @@
+\begingroup\color{black}
+\begin{tikzpicture}[font=\scriptsize,text=black,
+  pp term/.style={pauli,minimum size=6.5mm,inner sep=0pt},
+  pp first/.style={initial pauli,minimum size=6.5mm,inner sep=0pt},
+  pp string/.style={anchor=west,font=\small,align=left,inner sep=0pt}]
+\node[note,font=\small] at (3.05,.8)
+ {\textbf{(a)} Backwards through the CNOT layers};
+\node[pp first] (p0) at (0,0) {};
+\node[pp term] (p1) at (0,-1.02) {};
+\node[pp term] (p2) at (0,-2.04) {};
+\node[pp term] (p3) at (0,-3.06) {};
+\node[pp term] (p4) at (0,-4.2) {};
+\node[pp string] at (.65,0) {$X_7$};
+\node[pp string] at (.65,-1.02) {$X_7X_{11}$};
+\node[pp string] at (.65,-2.04) {$X_3X_7X_{11}X_{12}$};
+\node[pp string] at (.65,-3.06) {$X_1X_3X_7X_8X_{11}X_{12}X_{14}$};
+\node[pp string] at (.65,-4.2)
+ {$\begin{aligned}&X_0X_1X_3X_7X_8X_9\\[-1pt]
+                  &\qquad X_{10}X_{11}X_{12}X_{13}X_{14}\end{aligned}$};
+\foreach \a/\b/\gate in {p0/p1/4,p1/p2/3,p2/p3/2,p3/p4/1}{
+ \draw[pauli edge] (\a)--node[note,left=2pt] {$\mathtt{C}_{\gate}$}(\b);
+}
+\node[note,anchor=north east,align=right] at (6.2,.2)
+ {every arrow has\\coefficient $+1$};
+
+\node[note,font=\small] at (3.05,-5.6)
+ {\textbf{(b)} Entry layer and code projection};
+\node[note,font=\small] at (3.05,-6.4)
+ {$2^{-7/2}\displaystyle\prod_{q\in\mathcal D}(X_q+Y_q)$};
+\node[pp term] (physical) at (3.05,-7.15) {};
+\node[note,anchor=west] at (3.6,-7.15) {128 Pauli strings};
+\node[box,minimum width=30mm,minimum height=10mm,font=\scriptsize]
+ (project) at (3.05,-8.3) {restrict to the code\\and add signed terms};
+\draw[flow] (physical)--(project);
+\node[pp term,minimum size=10mm] (xl) at (1.55,-10.15) {$X_L$};
+\node[pp term,minimum size=10mm] (yl) at (4.55,-10.15) {$Y_L$};
+\draw[pauli edge,blue!75!black] (project.south)--(xl);
+\draw[pauli edge,red!80!black] (project.south)--(yl);
+\node[note,text=blue!75!black] at (1.1,-9.2) {$+1/\sqrt2$};
+\node[note,text=red!80!black] at (5,-9.2) {$-1/\sqrt2$};
+\node[note] at (3.05,-11.05)
+ {sixteen terms survive:\\eight give $X_L$, eight give $-Y_L$};
+\end{tikzpicture}
+\endgroup

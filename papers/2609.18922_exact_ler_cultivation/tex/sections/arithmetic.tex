@@ -1,0 +1,205 @@
+\input{sections/appendix_data/F/gen.tex}
+\providecommand{\hl}[2]{\colorbox{#1!22}{#2}}
+\section{Exact arithmetic, coefficients and remainders}\label{app:arithmetic}
+Every number in this main text concerns an exact rational. This appendix describes how these numbers are computed and certified. The TLDR route is:
+{\color{black}
+\begin{center}
+\adjustbox{max width=\linewidth}{%
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{st/.style={box,text width=30mm,inner sep=1.5mm,font=\small}}
+\node[st] (a) at (0,0) {\ref{app:F-fixedp}: fixed $p$, compute modulo primes, reconstruct the two integers $N_A,N_B$};
+\node[st,right=3mm of a] (b) {\ref{app:F-reuse}: reuse the exact final-response table across primes};
+\node[st,right=3mm of b] (c) {\ref{app:F-series}: series, raw coefficients $a_k,e_k$ in $x=p/(1-p)$, then the quotient $L_k$};
+\node[st,right=3mm of c] (e) {\ref{app:F-tail}: what the omitted orders can do to $\PL$, an interval that contains it};
+\draw[flow] (a)--(b); \draw[flow] (b)--(c); \draw[flow] (c)--(e); %
+\end{tikzpicture}}
+\end{center}}
+
+\noindent\begin{minipage}{\linewidth}
+\medskip\noindent\textbf{Notation.}\par\nopagebreak
+{\color{black}
+\begin{center}\small
+\begin{tabular}{lp{11.5cm}}\toprule
+symbol & meaning \\\midrule
+$W$, $F_O$ & the two endpoint tables, the first-stage table and the final-response table at the ends of the growth network, Fig.~\ref{fig:growthfactors} \\
+$D$, $D_W$, $D_F$ & a positive integer that clears every denominator of $A$ and $B$ at the chosen $p$, and the same for the first-stage and final-response tables \\
+$N_A=DA$, $N_B=DB$ & the two integers actually reconstructed, $0\le N_B\le N_A\le D$ \\
+$q$, $k2^m+1$, $a$ & a prime field, the Proth form of the primes used, and the witness with $a^{(q-1)/2}\equiv-1\pmod q$ \\
+$x=p/(1-p)$ & the series variable: a $k$-fault pattern has weight $(1-p)^N x^k$ times its Pauli factors \\
+$a_k$, $e_k$ & raw coefficients: accepted weight and accepted-wrong weight of all $k$-fault patterns, relevant-location convention, $N=1996$ ($402$ at $d=3$) \\
+$L_k$ & the coefficients of $\PL$ itself, from the quotient $e(x)/a(x)$ \\
+$\nu\in\{1,3,15\}$ & the number of Pauli outcomes of a location: flip, one-qubit, two-qubit depolarising \\
+$\mathbb F_q[x]/(x^{11})$ & polynomials with coefficients mod $q$, truncated after $x^{10}$ \\
+$A_K$, $E_K$, $\delta=A-A_K$ & the sums through order $K$, and the omitted acceptance weight \\
+$S_K=\sum_{k\le K}L_kx^k$ & the truncated series for $\PL$ \\
+\bottomrule
+\end{tabular}
+\end{center}}
+\end{minipage}
+\paragraph{Colours, for this appendix only.} \hl{tnblue}{Blue} marks an exact quantity that is computed or reconstructed, \hl{tnorange}{orange} marks a bound or a certificate, something only guaranteed to be at least as large as the truth, and \hl{tngreen}{green} marks a value confirmed by an independent recomputation.
+
+\subsection{Rational probabilities at fixed \texorpdfstring{$p$}{p}}\label{app:F-fixedp}
+\paragraph{Why not floating point.} 
+$B$ at $p=10^{-3}$ is $4.79\times10^{-10}$ and comes out of a signed sum, where the terms inside sum can have either $\pm$ sign and their magnitudes are far larger than the sum itself.
+The signs have two sources, the eight Fourier characters of Appendix~\ref{app:growth}, whose transformed factors are signed, and the interfering phases of the response sums of Appendix~\ref{app:response}.
+A double-precision floating-point number stores only 53 significant bits, about sixteen decimal digits. Cancellation amplifies its rounding error, and the accuracy lost depends on the magnitudes of the intermediate contributions relative to their sum, not on the small value of $B$ alone. Modular arithmetic avoids this rounding error and reconstructs integers with tens of thousands of bits exactly.
+So every contraction is done in prime fields $\mathbb F_q$\footnote{All primes used are Proth primes, $q=k2^m+1$ with odd $k<2^m$, in the range $2^{61}<q<2^{62}$. Each certificate records a witness $a$ with $a^{(q-1)/2}\equiv-1\pmod q$, which proves primality by Proth's theorem, \url{https://en.wikipedia.org/wiki/Proth\%27s_theorem}. A tiny instance is $\prothsmall$, and one in the range used is $q=\prothq=\prothk\cdot2^{\prothm}+1$ with witness $\protha$.}, where arithmetic is exact and cheap, and the answer is put back together at the end by the Chinese remainder theorem (see next).
+
+\paragraph{The Chinese remainder theorem (CRT)/Sunzi's theorem\footnote{Let's not coarse grain out Sunzi.}.} An integer is fixed by its remainders modulo several primes, provided it is smaller than the product of those primes. The remainders are cheap, since every contraction can be done modulo a prime with fixed-size integers, and the integer is assembled from them at the end. This is how $N_A$ and $N_B$ are found. Once the product of the primes used exceeds $D\ge N_A\ge N_B$, both integers are determined, and any further primes serve as independent verifications.
+
+For a small example take the primes $3$ and $5$ and arrange the integers $0,\dots,14$ by their remainders, Fig.~\ref{fig:crt}. Every cell of the grid is filled exactly once, so the remainders $2$ and $3$ can only belong to $N=8$. 
+\diagram[H]{crt_grid}{The Chinese remainder theorem for the primes $3$ and $5$. The fifteen integers below $15$ fill the grid of remainder pairs exactly once, so the remainders $(2,3)$ identify $N=8$.}{fig:crt}
+In the full calculation the reconstruction primes are chosen so that their product exceeds the sufficient denominator $D$ at each $p$. Table~\ref{tab:cost} gives the prime counts and the denominator bounds, the largest of which has 21,137 bits.
+
+\paragraph{The denominator.} 
+Every number in the main text is an exact rational. At a fixed $p$ the two probabilities are $A=N_A/D$ and $B=N_B/D$, with a denominator $D$ that can be written down in advance from the structure of the network, so it suffices to compute the integers $N_A,N_B$ modulo enough primes and to reassemble them by the Chinese remainder theorem. The series coefficients are obtained the same way, order by order in $x=p/(1-p)$. The route is
+Let $D_W,D_F$ be sufficient positive denominators of the first-stage and final-response tables at the chosen rational $p$. One sufficient denominator for both full probabilities is
+\begin{equation}
+ D=2^{75}D_WD_F\prod_{\ell\in{\rm growth}}\operatorname{den}(1-c_\ell p) \ ,
+ \label{eq:denominator}
+\end{equation}
+where $\operatorname{den}(r)$ is the denominator of the rational $r$ in lowest terms\footnote{Write $r$ as a reduced fraction $a/b$ with $\gcd(a,b)=1$ and $b>0$. Then $\operatorname{den}(r)=b$.} and $c_\ell\in\{2,4/3,16/15\}$ is the damping constant of growth channel $\ell$ from Eq.~\eqref{eq:damping}.
+Equation~\eqref{eq:denominator} lists where every denominator can come from: the $2^{-75}$ of one global Fourier normalisation, the two endpoint tables, and one damping factor $1-c_\ell p$ per growth channel. 
+To see this, use Eq.~\eqref{eq:eight} with $K$ the whole 75-bit space, $O=2^{-75}\sum_\chi\prod_i\hat f_i(\chi)$, before any slicing.
+The unnormalised transforms of $W,F$ are integer sums and retain their denominators. 
+Each physical growth channel contributes either one or its damping factor $1-c_\ell p$ to any character, see Appendix~\ref{app:growth}. 
+The only global Fourier normalisation is $2^{-75}$. 
+So $N_A = D\times A$ and $N_B = D\times B$ are integers whatever contraction tree is used, since the argument never looks at the normalisations inside a particular tree.
+At $p=10^{-3}$, the three damping factors have denominators \hl{tnblue}{$\denflip$}, \hl{tnblue}{$\dendepolone$} and \hl{tnblue}{$\dendepoltwo$}, and the 908 growth channels alone contribute about \growthbits\ bits to $D$. 
+
+This $D$ is chosen to be deliberately generous (e.g. it keeps every damping-factor denominator separately, 9,022 bits from the growth channels alone at $p=10^{-3}$, although most of them cancel in the reduced fraction)
+It does not matter that $D$ is far larger than the reduced denominator of $\PL$, which comes from $N_A$ after cancellation. 
+It only matters that $D$ is a true common denominator, because the Chinese remainder theorem needs the product of the primes to exceed the integers being reconstructed.
+
+\paragraph{Reconstruct integers, not fractions.} 
+Evaluate Eq.~\eqref{eq:eight} modulo each prime $q$, with every rational entry taken modulo $q$, which is possible because $q$ divides none of the denominators. 
+Multiplying the result by $D\bmod q$ gives the residues of the integers $N_A=DA$ and $N_B=DB$. 
+Since $B\le A\le1$ are probabilities, then:
+\begin{equation}
+ 0\le N_B\le N_A\le D,
+ \label{eq:height}
+\end{equation}
+so both integers lie in a known range and are recovered exactly once the product of the primes exceeds $D$.
+Once the product of distinct primes exceeds $D$, the Chinese remainder theorem identifies each integer uniquely in this range. Reconstruct $N_A,N_B$ separately and then form $\PL=N_B/N_A$ over the rationals. Dividing by $A$ inside a prime field is unnecessary and can fail when its residue is zero. The toy example in Fig.~\ref{fig:crt-toy}: $A=7/15$, $B=2/15$, $D=15$, so $N_A=7$, $N_B=2$. Modulo $7$ and $11$ the residues are $N_A\equiv(\crtrA)$ and $N_B\equiv(\crtrB)$, and since $7\cdot11>15$ the reconstruction returns \hl{tngreen}{$N_A=7$, $N_B=2$}, $\PL=2/7$. In $\mathbb F_7$ the residue of $A$ is $0$ and $B/A$ does not exist. In Fig.~\ref{fig:primes}, rows are primes and columns are the eight characters of Appendix~\ref{app:growth}. Along a row the characters are averaged first, exactly, inside $\mathbb F_q$. Down the columns the residues are combined by the Chinese remainder theorem. 
+Both directions are sums with a normalisation, and neither drops a character or a residue.
+\color{black}
+\diagram[H]{primes_characters}{Characters impose the projected conditions and primes reconstruct exact integers. All character columns are averaged before reconstruction down the rows.}{fig:primes}
+\diagram[H]{CRT_toy}{A small reconstruction example. $A$ vanishes modulo seven, but separate integer reconstruction still gives $B/A=2/7$.}{fig:crt-toy}
+
+
+\subsection{One response table for all primes}\label{app:F-reuse}
+The final-response table $F_O$ is the expensive part of every contraction, but its entries have a far smaller denominator bound $D_F$ than the full answer. So it is computed exactly once and reused for every prime.
+\begin{enumerate}
+\item Contract the table modulo the first few primes, until the product of those primes exceeds $D_F$. The Chinese remainder theorem then gives every entry as an exact integer.
+\item For each later prime, reduce those exact entries modulo the prime. No new endpoint contraction is needed.
+\item Contract the table afresh at two further primes and compare with the reduced entries, as a check.
+\end{enumerate}
+The grouping of entries with equal residues at the first prime, re-checked at each reconstruction prime, only speeds up step 1. The cache is exact and specific to $p$. The $p=10^{-3}$ repeat reuses it and the first-stage table but recomputes the whole growth sum with a new contraction order, and reproduces $A$, $B$ and $\PL$ exactly, so it is a repeat that shares the two endpoint tables $W$ and $F_O$ with the first run, rather than an independent simulation.
+
+\subsection{Physical fault coefficients}\label{app:F-series}
+Finally, the series. The main text reports $A$, $B$ and $\PL$ not only at fixed $p$ but as power series in $x=p/(1-p)$, Eq.~\eqref{eq:fullseries}. Their coefficients are exact rationals too, obtained by the same modular contraction with one change: every number in the network is replaced by a polynomial in $x$, truncated after $x^{10}$. This section says what the coefficients count, how $\PL$'s coefficients follow from them, and how the truncated polynomials are handled.
+
+\paragraph{What the raw coefficients count.} Each of the $N=1996$ fault locations at $d=5$ contributes a weight
+\begin{equation}
+ \begin{cases} 1-p & \text{no fault},\\[2pt] p/\nu & \text{one of its $\nu$ Pauli outcomes, } \nu\in\{1,3,15\},\end{cases}
+ \label{eq:locationweight}
+\end{equation}
+so a pattern of $k$ faulted locations has weight $(1-p)^{N-k}p^k=(1-p)^Nx^k$ times $1/\nu$ per faulted location. Pulling out the common factor $(1-p)^N$,
+\begin{equation}
+ \begin{aligned}
+ A(p)&=(1-p)^N a(x),& a(x)&=\sum_{k=0}^N a_kx^k,\\
+ B(p)&=(1-p)^N e(x),& e(x)&=\sum_{k=0}^N e_kx^k.
+ \end{aligned}
+ \label{eq:raww}
+\end{equation}
+Here $a_k$ is the sum over all patterns of $k$ faulted locations of their probability of being accepted, and $e_k$ the same sum with the probability of being accepted with a logical error, as in Eq.~\eqref{eq:probabilities}. For instance $a_1=\dfiveaone$ at $d=5$ is the sum, over every location and each of its $\nu$ Pauli outcomes, of the acceptance probability of that single fault divided by $\nu$. Since every term is a probability and there are $\binom Nk$ patterns of size $k$,
+\begin{equation}
+ \begin{gathered}
+ a_0=1,\qquad 0\le e_k\le a_k\le\binom Nk,\\
+ L_k=e_k-\sum_{j=1}^k a_j L_{k-j}.
+ \end{gathered}
+ \label{eq:recursion}
+\end{equation}
+
+\paragraph{From $a_k,e_k$ to the coefficients of $\PL$.} The logical error rate is the quotient $\PL=B/A=e(x)/a(x)=\sum_kL_kx^k$, and multiplying out $a(x)\sum_kL_kx^k=e(x)$ and comparing coefficients gives the last line of Eq.~\eqref{eq:recursion}. Thus $L_k$ includes the acceptance correction and is not itself a positive fault-set count. It can be negative. The leading nonzero $L_k$ equals $e_k$. Running this recursion on the raw $a_k,e_k$ of Tables~\ref{tab:d3raw} and~\ref{tab:d5raw} recovers every $L_k$ of Table~\ref{tab:d3coeff} and of Eq.~\eqref{eq:fullseries}, which were obtained by polynomial division instead, at $d=5$ from $L_{\dfivelead}=\dfiveleadval$ and at $d=3$ from $L_{\dthreelead}=\dthreeleadval$. See Appendix~\ref{app:numerics} for the coefficient tables. The first rows at $d=5$:
+{\color{black}
+\begin{center}\small\input{sections/appendix_data/F/tab_recursion_d5.tex}\end{center}}
+and at $d=3$:
+{\color{black}
+\begin{center}\small\input{sections/appendix_data/F/tab_recursion_d3.tex}\end{center}}
+The 1,568 locations with an identity response were left out of $N$. Restoring them multiplies both $a$ and $e$ by $(1+x)^{1568}$, which turns $a_1=\dfiveaone$ into $\dfiverestored$ but leaves every $L_k$ unchanged, since the factor cancels in the quotient.
+
+\paragraph{How the coefficients are computed.} Every scalar in the contraction becomes a polynomial in $x$ with coefficients modulo $q$, truncated after $x^{10}$, that is, an element of the ring $\mathbb F_q[x]/(x^{11})$. A product coefficient is a Cauchy sum,
+\begin{equation}
+ [uv]_k=\sum_{j=0}^k u_jv_{k-j}.
+ \label{eq:cauchy}
+\end{equation}
+As a tensor, the product of two coefficient vectors is the contraction of the two vectors with the three-leg indicator $\ind{j+\ell=k}$, the legs $j$ and $\ell$ summed and $k$ left open:
+{\color{black}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn tensor,minimum width=10mm,minimum height=9mm] (u) at (0,0.7) {$u$};
+\node[tn tensor,minimum width=10mm,minimum height=9mm] (v) at (0,-0.7) {$v$};
+\node[tn constraint,minimum width=22mm,minimum height=24mm,font=\small] (c) at (2.6,0) {$\ind{j+\ell=k}$};
+\draw[tn leg] (u.east)--node[above,tn label] {$j$}(c.west|-u.east);
+\draw[tn leg] (v.east)--node[below,tn label] {$\ell$}(c.west|-v.east);
+\draw[tn leg] (c.east)--node[above,tn label] {$k$}(4.3,0);
+\node[font=\large] at (5.0,0) {$=$};
+\node[tn intermediate,minimum width=12mm,minimum height=9mm] (w) at (6.2,0) {$uv$};
+\draw[tn leg] (w.east)--node[above,tn label] {$k$}(7.5,0);
+\node[tn label] at (3.2,-1.5) {toy example: $\cauchytoy\pmod{x^3}$, coefficients $(\cauchyw)$};
+\end{tikzpicture}
+\end{center}}
+Truncation is exact for the degrees kept, because a term of degree above ten can never contribute to a coefficient of degree ten or less. The endpoint tables must be prepared in the same ring. Fixed-$p$ tables do not supply their coefficients.
+
+\paragraph{Grouped factors as polynomials.} In Appendix~\ref{app:growth} a group of $m_g$ channels became one table $g_p(v)$, Eq.~\eqref{eq:group}, built from the damping factor $\lambda(p)=\prod_\ell(1-c_\ell p)$. For the series the same table has to be written in $x$, with the no-fault weight $(1-p)^{m_g}$ of the group removed, because that weight is already part of the global factor $(1-p)^N$ in Eq.~\eqref{eq:raww}. Dividing Eq.~\eqref{eq:group} by $(1-p)^{m_g}$ and using $1-c_\ell p=(1-p)\bigl(1+(1-c_\ell)x\bigr)$ and $1/(1-p)=1+x$ gives
+\begin{equation}
+ \begin{aligned}
+ P_g(x)&=\prod_{\ell=1}^{m_g}\bigl(1+(1-c_\ell)x\bigr),\\
+ g_x(v)&=P_g(x)\ind{v=0}\\
+       &\quad+\frac{(1+x)^{m_g}-P_g(x)}{2^{r_g}}\ind{v\in S}.
+ \end{aligned}
+ \label{eq:polygroup}
+\end{equation}
+Here $P_g(x)$ is the damping factor in the new variable, and $(1+x)^{m_g}$ is the $1$ of Eq.~\eqref{eq:group} after the division. That term is what makes the coefficient of $x^k$ count $k$-fault patterns correctly: the group stands for $m_g$ locations, each of which may fault, not for one effective fault. Replacing $(1+x)^{m_g}$ by $1+x$, as if the group were a single location, would undercount every pattern with two or more faults inside the group.
+
+For example, for a group of one flip, one one-qubit and one two-qubit depolariser at $p=10^{-3}$, $P_g(x)=\Pgx$, and multiplying $g_x(0)=\gxzero$ and $g_x(e)=\gxone$ by $(1-p)^3$ returns exactly $g_p(0)$ and $g_p(e)$ of Appendix~\ref{app:growth}. The series is therefore not an approximation of the fixed-$p$ numbers but an exact computation in a different ring.
+
+To reconstruct $a_k,e_k$ by the Chinese remainder theorem, clear their denominators: $U_{A,k}=2^{31}15^ka_k$ and $U_{B,k}=2^{31}15^ke_k$, the coefficients of $A$ and $B$ scaled to integers, the $2^{31}$ clearing the denominators of the response probabilities ($2^{11}$ at $d=3$)\footnote{The denominators $2^{11}$ and $2^{31}$ arise as follows. Summing the codewords of Eq.~\eqref{eq:codebasis}, a check with $r$ faces has a logical $2\times2$ matrix whose entries are an eighth root of unity times a Gaussian integer $a+bi$, divided by $2^{r+1}$, the root being fixed by the two logical basis bits and a frame parity. Composing the $r=3$ and $r=9$ checks on the normalised magic state keeps this form and gives amplitudes with denominator $2^{14}\sqrt2$, hence probabilities with denominator dividing $2^{29}$. The wrong-outcome projector $(I-M_L)/2$ adds at most a factor four, giving $2^{31}$. One $r=3$ check gives the analogous $2^{11}$. The accepted growth-record sum adds no denominator, by Appendix~\ref{app:growth}.} and the $15^k$ the Pauli outcome weights of $k$ faulted locations, and that $0\le U_{B,k}\le U_{A,k}\le2^{31}15^k\binom Nk$, since every term of $a_k$ is a probability. At $k=10$ this bound has $\boundtenbits$ bits ($115$ at $d=3$), so three primes above $2^{61}$ reconstruct every coefficient at $d=5$, and two suffice at $d=3$ with a third held out as a check, after which the recursion of Eq.~\eqref{eq:recursion} is run over the rationals.
+
+
+\subsection{A remainder bound that retains post-selection}\label{app:F-tail}
+Let
+\begin{equation}
+ \begin{aligned}
+ A_K&=(1-p)^N\sum_{k=0}^K a_kx^k, & \lim_{K\to\infty}A_K&=A,\\
+ E_K&=(1-p)^N\sum_{k=0}^K e_kx^k, & \lim_{K\to\infty}E_K&=B,\\
+ \delta&=A-A_K\ \ \text{(omitted acceptance)}.
+ \end{aligned}
+ \label{eq:partialAE}
+\end{equation}
+Since $0\le e_k\le a_k$ for every $k$, Eq.~\eqref{eq:recursion}, and $x\ge0$, summing the omitted orders $k>K$ gives $0\le B-E_K\le\delta$. If the all-orders acceptance is known, then
+\begin{equation}
+ \frac{E_K}{A}\le\PL\le\frac{E_K+\delta}{A}.
+ \label{eq:tail}
+\end{equation}
+If only an upper bound $A\le A_+$ is available, the coupled form is
+\begin{equation}
+ \frac{E_K}{A_+}\le\PL\le
+                  \frac{E_K+A_+-A_K}{A_+}.
+ \label{eq:tailupper}
+\end{equation}
+To see this, use $A\le A_+$ twice. The lower end of Eq.~\eqref{eq:tail} satisfies $E_K/A\ge E_K/A_+$. For the upper end write
+\[
+ \frac{E_K+\delta}{A}=\frac{E_K+\overbrace{A-A_K}^{\delta}}{A}=1-\frac{A_K-E_K}{A}\ \underbrace{\le}_{A\le A_+}\ 1-\frac{A_K-E_K}{A_+}=\frac{E_K+A_+-A_K}{A_+},
+\]
+where the inequality uses $A_K-E_K\ge0$ and $A\le A_+$. The same expression shows that the upper end increases with $A_+$, so a looser bound only widens the interval. No series convergence assumption is used in either inequality.
+
+These intervals bound $\PL$ itself, not its Taylor polynomial $S_K=\sum_{k\le K}L_kx^k$, whose remainder follows by subtracting $S_K$ from both ends. Table~\ref{tab:tails} lists the intervals $[E_K/A,\ (E_K+\delta)/A]$ of Eq.~\eqref{eq:tail} at $K=10$ for a few values of $p$. At $p=10^{-3}$ the interval has relative width $\tailrel$, its length divided by $\PL$, whereas the truncated series misses the exact value by only $\taylorresid$. The interval is a thousand times wider than the true error because it lets every omitted accepted pattern be a logical error, while in fact most of them are not.
+{\color{black}
+\begin{table}[H]\centering\small
+\captionsetup{position=above,skip=4pt}
+\caption{Tenth-order intervals of Eq.~\eqref{eq:tail} for $\PL$, endpoints rounded outward.}
+\label{tab:tails}
+\begin{adjustbox}{max width=\linewidth}\input{data/tail_certificates.tex}\end{adjustbox}
+\end{table}}

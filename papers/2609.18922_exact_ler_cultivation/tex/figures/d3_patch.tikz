@@ -1,0 +1,21 @@
+\begin{tikzpicture}[x=1cm,y=1cm,line width=.6pt]
+\definecolor{dthreeblue}{RGB}{58,80,190}
+\definecolor{dthreered}{RGB}{219,51,51}
+\definecolor{dthreegreen}{RGB}{51,166,64}
+\coordinate (q0) at (0,3.6);
+\coordinate (q3) at (-1.0392,1.8);
+\coordinate (q7) at (0,1.2);
+\coordinate (q9) at (-2.0784,0);
+\coordinate (q10) at (1.0392,1.8);
+\coordinate (q12) at (0,0);
+\coordinate (q13) at (2.0784,0);
+\filldraw[fill=dthreeblue!48] (q0)--(q3)--(q7)--(q10)--cycle;
+\filldraw[fill=dthreered!48] (q3)--(q9)--(q12)--(q7)--cycle;
+\filldraw[fill=dthreegreen!48] (q7)--(q12)--(q13)--(q10)--cycle;
+\node[note] at (0,2.25) {$f_1$};
+\node[note] at (-.92,.70) {$f_2$};
+\node[note] at (.92,.70) {$f_3$};
+\foreach \q in {0,3,7,9,10,12,13}
+  \node[circle,draw,fill=white,inner sep=0pt,minimum size=5mm,
+        font=\footnotesize] at (q\q) {$\q$};
+\end{tikzpicture}

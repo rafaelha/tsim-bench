@@ -1,0 +1,9 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[box,text width=28mm] (p) at (0,0)
+ {$A=7/15$\\$B=2/15$\\$D=15$};
+\node[box,text width=36mm] (r) at (4.2,0)
+ {$N_A: 0\pmod7,\ 7\pmod{11}$\\$N_B: 2\pmod7,\ 2\pmod{11}$};
+\node[box,text width=31mm] (n) at (9,0)
+ {$7\times11>D$\\$N_A=7,\quad N_B=2$\\$P_{\rm L}=2/7$};
+\draw[flow] (p)--(r);\draw[flow] (r)--(n);
+\end{tikzpicture}

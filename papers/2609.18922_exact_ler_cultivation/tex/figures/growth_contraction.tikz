@@ -1,0 +1,40 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn heading] at (3.45,4.75) {\textbf{(a)} The complete $d=5$ sum};
+\node[tn heading] at (11.05,4.75) {\textbf{(b)} One contraction step};
+
+\node[tn label] at (.55,3.95) {injection and $d=3$\\double-checking};
+\node[tn label] at (3.3,3.95) {noisy Clifford growth};
+\node[tn label] at (6.3,3.95) {final $d=5$\\double-checking};
+\node[tn endpoint,minimum width=10mm] (w) at (.55,3.05) {$W$};
+\node[tn noise,minimum width=10mm] (g1) at (2.2,3.05) {$g_1$};
+\node[tn label] at (3.25,3.05) {$\cdots$};
+\node[tn noise,minimum width=12mm] (gn) at (4.4,3.05) {$g_{567}$};
+\node[tn endpoint,minimum width=12mm] (f) at (6.3,3.05) {$F_O$};
+\node[tn constraint,minimum width=68mm,minimum height=10mm] (delta) at (3.45,1.35)
+  {$\Delta_0$: total XOR label is zero};
+\foreach \name/\lab in {w/\ell_0,g1/\ell_1,gn/\ell_{567},f/\ell_{568}}{
+  \draw[tn bundle] (\name.south)--node[right,tn label] {$\lab$}
+    (\name.south |- delta.north);
+}
+\node[tn label] at (3.45,.35)
+  {$\Delta_0=\mathbf1[\ell_0\oplus\cdots\oplus\ell_{568}=0]$};
+\node[tn label] at (3.45,-.45)
+  {sum the connected labels: $O=A$ or $B$\\
+   each double line bundles binary indices};
+
+\draw[black!20] (7.45,-.85)--(7.45,4.25);
+\node[tn label] at (10.05,3.95) {two partial tables};
+\node[tn intermediate,minimum width=12mm] (ml) at (9.1,3.05) {$M_L$};
+\node[tn intermediate,minimum width=12mm] (mr) at (11,3.05) {$M_R$};
+\node[tn constraint,minimum width=28mm] (xor) at (10.05,1.35)
+  {$\mathbf1[u\oplus v=z]$};
+\draw[tn bundle] (ml.south)--node[left,tn label] {$u$}(ml.south |- xor.north);
+\draw[tn bundle] (mr.south)--node[right,tn label] {$v$}(mr.south |- xor.north);
+\draw[tn bundle] (xor.south)--(10.05,.05) node[below,tn label] {$z$};
+\draw[tn operation] (11.75,1.35)--node[above,tn label] {sum $u,v$}(12.65,1.35);
+\node[tn intermediate,minimum width=15mm] (parent) at (13.6,1.35) {$M_{L\cup R}$};
+\draw[tn bundle] (parent.south)--(13.6,.05) node[below,tn label] {$z$};
+\node[tn label] at (11.3,-.65)
+  {the open label $z$ indexes the new table\\
+   retain only labels that the remaining factors can cancel};
+\end{tikzpicture}

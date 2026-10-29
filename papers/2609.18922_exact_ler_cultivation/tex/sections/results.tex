@@ -1,0 +1,113 @@
+\section{Introduction and results}\label{sec:results}
+Magic state cultivation grows and double-checks a logical magic state, $|T^{\dagger}\rangle = \frac{1}{\sqrt{2}}\Big(|0\rangle + e^{-i\pi/4}|1\rangle\Big)$, injected onto a
+small colour code, achieving very low ($10^{-6}$ to $10^{-9}$) logical error rates (LER)~\cite{msc}. Such rates determine the resource cost of a fault-tolerant computation, yet at $10^{-9}$ they are expensive to resolve by direct sampling, and it has been unclear whether the $S$-gate proxy used to estimate them reproduces the actual $T$-gate circuit. Because most attempts are rejected and accepted logical errors are rare, Monte Carlo estimates of the LER are expensive, so we compute the two underlying probabilities instead,
+\begin{equation}
+ \begin{aligned}
+ A(p)&=\Pr(\text{post-selection criteria accepted}),\\
+ B(p)&=\Pr\!\left(\text{post-selected and logical error}\right),\\
+ \PL(p)&=\frac{B(p)}{A(p)}.
+ \end{aligned}
+ \label{eq:probabilities}
+\end{equation}
+Here, $\PL$ is the LER of the post-selected (upon all $+1$ parity detectors~\cite{msc}) state and $p$ is a circuit-level noise parameter~\cite{msc,soft,symft,clifft}. The escape stage is not included.
+
+As a `source of truth' in this manuscript, we use the SOFT circuits~\cite{soft}, also distributed within Clifft~\cite{clifft} and SymFT~\cite{symft} and we use the standard circuit-level noise model of Ref.~\cite{msc}, uniform depolarising noise after every operation with measurement and reset flips, at a common strength $p$ throughout~\cite{msc,soft}. In addition, the SOFT circuits use the unitary injection from the companion code of~\cite{msc} (\texttt{inject[`unitary']}). The full
+$d=5$ circuit includes injection, $d=3$ double checking, code growth, $d=5$ double checking, and a noiseless readout for the sake of logical error rate computation. The labels $d=3,5$ refer to the code distances of the underlying seven- and nineteen-qubit triangular colour codes. 
+The circuit's fault distances ($d_{\text{fault}}$) under a standard circuit-level noise model are lower: $d_{\text{fault}}=2$ and $d_{\text{fault}}=3$, as shown by the leading order terms in Eqs.~\eqref{eq:d3result} and~\eqref{eq:fullseries}, respectively.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.325\linewidth]{figures/d5_comparison.pdf}\hfill
+\includegraphics[width=.325\linewidth]{figures/d5_acceptance.pdf}\hfill
+\includegraphics[width=.325\linewidth]{figures/series_error.pdf}
+\caption{$d=5$ cultivation: logical error (left), acceptance (middle), and relative error of the truncated series (right). Shading and error bars show the published LER sampling-error intervals.}
+\label{fig:comparison}
+\label{fig:series}
+\end{figure*}
+
+Writing $x=p/(1-p)$, the $d=5$ result through $x^{10}$, with remainder $O(x^{11})$, is:
+\begin{equation}
+ \boxed{\scalebox{0.73}{$\displaystyle\input{data/d5_series.tex}$}}
+ \label{eq:fullseries}
+\end{equation}
+Each coefficient in Eq.~\eqref{eq:fullseries} is an exact
+rational number. The separate all-orders calculation at $p=10^{-3}$ gives
+\begin{equation}
+ \boxed{\begin{gathered}
+ \PL^{(5)}(p=10^{-3})
+ =3.32842537\ldots \times10^{-9}
+ \end{gathered}} \ .
+ \label{eq:anchor}
+\end{equation}
+Equation~\eqref{eq:anchor} is the decimal expansion of an exact fraction, reconstructed as described in Appendix~\ref{app:arithmetic}. We refer to such values as exact fractions.
+
+The $d=3$ cultivation circuit, which has an independent state-vector benchmark~\cite{msc}, can also be evaluated exactly. At $p=10^{-3}$,
+\begin{equation}
+ \begin{gathered}
+ \PL^{(3)}(p=10^{-3})=8.982790954\ldots\times10^{-7},\\
+ \PL^{(3)}(x)=\frac{32}{75}x^2+\frac{2009039}{4500}x^3+O(x^4).
+ \end{gathered}
+ \label{eq:d3result}
+\end{equation}
+Its complete coefficients through $x^{10}$ are in
+Table~\ref{tab:d3coeff}.
+
+\textbf{The main results}: we compute the LER in two forms: 
+\begin{enumerate}
+    \item an exact fraction at a fixed noise strength $p$, and 
+    \item a series in $x=p/(1-p)$ with exact coefficients for small $p$.
+\end{enumerate}
+The fraction is the exact value at one $p$. The series can be evaluated at any $p$. Its accuracy is assessed against an exact fraction where one exists, Fig.~\ref{fig:comparison} (right) and Table~\ref{tab:convergence}, and by the remainder bound of Appendix~\ref{app:arithmetic} (Table~\ref{tab:tails}) otherwise.
+
+\subsection{Exact logical error rates across different noise strengths}
+Table~\ref{tab:grid} gives a few exact rational evaluations. Following the standard circuit-level noise model, every operation such as preparation, idle, gate and
+mid-circuit measurements is noisy, only the final logical readout is noiseless to compute the LER. The escape, grafting and decoding stages~\cite{msc} are outside the scope of this manuscript. Appendix~\ref{app:circuits} specifies the source of the circuits used and the post-selection criteria.
+
+\begin{table}[h]
+\centering
+\captionsetup{font=small,position=above,skip=4pt}
+\caption{Whole-circuit $d=5$ results. Displayed decimals are rounded; the stored values are exact fractions.}
+\label{tab:grid}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\input{data/exact_grid.tex}
+\end{table}
+
+At $p=10^{-3}$, the acceptance for the $d=5$ cultivation circuits is about
+$14.395\ldots\%$ and 
+$B=4.7914541\ldots\times10^{-10}$. Direct sampling would therefore require about $2.1\times10^9$
+attempts, on average, to observe one accepted outcome with a logical error, whereas the exact calculation in this manuscript sums the noise distribution instead.
+
+
+\subsection{Contribution of the higher-order terms}
+The LERs for $d=3$ and $d=5$ have series
+expansions in parameter $x=p/(1-p)$. Take the $d=5$ circuit's series and denote
+its expansion to order $K$ by
+\begin{equation}
+S_K(p)=\sum_{k=3}^{K}L_kx^k.
+\end{equation}
+Although $\PL$ is small, its leading $x^3$ term is less than half of the LER at $p=10^{-3}$. The higher-order terms in the LER series expansion are not negligible, and their contributions can be compared with the exact LER.
+
+Table~\ref{tab:convergence} compares $S_K(10^{-3})$ with the exact $d=5$ LER in Eq.~\eqref{eq:anchor}. The leading term alone is insufficient, but the truncated sums approach the exact fraction order by order.
+\begin{table}[h]
+\centering
+\captionsetup{font=small,position=above,skip=4pt}
+\caption{Truncated whole-circuit series at $p=10^{-3}$, compared with the exact rational value.}
+\label{tab:convergence}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\input{data/convergence.tex}
+\end{table}
+
+Figure~\ref{fig:comparison} (right-most) shows the relative error of the various truncated $d=5$ cultivation circuit's LER series expansion compared against the exact fraction. See Appendix~\ref{app:arithmetic} for bounds on the contribution from the omitted terms.
+Keeping terms through $x^{10}$ gives good agreement with the exact fraction to a small relative error below $\sim 10^{-7}$.
+
+\subsection{Comparison with numerical simulations}
+The exact values and the tenth-order series lie inside the published Clifft and SOFT intervals at every shared noise strength (Fig.~\ref{fig:comparison}), and the acceptance agrees with SOFT's reported values~\cite{soft}. At $d=3$ the exact values lie inside the Clifft and Gidney--Shutty--Jones state-vector intervals (Fig.~\ref{fig:d3comparison}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.98\linewidth]{figures/d3_comparison.pdf}
+\caption{$d=3$ cultivation: exact values compared with Clifft and Gidney--Shutty--Jones state-vector results. Interval conventions are given in Appendix~\ref{app:numerics}.}
+\label{fig:d3comparison}
+\end{figure}

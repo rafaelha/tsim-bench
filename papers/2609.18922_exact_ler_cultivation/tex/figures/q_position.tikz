@@ -1,0 +1,51 @@
+\begin{tabular}{@{}c@{\hspace{4mm}}c@{\hspace{4mm}}c@{}}
+\begin{tabular}[b]{@{}c@{}}actual faults: $X_3$ in the fold, $Y_9$ after the unfold\\propagate to $Q=X_0X_3Y_9$ at the exit side, $A=B=1/4$\end{tabular} & &
+\begin{tabular}[b]{@{}c@{}}$Q=X_0X_3Y_9$ inserted just before $D$\\same numbers, $A=B=1/4$\end{tabular}\\[2mm]
+\begin{tikzpicture}[font=\small,baseline=(current bounding box.center)]
+\begin{yquant}[operator/separation=2.2mm,register/separation=5mm]
+qubits {data} d;
+qubits {anc.} c;
+box {$D^\dagger$} d;
+box {fold CX} (d,c);
+[fill=tnorange!30,draw=tnorange!70!black] box {$X_3$} d;
+box {fold CX} (d,c);
+box {$M_X$} c;
+box {unfold CX} (d,c);
+[fill=tnorange!30,draw=tnorange!70!black] box {$Y_9$} d;
+box {$D$} d;
+align -;
+measure c;
+\end{yquant}
+\end{tikzpicture} & {\Large$=$} &
+\begin{tikzpicture}[font=\small,baseline=(current bounding box.center)]
+\begin{yquant}[operator/separation=2.2mm,register/separation=5mm]
+qubits {data} d;
+qubits {anc.} c;
+box {$D^\dagger$} d;
+box {fold CX} (d,c);
+box {$M_X$} c;
+box {unfold CX} (d,c);
+[fill=tnorange!30,draw=tnorange!70!black] box {$Q$} d;
+box {$D$} d;
+align -;
+measure c;
+\end{yquant}
+\end{tikzpicture}\\[13mm]
+ & {\Large$\neq$} & \\[6mm]
+\multicolumn{3}{c}{\begin{tabular}[b]{@{}c@{}}$Q$ inserted just after $D^\dagger$: its $Z_9$ part propagates onto ancilla 8\\a detector fires, $A=0$\end{tabular}}\\[2mm]
+\multicolumn{3}{c}{%
+\begin{tikzpicture}[font=\small,baseline=(current bounding box.center)]
+\begin{yquant}[operator/separation=2.2mm,register/separation=5mm]
+qubits {data} d;
+qubits {anc.} c;
+box {$D^\dagger$} d;
+[fill=tnorange!30,draw=tnorange!70!black] box {$Q$} d;
+box {fold CX} (d,c);
+box {$M_X$} c;
+box {unfold CX} (d,c);
+box {$D$} d;
+align -;
+measure c;
+\end{yquant}
+\end{tikzpicture}}
+\end{tabular}

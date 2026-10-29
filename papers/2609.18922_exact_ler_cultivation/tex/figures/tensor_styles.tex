@@ -1,0 +1,18 @@
+\definecolor{tnblue}{RGB}{0,118,186}
+\definecolor{tnorange}{RGB}{181,23,0}
+\definecolor{tngreen}{RGB}{1,113,0}
+\tikzset{
+  tn tensor/.style={rectangle,rounded corners=2pt,draw=black,
+    fill=tnblue,text=white,line width=1.1pt,align=center,inner sep=2mm,
+    minimum height=9mm,font=\small},
+  tn endpoint/.style={tn tensor},
+  tn noise/.style={tn tensor,fill=tnorange},
+  tn intermediate/.style={tn tensor,fill=tngreen},
+  tn constraint/.style={tn tensor,fill=black!16,text=black},
+  tn leg/.style={line width=.6pt,draw=black},
+  tn bundle/.style={tn leg,double,double distance=.6pt},
+  tn copy/.style={circle,fill=black,draw=none,inner sep=0pt,minimum size=2.4pt},
+  tn operation/.style={-{Stealth[length=1.8mm]},line width=.6pt,draw=black!65},
+  tn label/.style={font=\scriptsize,align=center,inner sep=.8mm},
+  tn heading/.style={font=\small,align=center}
+}

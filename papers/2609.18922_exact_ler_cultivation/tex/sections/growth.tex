@@ -1,0 +1,246 @@
+\input{sections/appendix_data/E/gen.tex}
+\providecommand{\hl}[2]{\colorbox{#1!22}{#2}}
+\section{The complete growth average}\label{app:growth}
+
+The growth stage of Fig.~\ref{fig:overview} is where the $d=5$ averaging becomes hard as its 908 noise channels sit between the two non-Clifford double-checking stages (Figs.~\ref{fig:d3circuit} and~\ref{fig:d5circuit}) and their faults combine by XOR with the first-stage labels, so no fault can be rejected on its own and enumerating all fault patterns is out of reach.
+This appendix section shows how to fix this issue and sum the tensors exactly as one tensor contraction between the $d=3$ table $W$ and the $d=5$ response $F_O$.
+Figure~\ref{fig:growth-network} shows the solution, one tensor network whose three ingredients are:
+\begin{enumerate}
+\item the first-stage table, 
+\item the growth-noise distributions, and 
+\item  the final double-checking response. 
+\end{enumerate}
+This appendix derives their interface labels and the contraction used to sum them. 
+Summing this network exactly, with no fault pattern ever enumerated, takes the steps of the flow chart below.
+
+\begin{center}
+\adjustbox{max width=\linewidth}{%
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{st/.style={box,text width=30mm,inner sep=1.5mm,font=\small}}
+\node[st] (a) at (0,0) {\ref{app:E-blocks}: why a table of probabilities per syndrome block is enough};
+\node[st,right=3mm of a] (b) {\ref{app:E-table}: the first-stage table $W_{s,t}$, $64\times4$};
+\node[st,right=3mm of b] (c) {\ref{app:E-labels}: every factor as a distribution over binary labels, one shared XOR constraint};
+\node[st,right=3mm of c] (d) {\ref{app:E-boundary}, \ref{app:E-tree}: contract along a tree, keeping only labels the rest can cancel};
+\node[st,right=3mm of d] (e) {\ref{app:E-fourier}: eight Fourier characters cut the label space, averaged exactly};
+\draw[flow] (a)--(b); \draw[flow] (b)--(c); \draw[flow] (c)--(d); \draw[flow] (d)--(e);
+\end{tikzpicture}}
+\end{center}
+
+\noindent\begin{minipage}{\linewidth}
+\medskip\noindent\textbf{Notation.}\par\nopagebreak
+{\color{black}
+\begin{center}\small
+\begin{tabular}{lp{11.5cm}}\toprule
+symbol & meaning \\\midrule
+$W$, $F_O$ & the two endpoint tables, the first-stage table and the final-response table at the ends of the growth network, Fig.~\ref{fig:growthfactors} \\
+$K_r$, $K_{g,r}$ & the growth instrument for accepted record $r$, without and with the growth-fault configuration $g$ \\
+$\Pi_s$ & the projector onto the $d=3$ code block with syndrome $s$ (64 of them, $\Pi_0$ is the code space) \\
+$V$ & the ideal map from the positive $d=3$ logical basis to the positive $d=5$ logical basis \\
+$E_{\rm in}$, $E_{\rm out}$ & Paulis that move a block to syndrome $s$ on the way in, and carry the output syndrome and logical signs \\
+$W_{s,t}$ & first-stage table: weight of input syndrome $s$ ($6$ bits) and logical Pauli tag $t$ ($2$ bits), post-selection included \\
+$\ell_i$, $f_i(\ell_i)$ & the 75-bit label of factor $i$ and its weight at that label, $f_0=W$, $f_{568}=F_O$ \\
+$\Delta_0$ & the single constraint $\ind{\ell_0\oplus\cdots\oplus\ell_{568}=0}$ \\
+$S$, $r_g$, $m_g$ & the image subspace of a group of channels, its rank, the number of channels in the group \\
+$\lambda(p)=\prod_\ell(1-c_\ell p)$ & the group's damping factor, $c_\ell=2,\ 4/3,\ 16/15$ for flip, one-qubit, two-qubit depolarising \\
+$g_p(v)$, $g_x(v)$ & the group's distribution over labels, at fixed $p$ and as a polynomial in $x$ \\
+$\mathcal B_J=S_J\cap S_{\bar J}$ & the labels a subset $J$ of factors can produce that the rest can still cancel \\
+$M_J(z)$ & the table a tree node stores: total weight of subset $J$ at label $z\in\mathcal B_J$ \\
+$U\oplus K$, $\chi$, $f_{i,\chi}$ & a split of the 75-bit label space with $\dim K=3$, a character of $K$, the factor transformed on $K$ \\
+\bottomrule
+\end{tabular}
+\end{center}}
+\end{minipage}
+\paragraph{Colours, for this appendix only.} In tensor pictures \colorbox{black!22}{grey} is an indicator, \colorbox{tnorange!22}{orange-red} a noise distribution, \colorbox{tnblue!22}{blue} a table given at either end of the network, \colorbox{tngreen!22}{green} an intermediate table.
+
+\subsection{Why syndrome blocks can be treated separately}\label{app:E-blocks}
+The state leaving the first double-checking stage is not confined to the $d=3$ code space, since nothing measures its stabilisers before growth. As a side note, this explains the need to measure the code stabilisers in the cultivation experiment of~\cite{cultivation_google_expt}.\footnote{The experiment makes the same point in hardware. Cultivation measures no code stabilisers itself, and adding syndrome extraction cycles after cultivation improved the logical error by about two orders of magnitude.}
+It is a superposition and mixture over all 64 syndrome blocks, with coherence between blocks.
+Written in those blocks, the state is
+\begin{equation}
+ \rho=\sum_{s,s'}\Pi_s\,\rho\,\Pi_{s'} .
+ \label{eq:blocks}
+\end{equation}
+The diagonal terms $s=s'$ are what the table $W_{s,t}$ records, one weight per block $s$ and logical Pauli label $t$. The off-diagonal terms $s\neq s'$ are the coherence between blocks. If the growth instrument could see them, the table would not be enough. What makes it enough is a property of growth itself. Every Kraus branch $K$ of the growth stage must satisfy
+\begin{equation}
+ K\rho K^\dagger=K\Big(\sum_s\Pi_s\,\rho\,\Pi_s\Big)K^\dagger ,
+ \label{eq:blockreq}
+\end{equation}
+so that the off-diagonal terms of Eq.~\eqref{eq:blocks} never contribute. This cannot be assumed. For the SOFT growth circuit it follows from a stabiliser calculation on its Choi state, Eq.~\eqref{eq:dephasing} in Section~\ref{subsubsec:off-diag} below. The supplement of Ref.~\cite{cultivation_google_expt} gives a related caution about post-selection. In its example, a small coherent rotation of the ideal $d=3$ state produces a tomographically reconstructed Bloch vector with $\langle X\rangle^2+\langle Y\rangle^2>1$: the different measurement bases post-select different ensembles. This is an inconsistency in the reconstruction, not a non-physical output state. They sidestep the issue experimentally, with kickback tomography and added syndrome extraction cycles, and note that Pauli twirling would only approximate it away. Here nothing is approximated, since Eq.~\eqref{eq:dephasing} shows that the growth instrument itself never sees the off-diagonal blocks.
+
+\subsubsection{Lack of off-diagonal contributions}
+\label{subsubsec:off-diag}
+The claim is Eq.~\eqref{eq:dephasing}. To derive it, entangle the seven input data sites with seven untouched reference sites in Bell pairs and propagate the actual growth circuit for a fixed accepted record.
+Its Choi stabilisers include six reference-only input-code generators, eighteen output-code generators, and logical $X/X$ and $Z/Z$ correlations. The remaining sites are product states at their resets. Ten random measurements give Choi norm squared $2^{-10}$. Multiplying by the input dimension $2^7$ gives $\Tr(K_r^\dagger K_r)=1/8$. The input code projector has rank two, so
+\begin{equation}
+ K_r=e^{i\theta_r}\frac14 V\Pi_0.
+ \label{eq:choi}
+\end{equation}
+Here $V$ maps the positive $d=3$ logical basis to the positive $d=5$ logical basis.
+
+Pauli faults change the signs of these stabilisers, but not their unsigned measurement algebra. Every nonzero noisy branch consequently has the form
+\begin{equation}
+ K_{g,r}=e^{i\theta_{g,r}}\,\frac14\,
+ \underbrace{E_{\rm out}}_{\text{output Pauli}}\;
+ \underbrace{V}_{\text{encode}}\;
+ \underbrace{E_{\rm in}^\dagger}_{\text{block $s$ to code space}}\;
+ \underbrace{\Pi_s}_{\text{select block $s$}} ,
+ \label{eq:noisychoi}
+\end{equation}
+read from right to left. Here $E_{\rm in}$ is the Pauli with $E_{\rm in}\Pi_0E_{\rm in}^\dagger=\Pi_s$, so its adjoint returns block $s$ to the domain of $V$, and $E_{\rm out}$ is a Pauli on the output qubits carrying the output syndrome and the logical signs. A branch whose deterministic measurements are incompatible with the record is zero. Since $\Pi_s\Pi_{s'}=\delta_{ss'}\Pi_s$, the sandwich sees a single diagonal block of Eq.~\eqref{eq:blocks},
+\begin{equation}
+ K_{g,r}\,\rho\,K_{g,r}^\dagger
+ =\frac1{16}\,E_{\rm out}VE_{\rm in}^\dagger\,\big(\Pi_s\rho\,\Pi_s\big)\,E_{\rm in}V^\dagger E_{\rm out}^\dagger ,
+ \label{eq:oneblock}
+\end{equation}
+and the phase $e^{i\theta_{g,r}}$ drops out. Hence, for arbitrary $\rho$,
+\begin{equation}
+ K_{g,r}\rho K_{g,r}^\dagger
+ =K_{g,r}\left(\sum_s\Pi_s\rho\Pi_s\right)K_{g,r}^\dagger.
+ \label{eq:dephasing}
+\end{equation}
+This establishes the required syndrome dephasing. It preserves all 64 input blocks, rather than retaining only $\Pi_0\rho\Pi_0$.
+
+Of the 59 measurement bits recorded during growth, four are random and fixed by no detector, so there are $2^4=16$ accepted records, each carrying the factor $1/4$ of Eq.~\eqref{eq:noisychoi}. In the binary compilation of the instrument these four bits have zero columns in both the compatibility constraints and the Choi signs, so they neither reject a fault configuration nor change the Pauli frames, and $K_{g,r}$ is the same operator for all sixteen records. Summing Eq.~\eqref{eq:oneblock} over the records therefore cancels the $1/16$,
+\begin{equation}
+ \sum_r K_{g,r}\,\rho\,K_{g,r}^\dagger=E_{\rm out}VE_{\rm in}^\dagger\,\big(\Pi_s\rho\,\Pi_s\big)\,E_{\rm in}V^\dagger E_{\rm out}^\dagger ,
+\end{equation}
+and no further factor of sixteen multiplies $W$.
+
+\subsection{The first-stage table}\label{app:E-table}
+Within each retained syndrome block, the first-stage calculation finds the logical output of every branch to be exactly one of the four states $P_L\ket{T_L^\dagger}$ with $P_L\in\{I_L,X_L,Y_L,Z_L\}$, that is, the ideal magic state or the ideal magic state with one logical Pauli error applied. The two-bit tag $t$ records which. 
+The table $W_{s,t}$ has $64\times4$ entries, six syndrome bits and two logical-Pauli bits, and retains the branch weights including first-stage post-selection. 
+This classification is performed with exact arithmetic on all 8,388,608 compiled frame queries, in $\mathbb Z[\zeta_8]$, the ring of integer combinations $a+b\zeta_8+c\zeta_8^2+d\zeta_8^3$ of powers of the eighth root of unity $\zeta_8=e^{i\pi/4}$, so $\zeta_8^2=i$ and $\zeta_8^4=-1$. Every amplitude of a Clifford$+T$ circuit is an element of this ring divided by a power of $\sqrt2$, so no rounding ever occurs. The four-state property is specific to this circuit and need not hold for an arbitrary non-Clifford circuit. 
+\subsection{Binary labels and factorisation}\label{app:E-labels}
+Of the 1,207 noise channels between the two non-Clifford double-checking stages, 299 have an identity response and drop out. The 908 relevant ones are 130 flips, 456 one-qubit depolarisers and 322 two-qubit depolarisers. Propagating their Pauli increments through the Clifford instrument gives 49 independent compatibility bits and 26 interface bits: six incoming syndrome bits, eighteen outgoing syndrome bits and two logical bits. The combined label space has dimension 75.
+
+Each of $W$, the growth-channel distributions and $F_O$ becomes a table over this 75-bit space, nonzero only on its own coordinates. $W$ uses the six input-syndrome coordinates and the two logical coordinates. $F_O$ uses the eighteen output-syndrome and two logical coordinates. 
+Setting the total label to zero does three things at once:
+\begin{enumerate}
+\item matches the incoming syndrome on the $F_O$ side to the outgoing one on the $W$ side, 
+\item XORs the logical tags as in Eq.~\eqref{eq:physicalgrowth}, and 
+\item enforces every detector, since a compatibility bit left at 1 means a detector fired. 
+\end{enumerate}
+If $\ell_i$ is the label of factor $f_i$, the scalar is
+\begin{equation}
+ \begin{gathered}
+ O=\sum_{\ell_0\oplus\cdots\oplus\ell_{568}=0}
+       \prod_{i=0}^{568}f_i(\ell_i), \ \ \text{ where }
+ f_0=W,\quad f_{568}=F_O.
+ \end{gathered}
+ \label{eq:convolution}
+\end{equation}
+The 567 intermediate factors are exact groups of channels whose faults land in the same label subspace. 
+In Fig.~\ref{fig:growthfactors}, the grey tensor is $\Delta_0=\ind{\ell_0\oplus\cdots\oplus\ell_{568}=0}$. 
+Contracting it with the 569 factors is precisely Eq.~\eqref{eq:convolution}. 
+The labels share one 75-bit space, but each factor is stored only on the few coordinates it uses, and $\Delta_0$ is never stored at all. 
+It enters only as the 75 parity equations under the sum in Eq.~\eqref{eq:convolution}, which the contraction enforces.
+{\color{black}
+\diagram[H]{growth_labels}{The 569 factors share one total-label constraint.}{fig:growthfactors}}
+
+\paragraph{One group of channels.} 
+Three observations turn the 908 noise channels of the growth stage, each a bit flip or a one- or two-qubit depolariser, into the 567 grouped tensors $g_i$ of Fig.~\ref{fig:growthfactors}, each with a closed-form table over its labels.
+\begin{enumerate}
+\item Every $f_i$ in Eq.~\eqref{eq:convolution} is a table of probabilities indexed by a label. For one channel it is tiny, one entry per outcome.
+\item A group of channels whose outcomes land in the same label subspace $S$ is merged into one factor. Its label is the XOR of the individual labels, so its table is the convolution of the small tables.
+\item A character transform turns that convolution into a product, and each channel's transform on a nontrivial character is a single number, $1-c_\ell p$. Multiplying these numbers and transforming back gives the table with no enumeration of outcome combinations.
+\end{enumerate}
+Take a group of $m_g$ channels sharing the subspace $S$ of rank $r_g$. On the trivial character of $S$ every channel contributes $1$. A nontrivial character is $-1$ on exactly half of each channel's Pauli outcomes, so channel $\ell$ contributes $1-c_\ell p$, with $c_\ell=2$ for a bit flip, $4/3$ for a one-qubit and $16/15$ for a two-qubit depolariser. Their product is the group's damping factor,
+\begin{equation}
+ \lambda(p)=\prod_{\ell=1}^{m_g}(1-c_\ell p),\qquad
+ c_\ell\in\{2,4/3,16/15\}.
+ \label{eq:damping}
+\end{equation}
+Transforming back gives the grouped distribution
+\begin{equation}
+ g_p(v)=\lambda(p)\ind{v=0}
+        +\frac{1-\lambda(p)}{2^{r_g}}\ind{v\in S}.
+ \label{eq:group}
+\end{equation}
+It includes all outcomes of all channels in the group, with no approximation. The number $1-c_\ell p$ is the factor by which one noise channel of strength $p$ shrinks a Pauli operator, as in Section~\ref{sec:pp}. The table $g_p(v)$ is what each orange box $g_i$ of Fig.~\ref{fig:growthfactors} holds, namely the factor $f_i(\ell_i)$ of Eq.~\eqref{eq:convolution} for $i=1,\dots,567$.
+Note that the input $v$ (to $g_p$) is the label $\ell_i$ summed over in Eq.~\eqref{eq:convolution}.
+
+
+\paragraph{Why independent weights cannot be averaged one at a time.} With every factor known, one might hope to average each one on its own and multiply the results. Post-selection forbids this. The constraint $\Delta_0$ couples the factors, so whether one fault is accepted depends on the others. Figure~\ref{fig:paritytoy} shows the smallest case. For three independent bits with labels $(1,0),(1,1),(0,1)$ and one constraint, total label zero, the eight assignments are
+{\color{black}
+\begin{center}\small\input{sections/appendix_data/E/tab_toy.tex}\end{center}}
+Only $\survivors$ have zero total label, so the acceptance probability of the toy example in Fig.~\ref{fig:paritytoy} is
+\begin{equation}
+ A_{\rm toy}=(1-p)^3+p^3,
+ \label{eq:toy}
+\end{equation}
+which is $\Atoy=\Atoynum$ at $p=10^{-3}$. A single non-zero label fails, yet the three non-zero labels pass together. Rejecting faults one at a time would lose the $p^3$ term. The orange-red tensors in Fig.~\ref{fig:paritytoy} give the independent weights $g_i(0)=1-p$ and $g_i(1)=p$. The two grey tensors impose $f_1=f_2$ and $f_2=f_3$. The central dot copies $f_2$ into both conditions. This makes the complete accepted sum visible: only the assignments $000$ and $111$ survive the contraction. The growth sum is this picture with 569 factors and a 75-bit constraint. The next two sections show how to contract it without ever forming the $2^{75}$ label space.
+{\color{black}
+\diagram[H]{parity_toy}{Independent noise tensors coupled by post-selection. The sum is written out below the network.}{fig:paritytoy}}
+
+\subsection{Which partial labels must be stored?}\label{app:E-boundary}
+For a subset $J$ of the 569 factors $f_i$ of Eq.~\eqref{eq:convolution}, the boxes of Fig.~\ref{fig:growthfactors}, let $S_J$ be the span of its possible labels and let $S_{\bar J}$ be the span of the remaining factors' labels.
+Only a partial label in
+\begin{equation}
+ {\cal B}_J=S_J\cap S_{\bar J}
+ \label{eq:boundary}
+\end{equation}
+can be matched by an equal label from the remaining factors, so that the total XOR label $\ell_0\oplus\cdots\oplus\ell_{568}$ vanishes. 
+A component outside the intersection has exactly zero contribution to Eq.~\eqref{eq:convolution}, whatever its numerical size. 
+Whenever a subset $J$ of the factors has been contracted, only the entries of its table with labels in $\mathcal B_J$ are kept before it is joined with another subset of the 569 factors.
+In Fig.~\ref{fig:boundary}, the left table $M_L$ belongs to one contracted subset and the right table $M_R$ to the remaining factors. The left labels span $e_1,e_2$ and the right labels $e_2,e_3$, so only the $e_2$ coordinate can cross the cut.
+Writing the labels as $z_1e_1+z_2e_2$ and $z'_2e_2+z_3e_3$, their sum vanishes only if $z_1=z_3=0$ and $z_2=z'_2$. 
+This is the simplest example of restricting a table before the next contraction.
+{\color{black}
+\diagram[H]{boundary_cut}{Only the shared label coordinate can connect the two partial tables.}{fig:boundary}}
+
+\subsection{What a tree node stores and computes}\label{app:E-tree}
+Each leaf of the growth contraction tree contains one of the factors $f_i$ in Eq.~\eqref{eq:convolution}. A node containing the subset $J$ of leaves stores a table indexed by their combined label $z$,
+\begin{equation}
+ M_J(z)=\sum_{\substack{\{\ell_i:i\in J\}\\
+                      \bigoplus_{i\in J}\ell_i=z}}
+                  \prod_{i\in J}f_i(\ell_i),
+ \qquad z\in{\cal B}_J.
+ \label{eq:treemessage}
+\end{equation}
+One entry therefore combines many fault configurations. Only the label needed by the remaining factors survives. The individual configurations do not have to be stored.
+When a node joins disjoint sets of leaves $L$ and $R$, the node's table is
+\begin{equation}
+ \begin{gathered}
+ M_{L\cup R}(z)=
+ \sum_{\substack{u\in{\cal B}_L,\ v\in{\cal B}_R\\u\oplus v=z}}
+            M_L(u)M_R(v),\qquad z\in{\cal B}_{L\cup R}.
+ \end{gathered}
+ \label{eq:treeconvolution}
+\end{equation}
+{\color{black}
+\begin{figure}[H]\centering
+\begin{adjustbox}{max width=\linewidth}\input{figures/tree_nodes.tikz}\end{adjustbox}
+\caption{The contraction tree as a tree. (a) The three-fault toy example of Eq.~\eqref{eq:toy}: two leaves join into a node that stores two entries on its boundary, and the root gives $A_{\rm toy}$. (b) The tree actually used for the growth sum, 569 leaves and 1,137 nodes found by the search: its top levels, and the 60-leaf branch followed down to real leaves $g_i$. Boxes give subtree leaf counts, edge numbers the boundary dimension $d_J$ of the table stored on them, dots elided subtrees. Tables of the largest size, $2^{23}$ entries, sit on the 446-leaf subtree and on two subtrees inside it, $W$ is a leaf fifteen joins deep with a 7-bit boundary, and $F_O$ is joined last.}
+\label{fig:treenodes}
+\end{figure}}
+Figure~\ref{fig:treenodes} draws the tree, for the toy example and for the top of the tree actually used.
+Restricting the child tables loses no compatible term. If the parent label $z$ can be cancelled by the factors outside $L\cup R$, then $u=z\oplus v$ can be cancelled by $R$ and those outside factors, so $u\in{\cal B}_L$, and likewise $v\in{\cal B}_R$. At the root no factors remain, so $\Delta_0$ leaves only $z=0$, and $M_{\rm all}(0)$ is $O$. Panel (a) of Fig.~\ref{fig:treenodes} does this for the toy example of Eq.~\eqref{eq:toy}, where fault 3 contributes only the labels $0$ or $(0,1)$, so only those two entries of $M_{12}$ can be matched and are stored, and the $p^2$ entry must survive to the last join, where that fault cancels it.
+
+An edge carries its table and a binary basis of ${\cal B}_J$, $2^{d_J}$ entries for a boundary of dimension $d_J$. Each join is evaluated in coordinates adapted to its two children, with Walsh transforms on their shared coordinates, so Eq.~\eqref{eq:treeconvolution} never lists every pair of entries. The order and the bases are chosen together by a heuristic search that prices products, Walsh additions, coordinate changes and storage. The chosen order stores at most $2^{23}$ entries per table, and its largest join multiplies $2^{27}$ pairs of entries before summing them. The same tree is run once per Fourier character below and the eight root values are averaged. Every subtree is computed once and reused for $A$ and $B$, which differ only in $F_O$, so only the joins that contain $F_O$ are done twice.
+
+\subsection{Eight exact Fourier characters}\label{app:E-fourier}
+The boundaries of Section~\ref{app:E-boundary} bound the tables but do not make them small enough on their own. Projecting three label coordinates out of every factor, and restoring them exactly by summing over the characters of the projected space, shortens every boundary that carries those coordinates, at the cost of running the tree eight times. Choose one common decomposition $\F^{75}=U\oplus K$ of the 75-bit label space, XOR being its addition, with $\dim K=3$ and $\dim U=72$. Every label is then uniquely $\ell=(u,k)$ with $u\in U$ and $k\in K$, the three coordinates in $K$ being the ones projected out. For each of the eight linear functionals $\chi$ of $K$, with $\chi\cdot k\in\{0,1\}$, define
+\begin{equation}
+ f_{i,\chi}(u)=\sum_{k\in K}(-1)^{\chi\cdot k}f_i(u,k),
+ \qquad \chi\in K^*.
+ \label{eq:partialfourier}
+\end{equation}
+Character orthogonality gives the exact identity
+\begin{equation}
+ O=\frac18\sum_{\chi\in K^*}
+       \sum_{u_0\oplus\cdots\oplus u_{568}=0}
+                       \prod_i f_{i,\chi}(u_i).
+ \label{eq:eight}
+\end{equation}
+Every factor uses the same partition and all eight characters are included. The transformed factors can be signed. The complete average restores the three projected conditions. Nothing is dropped. The 72-dimensional quotient is never stored as a dense $2^{72}$ array, since each join first uses Eq.~\eqref{eq:boundary}.
+
+For the toy example of Eq.~\eqref{eq:toy}, keep the first condition $f_1\oplus f_2=0$ and project the second, $f_2\oplus f_3=0$. Weighting each assignment by $(-1)^{\chi(f_2\oplus f_3)}$, the two character contractions are
+\[
+\begin{gathered}
+C_0=(1-p)^2+p^2=\Czero,\qquad C_1=(1-2p)^2=\Cone,\\
+\tfrac12(C_0+C_1)=\Atoy ,
+\end{gathered}
+\]
+at $p=10^{-3}$. Their half-sum $\tfrac12(C_0+C_1)$ is exactly $(1-p)^3+p^3$, as in Fig.~\ref{fig:fouriertoy}. This is how slicing saves storage without discarding a condition. Signed intermediate values are harmless here because everything is exact, first as rationals and then, in Appendix~\ref{app:arithmetic}, modulo primes. What must not be done is to drop a character or to treat a signed intermediate as a probability.
+{\color{black}
+\diagram[H]{fourier_toy}{Both characters restore the missing parity in the three-fault example.}{fig:fouriertoy}}

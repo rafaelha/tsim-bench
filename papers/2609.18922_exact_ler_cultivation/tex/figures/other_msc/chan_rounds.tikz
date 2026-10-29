@@ -1,0 +1,16 @@
+\begin{tikzpicture}[font=\scriptsize,line width=.55pt]
+\begin{yquant}[register/minimum height=4mm,register/minimum depth=4mm,
+ operator/minimum width=7mm,operator/separation=2.3mm,
+ every wire/.append style={draw=black,line width=.7pt}]
+qubit {$\mathcal D$} q;
+[fill=black!4] box {Injection} q;
+[fill=paperpurple!8] box {\shortstack{$d=3$\\double checking}} q;
+[fill=black!4] box {Expansion} q;
+[fill=black!4] box {$R_1$} q;
+[fill=black!4] box {$R_2$} q;
+[fill=black!4] box {$R_3$} q;
+[fill=newround!17,draw=newround,line width=1.1pt] box {$R_4$} q;
+[fill=paperpurple!8] box {\shortstack{$d=5$\\double checking}} q;
+[fill=black!4] box {\shortstack{Noiseless\\readout}} q;
+\end{yquant}
+\end{tikzpicture}

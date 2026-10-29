@@ -1,0 +1,94 @@
+\input{sections/appendix_data/D/gen.tex}
+\providecommand{\hl}[2]{\colorbox{#1!22}{#2}}
+\section{Contraction orders and the growth average}\label{app:tensor-examples-v2}
+
+This appendix describes two things the later appendices require. First, a contraction order and its tree, shown on a toy example of four contracted tensors. Then the growth average written as a sum over fault configurations, which Appendix~\ref{app:growth} evaluates as one contraction.
+\subsection{Two orders for the same contraction}
+A contraction order specifies which tensors to combine first. Draw a bubble around a group, multiply their entries, sum the indices used only inside that group, and retain the collective tensor legs. 
+This results in one tensor that can then be combined with the next group. 
+In Fig.~\ref{fig:contraction-tree} the four indices are binary and the complete scalar is
+\begin{equation}
+ Z=\sum_{a,b,c,d}T_1(a,b)T_2(b,c)T_3(c,d)T_4(d,a).
+ \label{eq:treeexample}
+\end{equation}
+{\color{black}
+\diagram[H]{contraction_tree}
+{Two orders for the same network. Each bubble becomes one tensor, and its exposed indices determine its size.}
+{fig:contraction-tree}}
+\FloatBarrier
+
+For example, take the tensors, with (rows, columns) being the (first, second) indices,
+\[
+T_1=\Tone,\quad T_2=\Ttwo,\quad T_3=\Tthree,\quad T_4=\Tfour .
+\]
+Joining neighbours first sums $b$ and $d$,
+\begin{equation}
+ \begin{aligned}
+ M_{12}(a,c)&=\sum_bT_1(a,b)T_2(b,c)=\Mtwelve,\\
+ M_{34}(c,a)&=\sum_dT_3(c,d)T_4(d,a)=\Mthirtyfour,\\
+ Z&=\sum_{a,c}M_{12}(a,c)M_{34}(c,a)=\Zvalue ,
+ \end{aligned}
+ \label{eq:treejoins}
+\end{equation}
+for instance $M_{12}(0,0)=\Mtwelveexample$. Each intermediate has four entries. Joining opposite tensors first sums nothing, because $T_1$ and $T_3$ share no index, so the intermediates keep all four legs open. Each of $K_{13}(a,b,c,d)=T_1(a,b)T_3(c,d)$ and $K_{24}(a,b,c,d)=T_2(b,c)T_4(d,a)$ then has sixteen entries, and $Z=\sum_{a,b,c,d}K_{13}K_{24}=\Zvalue$ again. The order changes the storage and the arithmetic but both calculations sum to the same $Z$.
+{\color{black}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn tensor,fill=tnorange,minimum width=8mm,minimum height=8mm] (t1) at (0,1.6) {$T_1$};
+\node[tn tensor,fill=tnorange,minimum width=8mm,minimum height=8mm] (t2) at (2.2,1.6) {$T_2$};
+\node[tn tensor,fill=tnorange,minimum width=8mm,minimum height=8mm] (t4) at (0,0) {$T_4$};
+\node[tn tensor,fill=tnorange,minimum width=8mm,minimum height=8mm] (t3) at (2.2,0) {$T_3$};
+\draw[tn leg] (t1)--node[above,tn label] {$b$}(t2); \draw[tn leg] (t4)--node[below,tn label] {$d$}(t3);
+\draw[tn leg] (t1)--node[left,tn label] {$a$}(t4); \draw[tn leg] (t2)--node[right,tn label] {$c$}(t3);
+\node[font=\Large] at (-1.6,0.8) {$\displaystyle\sum_{a,b,c,d}$};
+\node[font=\large] at (3.4,0.8) {$=$};
+\node[font=\Large] at (4.4,0.8) {$\displaystyle\sum_{a,c}$};
+\node[tn intermediate,minimum width=12mm,minimum height=11mm] (m12) at (5.6,0.8) {$M_{12}$};
+\node[tn intermediate,minimum width=12mm,minimum height=11mm] (m34) at (7.6,0.8) {$M_{34}$};
+\draw[tn leg] ([yshift=2.5mm]m12.east)--node[above,tn label] {$a$}([yshift=2.5mm]m34.west);
+\draw[tn leg] ([yshift=-2.5mm]m12.east)--node[below,tn label] {$c$}([yshift=-2.5mm]m34.west);
+\node[font=\large] at (8.7,0.8) {$=\ \Zvalue$};
+\end{tikzpicture}
+\end{center}}
+
+The order in which tensors are joined does not change the answer but greatly affects the size of the intermediate tables. For a large network, contraction order decides whether the contraction fits in memory at all. 
+The growth stage (see Fig.~\ref{fig:overview}) has 569 factors, so the contraction order decides how large the intermediate arrays blow up to. The plan used for the growth sum keeps the largest stored table at $2^{23}$ entries while the largest single join multiplies $2^{27}$ pairs of entries before summing them.
+
+\subsection{Including the noisy growth stage}\label{app:growth-overview-v2}
+The earlier $d=3$ stage supplies weights for its outgoing syndrome and logical Pauli label. Clifford growth propagates these labels and adds the labels of its faults. They combine by XOR: two faults may cancel a detector mismatch, so they must not be rejected separately. For a growth-fault configuration $g$, let $w_g$ be its probability, $h(g)$ its detector-compatibility label, $s(g)$ its required input syndrome, and $v(g)$ its output syndrome and logical frame. Write $W_{s,t}$ for the earlier-stage weight with syndrome $s$ and logical Pauli label $t$. Then
+\begin{equation}
+ \begin{gathered}
+ O=\sum_{g,t}w_g\,\ind{h(g)=0}\,
+       W_{s(g),t}\,F_O\!\left(\Gamma(v(g),t)\right),\\
+ O\in\{A,B\}.
+ \end{gathered}
+ \label{eq:physicalgrowth}
+\end{equation}
+The map $\Gamma$ retains the outgoing syndrome and XORs $t$ into the logical frame. This is Eq.~\eqref{eq:responseaverage} with the earlier weights written explicitly. 
+Reading Eq.~\eqref{eq:physicalgrowth} from right to left, $F_O$ is the final $d=5$ response table, indexed by the label that arrives at the last check. $W_{s,t}$ is the first-stage table, first-stage post-selection included. 
+In between, a configuration $g$ happens with probability $w_g$, is kept only if its detector label is zero, needs the input syndrome $s(g)$, and emits $v(g)$. 
+
+As a toy example, take two syndromes, two tags and four growth configurations at $p=10^{-2}$. Rows are indexed by the syndrome, columns by the tag of $W$ or by the frame of $F_O$, so that
+\[
+W=\toyW,\qquad F_A=\toyFA,\qquad F_B=\toyFB .
+\]
+Each configuration contributes one row per tag:
+{\color{black}
+\begin{center}\small\input{sections/appendix_data/D/tab_toygrowth.tex}\end{center}}
+Summing the last column gives $A=\toyOA$ and $B=\toyOB$. Configuration 3 is dropped by $h(g)=1$ whatever its weight, configuration 2 only ever meets the $s=1$ row of $W$, its frame flip moves the tag before it reaches $F_O$, and configuration 4 is compatible but lands on output syndrome 1, where both $F_A$ and $F_B$ vanish in this toy example. 
+
+Two things the formula insists on.
+\begin{enumerate}
+\item All 64 input syndromes remain in $W$: a growth fault can cancel an input syndrome, as configuration 2 does, so the syndrome-0 row alone would miss accepted events. 
+\item Growth faults combine by XOR with each other and with the earlier label before anything is rejected. 
+\end{enumerate}
+Growth removes cross-syndrome coherence in the way proved in Appendix~\ref{app:growth}, which is what makes a table of probabilities $W_{s,t}$ sufficient. 
+Nothing is post-selected between the two stages. Every first-stage syndrome enters growth, and the noiseless final code projection of the standalone $d=3$ calculation is not applied at this interface.
+\diagram[H]{growth_contraction}
+{The $d=5$ tensor network and one XOR contraction. Rounded boxes are tensors and the arrow denotes a calculation step.}
+{fig:growth-network}
+
+Fig.~\ref{fig:growth-network}(a) groups the growth noise into 567 distributions $g_i$ between $W$ and the final response $F_O$. The grey constraint matches their labels by requiring a zero total XOR. Panel (b) combines two partial tables $M_L(u),M_R(v)$ by summing over $u\oplus v=z$ and keeping the output label $z$. With two-bit labels and three entries each,
+{\color{black}
+\begin{center}\small\input{sections/appendix_data/D/tab_xorjoin.tex}\end{center}}
+the parent table has \joinentries\ entries, one per reachable $z$. Only labels that can be cancelled by the remaining factors are stored. Appendix~\ref{app:growth} gives the binary constraints, contraction and exact Fourier slicing over all characters

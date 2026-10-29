@@ -1,0 +1,38 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  bigbox/.style={draw=black!45,dashed,fill=black!16,fill opacity=.30,rounded corners=4pt},
+  row/.style={tn constraint,minimum width=11mm,minimum height=6mm,font=\scriptsize}]
+\node[tn heading,anchor=west] at (-1.3,3.9) {\textbf{(a)} one grey tensor per row of $M$};
+\node[font=\Large] at (-1.3,1.3) {$\displaystyle\sum_{h}$};
+\node[bigbox,minimum width=58mm,minimum height=24mm] (A) at (2.2,1.1) {};
+\node[tn label,anchor=south east,text=black!60] at ([xshift=-1.5mm,yshift=1mm]A.south east) {$\ind{Mh=b'}$};
+\foreach \j/\x in {0/0.3,1/1.6,2/2.9}{
+  \draw[tn leg] (\x,2.95)--(\x,1.7);
+  \node[tn label,anchor=south] at (\x,2.95) {$h_\j$};
+}
+\node[row] (r0) at (0.9,0.45) {row 0};
+\node[row] (r1) at (2.3,0.45) {row 1};
+\coordinate (c0) at (0.3,1.7); \node[tn copy] (c1) at (1.6,1.7) {}; \coordinate (c2) at (2.9,1.7);
+\draw[tn leg] (c0) to[out=-90,in=140] (r0.north west);
+\draw[tn leg] (c1) to[out=-90,in=40] (r0.north east);
+\draw[tn leg] (c1) to[out=-90,in=140] (r1.north west);
+\draw[tn leg] (c2) to[out=-90,in=40] (r1.north east);
+\node[tn label,anchor=north,text=black!60,align=center,text width=62mm] at (2.2,-0.25)
+  {row $i$ is the tensor $\ind{\textstyle\bigoplus_j M_{ij}h_j=b'_i}$ on the legs $j$ with $M_{ij}=1$, here $M=\begin{pmatrix}1&1&0\\0&1&1\end{pmatrix}$, and the dot on $h_1$ copies it into both rows};
+\node[tn heading,anchor=west] at (6.3,3.9) {\textbf{(b)} the two-fault pattern, $M$ of the worked example};
+\node[font=\Large] at (6.3,1.3) {$\displaystyle\sum_{h}$};
+\node[bigbox,minimum width=84mm,minimum height=24mm] (B) at (10.95,1.1) {};
+\node[tn label,anchor=north east,text=black!60] at (B.north east) {$\ind{Mh=b'}$};
+\foreach \j/\x in {0/8.1,1/9.8,2/11.5,3/13.2}{
+  \node[tn label,anchor=south] at (\x,2.95) {$h_\j$};
+}
+\draw[tn leg] (8.1,2.95)--(8.1,0.75);
+\draw[tn leg] (9.8,2.95)--(9.8,0.75);
+\draw[tn leg] (11.5,2.95)--(11.5,1.05);
+\draw[tn leg] (13.2,2.95)--(13.2,1.05);
+\node[row] (s1) at (8.1,0.45) {$h_0=1$};
+\node[row] (s0) at (9.8,0.45) {$h_1=0$};
+\node[tn label,text=black!60,align=center] at (11.5,0.55) {free leg\\$\sum_{h_2}1=2$};
+\node[tn label,text=black!60,align=center] at (13.2,0.55) {free leg\\$\sum_{h_3}1=2$};
+\node[tn label,anchor=north,text=black!60,align=center,text width=84mm] at (10.95,-0.25)
+  {rows 2 and 3 of $M$ are empty and drop out, the one-leg tensors are $(0,1)$ for $h_0=1$ and $(1,0)$ for $h_1=0$, so the contraction is $1\cdot1\cdot2\cdot2=4$ and $A_{\rm frame}=2^{-4}\cdot4=1/4$};
+\end{tikzpicture}

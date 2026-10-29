@@ -1,0 +1,55 @@
+\section{An accepted three-fault logical error at $d=5$}
+\label{app:d5-fault-v2}
+The $d=5$ double-checking circuit also admits a small fault pattern
+that is not caught by post-selection, leading to a logical error in the post-selected state. 
+We take the ideal encoded input $\ket{T_L^\dagger}$ and place the three faults shown in
+Fig.~\ref{fig:d5-fixed-faults}:
+\begin{itemize}
+\item $F_1$: $X_3$ after $\text{CNOT}_{3\to1}$ fold,
+\item $F_2$: $X_{14}$ after $\text{CNOT}_{14\to15}$ in fold, and
+\item $F_3$: $Y_{23}$ after $\text{CNOT}_{30\to23}$ in unfold.
+\end{itemize}
+No other location is faulty.
+Each specified fault is one outcome of a two-qubit depolarising (e.g. $I\otimes X$, $X\otimes Y$ etc)
+channel, with probability $p/15$ at its location.
+
+The unfold propagates the first two faults to $X_0X_1X_3$ and
+$X_9X_{14}X_{15}$. The ancillary factors $X_1$ and $X_{14}$ commute
+with their $X$ readouts. The central and ancillary measurements
+all return $+1$. Before the exit layer $D$, the data qubits pick up the error
+\begin{equation}
+ Q=X_0X_3X_9X_{15}Y_{23}.
+ \label{eq:d5-fault-frame-v2}
+\end{equation}
+The exit gates expand $DQD^\dagger$ into 32 signed Pauli terms.
+Only two survive the noiseless code projection $\Pi_0$:
+\begin{equation}
+ \Pi_0DQD^\dagger\Pi_0 =-\frac{X_L+Y_L}{\sqrt{32}}\Pi_0 =-\frac14N_L\Pi_0,
+ \label{eq:d5-fault-projection-v2}
+\end{equation}
+where the logical operator $N_L=(X_L+Y_L)/\sqrt2$ acts on the nineteen-qubit code.
+It anticommutes with $M_L=(X_L-Y_L)/\sqrt2$, so it maps the ideal
+$M_L=+1$ magic state to the orthogonal $M_L=-1$ state.
+The amplitude factor $1/4$ gives
+\begin{equation}
+ A_{\mathcal F}=B_{\mathcal F}=\frac1{16},
+ \qquad \frac{B_{\mathcal F}}{A_{\mathcal F}}=1.
+ \label{eq:d5-fixed-fault-probabilities-v2}
+\end{equation}
+Thus 1/16 of attempts with this fixed three-fault pattern
+pass post-selection, and every accepted output exhibits a logical error.
+This is an explicit weight-three failure contributing to the leading
+term of Eq.~\eqref{eq:fullseries}. A ZX-calculus contraction of this weight-three fault pattern using techniques from~\cite{wan} further confirms this result.
+Hence the $d=5$ cultivation circuit actually has fault distance $d_{\text{fault}} =3$ instead of $5$.
+
+\begin{figure}[tp]\centering
+\begin{adjustbox}{max width=.48\textwidth,max totalheight=.87\textheight}
+\input{figures/method/d5_accepted_faults.tikz}
+\end{adjustbox}
+\caption{Three faults in the $d=5$ double-checking circuit.
+Coloured boxes mark the faults; coloured wires trace their propagation.
+Conditioned on this pattern, $A_{\mathcal F}=B_{\mathcal F}=1/16$.}
+\label{fig:d5-fixed-faults}
+\end{figure}
+\FloatBarrier
+

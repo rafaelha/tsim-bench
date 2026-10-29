@@ -1,0 +1,2141 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "main.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "SEMIWEBS.md"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/detector_webs.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det000.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det001.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det002.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det003.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det004.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det005.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det006.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det007.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det008.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det009.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det010.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det011.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det012.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det013.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det014.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det015.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det016.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det017.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det018.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d3_det019.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det000.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det001.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det002.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det003.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det004.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det005.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det006.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det007.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det008.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det009.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det010.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det011.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det012.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det013.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det014.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det015.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det016.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det017.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det018.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det019.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det020.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det021.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det022.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det023.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det024.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det025.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det026.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det027.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det028.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det029.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det030.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det031.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det032.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det033.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det034.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det035.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det036.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det037.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det038.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det039.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det040.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det041.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det042.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det043.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det044.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det045.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det046.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det047.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det048.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det049.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det050.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det051.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det052.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det053.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det054.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det055.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det056.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det057.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det058.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det059.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det060.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det061.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det062.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det063.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det064.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det065.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det066.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det067.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det068.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det069.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det070.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det071.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det072.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det073.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det074.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det075.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det076.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det077.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det078.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det079.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det080.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det081.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det082.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det083.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det084.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det085.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det086.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det087.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det088.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det089.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det090.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det091.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det092.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det093.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det094.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det095.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det096.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det097.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det098.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det099.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det100.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det101.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det102.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det103.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det104.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det105.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/diagrams/d5_det106.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/index.tsv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "detector_webs/pages.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/CRT_toy.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/boundary_cut.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/contraction_tree.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/covariance_move.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/crt_grid.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/d3_circuit_faint.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/d3_pauli_steps.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/d5_circuit_faint.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/detector_webs/d3_det014_check.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/fourier_toy.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/frame_example.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/growth_contraction.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/growth_labels.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/ideal_check.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/method/cnot_factors.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/method/d3_accepted_faults.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/method/d3_fault_expansion.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/method/d3_full_propagation.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/method/d3_incoming_column.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/method/d3_input_circuit.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/method/pipeline.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/order_bubbles.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/other_msc/chan_four_round_plot_only.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/other_msc/chan_v1_comparison.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/other_msc/fold_comparisons.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/other_msc/rp2_comparison.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/overview.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/parity_toy.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/primes_characters.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/response.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/reading_legend.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/teleportation_T.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/teleportation_left.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/teleportation_right.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/x0_cancellation.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/x0x7_cancellation.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/x7.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/x7_cancellation.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/z0.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/z0z3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/semiwebs/z3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/tensor_definition.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "pauli_semiwebs.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_001.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_002.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_003.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_004.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_005.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_006.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_007.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_008.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_009.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_010.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_011.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_012.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_013.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_014.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_015.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_016.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_017.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_018.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_019.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_020.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_021.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_022.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_023.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_024.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_025.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_026.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_027.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_028.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_029.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_030.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_031.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_032.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_033.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_034.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_035.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_036.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_037.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_038.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_039.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_040.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_041.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_042.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_043.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_044.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_045.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_046.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_047.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_048.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_049.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_050.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_051.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_052.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_053.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_054.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_055.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_056.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_057.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_058.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_059.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_060.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_061.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_062.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_063.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_064.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_065.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_066.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_067.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_068.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_069.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_070.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_071.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_072.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_073.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_074.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_075.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_076.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_077.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_078.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_079.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_080.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_081.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_082.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_083.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_084.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_085.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_086.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_087.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_088.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_089.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d3_090.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_001.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_002.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_003.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_004.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_005.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_006.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_007.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_008.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_009.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_010.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_011.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_012.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_013.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_014.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_015.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_016.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_017.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_018.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_019.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_020.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_021.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_022.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_023.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_024.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_025.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_026.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_027.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_028.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_029.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_030.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_031.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_032.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_033.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_034.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_035.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_036.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_037.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_038.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_039.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_040.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_041.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_042.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_043.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_044.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_045.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_046.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_047.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_048.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_049.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_050.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_051.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_052.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_053.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_054.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_055.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_056.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_057.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_058.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_059.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_060.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_061.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_062.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_063.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_064.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_065.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_066.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_067.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_068.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_069.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_070.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_071.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_072.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_073.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_074.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_075.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_076.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_077.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_078.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_079.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_080.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_081.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_082.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_083.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_084.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_085.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_086.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_087.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_088.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_089.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_090.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_091.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_092.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_093.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_094.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_095.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_096.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_097.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_098.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_099.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_100.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_101.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_102.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_103.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_104.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_105.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_106.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_107.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_108.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_109.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_110.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_111.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_112.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_113.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_114.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_115.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_116.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_117.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_118.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_119.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_120.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_121.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_122.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_123.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_124.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_125.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_126.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_127.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_128.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_129.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_130.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_131.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_132.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_133.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_134.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_135.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_136.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_137.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_138.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_139.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_140.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_141.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_142.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_143.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_144.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_145.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_146.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_147.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_148.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_149.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_150.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_151.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_152.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_153.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_154.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_155.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_156.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_157.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_158.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_159.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_160.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_161.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_162.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_163.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_164.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_165.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_166.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_167.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_168.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_169.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_170.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_171.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_172.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_173.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_174.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_175.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_176.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_177.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_178.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_179.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_180.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_181.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_182.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_183.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_184.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_185.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_186.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_187.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_188.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_189.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_190.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_191.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_192.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_193.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_194.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_195.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_196.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_197.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_198.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_199.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_200.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_201.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_202.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_203.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_204.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_205.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_206.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_207.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_208.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_209.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_210.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_211.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_212.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_213.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_214.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_215.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_216.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_217.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_218.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_219.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_220.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_221.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_222.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_223.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_224.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_225.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_226.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_227.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_228.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_229.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_230.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_231.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_232.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_233.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_234.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_235.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_236.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_237.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_238.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_239.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_240.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_241.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_242.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_243.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_244.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_245.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_246.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_247.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_248.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_249.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_250.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_251.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_252.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_253.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_254.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_255.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_256.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_257.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_258.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_259.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_260.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_261.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_262.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_263.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/diagrams/d5_264.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/index.tsv"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/pages.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "semiwebs/pauli_semiwebs.tex"
+      }
+   ],
+   "spec_version" : 1,
+   "texlive_version" : "2025",
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}

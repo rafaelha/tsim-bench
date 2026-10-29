@@ -1,0 +1,69 @@
+\section{Other cultivation circuits}
+\label{app:other-cultivation}
+\captionsetup{hypcap=false}
+
+We compare other cultivation circuits, ending with a
+noiseless code projection and logical readout. Escape and following
+stages are omitted for consistency with the main text. We adapt the methods
+of the main text to these circuits --- using tensor contraction and compare the resultant LER series with the 
+available numerical results.
+
+Recall, $A$ is the probability of acceptance and $B$ is the probability of
+acceptance with a logical error, and $\PL=B/A$. Throughout we use this series expansion
+\[
+ x=\frac{p}{1-p},\qquad S_K(p)=\sum_{k=0}^{K}L_kx^k.
+\]
+The coefficients below are exact for the specified variants of cultivation. Each protocol's bare distance labels $d=3,5$ must not be confused with the circuit fault distance - $d_\text{fault}$.
+
+\subsection*{1. \texorpdfstring{$\mathbb{RP}^{2}$}{RP2}}
+
+For the actual $T$ converted cultivation circuits from~\cite{RP2_prxq}, we obtain
+\input{sections/other_msc_eq/rp2_series}
+
+The leading powers of $x$ establish fault distances $d_{\text{fault}}=2,3$
+for $\mathbb{RP}^{2}$ at $d=3,5$, respectively.
+
+\fig{rp2_comparison}{1}{Actual $T$ cultivation series expanded LER and supplied the $S$-gate proxy samples for
+$\mathbb{RP}^{2}$~\cite{RP2_prxq}.}
+
+\subsection*{2. Fold-transversal}
+
+For the fold-transversal circuits of~\cite{fold_msc_prxq}, we obtain
+\input{sections/other_msc_eq/fold_series}
+
+The leading powers of $x$ establish fault distances $d_{\text{fault}}=3,4$
+for fold-transversal cultivation at $d=3,5$, respectively.
+
+\fig{fold_comparisons}{1}{Published Fold $d=3$ data compared with $B$ per
+initial attempt and $\PL=B/A$. The $Y$-proxy curves use independent samples. Black points and
+error bars are digitised from the original figures.}
+
+The $Y$-proxy and $T$ data are consistent with $B$ rather than $B/A$. The original no-escape plotting code and counts are unavailable and we cannot confirm the source of the discrepancy. 
+It could be possible that the authors were plotting $B$ instead of $B/A$? Or we made a mistake somewhere here.
+
+\subsection*{3. Chan et al.: repaired circuits accompanying arXiv version 1}
+
+For the supplied three-round repaired circuits associated in~\cite{chan2026diagnosingrestoringdegradedfault}, the full-circuit series are
+{\small
+\input{sections/other_msc_eq/chan_series}
+}
+
+The leading powers of $x$ establish fault distances $d_{\text{fault}}=3,4$
+for Chan et al.'s repaired v1 circuits at $d=3,5$, respectively.
+
+\fig{chan_v1_comparison}{1}{Repaired arXiv v1 circuits: exact-coefficient series
+and digitised actual-$T$ sampling. The $d=3$ line retains terms through $x^{10}$ and the
+$d=5$ line through $x^7$. These sampling points belong to arXiv v1, not the further
+distance-restored four-round circuits in their arXiv v2.}
+
+The four displayed $d=5$ series values lie inside the sampling
+uncertainty intervals. For $d=5$, we found an explicit weight-four fault pattern that
+passes post-selection and produces a logical error: $X_{10},X_4,X_2$
+during the three growth rounds and $Y_3$ during final double checking.
+Conditioned on this pattern and no other faults, $A_F=B_F=1/4$.
+Separate gate-level ZX calculus contraction reproduce the uncaught logical error.
+
+The following subsection shows results for their arXiv v2 circuits, which add a
+fourth stabiliser round.
+
+\input{sections/other_msc_chan_new}

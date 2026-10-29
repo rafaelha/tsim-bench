@@ -1,0 +1,21 @@
+\begingroup\color{black}
+\begin{minipage}{8.4cm}\centering
+{\small\textbf{(a)} Earlier stages supply the incoming error}\par\smallskip
+\begin{tikzpicture}[font=\footnotesize]
+\node[box,minimum width=22mm,minimum height=11mm] (prep) at (0,0)
+ {Clifford\\preparation};
+\node[box,minimum width=16mm,minimum height=11mm] (inj) at (3.3,0)
+ {$T_3^\dagger$\\injection};
+\node[box,minimum width=32mm,minimum height=11mm] (enc) at (0,-1.9)
+ {Clifford encoding\\and measured parities};
+\node[box,minimum width=29mm,minimum height=11mm] (dc) at (5.0,-1.9)
+ {$d=3$ double checking\\expanded below};
+\draw[flow] (prep)--(inj);
+\draw[flow] (inj.south) -- ++(0,-0.4) -| (enc.north);
+\draw[flow] (enc)--node[note,above] {incoming\\state}(dc);
+\node[note] at (2.6,-2.85) {the earlier noise supplies the weights of $E$};
+\end{tikzpicture}\par\medskip
+{\small\textbf{(b)} One specified incoming error: $E=X_7$}\par\smallskip
+\resizebox{8.4cm}{!}{\input{figures/method/d3_input_circuit.tikz}}
+\end{minipage}
+\endgroup

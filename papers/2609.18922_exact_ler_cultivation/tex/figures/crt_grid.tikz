@@ -1,0 +1,13 @@
+\begin{tikzpicture}[x=1cm,y=1cm,
+  cell/.style={draw=black!60,minimum width=9mm,minimum height=8mm,font=\small,inner sep=0pt},
+  hit/.style={cell,fill=black!15,draw=black,line width=1.1pt},
+  hd/.style={font=\scriptsize,text=black!70}]
+\foreach \r in {0,1,2}{\node[hd,anchor=east] at (-0.6,-\r) {$\r$};}
+\node[hd,rotate=90] at (-1.4,-1) {$N\bmod3$};
+\foreach \c in {0,...,4}{\node[hd] at (\c,0.65) {$\c$};}
+\node[hd] at (2,1.1) {$N\bmod5$};
+\foreach \N in {0,...,14}{
+  \pgfmathtruncatemacro{\r}{mod(\N,3)}\pgfmathtruncatemacro{\c}{mod(\N,5)}
+  \ifnum\N=8 \node[hit] at (\c,-\r) {$\N$};\else \node[cell] at (\c,-\r) {$\N$};\fi}
+\node[hd,anchor=north,align=center,text width=62mm] at (2,-2.55) {remainders $(2,3)$ occur once, at $N=8$\\with primes $q_1,\dots,q_n$ the grid has $\prod_jq_j$ cells, one per integer below the product};
+\end{tikzpicture}

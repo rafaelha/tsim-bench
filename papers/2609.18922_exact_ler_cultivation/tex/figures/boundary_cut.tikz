@@ -1,0 +1,15 @@
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[tn constraint,minimum width=8mm] (p1) at (0,0) {$\delta_0$};
+\node[tn intermediate,minimum width=11mm] (l) at (2.05,0) {$M_L$};
+\node[tn intermediate,minimum width=11mm] (r) at (5.25,0) {$M_R$};
+\node[tn constraint,minimum width=8mm] (p3) at (7.3,0) {$\delta_0$};
+\draw[tn leg] (p1)--node[above,tn label] {$z_1$}(l);
+\draw[tn leg] (l)--node[above,tn label,fill=white] {$z_2$}(r);
+\draw[tn leg] (r)--node[above,tn label] {$z_3$}(p3);
+\draw[dashed,black!45] (3.65,-.85)--(3.65,1.0);
+\node[tn label] at (2.05,-1.05) {left labels\\$z_1e_1+z_2e_2$};
+\node[tn label] at (5.25,-1.05) {right labels\\$z_2e_2+z_3e_3$};
+\node[tn label] at (3.65,-2.1)
+  {$\delta_0(z)=\mathbf1[z=0]$: $z_1=z_3=0$\\
+   only the $e_2$ coordinate can cross the cut};
+\end{tikzpicture}
