@@ -1,0 +1,18 @@
+[project]
+name = "tsim-active-width"
+version = "0.1.0"
+description = "Literature survey of Stim circuits with non-Clifford gates and their active widths in Tsim and Clifft"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "bloqade-tsim",
+    "clifft==0.12.0",
+    "stim",
+    "numpy",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+# Tsim main at 883d787 (2026-10-29).
+bloqade-tsim = { git = "https://github.com/QuEraComputing/tsim", rev = "883d787" }
