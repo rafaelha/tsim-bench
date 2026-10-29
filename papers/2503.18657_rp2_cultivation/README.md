@@ -1,6 +1,6 @@
 # Efficient Magic State Cultivation on RP²
 
-Chen, Lu, Cao, Zhou, et al. (2025), [arXiv:2503.18657](https://arxiv.org/abs/2503.18657).
+Zi-Han Chen, Ming-Cheng Chen, Chao-Yang Lu, Jian-Wei Pan (2025), [arXiv:2503.18657](https://arxiv.org/abs/2503.18657).
 
 ## Where the circuits are
 
