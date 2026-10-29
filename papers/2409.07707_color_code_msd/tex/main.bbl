@@ -1,0 +1,1190 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{71}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Nielsen}\ and\ \citenamefont
+  {Chuang}(2010)}]{nielsen2010quantum}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont
+  {Nielsen}}\ and\ \bibinfo {author} {\bibfnamefont {I.~L.}\ \bibnamefont
+  {Chuang}},\ }\href@noop {} {\emph {\bibinfo {title} {Quantum Computation and
+  Quantum Information}}},\ \bibinfo {edition} {10th}\ ed.\ (\bibinfo
+  {publisher} {Cambridge University Press},\ \bibinfo {address} {Cambridge; New
+  York},\ \bibinfo {year} {2010})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bombin}\ and\ \citenamefont
+  {Martin-Delgado}(2006)}]{bombin2006topological}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Bombin}}\ and\ \bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont
+  {Martin-Delgado}},\ }\bibfield  {title} {\bibinfo {title} {Topological
+  quantum distillation},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.97.180501} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {97}},\
+  \bibinfo {pages} {180501} (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bombín}(2013)}]{bombin2013topological}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Bombín}},\ }\bibfield  {title} {\bibinfo {title} {Topological codes},\ }in\
+  \href@noop {} {\emph {\bibinfo {booktitle} {Quantum error correction}}},\
+  \bibinfo {editor} {edited by\ \bibinfo {editor} {\bibfnamefont {D.~A.}\
+  \bibnamefont {Lidar}}\ and\ \bibinfo {editor} {\bibfnamefont {T.~A.}\
+  \bibnamefont {Brun}}}\ (\bibinfo  {publisher} {Cambridge university press},\
+  \bibinfo {year} {2013})\ Chap.~\bibinfo {chapter} {19}, pp.\ \bibinfo {pages}
+  {455--481}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bravyi}\ and\ \citenamefont
+  {Kitaev}(1998)}]{bravyi1998quantum}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~B.}\ \bibnamefont
+  {Bravyi}}\ and\ \bibinfo {author} {\bibfnamefont {A.~Y.}\ \bibnamefont
+  {Kitaev}},\ }\href {https://doi.org/10.48550/arXiv.quant-ph/9811052}
+  {\bibinfo {title} {Quantum codes on a lattice with boundary}} (\bibinfo
+  {year} {1998}),\ \Eprint {https://arxiv.org/abs/quant-ph/9811052}
+  {arxiv:quant-ph/9811052} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Dennis}\ \emph {et~al.}(2002)\citenamefont {Dennis},
+  \citenamefont {Kitaev}, \citenamefont {Landahl},\ and\ \citenamefont
+  {Preskill}}]{dennis2002topological}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Dennis}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Kitaev}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Landahl}},\ and\ \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Preskill}},\ }\bibfield  {title}
+  {\bibinfo {title} {Topological quantum memory},\ }\href
+  {https://doi.org/10.1063/1.1499754} {\bibfield  {journal} {\bibinfo
+  {journal} {Journal of Mathematical Physics}\ }\textbf {\bibinfo {volume}
+  {43}},\ \bibinfo {pages} {4452} (\bibinfo {year} {2002})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Landahl}\ \emph {et~al.}(2011)\citenamefont
+  {Landahl}, \citenamefont {Anderson},\ and\ \citenamefont
+  {Rice}}]{landahl2011faulttolerant}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont
+  {Landahl}}, \bibinfo {author} {\bibfnamefont {J.~T.}\ \bibnamefont
+  {Anderson}},\ and\ \bibinfo {author} {\bibfnamefont {P.~R.}\ \bibnamefont
+  {Rice}},\ }\href {http://arxiv.org/abs/1108.5738} {\bibinfo {title}
+  {Fault-tolerant quantum computing with color codes}} (\bibinfo {year}
+  {2011}),\ \Eprint {https://arxiv.org/abs/1108.5738} {arxiv:1108.5738
+  [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kesselring}\ \emph {et~al.}(2024)\citenamefont
+  {Kesselring}, \citenamefont {Magdalena de~la Fuente}, \citenamefont
+  {Thomsen}, \citenamefont {Eisert}, \citenamefont {Bartlett},\ and\
+  \citenamefont {Brown}}]{kesselring2022anyon}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~S.}\ \bibnamefont
+  {Kesselring}}, \bibinfo {author} {\bibfnamefont {J.~C.}\ \bibnamefont
+  {Magdalena de~la Fuente}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Thomsen}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Eisert}},
+  \bibinfo {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Bartlett}},\ and\
+  \bibinfo {author} {\bibfnamefont {B.~J.}\ \bibnamefont {Brown}},\ }\bibfield
+  {title} {\bibinfo {title} {Anyon condensation and the color code},\ }\href
+  {https://doi.org/10.1103/PRXQuantum.5.010342} {\bibfield  {journal} {\bibinfo
+   {journal} {PRX Quantum}\ }\textbf {\bibinfo {volume} {5}},\ \bibinfo {pages}
+  {010342} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Thomsen}\ \emph {et~al.}(2024)\citenamefont
+  {Thomsen}, \citenamefont {Kesselring}, \citenamefont {Bartlett},\ and\
+  \citenamefont {Brown}}]{thomsen2024low}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Thomsen}}, \bibinfo {author} {\bibfnamefont {M.~S.}\ \bibnamefont
+  {Kesselring}}, \bibinfo {author} {\bibfnamefont {S.~D.}\ \bibnamefont
+  {Bartlett}},\ and\ \bibinfo {author} {\bibfnamefont {B.~J.}\ \bibnamefont
+  {Brown}},\ }\bibfield  {title} {\bibinfo {title} {Low-overhead quantum
+  computing with the color code},\ }\href
+  {https://doi.org/10.1103/PhysRevResearch.6.043125} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Res.}\ }\textbf {\bibinfo {volume} {6}},\
+  \bibinfo {pages} {043125} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Postler}\ \emph {et~al.}(2022)\citenamefont
+  {Postler}, \citenamefont {Heu{\ss}en}, \citenamefont {Pogorelov},
+  \citenamefont {Rispler}, \citenamefont {Feldker}, \citenamefont {Meth},
+  \citenamefont {Marciniak}, \citenamefont {Stricker}, \citenamefont
+  {Ringbauer}, \citenamefont {Blatt}, \citenamefont {Schindler}, \citenamefont
+  {M{\"u}ller},\ and\ \citenamefont {Monz}}]{postler2022demonstration}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Postler}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Heu{\ss}en}},
+  \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Pogorelov}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Rispler}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Feldker}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Meth}}, \bibinfo {author} {\bibfnamefont {C.~D.}\
+  \bibnamefont {Marciniak}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Stricker}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Ringbauer}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Blatt}}, \bibinfo
+  {author} {\bibfnamefont {P.}~\bibnamefont {Schindler}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {M{\"u}ller}},\ and\ \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Monz}},\ }\bibfield  {title} {\bibinfo
+  {title} {Demonstration of fault-tolerant universal quantum gate operations},\
+  }\href {https://doi.org/10.1038/s41586-022-04721-1} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo {volume} {605}},\ \bibinfo
+  {pages} {675} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ryan-Anderson}\ \emph {et~al.}(2022)\citenamefont
+  {Ryan-Anderson}, \citenamefont {Brown}, \citenamefont {Allman}, \citenamefont
+  {Arkin}, \citenamefont {Asa-Attuah}, \citenamefont {Baldwin}, \citenamefont
+  {Berg}, \citenamefont {Bohnet}, \citenamefont {Braxton}, \citenamefont
+  {Burdick}, \citenamefont {Campora}, \citenamefont {Chernoguzov},
+  \citenamefont {Esposito}, \citenamefont {Evans}, \citenamefont {Francois},
+  \citenamefont {Gaebler}, \citenamefont {Gatterman}, \citenamefont {Gerber},
+  \citenamefont {Gilmore}, \citenamefont {Gresh}, \citenamefont {Hall},
+  \citenamefont {Hankin}, \citenamefont {Hostetter}, \citenamefont {Lucchetti},
+  \citenamefont {Mayer}, \citenamefont {Myers}, \citenamefont {Neyenhuis},
+  \citenamefont {Santiago}, \citenamefont {Sedlacek}, \citenamefont {Skripka},
+  \citenamefont {Slattery}, \citenamefont {Stutz}, \citenamefont {Tait},
+  \citenamefont {Tobey}, \citenamefont {Vittorini}, \citenamefont {Walker},\
+  and\ \citenamefont {Hayes}}]{ryananderson2022implementing}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Ryan-Anderson}}, \bibinfo {author} {\bibfnamefont {N.~C.}\ \bibnamefont
+  {Brown}}, \bibinfo {author} {\bibfnamefont {M.~S.}\ \bibnamefont {Allman}},
+  \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Arkin}}, \bibinfo
+  {author} {\bibfnamefont {G.}~\bibnamefont {Asa-Attuah}}, \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {Baldwin}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Berg}}, \bibinfo {author} {\bibfnamefont {J.~G.}\
+  \bibnamefont {Bohnet}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Braxton}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Burdick}},
+  \bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont {Campora}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Chernoguzov}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Esposito}}, \bibinfo {author}
+  {\bibfnamefont {B.}~\bibnamefont {Evans}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Francois}}, \bibinfo {author} {\bibfnamefont {J.~P.}\
+  \bibnamefont {Gaebler}}, \bibinfo {author} {\bibfnamefont {T.~M.}\
+  \bibnamefont {Gatterman}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Gerber}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Gilmore}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Gresh}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Hall}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Hankin}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Hostetter}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Lucchetti}}, \bibinfo {author} {\bibfnamefont
+  {K.}~\bibnamefont {Mayer}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Myers}}, \bibinfo {author} {\bibfnamefont
+  {B.}~\bibnamefont {Neyenhuis}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Santiago}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Sedlacek}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Skripka}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Slattery}}, \bibinfo {author} {\bibfnamefont {R.~P.}\
+  \bibnamefont {Stutz}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Tait}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Tobey}},
+  \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Vittorini}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Walker}},\ and\ \bibinfo {author}
+  {\bibfnamefont {D.}~\bibnamefont {Hayes}},\ }\href@noop {} {\bibinfo {title}
+  {Implementing fault-tolerant entangling gates on the five-qubit code and the
+  color code}} (\bibinfo {year} {2022}),\ \Eprint
+  {https://arxiv.org/abs/2208.01863} {arXiv:2208.01863 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Bluvstein}\ \emph {et~al.}(2024)\citenamefont
+  {Bluvstein}, \citenamefont {Evered}, \citenamefont {Geim}, \citenamefont
+  {Li}, \citenamefont {Zhou}, \citenamefont {Manovitz}, \citenamefont {Ebadi},
+  \citenamefont {Cain}, \citenamefont {Kalinowski}, \citenamefont {Hangleiter},
+  \citenamefont {Bonilla~Ataides}, \citenamefont {Maskara}, \citenamefont
+  {Cong}, \citenamefont {Gao}, \citenamefont {Sales~Rodriguez}, \citenamefont
+  {Karolyshyn}, \citenamefont {Semeghini}, \citenamefont {Gullans},
+  \citenamefont {Greiner}, \citenamefont {Vuleti{\'c}},\ and\ \citenamefont
+  {Lukin}}]{bluvstein2024logical}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Bluvstein}}, \bibinfo {author} {\bibfnamefont {S.~J.}\ \bibnamefont
+  {Evered}}, \bibinfo {author} {\bibfnamefont {A.~A.}\ \bibnamefont {Geim}},
+  \bibinfo {author} {\bibfnamefont {S.~H.}\ \bibnamefont {Li}}, \bibinfo
+  {author} {\bibfnamefont {H.}~\bibnamefont {Zhou}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Manovitz}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Ebadi}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Cain}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Kalinowski}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Hangleiter}}, \bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont
+  {Bonilla~Ataides}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Maskara}}, \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Cong}},
+  \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {Gao}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Sales~Rodriguez}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Karolyshyn}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Semeghini}}, \bibinfo {author}
+  {\bibfnamefont {M.~J.}\ \bibnamefont {Gullans}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Greiner}}, \bibinfo {author} {\bibfnamefont
+  {V.}~\bibnamefont {Vuleti{\'c}}},\ and\ \bibinfo {author} {\bibfnamefont
+  {M.~D.}\ \bibnamefont {Lukin}},\ }\bibfield  {title} {\bibinfo {title}
+  {Logical quantum processor based on reconfigurable atom arrays},\ }\href
+  {https://doi.org/10.1038/s41586-023-06927-3} {\bibfield  {journal} {\bibinfo
+  {journal} {Nature}\ }\textbf {\bibinfo {volume} {626}},\ \bibinfo {pages}
+  {58} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Postler}\ \emph {et~al.}(2024)\citenamefont
+  {Postler}, \citenamefont {Butt}, \citenamefont {Pogorelov}, \citenamefont
+  {Marciniak}, \citenamefont {Heu\ss{}en}, \citenamefont {Blatt}, \citenamefont
+  {Schindler}, \citenamefont {Rispler}, \citenamefont {M\"uller},\ and\
+  \citenamefont {Monz}}]{postler2024demonstration}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Postler}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Butt}},
+  \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Pogorelov}}, \bibinfo
+  {author} {\bibfnamefont {C.~D.}\ \bibnamefont {Marciniak}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Heu\ss{}en}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Blatt}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Schindler}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Rispler}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {M\"uller}},\ and\ \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Monz}},\ }\bibfield  {title} {\bibinfo {title}
+  {Demonstration of fault-tolerant steane quantum error correction},\ }\href
+  {https://doi.org/10.1103/PRXQuantum.5.030326} {\bibfield  {journal} {\bibinfo
+   {journal} {PRX Quantum}\ }\textbf {\bibinfo {volume} {5}},\ \bibinfo {pages}
+  {030326} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lacroix}\ \emph {et~al.}(2024)\citenamefont
+  {Lacroix}, \citenamefont {Bourassa}, \citenamefont {Heras}, \citenamefont
+  {Zhang}, \citenamefont {Bausch}, \citenamefont {Senior}, \citenamefont
+  {Edlich}, \citenamefont {Shutty}, \citenamefont {Sivak}, \citenamefont
+  {Bengtsson}, \citenamefont {McEwen}, \citenamefont {Higgott}, \citenamefont
+  {Kafri}, \citenamefont {Claes}, \citenamefont {Morvan}, \citenamefont {Chen},
+  \citenamefont {Zalcman}, \citenamefont {Madhuk}, \citenamefont {Acharya},
+  \citenamefont {Beni}, \citenamefont {Aigeldinger}, \citenamefont {Alcaraz},
+  \citenamefont {Andersen}, \citenamefont {Ansmann}, \citenamefont {Arute},
+  \citenamefont {Arya}, \citenamefont {Asfaw}, \citenamefont {Atalaya},
+  \citenamefont {Babbush}, \citenamefont {Ballard}, \citenamefont {Bardin},
+  \citenamefont {Bilmes}, \citenamefont {Blackwell}, \citenamefont {Bovaird},
+  \citenamefont {Bowers}, \citenamefont {Brill}, \citenamefont {Broughton},
+  \citenamefont {Browne}, \citenamefont {Buchea}, \citenamefont {Buckley},
+  \citenamefont {Burger}, \citenamefont {Burkett}, \citenamefont {Bushnell},
+  \citenamefont {Cabrera}, \citenamefont {Campero}, \citenamefont {Chang},
+  \citenamefont {Chiaro}, \citenamefont {Chih}, \citenamefont {Cleland},
+  \citenamefont {Cogan}, \citenamefont {Collins}, \citenamefont {Conner},
+  \citenamefont {Courtney}, \citenamefont {Crook}, \citenamefont {Curtin},
+  \citenamefont {Das}, \citenamefont {Demura}, \citenamefont {Lorenzo},
+  \citenamefont {Paolo}, \citenamefont {Donohoe}, \citenamefont {Drozdov},
+  \citenamefont {Dunsworth}, \citenamefont {Eickbusch}, \citenamefont {Elbag},
+  \citenamefont {Elzouka}, \citenamefont {Erickson}, \citenamefont {Ferreira},
+  \citenamefont {Burgos}, \citenamefont {Forati}, \citenamefont {Fowler},
+  \citenamefont {Foxen}, \citenamefont {Ganjam}, \citenamefont {Garcia},
+  \citenamefont {Gasca}, \citenamefont {Élie Genois}, \citenamefont {Giang},
+  \citenamefont {Gilboa}, \citenamefont {Gosula}, \citenamefont {Dau},
+  \citenamefont {Graumann}, \citenamefont {Greene}, \citenamefont {Gross},
+  \citenamefont {Ha}, \citenamefont {Habegger}, \citenamefont {Hansen},
+  \citenamefont {Harrigan}, \citenamefont {Harrington}, \citenamefont {Heslin},
+  \citenamefont {Heu}, \citenamefont {Hiltermann}, \citenamefont {Hilton},
+  \citenamefont {Hong}, \citenamefont {Huang}, \citenamefont {Huff},
+  \citenamefont {Huggins}, \citenamefont {Jeffrey}, \citenamefont {Jiang},
+  \citenamefont {Jin}, \citenamefont {Joshi}, \citenamefont {Juhas},
+  \citenamefont {Kabel}, \citenamefont {Kang}, \citenamefont {Karamlou},
+  \citenamefont {Kechedzhi}, \citenamefont {Khaire}, \citenamefont {Khattar},
+  \citenamefont {Khezri}, \citenamefont {Kim}, \citenamefont {Klimov},
+  \citenamefont {Kobrin}, \citenamefont {Korotkov}, \citenamefont {Kostritsa},
+  \citenamefont {Kreikebaum}, \citenamefont {Kurilovich}, \citenamefont
+  {Landhuis}, \citenamefont {Lange-Dei}, \citenamefont {Langley}, \citenamefont
+  {Laptev}, \citenamefont {Lau}, \citenamefont {Ledford}, \citenamefont {Lee},
+  \citenamefont {Lester}, \citenamefont {Guevel}, \citenamefont {Li},
+  \citenamefont {Li}, \citenamefont {Lill}, \citenamefont {Livingston},
+  \citenamefont {Locharla}, \citenamefont {Lucero}, \citenamefont {Lundahl},
+  \citenamefont {Lunt}, \citenamefont {Maloney}, \citenamefont {Mandrà},
+  \citenamefont {Martin}, \citenamefont {Martin}, \citenamefont {Maxfield},
+  \citenamefont {McClean}, \citenamefont {Meeks}, \citenamefont {Megrant},
+  \citenamefont {Miao}, \citenamefont {Molavi}, \citenamefont {Molina},
+  \citenamefont {Montazeri}, \citenamefont {Movassagh}, \citenamefont {Neill},
+  \citenamefont {Newman}, \citenamefont {Nguyen}, \citenamefont {Nguyen},
+  \citenamefont {Ni}, \citenamefont {Niu}, \citenamefont {Oas}, \citenamefont
+  {Oliver}, \citenamefont {Orosco}, \citenamefont {Ottosson}, \citenamefont
+  {Pizzuto}, \citenamefont {Potter}, \citenamefont {Pritchard}, \citenamefont
+  {Quintana}, \citenamefont {Ramachandran}, \citenamefont {Reagor},
+  \citenamefont {Resnick}, \citenamefont {Rhodes}, \citenamefont {Roberts},
+  \citenamefont {Rosenberg}, \citenamefont {Rosenfeld}, \citenamefont {Rossi},
+  \citenamefont {Roushan}, \citenamefont {Sankaragomathi}, \citenamefont
+  {Schurkus}, \citenamefont {Shearn}, \citenamefont {Shorter}, \citenamefont
+  {Shvarts}, \citenamefont {Small}, \citenamefont {Smith}, \citenamefont
+  {Springer}, \citenamefont {Sterling}, \citenamefont {Suchard}, \citenamefont
+  {Szasz}, \citenamefont {Sztein}, \citenamefont {Thor}, \citenamefont
+  {Tomita}, \citenamefont {Torres}, \citenamefont {Torunbalci}, \citenamefont
+  {Vaishnav}, \citenamefont {Vargas}, \citenamefont {Vdovichev}, \citenamefont
+  {Vidal}, \citenamefont {Heidweiller}, \citenamefont {Waltman}, \citenamefont
+  {Waltz}, \citenamefont {Wang}, \citenamefont {Ware}, \citenamefont {Weidel},
+  \citenamefont {White}, \citenamefont {Wong}, \citenamefont {Woo},
+  \citenamefont {Woodson}, \citenamefont {Xing}, \citenamefont {Yao},
+  \citenamefont {Yeh}, \citenamefont {Ying}, \citenamefont {Yoo}, \citenamefont
+  {Yosri}, \citenamefont {Young}, \citenamefont {Zhang}, \citenamefont {Zhu},
+  \citenamefont {Zobrist}, \citenamefont {Neven}, \citenamefont {Kohli},
+  \citenamefont {Davies}, \citenamefont {Boixo}, \citenamefont {Kelly},
+  \citenamefont {Jones}, \citenamefont {Gidney},\ and\ \citenamefont
+  {Satzinger}}]{lacroix2024scaling}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Lacroix}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Bourassa}},
+  \bibinfo {author} {\bibfnamefont {F.~J.~H.}\ \bibnamefont {Heras}}, \bibinfo
+  {author} {\bibfnamefont {L.~M.}\ \bibnamefont {Zhang}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Bausch}}, \bibinfo {author} {\bibfnamefont
+  {A.~W.}\ \bibnamefont {Senior}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Edlich}}, \bibinfo {author} {\bibfnamefont
+  {N.}~\bibnamefont {Shutty}}, \bibinfo {author} {\bibfnamefont
+  {V.}~\bibnamefont {Sivak}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Bengtsson}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {McEwen}}, \bibinfo {author} {\bibfnamefont
+  {O.}~\bibnamefont {Higgott}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Kafri}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Claes}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Morvan}}, \bibinfo {author} {\bibfnamefont
+  {Z.}~\bibnamefont {Chen}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Zalcman}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Madhuk}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Acharya}}, \bibinfo
+  {author} {\bibfnamefont {L.~A.}\ \bibnamefont {Beni}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Aigeldinger}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Alcaraz}}, \bibinfo {author} {\bibfnamefont
+  {T.~I.}\ \bibnamefont {Andersen}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Ansmann}}, \bibinfo {author} {\bibfnamefont
+  {F.}~\bibnamefont {Arute}}, \bibinfo {author} {\bibfnamefont
+  {K.}~\bibnamefont {Arya}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Asfaw}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Atalaya}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Babbush}}, \bibinfo
+  {author} {\bibfnamefont {B.}~\bibnamefont {Ballard}}, \bibinfo {author}
+  {\bibfnamefont {J.~C.}\ \bibnamefont {Bardin}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Bilmes}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Blackwell}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Bovaird}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Bowers}}, \bibinfo {author} {\bibfnamefont
+  {L.}~\bibnamefont {Brill}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Broughton}}, \bibinfo {author} {\bibfnamefont {D.~A.}\
+  \bibnamefont {Browne}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Buchea}}, \bibinfo {author} {\bibfnamefont {B.~B.}\ \bibnamefont {Buckley}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Burger}}, \bibinfo
+  {author} {\bibfnamefont {B.}~\bibnamefont {Burkett}}, \bibinfo {author}
+  {\bibfnamefont {N.}~\bibnamefont {Bushnell}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Cabrera}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Campero}}, \bibinfo {author} {\bibfnamefont {H.-S.}\
+  \bibnamefont {Chang}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Chiaro}}, \bibinfo {author} {\bibfnamefont {L.-Y.}\ \bibnamefont {Chih}},
+  \bibinfo {author} {\bibfnamefont {A.~Y.}\ \bibnamefont {Cleland}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Cogan}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Collins}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Conner}}, \bibinfo {author} {\bibfnamefont
+  {W.}~\bibnamefont {Courtney}}, \bibinfo {author} {\bibfnamefont {A.~L.}\
+  \bibnamefont {Crook}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Curtin}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Das}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Demura}}, \bibinfo
+  {author} {\bibfnamefont {L.~D.}\ \bibnamefont {Lorenzo}}, \bibinfo {author}
+  {\bibfnamefont {A.~D.}\ \bibnamefont {Paolo}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Donohoe}}, \bibinfo {author} {\bibfnamefont
+  {I.}~\bibnamefont {Drozdov}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Dunsworth}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Eickbusch}}, \bibinfo {author} {\bibfnamefont {A.~M.}\
+  \bibnamefont {Elbag}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Elzouka}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Erickson}},
+  \bibinfo {author} {\bibfnamefont {V.~S.}\ \bibnamefont {Ferreira}}, \bibinfo
+  {author} {\bibfnamefont {L.~F.}\ \bibnamefont {Burgos}}, \bibinfo {author}
+  {\bibfnamefont {E.}~\bibnamefont {Forati}}, \bibinfo {author} {\bibfnamefont
+  {A.~G.}\ \bibnamefont {Fowler}}, \bibinfo {author} {\bibfnamefont
+  {B.}~\bibnamefont {Foxen}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Ganjam}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Garcia}}, \bibinfo {author} {\bibfnamefont
+  {R.}~\bibnamefont {Gasca}}, \bibinfo {author} {\bibnamefont {Élie Genois}},
+  \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Giang}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {Gilboa}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Gosula}}, \bibinfo {author} {\bibfnamefont
+  {A.~G.}\ \bibnamefont {Dau}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Graumann}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Greene}}, \bibinfo {author} {\bibfnamefont {J.~A.}\
+  \bibnamefont {Gross}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Ha}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Habegger}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Hansen}}, \bibinfo
+  {author} {\bibfnamefont {M.~P.}\ \bibnamefont {Harrigan}}, \bibinfo {author}
+  {\bibfnamefont {S.~D.}\ \bibnamefont {Harrington}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Heslin}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Heu}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Hiltermann}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Hilton}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Hong}}, \bibinfo {author}
+  {\bibfnamefont {H.-Y.}\ \bibnamefont {Huang}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Huff}}, \bibinfo {author} {\bibfnamefont
+  {W.~J.}\ \bibnamefont {Huggins}}, \bibinfo {author} {\bibfnamefont
+  {E.}~\bibnamefont {Jeffrey}}, \bibinfo {author} {\bibfnamefont
+  {Z.}~\bibnamefont {Jiang}}, \bibinfo {author} {\bibfnamefont
+  {X.}~\bibnamefont {Jin}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Joshi}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Juhas}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Kabel}}, \bibinfo
+  {author} {\bibfnamefont {H.}~\bibnamefont {Kang}}, \bibinfo {author}
+  {\bibfnamefont {A.~H.}\ \bibnamefont {Karamlou}}, \bibinfo {author}
+  {\bibfnamefont {K.}~\bibnamefont {Kechedzhi}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Khaire}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Khattar}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Khezri}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Kim}}, \bibinfo {author} {\bibfnamefont {P.~V.}\
+  \bibnamefont {Klimov}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Kobrin}}, \bibinfo {author} {\bibfnamefont {A.~N.}\ \bibnamefont
+  {Korotkov}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Kostritsa}},
+  \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Kreikebaum}},
+  \bibinfo {author} {\bibfnamefont {V.~D.}\ \bibnamefont {Kurilovich}},
+  \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Landhuis}}, \bibinfo
+  {author} {\bibfnamefont {T.}~\bibnamefont {Lange-Dei}}, \bibinfo {author}
+  {\bibfnamefont {B.~W.}\ \bibnamefont {Langley}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Laptev}}, \bibinfo {author} {\bibfnamefont
+  {K.-M.}\ \bibnamefont {Lau}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Ledford}}, \bibinfo {author} {\bibfnamefont
+  {K.}~\bibnamefont {Lee}}, \bibinfo {author} {\bibfnamefont {B.~J.}\
+  \bibnamefont {Lester}}, \bibinfo {author} {\bibfnamefont {L.~L.}\
+  \bibnamefont {Guevel}}, \bibinfo {author} {\bibfnamefont {W.~Y.}\
+  \bibnamefont {Li}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Li}},
+  \bibinfo {author} {\bibfnamefont {A.~T.}\ \bibnamefont {Lill}}, \bibinfo
+  {author} {\bibfnamefont {W.~P.}\ \bibnamefont {Livingston}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Locharla}}, \bibinfo {author}
+  {\bibfnamefont {E.}~\bibnamefont {Lucero}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Lundahl}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Lunt}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Maloney}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Mandrà}},
+  \bibinfo {author} {\bibfnamefont {L.~S.}\ \bibnamefont {Martin}}, \bibinfo
+  {author} {\bibfnamefont {O.}~\bibnamefont {Martin}}, \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {Maxfield}}, \bibinfo {author}
+  {\bibfnamefont {J.~R.}\ \bibnamefont {McClean}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Meeks}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Megrant}}, \bibinfo {author} {\bibfnamefont {K.~C.}\
+  \bibnamefont {Miao}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Molavi}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Molina}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Montazeri}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Movassagh}}, \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {Neill}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Newman}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Nguyen}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Nguyen}}, \bibinfo {author} {\bibfnamefont {C.-H.}\
+  \bibnamefont {Ni}}, \bibinfo {author} {\bibfnamefont {M.~Y.}\ \bibnamefont
+  {Niu}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Oas}}, \bibinfo
+  {author} {\bibfnamefont {W.~D.}\ \bibnamefont {Oliver}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Orosco}}, \bibinfo {author} {\bibfnamefont
+  {K.}~\bibnamefont {Ottosson}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Pizzuto}}, \bibinfo {author} {\bibfnamefont
+  {R.}~\bibnamefont {Potter}}, \bibinfo {author} {\bibfnamefont
+  {O.}~\bibnamefont {Pritchard}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Quintana}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Ramachandran}}, \bibinfo {author} {\bibfnamefont {M.~J.}\
+  \bibnamefont {Reagor}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Resnick}}, \bibinfo {author} {\bibfnamefont {D.~M.}\ \bibnamefont {Rhodes}},
+  \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Roberts}}, \bibinfo
+  {author} {\bibfnamefont {E.}~\bibnamefont {Rosenberg}}, \bibinfo {author}
+  {\bibfnamefont {E.}~\bibnamefont {Rosenfeld}}, \bibinfo {author}
+  {\bibfnamefont {E.}~\bibnamefont {Rossi}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Roushan}}, \bibinfo {author} {\bibfnamefont
+  {K.}~\bibnamefont {Sankaragomathi}}, \bibinfo {author} {\bibfnamefont
+  {H.~F.}\ \bibnamefont {Schurkus}}, \bibinfo {author} {\bibfnamefont {M.~J.}\
+  \bibnamefont {Shearn}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Shorter}}, \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Shvarts}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Small}}, \bibinfo
+  {author} {\bibfnamefont {W.~C.}\ \bibnamefont {Smith}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Springer}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Sterling}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Suchard}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Szasz}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Sztein}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Thor}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Tomita}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Torres}},
+  \bibinfo {author} {\bibfnamefont {M.~M.}\ \bibnamefont {Torunbalci}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Vaishnav}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Vargas}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Vdovichev}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Vidal}}, \bibinfo {author} {\bibfnamefont
+  {C.~V.}\ \bibnamefont {Heidweiller}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Waltman}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Waltz}}, \bibinfo {author} {\bibfnamefont {S.~X.}\
+  \bibnamefont {Wang}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Ware}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Weidel}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {White}}, \bibinfo
+  {author} {\bibfnamefont {K.}~\bibnamefont {Wong}}, \bibinfo {author}
+  {\bibfnamefont {B.~W.~K.}\ \bibnamefont {Woo}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Woodson}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Xing}}, \bibinfo {author} {\bibfnamefont {Z.~J.}\
+  \bibnamefont {Yao}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Yeh}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Ying}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Yoo}}, \bibinfo {author}
+  {\bibfnamefont {N.}~\bibnamefont {Yosri}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Young}}, \bibinfo {author} {\bibfnamefont
+  {Y.}~\bibnamefont {Zhang}}, \bibinfo {author} {\bibfnamefont
+  {N.}~\bibnamefont {Zhu}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Zobrist}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Neven}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Kohli}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Davies}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Boixo}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Kelly}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Jones}}, \bibinfo {author} {\bibfnamefont
+  {C.}~\bibnamefont {Gidney}},\ and\ \bibinfo {author} {\bibfnamefont {K.~J.}\
+  \bibnamefont {Satzinger}},\ }\href {https://arxiv.org/abs/2412.14256}
+  {\bibinfo {title} {Scaling and logic in the color code on a superconducting
+  quantum processor}} (\bibinfo {year} {2024}),\ \Eprint
+  {https://arxiv.org/abs/2412.14256} {arXiv:2412.14256 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Kubica}\ and\ \citenamefont
+  {Beverland}(2015)}]{kubica2015universal}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Kubica}}\ and\ \bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont
+  {Beverland}},\ }\bibfield  {title} {\bibinfo {title} {Universal transversal
+  gates with color codes: {A} simplified approach},\ }\href
+  {https://doi.org/10.1103/PhysRevA.91.032330} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {91}},\ \bibinfo
+  {pages} {032330} (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Landahl}\ and\ \citenamefont
+  {Ryan-Anderson}(2014)}]{landahl2014quantum}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont
+  {Landahl}}\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Ryan-Anderson}},\ }\href {https://arxiv.org/abs/1407.5103} {\bibinfo {title}
+  {Quantum computing by color-code lattice surgery}} (\bibinfo {year} {2014}),\
+  \Eprint {https://arxiv.org/abs/1407.5103} {arxiv:1407.5103 [quant-ph]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bravyi}\ and\ \citenamefont
+  {Kitaev}(2005)}]{bravyi2005universal}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Bravyi}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Kitaev}},\ }\bibfield  {title} {\bibinfo {title} {Universal quantum
+  computation with ideal clifford gates and noisy ancillas},\ }\href
+  {https://doi.org/10.1103/PhysRevA.71.022316} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {71}},\ \bibinfo
+  {pages} {022316} (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Reichardt}(2005)}]{reichardt2005quantum}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.~W.}\ \bibnamefont
+  {Reichardt}},\ }\bibfield  {title} {\bibinfo {title} {Quantum universality
+  from magic states distillation applied to {CSS} codes},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {Quantum Inf. Process.}\ }\textbf
+  {\bibinfo {volume} {4}},\ \bibinfo {pages} {251} (\bibinfo {year}
+  {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Meier}\ \emph {et~al.}(2012)\citenamefont {Meier},
+  \citenamefont {Eastin},\ and\ \citenamefont {Knill}}]{meier2012magic}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+  {Meier}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Eastin}},\ and\
+  \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Knill}},\ }\href
+  {https://arxiv.org/abs/1204.4221} {\bibinfo {title} {Magic-state distillation
+  with the four-qubit code}} (\bibinfo {year} {2012}),\ \Eprint
+  {https://arxiv.org/abs/1204.4221} {arXiv:1204.4221 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Fowler}\ \emph {et~al.}(2012)\citenamefont {Fowler},
+  \citenamefont {Mariantoni}, \citenamefont {Martinis},\ and\ \citenamefont
+  {Cleland}}]{fowler2012surface}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+  {Fowler}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Mariantoni}},
+  \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Martinis}},\ and\
+  \bibinfo {author} {\bibfnamefont {A.~N.}\ \bibnamefont {Cleland}},\
+  }\bibfield  {title} {\bibinfo {title} {Surface codes: {T}owards practical
+  large-scale quantum computation},\ }\href
+  {https://doi.org/10.1103/PhysRevA.86.032324} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {86}},\ \bibinfo
+  {pages} {032324} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bravyi}\ and\ \citenamefont
+  {Haah}(2012)}]{bravyi2012magic}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Bravyi}}\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Haah}},\
+  }\bibfield  {title} {\bibinfo {title} {Magic-state distillation with low
+  overhead},\ }\href {https://doi.org/10.1103/PhysRevA.86.052329} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume}
+  {86}},\ \bibinfo {pages} {052329} (\bibinfo {year} {2012})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {O'Gorman}\ and\ \citenamefont
+  {Campbell}(2017)}]{ogorman2017quantum}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {O'Gorman}}\ and\ \bibinfo {author} {\bibfnamefont {E.~T.}\ \bibnamefont
+  {Campbell}},\ }\bibfield  {title} {\bibinfo {title} {Quantum computation with
+  realistic magic-state factories},\ }\href
+  {https://doi.org/10.1103/PhysRevA.95.032338} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {95}},\ \bibinfo
+  {pages} {032338} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Beverland}\ \emph {et~al.}(2021)\citenamefont
+  {Beverland}, \citenamefont {Kubica},\ and\ \citenamefont
+  {Svore}}]{beverland2021cost}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont
+  {Beverland}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Kubica}},\
+  and\ \bibinfo {author} {\bibfnamefont {K.~M.}\ \bibnamefont {Svore}},\
+  }\bibfield  {title} {\bibinfo {title} {Cost of universality: {A} comparative
+  study of the overhead of state distillation and code switching with color
+  codes},\ }\href {https://doi.org/10.1103/PRXQuantum.2.020341} {\bibfield
+  {journal} {\bibinfo  {journal} {PRX Quantum}\ }\textbf {\bibinfo {volume}
+  {2}},\ \bibinfo {pages} {020341} (\bibinfo {year} {2021})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Litinski}(2019{\natexlab{a}})}]{litinski2019magic}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Litinski}},\ }\bibfield  {title} {\bibinfo {title} {Magic state
+  distillation: {Not} as costly as you think},\ }\href
+  {https://doi.org/10.22331/q-2019-12-02-205} {\bibfield  {journal} {\bibinfo
+  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages}
+  {205} (\bibinfo {year} {2019}{\natexlab{a}})},\ \Eprint
+  {https://arxiv.org/abs/1905.06903} {arxiv:1905.06903} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Chamberland}\ and\ \citenamefont
+  {Noh}(2020)}]{chamberland2020very}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Chamberland}}\ and\ \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Noh}},\ }\bibfield  {title} {\bibinfo {title} {Very low overhead
+  fault-tolerant magic state preparation using redundant ancilla encoding and
+  flag qubits},\ }\href {https://doi.org/10.1038/s41534-020-00319-5} {\bibfield
+   {journal} {\bibinfo  {journal} {npj Quantum Inf.}\ }\textbf {\bibinfo
+  {volume} {6}},\ \bibinfo {pages} {91} (\bibinfo {year} {2020})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Itogawa}\ \emph {et~al.}(2024)\citenamefont
+  {Itogawa}, \citenamefont {Takada}, \citenamefont {Hirano},\ and\
+  \citenamefont {Fujii}}]{itogawa2024even}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Itogawa}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Takada}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Hirano}},\ and\ \bibinfo
+  {author} {\bibfnamefont {K.}~\bibnamefont {Fujii}},\ }\href
+  {http://arxiv.org/abs/2403.03991} {\bibinfo {title} {Even more efficient
+  magic state distillation by zero-level distillation}} (\bibinfo {year}
+  {2024}),\ \Eprint {https://arxiv.org/abs/2403.03991} {arxiv:2403.03991
+  [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gidney}\ \emph {et~al.}(2024)\citenamefont {Gidney},
+  \citenamefont {Shutty},\ and\ \citenamefont {Jones}}]{gidney2024magic}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Gidney}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Shutty}},\
+  and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Jones}},\ }\href
+  {https://arxiv.org/abs/2409.17595} {\bibinfo {title} {Magic state
+  cultivation: growing {T} states as cheap as {CNOT} gates}} (\bibinfo {year}
+  {2024}),\ \Eprint {https://arxiv.org/abs/2409.17595} {arXiv:2409.17595
+  [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lee}\ \emph {et~al.}(2025)\citenamefont {Lee},
+  \citenamefont {Li},\ and\ \citenamefont {Bartlett}}]{lee2025color}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.-H.}\ \bibnamefont
+  {Lee}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Li}},\ and\
+  \bibinfo {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Bartlett}},\
+  }\bibfield  {title} {\bibinfo {title} {Color code decoder with improved
+  scaling for correcting circuit-level noise},\ }\href
+  {https://doi.org/10.22331/q-2025-01-27-1609} {\bibfield  {journal} {\bibinfo
+  {journal} {{Quantum}}\ }\textbf {\bibinfo {volume} {9}},\ \bibinfo {pages}
+  {1609} (\bibinfo {year} {2025})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fowler}(2011)}]{fowler2011twodimensional}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+  {Fowler}},\ }\bibfield  {title} {\bibinfo {title} {Two-dimensional color-code
+  quantum computation},\ }\href {https://doi.org/10.1103/PhysRevA.83.042310}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo
+  {volume} {83}},\ \bibinfo {pages} {042310} (\bibinfo {year}
+  {2011})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Brown}\ \emph {et~al.}(2017)\citenamefont {Brown},
+  \citenamefont {Laubscher}, \citenamefont {Kesselring},\ and\ \citenamefont
+  {Wootton}}]{brown2017poking}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.~J.}\ \bibnamefont
+  {Brown}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Laubscher}},
+  \bibinfo {author} {\bibfnamefont {M.~S.}\ \bibnamefont {Kesselring}},\ and\
+  \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont {Wootton}},\
+  }\bibfield  {title} {\bibinfo {title} {Poking holes and cutting corners to
+  achieve {Clifford} gates with the surface code},\ }\href
+  {https://doi.org/10.1103/PhysRevX.7.021029} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. X}\ }\textbf {\bibinfo {volume} {7}},\ \bibinfo {pages}
+  {021029} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kesselring}\ \emph {et~al.}(2018)\citenamefont
+  {Kesselring}, \citenamefont {Pastawski}, \citenamefont {Eisert},\ and\
+  \citenamefont {Brown}}]{kesselring2018boundaries}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~S.}\ \bibnamefont
+  {Kesselring}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Pastawski}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Eisert}},\
+  and\ \bibinfo {author} {\bibfnamefont {B.~J.}\ \bibnamefont {Brown}},\
+  }\bibfield  {title} {\bibinfo {title} {The boundaries and twist defects of
+  the color code and their applications to topological quantum computation},\
+  }\href {https://doi.org/10.22331/q-2018-10-19-101} {\bibfield  {journal}
+  {\bibinfo  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo
+  {pages} {101} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fazio}\ \emph {et~al.}(2024)\citenamefont {Fazio},
+  \citenamefont {Harper},\ and\ \citenamefont {Bartlett}}]{fazio2024logical}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Fazio}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Harper}},\ and\
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Bartlett}},\ }\href@noop
+  {} {\bibinfo {title} {Logical noise bias in magic state injection}} (\bibinfo
+  {year} {2024}),\ \Eprint {https://arxiv.org/abs/2401.10982} {arXiv:2401.10982
+  [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Litinski}(2019{\natexlab{b}})}]{litinski2019game}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Litinski}},\ }\bibfield  {title} {\bibinfo {title} {A game of surface codes:
+  {Large}-scale quantum computing with lattice surgery},\ }\href
+  {https://doi.org/10.22331/q-2019-03-05-128} {\bibfield  {journal} {\bibinfo
+  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages}
+  {128} (\bibinfo {year} {2019}{\natexlab{b}})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Knill}(2005)}]{knill2005quantum}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Knill}},\ }\bibfield  {title} {\bibinfo {title} {Quantum computing with
+  realistically noisy devices},\ }\href {https://doi.org/10.1038/nature03350}
+  {\bibfield  {journal} {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo
+  {volume} {434}},\ \bibinfo {pages} {39} (\bibinfo {year} {2005})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Goto}(2016)}]{goto2016minimizing}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Goto}},\ }\bibfield  {title} {\bibinfo {title} {Minimizing resource
+  overheads for fault-tolerant preparation of encoded states of the steane
+  code},\ }\href {https://doi.org/10.1038/srep19578} {\bibfield  {journal}
+  {\bibinfo  {journal} {Sci. Rep.}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo
+  {pages} {19578} (\bibinfo {year} {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Chamberland}\ and\ \citenamefont
+  {Cross}(2019)}]{chamberland2019faulttolerant}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Chamberland}}\ and\ \bibinfo {author} {\bibfnamefont {A.~W.}\ \bibnamefont
+  {Cross}},\ }\bibfield  {title} {\bibinfo {title} {Fault-tolerant magic state
+  preparation with flag qubits},\ }\href
+  {https://doi.org/10.22331/q-2019-05-20-143} {\bibfield  {journal} {\bibinfo
+  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages}
+  {143} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kitaev}\ and\ \citenamefont
+  {Kong}(2012)}]{kitaev2012models}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Kitaev}}\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Kong}},\
+  }\bibfield  {title} {\bibinfo {title} {Models for gapped boundaries and
+  domain walls},\ }\href {https://doi.org/10.1007/s00220-012-1500-5} {\bibfield
+   {journal} {\bibinfo  {journal} {Commun. Math. Phys.}\ }\textbf {\bibinfo
+  {volume} {313}},\ \bibinfo {pages} {351} (\bibinfo {year}
+  {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gidney}\ and\ \citenamefont
+  {Jones}(2023)}]{gidney2023new}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Gidney}}\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Jones}},\
+  }\href {https://arxiv.org/abs/2312.08813} {\bibinfo {title} {New circuits and
+  an open source decoder for the color code}} (\bibinfo {year} {2023}),\
+  \Eprint {https://arxiv.org/abs/2312.08813} {arXiv:2312.08813 [quant-ph]}
+  \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gidney}\ \emph {et~al.}(2023)\citenamefont {Gidney},
+  \citenamefont {Newman}, \citenamefont {Brooks},\ and\ \citenamefont
+  {Jones}}]{gidney2023yoked}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Gidney}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Newman}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Brooks}},\ and\ \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {Jones}},\ }\href
+  {https://doi.org/10.48550/arXiv.2312.04522} {\bibinfo {title} {Yoked surface
+  codes}} (\bibinfo {year} {2023}),\ \Eprint {https://arxiv.org/abs/2312.04522}
+  {arXiv:2312.04522} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bomb{\'i}n}\ \emph {et~al.}(2024)\citenamefont
+  {Bomb{\'i}n}, \citenamefont {Pant}, \citenamefont {Roberts},\ and\
+  \citenamefont {Seetharam}}]{bombin2024fault}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Bomb{\'i}n}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Pant}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Roberts}},\ and\ \bibinfo
+  {author} {\bibfnamefont {K.~I.}\ \bibnamefont {Seetharam}},\ }\bibfield
+  {title} {\bibinfo {title} {Fault-tolerant postselection for low-overhead
+  magic state preparation},\ }\href
+  {https://doi.org/10.1103/PRXQuantum.5.010302} {\bibfield  {journal} {\bibinfo
+   {journal} {PRX Quantum}\ }\textbf {\bibinfo {volume} {5}},\ \bibinfo {pages}
+  {010302} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Smith}\ \emph {et~al.}(2024)\citenamefont {Smith},
+  \citenamefont {Brown},\ and\ \citenamefont {Bartlett}}]{smith2024mitigating}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~C.}\ \bibnamefont
+  {Smith}}, \bibinfo {author} {\bibfnamefont {B.~J.}\ \bibnamefont {Brown}},\
+  and\ \bibinfo {author} {\bibfnamefont {S.~D.}\ \bibnamefont {Bartlett}},\
+  }\bibfield  {title} {\bibinfo {title} {Mitigating errors in logical qubits},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Commun. Phys.}\
+  }\textbf {\bibinfo {volume} {7}},\ \bibinfo {pages} {386} (\bibinfo {year}
+  {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sahay}\ and\ \citenamefont
+  {Brown}(2022)}]{sahay2022decoder}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Sahay}}\ and\ \bibinfo {author} {\bibfnamefont {B.~J.}\ \bibnamefont
+  {Brown}},\ }\bibfield  {title} {\bibinfo {title} {Decoder for the triangular
+  color code by matching on a {M\"obius} strip},\ }\href
+  {https://doi.org/10.1103/PRXQuantum.3.010310} {\bibfield  {journal} {\bibinfo
+   {journal} {PRX Quantum}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages}
+  {010310} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont
+  {Lee}(2025{\natexlab{a}})}]{github:msd-magic-state-prep-cycle-simulation}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.-H.}\ \bibnamefont
+  {Lee}},\ }\href@noop {} {\bibinfo {title}
+  {msd-magic-state-prep-cycle-simulation}},\ \bibinfo {howpublished}
+  {\url{https://github.com/seokhyung-lee/msd-magic-state-prep-cycle-simulation}}
+  (\bibinfo {year} {2025}{\natexlab{a}})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sarvepalli}\ and\ \citenamefont
+  {Raussendorf}(2012)}]{sarvepalli2012efficient}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Sarvepalli}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Raussendorf}},\ }\bibfield  {title} {\bibinfo {title} {Efficient decoding of
+  topological color codes},\ }\href
+  {https://doi.org/10.1103/PhysRevA.85.022317} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {85}},\ \bibinfo
+  {pages} {022317} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Delfosse}(2014)}]{delfosse2014decoding}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Delfosse}},\ }\bibfield  {title} {\bibinfo {title} {Decoding color codes by
+  projection onto surface codes},\ }\href
+  {https://doi.org/10.1103/PhysRevA.89.012317} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {89}},\ \bibinfo
+  {pages} {012317} (\bibinfo {year} {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Maskara}\ \emph {et~al.}(2019)\citenamefont
+  {Maskara}, \citenamefont {Kubica},\ and\ \citenamefont
+  {Jochym-O'Connor}}]{maskara2019advantages}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Maskara}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Kubica}},\
+  and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Jochym-O'Connor}},\
+  }\bibfield  {title} {\bibinfo {title} {Advantages of versatile neural-network
+  decoding for topological codes},\ }\href
+  {https://doi.org/10.1103/PhysRevA.99.052351} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {99}},\ \bibinfo
+  {pages} {052351} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Chamberland}\ \emph {et~al.}(2020)\citenamefont
+  {Chamberland}, \citenamefont {Kubica}, \citenamefont {Yoder},\ and\
+  \citenamefont {Zhu}}]{chamberland2020triangular}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Chamberland}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Kubica}},
+  \bibinfo {author} {\bibfnamefont {T.~J.}\ \bibnamefont {Yoder}},\ and\
+  \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Zhu}},\ }\bibfield
+  {title} {\bibinfo {title} {Triangular color codes on trivalent graphs with
+  flag qubits},\ }\href {https://doi.org/10.1088/1367-2630/ab68fd} {\bibfield
+  {journal} {\bibinfo  {journal} {New J. Phys.}\ }\textbf {\bibinfo {volume}
+  {22}},\ \bibinfo {pages} {023019} (\bibinfo {year} {2020})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Delfosse}\ and\ \citenamefont
+  {Nickerson}(2021)}]{delfosse2021almostlinear}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Delfosse}}\ and\ \bibinfo {author} {\bibfnamefont {N.~H.}\ \bibnamefont
+  {Nickerson}},\ }\bibfield  {title} {\bibinfo {title} {Almost-linear time
+  decoding algorithm for topological codes},\ }\href
+  {https://doi.org/10.22331/q-2021-12-02-595} {\bibfield  {journal} {\bibinfo
+  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {5}},\ \bibinfo {pages}
+  {595} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sabo}\ \emph {et~al.}(2022)\citenamefont {Sabo},
+  \citenamefont {Aloshious},\ and\ \citenamefont {Brown}}]{sabo2022trellis}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Sabo}}, \bibinfo {author} {\bibfnamefont {A.~B.}\ \bibnamefont
+  {Aloshious}},\ and\ \bibinfo {author} {\bibfnamefont {K.~R.}\ \bibnamefont
+  {Brown}},\ }\href {https://doi.org/10.48550/arXiv.2106.08251} {\bibinfo
+  {title} {Trellis decoding for qudit stabilizer codes and its application to
+  qubit topological codes}} (\bibinfo {year} {2022}),\ \Eprint
+  {https://arxiv.org/abs/2106.08251} {arXiv:2106.08251 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Kubica}\ and\ \citenamefont
+  {Delfosse}(2023)}]{kubica2023efficient}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Kubica}}\ and\ \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Delfosse}},\ }\bibfield  {title} {\bibinfo {title} {Efficient color code
+  decoders in {$d\geq 2$} dimensions from toric code decoders},\ }\href
+  {https://doi.org/10.22331/q-2023-02-21-929} {\bibfield  {journal} {\bibinfo
+  {journal} {{Quantum}}\ }\textbf {\bibinfo {volume} {7}},\ \bibinfo {pages}
+  {929} (\bibinfo {year} {2023})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zhang}\ \emph {et~al.}(2023)\citenamefont {Zhang},
+  \citenamefont {Wu},\ and\ \citenamefont {Guo}}]{zhang2023facilitating}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Zhang}}, \bibinfo {author} {\bibfnamefont {Y.-C.}\ \bibnamefont {Wu}},\ and\
+  \bibinfo {author} {\bibfnamefont {G.-P.}\ \bibnamefont {Guo}},\ }\href
+  {https://doi.org/10.48550/arXiv.2309.05222} {\bibinfo {title} {Facilitating
+  practical fault-tolerant quantum computing based on color codes}} (\bibinfo
+  {year} {2023}),\ \Eprint {https://arxiv.org/abs/2309.05222} {arXiv:2309.05222
+  [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Takada}\ \emph {et~al.}(2023)\citenamefont {Takada},
+  \citenamefont {Takeuchi},\ and\ \citenamefont {Fujii}}]{takada2023highly}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Takada}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Takeuchi}},\
+  and\ \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Fujii}},\ }\href
+  {https://doi.org/10.48550/arXiv.2303.01348} {\bibinfo {title} {Highly
+  accurate decoder for topological color codes with simulated annealing}}
+  (\bibinfo {year} {2023}),\ \Eprint {https://arxiv.org/abs/2303.01348}
+  {arXiv:2303.01348 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Berent}\ \emph {et~al.}(2023)\citenamefont {Berent},
+  \citenamefont {Burgholzer}, \citenamefont {Derks}, \citenamefont {Eisert},\
+  and\ \citenamefont {Wille}}]{berent2023decoding}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Berent}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Burgholzer}},
+  \bibinfo {author} {\bibfnamefont {P.-J. H.~S.}\ \bibnamefont {Derks}},
+  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Eisert}},\ and\ \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Wille}},\ }\href
+  {https://doi.org/10.48550/arXiv.2303.14237} {\bibinfo {title} {Decoding
+  quantum color codes with {MaxSAT}}} (\bibinfo {year} {2023}),\ \Eprint
+  {https://arxiv.org/abs/2303.14237} {arXiv:2303.14237 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Gidney}(2022)}]{gidney2022stability}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Gidney}},\ }\bibfield  {title} {\bibinfo {title} {Stability {E}xperiments:
+  {T}he {O}verlooked {D}ual of {M}emory {E}xperiments},\ }\href
+  {https://doi.org/10.22331/q-2022-08-24-786} {\bibfield  {journal} {\bibinfo
+  {journal} {{Quantum}}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages}
+  {786} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ramette}\ \emph {et~al.}(2024)\citenamefont
+  {Ramette}, \citenamefont {Sinclair}, \citenamefont {Breuckmann},\ and\
+  \citenamefont {Vuleti{\'c}}}]{ramette2024fault}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Ramette}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Sinclair}},
+  \bibinfo {author} {\bibfnamefont {N.~P.}\ \bibnamefont {Breuckmann}},\ and\
+  \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Vuleti{\'c}}},\
+  }\bibfield  {title} {\bibinfo {title} {Fault-tolerant connection of
+  error-corrected qubits with noisy links},\ }\href
+  {https://doi.org/10.1038/s41534-024-00855-4} {\bibfield  {journal} {\bibinfo
+  {journal} {npj Quantum Inf.}\ }\textbf {\bibinfo {volume} {10}},\ \bibinfo
+  {pages} {58} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Litinski}\ and\ \citenamefont
+  {Oppen}(2018)}]{litinski2018lattice}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Litinski}}\ and\ \bibinfo {author} {\bibfnamefont {F.~v.}\ \bibnamefont
+  {Oppen}},\ }\bibfield  {title} {\bibinfo {title} {Lattice surgery with a
+  twist: {S}implifying {C}lifford gates of surface codes},\ }\href
+  {https://doi.org/10.22331/q-2018-05-04-62} {\bibfield  {journal} {\bibinfo
+  {journal} {{Quantum}}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages}
+  {62} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fowler}\ \emph {et~al.}(2009)\citenamefont {Fowler},
+  \citenamefont {Stephens},\ and\ \citenamefont
+  {Groszkowski}}]{fowler2009high}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+  {Fowler}}, \bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+  {Stephens}},\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Groszkowski}},\ }\bibfield  {title} {\bibinfo {title} {High-threshold
+  universal quantum computation on the surface code},\ }\href
+  {https://doi.org/10.1103/PhysRevA.80.052312} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {80}},\ \bibinfo
+  {pages} {052312} (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Stephens}(2014)}]{stephens2014fault}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+  {Stephens}},\ }\bibfield  {title} {\bibinfo {title} {Fault-tolerant
+  thresholds for quantum error correction with the surface code},\ }\href
+  {https://doi.org/10.1103/PhysRevA.89.022321} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {89}},\ \bibinfo
+  {pages} {022321} (\bibinfo {year} {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Heim}\ \emph {et~al.}(2016)\citenamefont {Heim},
+  \citenamefont {Svore},\ and\ \citenamefont {Hastings}}]{heim2016optimal}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Heim}}, \bibinfo {author} {\bibfnamefont {K.~M.}\ \bibnamefont {Svore}},\
+  and\ \bibinfo {author} {\bibfnamefont {M.~B.}\ \bibnamefont {Hastings}},\
+  }\href {https://arxiv.org/abs/1609.06373} {\bibinfo {title} {Optimal
+  circuit-level decoding for surface codes}} (\bibinfo {year} {2016}),\ \Eprint
+  {https://arxiv.org/abs/1609.06373} {arXiv:1609.06373 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Higgott}\ \emph {et~al.}(2023)\citenamefont
+  {Higgott}, \citenamefont {Bohdanowicz}, \citenamefont {Kubica}, \citenamefont
+  {Flammia},\ and\ \citenamefont {Campbell}}]{higgot2023improved}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {Higgott}}, \bibinfo {author} {\bibfnamefont {T.~C.}\ \bibnamefont
+  {Bohdanowicz}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Kubica}},
+  \bibinfo {author} {\bibfnamefont {S.~T.}\ \bibnamefont {Flammia}},\ and\
+  \bibinfo {author} {\bibfnamefont {E.~T.}\ \bibnamefont {Campbell}},\
+  }\bibfield  {title} {\bibinfo {title} {Improved decoding of circuit noise and
+  fragile boundaries of tailored surface codes},\ }\href
+  {https://doi.org/10.1103/PhysRevX.13.031007} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. X}\ }\textbf {\bibinfo {volume} {13}},\ \bibinfo
+  {pages} {031007} (\bibinfo {year} {2023})}\BibitemShut {NoStop}%
+\bibitem [{Note1()}]{Note1}%
+  \BibitemOpen
+  \bibinfo {note} {Note that these thresholds are \protect \textit {scaling}
+  thresholds, not \protect \textit {crossing} thresholds. That is, they
+  correspond to the parameter $p_\protect \mathrm {th}$ in the sub-threshold
+  ansatz given by Eq.~\protect \eqref {eq:ansatz}, rather than the intersection
+  points of curves for different code distances. These two thresholds generally
+  differ, as the ansatz breaks down near threshold. Although the crossing
+  threshold is commonly used as a standard definition in the literature, the
+  scaling threshold is more relevant in the low-error regime as we consider in
+  our analysis.}\BibitemShut {Stop}%
+\bibitem [{\citenamefont {Zhang}\ \emph {et~al.}(2024)\citenamefont {Zhang},
+  \citenamefont {Wu},\ and\ \citenamefont {Guo}}]{zhang2024facilitating}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Zhang}}, \bibinfo {author} {\bibfnamefont {Y.-C.}\ \bibnamefont {Wu}},\ and\
+  \bibinfo {author} {\bibfnamefont {G.-P.}\ \bibnamefont {Guo}},\ }\bibfield
+  {title} {\bibinfo {title} {Facilitating practical fault-tolerant quantum
+  computing based on color codes},\ }\href
+  {https://doi.org/10.1103/PhysRevResearch.6.033086} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Res.}\ }\textbf {\bibinfo {volume} {6}},\
+  \bibinfo {pages} {033086} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zhou}\ \emph {et~al.}(2024)\citenamefont {Zhou},
+  \citenamefont {Zhao}, \citenamefont {Cain}, \citenamefont {Bluvstein},
+  \citenamefont {Duckering}, \citenamefont {Hu}, \citenamefont {Wang},
+  \citenamefont {Kubica},\ and\ \citenamefont {Lukin}}]{zhou2024algorithmic}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Zhou}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Zhao}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Cain}}, \bibinfo {author}
+  {\bibfnamefont {D.}~\bibnamefont {Bluvstein}}, \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {Duckering}}, \bibinfo {author}
+  {\bibfnamefont {H.-Y.}\ \bibnamefont {Hu}}, \bibinfo {author} {\bibfnamefont
+  {S.-T.}\ \bibnamefont {Wang}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Kubica}},\ and\ \bibinfo {author} {\bibfnamefont {M.~D.}\
+  \bibnamefont {Lukin}},\ }\href {https://arxiv.org/abs/2406.17653} {\bibinfo
+  {title} {Algorithmic fault tolerance for fast quantum computing}} (\bibinfo
+  {year} {2024}),\ \Eprint {https://arxiv.org/abs/2406.17653} {arXiv:2406.17653
+  [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fazio}\ \emph {et~al.}(2025)\citenamefont {Fazio},
+  \citenamefont {Webster},\ and\ \citenamefont {Cai}}]{fazio2025low}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Fazio}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Webster}},\
+  and\ \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Cai}},\ }\href
+  {https://arxiv.org/abs/2501.10291} {\bibinfo {title} {Low-overhead magic
+  state circuits with transversal {CNOTs}}} (\bibinfo {year} {2025}),\ \Eprint
+  {https://arxiv.org/abs/2501.10291} {arXiv:2501.10291 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont
+  {Lee}(2025{\natexlab{b}})}]{github:color-code-msd-data}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.-H.}\ \bibnamefont
+  {Lee}},\ }\href@noop {} {\bibinfo {title} {color-code-msd-data}},\ \bibinfo
+  {howpublished} {\url{https://github.com/seokhyung-lee/color-code-msd-data}}
+  (\bibinfo {year} {2025}{\natexlab{b}})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lee}(2024)}]{github:colorcodestim}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.-H.}\ \bibnamefont
+  {Lee}},\ }\href@noop {} {\bibinfo {title} {color-code-stim}},\ \bibinfo
+  {howpublished} {\url{https://github.com/seokhyung-lee/color-code-stim}}
+  (\bibinfo {year} {2024})\BibitemShut {NoStop}%
+\bibitem [{Note2()}]{Note2}%
+  \BibitemOpen
+  \bibinfo {note} {Assuming ${d_X}\geq {d_Z}$, there exist $N_\protect \mathrm
+  {diag} \mathrel {\mathop :}\mathrel {\mkern -1.2mu}=\protect \binom {l}{r}$
+  shortest paths for diagonal error strings, where $l \mathrel {\mathop
+  :}\mathrel {\mkern -1.2mu}={d_X}/2 - 1$ and $r \mathrel {\mathop :}\mathrel
+  {\mkern -1.2mu}=({d_X}- {d_Z}) / 2$. For vertical error strings (causing
+  $\protect \overline {X}_1$ or $\protect \overline {X}_2$ errors), there are
+  approximately $N_\protect \mathrm {v} \mathrel {\mathop :}\mathrel {\mkern
+  -1.2mu}={d_Z}\cdot 2^{{d_X}/2-1}$ shortest paths. Comparing these two values,
+  $N_\protect \mathrm {diag} / N_\protect \mathrm {v} < 0.1$ for ${d_X}\geq 8$
+  or ${d_Z}\geq 6$, and $N_\protect \mathrm {diag} / N_\protect \mathrm {v} <
+  0.05$ for ${d_X}\geq 14$ or ${d_Z}\geq 8$. In general, we obtain $N_\protect
+  \mathrm {diag}/N_\protect \mathrm {v} < 2/[{d_Z}\protect \sqrt {\pi ({d_X}-
+  2)}]$ from the inequality $\protect \binom {l}{r} \leq \protect \binom
+  {l}{l/2} < \protect \sqrt {2/(\pi l)} 2^l$. Hence, although diagonal and
+  vertical error strings have the same minimum weight, they differ
+  significantly in their frequency of occurrence, assuming that circuit-level
+  noise acts at similar levels in both directions.}\BibitemShut {Stop}%
+\bibitem [{\citenamefont {Gidney}(2021)}]{gidney2021stim}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Gidney}},\ }\bibfield  {title} {\bibinfo {title} {Stim: a fast stabilizer
+  circuit simulator},\ }\href {https://doi.org/10.22331/q-2021-07-06-497}
+  {\bibfield  {journal} {\bibinfo  {journal} {{Quantum}}\ }\textbf {\bibinfo
+  {volume} {5}},\ \bibinfo {pages} {497} (\bibinfo {year} {2021})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Higgott}(2022)}]{higgott2022pymatching}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {Higgott}},\ }\bibfield  {title} {\bibinfo {title} {{PyMatching}: {A} python
+  package for decoding quantum codes with minimum-weight perfect matching},\
+  }\bibfield  {journal} {\bibinfo  {journal} {ACM Trans. Quantum Comput.}\
+  }\textbf {\bibinfo {volume} {3}},\ \href {https://doi.org/10.1145/3505637}
+  {10.1145/3505637} (\bibinfo {year} {2022})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fowler}\ and\ \citenamefont
+  {Gidney}(2019)}]{fowler2019low}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+  {Fowler}}\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Gidney}},\ }\href {https://doi.org/10.48550/arXiv.1808.06709} {\bibinfo
+  {title} {Low overhead quantum computation using lattice surgery}} (\bibinfo
+  {year} {2019}),\ \Eprint {https://arxiv.org/abs/1808.06709} {arxiv:1808.06709
+  [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Efron}\ and\ \citenamefont
+  {Gong}(1983)}]{efron1983leisurely}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Efron}}\ and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Gong}},\
+  }\bibfield  {title} {\bibinfo {title} {A leisurely look at the bootstrap, the
+  jackknife, and cross-validation},\ }\href
+  {https://doi.org/https://doi.org/10.1080/00031305.1983.10483087} {\bibfield
+  {journal} {\bibinfo  {journal} {Am. Stat.}\ }\textbf {\bibinfo {volume}
+  {37}},\ \bibinfo {pages} {36} (\bibinfo {year} {1983})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Virtanen}\ \emph {et~al.}(2020)\citenamefont
+  {Virtanen}, \citenamefont {Gommers}, \citenamefont {Oliphant}, \citenamefont
+  {Haberland}, \citenamefont {Reddy}, \citenamefont {Cournapeau}, \citenamefont
+  {Burovski}, \citenamefont {Peterson}, \citenamefont {Weckesser},
+  \citenamefont {Bright}, \citenamefont {{van der Walt}}, \citenamefont
+  {Brett}, \citenamefont {Wilson}, \citenamefont {Millman}, \citenamefont
+  {Mayorov}, \citenamefont {Nelson}, \citenamefont {Jones}, \citenamefont
+  {Kern}, \citenamefont {Larson}, \citenamefont {Carey}, \citenamefont {Polat},
+  \citenamefont {Feng}, \citenamefont {Moore}, \citenamefont {{VanderPlas}},
+  \citenamefont {Laxalde}, \citenamefont {Perktold}, \citenamefont {Cimrman},
+  \citenamefont {Henriksen}, \citenamefont {Quintero}, \citenamefont {Harris},
+  \citenamefont {Archibald}, \citenamefont {Ribeiro}, \citenamefont
+  {Pedregosa}, \citenamefont {{van Mulbregt}},\ and\ \citenamefont {{SciPy 1.0
+  Contributors}}}]{virtanen2020scipy}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Virtanen}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Gommers}},
+  \bibinfo {author} {\bibfnamefont {T.~E.}\ \bibnamefont {Oliphant}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Haberland}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Reddy}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Cournapeau}}, \bibinfo {author} {\bibfnamefont
+  {E.}~\bibnamefont {Burovski}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Peterson}}, \bibinfo {author} {\bibfnamefont
+  {W.}~\bibnamefont {Weckesser}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Bright}}, \bibinfo {author} {\bibfnamefont {S.~J.}\
+  \bibnamefont {{van der Walt}}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Brett}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Wilson}}, \bibinfo {author} {\bibfnamefont {K.~J.}\
+  \bibnamefont {Millman}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Mayorov}}, \bibinfo {author} {\bibfnamefont {A.~R.~J.}\ \bibnamefont
+  {Nelson}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Jones}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Kern}}, \bibinfo {author}
+  {\bibfnamefont {E.}~\bibnamefont {Larson}}, \bibinfo {author} {\bibfnamefont
+  {C.~J.}\ \bibnamefont {Carey}}, \bibinfo {author} {\bibfnamefont
+  {{\.I}.}~\bibnamefont {Polat}}, \bibinfo {author} {\bibfnamefont
+  {Y.}~\bibnamefont {Feng}}, \bibinfo {author} {\bibfnamefont {E.~W.}\
+  \bibnamefont {Moore}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {{VanderPlas}}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Laxalde}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Perktold}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Cimrman}}, \bibinfo
+  {author} {\bibfnamefont {I.}~\bibnamefont {Henriksen}}, \bibinfo {author}
+  {\bibfnamefont {E.~A.}\ \bibnamefont {Quintero}}, \bibinfo {author}
+  {\bibfnamefont {C.~R.}\ \bibnamefont {Harris}}, \bibinfo {author}
+  {\bibfnamefont {A.~M.}\ \bibnamefont {Archibald}}, \bibinfo {author}
+  {\bibfnamefont {A.~H.}\ \bibnamefont {Ribeiro}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Pedregosa}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {{van Mulbregt}}},\ and\ \bibinfo {author}
+  {\bibnamefont {{SciPy 1.0 Contributors}}},\ }\bibfield  {title} {\bibinfo
+  {title} {{{SciPy} 1.0: Fundamental Algorithms for Scientific Computing in
+  Python}},\ }\href {https://doi.org/10.1038/s41592-019-0686-2} {\bibfield
+  {journal} {\bibinfo  {journal} {Nat. Methods}\ }\textbf {\bibinfo {volume}
+  {17}},\ \bibinfo {pages} {261} (\bibinfo {year} {2020})}\BibitemShut
+  {NoStop}%
+\end{thebibliography}%
