@@ -1,0 +1,41 @@
+[
+  {
+    "file": "stim/gauging_cultivation_d3_T_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 15,
+      "T": 14
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.45,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/gauging_cultivation_d5_T_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 65,
+      "T": 64
+    },
+    "tsim_k": 6,
+    "tsim_seconds": 0.65,
+    "clifft_k": 10,
+    "clifft_seconds": 0.07,
+    "clifft_noschedule_k": 10,
+    "clifft_noschedule_seconds": 0.06
+  },
+  {
+    "file": "stim/gauging_cultivation_d7_T_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 175,
+      "T": 174
+    },
+    "tsim_k": 8,
+    "tsim_seconds": 1.46,
+    "clifft_k": 19,
+    "clifft_seconds": 0.23,
+    "clifft_noschedule_k": 19,
+    "clifft_noschedule_seconds": 0.16
+  }
+]

@@ -1,0 +1,191 @@
+% \documentclass[%
+% preprint, linenumbers,
+% superscriptaddress,
+%  amsmath,amssymb,
+%  aps, physrev,
+% ]{revtex4-2}
+
+\documentclass[aps,prx,twocolumn,secnumarabic,superscriptaddress,nofootinbib]{revtex4-2} 
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{morefloats}
+\usepackage[dvips]{graphicx,color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{epsfig,amsfonts,amsbsy}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{bbold}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{braket} 
+\usepackage{dsfont}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue,
+citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage[capitalise]{cleveref}
+\usepackage{titlesec}
+\usepackage[ruled,longend]{algorithm2e}
+\usepackage{hyperref}
+
+\setlength{\textwidth}{526pt}
+\setlength{\oddsidemargin}{-30pt}
+\DeclareMathOperator{\diag}{diag}
+\usepackage{textcomp}
+
+\newcommand{\CXtime}{t_\text{CX}}
+\newcommand{\MRtime}{t_\text{M/R}}
+
+
+
+\begin{document}
+
+\title{
+Constant-depth magic state cultivation with Clifford measurements by gauging
+}
+\author{Bence Het\'enyi}
+\email{bence.hetenyi@ibm.com}
+\affiliation{IBM Quantum, IBM T. J. Watson Research Center, Yorktown Heights, NY 10598, USA} 
+\author{Benjamin J. Brown}
+\affiliation{IBM Quantum, IBM T. J. Watson Research Center, Yorktown Heights, NY 10598, USA} 
+\affiliation{IBM Denmark, Sundkrogsgade 11, 2100 Copenhagen, Denmark}
+\author{Dominic J.~Williamson}
+\thanks{Current address: School of Physics, University of Sydney, Sydney, NSW 2006, Australia}
+\affiliation{IBM Quantum, IBM Almaden Research Center, San Jose, CA 95120, USA}
+
+\date{March 2026}
+
+\begin{abstract}
+Magic states are a scarce resource for two-dimensional qubit stabilizer codes. Magic state cultivation was recently proposed to reduce the cost of magic state preparation by measuring the transversal Clifford operator of the color code. 
+Cultivation achieves $\sim 10^{-9}$ logical error rates for the $d=5$ color code, with substantially lower space-time overhead than magic state distillation. However, due to the $\mathcal{O}(d)$ depth of the Clifford measurement circuit, magic state cultivation becomes impractical for $d>5$. Here, we perform logical $XS^\dagger$ measurements on the color code by gauging a transversal Clifford gate, resulting in a constant-depth logical measurement circuit. We employ repeated gauging measurements with post-selection rather than performing error correction on the Clifford stabilizer code that emerges during the gauging protocol, thus gaining simplicity at the cost of scalability.  Our protocol requires a regular square grid connectivity and yields logical error rates comparable to magic state cultivation. The $d=7$ version of our protocol gives access to the $10^{-12}$ logical error rate regime at $0.05\%$ physical error rate while retaining more than $1\%$ of the shots after the equivalent of the cultivation stage. 
+\end{abstract}
+
+
+\maketitle
+
+{\it Introduction.} Magic states are an essential resource for fault-tolerant quantum computation because they complement Clifford operations to form a universal gate set. Preparing magic states fault-tolerantly using two-dimensional codes is challenging due to the Bravyi-K\"onig bound which restricts relevant local transversal gates to be Clifford~\cite{bravyiClassificationTopologicallyProtected2013}. Recent work has revealed new approaches to overcome this limitation in two dimensional codes \cite{davydovaUniversalFaultTolerant,bauerPlanarFaulttolerantCircuits2025,huang2025generatinglogicalmagicstates,kobayashi2025cliffordhierarchystabilizercodes,huang2026hybridlatticesurgerynonclifford,warman2026transversalcliffordhierarchygatesnonabelian}, most approaches continue to rely on probabilistic preparation of magic states even in architectures with nonlocal connectivity \cite{yoderTourGrossModular2025,webster2026pinnaclearchitecturereducingcost}.
+
+The most commonly used probabilistic approach is magic state distillation \cite{bravyiUniversalQuantumComputation2005}. Distillation is most commonly implemented via a logical circuit that consumes a number of noisy magic states to produce fewer magic states that are less noisy. The distillation circuit is post-selected on undesirable measurement outcomes, and so succeeds only probabilistically. Many improvements have been made to reduce the cost of magic state distillation, however, there is still a considerable overhead required to prepare logical magic states in the surface code compared to other logical gates \cite{bravyiUniversalQuantumComputation2005,fowlerSurfaceCodesPractical2012,litinskiMagicStateDistillation2019}.
+
+Measuring a transversal Clifford operator of a self-dual code \cite{Goto2016Min,chamberlandFaulttolerantMagicState2019,Chamberland2020,Gupta2024,Itogawa2025} provides a simple alternative method to improve the fidelity of a non-stabilizer magic state, as opposed to distillation where the purification of the state requires multiple logical qubits and operations. A similar scheme that introduced several further optimizations, dubbed cultivation, was introduced in Ref.~\cite{gidneyMagicStateCultivation2024} where the logical $XS^\dagger$ operator of the color code was measured using a circuit of depth $O(d)$ while respecting square grid connectivity. Cultivation achieved a logical error rate of $6\cdot 10^{-10}$ in the $d=5$ color code with a success probability of $15\%$ at $0.1\%$ physical error rate. A number of follow up works on Cultivation have appeared more recently~\cite{vaknin2026efficientmagicstatecultivation,chen2025efficientmagicstatecultivation,sahay2025foldtransversalsurfacecodecultivation,claes2025cultivatingtstatessurface}. 
+
+Gauging provides an alternative approach to implementing a logical Clifford measurement with a low-depth adaptive quantum circuit~\cite{williamsonLowoverheadFaulttolerantQuantum2024,davydovaUniversalFaultTolerant}. 
+These circuits were introduced in the context of creating topological states of matter~\cite{Williamson2020a,Tantivasadakarn2021,Tantivasadakarn2022}. 
+Implementing the logical measurement via gauging has the highly desirable property that it reduces the circuit depth of the Clifford measurement step to $O(1)$.
+While the scheme of Ref.~\cite{williamsonLowoverheadFaulttolerantQuantum2024} is applicable to Clifford operators, constructing a suitable ancilla system that respects the geometric constraints presents a challenge.
+
+Here, we provide a practical implementation of the gauging logical Clifford measurement protocol using a planar network of ancilla and flag qubits. Our scheme has the same hardware requirements as Ref.~\cite{gidneyMagicStateCultivation2024}, but performs the Clifford measurement step in constant circuit depth. We show that the $d=7$ version of our protocol can achieve logical error rates below $5\cdot10^{-12}$ for $0.05\%$ physical error rate while retaining $1.5\%$ of the shots after post selection.
+
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=.8\linewidth]{Fig1.pdf}
+    \caption{(a) Gauging measurement of the logical $XS^\dagger$ operator supported on data qubits ($d$ and $d'$) using ancillas ($a$ and $a'$) on the edges of the honeycomb lattice. The weight of logical Z operator (cyan) is reduced during the measurement. (b) Gauge operators for measuring the transversal $XS^\dagger$ on the $d=3$ color code. (c) Two minimum-weight logical representatives (solid and dashed cyan lines) of the $d=7$ color code. Arrows point at the flag qubit shared by the same colored edges. (d) Flagged version of the circuit in (a), where an extra qubit ($f$) increases the weight of the logical before the the circuit distance would drop.}
+    \label{fig:flagged_circuit}
+\end{figure*}
+
+{\it Gauging Clifford measurement.} In this section, we briefly summarize the gauging logical measurement scheme introduced in Ref.~\cite{williamsonLowoverheadFaulttolerantQuantum2024}. Consider a transversal logical operator of the form $C_L=\prod_i U_i$, where $U_i = U_i^{-1}$ and $i$ runs over the data qubits. Note, $U_i = U_i^{-1}$ holds for all Hermitian Clifford operators. We define an ancilla system where each ancilla is connected to a pair of data qubits and is prepared in the $\ket 0$ state at the beginning of the protocol. Gauss-law operators are defined for every data qubit as follows
+\begin{equation}
+A_i = U_i\prod_{a\in \partial i}X_a. 
+\end{equation}
+The product of these operators is the logical operator $C_L$ we aim to measure. In Ref.~\cite{williamsonLowoverheadFaulttolerantQuantum2024} it is shown that measuring these gauge operators satisfies {\it (i)} the product of measurements $\sigma_L=\prod_im_i$ is the logical eigenvalue and {\it (ii)} the measurement outcome of the ancilla qubits is sufficient to restore the correct post-measurement state $(1+\sigma_L C_L)\ket{\psi}_Q$ by applying the correction operator $\prod_{i\in Q'}U_i$ on a subset of data qubits $Q'\subset Q$ (see SM Sec.~\ref{sec:gauging_proof} for the proof).
+
+We define the ancilla graph $G$ by identifying data qubits with vertices and ancilla qubits with the edges of the graph. In order to achieve fault tolerance and constant qubit overhead, it is sufficient for the ancilla graph $G$ to fulfill the following properties {\it (i)} the length of the edge path between any pair of qubits included in a stabilizer should be constant, {\it (ii)} the Cheeger constant of the graph $h(G)$ should be sufficiently large, and {\it (iii)} the graph $G$ should admit a sparse cycle basis~\cite{williamsonLowoverheadFaulttolerantQuantum2024}. 
+
+In the case when $U_i$ are Hermitian Clifford operators that are not Pauli, there is an additional criterion that needs to be fulfilled, independent of how the Clifford operator is measured. In a self-dual CSS code, at least one type of stabilizers, $X$ or $Z$, will not generally commute with the transversal Clifford operator. Commutation is only achieved when the state is in the mutual $+1$ eigenspace of all the stabilizers of the other type. 
+
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=1.
+    \linewidth]{Fig2.pdf}
+    \caption{(a) Qubit layout for the square-grid implementation of the gauging Clifford measurement. In the middle of each plaquette there is a flag qubit, that flags the three edges that are parallel with one of the boundaries. The top left corner is deformed to reduce the number of extra qubits (needed for the ancilla cycles) at the boundary. (b) Circuit schedule of the a gauging logical (Y) measurement step. The two detector slices show a contracting (exists in steps 1 to 8) and an expanding logical Y check (steps 2 to 15). (c) Circuit schedule for one stabilizer measurement round. Detector slices correspond to the contracting Z (blue) and the expanding X detectors (red). Contracting X and expanding Z detectors are not shown on the figure for clarity.}
+    \label{fig:layout_detslices}
+\end{figure*}
+
+{\it Gauging logical Clifford measurement on the color code.} We now consider the honeycomb color code with triangular boundary conditions~\cite{Bombin2006}, see SM Sec.~\ref{sec:colorcode_hhx} for a review. This code is self dual and has weight-six (weight-four) X and Z plaquette stabilizers in the bulk (at the boundary). Logical Pauli, as well as Clifford operators are transversal (e.g., $XS^\dagger$). The plaquettes are three-colorable and we assign the color of the weight-four plaquette at each corner of the triangle to the respective corner and the edge opposite to it. Low-weight logical Pauli operators can be constructed by finding a Pauli string between a corner and the corresponding edge such that it goes through plaquettes of the same color (see Fig.~\ref{fig:flagged_circuit}(c)).
+
+To measure the transversal logical $XS^\dagger$ operator of the color code we use an ancilla system such that every pair of adjacent vertices on the honeycomb lattice is connected to the same ancilla qubit~\cite{williamsonDynamicalQuantumCodes2025}. This way, the data and ancilla qubits form a heavy hexagonal lattice (see Fig.~\ref{fig:flagged_circuit}(b) and SM Sec.~\ref{sec:magicstate_hhx}). The resulting ancilla graph $G$ is connected, contains short loops but has a Cheeger constant $h(G)<1$. In this case the distance of the protocol may be reduced (see Sec.~\ref{sec:cheeger}).
+
+% To clearly demonstrate where the bottleneck of the gauging logical measurement is, we show the path of a logical $Z$ operator during the protocol. 
+Gauge operators are measured by contracting their X support onto the respective data qubits, which are subsequently measured in the basis of their Clifford support. This scheme has a clear bottleneck, independent of the Cheeger-constant of the ancilla graph. Fig. \ref{fig:flagged_circuit}(a) shows how a $ZZ$ operator on two data qubits is contracted to a single ancilla qubit during the measurement of the gauge operators. Since this weight-reduction happens along every edge of the lattice, the minimum-weight logical representatives shrink to $\lceil d/2\rceil$ qubits.
+
+{\it Gauging Clifford measurement with flag qubits.} In order to avoid the weight reduction of a logical $Z$ operator shown in Fig.~\ref{fig:flagged_circuit}(a), we employ a flag qubit $f$, adjacent to the ancilla $a_1$, prepared in the $\ket{+}$ state. Applying a CX gate, controlled on the flag and targeted on the ancilla, before the step where the distance-reduction happens, the logical Z operator expands to the flag qubit. This way the fault distance is maintained throughout the protocol. This is shown in Fig.~\ref{fig:flagged_circuit}(d).
+
+Next, we argue that one flag qubit per plaquette is sufficient to avoid the weight reduction of every minimum-weight logical Z representative. As shown in Fig.~\ref{fig:flagged_circuit}(c), minimum-weight logicals that connect the blue corner to the blue boundary of the color code are supported on edges that connect blue plaquettes. None of these representatives can contain two of such edges around the same plaquette. Therefore, one may use the same flag qubit, to avoid the distance reduction along all three edges of a given plaquette. This leads to a factor of three reduction of flag qubit count. 
+
+
+In order to find a suitable two-dimensional qubit layout for the flagged protocol, we need a lattice that {\it (i)} supports data qubits in a hexagonal sublattice, {\it (ii)} has one ancilla qubit in-between every nearest-neighbor pair of data qubits, and {\it (iii)} has one flag qubit per plaquette, connected to three ancilla qubits around it. The embedding of such a lattice in a regular square grid is shown in Fig.~\ref{fig:layout_detslices}(a). There are additional data qubits and ancillas around the boundary of the lattice. These ensure that there are complete cycles in the ancilla graph even at the boundary plaquettes as required for the ancilla system in the third condition of the gauging protocol \cite{williamsonLowoverheadFaulttolerantQuantum2024}.
+
+Having all the necessary components for the gauging logical measurement in the coupling graph, we turn to the syndrome measurement circuit of the color code. To this end we use the superdense syndrome measurement circuit of Ref.~\cite{gidney_new_2023} and prepare the ancilla Bell pair on the two ancillas that are inside each plaquette through the flag qubits. Since every data qubit on a given plaquette is the nearest neighbor of one of the ancillas, we can follow Ref.~\cite{gidney_new_2023} to encode the X and Z plaquette information into the Bell state of the ancillas. Through a series of circuit simplification steps (detailed in SM Sec.~\ref{sec:opt}) we can reduce the circuit depth of the stabilizer measurement to 10 CX layers. See Fig.~\ref{fig:layout_detslices}(c) for the contracting Z-type (expanding X-type) detecting regions.
+
+\begin{figure*}[t]
+    \centering
+\includegraphics[width=1.\linewidth]{Fig4_v3.pdf}
+    \caption{(a) Comparison of different simulation methods for the $d=3$ gauging logical measurement protocol under uniform circuit-level noise for various physical error rates $p$. The Clifford simulations of the $\ket{+i}$ state preparation, obtained via stim, align with that of the statevector simulation and the $\ket{T}$-state preparation. (b) Comparison between the gauging Clifford measurement and magic state cultivation for uniform circuit-level noise. For this noise model the break-even point in success probability is $d=9$. (c) Comparison of the logical error rate and the expected circuit volume. For $d=7$ there is no data available for cultivation, and we have not found a single logical failures in $2\times 10^{11}$ samples of the gauging protocol.
+    }
+    \label{fig:simulations}
+\end{figure*}
+
+The stabilizer measurements in our scheme are always followed by a gauging Clifford measurement step (see Sec.~\ref{sec:opt}),
+which gives further opportunities for pipelining the circuit. This allows us to perform one syndrome and one Clifford measurement using 18 CX and 5 measurement (reset) layers (see Fig.~\ref{fig:pipelining} for details). For context, cultivation achieves an equivalent task in ${\frac 3 2 (d+5)}$ CX and 4 measurement (reset) layers.
+
+To prepare magic states with larger fault distance $d_f$ we start from the $d=3$ example and prepare magic state non fault-tolerantly using a unitary circuit. This is followed by a stabilizer measurement and a gauging Clifford check at $d_\text{int}=3$. We grow the lattice by preparing Bell states on the edges that match the color of the boundary we are growing along. We continue this until we reach the final target distance, where we perform an additional $(d+1)/2$ rounds of stabilizer and Clifford check pairs (see SM Sec.~\ref{sec:growing}).
+
+{\it Simulations and comparison with cultivation.} In order to verify that the gauging Clifford measurement scheme prepares the desired state, we performed full statevector simulations using \texttt{qiskit} on the $d=3$ example (25 qubits in total) \cite{aleksandrowicz_qiskit_2019}. The simulated protocol consists of a unitary $\ket T$-state preparation and two rounds of stabilizer and Clifford checks for uniform circuit level noise with physical error rates between $0.1\%$ and $0.5\%$ (see Fig.~\ref{fig:simulations}(a)). The uniform circuit-level noise model considered here is equivalent to that of Ref.~\cite{gidneyMagicStateCultivation2024} and we used the pipelined circuit in the simulation. We observe good agreement between the statevector simulations and the $\ket{+i}$ version simulated with \texttt{stim} \cite{gidney_stim_2021}. In both cases, the logical error probability is obtained by Monte-Carlo sampling and full post-selection. For the \texttt{qiskit} simulations we project the final state onto a stabilizer state and evaluate the expectation value of the %$(X+Y)/\sqrt{2}$ 
+$XS^\dagger$ operator on a shot-by-shot basis, while for the \texttt{stim} simulations we perform a noiseless stabilizer and final logical measurement in the Y basis. In both cases, the post selection on the final perfect round is included in the success probability.
+
+\begin{table}[b]
+    \centering
+    \begin{tabular}{cccc}
+        \hline
+        $p_\text{phys}$ & $d_f$ & $P_L$ & $p_\text{succ}$ \\        
+        \hline
+        $0.1\%$ & 3 & $(8.8\pm 0.8) \times 10^{-7}$ & $46\%$\\
+         & 5 & $(3.2\pm 0.4) \times 10^{-10}$ & $4\%$\\
+         & 7 & $-$ & $0.01\%$\\
+        \hline
+        $0.05\%$ & 3 & $(1.2\pm 0.2)\times 10^{-7}$ & 65\%\\
+         & 5 & $(1.1\pm 0.3)\times 10^{-11}$ & $20\%$\\
+         & 7 & $<5\times 10^{-12}$ & $1.5\%$\\
+        \hline
+    \end{tabular}
+    \caption{Logical error probability $P_L$ and success rate $p_\text{succ}$ of the $\ket{+i}$ state preparation for different fault-distances $d_f$ and physical error rates $p_\text{phys}$. For $d_f=7$ at $p_\text{phys} = 0.1\%$ we did not perform Monte-Carlo sampling due to the small success rates, and for $p_\text{phys} = 0.05\%$ we did not observe any logical failure in $2\times10^{11}$ post-selected samples. }
+    \label{tab:simulation}
+\end{table}
+
+
+In Tab.~\ref{tab:simulation} we show the relevant figures of merit at higher fault distances. While the success probability is somewhat lower than that of cultivation, the logical error rates are comparable for $d_f\in\{3,5\}$ \cite{gidneyMagicStateCultivation2024}. We also benchmark our protocol for $d=7$ at $p_\text{phys} = 0.05\%$ and find an acceptable success probability for preparing a logical magic state with $\sim10^{-12}$ logical error rate. We note that a comparison for higher distances and lower error rates would be highly interesting due to the asymptotic advantage of the gauging Clifford measurement scheme in circuit depth. Unfortunately, we do not have data for cultivation at $d>5$.
+
+Fig.~\ref{fig:simulations}(b) shows the success probability of the gauging Clifford measurement vs. cultivation. %employing the respective growing strategies from Fig.~\ref{fig:growing}.
+Under the uniform circuit-level noise model used in both works, the breakeven point in success probability only comes as $d=9$. This is due to the qubit overhead of the gauging protocol (see SM Sec.~\ref{sec:comp_cult} for detailed comparison). The latter uses $50\%$ more qubits, resulting in similar number of fault locations only at $d=9$. 
+
+Arguably, the more important metrics are the expected circuit volume and the logical error rate. Fig.~\ref{fig:simulations}(c) shows such a comparison for smaller fault distances. At $d=3$ cultivation has both lower logical error rate and expected volume, the gauging protocol outperforms Gidney {\it et al.} in logical error rate already at $d=5$ and continues to improve the logical error rate for $d=7$. While $d=7$ data is not available for cultivation, and only an upper bound can be provided for gauging ($P_L<5\times10^{-12}$), we believe that our $d=7$ protocol can be a compelling alternative in the low error rate regime even if the expected circuit volume is higher than that of cultivation.
+
+{\it Discussion.} In this work we described a method to prepare logical magic states on a square grid by implementing post-selected Clifford measurement via gauging. 
+Our scheme has the advantage of maintaining a constant circuit depth for the Clifford measurement. 
+There are some additional advantages compared to the cultivation, by dividing the lattice into two sublattices in a checkerboard-like pattern, data and flag qubits are occupying the same sublattice and ancillas are hosted on the other one. This separation reduces cross-talk between data qubits and has further advantages in architectures where data and ancilla qubits are distinguished at a physical level \cite{lacroixScalingLogicColor2024}. 
+
+
+Although direct comparison of the probability of success did not produce a clear advantage for $d=7$, we note that there are further opportunities for optimization both in the circuit depth and the count of qubits. The space time overhead of the protocol could be optimized using a time-dynamic approach instead of designating the roles of data, ancilla, and flag to different qubits \cite{mcewenRelaxingHardwareRequirements2023,shawLoweringConnectivityRequirements2025a}.
+
+Our work points to an interesting future direction of numerically and experimentally benchmarking a scalable error-corrected protocol for magic state preparation via gauging Clifford measurement. This requires the error-correction with a Clifford stabilizer code and a just-in-time decoder as explained in Ref.~\cite{davydovaUniversalFaultTolerant}. While initial results on implementing the measurement of relevant Clifford stabilizers on a planar geometry are presented in SM Sec.~\ref{sec:magicstate_hhx}, further work to improve the fault-tolerance of these circuits would be advantageous. Finally, it would be interesting to understand the perfomance landscape of protocols that interpolate between post-selected error detection and full error correction for the preparation of magic states via logical Clifford measurement at a target error rate and footprint. 
+
+
+\section*{Acknowledgements}
+
+We thank Tomas Jochym-O'Connor for insightful discussions. The scripts used to generate the data for this work are available at \href{https://github.com/hetenyib/gauging_clifford_measurement}{https://github.com/hetenyib/gauging\_clifford\_measurement}.
+
+\bibliography{references}
+
+\clearpage
+
+% \appendix
+
+\include{Supplement.tex}
+
+\end{document}
