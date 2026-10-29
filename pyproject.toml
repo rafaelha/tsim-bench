@@ -8,6 +8,13 @@ dependencies = [
     "clifft==0.12.0",
     "stim",
     "numpy",
+    "sinter>=1.16.0",
+    "networkx>=3.7",
+    "scipy>=1.18.1",
+    "matplotlib>=3.11.2",
+    "pymatching>=2.4.0",
+    "pygltflib>=1.16.5",
+    "chromobius>=1.1.1",
 ]
 
 [tool.uv]
