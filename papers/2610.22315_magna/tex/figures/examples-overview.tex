@@ -1,0 +1,59 @@
+% Mac Studio measurements, kernel 853fa2369817. Provenance: NOTES.md.
+\begin{table*}[t]
+\caption{A summary of numerical results for the benchmarks in Sec.~\ref{sec:examples}.
+BH $n$-to-$k$ denotes Bravyi--Haah distillation of $k$ magic states from $n$ noisy inputs.
+Color and RP$^2$ denote magic state cultivation on the color code and the RP$^2$ surface code,
+and $d$ is the code distance.
+3DCC to 2DCC and 3DCC to 2DSC denote code switching from the three-dimensional color code
+to the two-dimensional color and surface codes.
+TQD $L$, $T$ denotes the twisted-quantum-double protocol on an $L\times L$ periodic lattice with $T$ syndrome rounds.
+Examples marked with an asterisk are not expanded in this paper; see Ref.~\cite{magna} for details.
+The numbers of physical qubits and quantum gates are denoted by $N_q$ and $N_g$, respectively.
+Each one-, two- or three-qubit gate application counts once.
+Classically conditioned gates are counted by the quantum operation they apply.
+Preparation, measurement, noise channels, classical processing and ideal final-round diagnostics are excluded.
+The non-Clifford gate column $N_{\text{nC}}$ lists the counts and types of $T$, $\mathrm{C}S$ and $\mathrm{CC}Z$ gates,
+counting $T^\dagger$ as $T$ and $\mathrm{C}S^\dagger$ as $\mathrm{C}S$.
+The output column specifies the state, with tensor powers indicating multiple copies.
+Encoded output states carry code subscripts: 2DCC, 2DSC and RP$^2$ as above, and TC for the toric code.
+The representation ranks of the fidelity, acceptance and sampling networks
+are denoted by $r_{\text{fid}}$, $r_{\text{acc}}$ and $r_{\text{samp}}$, respectively.
+A dash indicates that no sampling network is needed.
+Preparation time includes network construction and is incurred once before repeated sampling.
+Times are medians over three runs, or ten for BH with $k=40$ and $60$,
+each of $2048$ draws for BH, $1024$ for cultivation and code switching, and $256$ for TQD after one excluded warmup draw;
+logical-level distillation is timed on its single batch of $16\,384$ draws.
+For nonlinear feedback, sampling time is shown as
+$T_{\text{samp}}(T_{\text{samp}}-T_{\text{dec}})$, where $T_{\text{dec}}$ is the classical decoding time,
+measured over the same window and subtracted in each run before the median is taken.
+Both values are per attempted draw.
+}
+\label{tab:examples-overview}
+\begin{ruledtabular}
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lrrrlrrrrr}
+Example & $N_q$ & $N_g$ & $N_{\text{nC}}$ & Output & $r_{\text{fid}}$ & $r_{\text{acc}}$ & $r_{\text{samp}}$ & Prepare (\unit{\milli\second}) & $T_{\text{samp}}$ (\unit{\milli\second}/draw) \\
+\hline
+BH 14-to-2 & 30 & 206 & $14T$ & $\ket{T}^{\otimes 2}$ & 1 & 1 & -- & 3.66 & 0.0069 \\
+BH 20-to-4 & 44 & 355 & $20T$ & $\ket{T}^{\otimes 4}$ & 1 & 1 & -- & 5.95 & 0.0077 \\
+BH 26-to-6 & 58 & 467 & $26T$ & $\ket{T}^{\otimes 6}$ & 1 & 1 & -- & 8.07 & 0.00865 \\
+BH 38-to-10 & 86 & 812 & $38T$ & $\ket{T}^{\otimes 10}$ & 1 & 1 & -- & 13.1 & 0.0101 \\
+BH 68-to-20 & 156 & 1702 & $68T$ & $\ket{T}^{\otimes 20}$ & 1 & 1 & -- & 27.8 & 0.014 \\
+BH 128-to-40 & 296 & 3332 & $128T$ & $\ket{T}^{\otimes 40}$ & 1 & 1 & -- & 62.1 & 0.0223 \\
+BH 188-to-60 & 436 & 5447 & $188T$ & $\ket{T}^{\otimes 60}$ & 1 & 1 & -- & 100 & 0.0312 \\
+BH 248-to-80 & 576 & 7565 & $248T$ & $\ket{T}^{\otimes 80}$ & 1 & 1 & -- & 146 & 0.0412 \\
+BH 308-to-100 & 716 & 10130 & $308T$ & $\ket{T}^{\otimes 100}$ & 1 & 1 & -- & 201 & 0.0503 \\
+Color $d=3$ & 15 & 96 & $15T$ & $\ket{\bar{T}}_{\text{2DCC}}$ & 1 & 1 & -- & 2.62 & 0.00589 \\
+RP$^2$ $d=3$ & 25 & 180 & $31T$ & $\ket{\bar{T}}_{\text{RP}^2}$ & 1 & 1 & -- & 3.75 & 0.00639 \\
+Color $d=5$ & 42 & 547 & $53T$ & $\ket{\bar{T}}_{\text{2DCC}}$ & 1 & 1 & -- & 11.2 & 0.0104 \\
+RP$^2$ $d=5$ & 61 & 640 & $101T$ & $\ket{\bar{T}}_{\text{RP}^2}$ & 1 & 1 & -- & 12.4 & 0.00877 \\
+Logical-level distillation ($d=3$) & 102 & 2419 & $15T$ & $\ket{\bar{T}}_{\text{2DSC}}$ & 1 & 1 & 1 & 319 & 1.27 (0.64) \\
+3DCC to 2DCC$^*$ & 38 & 149 & $15T$ & $\ket{\bar{T}}_{\text{2DCC}}$ & 1 & 1 & 1 & 4.37 & 0.0148 (0.0144) \\
+3DCC to 2DSC$^*$ & 70 & 431 & $15T$ & $\ket{\bar{T}}_{\text{2DSC}}$ & 1 & 1 & -- & 10.7 & 0.00711 \\
+TQD $L=3$, $T=5$$^*$ & 55 & 2032 & $288\mathrm{CC}Z$ & $\ket{\overline\psi_+}_{\text{TC}}$ & 4 & 2 & 1 & 438 & 3.2 (1.74) \\
+TQD $L=4$, $T=6$$^*$ & 97 & 4420 & $608\mathrm{CC}Z$ & $\ket{\overline\psi_+}_{\text{TC}}$ & 4 & 2 & 1 & 1330 & 6.67 (4.43) \\
+TQD $L=5$, $T=8$$^*$ & 151 &9038 & $1250\mathrm{CC}Z$ & $\ket{\overline\psi_+}_{\text{TC}}$ & 4 & 2 & 1 & 4550 & 16.5 (12.6) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}

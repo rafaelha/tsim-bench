@@ -1,0 +1,317 @@
+[
+  {
+    "file": "stim/bh100-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.63,
+    "clifft_k": 0,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.04
+  },
+  {
+    "file": "stim/bh100-T.stim",
+    "non_clifford_gates": {
+      "T": 616,
+      "T_DAG": 616
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.63,
+    "clifft_k": null,
+    "clifft_error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60",
+    "clifft_noschedule_k": null,
+    "clifft_noschedule_error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60"
+  },
+  {
+    "file": "stim/bh10-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.41,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh10-T.stim",
+    "non_clifford_gates": {
+      "T": 76,
+      "T_DAG": 76
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.42,
+    "clifft_k": 12,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 12,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh20-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.44,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh20-T.stim",
+    "non_clifford_gates": {
+      "T": 136,
+      "T_DAG": 136
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.43,
+    "clifft_k": 22,
+    "clifft_seconds": 0.05,
+    "clifft_noschedule_k": 22,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh2-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.41,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh2-T.stim",
+    "non_clifford_gates": {
+      "T": 28,
+      "T_DAG": 28
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.4,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh40-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.44,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh40-T.stim",
+    "non_clifford_gates": {
+      "T": 256,
+      "T_DAG": 256
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.46,
+    "clifft_k": 42,
+    "clifft_seconds": 0.1,
+    "clifft_noschedule_k": 42,
+    "clifft_noschedule_seconds": 0.05
+  },
+  {
+    "file": "stim/bh4-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.4,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh4-T.stim",
+    "non_clifford_gates": {
+      "T": 40,
+      "T_DAG": 40
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.41,
+    "clifft_k": 6,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 6,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh60-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.48,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh60-T.stim",
+    "non_clifford_gates": {
+      "T": 376,
+      "T_DAG": 376
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.5,
+    "clifft_k": null,
+    "clifft_error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60",
+    "clifft_noschedule_k": null,
+    "clifft_noschedule_error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60"
+  },
+  {
+    "file": "stim/bh6-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.4,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh6-T.stim",
+    "non_clifford_gates": {
+      "T": 52,
+      "T_DAG": 52
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.41,
+    "clifft_k": 8,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 8,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/bh80-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.54,
+    "clifft_k": 0,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.04
+  },
+  {
+    "file": "stim/bh80-T.stim",
+    "non_clifford_gates": {
+      "T": 496,
+      "T_DAG": 496
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.56,
+    "clifft_k": null,
+    "clifft_error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60",
+    "clifft_noschedule_k": null,
+    "clifft_noschedule_error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60"
+  },
+  {
+    "file": "stim/color3.stim",
+    "non_clifford_gates": {
+      "T_DAG": 8,
+      "T": 8
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/color5.stim",
+    "non_clifford_gates": {
+      "T_DAG": 33,
+      "T": 39
+    },
+    "tsim_k": 6,
+    "tsim_seconds": 0.52,
+    "clifft_k": 10,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 10,
+    "clifft_noschedule_seconds": 0.04
+  },
+  {
+    "file": "stim/dk.stim",
+    "non_clifford_gates": {
+      "T": 8,
+      "T_DAG": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/rp2-d3-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.42,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/rp2-d3.stim",
+    "non_clifford_gates": {
+      "T": 16,
+      "T_DAG": 15
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.43,
+    "clifft_k": 8,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 8,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/rp2-d5-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.49,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/rp2-d5.stim",
+    "non_clifford_gates": {
+      "T": 51,
+      "T_DAG": 50
+    },
+    "tsim_k": 9,
+    "tsim_seconds": 0.54,
+    "clifft_k": 18,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 18,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/wg-S.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.47,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/wg-T.stim",
+    "non_clifford_gates": {
+      "T_DAG": 26,
+      "T": 22
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.44,
+    "clifft_k": 5,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.03
+  }
+]

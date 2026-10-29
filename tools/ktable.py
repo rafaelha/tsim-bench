@@ -4,6 +4,7 @@ Usage: uv run python tools/ktable.py papers/<folder>/k_max.json [...]
 """
 
 import json
+import re
 import pathlib
 import sys
 
@@ -11,7 +12,13 @@ import sys
 def cell(r, key):
     if r.get(f"{key}_k") is not None:
         return str(r[f"{key}_k"])
-    return "error" if "timeout" not in r.get(f"{key}_error", "") else "timeout"
+    error = r.get(f"{key}_error", "")
+    if "timeout" in error:
+        return "timeout"
+    overflow = re.search(r"active width would reach (\d+)", error)
+    if overflow:
+        return f"≥{overflow.group(1)} (overflow)"
+    return "error"
 
 
 print("| circuit | non-Clifford gates | Tsim k | Clifft k (ActiveWidthSchedulePass) | Clifft k (default passes) |")
