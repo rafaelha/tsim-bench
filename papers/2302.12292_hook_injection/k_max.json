@@ -1,0 +1,98 @@
+[
+  {
+    "file": "stim/hook_inject_T_d15_pd5_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 2.74,
+    "clifft_k": 1,
+    "clifft_seconds": 0.56,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.36
+  },
+  {
+    "file": "stim/hook_inject_T_d15_pd7_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 2.72,
+    "clifft_k": 1,
+    "clifft_seconds": 0.57,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.38
+  },
+  {
+    "file": "stim/li_inject_T_d15_pd5_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 5.51,
+    "clifft_k": 1,
+    "clifft_seconds": 1.85,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 1.06
+  },
+  {
+    "file": "stim/li_inject_T_d15_pd7_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 5.58,
+    "clifft_k": 1,
+    "clifft_seconds": 1.86,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 1.07
+  },
+  {
+    "file": "stim/pregrown_hook_inject_T_d15_pd5_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 2.75,
+    "clifft_k": 1,
+    "clifft_seconds": 0.63,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.42
+  },
+  {
+    "file": "stim/pregrown_hook_inject_T_d15_pd7_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 2.77,
+    "clifft_k": 1,
+    "clifft_seconds": 0.64,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.43
+  },
+  {
+    "file": "stim/zz_inject_T_d15_pd5_p0.001.stim",
+    "non_clifford_gates": {
+      "R_ZZ": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 4.61,
+    "clifft_k": 1,
+    "clifft_seconds": 1.74,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.99
+  },
+  {
+    "file": "stim/zz_inject_T_d15_pd7_p0.001.stim",
+    "non_clifford_gates": {
+      "R_ZZ": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 4.65,
+    "clifft_k": 1,
+    "clifft_seconds": 1.74,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 1.0
+  }
+]
