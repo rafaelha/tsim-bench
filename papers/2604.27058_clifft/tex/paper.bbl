@@ -1,0 +1,389 @@
+\begin{thebibliography}{10}
+
+\bibitem{bluvsteinFaulttolerantNeutralatomArchitecture2026}
+Dolev Bluvstein, Alexandra~A. Geim, Sophie~H. Li, Simon~J. Evered, J.~Pablo
+  Bonilla~Ataides, et~al.
+\newblock ``A fault-tolerant neutral-atom architecture for universal quantum
+  computation''.
+\newblock \href{https://dx.doi.org/10.1038/s41586-025-09848-5}{Nature {\bf
+  649}, 39--46}~(2026).
+
+\bibitem{google2023suppressing}
+{Google Quantum AI}.
+\newblock ``Suppressing quantum errors by scaling a surface code logical
+  qubit''.
+\newblock \href{https://dx.doi.org/10.1038/s41586-022-05434-1}{Nature {\bf
+  614}, 676--681}~(2023).
+
+\bibitem{fowler2012surface}
+Austin~G Fowler, Matteo Mariantoni, John~M Martinis, and Andrew~N Cleland.
+\newblock ``Surface codes: Towards practical large-scale quantum computation''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevA.86.032324}{Physical Review
+  A {\bf 86}, 032324}~(2012).
+
+\bibitem{Dennis2002Topological}
+Eric Dennis, Alexei Kitaev, Andrew Landahl, and John Preskill.
+\newblock ``Topological quantum memory''.
+\newblock \href{https://dx.doi.org/10.1063/1.1499754}{Journal of Mathematical
+  Physics {\bf 43}, 4452--4505}~(2002).
+
+\bibitem{Higgott2022PyMatching}
+Oscar Higgott.
+\newblock ``Pymatching: A python package for decoding quantum codes with
+  minimum-weight perfect matching''.
+\newblock \href{https://dx.doi.org/10.1145/3505637}{ACM Transactions on Quantum
+  Computing {\bf 3}, 1--16}~(2022).
+
+\bibitem{Bravyi2024}
+Sergey Bravyi, Andrew~W. Cross, Jay~M. Gambetta, Dmitri Maslov, Patrick Rall,
+  et~al.
+\newblock ``High-threshold and low-overhead fault-tolerant quantum memory''.
+\newblock \href{https://dx.doi.org/10.1038/s41586-024-07107-7}{Nature {\bf
+  627}, 778--782}~(2024).
+
+\bibitem{gidneyStimFastStabilizer2021}
+Craig Gidney.
+\newblock ``Stim: A fast stabilizer circuit simulator''.
+\newblock \href{https://dx.doi.org/10.22331/q-2021-07-06-497}{Quantum {\bf 5},
+  497}~(2021).
+\newblock  \href{http://arxiv.org/abs/2103.02202}{arXiv:2103.02202}.
+
+\bibitem{aaronsonImprovedSimulationStabilizer2004}
+Scott Aaronson and Daniel Gottesman.
+\newblock ``Improved simulation of stabilizer circuits''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevA.70.052328}{Physical Review
+  A {\bf 70}, 052328}~(2004).
+\newblock
+  \href{http://arxiv.org/abs/quant-ph/0406196}{arXiv:quant-ph/0406196}.
+
+\bibitem{gidneyMagicStateCultivation2024}
+Craig Gidney, Noah Shutty, and Cody Jones.
+\newblock ``Magic state cultivation: Growing {{T}} states as cheap as {{CNOT}}
+  gates''~(2024).
+\newblock  \href{http://arxiv.org/abs/2409.17595}{arXiv:2409.17595}.
+
+\bibitem{itogawaEfficientMagicState2025}
+Tomohiro Itogawa, Yugo Takada, Yutaka Hirano, and Keisuke Fujii.
+\newblock ``Efficient {{Magic State Distillation}} by {{Zero-Level
+  Distillation}}''.
+\newblock \href{https://dx.doi.org/10.1103/thxx-njr6}{PRX Quantum {\bf 6},
+  020356}~(2025).
+\newblock  \href{http://arxiv.org/abs/2403.03991}{arXiv:2403.03991}.
+
+\bibitem{chamberlandVeryLowOverhead2020}
+Christopher Chamberland and Kyungjoo Noh.
+\newblock ``Very low overhead fault-tolerant magic state preparation using
+  redundant ancilla encoding and flag qubits''.
+\newblock \href{https://dx.doi.org/10.1038/s41534-020-00319-5}{npj Quantum
+  Information {\bf 6}, 91}~(2020).
+
+\bibitem{litinskiMagicStateDistillation2019}
+Daniel Litinski.
+\newblock ``Magic {{State Distillation}}: {{Not}} as {{Costly}} as {{You
+  Think}}''.
+\newblock \href{https://dx.doi.org/10.22331/q-2019-12-02-205}{Quantum {\bf 3},
+  205}~(2019).
+
+\bibitem{Bravyi2005Universal}
+Sergey Bravyi and Alexei Kitaev.
+\newblock ``Universal quantum computation with ideal clifford gates and noisy
+  ancillas''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevA.71.022316}{Physical Review
+  A {\bf 71}, 022316}~(2005).
+
+\bibitem{howardContextualitySuppliesMagic2014}
+Mark Howard, Joel~J. Wallman, Victor Veitch, and Joseph Emerson.
+\newblock ``Contextuality supplies the magic for quantum computation''.
+\newblock \href{https://dx.doi.org/10.1038/nature13460}{Nature {\bf 510},
+  351--355}~(2014).
+\newblock  \href{http://arxiv.org/abs/1401.4174}{arXiv:1401.4174}.
+
+\bibitem{qiskit2024}
+Ali Javadi-Abhari, Matthew Treinish, Kevin Krsulich, Christopher~J. Wood, Jake
+  Lishman, et~al.
+\newblock ``Quantum computing with {Q}iskit''~(2024).
+\newblock  \href{http://arxiv.org/abs/2405.08810}{arXiv:2405.08810}.
+
+\bibitem{quantum_ai_team_and_collaborators_2025_4067237}
+Quantum~AI team and collaborators.
+\newblock ``qsim''~(2025).
+
+\bibitem{aryalDensityMatrixRenormalizationGroup2023}
+Thomas Ayral, Thibaud Louvet, Yiqing Zhou, Cyprien Lambert, E.~Miles
+  Stoudenmire, et~al.
+\newblock ``Density-matrix renormalization group algorithm for simulating
+  quantum circuits with a finite fidelity''.
+\newblock \href{https://dx.doi.org/10.1103/PRXQuantum.4.020304}{PRX Quantum
+  {\bf 4}, 020304}~(2023).
+
+\bibitem{huangClassicalSimulationQuantum2020}
+Cupjin Huang, Fang Zhang, Michael Newman, Junjie Cai, Xun Gao, et~al.
+\newblock ``Classical {{Simulation}} of {{Quantum Supremacy
+  Circuits}}''~(2020).
+\newblock  \href{http://arxiv.org/abs/2005.06787}{arXiv:2005.06787}.
+
+\bibitem{markov2008simulating}
+Igor~L Markov and Yaoyun Shi.
+\newblock ``Simulating quantum computation by contracting tensor networks''.
+\newblock \href{https://dx.doi.org/10.1137/050644756}{SIAM Journal on Computing
+  {\bf 38}, 963--981}~(2008).
+
+\bibitem{Schuch2008}
+Norbert Schuch, Michael~M. Wolf, Frank Verstraete, and J.~Ignacio Cirac.
+\newblock ``Entropy scaling and simulability by matrix product states''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevLett.100.030504}{Phys. Rev.
+  Lett. {\bf 100}, 030504}~(2008).
+
+\bibitem{bravyiImprovedClassicalSimulation2016}
+Sergey Bravyi and David Gosset.
+\newblock ``Improved {{Classical Simulation}} of {{Quantum Circuits Dominated}}
+  by {{Clifford Gates}}''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevLett.116.250501}{Physical
+  Review Letters}~(2016).
+\newblock  \href{http://arxiv.org/abs/1601.07601}{arXiv:1601.07601}.
+
+\bibitem{rallSimulationQubitQuantum2019}
+Patrick Rall, Daniel Liang, Jeremy Cook, and William Kretschmer.
+\newblock ``Simulation of qubit quantum circuits via {{Pauli}} propagation''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevA.99.062337}{Physical Review
+  A {\bf 99}, 062337}~(2019).
+
+\bibitem{kissingerClassicalSimulationQuantum2022}
+Aleks Kissinger, John van~de Wetering, and Renaud Vilmart.
+\newblock ``Classical simulation of quantum circuits with partial and graphical
+  stabiliser decompositions''.
+\newblock \href{https://dx.doi.org/10.4230/LIPIcs.TQC.2022.5}{LIPIcs, Volume
+  232, TQC 2022 {\bf 232}, 5:1--5:13}~(2022).
+\newblock  \href{http://arxiv.org/abs/2202.09202}{arXiv:2202.09202}.
+
+\bibitem{sutcliffeFastClassicalSimulation2025}
+Matthew Sutcliffe and Aleks Kissinger.
+\newblock ``Fast {{Classical Simulation}} of {{Quantum Circuits}} via
+  {{Parametric Rewriting}} in the {{ZX-Calculus}}''.
+\newblock \href{https://dx.doi.org/10.4204/EPTCS.426.10}{Electronic Proceedings
+  in Theoretical Computer Science {\bf 426}, 247--269}~(2025).
+\newblock  \href{http://arxiv.org/abs/2403.06777}{arXiv:2403.06777}.
+
+\bibitem{haenelTsimFastUniversal2026}
+Rafael Haenel, Xiuzhe Luo, and Chen Zhao.
+\newblock ``Tsim: {{Fast Universal Simulator}} for {{Quantum Error
+  Correction}}''~(2026).
+\newblock  \href{http://arxiv.org/abs/2604.01059}{arXiv:2604.01059}.
+
+\bibitem{surtiEfficientSimulationLogical2025}
+Samyak Surti, Lucas Daguerre, and Isaac~H. Kim.
+\newblock ``Efficient simulation of logical magic state preparation
+  protocols''~(2025).
+\newblock  \href{http://arxiv.org/abs/2512.23799}{arXiv:2512.23799}.
+
+\bibitem{knillFermionicLinearOptics2001}
+E.~Knill.
+\newblock ``Fermionic {{Linear Optics}} and {{Matchgates}}''~(2001).
+\newblock
+  \href{http://arxiv.org/abs/quant-ph/0108033}{arXiv:quant-ph/0108033}.
+
+\bibitem{anschuetzEfficientClassicalAlgorithms2023}
+Eric~R. Anschuetz, Andreas Bauer, Bobak~T. Kiani, and Seth Lloyd.
+\newblock ``Efficient classical algorithms for simulating symmetric quantum
+  systems''.
+\newblock \href{https://dx.doi.org/10.22331/q-2023-11-28-1189}{{Quantum} {\bf
+  7}, 1189}~(2023).
+
+\bibitem{gohLieAlgebraicClassical2025}
+Matthew~L. Goh, Martin Larocca, Lukasz Cincio, M.~Cerezo, and Fr\'ed\'eric
+  Sauvage.
+\newblock ``Lie-algebraic classical simulations for quantum computing''.
+\newblock \href{https://dx.doi.org/10.1103/3y65-f5w6}{Physical Review Research
+  {\bf 7}, 033266}~(2025).
+\newblock  \href{http://arxiv.org/abs/2308.01432}{arXiv:2308.01432}.
+
+\bibitem{barligea2026enablingliealgebraicclassicalsimulation}
+Adelina Bärligea, Matthew~L. Sims-Goh, and Jakob~S. Kottmann.
+\newblock ``Enabling lie-algebraic classical simulation beyond free
+  fermions''~(2026).
+\newblock  \href{http://arxiv.org/abs/2604.16701}{arXiv:2604.16701}.
+
+\bibitem{rosenfeldMagicStateCultivation2025}
+Emma Rosenfeld, Craig Gidney, Gabrielle Roberts, Alexis Morvan, Nathan Lacroix,
+  et~al.
+\newblock ``Magic state cultivation on a superconducting quantum
+  processor''~(2025).
+\newblock  \href{http://arxiv.org/abs/2512.13908}{arXiv:2512.13908}.
+
+\bibitem{chenEfficientMagicState2026}
+Zi-Han Chen, Ming-Cheng Chen, Chao-Yang Lu, and Jian-Wei Pan.
+\newblock ``Efficient magic state cultivation on $\mathbb{RP}^2$''.
+\newblock \href{https://dx.doi.org/10.1103/9kys-3whh}{PRX Quantum {\bf 7},
+  010315}~(2026).
+\newblock  \href{http://arxiv.org/abs/2503.18657}{arXiv:2503.18657}.
+
+\bibitem{dasuBreakingEvenMagic2025a}
+Shival Dasu, Simon Burton, Karl Mayer, David Amaro, Justin~A. Gerber, et~al.
+\newblock ``Breaking even with magic: Demonstration of a high-fidelity logical
+  non-{{Clifford}} gate''~(2025).
+\newblock  \href{http://arxiv.org/abs/2506.14688}{arXiv:2506.14688}.
+
+\bibitem{sahayFoldtransversalSurfaceCode2026a}
+Kaavya Sahay, Pei-Kai Tsai, Kathleen Chang, Qile Su, Thomas~B. Smith, et~al.
+\newblock ``Fold-transversal surface code cultivation''~(2026).
+\newblock  \href{http://arxiv.org/abs/2509.05212}{arXiv:2509.05212}.
+
+\bibitem{hiranoEfficientMagicState2025}
+Yutaka Hirano, Riki Toshio, Tomohiro Itogawa, and Keisuke Fujii.
+\newblock ``Efficient magic state cultivation with lattice surgery''~(2025).
+\newblock  \href{http://arxiv.org/abs/2510.24615}{arXiv:2510.24615}.
+
+\bibitem{vakninEfficientMagicState2026}
+Yotam Vaknin, Shoham Jacoby, Arne Grimsmo, and Alex Retzker.
+\newblock ``Efficient {{Magic State Cultivation}} on the {{Surface
+  Code}}''~(2026).
+\newblock  \href{http://arxiv.org/abs/2502.01743}{arXiv:2502.01743}.
+
+\bibitem{liSOFTHighperformanceSimulator2025}
+Riling Li, Keli Zheng, Yiming Zhang, Huazhe Lou, Shenggang Ying, et~al.
+\newblock ``{{SOFT}}: A high-performance simulator for universal fault-tolerant
+  quantum circuits''~(2025).
+\newblock  \href{http://arxiv.org/abs/2512.23037}{arXiv:2512.23037}.
+
+\bibitem{tuloupComputingLogicalError2026a}
+Thomas Tuloup and Thomas Ayral.
+\newblock ``Computing logical error thresholds with the {{Pauli Frame Sparse
+  Representation}}''~(2026).
+\newblock  \href{http://arxiv.org/abs/2603.14670}{arXiv:2603.14670}.
+
+\bibitem{wanCuttingStabiliserDecompositions2025}
+Kwok~Ho Wan and Zhenghao Zhong.
+\newblock ``Cutting stabiliser decompositions of magic state cultivation with
+  {{ZX-calculus}}''~(2025).
+\newblock  \href{http://arxiv.org/abs/2509.01224}{arXiv:2509.01224}.
+
+\bibitem{wanSimulatingMagicState2026a}
+Kwok~Ho Wan, Zhenghao Zhong, and Ainhoa Zapirain.
+\newblock ``Simulating magic state cultivation with few {{Clifford}}
+  terms''~(2026).
+\newblock  \href{http://arxiv.org/abs/2509.08658}{arXiv:2509.08658}.
+
+\bibitem{umbrarescuSyQMAMemoryefficientSymbolic2026}
+George Umbrarescu and David Amaro.
+\newblock ``{{SyQMA}}: {{A}} memory-efficient, symbolic and exact universal
+  simulator for quantum error correction''~(2026).
+\newblock  \href{http://arxiv.org/abs/2604.15043}{arXiv:2604.15043}.
+
+\bibitem{gottesman1998heisenbergrepresentationquantumcomputers}
+Daniel Gottesman.
+\newblock ``The heisenberg representation of quantum computers''~(1998).
+\newblock
+  \href{http://arxiv.org/abs/quant-ph/9807006}{arXiv:quant-ph/9807006}.
+
+\bibitem{bravyiTradingClassicalQuantum2016}
+Sergey Bravyi, Graeme Smith, and John~A. Smolin.
+\newblock ``Trading {{Classical}} and {{Quantum Computational Resources}}''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevX.6.021043}{Physical Review X
+  {\bf 6}, 021043}~(2016).
+
+\bibitem{litinskiGameSurfaceCodes2019a}
+Daniel Litinski.
+\newblock ``A {{Game}} of {{Surface Codes}}: {{Large-Scale Quantum Computing}}
+  with {{Lattice Surgery}}''.
+\newblock \href{https://dx.doi.org/10.22331/q-2019-03-05-128}{Quantum {\bf 3},
+  128}~(2019).
+\newblock  \href{http://arxiv.org/abs/1808.02892}{arXiv:1808.02892}.
+
+\bibitem{liPaulihedralGeneralizedBlockWise2021}
+Gushu Li, Anbang Wu, Yunong Shi, Ali Javadi-Abhari, Yufei Ding, et~al.
+\newblock ``Paulihedral: a generalized block-wise compiler optimization
+  framework for quantum simulation kernels''.
+\newblock In Proceedings of the 27th ACM International Conference on
+  Architectural Support for Programming Languages and Operating Systems.
+\newblock \href{https://dx.doi.org/10.1145/3503222.3507715}{Page 554–569}.
+\newblock ASPLOS '22New York, NY, USA~(2022). Association for Computing
+  Machinery.
+
+\bibitem{paykinPCOASTPaulibasedQuantum2023}
+Jennifer Paykin, Albert~T. Schmitz, Mohannad Ibrahim, Xin-Chuan Wu, and A.~Y.
+  Matsuura.
+\newblock ``Pcoast: A pauli-based quantum circuit optimization framework''.
+\newblock In 2023 IEEE International Conference on Quantum Computing and
+  Engineering (QCE).
+\newblock \href{https://dx.doi.org/10.1109/QCE57702.2023.00087}{Volume~01,
+  pages 715--726}.
+\newblock ~(2023).
+
+\bibitem{wangTableauBasedFramework2025}
+Meng Wang, Chenxu Liu, Sean Garner, Samuel Stein, Yufei Ding, et~al.
+\newblock ``Tableau-based framework for efficient logical quantum
+  compilation''~(2025).
+\newblock  \href{http://arxiv.org/abs/2509.02721}{arXiv:2509.02721}.
+
+\bibitem{clifftDocsCode2026}
+``Clifft documentation and code''.
+\newblock  url:~\url{https://unitaryfoundation.github.io/clifft}.
+\newblock
+  code:~\href{https://github.com/unitaryfoundation/clifft}{unitaryfoundation/clifft}.
+
+\bibitem{clifftPaperRepo}
+``Clifft paper simulations''.
+\newblock  url:~\url{https://github.com/unitaryfoundation/clifft-paper}.
+
+\bibitem{salesrodriguezExperimentalDemonstrationLogical2025}
+Pedro Sales~Rodriguez, John~M. Robinson, Paul~Niklas Jepsen, Zhiyang He, Casey
+  Duckering, et~al.
+\newblock ``Experimental demonstration of logical magic state distillation''.
+\newblock \href{https://dx.doi.org/10.1038/s41586-025-09367-3}{Nature {\bf
+  645}, 620--625}~(2025).
+
+\bibitem{suzukiQulacsFastVersatile2021}
+Yasunari Suzuki, Yoshiaki Kawase, Yuya Masumura, Yuria Hiraga, Masahiro
+  Nakadai, et~al.
+\newblock ``Qulacs: A fast and versatile quantum circuit simulator for research
+  purpose''.
+\newblock \href{https://dx.doi.org/10.22331/q-2021-10-06-559}{Quantum {\bf 5},
+  559}~(2021).
+
+\bibitem{stranoExactApproximateSimulation2023}
+Daniel Strano, Benn Bollay, Aryan Blaauw, Nathan Shammah, William~J. Zeng,
+  et~al.
+\newblock ``Exact and approximate simulation of large quantum circuits on a
+  single gpu''.
+\newblock In 2023 IEEE International Conference on Quantum Computing and
+  Engineering (QCE).
+\newblock \href{https://dx.doi.org/10.1109/QCE57702.2023.00109}{Volume~01,
+  pages 949--958}.
+\newblock ~(2023).
+
+\bibitem{niekerkComparisonHPCbasedQuantum2024}
+Lourens van Niekerk, Dhiraj Kumar, Aasish~Kumar Sharma, Tino Meisel,
+  Martin~Leandro Paleico, et~al.
+\newblock ``A comparison of {{HPC-based}} quantum computing simulators using
+  {{Quantum Volume}}''~(2024).
+\newblock  \href{http://arxiv.org/abs/2412.20518}{arXiv:2412.20518}.
+
+\bibitem{mscGithub}
+Craig Gidney~(2024).
+\newblock
+  code:~\href{https://github.com/Strilanc/magic-state-cultivation}{Strilanc/magic-state-cultivation
+  commit:871e68f}.
+
+\bibitem{eastinRestrictionsTransversalEncoded2009}
+Bryan Eastin and Emanuel Knill.
+\newblock ``Restrictions on {{Transversal Encoded Quantum Gate Sets}}''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevLett.102.110502}{Physical
+  Review Letters {\bf 102}, 110502}~(2009).
+\newblock  \href{http://arxiv.org/abs/0811.4262}{arXiv:0811.4262}.
+
+\bibitem{jeffreys1946invariant}
+Harold Jeffreys.
+\newblock ``An invariant form for the prior probability in estimation
+  problems''.
+\newblock \href{https://dx.doi.org/10.1098/rspa.1946.0056}{Proceedings of the
+  Royal Society of London. A. Mathematical and Physical Sciences {\bf 186},
+  453--461}~(1946).
+\newblock
+  \href{http://arxiv.org/abs/https://royalsocietypublishing.org/rspa/article-pdf/186/1007/453/38863/rspa.1946.0056.pdf}{arXiv:https://royalsocietypublishing.org/rspa/article-pdf/186/1007/453/38863/rspa.1946.0056.pdf}.
+
+\bibitem{lee2012bayesian}
+P.M. Lee.
+\newblock ``Bayesian statistics: {{An}} introduction''.
+\newblock \href{https://dx.doi.org/10.1002/9780470181188}{Wiley}. ~(2012).
+
+\end{thebibliography}

@@ -1,0 +1,99 @@
+[
+  {
+    "file": "stim/coherent_d3_r1.stim",
+    "non_clifford_gates": {
+      "R_Z": 65
+    },
+    "tsim_k": 0,
+    "tsim_seconds": 0.45,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/coherent_d3_r3.stim",
+    "non_clifford_gates": {
+      "R_Z": 130
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/coherent_d5_r1.stim",
+    "non_clifford_gates": {
+      "R_Z": 209
+    },
+    "tsim_k": 0,
+    "tsim_seconds": 0.41,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 12,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/coherent_d5_r5.stim",
+    "non_clifford_gates": {
+      "R_Z": 418
+    },
+    "tsim_k": 11,
+    "tsim_seconds": 0.6,
+    "clifft_k": 13,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 13,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/cultivation_d3.stim",
+    "non_clifford_gates": {
+      "T_DAG": 15,
+      "T": 14
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/cultivation_d5.stim",
+    "non_clifford_gates": {
+      "T_DAG": 46,
+      "T": 45
+    },
+    "tsim_k": 6,
+    "tsim_seconds": 0.53,
+    "clifft_k": 10,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 10,
+    "clifft_noschedule_seconds": 0.04
+  },
+  {
+    "file": "stim/distillation.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.42,
+    "clifft_k": 3,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/surface_d7_r7.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.5,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.04
+  }
+]
