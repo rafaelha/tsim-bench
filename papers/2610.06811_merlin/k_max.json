@@ -1,0 +1,174 @@
+[
+  {
+    "file": "stim/code_switching_bt27_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 240,
+      "T_DAG": 180
+    },
+    "tsim_k": 26,
+    "tsim_seconds": 0.56,
+    "clifft_k": 27,
+    "clifft_seconds": 0.07,
+    "clifft_noschedule_k": 28,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/code_switching_bt81_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 672,
+      "T_DAG": 504
+    },
+    "tsim_k": null,
+    "tsim_error": "ValueError: strategy='active_statevector' needs 63 active qubits for the component with outputs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 234, 235, 236, 237, 238, 239, 240, 241, 242], more than 30. Use a stabi",
+    "clifft_k": 52,
+    "clifft_seconds": 0.55,
+    "clifft_noschedule_k": 56,
+    "clifft_noschedule_seconds": 0.07
+  },
+  {
+    "file": "stim/cultivation_d3_t.stim",
+    "non_clifford_gates": {
+      "T_DAG": 15,
+      "T": 14
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.43,
+    "clifft_k": 4,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/cultivation_d5_t.stim",
+    "non_clifford_gates": {
+      "T_DAG": 46,
+      "T": 45
+    },
+    "tsim_k": 6,
+    "tsim_seconds": 0.52,
+    "clifft_k": 10,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 10,
+    "clifft_noschedule_seconds": 0.04
+  },
+  {
+    "file": "stim/distillation_15to1_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 16
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/distillation_bh10_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 48
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/distillation_bh12_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 56
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.43,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/distillation_bh14_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 64
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.43,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/distillation_bh16_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 72
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.47,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/distillation_bh18_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 80
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.44,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/distillation_bh2_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 16
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/distillation_bh4_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 24
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/distillation_bh6_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 32
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/distillation_bh8_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 40
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  }
+]

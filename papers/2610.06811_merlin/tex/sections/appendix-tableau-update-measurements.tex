@@ -1,0 +1,117 @@
+% !TeX root = ../main.tex
+\subsection{Measurement update rules for DCP tableaux}
+\label{appendix:tableau-update-measurements}
+
+\begin{dcpzmeasurementrestatement}[Updating under $Z$-measurements]
+\dcpZMeasurementUpdateStatement
+\end{dcpzmeasurementrestatement}
+
+\begin{proof}
+    Let us first prove (a), starting with the outcome probabilities.
+    Write $z=Z(\vec v)$, and choose $t\in G$ that anticommutes with $z$.
+    Since $t$ fixes $\ket{\psi}$ and satisfies $t^\dagger zt=-z$, we have
+    \begin{align}
+        \bra{\psi}z\ket{\psi}
+        =\bra{\psi}t^\dagger zt\ket{\psi}
+        =-\bra{\psi}z\ket{\psi}.
+    \end{align}
+    Thus $\bra{\psi}z\ket{\psi}=0$.
+    Hence, using the projector
+    $\Pi_\varepsilon=(I+\varepsilon z)/2$, we have
+    \begin{align}
+        \Pr(\varepsilon)
+        =\bra{\psi}\Pi_\varepsilon\ket{\psi}
+        =\frac12.
+    \end{align}
+
+    It remains to show that $\Fix(H_\varepsilon)=\C\Pi_\varepsilon\ket{\psi}$.
+    For the $\supseteq$ inclusion, every element of $K$ commutes with $\Pi_\varepsilon$ and fixes $\ket{\psi}$, while $(\varepsilon z)\Pi_\varepsilon=\Pi_\varepsilon$.
+    Thus, $H_\varepsilon$ fixes $\Pi_\varepsilon\ket{\psi}$, and $\C\Pi_\varepsilon\ket{\psi}\subseteq\Fix(H_\varepsilon)$.
+
+    We now prove the reverse inclusion.
+    Let $\ket{\varphi}\in\Fix(H_\varepsilon)$.
+    Since $t$ anticommutes with $z$, both $t^2$ and $t^{-1}kt$ commute with $z$ for every $k\in K$, and therefore belong to $K$.
+    Consequently, $(I+t)\ket{\varphi}$ is fixed by both $K$ and $t$.
+    Moreover, $G=\langle K,t\rangle$.
+    Indeed, every element $g\in G$ either commutes or anticommutes with $z$ by \cref{lem:z-commute}.
+    In the first case, $g\in K$; in the second, $t^{-1}g\in K$, and therefore $g\in tK$ and $G=\langle K,t\rangle$.
+    Hence,
+    \begin{align}
+        (I+t)\ket{\varphi}\in\Fix(G)=\C\ket{\psi}.
+    \end{align}
+    Moreover, $z\ket{\varphi}=\varepsilon\ket{\varphi}$ and $zt=-tz$, so
+    \begin{align}
+        \ket{\varphi}
+        =\Pi_\varepsilon(I+t)\ket{\varphi}
+        \in\C\Pi_\varepsilon\ket{\psi}.
+    \end{align}
+    This proves the reverse inclusion.
+    Since $\Pi_\varepsilon\ket{\psi}\neq 0$, the fixed space is one-dimensional.
+
+    We now verify that the stated generator update produces $K$.
+    By \cref{prop:dcp-generators}, it suffices to obtain generators of $\Delta(K)$ and lifts of a basis of $X(K)$.
+    We will show that the diagonal generators can be retained, and that the stated row operations produce the required lifts.
+
+    First, every diagonal element of $G$ commutes with $z$, so $\Delta(K)=\Delta(G)$.
+    Thus the original diagonal generators already generate $\Delta(K)$.
+
+    It remains to construct lifts of a basis of $X(K)$.
+    By \cref{lem:z-commute}, an element of $G$ with $X$-part $\vec{x}$ commutes with $z=Z(\vec v)$ exactly when $\langle\vec{x},\vec v\rangle=0$.
+    Therefore,
+    \begin{align}
+        X(K)=X(G)\cap\vec v^\perp.
+    \end{align}
+    Let $g_1,\ldots,g_r$ be the original lifts, whose $X$-parts $\vec{x}^{(1)},\ldots,\vec{x}^{(r)}$ form a basis of $X(G)$.
+    Choose an anticommuting lift $g_j$, so that $\langle\vec{x}^{(j)},\vec v\rangle=1$.
+    For each $i\neq j$, define
+    \begin{align}
+        h_i=
+        \begin{cases}
+            g_i, & \langle\vec{x}^{(i)},\vec v\rangle=0,\\
+            g_i g_j, & \langle\vec{x}^{(i)},\vec v\rangle=1.
+        \end{cases}
+    \end{align}
+    Each $h_i$ commutes with $z$, and its $X$-part is
+    \begin{align}
+        \vec{y}^{(i)}
+        =\vec{x}^{(i)}+\langle\vec{x}^{(i)},\vec v\rangle\vec{x}^{(j)}.
+    \end{align}
+    We must show that the vectors $\vec{y}^{(i)}$, for $i\neq j$, form a basis of $X(K)$.
+    We first show that the $\vec{y}^{(i)}$ span $X(K)$.
+    Let $\vec{x}\in X(K)$ and expand it in the original basis:
+    \begin{align}
+        \vec{x}=\sum_{i=1}^r a_i\vec{x}^{(i)}.
+    \end{align}
+    Since $\langle\vec{x},\vec v\rangle=0$ and $\langle\vec{x}^{(j)},\vec v\rangle=1$, we obtain
+    \begin{align}
+        0=a_j+\sum_{i\neq j}a_i\langle\vec{x}^{(i)},\vec v\rangle,
+    \end{align}
+    so $a_j=\sum_{i\neq j}a_i\langle\vec{x}^{(i)},\vec v\rangle$, where all arithmetic is over $\mathbb F_2$.
+    Substituting this expression gives
+    \begin{align}
+        \vec{x}
+        &=\sum_{i\neq j}a_i
+        \bigl(\vec{x}^{(i)}+\langle\vec{x}^{(i)},\vec v\rangle\vec{x}^{(j)}\bigr)
+        =\sum_{i\neq j}a_i\vec{y}^{(i)}.
+    \end{align}
+    Thus the $\vec{y}^{(i)}$ span $X(K)$.
+
+    To show linear independence, suppose that $\sum_{i\neq j}b_i\vec{y}^{(i)}=0$.
+    Expanding in the original basis gives
+    \begin{align}
+        \sum_{i\neq j}b_i\vec{x}^{(i)}
+        +\left(\sum_{i\neq j}b_i\langle\vec{x}^{(i)},\vec v\rangle\right)\vec{x}^{(j)}
+        =0.
+    \end{align}
+    Since the $\vec{x}^{(i)}$ are linearly independent, the coefficient $b_i$ of each $\vec{x}^{(i)}$ with $i\neq j$ must vanish.
+    Therefore the $\vec{y}^{(i)}$ are linearly independent and form a basis of $X(K)$.
+
+    Consequently, the retained diagonal generators together with the lifts $h_i$ generate $K$.
+    Adding $\varepsilon z$ therefore gives generators of $H_\varepsilon=\langle K,\varepsilon z\rangle$, as claimed.
+
+    We now prove (b). Suppose that $z$ commutes with every element of $G$.
+    Then $z$ preserves $\Fix(G)$: if $g\in G$ and $\ket{\varphi}\in\Fix(G)$, then
+    $gz\ket{\varphi}=z\ket{\varphi}$.  Since
+    $\Fix(G)=\C\ket{\psi}$, the state $\ket{\psi}$ is an eigenvector of $z$, and we have $(\varepsilon z)\ket{\psi}=\ket{\psi}$, and hence $\varepsilon z\in\mathcal{D}(\psi)$.  The post-measurement state is
+    $\ket{\psi}$ itself, so its DCP-stabilizer group $G$ is unchanged.
+\end{proof}

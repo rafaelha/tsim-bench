@@ -1,0 +1,237 @@
+% !TeX root = ../main.tex
+\section{Algebra of DCP operators} \label{appendix:dcp-algebra}
+
+This appendix develops the algebraic tools used to represent and manipulate DCP operators and subgroups.
+We first prove the normal form and derive explicit formulas for group operations, then describe the Howell normal form and canonical remainders used to construct canonical subgroup representations.
+
+\subsection{Normal form and group operations}
+
+\begin{dcpnormalformrestatement}[Normal form for DCP operators]
+\dcpNormalFormStatement
+\end{dcpnormalformrestatement}
+\begin{proof}
+    We first prove existence by moving all Pauli $X$ factors to
+    the right, then prove uniqueness by comparing the action on
+    computational-basis states.
+
+    Every DCP operator can be written as a product of scalar
+    phases, $\S_i$, $\CZ_{ij}$, and $X_i$, since
+    $Z_i=\S_i^2$ and $Y_i=iX_iZ_i$. The relations
+    \[
+    X_i\S_i=i\S_i^{-1}X_i,
+    \qquad
+    X_i\CZ_{ij}=Z_j\CZ_{ij}X_i
+    \]
+    allow us to move each $X_i$ past every diagonal generator;
+    generators acting on disjoint qubits commute. The additional
+    factors introduced are diagonal, with $Z_j=\S_j^2$, and all
+    scalar phases are powers of $\omega_8$. Thus
+    \[
+    U=\omega_8^k
+    \left(\prod_i \S_i^{s_i}\right)
+    \left(\prod_{i<j}\CZ_{ij}^{M_{ij}}\right)
+    X(\vec{x}).
+    \]
+    Since $\S_i^4=I$, $\CZ_{ij}^2=I$, and $X_i^2=I$, we may
+    take $k\in\Z_8$, $\vec{s}\in\Z_4^n$, and
+    $\vec{x}\in\F_2^n$. The exponents $M_{ij}$ uniquely specify
+    a symmetric binary matrix with zero diagonal. This proves
+    existence.
+
+    To prove uniqueness, suppose
+    \[
+    \omega_8^k D(\vec{s},M)X(\vec{x})
+    =
+    \omega_8^{k'}D(\vec{s}',M')X(\vec{x}').
+    \]
+    Applied to any computational-basis state $\ket{z}$, the two
+    sides produce nonzero multiples of $\ket{z\oplus\vec{x}}$
+    and $\ket{z\oplus\vec{x}'}$, respectively. Hence
+    $\vec{x}=\vec{x}'$, and cancelling the common $X$ factor gives
+    \[
+    \omega_8^k D(\vec{s},M)
+    =
+    \omega_8^{k'}D(\vec{s}',M').
+    \]
+    Both diagonal operators fix $\ket{0^n}$, so evaluating this
+    identity on $\ket{0^n}$ gives $k=k'$ in $\Z_8$.
+    For the standard basis vector $e_i$,
+    \[
+    D(\vec{s},M)\ket{e_i}=i^{s_i}\ket{e_i},
+    \]
+    so $s_i=s_i'$ in $\Z_4$ for every $i$. Finally, for $i<j$,
+    \[
+    D(\vec{s},M)\ket{e_i\oplus e_j}
+    =
+    i^{s_i+s_j}(-1)^{M_{ij}}\ket{e_i\oplus e_j}.
+    \]
+    Since $\vec{s}=\vec{s}'$, this implies $M_{ij}=M_{ij}'$
+    for every $i<j$, and therefore $M=M'$. All four parameters
+    are unique.
+\end{proof}
+
+\begin{proposition}[Group operations on DCP operators]\label{prop:dcp-group-ops}
+For $\vec{s}\in\Z_4^{\,n}$ and $M\in\F_2^{\,n\times n}$ symmetric with zero diagonal, write
+\begin{align} \label{eq:phi-s-M}
+    \varphi_{\vec{s},M}(\vec{v}) \;:=\; \vec{s}\cdot \vec{v} \,+\, 2 \sum_{a<b} M_{ab}\, v_a v_b \pmod 4, \qquad \vec{v} \in \F_2^{\,n},
+\end{align}
+so that $D(\vec{s},M)\ket{\vec{v}} = i^{\varphi_{\vec{s},M}(\vec{v})}\ket{\vec{v}}$, and let $\odot$ denote the entrywise product of vectors. Given two DCP operators $g_1 = \omega_8^{k_1} D(\vec{s}_1,M_1) X(\vec{x}_1)$ and $g_2 = \omega_8^{k_2} D(\vec{s}_2,M_2) X(\vec{x}_2)$, we have the following formulas for their product, inverse, commutator, and conjugation:
+\begin{itemize}
+    \item \textbf{Product:}
+    \[
+    g_1 g_2 \;=\; \omega_8^{\,k_1+k_2+2\varphi_{\vec{s}_2,M_2}(\vec{x}_1)}\, D\big(\vec{s}_1+\vec{s}_2\odot(1-2\vec{x}_1)+2M_2\vec{x}_1,\ M_1+M_2\big)\, X(\vec{x}_1\oplus \vec{x}_2).
+    \]
+    \item \textbf{Inverse:}
+    \[
+    g_1^{-1} \;=\; \omega_8^{\,-k_1+2\varphi_{-\vec{s}_1,M_1}(\vec{x}_1)}\, D\big((-\vec{s}_1)\odot(1-2\vec{x}_1)+2M_1\vec{x}_1,\ M_1\big)\, X(\vec{x}_1).
+    \]
+    \item \textbf{Commutator:}
+    \[
+    \gcomm{g_1}{g_2} \;:=\; g_1 g_2 g_1^{-1} g_2^{-1} \;=\; i^{\,c}\, Z(\vec{z}),
+    \qquad
+    c \;=\; \varphi_{\vec{s}_2,M_2}(\vec{x}_1) - \varphi_{\vec{s}_1,M_1}(\vec{x}_2) \pmod 4,
+    \]
+    \[
+    \vec{z} \;=\; M_2\vec{x}_1 + \vec{s}_2\odot \vec{x}_1 + M_1\vec{x}_2 + \vec{s}_1\odot \vec{x}_2 \pmod 2,
+    \]
+    where $Z(\vec{z}) := Z_1^{z_1} \otimes \dots \otimes Z_n^{z_n}$
+    \item \textbf{Conjugation:}
+    \[
+    g_1 g_2 g_1^{-1} \;=\; \omega_8^{\,k_2+2c}\, D(\vec{s}_2+2\vec{z},\ M_2)\, X(\vec{x}_2),
+    \]
+    with $(c,\vec{z})$ as in the commutator above.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+We first compute how conjugation by $X(\vec{x})$ acts on
+a diagonal DCP operator. We then derive the product and
+inverse formulas, and obtain the commutator by comparing
+the products in the two possible orders.
+
+For binary vectors $\vec{v},\vec{x}$, expanding
+$v_a\oplus x_a=v_a+x_a-2v_ax_a$ gives
+\begin{align}
+    \varphi_{\vec{s},M}(\vec{v}\oplus\vec{x})
+    &=
+    \varphi_{\vec{s},M}(\vec{x})
+    +\varphi_{\vec{t},M}(\vec{v})
+    \pmod 4,
+    \label{eq:dcp-phase-translation}
+    \\
+    \vec{t}
+    &=
+    \vec{s}\odot(1-2\vec{x})+2M\vec{x}
+    \pmod 4.
+\end{align}
+Indeed, the linear terms contribute
+$s_a x_a+s_a(1-2x_a)v_a$, while each quadratic term
+satisfies
+\[
+    2M_{ab}(v_a\oplus x_a)(v_b\oplus x_b)
+    =
+    2M_{ab}
+    (v_av_b+v_ax_b+x_av_b+x_ax_b)
+    \pmod 4.
+\]
+Collecting the constant, linear, and quadratic terms gives
+\cref{eq:dcp-phase-translation}. Consequently,
+\begin{equation}
+    X(\vec{x})D(\vec{s},M)X(\vec{x})
+    =
+    i^{\varphi_{\vec{s},M}(\vec{x})}
+    D\big(
+        \vec{s}\odot(1-2\vec{x})+2M\vec{x},M
+    \big).
+    \label{eq:dcp-diagonal-conjugation}
+\end{equation}
+
+For the product formula, write
+\begin{align*}
+    g_1g_2
+    &=
+    \omega_8^{k_1+k_2}
+    D(\vec{s}_1,M_1)
+    \big[
+        X(\vec{x}_1)D(\vec{s}_2,M_2)X(\vec{x}_1)
+    \big]
+    X(\vec{x}_1\oplus\vec{x}_2).
+\end{align*}
+Applying \cref{eq:dcp-diagonal-conjugation} and using
+\[
+    D(\vec{s},M)D(\vec{s}',M')
+    =
+    D(\vec{s}+\vec{s}',M+M')
+\]
+gives the stated expression.
+
+For the inverse formula, note that
+$D(\vec{s}_1,M_1)^{-1}=D(-\vec{s}_1,M_1)$. Hence
+\[
+    g_1^{-1}
+    =
+    \omega_8^{-k_1}
+    \big[
+        X(\vec{x}_1)D(-\vec{s}_1,M_1)X(\vec{x}_1)
+    \big]
+    X(\vec{x}_1),
+\]
+and another application of
+\cref{eq:dcp-diagonal-conjugation} gives the result.
+
+To obtain the commutator, let
+\begin{align*}
+    \vec{a}_{12}
+    &=
+    \vec{s}_1+\vec{s}_2\odot(1-2\vec{x}_1)
+    +2M_2\vec{x}_1,
+    \\
+    \vec{a}_{21}
+    &=
+    \vec{s}_2+\vec{s}_1\odot(1-2\vec{x}_2)
+    +2M_1\vec{x}_2
+\end{align*}
+be the linear parameters in the product formulas for
+$g_1g_2$ and $g_2g_1$. Their difference satisfies
+\[
+    \vec{a}_{12}-\vec{a}_{21}
+    =
+    2\big(
+        M_2\vec{x}_1+\vec{s}_2\odot\vec{x}_1
+        +M_1\vec{x}_2+\vec{s}_1\odot\vec{x}_2
+    \big)
+    =
+    2\vec{z}
+    \pmod 4.
+\]
+The two products have the same quadratic parameter
+$M_1+M_2$ and the same $X$ parameter
+$\vec{x}_1\oplus\vec{x}_2$. Their scalar factors differ
+by $i^c$, where
+\[
+    c=
+    \varphi_{\vec{s}_2,M_2}(\vec{x}_1)
+    -
+    \varphi_{\vec{s}_1,M_1}(\vec{x}_2)
+    \pmod 4.
+\]
+Since $D(2\vec{z},0)=Z(\vec{z})$, it follows that
+\[
+    g_1g_2=i^c Z(\vec{z})g_2g_1.
+\]
+Multiplying on the right by $g_1^{-1}g_2^{-1}$ proves
+the commutator formula.
+
+Finally,
+\begin{align*}
+    g_1g_2g_1^{-1}
+    &=\gcomm{g_1}{g_2}g_2\\
+    &=i^c Z(\vec{z})\,
+      \omega_8^{k_2}D(\vec{s}_2,M_2)X(\vec{x}_2)\\
+    &=\omega_8^{k_2+2c}
+      D(\vec{s}_2+2\vec{z},M_2)X(\vec{x}_2),
+\end{align*}
+which proves the conjugation formula.
+\end{proof}
+
+\input{sections/appendix-howell}

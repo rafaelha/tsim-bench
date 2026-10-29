@@ -1,0 +1,205 @@
+\section{Phase polynomials}\label{app:phase-polynomials}
+
+This appendix collects the phase-polynomial facts used throughout the paper.
+For $A\subseteq [n]$, write $x_A=\prod_{i\in A}x_i$, and regard the
+binary inner product $\langle u,x\rangle$ as an element of
+\(\{0,1\}\subseteq\Z_{2^k}\).
+
+\begin{theorem}[Equivalent forms of phase polynomials]
+    \label{thm:phase-polynomial-equivalence}
+    Let $k\geq 1$.  A function $q:\F_2^n\to\Z_{2^k}$ can be written in
+    the weighted form
+    \begin{equation}
+        \label{eq:weighted-phase-polynomial}
+        q(x)=c_\varnothing+
+        \sum_{\substack{\varnothing\neq A\subseteq[n]\\ |A|\leq k}}
+        2^{|A|-1}c_Ax_A
+        \pmod {2^k}
+    \end{equation}
+    if and only if it can be written as a sum of parity functions,
+    \begin{equation}
+        \label{eq:phase-polynomial-sum-parities}
+        q(x)=a_0+
+        \sum_{u\in\F_2^n\setminus\{0\}}a_u\langle u,x\rangle
+        \pmod {2^k}.
+    \end{equation}
+    All coefficients may be taken in \(\Z_{2^k}\), although a coefficient
+    $c_A$ with $A\neq\varnothing$ only matters modulo
+    $2^{k-|A|+1}$.  In particular, for $k=3$, the weighted form is
+    \[
+        c_\varnothing+\sum_i c_i x_i
+        +2\sum_{i<j}c_{ij}x_ix_j
+        +4\sum_{i<j<\ell}c_{ij\ell}x_ix_jx_\ell
+        \pmod 8.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Repeatedly applying $a\oplus b=a+b-2ab$ gives, for every nonempty
+    $B\subseteq[n]$,
+    \begin{equation}
+        \label{eq:parity-to-weighted}
+        \bigoplus_{i\in B}x_i
+        =\sum_{\varnothing\neq A\subseteq B}
+        (-2)^{|A|-1}x_A.
+    \end{equation}
+    Modulo $2^k$, all terms with $|A|>k$ vanish.  Applying
+    \cref{eq:parity-to-weighted} to each term in
+    \cref{eq:phase-polynomial-sum-parities} therefore produces a weighted
+    polynomial of the form \eqref{eq:weighted-phase-polynomial}.
+
+    Conversely, for every nonempty $A\subseteq[n]$, Boolean
+    inclusion--exclusion gives
+    \begin{equation}
+        \label{eq:weighted-to-parity}
+        2^{|A|-1}x_A
+        =\sum_{\varnothing\neq B\subseteq A}
+        (-1)^{|B|-1}
+        \bigoplus_{i\in B}x_i.
+    \end{equation}
+    Each parity on the right is
+    $\langle \sum_{i\in B}e_i,x\rangle$, where $e_i$ is the $i$th
+    standard basis vector.  Substituting \cref{eq:weighted-to-parity} into
+    \cref{eq:weighted-phase-polynomial} yields
+    \cref{eq:phase-polynomial-sum-parities}.
+\end{proof}
+
+We call the equivalent functions in
+\Cref{thm:phase-polynomial-equivalence} \emph{$k$th-order phase
+polynomials}.
+
+The parity-sum form makes closure under changes of binary coordinates
+immediate.
+
+\begin{corollary}[Affine pullback]
+    \label{cor:phase-polynomial-affine-pullback}
+    If $q:\F_2^n\to\Z_{2^k}$ is a $k$th-order phase polynomial and
+    $\phi(y)=Ay\oplus b$ is an affine map from \(\F_2^m\) to \(\F_2^n\),
+    then $q\circ\phi$ is a $k$th-order phase polynomial on \(\F_2^m\).
+\end{corollary}
+
+\begin{proof}
+    For $\beta\in\F_2$ and $t\in\{0,1\}$,
+    \(\beta\oplus t=\beta+(1-2\beta)t\).  Hence
+    \[
+        \langle u,Ay\oplus b\rangle
+        =\langle u,b\rangle
+        +\bigl(1-2\langle u,b\rangle\bigr)
+        \langle A^{\mathsf T}u,y\rangle.
+    \]
+    Substitution into the parity-sum form of
+    \Cref{thm:phase-polynomial-equivalence} gives another constant plus a
+    sum of parity functions.
+\end{proof}
+
+We next record how phase polynomials behave under discrete differentiation.
+For $v\in\F_2^n$, recall that
+\[
+    \Delta_vq(x)=q(x\oplus v)-q(x).
+\]
+
+\begin{theorem}[Discrete derivatives of phase polynomials]
+    \label{thm:phase-polynomial-derivative}
+    Let $q:\F_2^n\to\Z_{2^k}$ be a $k$th-order phase polynomial, with
+    $k\geq2$.  For every $v\in\F_2^n$, there are a constant
+    $r_v\in\Z_{2^k}$ and a $(k-1)$st-order phase polynomial
+    $q_v:\F_2^n\to\Z_{2^{k-1}}$ such that
+    \begin{equation}
+        \label{eq:general-phase-derivative}
+        \Delta_vq(x)=r_v+2q_v(x)\pmod {2^k}.
+    \end{equation}
+    More generally, an $s$-fold discrete derivative, for $1\leq s<k$,
+    is a constant plus $2^s$ times a $(k-s)$th-order phase polynomial;
+    every $k$-fold derivative is constant.
+\end{theorem}
+
+\begin{proof}
+    Write $q$ in the parity-sum form
+    \eqref{eq:phase-polynomial-sum-parities}.  Since
+    \[
+        \langle u,x\oplus v\rangle-\langle u,x\rangle
+        =\begin{cases}
+            0, & \langle u,v\rangle=0,\\
+            1-2\langle u,x\rangle, & \langle u,v\rangle=1,
+        \end{cases}
+    \]
+    we obtain
+    \begin{equation}
+        \label{eq:derivative-parity-form}
+        \Delta_vq(x)
+        =\sum_{\langle u,v\rangle=1}a_u
+        -2\sum_{\langle u,v\rangle=1}a_u\langle u,x\rangle
+        \pmod {2^k}.
+    \end{equation}
+    The first sum is constant.  After reducing its coefficients modulo
+    $2^{k-1}$, the second sum is a phase polynomial over
+    \(\Z_{2^{k-1}}\), proving \cref{eq:general-phase-derivative}.
+    Iterating this argument proves the remaining statements.
+\end{proof}
+
+For $k=3$, a discrete derivative is therefore a Clifford phase polynomial.
+We make the corresponding normal forms explicit.
+
+\begin{theorem}[Clifford phase polynomials]
+    \label{thm:clifford-phase-polynomial}
+    A function $d:\F_2^n\to\Z_8$ is the phase function of a diagonal
+    Clifford operator, up to global phase, if and only if it has either of
+    the equivalent forms
+    \begin{align}
+        d(x)
+        &=d_0+2\sum_i \alpha_i x_i
+          +4\sum_{i<j}\beta_{ij}x_ix_j \pmod 8,
+          \label{eq:clifford-phase-weighted}\\
+        &=d_0+2\sum_{u\in\F_2^n\setminus\{0\}}
+          b_u\langle u,x\rangle \pmod 8,
+          \label{eq:clifford-phase-parity}
+    \end{align}
+    where \(d_0\in\Z_8\), \(\alpha_i,b_u\in\Z_4\), and
+    \(\beta_{ij}\in\F_2\).
+\end{theorem}
+
+\begin{proof}
+    The diagonal Clifford group is generated, up to global phase, by the
+    $\S_i$ and \(\CZ_{ij}\) gates.  Their phase functions are $2x_i$ and
+    $4x_ix_j$, respectively, which proves
+    \eqref{eq:clifford-phase-weighted}.  Conversely, every polynomial of
+    that form is implemented by
+    \(\prod_i \S_i^{\alpha_i}\prod_{i<j}\CZ_{ij}^{\beta_{ij}}\).
+
+    Finally, dividing the nonconstant part of
+    \eqref{eq:clifford-phase-weighted} by $2$ gives a second-order phase
+    polynomial over \(\Z_4\).  Applying
+    \Cref{thm:phase-polynomial-equivalence} with $k=2$ proves its
+    equivalence with \eqref{eq:clifford-phase-parity}.
+\end{proof}
+
+\begin{theorem}[Discrete derivatives of Clifford phase polynomials]
+    \label{thm:clifford-phase-derivative}
+    Let $d:\F_2^n\to\Z_8$ be a Clifford phase polynomial.  For every
+    $v\in\F_2^n$, there are $r_v\in\Z_4$ and a linear function
+    \(\ell_v:\F_2^n\to\F_2\) such that
+    \begin{equation}
+        \label{eq:clifford-phase-derivative}
+        \Delta_vd(x)=2r_v+4\ell_v(x)\pmod 8.
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    Use \cref{eq:clifford-phase-parity} and write
+    $d(x)=d_0+2\sum_u b_u\langle u,x\rangle$.
+    \cref{eq:derivative-parity-form} gives
+    \[
+        \Delta_vd(x)
+        =2\sum_{\langle u,v\rangle=1}b_u
+        -4\sum_{\langle u,v\rangle=1}b_u\langle u,x\rangle
+        \pmod 8.
+    \]
+    Take $r_v=\sum_{\langle u,v\rangle=1}b_u\pmod4$ and
+    \[
+        \ell_v(x)=
+        \bigoplus_{\substack{u:\,\langle u,v\rangle=1\\ b_u\text{ odd}}}
+        \langle u,x\rangle.
+    \]
+    The minus sign is immaterial after multiplication by $4$ modulo $8$,
+    and \(\ell_v\) is linear.
+\end{proof}

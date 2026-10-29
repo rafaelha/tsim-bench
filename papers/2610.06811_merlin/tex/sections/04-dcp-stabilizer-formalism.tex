@@ -1,0 +1,679 @@
+\section{The DCP stabilizer formalism}
+\label{sec:dcp-stabilizer-formalism}
+
+We now develop an equivalent stabilizer description of 3PP states, generalizing the Pauli stabilizer formalism by allowing products of diagonal Clifford and Pauli operators as stabilizers. They provide a Heisenberg-picture representation suited to tracking non-Clifford circuits. We establish the structure and canonical representation of those stabilizer groups, then prove that the states they uniquely specify are exactly the 3PP states.
+
+\subsection{DCP operators and normal form}
+
+The stabilizers corresponding to 3PP states belong to the following operator class.
+
+\begin{definition}[DCP operator]\label{def:dcp}
+    A \textit{DCP operator} is a unitary operator $U$ on $n$ qubits which can be expressed as a product of diagonal Clifford and Pauli operators. Explicitly, the group of DCP
+    operators on $n$ qubits is
+    \begin{align}
+        \mathcal{D}^n
+        = \langle \omega_8 I,\; X_i,\; \S_i,\; \CZ_{ij}
+        \mid 1\leq i,j\leq n,\; i \neq j \rangle.
+    \end{align}
+\end{definition}
+
+DCP operators can be efficiently represented using the following normal form.
+
+\newcommand{\dcpNormalFormStatement}{%
+Every DCP operator $U$ on $n$ qubits corresponds to a unique quadruple $(k,\vec{s},M,\vec{x})$ where $k \in \Z_8, \vec{s} \in \Z_4^{n}, \vec{x} \in \F_2^n$, and $M$ is an $n\times n$ symmetric matrix over $\F_2$ that is zero on the diagonal, such that
+\begin{align}
+    U = \omega_8^{k}\, D(\vec{s},M)\, X(\vec{x}),
+\end{align}
+where $D(\vec{s},M)$ is the diagonal Clifford operator defined by
+\begin{align}
+    D(\vec{s},M) = \S^{s_1} \otimes \cdots \otimes \S^{s_n} \; \cdot \; \prod_{1\le i < j \le n} \CZ_{ij}^{M_{ij}},
+\end{align}
+and $X(\vec{x})$ is the Pauli operator defined by
+\begin{align}
+    X(\vec{x}) = X^{x_1} \otimes \cdots \otimes X^{x_n}.
+\end{align}
+}
+
+\begin{proposition}[Normal form for DCP operators]\label{prop:dcp-normal-form}
+\dcpNormalFormStatement
+\end{proposition}
+We prove this proposition in \Cref{appendix:dcp-algebra}, where we also give explicit formulas to compute certain operations on DCP operators (multiplication, inverse, conjugation and commutator) using the normal form.
+
+\subsection{Stabilizer groups and stabilizing closure}
+
+We now use DCP operators to specify states by their common fixed space. Write
+\begin{align}
+    \Fix(U) = \{ v \in \C^{2^n} \mid Uv = v \}
+\end{align}
+for the space fixed by a unitary operator $U$, and
+\begin{align}
+    \Fix(S)=\bigcap_{U \in S} \Fix(U)
+\end{align}
+for the space fixed by a set of operators $S$.
+
+\begin{definition}[Maximal DCP stabilizer group and DCP state]\label{def:dcp-state}
+    Given a state $\ket{\psi}$ on $n$ qubits, its \textit{maximal DCP stabilizer group}, $\mathcal{D}(\psi)$, is the subgroup of $\mathcal{D}^n$ defined by
+    \begin{align}
+        \mathcal{D}(\psi) &= \{ g \in \mathcal{D}^n \mid \ket{\psi} \in \Fix(g) \}
+    \end{align}
+    We call a state $\ket{\psi}$ a \textit{DCP-stabilizer state} or for short a \textit{DCP state} if the space fixed by its DCP-stabilizer group is spanned by $\ket{\psi}$ itself, that is:
+    \[
+    \dim \Fix(\mathcal{D}(\psi)) = 1
+    \]
+    In other words, a state is a DCP state if it is determined up to global phase by the DCP operators that fix it.
+\end{definition}
+
+\begin{remark}
+    This is analogous to the fact that a state is a (Pauli) stabilizer state if it is determined by its Pauli stabilizer group up to a global phase. Moreover, note that every stabilizer state is a DCP state, but the converse is not true: for example, the state $|T\rangle=\T\ket{+}$ is a DCP state but not a stabilizer state.
+\end{remark}
+
+In contrast to the Pauli case, DCP stabilizer groups need not be abelian. For instance, the state $\ket{0+}$ is stabilized by both $X_2$ and $\CZ_{12}$, but
+\begin{align}
+    \gcomm{X_2}{\CZ_{12}}=Z_1\neq I,
+\end{align}
+where $\gcomm{g}{h}:=ghg^{-1}h^{-1}$ denotes the group commutator.
+More generally, the group commutator of two DCP stabilizers is characterized by the following proposition:
+
+\begin{proposition}[Commutators of DCP stabilizers]
+    Let $\ket{\psi}$ be a nonzero state and
+    $g,h\in\mathcal{D}(\psi)$. Then
+    \begin{align}
+        \gcomm{g}{h}=\varepsilon Z(\vec{z})
+        \in\mathcal{D}(\psi)
+    \end{align}
+    for some $\varepsilon\in\{+1,-1\}$ and
+    $\vec{z}\in\F_2^n$.
+\end{proposition}
+
+\begin{proof}
+    By \cref{prop:dcp-group-ops}, we have
+    $\gcomm{g}{h}=i^c Z(\vec{z})$ for some $c\in\Z_4$
+    and $\vec{z}\in\F_2^n$.
+    Since $g$ and $h$ fix $\ket{\psi}$, so does their
+    commutator. Therefore
+    \begin{align}
+        Z(\vec{z})\ket{\psi}=i^{-c}\ket{\psi}.
+    \end{align}
+    As $\ket{\psi}\neq 0$ and $Z(\vec{z})$ has
+    eigenvalues in $\{+1,-1\}$, we obtain
+    $i^c\in\{+1,-1\}$.
+\end{proof}
+
+Another difference from the Pauli case is that distinct DCP groups may fix the same space.
+For example, the distinct groups
+\begin{align}
+    G=\langle Z_1,\S_2\rangle,
+    \qquad
+    H=\langle \S_1,Z_2\rangle
+\end{align}
+both have fixed space $\C\ket{00}$: the $+1$ eigenspace
+of either $Z$ or $\S$ on a single qubit is $\C\ket{0}$.
+Consequently, equality of fixed spaces does not imply
+equality of groups. This motivates identifying groups
+through their \emph{stabilizing closure}.
+
+\begin{definition}[Stabilizing closure]\label{def:stabilizing-closure}
+    Given a DCP subgroup $G \le \mathcal{D}^n$, its \emph{stabilizing closure} $\overline{G}$ is the subgroup of $\mathcal{D}^n$ defined by
+    \begin{align}
+        \overline{G} = \{ g \in \mathcal{D}^n \mid \Fix(G) \subseteq \Fix(g) \}.
+    \end{align}
+    That is, $\overline{G}$ is the largest subgroup of $\mathcal{D}^n$ that fixes the same space as $G$.
+\end{definition}
+
+The stabilizing closure therefore captures exactly the fixed space, as expressed by the following equivalence.
+
+\begin{proposition}
+    For any groups $G, H \le \mathcal{D}^n$, we have $\Fix(G) = \Fix(H)$ if and only if $\overline{G} = \overline{H}$.
+\end{proposition}
+\begin{proof}
+    We first show that taking the stabilizing closure
+    preserves the fixed space:
+    \begin{align}
+        \Fix(\overline{G})=\Fix(G).
+    \end{align}
+    Since $G\subseteq\overline{G}$, we have
+    $\Fix(\overline{G})\subseteq\Fix(G)$.
+    Conversely, every element of $\overline{G}$ fixes every vector in $\Fix(G)$ by definition, so $\Fix(G)\subseteq\Fix(\overline{G})$.
+
+    If $\Fix(G)=\Fix(H)$, then their stabilizing closures
+    coincide by definition.
+    Conversely, if
+    $\overline{G}=\overline{H}$, the identity above gives
+    \begin{align}
+        \Fix(G)=\Fix(\overline{G})
+        =\Fix(\overline{H})=\Fix(H).
+    \end{align}
+\end{proof}
+
+In our simulation procedures, any DCP group uniquely fixing the current state can serve as its representation.
+
+\begin{definition}[DCP-stabilizer group]\label{def:dcp-stabilizer-group}
+    Given a DCP state $\ket{\psi}$ and a group $G \le \mathcal{D}^n$, we say that $G$ is a \textit{DCP-stabilizer group} of $\ket{\psi}$ if $\Fix(G) = \C\ket{\psi}$, or equivalently if $\overline{G} = \mathcal{D}(\psi)$.
+\end{definition}
+
+\subsection{Canonical representation}
+
+To manipulate DCP subgroups, compute their fixed spaces, and use them in a tableau-based simulation algorithm, we first need to develop a canonical representation: a generating set which uniquely determines a DCP subgroup.
+
+We start by separating its purely diagonal elements from the ones that contain $X$ operators.
+By \Cref{prop:dcp-group-ops}, the map $\pi:\mathcal{D}^n\to\F_2^n$ defined by
+\begin{align}
+    \pi\left(\omega_8^kD(\vec{s},M)X(\vec{x})\right)=\vec{x},
+\end{align}
+is a group homomorphism. For a subgroup
+$G\leq\mathcal{D}^n$, define
+\begin{align}
+    \Delta(G):=\ker\pi|_G,
+    \qquad
+    X(G):=\pi(G).
+\end{align}
+Thus, $\Delta(G)$ is the subgroup of diagonal elements
+of $G$, while $X(G)$ is a subspace of $\F_2^n$ representing the $X$ part of each element of $G$.
+In other words, $G$ fits into the short exact sequence
+\begin{equation}\label{eq:dcp-ses}
+    1 \rightarrow \Delta(G) \rightarrow G \xrightarrow{\pi} X(G) \rightarrow 1,
+\end{equation}
+and the first isomorphism theorem gives
+\begin{align}
+    G/\Delta(G)\cong X(G).
+\end{align}
+More explicitly, if $h\in G$ has $\pi(h)=\vec{x}$, then
+\begin{align}
+    G\cap\pi^{-1}(\vec{x})
+    =h\Delta(G)=\Delta(G)h.
+\end{align}
+This yields the following generating set for $G$.
+
+\begin{proposition}[Generating sets for DCP subgroups]
+    \label{prop:dcp-generators}
+    Let $G\leq\mathcal{D}^n$, let
+    $\vec{x}^{(1)},\ldots,\vec{x}^{(r)}$ be a basis of $X(G)$,
+    and choose $h_j\in G$ with $\pi(h_j)=\vec{x}^{(j)}$.
+    If $\delta_1,\ldots,\delta_m$ generate $\Delta(G)$,
+    then
+    \begin{align}
+        G=\langle
+            \delta_1,\ldots,\delta_m,h_1,\ldots,h_r
+        \rangle.
+    \end{align}
+\end{proposition}
+
+\begin{proof}
+    We show that every $g\in G$ is generated by these
+    elements. Write
+    \begin{align}
+        \pi(g)=\sum_{j=1}^r a_j\vec{x}^{(j)},
+    \end{align}
+    for $a_j\in\F_2$, and set $h=h_1^{a_1}\cdots h_r^{a_r}$.
+    Since $\pi(h)=\pi(g)$, the element $gh^{-1}$ belongs to $\Delta(G)$. Thus, $g=(gh^{-1})h$ belongs to the claimed generated subgroup.
+    The reverse inclusion holds because all the generators belong to $G$.
+\end{proof}
+
+We next choose canonical coordinates for the diagonal
+subgroup. Set $d=1+n+\binom{n}{2}$ and define $\iota:\ker\pi\hookrightarrow\Z_8^d$ by
+\begin{align}
+    \iota \left( \omega_8^kD(\vec{s},M) \right) =
+    \big(k,2\vec{s},(4M_{ab})_{a<b}\big).
+\end{align}
+We fix the coordinate order, taking the pairs $(a,b)$
+in lexicographic order. By the normal form and product formula for DCP operators, $\iota$ is an injective group homomorphism into the additive group $\Z_8^d$.
+Consequently, $\iota(\Delta(G))$ can be seen as a $\Z_8$-submodule of the module $\Z_8^d$.
+
+\begin{lemma}\label{lem:diagonal-generators}
+Given generators $g_1,\ldots,g_m$ of a DCP group $G\leq\mathcal D^n$, generators of $\Delta(G)$ and lifts of a basis of $X(G)$ can be computed in time polynomial in $n$ and $m$.
+\end{lemma}
+\begin{proof}
+We first construct lifts of a basis of $X(G)$, then recover $\Delta(G)$ by closing a diagonal subgroup under conjugation.
+Gaussian elimination on $\pi(g_1),\ldots,\pi(g_m)$, tracking the corresponding operator products, gives elements $h_1,\ldots,h_r\in G$ whose images form a basis of $X(G)$.
+For each $a$, write
+\begin{align}
+    \pi(g_a)=\bigoplus_{i=1}^r c_{ai}\pi(h_i),
+    \qquad
+    \delta_a=g_a\left(h_1^{c_{a1}}\cdots h_r^{c_{ar}}\right)^{-1}.
+\end{align}
+Then each $\delta_a$ is diagonal and
+\begin{align}
+    G=\langle\delta_1,\ldots,\delta_m,h_1,\ldots,h_r\rangle.
+\end{align}
+
+To recover $\Delta(G)$, start with
+\begin{align}
+    N_0=\left\langle\delta_a,\ h_i^2,\ \gcomm{h_i}{h_j}\ :\ 1\leq a\leq m,\ 1\leq i,j\leq r\right\rangle.
+\end{align}
+All these generators are diagonal, since $\pi$ takes values in an elementary abelian $2$-group.
+Given a generating set $\mathcal S_k$ of $N_k$, define
+\begin{align}
+    N_{k+1}=\left\langle N_k,\ h_i d h_i^{-1}\ :\ d\in\mathcal S_k,\ 1\leq i\leq r\right\rangle,
+\end{align}
+using Howell normal form in the coordinates $\iota$ to reduce the generating set after each step.
+Every $N_k$ is contained in $\Delta(G)$.
+Stop when $N_{k+1}=N_k$ and denote the resulting subgroup by $N$.
+
+We now show that $N=\Delta(G)$.
+At termination, $h_iNh_i^{-1}\subseteq N$ for every $i$; since $N$ is finite, these inclusions are equalities.
+Moreover, the diagonal generators $\delta_a$ commute with $N$, so $N$ is normal in $G$.
+The quotient $G/N$ is generated by the commuting elements $h_iN$, each of order at most two, and therefore has at most $2^r$ elements.
+Since $N\subseteq\Delta(G)$, the map $\pi$ induces a surjection
+\begin{align}
+    G/N\twoheadrightarrow X(G).
+\end{align}
+The target has $2^r$ elements, so this map is an isomorphism.
+Its kernel is $\Delta(G)/N$, proving that $N=\Delta(G)$.
+
+Finally, we verify the polynomial runtime.
+Set $d=1+n+\binom{n}{2}$.
+Since $\iota(\Delta(G))\leq\mathbb Z_8^d$, every strict enlargement of $N_k$ at least doubles its order, and there can be at most $3d$ such enlargements.
+Howell normal form supplies at most $d$ generators after each reduction, so each round involves polynomially many DCP operations and a polynomial-time Howell reduction.
+The initial Gaussian elimination and construction of $N_0$ are also polynomial in $n$ and $m$, completing the proof.
+\end{proof}
+
+To specify $G$, we must record not only its diagonal subgroup $\Delta(G)$ and its space of $X$-parts $X(G)$, but also which diagonal factors accompany those $X$-parts.
+For example, $\langle X\rangle$ and $\langle -X\rangle$ have the same diagonal subgroup $\{I\}$ and the same image $\F_2$ under $\pi$, but are distinct groups.
+
+Choose a basis $\vec{x}^{(1)},\ldots,\vec{x}^{(r)}$ of $X(G)$.
+For each basis vector, choose an operator
+\begin{align}
+    h_j=D_jX(\vec{x}^{(j)})\in G,
+\end{align}
+where $D_j$ is diagonal.
+Such an operator is called a \emph{lift} of $\vec{x}^{(j)}$, because $\pi(h_j)=\vec{x}^{(j)}$.
+By \Cref{prop:dcp-generators}, these operators, together with generators of $\Delta(G)$, determine $G$.
+
+We now make these choices canonical.
+First, choose the basis of $X(G)$ in row-reduced echelon form and represent $\iota(\Delta(G))$ in Howell normal form.
+By \Cref{lem:diagonal-generators}, the required generators and lifts can be obtained from arbitrary generators of $G$, so both normal forms can be computed in polynomial time.
+We recall the definition and relevant properties of Howell normal form in the \hyperref[app:howell]{Howell normal form subsection} of \Cref{appendix:dcp-algebra}.
+
+It remains to choose each lift canonically.
+If $h_j'=D_j'X(\vec{x}^{(j)})$ is another lift of the same basis vector, then
+\begin{align}
+    h_j'h_j^{-1}=D_j'D_j^{-1}\in\Delta(G).
+\end{align}
+Conversely, multiplying $h_j$ on the left by any $\delta\in\Delta(G)$ gives another lift of $\vec{x}^{(j)}$.
+Thus the possible diagonal factors are exactly
+\begin{align}
+    \{\,\delta D_j:\delta\in\Delta(G)\,\}.
+\end{align}
+Since $\iota$ turns multiplication of diagonal operators into addition, their coordinate vectors form the additive coset
+\begin{align}
+    \iota(D_j)+\iota(\Delta(G)).
+\end{align}
+By \Cref{lem:howell-remainders}, reduction using the Howell normal form selects a unique representative of this coset.
+It therefore selects one lift independently of the initial choice of $h_j$.
+
+\begin{definition}[Canonical representation]
+    \label{def:canon-form}
+    Let $G\leq\mathcal{D}^n$.
+    With the coordinate order fixed as above, the canonical representation of $G$ consists of:
+    \begin{enumerate}
+        \item the ordered basis $\vec{x}^{(1)},\ldots,\vec{x}^{(r)}$ of $X(G)$ in row-reduced echelon form;
+        \item the Howell normal form $H$ of $\iota(\Delta(G))$;
+        \item for each $j$, the lift $h_j=D_jX(\vec{x}^{(j)})\in G$ whose diagonal coordinate vector satisfies
+        \begin{align}
+            \iota(D_j)=\operatorname{rem}_H\big(\iota(D_j)\big).
+        \end{align}
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}[Uniqueness of the canonical representation]
+    Two DCP subgroups $G,G'\leq\mathcal{D}^n$ have the same canonical representation if and only if $G=G'$.
+\end{proposition}
+
+\begin{proof}
+    We first show that the representation depends only on the group.
+    The row-reduced echelon basis of $X(G)$ and the Howell normal form of $\iota(\Delta(G))$ are uniquely determined.
+    For each basis vector, the diagonal factors of its lifts form one additive coset modulo $\iota(\Delta(G))$, whose remainder is unique by \Cref{lem:howell-remainders}.
+    Thus equal groups have equal canonical representations.
+
+    Conversely, the representation determines generators of $\Delta(G)$ and lifts of a basis of $X(G)$.
+    These generate $G$ by \Cref{prop:dcp-generators}, so equal representations determine equal groups.
+\end{proof}
+
+\subsection{Structure of DCP spaces}
+
+For the rest of the section, we'll analyze the structure of the space fixed by DCP groups, and work towards describing an explicit basis of it in \Cref{thm:atomic-basis} and a characterization of its dimension in \cref{cor:dimension-dcp-space}. Throughout, let $G \le \mathcal{D}^n$ be a DCP subgroup, let $r = \dim X(G)$, and let
+\begin{align}
+    \Sigma_{\Delta(G)} := \{ \vec{v} \in \F_2^n \mid \delta\ket{\vec{v}} = \ket{\vec{v}} \ \ \forall \delta \in \Delta(G) \}
+\end{align}
+denote the set of computational basis states fixed by every element of $\Delta(G)$. Equivalently, it is an algebraic set defined as the common zero set of the phase polynomials of the diagonal operators in $\Delta(G)$.
+Indeed, writing $\delta\ket{\vec{v}}=\omega_8^{p_\delta(\vec{v})}\ket{\vec{v}}$, we have
+\begin{align}
+    \Sigma_{\Delta(G)}
+    =\{\vec{v}\in\F_2^n:p_\delta(\vec{v})=0 \ \ \forall \delta\in\Delta(G)\}
+\end{align}
+where the equations are taken modulo $8$.
+It suffices to impose these equations for a generating set of $\Delta(G)$, since multiplication of diagonal operators adds their phase polynomials modulo $8$.
+Thus $\Sigma_{\Delta(G)}$ is an algebraic set of binary solutions to quadratic congruences.
+
+\begin{example}\label{ex:dcp-atomic-basis}
+    As a running example, consider $G=\langle A,B,C\rangle$ with
+    \begin{align}
+        A=\omega_8^{-1}\S_1X_1,
+        \quad B=\CZ_{12},
+        \quad C=\CZ_{34}.
+    \end{align}
+    The generators square to the identity, $C$ commutes with $A$ and $B$, and $\gcomm{A}{B}=Z_2$, which commutes with all three generators.
+    Hence every element has the form $A^aZ_2^bB^cC^d$ with $a,b,c,d\in\F_2$, and
+    \begin{align}
+        X(G)=\langle e_1\rangle,
+        \qquad
+        \Delta(G)=\langle Z_2,\CZ_{12},\CZ_{34}\rangle.
+    \end{align}
+    The phase polynomials of these diagonal generators are $4v_2$, $4v_1v_2$, and $4v_3v_4$, respectively.
+    Their common zeros therefore satisfy $v_2=0$ and $v_3v_4=0$, with the constraint $v_1v_2=0$ redundant.
+    Consequently,
+    \begin{align}
+        \Sigma_{\Delta(G)}
+        &=\{(t,0,a,b):t,a,b\in\F_2,\ ab=0\}\\
+        &=\{0000,1000,0001,1001,0010,1010\}.
+    \end{align}
+    Note that this set can be written as a disjoint union of three cosets of $X(G)$:
+    \begin{align}
+        \Sigma_{\Delta(G)}
+        =X(G)\sqcup\big(e_4+X(G)\big)\sqcup\big(e_3+X(G)\big).
+    \end{align}
+    The goal of this section is to show that this is generally the case, and that the space $\Fix(G)$ has a basis such that each basis vector is supported on one of the cosets.
+\end{example}
+
+\begin{lemma}\label{lem:supp-partition}
+    Let $\ket{\psi} \in \Fix(G)$. Then $\supp(\psi)$ is a disjoint union of cosets of $X(G)$, and the amplitudes have equal magnitude within each coset. Equivalently, $\ket{\psi}$ can be written as
+    \begin{align}
+        \ket{\psi} = \sum_{j=1}^k a_j \sum_{v \in X(G)} b_{j,v} \ket{x_j + v}
+    \end{align}
+    for some $k \geq 1$, $a_j \in \C \setminus \{0\}$, representatives $x_j \in \F_2^n$ of distinct cosets, and $b_{j,v} \in \C$ with $|b_{j,v}|=1$.
+\end{lemma}
+\begin{proof}
+    Write $\ket{\psi} = \sum \alpha_x \ket{x}$. We need to show that if $\alpha_x \neq 0$, then $\alpha_{x+v} \neq 0$ for all $v \in X(G)$. Let $x \in \supp(\psi)$, $v \in X(G)$ and a corresponding stabilizer $g_v = \delta_v X(v) \in G$ where $\delta_v$ is a diagonal Clifford operator. Writing $g_v \ket{x} = \lambda_v(x) \ket{x+v}$ for some $\lambda_v(x) \in \C$, we get
+    \begin{align}
+        g_v \ket{\psi} = \sum_{x} \alpha_x g_v \ket{x} = \sum_{x} \alpha_x \lambda_v(x) \ket{x+v}.
+    \end{align}
+    Since $g_v \ket{\psi} = \ket{\psi}$, we can compare the coefficients, getting
+    \begin{align}
+        \alpha_x \lambda_v(x) = \alpha_{x+v}.
+    \end{align}
+    Since $g_v$ is unitary, $|\lambda_v(x)|=1$, so taking absolute values gives
+    \[
+        |\alpha_{x+v}|=|\alpha_x|.
+    \]
+    The coefficient relation also gives
+    \begin{align}
+        g_v \ket{x} = (\alpha_{x+v}/\alpha_x) \ket{x+v}.
+    \end{align}
+    Thus $\alpha_{x+v} \neq 0$ and $x+v \in \supp(\psi)$. As $v$ was arbitrary, the whole coset $x + X(G)$ is contained in the support of $\ket{\psi}$, with equal amplitude magnitudes throughout. Choosing one representative $x_j$ per support coset and setting $a_j=\alpha_{x_j}$ and $b_{j,v}=\alpha_{x_j+v}/\alpha_{x_j}$ gives the claimed form with $|b_{j,v}|=1$.
+\end{proof}
+
+\begin{lemma}\label{lem:supp-in-sigma}
+    Let $\ket{\psi} \in \Fix(G)$. Then $\supp(\psi) \subseteq \Sigma_{\Delta(G)}$.
+\end{lemma}
+\begin{proof}
+    Let $\ket{\psi} = \sum \alpha_x \ket{x}$, and $\delta \in \Delta(G)$. We write $\delta \ket{x} = \lambda_x \ket{x}$ for some $\lambda_x \in \C \setminus \{0\}$. Then $\delta \ket{\psi} = \ket{\psi}$ implies
+    \begin{align}
+        \sum_x \alpha_x \lambda_x \ket{x} = \sum_x \alpha_x \ket{x},
+    \end{align}
+    which implies that $\lambda_x = 1$ for all $x$ with $\alpha_x \neq 0$. Therefore, $\supp(\psi) \subseteq \Sigma_{\Delta(G)}$.
+\end{proof}
+
+The smallest possible nonempty support allowed by these constraints is a single translation coset.
+
+\begin{definition}[Atomic state]\label{def:atomic}
+    A state $\ket{\psi} \in \Fix(G)$ is said to be \emph{atomic} for $G$ if $\supp(\psi)$ is a single coset of $X(G)$, that is, if there exists $x \in \F_2^n$ such that
+    \begin{align}
+        \ket{\psi} = \sum_{v \in X(G)} \alpha_v \ket{x+v}
+    \end{align}
+    for some $\alpha_v \in \C \setminus \{0\}$.
+\end{definition}
+
+Atomic states will provide a basis of $\Fix(G)$. Let us first establish uniqueness on each coset.
+
+\begin{lemma}\label{lem:atomic-overlap}
+    If $\ket{\psi_1}, \ket{\psi_2} \in \Fix(G)$ are atomic and $\supp(\psi_1) \cap \supp(\psi_2) \neq \emptyset$, then $\ket{\psi_2} = \lambda \ket{\psi_1}$ for some scalar $\lambda$ with $|\lambda|=1$.
+\end{lemma}
+\begin{proof}
+    Two cosets of $X(G)$ that intersect must coincide, so there is some $x_0 \in \F_2^n$ with $\supp(\psi_1) = \supp(\psi_2) = x_0 + X(G)$. Write $\ket{\psi_1} = \sum_{x} \alpha^{(1)}_{x} \ket{x}$ and $\ket{\psi_2} = \sum_{x} \alpha^{(2)}_{x} \ket{x}$, and let $\lambda = \alpha^{(2)}_{x_0} / \alpha^{(1)}_{x_0}$. For any $y \in x_0 + X(G)$, pick a stabilizer $g \in G$ with $\pi(g) = y + x_0$. As in the proof of \Cref{lem:supp-partition}, we have $g\ket{x_0} = (\alpha^{(i)}_{y}/\alpha^{(i)}_{x_0})\ket{y}$ for both $i = 1, 2$. Since the left-hand side does not depend on $i$, it follows that $\alpha^{(2)}_{y} = \lambda\, \alpha^{(1)}_{y}$ for all $y \in x_0 + X(G)$, that is, $\ket{\psi_2} = \lambda \ket{\psi_1}$.
+    Since both states have unit norm, $|\lambda|=1$.
+\end{proof}
+
+\begin{lemma}\label{lem:atomic-existence}
+    For every $x\in\Sigma_{\Delta(G)}$, there exists an atomic state $\ket{\psi_x}\in\Fix(G)$ with support $x+X(G)$.
+    This state is unique up to global phase among atomic states in $\Fix(G)$ whose support contains $x$.
+\end{lemma}
+\begin{proof}
+    Let $x \in \Sigma_{\Delta(G)}$. Let us first construct a state with support $x+X(G)$, then show that it is fixed by $G$ and establish uniqueness.
+
+    For each $v\in X(G)$, choose $g_v\in G$ with $\pi(g_v)=v$, taking $g_0=I$, and define
+    \begin{align} \label{eq:atomic-state}
+        \ket{\psi_x}
+        :=\frac{1}{\sqrt{|X(G)|}}
+        \sum_{v\in X(G)}g_v\ket{x}.
+    \end{align}
+    Each $g_v\ket{x}$ is a multiple of $\ket{x+v}$ with modulus $1$.
+    These computational-basis vectors are distinct as $v$ varies, so $\ket{\psi_x}$ is normalized and has support exactly $x+X(G)$.
+
+    To show that $\ket{\psi_x}\in\Fix(G)$, let $h\in G$ and write $w=\pi(h)$.
+    For each $v\in X(G)$, the operators $hg_v$ and $g_{w+v}$ have the same $X$-part, since $\pi(hg_v) = \pi(h) + \pi(g_v) = w+v$. So
+    \begin{align}
+        \delta_{h,v}:=g_{w+v}^{-1}hg_v\in\Delta(G).
+    \end{align}
+    Since $x\in\Sigma_{\Delta(G)}$, we have $\delta_{h,v}\ket{x}=\ket{x}$, and hence
+    \begin{align}
+        hg_v\ket{x}
+        =g_{w+v}\delta_{h,v}\ket{x}
+        =g_{w+v}\ket{x}.
+    \end{align}
+    Summing over $v$ and using that $v\mapsto w+v$ permutes $X(G)$ gives
+    \begin{align}
+        h\ket{\psi_x}
+        &=\frac{1}{\sqrt{|X(G)|}}
+          \sum_{v\in X(G)}g_{w+v}\ket{x}
+        =\ket{\psi_x}.
+    \end{align}
+    Thus $\ket{\psi_x}\in\Fix(G)$, and its support is a single coset of $X(G)$, so it is atomic.
+
+    Finally, any other atomic state in $\Fix(G)$ whose support contains $x$ has support intersecting that of $\ket{\psi_x}$.
+    By \Cref{lem:atomic-overlap}, the two states differ only by a global phase, proving uniqueness.
+\end{proof}
+
+\begin{corollary}\label{cor:sigma-cosets}
+    The set $\Sigma_{\Delta(G)}$ is a disjoint union of cosets of $X(G)$.
+\end{corollary}
+\begin{proof}
+    We show that every coset of $X(G)$ intersecting $\Sigma_{\Delta(G)}$ is contained in it.
+    Let $x\in\Sigma_{\Delta(G)}$.
+    By \Cref{lem:atomic-existence}, there exists a state $\ket{\psi_x}\in\Fix(G)$ with support $x+X(G)$.
+    Since every element of $\Delta(G)$ is diagonal and fixes $\ket{\psi_x}$, it fixes each computational-basis vector in its support.
+    Therefore
+    \begin{align}
+        x+X(G)=\supp(\psi_x)\subseteq\Sigma_{\Delta(G)}.
+    \end{align}
+    Thus $\Sigma_{\Delta(G)}$ is a union of cosets of $X(G)$, and distinct cosets are disjoint.
+\end{proof}
+
+\begin{theorem}[Atomic basis]\label{thm:atomic-basis}
+    Let $C_1, \dots, C_m$ be the distinct cosets of $X(G)$ contained in $\Sigma_{\Delta(G)}$, and for each $j$ pick a point $\vec{x}^{(j)} \in C_j$. Then the atomic states $\ket{\psi_{\vec{x}^{(1)}}}, \dots, \ket{\psi_{\vec{x}^{(m)}}}$ defined in \cref{eq:atomic-state} form a basis of $\Fix(G)$.
+\end{theorem}
+\begin{proof}
+    The states $\ket{\psi_{\vec{x}^{(j)}}}$ lie in $\Fix(G)$ by \Cref{lem:atomic-existence} and are orthonormal because their supports $C_1,\ldots,C_m$ are pairwise disjoint.
+    It remains to show that they span $\Fix(G)$.
+
+    Let $\ket{\psi}\in\Fix(G)$.
+    By \Cref{lem:supp-in-sigma}, $\supp(\psi)\subseteq\Sigma_{\Delta(G)}$.
+    Grouping the computational-basis amplitudes according to the partition $\Sigma_{\Delta(G)}=C_1\sqcup\cdots\sqcup C_m$ of \cref{cor:sigma-cosets}, we may therefore write
+    \begin{align}
+        \ket{\psi}=\sum_{j=1}^m a_j\ket{\psi_j},
+    \end{align}
+    where $a_j\in\C$ and each $\ket{\psi_j}$ is a state supported within $C_j$. We show that $\ket{\psi_j}$ is atomic whenever $a_j\neq0$.
+
+    Every $g\in G$ preserves each subspace $\Span\{\ket{\vec{y}}:\vec{y}\in C_j\}$, since $g\ket{\vec{y}}$ is proportional to $\ket{\vec{y}\oplus\pi(g)}$ and $\pi(g)\in X(G)$.
+    Comparing the components in these mutually orthogonal subspaces on both sides of $g\ket{\psi}=\ket{\psi}$ gives
+    \begin{align}
+        a_jg\ket{\psi_j}=a_j\ket{\psi_j}.
+    \end{align}
+    Thus, whenever $a_j\neq0$, we have $\ket{\psi_j}\in\Fix(G)$.
+    By \Cref{lem:supp-partition}, its support is a nonempty union of $X(G)$-cosets contained in $C_j$, and therefore equals $C_j$.
+    Hence $\ket{\psi_j}$ is atomic and, by \Cref{lem:atomic-overlap}, proportional to $\ket{\psi_{\vec{x}^{(j)}}}$.
+    Consequently,
+    \begin{align}
+        \ket{\psi}\in\Span\{\ket{\psi_{\vec{x}^{(1)}}},\ldots,\ket{\psi_{\vec{x}^{(m)}}}\},
+    \end{align}
+    proving the spanning claim.
+\end{proof}
+
+\begin{corollary}\label{cor:dimension-dcp-space}
+    The dimension of the space fixed by $G$ is given by
+    \begin{align}
+        \dim \Fix(G) \;=\; \frac{|\Sigma_{\Delta(G)}|}{2^{r}}
+    \end{align}
+    In particular $|\Sigma_{\Delta(G)}|$ is a multiple of $2^r$.
+\end{corollary}
+\begin{proof}
+    By \Cref{cor:sigma-cosets}, $\Sigma_{\Delta(G)}$ is a disjoint union of exactly $m = |\Sigma_{\Delta(G)}| / 2^r$ cosets of $X(G)$, and by \Cref{thm:atomic-basis} the corresponding atomic states form a basis of $\Fix(G)$, so $\dim \Fix(G) = m$.
+\end{proof}
+
+
+\begin{remark}
+    Since $\Sigma_{\Delta(G)}$ is an algebraic subset of $\F_2^n$ and not necessarily an affine subset, its cardinality need not be a power of two. This translates to the fact that the dimension of a space stabilized by a DCP group also need not be a power of two.
+\end{remark}
+
+\begin{example}
+    For the group $G$ of \Cref{ex:dcp-atomic-basis}, the three cosets of $X(G)=\langle e_1\rangle$ contained in $\Sigma_{\Delta(G)}$ have representatives
+    \begin{align}
+        \begin{split}
+            \vec{x}^{(00)}=(0,0,0,0),\\
+            \vec{x}^{(01)}=(0,0,0,1),\\
+            \vec{x}^{(10)}=(0,0,1,0).
+        \end{split}
+    \end{align}
+    Choose the lifts $g_0=I$ and $g_{e_1}=A=\omega_8^{-1}\S_1X_1$.
+    For each $(a,b)\in\{(0,0),(0,1),(1,0)\}$, the construction in \Cref{lem:atomic-existence} gives
+    \begin{align}
+        \ket{\psi_{ab}}
+        &=\frac{1}{\sqrt{|X(G)|}}
+          \sum_{v\in X(G)}g_v\ket{\vec{x}^{(ab)}}\\
+        &=\frac{1}{\sqrt{2}}(I+A)\ket{00ab}\\
+        &=\frac{1}{\sqrt{2}}
+          \big(\ket{00ab}+\omega_8\ket{10ab}\big)\\
+        &=\ket{T}\otimes\ket{0}\otimes\ket{ab},
+    \end{align}
+    where $\ket{T}=(\ket{0}+\omega_8\ket{1})/\sqrt{2}$.
+    Here we used $A\ket{00ab}=\omega_8^{-1}i\ket{10ab}=\omega_8\ket{10ab}$.
+    By \Cref{thm:atomic-basis}, the three states
+    \begin{align}
+        \ket{T}\otimes\ket{000},
+        \qquad
+        \ket{T}\otimes\ket{001},
+        \qquad
+        \ket{T}\otimes\ket{010}
+    \end{align}
+    form an orthonormal basis of $\Fix(G)$.
+    The dimension of $\Fix(G)$ is therefore 3, which we could also have derived from \cref{cor:dimension-dcp-space}:
+    \begin{align}
+        \dim\Fix(G)
+        =\frac{|\Sigma_{\Delta(G)}|}{2^{r}}
+        =\frac{6}{2^1}=3.
+    \end{align}
+\end{example}
+
+\subsection{Equivalence with 3PP states}
+
+We first record the closure property that connects CNOT-dihedral preparation to DCP stabilizers.
+
+\begin{proposition}[Stability of $\mathcal{D}^n$ under conjugation]\label{prop:dcp-closed}
+    The group $\mathcal{D}^n$ of DCP operators is stable under conjugation by CNOT-dihedral gates. Moreover, given a DCP operator in normal form, its conjugate by an elementary Pauli, $\CNOT$, or $\T$ gate can be computed in $O(n^2)$ time.
+\end{proposition}
+\begin{proof}
+Recall that
+\begin{align}
+    \mathcal{D}^n=\left\langle
+        \omega_8 I,\ X_i,\ \S_i,\ \CZ_{ij}
+    \right\rangle.
+\end{align}
+Since conjugation respects products, it is enough to check the conjugation of these generators.
+
+Every Pauli operator belongs to $\mathcal{D}^n$, so conjugation by
+a Pauli preserves $\mathcal{D}^n$ by the group property.
+
+Next, let $U=\CNOT_{c,t}$. Conjugation by $U$ maps products of $X$ operators to products of $X$ operators. Moreover, it maps diagonal Clifford operators to diagonal Clifford operators.
+Indeed, conjugation by a Clifford preserves the Clifford group, while conjugation by a computational-basis permutation preserves diagonality.
+
+Finally, let $U=\T_i$. Since $\T_i$ is diagonal, it commutes with every $\S_j$ and $\CZ_{jk}$, and it commutes with $X_j$ for $j\neq i$. The remaining generator satisfies
+\begin{align}
+    \T_iX_i\T_i^\dagger=\omega_8^{-1}\S_iX_i\in \mathcal{D}^n.
+\end{align}
+This proves that $UgU^\dagger\in \mathcal{D}^n$ for every $g\in \mathcal{D}^n$
+and every CNOT-dihedral gate $U$. The same argument applies to their inverses, using
+\begin{align}
+    \T_i^\dagger X_i\T_i=\omega_8 \S_i^\dagger X_i,
+\end{align}
+so in fact $U\mathcal{D}^nU^\dagger=\mathcal{D}^n$.
+
+To establish the complexity bound, represent $g$ by its normal-form coefficients $(k,s,M,x)$, requiring $O(n^2)$ entries.
+Conjugation by $\T_i$ changes only the global phase and the coefficient of $\S_i$, depending on $x_i$, and therefore takes $O(1)$ time.
+Conjugation by a single-qubit Pauli changes at most $O(n)$ coefficients: conjugation by $Z_i$ changes only the global phase, while conjugation by $X_i$ updates the diagonal phase by substituting $y_i\mapsto y_i\oplus1$.
+Conjugation by $\CNOT_{c,t}$ updates the $X$ component by a binary linear transformation and the diagonal phase by substituting $y_t\mapsto y_t\oplus y_c$.
+Only the $O(n)$ terms containing $y_t$ are affected, each producing a bounded number of terms, so this update also takes $O(n)$ time.
+An arbitrary Pauli operator can be handled using at most $n$ single-qubit Pauli conjugations, and each update takes $O(n)$ time, giving an $O(n^2)$ bound.
+\end{proof}
+
+\begin{theorem}\label{thm:3pp-dcp}
+    A state $\ket{\psi}$ is a DCP state if and only if it is a 3PP state.
+\end{theorem}
+
+\begin{proof}
+We first show that every 3PP state is a DCP state. By \Cref{prop:3pp-preparation}, it can be prepared from $\ket{0}$ and $\ket{+}$ states using only Pauli, $\CNOT$, and $\T$ gates. The initial product state is uniquely stabilized by a Pauli subgroup of $\mathcal D^n$. If a DCP group $G$ uniquely stabilizes $\ket{\psi}$, then $UGU^\dagger$ uniquely stabilizes $U\ket{\psi}$. By \Cref{prop:dcp-closed}, this conjugated group remains a DCP group for every gate in the preparation. Hence, the prepared 3PP state is a DCP state.
+
+For the converse direction, let $\ket{\psi}$ be a DCP state and let $G = \mathcal{D}(\psi)$. Since $\dim \Fix(G) = 1$, \Cref{thm:atomic-basis} tells us that $\ket{\psi}$ is, up to global phase, an atomic state of the form
+\begin{align}
+    \ket{\psi} = 2^{-r/2}\sum_{v \in X(G)} g_{v} \ket{x_0}.
+\end{align}
+We now show that the phases of this atomic state are given by a third-order phase polynomial.
+Choose a basis $v^{(1)},\ldots,v^{(r)}$ of $X(G)$ and lifts $g_1,\ldots,g_r\in G$ with $\pi(g_i)=v^{(i)}$.
+Write
+\begin{align}
+    g_i\ket{x}=\omega_8^{d_i(x)}\ket{x\oplus v^{(i)}},
+\end{align}
+where each $d_i$ is a Clifford phase polynomial.
+For $t\in\mathbb F_2^r$, choose
+\begin{align}
+    g_{v(t)}=g_r^{t_r}\cdots g_1^{t_1},
+    \qquad
+    v(t)=\bigoplus_{i=1}^r t_i v^{(i)}.
+\end{align}
+Applying these operators successively gives
+\begin{align}
+    g_{v(t)}\ket{x_0}
+    &=\omega_8^{P(t)}\ket{x_0\oplus v(t)},\\
+    P(t)
+    &=\sum_{i=1}^r t_i\,d_i\left(x_0\oplus\bigoplus_{j<i}t_jv^{(j)}\right)\pmod 8.
+\end{align}
+Affine substitution preserves Clifford phase polynomials by \cref{cor:phase-polynomial-affine-pullback}, so each substituted $d_i$ has the form
+\begin{align}
+    c_i+2\sum_{j<i}a_{ij}t_j+4\sum_{j<k<i}b_{ijk}t_jt_k.
+\end{align}
+Consequently,
+\begin{align}
+    P(t)=\sum_i c_it_i+2\sum_{j<i}a_{ij}t_it_j+4\sum_{j<k<i}b_{ijk}t_it_jt_k,
+\end{align}
+which is a third-order phase polynomial.
+
+Finally, let $B$ be the matrix with columns $v^{(1)},\ldots,v^{(r)}$ and choose a left inverse $L$ of $B$ over $\mathbb F_2$.
+Then
+\begin{align}
+    q(x)=P\bigl(L(x\oplus x_0)\bigr)
+\end{align}
+is a third-order phase polynomial by affine pullback, and $q(x_0\oplus Bt)=P(t)$.
+Hence, up to global phase,
+\begin{align}
+    \ket{\psi}=2^{-r/2}\sum_{x\in x_0\oplus X(G)}\omega_8^{q(x)}\ket{x},
+\end{align}
+so $\ket{\psi}$ is a 3PP state.
+\end{proof}
+
+\begin{remark}
+Although the full DCP stabilizer group of a state can be non-abelian, every DCP state is uniquely stabilized by an abelian DCP subgroup generated by $n$ independent commuting involutions.
+Indeed, by \Cref{prop:3pp-preparation,thm:3pp-dcp}, we may write $\ket{\psi}=U\ket{\phi}$, where $\ket{\phi}$ is a product of $\ket{0}$ and $\ket{+}$ states and $U$ is a CNOT-dihedral unitary.
+If $P_1,\ldots,P_n$ are the standard Pauli stabilizer generators of $\ket{\phi}$, then
+\begin{align}
+    H=\langle UP_1U^\dagger,\ldots,UP_nU^\dagger\rangle
+\end{align}
+is a DCP subgroup made of commuting order-2 elements, with $\Fix(H)=\operatorname{span}\{\ket{\psi}\}$.
+\end{remark}

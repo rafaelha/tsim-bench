@@ -1,0 +1,439 @@
+\section{Applications to quantum error correction}\label{sec:noisy-simulations}
+
+We now establish sufficient conditions for non-Clifford quantum error-correction circuits to admit efficient simulation under stochastic Pauli noise, and more generally under stochastic DCP faults.
+The main challenge is to ensure that every $X$ measurement remains compatible with the 3PP representation, including after earlier faults and measurements have changed the state.
+
+We first identify two useful measurement mechanisms: checks that are deterministic in the absence of noise, and $X$ measurements that anticommute with a current $Z$-type stabilizer.
+We prove that in the ideal case, the former are compatible case (2a), and change to other cases with noise, while the latter are compatible case (1).
+We then prove that circuits whose ideal $X$ measurements are either deterministic or case (1) remain compatible throughout arbitrary sequences of DCP faults and measurements.
+This reduces the analysis of noisy circuits to conditions on their ideal evolution.
+We apply these results to magic state distillation and transversal computation, DCP observable checks used in magic state cultivation, gauge fixing and code switching, teleportation, and cat-state syndrome extraction.
+
+\subsection{Deterministic checks and gauge measurements}
+
+We begin with measurements whose outcomes are deterministic in the ideal circuit, as occurs for stabilizer checks measured on a logical DCP state. Although faults can make these outcomes random, the following theorem shows that any DCP error preserves measurement compatibility.
+
+Throughout, we use the following notation for the projector onto an affine set $A$:
+\begin{align}
+    \Pi_A = \sum_{x \in A} \ket{x}\bra{x}.
+\end{align}
+
+\begin{theorem}[Deterministic measurements under noise]
+    \label{thm:deterministic-measurements-noise}
+    Let $\ket{\psi}$ be a 3PP state satisfying $X(m) \ket{\psi}=(-1)^{c_0} \ket{\psi}$. Then, measuring $X(m)$ on $\ket{\psi}$ is a compatible case (2a), and for every DCP error $E$, measuring $X(m)$ on $E\ket{\psi}$ is a compatible case (1), (2a) or (2b). Moreover, for every measurement outcome $\epsilon = (-1)^s$ with nonzero probability, the resulting state is proportional to
+    \begin{align}
+        E_s\Pi_{B_s} \ket{\psi}
+    \end{align}
+    where $E_s$ is DCP and $B_s\subseteq \supp(\psi)$ is affine.
+\end{theorem}
+\begin{proof}
+    Let us first identify the ideal case. Plugging
+    \begin{align}
+        \ket{\psi}=\frac{1}{\sqrt{|S|}} \sum_{x \in S} \omega_8^{q(x)} \ket{x},\quad S = x_0 + V
+    \end{align}
+    into
+    \begin{align}
+        X(m) \ket{\psi} = (-1)^{c_0} \ket{\psi},
+    \end{align}
+    we get
+    \begin{align}
+        \sum_{x \in S} \omega_8^{q(x)} \ket{x\oplus m} = \sum_{x \in S} \omega_8^{q(x)+4c_0} \ket{x}.
+    \end{align}
+    After a change of variable on the left-hand side, we can identify phases on both sides:
+    \begin{align}
+        q(x\oplus m)= q(x)+4c_0,
+    \end{align}
+    which gives us
+    \begin{align}
+        \Delta_m q = 4c_0.
+    \end{align}
+    This is case (2a).
+
+    Let us now look at the noisy case. Let $E$ be a DCP error. We write $E=DX(e)$ where $D$ is a diagonal Clifford gate, satisfying $D\ket{x}=\omega_8^{d(x)} \ket{x}$. The function $d$ is a Clifford phase polynomial of the form characterized in \Cref{thm:clifford-phase-polynomial}.
+    Let $q'$ be the phase polynomial associated to $E\ket{\psi}$.  Relabeling
+    $y=x\oplus e$ gives
+    \begin{align}
+        \begin{split}
+            E\ket{\psi}
+            &= \frac{1}{\sqrt{|S|}} \sum_{x \in S} \omega_8^{q(x)} DX(e) \ket{x} \\
+            &= \frac{1}{\sqrt{|S|}} \sum_{x \in S} \omega_8^{q(x)} \omega_8^{d(x\oplus e)} \ket{x \oplus e} \\
+            &= \frac{1}{\sqrt{|S|}} \sum_{y \in S\oplus e}
+            \omega_8^{q(y\oplus e)+d(y)} \ket{y}.
+        \end{split}
+    \end{align}
+    Therefore, $q'(x)=q(x \oplus e)+d(x)$ on $S\oplus e$.  This is again
+    a third-order phase polynomial by
+    \Cref{cor:phase-polynomial-affine-pullback,thm:clifford-phase-polynomial},
+    and
+    \begin{align}
+        \begin{split}
+            \Delta_m q' &= d(x \oplus m) - d(x) + q(x \oplus e \oplus m) - q(x \oplus e) \\
+            &= 4c_0 + \Delta_m d(x)
+        \end{split}
+    \end{align}
+    By \Cref{thm:clifford-phase-derivative}, we can write $\Delta_m d$ as
+    \begin{align}
+        \Delta_m d(x) = 2r + 4\ell(x)
+    \end{align}
+    where $r\in\Z_4$ is a constant and $\ell:\F_2^n\to\F_2$ is linear. We therefore have
+    \begin{align}
+        \Delta_m q'(x) = 4c_0 + 2r + 4\ell(x)
+    \end{align}
+    If $r$ is even, then
+    $f(x)=c_0+r/2+\ell(x)\pmod 2$ is affine and
+    $\Delta_mq'(x)=4f(x)\pmod8$, so we are in case (2a).  If $r$ is odd,
+    write $r=2t+1$ and define the affine Boolean function
+    $g(x)=c_0+t+\ell(x)\pmod2$.  Then
+    \begin{align}
+        \Delta_m q'(x) = 2 + 4g(x) \pmod 8.
+    \end{align}
+    Moreover, $2g$ is a third-order phase polynomial by the parity-sum
+    characterization in \Cref{thm:phase-polynomial-equivalence}.  Hence this
+    is case (2b).
+
+    Let us finally identify the resulting state. For a nonzero outcome
+    $\epsilon=(-1)^s$, the post-measurement state is proportional to
+    \begin{align}
+        \sum_{x\in S\oplus e}
+        \omega_8^{q'(x)}
+        \left(1+(-1)^s\omega_8^{\Delta_mq'(x)}\right)\ket{x}.
+    \end{align}
+    If $r$ is even, the factor in parentheses is
+    \begin{align}
+        1+(-1)^{s+f(x)}
+        =2\,\mathbf{1}_{\{f(x)=s\}}.
+    \end{align}
+    Defining
+    \begin{align}
+        B_s=\{x\in S:f(x\oplus e)=s\},
+    \end{align}
+    the resulting state is therefore proportional to
+    $E\Pi_{B_s}\ket{\psi}$. Since $f$ is affine, $B_s$ is affine,
+    and we can take $E_s=E$.
+
+    If $r$ is odd, we instead have
+    \begin{align}
+        1+(-1)^s\omega_8^{2+4g(x)}
+        =1+i(-1)^{s\oplus g(x)}
+        =\sqrt{2}\,\omega_8^{1-2(s\oplus g(x))}.
+    \end{align}
+    Define the diagonal operator $D_s$ by
+    \begin{align}
+        D_s\ket{x}
+        =\omega_8^{-2(s\oplus g(x))}\ket{x}.
+    \end{align}
+    Since $s\oplus g$ is affine, $D_s$ is diagonal Clifford by
+    \Cref{thm:clifford-phase-polynomial}. The resulting state is
+    therefore proportional to $D_sE\ket{\psi}$, so we can take
+    $E_s=D_sE$ and $B_s=S$.
+\end{proof}
+
+Gauge measurements, by contrast, often have random outcomes even in the ideal circuit. A useful compatibility criterion is anticommutation with a current $Z$-type stabilizer: this ensures that the measured $X$ operator maps the state's support to a disjoint affine space, giving case (1).
+
+\begin{theorem}[Anticommuting $Z$ constraint]
+    \label{thm:anticommuting-z-constraint}
+    Let $\ket{\psi}$ a 3PP states such that $Z(z)\ket{\psi}=(-1)^c \ket{\psi}$. Then any measurement $X(m)$ anticommuting with $Z(z)$ is a compatible case (1).
+\end{theorem}
+\begin{proof}
+    We show $m \notin V$, by proving that for any $v \in V$, $v \cdot z = 0$, while $m \cdot z = 1$ by assumption. Developing the stabilizer equation $Z(z) \ket{\psi} = (-1)^c \ket{\psi}$ gives us:
+    \begin{align}
+        \begin{split}
+            Z(z) \ket{\psi} &= \frac{1}{\sqrt{|S|}} \sum_{x \in S} \omega_8^{q(x)} Z(z) \ket{x} \\
+            &= \frac{1}{\sqrt{|S|}} \sum_{x \in S} (-1)^c \omega_8^{q(x)} \ket{x}
+        \end{split}
+    \end{align}
+    On the other hand, we have that $Z(z) \ket{x} = (-1)^{x \cdot z} \ket{x}$. Therefore, we must have for every $x \in S$, $x \cdot z = c$.
+
+    Now, for $v \in V$, we can write $v = x_0 \oplus (x_0 \oplus v)$, and develop the dot product over the XOR:
+    \begin{align}
+        \begin{split}
+            v \cdot z
+            &= (x_0 \oplus (x_0 \oplus v)) \cdot z \\
+            &= (x_0 \cdot z) \oplus \left((x_0 \oplus v) \cdot z\right) \\
+            &= c+c \\
+            &= 0
+        \end{split}
+    \end{align}
+    since we have both $x_0 \in S$ and $x_0 \oplus v \in S$. Therefore, $m \notin V$, and we are in case (1).
+\end{proof}
+
+These results identify two common mechanisms for compatible measurements. To cover a full noisy protocol, however, we must also account for the changes induced by earlier measurements. We next show that compatibility persists throughout the circuit whenever every ideal $X$ measurement is deterministic or case (1).
+
+\subsection{Circuits with iterative measurements}
+
+To extend the preceding results to circuits with repeated measurements, the key is to track each noisy branch as a DCP error acting on an affine restriction of an ideal branch. This form is preserved throughout the circuit and allows us to establish compatibility using only the ideal measurement conditions.
+
+\begin{theorem}[Iterative measurements under noise]
+    \label{thm:iterative-measurements}
+    Consider a 3PP circuit such that every outcome-dependent correction is DCP. Suppose that every ideal $X$ measurement is either a compatible case (1) or deterministic. Then arbitrary inserted DCP faults turn the measurements into compatible cases (1), (2a) or (2b). On every nonzero noisy branch, the resulting state after any given measurement has the form
+    \begin{align} \label{eq:noisy-form-post-iterative-measurement}
+        \ket{\phi} \propto E\Pi_{A}\ket{\psi},
+    \end{align}
+    where $E$ is DCP, $A \subseteq \supp(\psi)$ is an affine space, and $\ket{\psi}$ is a nonzero ideal branch.
+\end{theorem}
+\begin{proof}
+    We prove the statement by induction.
+    At the beginning of the circuit, taking $E=I$ and $A=\supp(\psi)$ gives the correct form for the state.
+
+    Let's now assume that, at a given stage of the circuit, the state has the form of \cref{eq:noisy-form-post-iterative-measurement}.
+    We first consider how faults, unitary gates and $Z$ measurements transform the state, before analyzing $X$ measurements.
+
+    A DCP fault $F$ replaces $E$ by $FE$. For a CNOT-dihedral gate $U$ such that
+    \begin{align}
+        U\ket{x} \propto \ket{f(x)},
+    \end{align}
+    with $f$ an affine function, we have
+    \begin{align}
+        UE\Pi_A\ket{\psi}
+        =(UEU^\dagger)\Pi_{f(A)}U\ket{\psi}.
+    \end{align}
+    Since $U$ normalizes the DCP group, since $f(A)$ is affine, and since $\ket{\psi'}=U\ket{\psi}$ is the ideal state after the unitary, this preserves the required form.
+
+    For a measurement of $Z(v)$, \cref{lem:z-commute} gives $Z(v)E=(-1)^c EZ(v)$ for some $c\in\F_2$.
+    Thus, commuting the measurement projector through $E$ changes the outcome label from $s$ to $s\oplus c$.
+    By \cref{eq:phase-polynomial-z-measurement-update}, this measurement restricts the support to the affine hyperplane
+    \begin{align}
+        H=\{x\in\F_2^n:\langle v,x\rangle=s\oplus c\}.
+    \end{align}
+    The resulting state is therefore proportional to
+    \begin{align}
+        \begin{split}
+            E\Pi_H\Pi_A\ket{\psi}
+            &=E\Pi_A\Pi_H\ket{\psi} \\
+            &=E\Pi_A\Pi_H \Pi_H\ket{\psi} \\
+            &=E\Pi_{A \cap H} \Pi_H\ket{\psi}.
+        \end{split}
+    \end{align}
+    We take the new ideal reference branch to be $\ket{\psi'}\propto\Pi_H\ket{\psi}$. It is a valid ideal branch, since it corresponds to measuring the previous ideal state $\ket{\psi}$ and taking the shifted outcome $s \oplus c$, which has nonzero probability of occurring (otherwise, the noisy output would also be zero).
+    Moreover, $A \cap H$ is affine and contained in $\supp(\psi')$.
+    Thus, the required form is preserved.
+
+    Let us now consider a measurement of $X(m)$ with outcome
+    $\epsilon=(-1)^s$, and write
+    \begin{align}
+        P_s=\frac{I+(-1)^sX(m)}{2},
+    \end{align}
+    as well as $\supp(\psi)=x_0+V$ and $A=a+W$.
+    By the induction hypothesis, $\ket{\psi}$ is an ideal branch.
+    The measurement on $\ket{\psi}$ is therefore case (1) or deterministic by assumption.
+    Suppose first that the ideal measurement is deterministic, and that
+    $m\in W$. Then, $A\oplus m=A$ and we have
+    \begin{align}
+        [X(m),\Pi_A]=0.
+    \end{align}
+    Therefore, if $X(m)\ket{\psi}=(-1)^{c_0}\ket{\psi}$, then
+    \begin{align}
+        X(m)\Pi_A\ket{\psi}
+        =(-1)^{c_0}\Pi_A\ket{\psi}.
+    \end{align}
+    The normalized restricted state
+    $\ket{\chi}\propto\Pi_A\ket{\psi}$ is a 3PP state, so
+    \Cref{thm:deterministic-measurements-noise} gives
+    \begin{align}
+        P_sE\ket{\chi}
+        \propto E_s\Pi_B\ket{\chi}
+        \propto E_s\Pi_B\ket{\psi},
+    \end{align}
+    where $E_s$ is DCP and $B\subseteq A$ is affine. We used the fact that $\Pi_B \Pi_A=\Pi_B$ (since $B\subseteq A$). This preserves the required form, and the noisy measurement is case (2a) or (2b).
+
+    It remains to consider an ideal case (1) measurement, or an ideal deterministic measurement with $m\notin W$.
+    In the first situation, $m\notin V$ implies $m\notin W$, since $W\subseteq V$; in the second, this holds by assumption. Since $\supp(\Pi_A \ket{\psi})=A=a+W$, and the DCP operator $E$ can only translate the support by a constant vector, it means that $\supp(E \Pi_A \ket{\psi})=a'+W$ and $m \notin W$ implies that the measurement is case (1).
+
+    To identify the resulting state, write $E=\omega_8^k X(e)D$, where $D$
+    is diagonal Clifford. Since $X(e)$ commutes with $P_s$, we have
+    \begin{align}
+        P_sE\Pi_A\ket{\psi}
+        \propto X(e)P_sD\Pi_A\ket{\psi}.
+    \end{align}
+    We therefore first calculate $P_sD\Pi_A\ket{\psi}$.
+    Writing the phases of $\ket{\psi}$ and $D$ as $q$ and $d$,
+    respectively, gives
+    \begin{align}
+        P_sD\Pi_A\ket{\psi}
+        \propto
+        \sum_{x\in A}\omega_8^{q(x)+d(x)}
+        \left(\ket{x}+(-1)^s\ket{x\oplus m}\right).
+    \end{align}
+    Its support is the affine set
+    \begin{align}
+        A'=A+\langle m\rangle.
+    \end{align}
+    Every $y\in A'$ has a unique expression $y=x\oplus tm$, where $x\in A$ and $t\in\F_2$.
+    Moreover, $t$ is an affine function of $y$: choose a linear functional $\lambda$ such that $\lambda(W)=0$ and $\lambda(m)=1$. We can then set $t(y)=\lambda(y\oplus a)$. Indeed, writing $y=a \oplus w \oplus tm$, we get
+    \begin{align}
+        \lambda(y\oplus a)
+        =\lambda(w\oplus tm)
+        =\lambda(w)\oplus t\lambda(m)
+        =t.
+    \end{align}
+    The phase of the noisy output at $y$ is therefore
+    \begin{align}
+        q(x)+d(x)+4st.
+    \end{align}
+
+    Let us compare this with an ideal reference output.
+    If the ideal measurement is case (1), choose either outcome
+    $(-1)^{s_0}$ and take
+    $\ket{\psi'}\propto P_{s_0}\ket{\psi}$.
+    If the ideal measurement is deterministic, take $s_0=c_0$
+    and $\ket{\psi'}=\ket{\psi}$.
+
+    Let us now show that the output state has the form
+    \begin{align}
+        P_sE\Pi_A\ket{\psi}
+        \propto X(e)D'\Pi_{A'}\ket{\psi'}
+    \end{align}
+    for $D'$ a diagonal Clifford operator that we will determine, and $A'\subseteq\supp(\psi')$. This last inclusion is true, since in the ideal case (1), the reference output has support $S+\langle m\rangle$, which contains
+    $A'=A+\langle m\rangle$ because $A\subseteq S$.
+    In the ideal deterministic case, $\ket{\psi'}=\ket{\psi}$
+    and $m\in V$, so
+    $A'\subseteq S+\langle m\rangle=S=\supp(\psi')$.
+
+
+    To construct $D'$, let us understand the phases of $\ket{\psi'}$, and compare them to the phases of the output state. If the ideal measurement case is (1), the phase of $\ket{\psi'}$ at
+    $y=x\oplus tm$ is $q(x)+4s_0t$. If the ideal measurement is deterministic, with outcome $c_0$, it can only be a case (2a) with $\Delta_m q = 4c_0$. The relation
+    \begin{align}
+        q(x\oplus m)=q(x)+4c_0
+    \end{align}
+    then shows that its phase at $y$ is again $q(x)+4s_0t$.
+
+    The phase difference between the noisy output and this
+    reference state is consequently
+    \begin{align}
+        d'(y)=d(x)+4(s\oplus s_0)t.
+    \end{align}
+    To show that this defines a diagonal Clifford operator, we
+    express it in terms of $y$. Since $x=y\oplus tm$, we get
+    \begin{align}
+        \begin{split}
+            d'(y)
+            &=d(y\oplus tm)+4(s\oplus s_0)t\\
+            &=d(y)+t\Delta_m d(y)+4(s\oplus s_0)t.
+        \end{split}
+    \end{align}
+    By \Cref{thm:clifford-phase-derivative}, we can write
+    $\Delta_m d(y)=2r+4\ell(y)$, where $\ell$ is linear. Thus,
+    \begin{align}
+        d'(y)
+        =d(y)+2rt+4t\ell(y)+4(s\oplus s_0)t \pmod 8.
+    \end{align}
+    Since $t$ is affine, this is a Clifford phase polynomial.
+    Letting $D'$ be the corresponding diagonal Clifford operator,
+    we obtain
+    \begin{align}
+        P_sE\Pi_A\ket{\psi}
+        \propto X(e)D'\Pi_{A'}\ket{\psi'}.
+    \end{align}
+    This preserves the required form.
+
+    Finally, we consider an outcome-dependent DCP correction.
+    Let $C_{\mathrm{n}}$ and $C_{\mathrm{i}}$ be the corrections selected by the noisy record and the ideal reference record, respectively.
+    Then
+    \begin{align}
+        C_{\mathrm{n}}E\Pi_A\ket{\psi}
+        =
+        \bigl(C_{\mathrm{n}}EC_{\mathrm{i}}^\dagger\bigr)
+        \bigl(C_{\mathrm{i}}\Pi_A C_{\mathrm{i}}^\dagger\bigr)
+        C_{\mathrm{i}}\ket{\psi}.
+    \end{align}
+    The first factor is DCP.
+    Since $C_{\mathrm{i}}$ translates computational-basis labels by a fixed vector, the second factor is the projector onto the corresponding affine translate of $A$, which lies within $\supp(C_{\mathrm{i}}\psi)$.
+    Moreover, $C_{\mathrm{i}}\ket{\psi}$ is the ideal branch after its prescribed correction.
+    Thus, outcome-dependent DCP corrections preserve the induction invariant.
+
+    Every noisy $X$ measurement is therefore case (1), (2a) or (2b).
+\end{proof}
+
+To apply this theorem, it therefore suffices to verify that every ideal $X$ measurement is deterministic or case (1), for example by identifying an anticommuting $Z$-type stabilizer. No separate compatibility analysis is needed for each noisy branch. The restriction on feedforward is essential: the theorem allows outcome-dependent DCP corrections, but does not assert noise robustness for arbitrary adaptive choices of CNOT-dihedral gates or measured observables.
+
+We now illustrate this criterion in several quantum error-correction protocols.
+
+\subsection{Examples}
+
+We now apply the preceding results to several classes of quantum error correction circuits.
+
+\subsubsection{Magic state distillation and non-Clifford computation}
+
+Logical CNOT-dihedral gates implemented by physical CNOT-dihedral circuits, interleaved with CSS stabilizer checks, directly satisfy the hypotheses of \cref{thm:iterative-measurements}: each ideal gate preserves the code space, so the subsequent checks are deterministic.
+This covers magic state distillation based on (generalized) triorthogonal codes, including transversal and quasitransversal constructions with diagonal Clifford corrections \cite{bravyi2005universal,bravyi2012magic, campbell2017unified, haah2018codes, scruby2025quantum, vuillot2022quantum, zhu2025nonclifford}.
+It also covers Litinski's reformulation of these protocols as sequences of $Z$-type $\pi/8$ rotations followed by $X$ readouts \cite{litinski2019magic}, since these rotations are CNOT-dihedral and the syndrome readouts are ideally deterministic.
+The same argument applies to recent code constructions supporting logical non-Clifford gates through constant-depth physical circuits of $Z$, $CZ$, and $CCZ$ gates, including algebraic geometry constructions \cite{golowich2024asymptotically, golowich2024quantum, he2025asymptotically, nguyen2024good, wills2024constantoverhead, wills2026improved, zhu2025nonclifford} and quantum LDPC constructions based on cup products \cite{bauer2026planar, breuckmann2026cups, davydova2026universal, fuente2026highthreshold, tiew2026copycup}.
+These gates can be used either for magic state preparation or for direct non-Clifford computation: in both settings, subsequent CSS stabilizer checks are ideally deterministic, so \cref{thm:iterative-measurements} applies.
+
+\subsubsection{Clifford checks, cultivation, and non-Pauli codes}
+
+The preceding examples rely on Pauli stabilizer checks that are deterministic in the ideal circuit.
+More generally, checking non-Pauli Clifford observables provides a way to detect errors in magic states, as exploited in distillation protocols based on measuring Clifford checks \cite{jones2013multilevel, knill2004faulttolerant, meier2012magicstate,haah2017magic,haah2018codes} and magic state cultivation \cite{chamberland2020very, gidney2024magic, vaknin2026high}.
+We now show how that the same deterministic-check argument extends to DCP observables.
+
+Let $M$ be a Hermitian DCP operator satisfying $M^2=I$, and suppose $M\ket{\psi}=\epsilon_0\ket{\psi}$.
+Preparing an ancilla in $\ket{+}$ and applying controlled-$M$ gives
+\begin{align}
+    \frac{\ket{0}\ket{\psi}+\ket{1}M\ket{\psi}}{\sqrt{2}}
+    =
+    \frac{\ket{0}+\epsilon_0\ket{1}}{\sqrt{2}}\otimes\ket{\psi},
+\end{align}
+so the ancilla's $X$ readout is deterministic.
+Moreover, controlled-$M$ admits a CNOT-dihedral realization: controlling $X$, $S$, and $CZ$ gives CNOT, $CS$, and $CCZ$, respectively, while controlling an eighth-root global phase gives a power of $T$.
+Thus, sequences of such ideally deterministic checks satisfy \cref{thm:iterative-measurements}.
+
+For example, the magic state $\ket{T}=T\ket{+}$ satisfies $W_T\ket{T}=\ket{T}$ with
+\begin{align}
+    W_T=TXT^\dagger=\frac{X+Y}{\sqrt{2}}=\omega_8^{-1}SX.
+\end{align}
+A controlled-$W_T$ circuit therefore checks a deterministic Clifford observable.
+Similarly, the $\ket{CCZ}$ state is stabilized by the DCP operators $X_1CZ_{23}$ and their permutations.
+The same reasoning applies to encoded checks whenever their physical implementations have the controlled-DCP form above.
+This provides a compatibility certificate for such checks in distillation and cultivation, while preparation, growth, and any additional resource-consumption measurements must also satisfy the compatibility conditions.
+
+The argument also applies to syndrome extraction in non-Pauli codes whose stabilizers are Hermitian DCP operators, such as products of $X$ operators decorated with $CZ$ gates.
+These checks are deterministic on ideal code states, even when the stabilizer generators do not commute on the full Hilbert space.
+Such codes underlie recent protocols for direct non-Clifford computation in two dimensions \cite{davydova2026universal}, including syndrome-extraction circuits with just-in-time decoding \cite{bauer2026planar, davydova2026universal, fuente2026highthreshold}.
+
+Not every Clifford-check implementation has this form.
+In particular, distillation and cultivation protocols using controlled-Hadamard or controlled-SWAP operations \cite{chamberland2020very, jones2013multilevel, knill2004faulttolerant, meier2012magicstate} are not directly covered by the argument above.
+A change of basis or an alternative implementation may bring a check into DCP form, but compatibility must then be established for the entire transformed circuit.
+
+\subsubsection{Gauge fixing, code switching, and teleportation}
+
+Consider a CSS subsystem code whose stabilizer eigenvalues are fixed.
+Measuring a complete set of independent $Z$-type gauge operators fixes the gauge qubits in a $Z$ basis.
+Each subsequent $X$-type gauge measurement either anticommutes with a currently fixed $Z$-type gauge operator, making it a compatible case (1), or has an outcome determined by the stabilizers and earlier $X$-type gauge measurements.
+Thus, successive rounds of $Z$- and $X$-type gauge measurements satisfy \cref{thm:iterative-measurements}, establishing compatibility under DCP faults.
+
+The same reasoning applies to CSS gauge fixing used in code switching \cite{bombin2014gauge} and lattice surgery \cite{horsman2012surface}: newly measured $X$-type checks are compatible whenever they anticommute with a current $Z$ constraint or are already fixed.
+For example, a lattice-surgery measurement of $\bar X_A\bar X_B$ is case (1) whenever block $B$ is initialized in $\ket{0}_L$, since the measured operator anticommutes with the fixed constraint $\bar Z_B=+1$.
+
+State injection provides another simple application.
+To inject a $T$ gate into a 3PP state $\ket{\psi}$, prepare an ancilla in $\ket{T}=T\ket{+}$, apply a CNOT from the data to the ancilla, and measure the ancilla in the $Z$ basis.
+For outcome $s\in\{0,1\}$, the data state is, up to global phase,
+\begin{align}
+    \ket{\psi_s}=
+    \begin{cases}
+        T\ket{\psi}, & s=0,\\
+        T^\dagger\ket{\psi}, & s=1.
+    \end{cases}
+\end{align}
+Applying the correction $S^s$ therefore yields $T\ket{\psi}$ in both branches.
+The entire gadget uses only a 3PP ancilla, a CNOT, a $Z$ measurement, and a diagonal Clifford correction, so it preserves the 3PP representation under DCP faults.
+Encoded implementations using lattice surgery additionally require checking the compatibility of the physical measurements realizing the logical operations.
+
+\subsubsection{Cat-state syndrome extraction}
+
+The physical readouts of a deterministic check can have non-deterministic intermediate measurements, as is the case for instance in Shor's style syndrome extraction \cite{gottesman2009introduction, shor1997faulttolerant}. Consider measuring a weight-$w$
+$X$ stabilizer using
+\begin{align}
+    \ket{\mathrm{cat}_w}
+    =\frac{\ket{0}^{\otimes w}+\ket{1}^{\otimes w}}{\sqrt{2}},
+\end{align}
+with each cat qubit controlling the corresponding $X$ stabilizer measurement, followed by individual $X$ readouts of the cat.
+
+The coupling preserves the cat's $Z_iZ_j$ constraints.
+Before each of the first $w-1$ readouts, a constraint
+$Z_iZ_j$ involving the measured qubit and an unread qubit
+therefore certifies case~(1). The product of all readout
+signs equals the measured syndrome. On an ideal code state,
+this syndrome is fixed, so the final readout is
+deterministic conditional on the preceding outcomes.
+\Cref{thm:iterative-measurements} consequently covers noisy cat-state extraction,
+even though most individual ancilla outcomes are random.

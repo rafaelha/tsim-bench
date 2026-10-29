@@ -1,0 +1,112 @@
+% !TeX root = ../main.tex
+\section{Benchmarking results}
+\label{sec:benchmarking-results}
+
+\newcommand*{\micros}[1]{\num[round-precision=2,round-mode=places]{\fpeval{1000000*(#1)}}}
+\newcommand*{\millis}[1]{\num[round-precision=2,round-mode=places]{\fpeval{1000*(#1)}}}
+
+\begin{figure*}
+    \includegraphics[width=0.7\linewidth]{bh-total-time.pdf-legend.pdf} \\[-5pt]
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{bh-total-time.pdf}
+        \vspace{-20pt}
+        \subcaption{} \label{fig:bh-total-time}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{bh-sample-time.pdf}
+        \vspace{-20pt}
+        \subcaption{} \label{fig:bh-sample-time}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{bh-memory.pdf}
+        \vspace{-20pt}
+        \subcaption{} \label{fig:bh-memory}
+    \end{subfigure}
+    \caption{
+        Comparison of different simulators for 1000 attempted shots of the Bravyi-Haah $3k+8$ to $k$ magic state distillation protocol \cite{bravyi2012magic} for increasing numbers of logical qubits $k$.
+        (\subref{fig:bh-total-time})~Total runtime, including pre-processing.
+        (\subref{fig:bh-sample-time})~Average time per shot, excluding pre-processing.
+        (\subref{fig:bh-memory})~Peak memory consumption.
+    }
+    \label{fig:bh}
+\end{figure*}
+
+\setlength{\tabcolsep}{5pt}
+\begin{table}[t]
+    \centering
+    \textbf{Total runtime (including pre-processing) in \qty{}{\milli\second}}
+    \begin{tabular}{lrrrrr}
+        \toprule
+        \textbf{Circuit} &
+        \texttt{tsim} &
+        \texttt{xtim} &
+        \texttt{clifft} &
+        \texttt{symft} &
+        \texttt{merlin} \\
+        \midrule
+        15-to-1  & \millis{5.029947541002912} & \millis{0.08585524999944028} & \millis{0.09955558299770928} & \millis{0.057665624997753184} & \textbf{\millis{0.012521416996605694}} \\
+        Cultiv-3 & OOM & \millis{0.06529049999517156} & \millis{0.05429354199804948} & \millis{0.06362920799801941} & \textbf{\millis{0.02898095799901057}} \\
+        Cultiv-5 & OOM & \millis{0.2535097500003758} & \textbf{\millis{0.067934000002424}} & \millis{0.5772002910016454} & \millis{0.20201220999661018} \\
+        Switch-3 & OOM & \millis{2.817529874999309} & OOM & ERR & \textbf{\millis{0.5736940430033428}} \\
+        Switch-5 & OOM & OOM & OOM & ERR & \textbf{\millis{6.959127001005982}} \\
+        \bottomrule
+    \end{tabular}
+
+    \bigskip
+    \textbf{Time per shot (excluding pre-processing) in \qty{}{\micro\second}}
+    \begin{tabular}{lrrrrr}
+        \toprule
+        \textbf{Circuit} &
+        \textbf{tsim} &
+        \textbf{xtim} &
+        \textbf{clifft} &
+        \textbf{symft} &
+        \textbf{merlin} \\
+        \midrule
+        15-to-1  & \micros{0.0034468530410013045} & \micros{4.025839989481028e-07} & \micros{3.707920004671905e-07} & \textbf{\micros{1.8404200091026724e-07}} & \micros{9.620625001844019e-06} \\
+        Cultiv-3 & OOM & \micros{3.898329996445682e-07} & \micros{5.06666001456324e-07} & \textbf{\micros{3.4187499841209503e-07}} & \micros{2.8341749999526654e-05} \\
+        Cultiv-5 & OOM & \micros{7.704665997152915e-06} & \micros{7.97404200056917e-06} & \textbf{\micros{6.517500001791632e-06}} & \micros{0.00020014883399926476} \\
+        Switch-3 & OOM & \textbf{\micros{2.652375002071494e-06}} & OOM & ERR & \micros{0.0005499323750009353} \\
+        Switch-5 & OOM & OOM & OOM & ERR & \textbf{\micros{0.006704935917001421}} \\
+        \bottomrule
+    \end{tabular}
+
+    \medskip
+    \raggedright
+    \footnotesize
+    \quad OOM: Simulator tried to allocate more than 20GB of memory. \\
+    \quad ERR: Simulator failed with a runtime error.
+
+    \caption{
+        Simulation time for 1000 attempted shots of the 15-to-1 magic state distillation \cite{bravyi2005universal}, magic state cultivation without the escape stage \cite{gidney2024magic} and the code switching protocol from Ref. \cite{li2026transversal}.
+    }
+    \label{tab:other-circuits}
+\end{table}
+
+We provide an open-source implementation of our simulator, which we call \texttt{merlin} \cite{koch2026merlin}.
+In this section, we benchmark \texttt{merlin} against existing non-Clifford simulation libraries on a range of magic-state preparation circuits.
+Concretely, we compare against Tsim~\cite{haenel2026tsim}, Clifft~\cite{chase2026clifft}, SymFT~\cite{fang2026symft}, and Xtim~\cite{surti2026efficient}.
+All benchmarks use a noise parameter $p=10^{-3}$ and 1000 attempted shots per circuit.
+The cultivation benchmarks exclude the escape stage.
+
+While these simulators each use different representations and algorithms, they are all particularly effective when the number of non-stabilizer degrees of freedom remains small.
+This is a favorable regime for many existing magic-state preparation protocols.
+At the logical level, the target states often only represent a small number of magic states $k$, with $k = 1$ being especially simple.
+These simulators exploit the fact that this simplicity can persist after the protocol is expanded into a noisy physical circuit.
+However, their cost can increase rapidly as the amount of logical magic grows.
+In contrast, our approach does not require $k$ to remain fixed or small.
+Our state representation and update rules have polynomial complexity in the physical system size and circuit size, and therefore introduce no exponential dependence on the number of logical magic states $k$.
+
+Figure~\ref{fig:bh} illustrates this difference using the Bravyi-Haah $3k+8$ to $k$ magic state distillation protocol \cite{bravyi2012magic} for increasing numbers of logical output magic states $k$.
+The other simulators exhibit exponentially increasing runtime and/or memory consumption as $k$ grows, consistent with the growth of the non-stabilizer representations that they maintain.
+In contrast, the runtime and memory consumption of \texttt{merlin} grow smoothly with $k$, reflecting the polynomial scaling of our representation.
+
+Table~\ref{tab:other-circuits} reports results for the 15-to-1 magic state distillation~\cite{bravyi2005universal}, magic-state cultivation~\cite{gidney2024magic} and the code switching protocol for $CCZ$ magic states introduced in Ref. \cite{li2026transversal}.
+The distillation and cultivation circuits have previously been used as benchmark cases for non-Clifford simulators~\cite{chase2026clifft,fang2026symft,surti2026efficient}.
+They each prepare a single logical magic state and therefore lie in the $k=1$ regime, where Xtim, Clifft, and SymFT achieve substantially lower per-shot runtimes than \texttt{merlin}.
+For the code switching benchmarks, we use the $[\![27,3,3]\!]$ and $[\![81,3,5]\!]$ BT code constructions of \cite{li2026transversal} which both encode $k = 3$ logical qubits.
+On these circuits, the other simulators' techniques to keep their non-stabilizer representations compact appear to be less effective.
+Only Xtim completes the distance-3 simulation, while all other simulator-circuit combinations run out of memory or fail with a runtime error.
+
+These examples highlight the complementary regime targeted by our approach:
+while specialized methods can have smaller constant factors when the effective non-stabilizer representation remains small, \texttt{merlin} can handle circuits for which such representations cannot be found or become prohibitively large.

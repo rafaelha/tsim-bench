@@ -1,0 +1,111 @@
+\subsection{Equivalence of DCP tableaux}\label{app:tableau-equivalence}
+
+The stabilizing closure introduced in
+\Cref{sec:dcp-stabilizer-formalism} identifies two DCP-stabilizer groups
+precisely when they have the same fixed space. Here we give a direct
+polynomial-time test for this equivalence in the pure-state case.
+
+Let \(G_a\leq\mathcal D^n\) be a DCP-stabilizer group for
+\(\ket{\psi_a}\), \(a\in\{1,2\}\), and retain a support representative
+\(x_a\in\supp(\psi_a)\). Thus the data to be compared are
+\begin{equation}
+    T_a=(G_a,x_a),
+    \qquad
+    \Fix(G_a)=\C\ket{\psi_a}.
+\end{equation}
+Such a representative is already part of the phase-polynomial description
+in \cref{eq:simulation-representation}; it may equally be carried
+alongside the canonical group representation. There is no need for separate
+update rules: its affine support is updated by the rules of
+\Cref{sec:simulator-phase-polynomial-representation}.
+
+Set \(V_a=X(G_a)\). Since the fixed space of \(G_a\) is one-dimensional,
+\Cref{thm:atomic-basis} implies
+\begin{equation}
+    \supp(\psi_a)=x_a\oplus V_a.
+    \label{eq:tableau-affine-support}
+\end{equation}
+Consequently the supports agree if and only if
+\begin{equation}
+    V_1=V_2
+    \quad\text{and}\quad
+    x_1\oplus x_2\in V_1.
+    \label{eq:tableau-support-test}
+\end{equation}
+
+Suppose this test passes, write the common space as \(V\), and choose a basis
+\(v^{(1)},\ldots,v^{(r)}\) of \(V\). For every \(i\), choose lifts
+\begin{equation}
+    g_{a,i}\in G_a,
+    \qquad
+    \pi(g_{a,i})=v^{(i)},
+\end{equation}
+and define the diagonal quotient
+\begin{equation}
+    \delta_i:=g_{1,i}g_{2,i}^{-1}\in\ker\pi.
+\end{equation}
+The lifts can be obtained by row reduction of the \(X\)-parts while carrying
+the corresponding DCP operators.
+
+\begin{proposition}[Tableau-equivalence criterion]
+    \label{prop:tableau-equivalence}
+    The tableaux \(T_1\) and \(T_2\) represent the same state up to global
+    phase if and only if \cref{eq:tableau-support-test} holds and every
+    $\delta_i$ acts as the identity on the common support
+    $S=x_1\oplus V$.
+\end{proposition}
+
+\begin{proof}
+    If the states agree up to global phase, their supports agree, giving
+    \cref{eq:tableau-support-test}. Moreover, both \(g_{1,i}\) and
+    \(g_{2,i}\) fix the same state. Their quotient is diagonal, so it must
+    act as the identity on every computational-basis vector with nonzero
+    amplitude, hence on all of \(S\).
+
+    Conversely, suppose the stated conditions hold and write
+    \begin{equation}
+        \ket{\psi_a}=\sum_{x\in S}\alpha_a(x)\ket{x}.
+    \end{equation}
+    Decompose each lift as \(g_{a,i}=D_{a,i}X(v^{(i)})\), with \(D_{a,i}\)
+    diagonal, and write
+    \(D_{a,i}\ket{x}=d_{a,i}(x)\ket{x}\). The stabilizer equations give
+    \begin{equation}
+        \alpha_a(x)=d_{a,i}(x)\alpha_a(x\oplus v^{(i)}).
+    \end{equation}
+    Since
+    \(\delta_i=D_{1,i}D_{2,i}^{-1}\) is the identity on \(S\), we have
+    \(d_{1,i}(x)=d_{2,i}(x)\) there. Hence
+    \(\alpha_1(x)/\alpha_2(x)\) is invariant under translation by every
+    \(v^{(i)}\). These translations connect all points of \(S\), so this ratio
+    is constant and \(\ket{\psi_1}\) and \(\ket{\psi_2}\) differ only by a
+    global phase.
+\end{proof}
+
+It remains only to make the identity test explicit. Write
+\begin{equation}
+    \delta_i=\omega_8^{k_i}D(s_i,M_i),
+\end{equation}
+and let \(B\) be the matrix with columns \(v^{(1)},\ldots,v^{(r)}\). Its phase on a
+basis vector is the Clifford phase polynomial
+\begin{equation}
+    F_i(x)
+    =k_i+2s_i\cdot x
+      +4\sum_{j<\ell}(M_i)_{j\ell}x_jx_\ell
+      \pmod 8.
+\end{equation}
+By \Cref{cor:phase-polynomial-affine-pullback,thm:clifford-phase-polynomial},
+the restriction \(c\mapsto F_i(x_1\oplus Bc)\) has Boolean degree at most
+two, with its linear and quadratic coefficients divisible by \(2\) and \(4\),
+respectively. It is therefore identically zero if and only if it vanishes at
+\begin{equation}
+    c=0,
+    \qquad c=e_j,
+    \qquad c=e_j\oplus e_\ell
+    \quad (1\leq j<\ell\leq r).
+    \label{eq:tableau-phase-test-points}
+\end{equation}
+Thus each diagonal quotient requires only \(O(r^2)\) phase evaluations. The
+support comparison, construction of the lifts, and all phase tests are
+polynomial-time operations. The result is independent of the chosen lifts:
+two lifts of the same \(v^{(i)}\) differ by a diagonal stabilizer, which acts
+identically on the corresponding support.

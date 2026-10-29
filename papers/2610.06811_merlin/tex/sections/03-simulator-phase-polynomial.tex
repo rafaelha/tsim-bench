@@ -1,0 +1,209 @@
+\section{Simulation in the phase-polynomial representation}
+\label{sec:simulator-phase-polynomial-representation}
+
+We now describe how to update the phase-polynomial representation under the
+operations in a 3PP circuit.  We represent the current state as
+\begin{equation}
+    \ket{\psi}
+    = \frac{1}{\sqrt{|S|}}
+      \sum_{x\in S}\omega_8^{q(x)}\ket{x},
+    \qquad S=x_0\oplus V,
+    \label{eq:phase-polynomial-state-update}
+\end{equation}
+where $S\subseteq\F_2^n$ is affine and $q$ is a third-order phase
+polynomial.  For the initial state
+$\ket{0}^{\otimes a}\ket{+}^{\otimes b}$, one takes
+$S=\{0\}^a\times\F_2^b$ and $q=0$.
+Thus, the representation can be initialized and all the updates below can be carried out in polynomial time by linear algebra over $\F_2$ and arithmetic on the coefficients of $q$.
+
+\subsection{Unitary operations}
+
+Every CNOT-dihedral unitary has an affine permutation and a third-order
+phase polynomial $p$ such that
+\begin{equation}
+    U\ket{x}=\omega_8^{p(x)}\ket{\phi(x)},
+    \qquad \phi(x)=Ax\oplus b,
+    \label{eq:cnot-dihedral-action}
+\end{equation}
+where $A\in\F_2^{n\times n}$ is invertible.  Applying $U$ to
+\cref{eq:phase-polynomial-state-update} gives the updated data
+\begin{equation}
+    S'=\phi(S),
+    \qquad
+    q'(y)=q\bigl(\phi^{-1}(y)\bigr)
+           +p\bigl(\phi^{-1}(y)\bigr)\pmod 8.
+    \label{eq:phase-polynomial-unitary-update}
+\end{equation}
+The set $S'$ is affine, and $q'$ is again a third-order phase polynomial by
+\Cref{cor:phase-polynomial-affine-pullback}.  In particular, the elementary
+updates are as follows, where
+$\tau_{a\to b}(x):=x\oplus x_a e_b$:
+\begin{align}
+    \T_a^{\pm1}:&\quad
+        S'=S,
+        &q'(y)&=q(y)\pm y_a, \\
+    Z_a:&\quad
+        S'=S,
+        &q'(y)&=q(y)+4y_a, \\
+    X_a:&\quad
+        S'=S\oplus e_a,
+        &q'(y)&=q(y\oplus e_a), \\
+    \CNOT_{a\to b}:&\quad
+        S'=\tau_{a\to b}(S),
+        &q'(y)&=q\bigl(\tau_{a\to b}(y)\bigr).
+\end{align}
+Updates for arbitrary Pauli operators follow by composing the $X_a$ and
+$Z_a$ rules. Global phases may be discarded.
+
+\subsection{Z-measurements}
+\label{sec:z-measurements-3pp}
+
+Let us consider a measurement of a $Z$-type Pauli operator $Z(v)=\prod_{a=1}^n Z_a^{v_a}$, and encode its measurement outcome
+as $(-1)^\mu$, with $\mu\in\F_2$.
+The projection onto that outcome can be written
+\begin{align}
+    \ket{\psi'_\mu} &= \frac{1}{2}\left( 1 + (-1)^\mu Z(v) \right)\ket{\psi} \\
+    &= \frac{1}{2\sqrt{|S|}} \sum_{x\in S}
+    \left( 1 + (-1)^{\mu+\langle v,x\rangle} \right)\ket{x} \\
+\end{align}
+where we used $Z(v)\ket{x}=(-1)^{\langle v,x\rangle}\ket{x}$.
+Therefore, the phase is only nonzero when $\langle v,x\rangle=\mu$, and the affine support is restricted to that hyperplane:
+\begin{equation} \label{eq:phase-polynomial-z-measurement-update}
+    S'_\mu
+    =S\cap\{x\in\F_2^n:\langle v,x\rangle=\mu\},
+    \qquad
+    q'_\mu=q\big|_{S'_\mu}.
+\end{equation}
+The probability of the outcome is
+\begin{equation}
+    \Pr(\mu)=\frac{|S'_\mu|}{|S|}.
+\end{equation}
+The linear function $x\mapsto\langle v,x\rangle$ is either constant on
+$S$ or balanced on $S$.  Consequently, the two outcome probabilities are
+either $0$ and $1$, or both $1/2$.  Gaussian elimination determines which
+case applies and produces an affine description of $S'_\mu$ in polynomial
+time.  A single-qubit $Z$-measurement is the special case $v=e_a$.
+
+\subsection{X-measurements}
+
+Recall from \Cref{sec:compatible-measurements} that an $X$-type Pauli measurement is compatible with a 3PP state when every outcome of nonzero probability leaves a 3PP state. We first introduce the discrete derivative and classify single-qubit $X$ measurements with their phase-polynomial updates, then extend the results to arbitrary $X$-type Pauli measurements.
+
+\begin{definition}[Discrete derivative]\label{def:discrete-derivative}
+    Given a function $f: V \to \mathbb Z_8$, we define its discrete derivative $\Delta_v f$ w.r.t. $v \in V$ by $\Delta_v f(x) := f(x \oplus v) - f(x) \pmod 8.$
+\end{definition}
+
+
+\newcommand{\xMeasurementClassificationStatement}{%
+    Consider a 3PP state
+    \[ \ket{\psi} = \frac{1}{\sqrt{|S|}} \sum_{x\in S} \omega_8^{q(x)}\ket{x} \]
+    over an affine subspace $S = x_0 \oplus V$ with phase polynomial $q$.
+    An $X$ measurement on qubit $a$ is compatible with $\ket{\psi}$ iff one of the following cases apply.
+    In each case, we get a post-measurement affine subspace $S'_\mu \subseteq \mathbb F_2^n$ and phase polynomial $q'_\mu: S'_\mu \to \mathbb Z_8$ depending on the measurement outcome $\mu \in \{0, 1\}$, which occurs with some probability $Pr(\mu)$.
+    \begin{enumerate}
+        \item $e_a \not\in V$. In that case, $Pr(\mu) = \frac{1}{2}$ and the post-measurement state is defined by $S'_\mu = S \cup (S \oplus e_a)$ and the unique phase polynomial $q'_\mu$ with $q'_\mu(x) = q(x)$ and $q'_\mu(x \oplus e_a) = q(x) + 4\mu$ for all $x \in S$.
+
+        \item
+        $e_a \in V$ and one of the following apply:
+        \begin{enumerate}
+            \item \label{thm:x-measurements:even-0-4}
+            $\Delta_{e_a} q(x) = 4f(x) \pmod 8$ for some affine function $f: S \to \mathbb F_2$. In that case
+            \[
+                Pr(\mu) = \begin{cases}
+                    0 & \text{if } f(x) \neq \mu \text{ for all } x \in S, \\
+                    1 & \text{if } f(x) = \mu \text{ for all } x \in S, \\
+                    \frac{1}{2} & \text{otherwise},
+                \end{cases}
+            \]
+            and the post-measurement state is defined by $S'_\mu = S \cap \{ x ~|~ f(x) = \mu \pmod 2 \}$ and $q'_\mu(x) = q(x)$ for all $x \in S'_\mu$.
+
+            \item \label{thm:x-measurements:even-2-6}
+            $\Delta_{e_a} q(x) = 2 + 4g(x) \pmod 8$ for some function $g: S \to \mathbb F_2$ such that $2g$ is a third-order phase polynomial.
+            In that case, $Pr(\mu) = \frac{1}{2}$ and the post-measurement state is defined by $S'_\mu = S$ and $q'(x) = q(x) - 2(-1)^\mu g(x)$
+
+            \item \label{thm:x-measurements:odd}
+            $\Delta_{e_a} q(x) = (-1)^{h(x)}d \pmod 8$ for some affine function $h: S \to \mathbb F_2$ and $d \in \{ 1, 3, 5, 7 \}$.
+            In that case, $Pr(\mu) = \frac{1}{2}(1 + (-1)^\mu\cos(d\pi/4))$ and the post-measurement state is defined by $S'_\mu = S$ and $q'(x) = q(x) + (4\mu - d)h(x)$.
+        \end{enumerate}
+    \end{enumerate}
+}
+\begin{theorem}\label{thm:x-measurements}
+    \xMeasurementClassificationStatement
+\end{theorem}
+The proof can be found in \cref{appendix:x-measurements}.
+
+For a general $X$-type Pauli operator $X(m)=\prod_j X_j^{m_j}$ with $m\in\F_2^n\setminus\{0\}$, choose $a$ with $m_a=1$ and set $C_m=\prod_{j\ne a:\,m_j=1}\CNOT_{a\to j}$. Then $C_mX(m)C_m^\dagger=X_a$, so
+\begin{align}
+    \frac{I+(-1)^\mu X(m)}{2}
+    =C_m^\dagger\frac{I+(-1)^\mu X_a}{2}C_m.
+    \label{eq:x-measurement-reduction}
+\end{align}
+Since both $C_m$ and $C_m^\dagger$ preserve 3PP states, measuring $X(m)$ on $\ket{\psi}$ has the same compatibility and outcome probabilities as measuring $X_a$ on $C_m\ket{\psi}$. Applying $C_m^\dagger$ to the conditional state gives the original measurement's conditional state. In the original coordinates, the same cases and update formulas apply with $e_a$ replaced by $m$ and $\Delta_{e_a}q$ replaced by $\Delta_mq$; in particular, case~(1) means $m\notin V$. We use these case labels for arbitrary $X$-type Pauli measurements throughout the paper. For $m=0$, the operator is the identity and the outcome is deterministically $+1$.
+
+\subsection{Efficient simulation}
+
+% Supply the representation's equation label only in the main-text statement.
+\newcommand{\efficientSimulationStatement}[1]{%
+An $n$-qubit 3PP state admits a representation
+\begin{align}
+    \ket{\psi}
+    = 2^{-r/2}\sum_{y\in\mathbb{F}_2^r}
+    \omega_8^{p(y)}\ket{x_0\oplus By},
+    #1
+\end{align}
+where $B\in\mathbb{F}_2^{n\times r}$ has full column rank and $p:\mathbb{F}_2^r\to\mathbb{Z}_8$ is a third-order phase polynomial.
+This representation requires $O(n^3)$ bits and supports the following operations.
+
+\begin{enumerate}
+    \item \textbf{Circuit simulation.}
+    Let $C$ be a 3PP circuit made of $m$ operations acting on at most $n$ qubits.
+    There exists a classical algorithm that samples the measurement record according to its exact distribution and maintains the corresponding conditional state, up to global phase, in the form \eqref{eq:simulation-representation}.
+    Each operation takes $O(n^3)$ expected time, giving a total expected runtime of
+    \begin{align}
+        O(mn^3)+T_{\mathrm{classical}},
+    \end{align}
+    where $T_{\mathrm{classical}}$ is the total time required for classical feedforward.
+    The maintained state representation uses $O(n^3)$ bits, excluding storage for the measurement record and classical processing.
+
+    \item \textbf{Queries on represented states.}
+    Given a state in the form \eqref{eq:simulation-representation}, the following tasks can be performed:
+    \begin{enumerate}
+        \item Compute $\langle x|\psi \rangle$ exactly for any $x\in\mathbb{F}_2^n$ in $O(n^3)$ time.
+        \item Sample $x\in\mathbb{F}_2^n$ according to $|\langle x|\psi \rangle|^2$ in $O(n^2)$ time.
+        \item Compute $\bra{\psi}P\ket{\psi}$ exactly for any specified Pauli operator $P$ in $O(n^3)$ time.
+        \item Given a second represented state on the same ordered qubits, decide whether the two states are equal up to global phase in $O(n^4)$ time.
+    \end{enumerate}
+\end{enumerate}
+}
+
+\begin{theorem}[Efficient simulation of 3PP circuits]
+\label{thm:efficient-simulation}
+\efficientSimulationStatement{\label{eq:simulation-representation}}
+\end{theorem}
+The proof can be found in \cref{appendix:efficient-simulation}.
+
+The Pauli-expectation claim does not require the
+corresponding measurement to be compatible: evaluating
+an expectation value does not require representing the
+post-measurement state. By linearity, it also gives
+efficient exact expectations for observables supplied
+as polynomial-size sums of Pauli operators.
+
+Equality testing should be distinguished from evaluating
+an arbitrary overlap between two DCP states. Such an
+overlap generally involves a third-order phase sum,
+rather than the quadratic sum appearing in
+\cref{eq:pauli-expectation-gauss-sum}, and is not
+covered by the theorem.
+
+For circuits with stochastic Pauli noise, the theorem
+applies to each sampled fault trajectory, provided that
+all measurements remain compatible along that trajectory.
+The represented state and its exact expectation values
+are conditional on the sampled faults and measurement
+outcomes.
+
+Our simulation theorem recovers efficient simulation of Clifford circuits. Every Pauli stabilizer state is a 3PP state, and Pauli measurements preserve the stabilizer-state class. While $\CNOT$ and $\S=\T^2$ are already supported, a Hadamard gate can be implemented by the measurement-based gadget shown in \cref{fig:hadamard-gadget}.
+
+For stabilizer inputs, every intermediate state remains a stabilizer state, so this measurement is compatible. Thus any Clifford circuit can be compiled into a 3PP circuit with constant overhead per gate.
+
+Finally, we note that alternative sparse representations of the phase polynomial (for example in the form of Eq. \eqref{eqn:phase-polynomial-def}), can yield better complexity for circuits with few non-Clifford gates, which we have exploited in our implementation.

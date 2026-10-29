@@ -1,0 +1,179 @@
+\subsection{Howell normal form and canonical remainders}
+\label{app:howell}
+
+Howell normal form generalizes reduced row-echelon form
+from fields to rings $\Z_m$. It provides a canonical
+generating matrix for a submodule and a reduction
+procedure for choosing representatives of its cosets.
+Throughout, we fix the coordinate order and represent
+elements of $\Z_m$ by integers in $\{0,\ldots,m-1\}$.
+
+\begin{definition}[Howell normal form]
+    Let $N\leq\Z_m^d$. A matrix $H$ with nonzero rows
+    $\vec{h}_1,\ldots,\vec{h}_r$ is a \emph{Howell
+    normal form} of $N$ if its rows generate $N$ and:
+    \begin{enumerate}
+        \item The first nonzero entry of $\vec{h}_i$
+        occurs in column $j_i$, with
+        $j_1<\cdots<j_r$.
+
+        \item Each pivot $p_i:=H_{i,j_i}$ is a positive
+        divisor of $m$.
+
+        \item Entries above a pivot satisfy
+        $0\leq H_{\ell,j_i}<p_i$ for $\ell<i$.
+
+        \item For every $j\in\{1,\ldots,d\}$,
+        \begin{align}
+            \{\vec{a}\in N:
+              a_1=\cdots=a_{j-1}=0\}
+            =
+            \operatorname{span}_{\Z_m}
+            \{\vec{h}_i:j_i\geq j\}.
+            \label{eq:howell-tail}
+        \end{align}
+    \end{enumerate}
+    Zero rows are omitted.
+\end{definition}
+
+The last condition ensures that cancellations in early
+coordinates are fully captured by the later rows.
+For example, over $\Z_8$, the row $(2,1)$ alone is
+in echelon form but not Howell form: multiplying it
+by $4$ gives $(0,4)$. The Howell normal form of the
+module it generates is
+\begin{align}
+    H=
+    \begin{pmatrix}
+        2 & 1\\
+        0 & 4
+    \end{pmatrix}.
+\end{align}
+
+Every submodule has a unique Howell normal form.
+Given an $s\times d$ generating matrix, this form
+can be computed in polynomial time
+\cite{storjohann1998fast}.
+Thus it depends only on the embedded submodule,
+not on its chosen generators. Since pivot positions
+are distinct, it has at most $d$ nonzero rows.
+
+The following lemma gives the reduction procedure
+used to choose canonical DCP lifts.
+
+\begin{lemma}[Canonical remainders]
+    \label{lem:howell-remainders}
+    Let $N\leq\Z_m^d$ have Howell normal form $H$,
+    with pivot positions $j_1,\ldots,j_r$ and
+    pivots $p_1,\ldots,p_r$.
+    Every coset of $N$ contains exactly one vector
+    $\vec{a}$ satisfying
+    \begin{align}
+        0\leq a_{j_i}<p_i
+        \qquad (i=1,\ldots,r).
+        \label{eq:howell-reduced}
+    \end{align}
+    This vector can be computed by successively
+    reducing the pivot coordinates using the rows
+    of $H$.
+\end{lemma}
+
+\begin{proof}
+    We first construct a reduced representative,
+    then prove its uniqueness.
+
+    Start with any representative $\vec{a}$ of
+    the coset. At step $i$, write its current
+    pivot coordinate as
+    \begin{align}
+        a_{j_i}=q_ip_i+t_i,
+        \qquad 0\leq t_i<p_i,
+    \end{align}
+    and replace $\vec{a}$ by
+    $\vec{a}-q_i\vec{h}_i$, with arithmetic performed
+    modulo $m$. This preserves the coset and makes
+    the $j_i$-th coordinate equal to $t_i$.
+    Since $\vec{h}_i$ vanishes before column $j_i$,
+    previously reduced pivot coordinates remain
+    unchanged. After all rows have been processed,
+    \cref{eq:howell-reduced} holds.
+
+    For uniqueness, suppose $\vec{a}$ and $\vec{b}$
+    are distinct reduced representatives of the
+    same coset. Then
+    $\vec{c}:=\vec{a}-\vec{b}\in N$.
+    Let $j$ be the first nonzero coordinate of
+    $\vec{c}$. By \cref{eq:howell-tail},
+    $\vec{c}$ is a linear combination of rows
+    whose pivots occur at or after $j$.
+    If $j$ were not a pivot position, all such
+    rows would vanish in column $j$, a contradiction.
+    Hence $j=j_i$ for some $i$, and $c_{j_i}$
+    is a multiple of $p_i$ in $\Z_m$.
+
+    Since $p_i$ divides $m$, the integer
+    $a_{j_i}-b_{j_i}$ is therefore divisible by
+    $p_i$. But both coordinates lie in
+    $\{0,\ldots,p_i-1\}$, so
+    \begin{align}
+        -(p_i-1)
+        \leq a_{j_i}-b_{j_i}
+        \leq p_i-1.
+    \end{align}
+    The only multiple of $p_i$ in this interval
+    is zero, contradicting the choice of $j$.
+    Thus the reduced representative is unique.
+\end{proof}
+
+Write $\operatorname{rem}_H(\vec{a})$ for this
+unique representative of $\vec{a}+N$.
+The lemma immediately gives
+\begin{align}
+    \vec{a}\in N
+    &\iff \operatorname{rem}_H(\vec{a})=\vec{0},
+    \\
+    \vec{a}+N=\vec{b}+N
+    &\iff
+    \operatorname{rem}_H(\vec{a})
+    =\operatorname{rem}_H(\vec{b}).
+\end{align}
+Once $H$ is known, reduction takes $O(rd)$
+coordinate operations and integer divisions on
+representatives smaller than $m$.
+In particular, for the fixed modulus $m=8$, it
+takes $O(d^2)$ time. The remainder map need not
+be linear; it selects representatives of quotient
+classes without asserting that the quotient splits.
+
+To apply this construction to a DCP subgroup $G$,
+take
+\begin{align}
+    N=\iota(\Delta(G))\leq\Z_8^d,
+    \qquad d=1+n+\binom{n}{2},
+\end{align}
+and let $H$ be its Howell normal form.
+For a lift $h_j=D_jX(\vec{x}^{(j)})\in G$, define
+$\widetilde{D}_j$ by
+\begin{align}
+    \iota(\widetilde{D}_j)
+    =
+    \operatorname{rem}_H\big(\iota(D_j)\big).
+\end{align}
+This is a valid diagonal DCP operator: reduction
+changes $\iota(D_j)$ by an element of
+$\iota(\Delta(G))$, so the result remains in the
+image of $\iota$. Moreover,
+$\widetilde{D}_jD_j^{-1}\in\Delta(G)$, and hence
+\begin{align}
+    \widetilde{h}_j
+    :=
+    \widetilde{D}_jX(\vec{x}^{(j)})
+    =
+    (\widetilde{D}_jD_j^{-1})h_j
+    \in G.
+\end{align}
+All lifts of $\vec{x}^{(j)}$ have diagonal coordinate
+vectors in the same coset of $N$. Therefore
+$\widetilde{h}_j$ depends only on $G$, $\vec{x}^{(j)}$,
+and the fixed coordinate order, not on the
+initial lift.

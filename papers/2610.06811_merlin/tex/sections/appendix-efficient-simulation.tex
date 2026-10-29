@@ -1,0 +1,177 @@
+% !TeX root = ../main.tex
+\section{Efficient simulation in the phase polynomial representation}
+\label{appendix:efficient-simulation}
+
+This appendix establishes the runtime and memory bounds for simulation in the phase-polynomial representation.
+We analyze the cost of state updates and compatibility tests, then show how to compute amplitudes and Pauli expectation values, sample computational-basis outcomes, and test equality of represented states.
+
+\begin{efficientsimulationrestatement}[Efficient simulation of 3PP circuits]
+\efficientSimulationStatement{}
+\end{efficientsimulationrestatement}
+
+\begin{proof}
+We first establish the cost of updating the state representation and checking measurement compatibility, then prove the bounds for queries on represented states.
+Throughout, we use dense coefficient arrays and ordinary Gaussian elimination, with arithmetic on phase coefficients performed modulo $8$.
+
+The affine support is specified by $x_0$ and $B$, requiring $O(n^2)$ bits.
+The phase polynomial has the weighted form
+\begin{align}
+    p(y)
+    = d+\sum_i a_i y_i
+    +2\sum_{i<j}b_{ij}y_i y_j
+    +4\sum_{i<j<k}c_{ijk}y_i y_j y_k,
+\end{align}
+where $d,a_i\in\mathbb{Z}_8$, $b_{ij}\in\mathbb{Z}_4$, and $c_{ijk}\in\mathbb{F}_2$.
+Since $r\leq n$, storing these coefficients requires $O(n^3)$ bits.
+
+We will repeatedly use two elementary facts about polynomial updates.
+First, each substitution $y_i\mapsto y_i\oplus 1$ or $y_i\mapsto y_i\oplus y_j$ can be performed in $O(r^2)$ time, since only the $O(r^2)$ monomials containing $y_i$ are affected, and each produces a bounded number of terms.
+Second, an affine Boolean function can be expanded as a weighted polynomial modulo $8$ in $O(r^3)$ time.
+Indeed, for a parity of variables,
+\begin{align}
+    \bigoplus_{i\in I}y_i
+    =\sum_{i\in I}y_i
+    -2\sum_{\substack{i<j\\i,j\in I}}y_i y_j
+    +4\sum_{\substack{i<j<k\\i,j,k\in I}}y_i y_j y_k
+    \pmod 8,
+\end{align}
+and an affine constant is incorporated using $1\oplus f=1-f$.
+
+We now consider circuit evolution.
+Preparations append a physical coordinate and, for a $\ket{+}$ preparation, a free support coordinate.
+An $X$ gate changes $x_0$, while a $\CNOT$ gate applies the corresponding row operation to $x_0$ and $B$.
+Neither requires changing $p$.
+A $\T$ or $Z$ gate adds an integer multiple of the affine Boolean function describing the affected physical bit to $p$.
+These updates, and hence arbitrary Pauli updates, take at most $O(n^3)$ time.
+
+For a $Z$-type measurement, write the measured operator as $Z(v)$.
+Its value on a support point is determined by the affine function
+\begin{align}
+    f(y)=\langle v,x_0\oplus By\rangle.
+\end{align}
+If $f$ is constant, the outcome is deterministic and the state is unchanged.
+Otherwise, each outcome has probability $1/2$ and imposes one affine equation on $y$.
+Choose a variable with nonzero coefficient in that equation and use $O(r)$ elementary affine substitutions to make the equation a constraint on that variable alone.
+Applying these substitutions to $p$ costs $O(r^3)$, and updating the support parametrization costs at most $O(nr^2)$.
+Fixing the constrained variable and removing it therefore gives the conditional-state representation in $O(n^3)$ time.
+
+A measurement of a nonidentity $X$-type Pauli string of weight $w$ reduces to a single-qubit measurement by \cref{eq:x-measurement-reduction}, using at most $2(w-1)$ CNOTs in total.
+Each CNOT updates rows of $x_0$ and $B$ in $O(n)$ time and leaves $p$ unchanged, so the reduction adds only $O(n^2)$ time.
+The $O(n^3)$ expected cost established below therefore applies to one original Pauli-string measurement, without changing the operation count $m$ or the total runtime.
+The identity measurement is deterministic and leaves the state unchanged.
+
+Next, consider a proposed measurement of $X_a$.
+Gaussian elimination decides whether $e_a\in\operatorname{im}B$ in $O(n^3)$ time.
+If not, the measurement is compatible case~(1).
+For outcome $\mu$, append $e_a$ as a new column of $B$ and replace $p$ by
+\begin{align}
+    p'(y,z)=p(y)+4\mu z.
+\end{align}
+Both outcomes have probability $1/2$, and the update takes at most $O(n^3)$ time.
+
+If $e_a\in\operatorname{im}B$, solve $Bt=e_a$ and construct
+\begin{align}
+    D(y)=p(y\oplus t)-p(y).
+\end{align}
+The translation $y\mapsto y\oplus t$ uses at most $r$ elementary substitutions, so constructing $D$ costs $O(r^3)$.
+By the discrete-derivative property, $D$ is a Clifford phase polynomial and therefore has only $O(r^2)$ coefficients.
+
+We now check the three internal-measurement cases and bound their updates.
+For case~(2a), coefficient inspection determines whether $D=4f$ for an affine Boolean function $f$.
+Conditioning on $f(y)=\mu$ is then the same affine restriction used for $Z$ measurements, costing $O(n^3)$ time.
+
+For case~(2b), coefficient inspection first determines whether $D=2+4g$ for a quadratic Boolean function $g$.
+The compatibility criterion is that the alternating matrix of its quadratic part has rank at most two, which can be checked in $O(r^3)$ time.
+When this condition holds, binary elimination produces affine $\ell$ and linear $u,v$ such that
+\begin{align}
+    g(y)=\ell(y)\oplus u(y)v(y).
+\end{align}
+Here one may take $u=v=0$ when the quadratic part vanishes.
+Using
+\begin{align}
+    2g=2\ell+2uv-4\ell uv\pmod 8,
+\end{align}
+we can construct the weighted coefficients of $2g$ in $O(r^3)$ time.
+For the term $2uv$, only the linear and quadratic parts of the parity expansions of $u$ and $v$ contribute modulo $8$.
+For the term $4\ell uv$, it suffices to multiply the affine forms over $\mathbb{F}_2$.
+Thus the conditional phase
+\begin{align}
+    p'=p-2(-1)^\mu g
+\end{align}
+can be constructed within the same bound.
+
+For case~(2c), let $d=D(0)$.
+If $d$ is odd, the linear coefficients of $D$ determine the only possible affine Boolean function $h$ with $h(0)=0$ satisfying
+\begin{align}
+    D(y)=d(-1)^{h(y)}.
+\end{align}
+Comparing coefficients verifies this identity in polynomial time bounded by $O(r^3)$.
+If it holds, expanding $h$ and forming
+\begin{align}
+    p'=p+(4\mu-d)h
+\end{align}
+also costs $O(r^3)$.
+If none of these cases applies, the measurement is incompatible.
+Consequently, compatibility checking and every compatible conditional-state update take $O(n^3)$ time.
+
+It remains to account for sampling measurement outcomes.
+The possible probabilities belong to the fixed set
+\begin{align}
+    \left\{0,\frac12,1,\frac{2-\sqrt2}{4},
+    \frac{2+\sqrt2}{4}\right\}.
+\end{align}
+The rational probabilities are sampled directly using fair random bits.
+For either irrational probability, compare a uniformly random binary expansion with successively refined rational bounds on that probability.
+After $k$ bits and bounds of precision $O(2^{-k})$, the probability that the comparison remains unresolved is $O(2^{-k})$.
+Since the bounds can be computed in time polynomial in $k$, this procedure has constant expected runtime.
+Combining outcome sampling with the updates above gives $O(n^3)$ expected time per operation and $O(mn^3)+T_{\mathrm{classical}}$ expected time for the circuit.
+
+We next establish the costs of queries on represented states.
+For a computational-basis amplitude, Gaussian elimination decides whether
+\begin{align}
+    By=x\oplus x_0
+\end{align}
+has a solution in $O(n^3)$ time.
+Since $B$ has full column rank, any solution is unique, and
+\begin{align}
+    \langle x|\psi\rangle
+    =
+    \begin{cases}
+        2^{-r/2}\omega_8^{p(y)}, & By=x\oplus x_0,\\
+        0, & x\notin x_0\oplus\operatorname{im}B.
+    \end{cases}
+\end{align}
+Evaluating $p(y)$ costs $O(r^3)$, proving the amplitude bound.
+For computational-basis sampling, choose $y$ uniformly in $\mathbb{F}_2^r$ and return $x_0\oplus By$.
+This costs $O(nr)=O(n^2)$ time.
+
+To compute a Pauli expectation, write
+\begin{align}
+    P=i^\kappa X(a)Z(b).
+\end{align}
+If $a\notin\operatorname{im}B$, the translated support is disjoint from the original support and the expectation is zero.
+Otherwise, solve $Bt=a$ and expand
+\begin{align}
+    \bra{\psi}P\ket{\psi}
+    =i^\kappa 2^{-r}
+    \sum_{y\in\mathbb{F}_2^r}
+    \omega_8^{p(y)-p(y\oplus t)
+    +4\langle b,x_0\oplus By\rangle}.
+    \label{eq:pauli-expectation-gauss-sum}
+\end{align}
+Constructing the exponent costs $O(n^3)$ by the translation procedure above.
+It is a Clifford phase polynomial, so the remaining sum is a quadratic Gauss sum over $\mathbb{Z}_4$.
+Reduction of the quadratic form by binary elimination evaluates this sum exactly in $O(r^3)$ time, giving the claimed $O(n^3)$ bound.
+The result can be retained exactly using a root of unity and a power of $\sqrt{2}$, including the possibility of zero.
+
+Finally, consider equality of two represented states.
+Gaussian elimination checks whether their affine supports coincide in $O(n^3)$ time.
+If they do not, the states are unequal.
+If they do, their support coordinates are related by an invertible affine transformation, which can also be found in $O(n^3)$ time.
+Decompose this transformation into $O(r^2)$ elementary affine substitutions and apply them to one phase polynomial.
+Since each substitution costs $O(r^2)$, expressing both phases in common coordinates costs $O(n^4)$ time.
+
+In these common coordinates, the states are equal up to global phase exactly when their phase difference is constant modulo $8$.
+Uniqueness of the multilinear polynomial representation over $\mathbb{Z}_8$ makes this equivalent to the vanishing of every nonconstant coefficient of the difference.
+Checking these coefficients costs $O(r^3)$, completing the $O(n^4)$ equality bound.
+\end{proof}

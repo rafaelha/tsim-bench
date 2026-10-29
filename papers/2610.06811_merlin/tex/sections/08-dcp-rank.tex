@@ -1,0 +1,94 @@
+% !TeX root = ../main.tex
+\section{Universal simulation}
+\label{sec:universal-simulation}
+
+To simulate circuits that leave the DCP state class, we represent the evolving state as a linear combination of DCP states. The analogous construction using Pauli stabilizer states is quantified by stabilizer rank.
+
+\begin{definition}[Stabiliser rank \cite{bravyi2016improved}]\label{def:stabilizer-rank}
+    The \emph{stabilizer rank} $\chi(\psi)$ of a state $\ket{\psi}$ is the smallest integer $\chi$ such that $\ket{\psi}$ can be written as a linear combination $\ket{\psi} = \sum_{i=1}^\chi c_i\ket{\varphi_i}$ of stabiliser states $\ket{\varphi_i}$ with complex coefficients $c_i$.
+\end{definition}
+
+The notion of stabiliser rank easily generalises to \emph{DCP rank}:
+
+\begin{definition}[DCP rank]\label{def:dcp-rank}
+    The \emph{DCP rank} $\zeta(\psi)$ of a state $\ket{\psi}$ is the smallest integer $\zeta$ such that $\ket{\psi}$ can be written as a linear combination $\ket{\psi} = \sum_{i=1}^\zeta c_i\ket{\varphi_i}$ of DCP states $\ket{\varphi_i}$ with complex coefficients $c_i$.
+\end{definition}
+
+Since stabiliser states are DCP states, we trivially have $\zeta(\psi) \leq \chi(\psi)$.
+Furthermore, if $\ket{\psi}$ is prepared by a $\CNOT+\T+\Hgate$ circuit with $h$ Hadamards, then we trivially have $\zeta(\psi) \leq 2^h$.
+This is because each Hadamard gate can be decomposed into $\Hgate = (X + Z) / \sqrt 2$, leaving only gates that preserve DCP states.
+In general, we expect $\zeta$ to scale exponentially, however there might be decomposition strategies that achieve better scaling than this naive approach.
+We leave it to future work to investigate this question and improve upon the bounds given here.
+
+Given an explicit decomposition
+\begin{align}
+    \ket{\psi}=\sum_{j=1}^{R}c_j\ket{\phi_j}
+\end{align}
+into DCP states, we can compute any computational-basis amplitude by evaluating the amplitude of each term and summing the contributions.
+By \cref{thm:efficient-simulation}, this requires $O(n^3R)$ arithmetic operations.
+Here $R$ denotes the number of terms in the supplied decomposition, which need not achieve the minimum DCP rank $\zeta(\psi)$.
+The cost of constructing the decomposition must also be accounted for.
+Throughout, the global-phase convention of each DCP term must be tracked consistently with its coefficient $c_j$.
+Weak simulation, that is, sampling computational-basis outcomes, requires an additional argument.
+Computing marginal probabilities directly introduces $R^2$ cross terms involving overlaps of projected DCP states, which our polynomial-time algorithms do not generally evaluate.
+Several approaches have been proposed in the stabilizer-decomposition literature to avoid or mitigate analogous difficulties.
+For example, Refs.~\cite{bravyi2016improved, bravyi2019simulation} approximate marginal probabilities via a norm estimation technique based on overlaps with carefully chosen random stabiliser states.
+Ref.~\cite{bravyi2019simulation} also proposed a Metropolis-Hastings Markov Chain Monte Carlo method for approximate sampling.
+Finally, Bravyi and Liu \cite{bravyi2022how} introduced the \emph{gate-by-gate} algorithm for exact sampling without computing marginals.
+The gate-by-gate algorithm applies directly because it requires only computational-basis amplitudes of circuit prefixes.
+We describe this construction below.
+
+Suppose $\ket{\psi} = C\ket{0}$ is prepared by some $\CNOT+\T+\Hgate$ circuit $C = U_m \cdots U_1$ made up of gates $U_i$.
+Our goal is to sample from the distribution $P(x) := |\bra{x}C\ket{0}|^2$.
+Let $C_k = U_k \cdots U_1$ be the subcircuit containing only the first $k$ gates and define the output distribution at time step $k$ as $P_k(x) := |\bra{x}C_k\ket{0}|^2$.
+The idea behind gate-by-gate sampling is to start with a sample from the trivial distribution $P_0$ (i.e. the all-zero bitstring) and update it one gate at a time until we arrive at a sample that is distributed according to $P_m = P$.
+This is because adjacent distributions $P_{k-1}$ and $P_k$ are closely related since they only differ by a single gate $U_k$.
+Suppose $U_k$ is a $\T$ gate on qubit $i$, then
+\[ P_k(x) = |\bra{x}\T_iC_{k-1}\ket{0}|^2 = |\bra{x}C_{k-1}\ket{0}|^2 = P_{k-1}(x), \]
+i.e. the distribution stays the same.
+For a $\CNOT$ between qubits $i$ and $j$ we have
+\begin{align}
+    \begin{split}
+        P_k(x) &= |\bra{x}\CNOT_{ij}C_{k-1}\ket{0}|^2 \\
+        &= |\bra{x \oplus x_ie_j}C_{k-1}\ket{0}|^2 \\
+        &= P_{k-1}(x \oplus x_ie_j),
+    \end{split}
+\end{align}
+so a sample $x \sim P_{k-1}$ can be updated to $x' := x \oplus x_ie_j \sim P_k$.
+Applying a Hadamard on the other hand will require some more work.
+Without loss of generality, suppose $U_k$ is a Hadamard on the first qubit.
+Writing $y=(x_2,\ldots,x_n)$, we have
+\begin{align}
+    P_k(x_1,y)
+    &=P_k(x_1\mid y)P_k(y)\\
+    &=P_k(x_1\mid y)P_{k-1}(y)\\
+    &=\frac{P_k(x_1,y)}{P_k(0,y)+P_k(1,y)}P_{k-1}(y),
+\end{align}
+whenever $P_{k-1}(y)>0$.
+Here $P_k(y)=P_{k-1}(y)$ because the Hadamard acts only on the first qubit.
+
+Thus, given a sample $(x_1,y)\sim P_{k-1}$, we retain $y$ and draw a new first bit according to
+\begin{align}
+    \Pr(x'_1=b\mid y)
+    =\frac{P_k(b,y)}{P_k(0,y)+P_k(1,y)},
+    \qquad b\in\{0,1\}.
+\end{align}
+The denominator is positive for every $y$ sampled with nonzero probability.
+Each Hadamard therefore requires two computational-basis amplitude evaluations, whose squared magnitudes give the required probabilities.
+A circuit containing $h$ Hadamards consequently requires $2h$ such evaluations.
+Let $R_j$ be the number of terms in a DCP decomposition of the state immediately after the $j$th Hadamard.
+Excluding the cost of constructing these decompositions and sampling from the resulting probabilities, the amplitude evaluations required for one sample take
+\begin{align}
+    O\left(n^3\sum_{j=1}^{h}R_j\right)
+\end{align}
+arithmetic operations.
+When using the previously discussed decomposition $H=(X+Z)/\sqrt{2}$, we get $R_j := 2^j$ such that
+\begin{align}
+    \sum_{j=1}^{h}R_j
+    =\sum_{j=1}^{h}2^j
+    =2^{h+1}-2
+    = O(R_h).
+\end{align}
+In other words, the cost of all intermediate amplitude evaluations is asymptotically dominated by the cost of evaluating the final state with $R_h$ terms.
+This means that gate-by-gate sampling matches the complexity of strong simulation in that setting.
+The same conclusion holds for any decomposition strategy whose prefix term counts satisfy $\sum_{j=1}^{h}R_j=O(R_h)$.

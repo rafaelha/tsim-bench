@@ -1,0 +1,24 @@
+\section{Discussion}
+\label{sec:discussion}
+
+We have developed an exact polynomial-time simulation framework for a broad class of non-Clifford circuits, with no restriction on the number of logical qubits or non-Clifford gates.
+It rests on two equivalent descriptions: third-order phase-polynomial states, specified by affine supports and polynomial phases, and DCP stabilizer states, which extend the stabilizer picture beyond Pauli operators and yield a tableau-based simulator.
+We characterize precisely which Pauli measurements preserve this state class and provide efficient tests and update rules supporting intermediate measurements and classical feedforward.
+
+For quantum error correction, a simple condition on the ideal circuit guarantees compatibility under arbitrary inserted DCP faults: each ideal $X$ measurement must either be deterministic or anticommute with a fixed $Z$-type constraint.
+This remains sufficient even when noise makes deterministic outcomes random, establishing efficient simulation for protocols involving magic state preparation, non-Pauli checks, and CSS gauge fixing.
+
+Our open-source implementation, \texttt{merlin}~\cite{koch2026merlin}, makes this framework available for circuit-level simulation.
+Benchmarks show favorable runtime and memory scaling with the number of logical outputs in Bravyi-Haah distillation, and successful simulation of the distance-5 code switching circuit on which all other tested simulators exhaust memory or fail.
+On the other hand, existing methods currently achieve lower per-shot runtimes on the single-output distillation and cultivation examples.
+
+A natural next step is to use this framework to evaluate recent proposals for non-Clifford computation with quantum LDPC codes, including transversal gates, code switching, and high-rate magic state preparation, whenever their circuit implementations satisfy our compatibility conditions.
+Combined with suitable decoders, our simulator could enable direct comparisons of logical error rates, acceptance probabilities, and resource overheads at system sizes beyond the reach of existing methods.
+
+An important direction is to extend the range of supported measurement gadgets.
+Some magic state distillation protocols based on gate injection, such as the parity-checking constructions of Campbell and Howard~\cite{campbell2018magic}, fall outside the sufficient conditions of  \cref{thm:iterative-measurements} and therefore require a separate compatibility analysis.
+Extending our guarantees to cover these protocols would broaden the scope of the simulator.
+Another possibility is to describe states in a rotated local Clifford basis, potentially bringing Hadamard-based cultivation within the framework \cite{chamberland2020very,sahay2026foldtransversal}.
+Although such a basis change can map the Hadamard observable to a DCP operator, compatibility must also be established for the transformed preparations, gates, and measurements throughout the protocol.
+
+Finally, the DCP decompositions introduced here suggest a route to circuits that leave the 3PP state class: understanding which fault-tolerant protocols admit small DCP decompositions could extend the practical scope of the simulator beyond the polynomial-time regime established in this work.

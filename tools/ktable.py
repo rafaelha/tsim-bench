@@ -18,6 +18,9 @@ def cell(r, key):
     overflow = re.search(r"active width would reach (\d+)", error)
     if overflow:
         return f"≥{overflow.group(1)} (overflow)"
+    limit = re.search(r"needs (\d+) active qubits", error)
+    if limit:
+        return f"{limit.group(1)} (> limit 30)"
     return "error"
 
 

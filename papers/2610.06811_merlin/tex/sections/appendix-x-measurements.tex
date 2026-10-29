@@ -1,0 +1,315 @@
+% !TeX root = ../main.tex
+\section{Classification of compatible \texorpdfstring{$X$}{X} measurements}
+\label{appendix:x-measurements}
+
+This appendix proves the classification of compatible $X$ measurements and derives the corresponding outcome probabilities and post-measurement states.
+The proof separates measurements that enlarge the affine support from those acting within it, whose compatibility is determined by the discrete derivative of the phase polynomial.
+
+\begingroup
+\renewcommand{\label}[1]{}
+\begin{xmeasurementrestatement}
+    \xMeasurementClassificationStatement
+\end{xmeasurementrestatement}
+\endgroup
+\begin{proof}
+Let $\varepsilon := (-1)^\mu$ and consider the projector $\Pi_\varepsilon = \frac{1}{2}(1 + \varepsilon X_a)$.
+
+\begin{enumerate}
+
+\item
+First, suppose that $e_a \not\in V$.
+Then, $S$ and $S \oplus e_a$ are disjoint, such that
+\begin{align}
+    \Pi_\varepsilon \ket{\psi}
+    &= \frac{1}{2\sqrt{|S|}} \left( \sum_{x\in S} \omega_8^{q(x)}\ket{x} + \varepsilon\sum_{x\in S} \omega_8^{q(x)}\ket{x \oplus e_a} \right) \\
+    &= \frac{1}{2\sqrt{|S|}} \left( \sum_{x\in S} \omega_8^{q(x)}\ket{x} + \sum_{x\in S} \omega_8^{q(x) + 4\mu}\ket{x \oplus e_a} \right) \\
+    &= \frac{1}{2\sqrt{|S|}} \sum_{\substack{x\in S\\ k \in\mathbb F_2}} \omega_8^{q(x) + 4k\mu} \ket{x + ke_a},
+\end{align}
+which remains 3PP.
+The post-measurement state is given by $S'_\mu = S \cup (S \oplus e_a)$ and the unique phase polynomial $q'_\mu$ with $q'_\mu(x) = q(x)$ and $q'_\mu(x \oplus e_a) = q(x) + 4\mu$ for all $x \in S$.
+Furthermore, $Pr(\mu) = |\Pi_\varepsilon\ket{\psi}|^2 = \frac{|S'_\mu|}{4|S|}|\ket{\psi}|^2 = \frac{1}{2}$.
+
+\item
+Now, suppose $e_a \in V$.
+In that case,
+\begin{align}
+    \Pi_\varepsilon \ket{\psi}
+    &= \frac{1}{2\sqrt{|S|}} \left( \sum_{x\in S} \omega_8^{q(x)}\ket{x} + \varepsilon\sum_{x\in S} \omega_8^{q(x)}\ket{x \oplus e_a} \right) \\
+    &= \frac{1}{2\sqrt{|S|}} \left( \sum_{x\in S} \omega_8^{q(x)}\ket{x} + \varepsilon\sum_{x\in S} \omega_8^{q(x \oplus e_a)}\ket{x} \right) \\
+    &= \frac{1}{2\sqrt{|S|}} \sum_{x\in S} \omega_8^{q(x)} (1 + \varepsilon\omega_8^{\Delta_{e_a}q(x)}) \ket{x}  \label{eqn:projected-3pp}
+\end{align}
+An important property of 3PP states is that all basis states in their support have equal probability.
+In other words, a necessary condition for $\Pi_\varepsilon \ket{\psi}$ to remain 3PP is that  $|\bra{x}\Pi_\varepsilon \ket{\psi}| = |\bra{y}\Pi_\varepsilon \ket{\psi}|$ for all $x,y$ with $\bra{x}\Pi_\varepsilon \ket{\psi} \neq 0$ and $\bra{y}\Pi_\varepsilon \ket{\psi} \neq 0$.
+Following \cref{eqn:projected-3pp}, this is equivalent to
+\[
+    \left|1 + \varepsilon\omega_8^{\Delta_{e_a}q(x)}\right| = \left|1 + \varepsilon\omega_8^{\Delta_{e_a}q(y)}\right|
+\]
+for all $x,y$ with $1 + \varepsilon\omega_8^{\Delta_{e_a}q(x)} \neq 0$ and $1 + \varepsilon\omega_8^{\Delta_{e_a}q(y)} \neq 0$.
+Computing those magnitudes, we get:
+\begin{align*}
+    \left| 1 + \varepsilon\omega_8^{\Delta_{e_a}q(x)} \right| &=
+    \left| \omega_8^{\Delta_{e_a} q(x) / 2} \left( \omega_8^{-\Delta_{e_a} q(x) / 2} + \varepsilon\omega_8^{\Delta_{e_a} q(x) / 2} \right) \right| \\
+    &= \begin{cases}
+        2 \left| \cos \left(\dfrac{\Delta_{e_a} q(x) \pi}{8} \right) \right| & \text{if } \varepsilon = +1, \\
+        2 \left| \sin \left(\dfrac{\Delta_{e_a} q(x) \pi}{8} \right) \right| & \text{if } \varepsilon = -1.
+    \end{cases}
+\end{align*}
+For $\varepsilon = +1$, this means that the image of $\Delta_{e_a}q$ must be a subset of one of $\{0, 4\}, \{2,4,6\}, \{1,4,7\}$, or $\{3,4,5\}$.
+Similarly, for $\varepsilon = -1$ its image must be a subset of one of $\{0, 4\}, \{0,2,6\}, \{0,1,7\}$, or $\{0,3,5\}$.
+Since both conditions must hold simultaneously, compatibility requires
+\begin{align} \label{eqn:gradient-two-valued}
+    \operatorname{Im}(\Delta_{e_a}q)\subseteq D
+    \quad\text{for some}\quad
+    D\in\bigl\{\{0,4\},\{2,6\},\{1,7\},\{3,5\}\bigr\}.
+\end{align}
+We will discuss these cases separately:
+
+\begin{enumerate}
+
+\item
+Suppose $\Delta_{e_a} q(x) \in \{ 0, 4 \}$ for all $x \in S$, i.e. $\Delta_{e_a} q(x) = 4f(x)$ for some function $f : S \to \mathbb F_2$.
+Then,
+\[
+    1 + \varepsilon\omega_8^{E(x)}
+    = \begin{cases}
+        2 & \text{if } f(x) = \mu \\
+        0 & \text{otherwise}.
+    \end{cases}
+\]
+Inserting this into \cref{eqn:projected-3pp}, we see that basis states with $f(x) \neq \mu$ are removed from the support while the others are scaled by 2, giving us
+\[ \Pi_\varepsilon\ket{\psi} = \frac{1}{\sqrt{|S|}} \sum_{\substack{x \in S \\ f(x) = \mu}} \omega_8^{q(x)} \ket{x}. \]
+This state remains 3PP for both outcomes $\mu = 0,1$ simultaneously iff $f$ is affine.
+In this case, we can read off that $S'_\mu = S \cap \{ x ~|~ f(x) = \mu \}$ and $q'_\mu = q$.
+Furthermore, $Pr(\mu) = |\Pi_\varepsilon\ket{\psi}|^2 = \frac{|S'_\mu|}{|S|}|\ket{\psi}|^2 = \frac{|S'_\mu|}{|S|}$.
+Since $S$ and $S'_\mu$ are affine spaces differing by a single constraint, this ratio must be either 0, 1, or $\frac{1}{2}$ depending on whether $f(x) = \mu$ holds for none, all, or some $x \in S$.
+
+
+\item
+Suppose $\Delta_{e_a}q(x) \in \{2, 6\}$ for all $x \in S$, i.e. $\Delta_{e_a}q(x) = 2 + 4g(x) \pmod 8$ for some function $g: S \to \mathbb F_2$.
+Then,
+\[
+    1 + \varepsilon\omega_8^{\Delta_{e_a}q(x)}
+    = 1 + i\varepsilon(-1)^{g(x)}
+    = \sqrt 2 \omega_8^{\varepsilon(-1)^{g(x)}}
+    = \sqrt 2 \omega_8^{\varepsilon(1 - 2g(x))},
+\]
+where we used the identities $1+s i = \sqrt{2} e^{is\pi/4}$ for $s \in \{-1,1\}$ and  $(-1)^m = 1 - 2m$ for $m \in \{0,1\}$.
+Inserting this into \cref{eqn:projected-3pp}, we get the projected state
+\[ \Pi_\varepsilon \ket{\psi} = \frac{\sqrt 2 \omega_8^\varepsilon}{2\sqrt{|S|}} \sum_{x \in S} \omega_8^{q(x) - 2\varepsilon g(x)} \ket{x} \]
+which remains 3PP iff $2g$ is a valid third-order phase polynomial.
+In this case, we can read off that $S' = S$ and $q'(x) = q(x) - 2\varepsilon g(x)$.
+Furthermore, $Pr(\mu) = |\Pi_\varepsilon\ket{\psi}|^2 = \frac{1}{2}|\ket{\psi}|^2 = \frac{1}{2}$.
+
+
+\item
+Suppose $\Delta_{e_a}q(x) \in \{ d, -d \}$ for all $x \in S$ where $d \in \{ 1, 3, 5, 7 \}$, i.e. $\Delta_{e_a}q(x) = (-1)^{h(x)}d \pmod 8$ for some function $h: S \to \mathbb F_2$.
+Then,
+\begin{align*}
+    1 + \varepsilon\omega_8^{\Delta_{e_a}q(x)}
+    &= (1 + \varepsilon\omega_8^d) \left(\frac{1 + \varepsilon\omega_8^{(-1)^{h(x)} d}}{1 + \varepsilon\omega_8^{(-1)^{h(x) + 1} d}}\right)^{h(x)} \\
+    &= (1 + \varepsilon\omega_8^d) (\varepsilon\omega_8^{-d})^{h(x)} \\
+    &= (1 + \varepsilon\omega_8^d) \omega_8^{(4\mu - d)h(x)}.
+\end{align*}
+Inserting this into \cref{eqn:projected-3pp}, we get the projected state
+\[ \Pi_\varepsilon \ket{\psi} = \frac{1 + \varepsilon\omega_8^d}{2\sqrt{|S|}} \sum_{x \in S} \omega_8^{q(x) + (4\mu - d)h(x)} \ket{x}. \]
+We claim that this state remains 3PP iff $h$ is affine over $\mathbb F_2$.
+First, suppose $h$ is affine over $\mathbb F_2$, i.e. $h(x) = a_0 \oplus \left(\bigoplus_i a_i x_i\right)$ for some $a_0,a_i \in \mathbb F_2$. Writing $a=(a_i)_i$, we have
+\[
+    h(x) = a_0 \oplus \langle a,x\rangle
+    = a_0 + (1-2a_0)\langle a,x\rangle \pmod 8.
+\]
+Thus, $h$ has the form of \cref{eq:phase-polynomial-sum-parities}, and hence $q'_\mu=q+(4\mu-d)h$ is a third-order phase polynomial.
+Conversely, note that
+\[ h(x) = (4\mu - d)^{-1}(q'_\mu(x) - q(x)) \pmod 2. \]
+Thus, if $q'_\mu$ is a 3PP phase polynomial, then $(4\mu - d)^{-1}(q'_\mu - q)$ must also be one.
+Reducing mod 2 removes all quadratic and cubic terms, showing that $h$ is affine over $\mathbb F_2$.
+If the measurement is compatible, we can furthermore read off that $S'_\mu = S$ and
+\[ Pr(\mu) = |\Pi_\varepsilon\ket{\psi}|^2 = \left|\frac{1 + \varepsilon\omega_8^d}{2}\right|^2 |\ket{\psi}|^2 = \frac{1}{2}(1 + \varepsilon\cos(d\pi/4)). \]
+
+\end{enumerate}
+
+In any other case, the measurement cannot be compatible as established in \cref{eqn:gradient-two-valued}. \qedhere
+
+\end{enumerate}
+\end{proof}
+
+The measurement classification in \cref{thm:x-measurements} depends on the derivative $\Delta_{e_a}q$ of the phase polynomial in the direction of the measured qubit.
+Remember that, by \cref{prop:derivative-from-E},  we can directly construct this derivative from the DCP stabilizer group of $\ket{\psi}$ without having to explicitly track the phase polynomial itself.
+
+More precisely, let $\ket{\psi}$ be a 3PP state with phase polynomial $q$ and DCP stabilizer group $G$. Suppose $e_a \in X(G)$ and choose an element $g \in G$ with $\pi(g) = e_a$.
+
+Write $g=X_a\delta$, where $\delta=\omega_8^kD(s,M)$ is diagonal.
+The stabilizer equation $g\ket{\psi}=\ket{\psi}$ gives
+\begin{align}
+    \Delta_{e_a}q(x)
+    =k+2\sum_i s_i x_i+4\sum_{i<j}M_{ij}x_ix_j
+    \pmod 8
+\end{align}
+for every $x\in S$.
+Thus, we can extract $\Delta_{e_a} q$ directly from the normal form of the DCP stabilizer element $g$.
+Furthermore, given $\Delta_{e_a} q$, we can distinguish the different cases of \cref{thm:x-measurements} efficiently.
+To this end, Let $S=x_0\oplus V$, and let $v^{(1)},\ldots,v^{(r)}$ be a basis of $V$.
+Define the restricted derivative
+\begin{align}
+    \widetilde D(c)
+    :=\Delta_{e_a}q\left(x_0\oplus\bigoplus_{i=1}^r c_i v^{(i)}\right),
+    \qquad c\in\mathbb F_2^r.
+\end{align}
+By affine pullback, this is a Clifford phase polynomial, which we write as
+\begin{align}
+    \widetilde D(c)
+    =\tilde k+2\sum_i\tilde s_i c_i
+    +4\sum_{i<j}\tilde M_{ij}c_ic_j
+    \pmod 8,
+\end{align}
+where $\tilde k\in\mathbb Z_8$, $\tilde s_i\in\mathbb Z_4$, and $\tilde M$ is symmetric over $\mathbb F_2$ with zero diagonal.
+
+\begin{proposition}\label{prop:x-measurement-case-decision}
+    The different cases of \cref{thm:x-measurements} can be decided based on $\tilde k$, $\tilde s$, and $\tilde M$:
+    \begin{enumerate}
+        \item
+        Case \ref{thm:x-measurements:even-0-4} applies iff $\tilde k \in \{0, 4\}$, $\tilde s_i \in \{0, 2\}$, and $\tilde M_{ij} = 0$.
+
+        \item
+        Case \ref{thm:x-measurements:even-2-6} applies iff $\tilde k \in \{2, 6\}$, $\tilde s_i \in \{0, 2\}$, and $\rank \tilde M \leq 2$.
+
+        \item
+        Case \ref{thm:x-measurements:odd} applies iff $\tilde k$ is odd,
+        $\tilde s_i\in\{0,-\tilde k\}\pmod 4$ for every $i$, and
+        $\tilde M_{ij}=\tilde s_i\tilde s_j\pmod 2$ for every $i<j$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+We begin by giving explicit representations for $\tilde k, \tilde s_i$, and  $\tilde M_{ij}$ in terms of $\Delta_{e_a} q$.
+Concretely, noting that $\widetilde D(0) = \tilde k$, $\widetilde D(e_i) = \tilde k + 2\tilde s_i$, and $\widetilde D(e_i \oplus e_j) = \tilde k + 2\tilde s_i + 2\tilde s_j + 4\tilde M_{ij}$, we have
+\begin{align}
+    \tilde k &= \Delta_{e_a}q(x_0) \pmod 8 \label{eqn:k-tilde} \\
+    2\tilde s_i &= \Delta_{e_a}q(x_0 \oplus v^{(i)}) - \Delta_{e_a}q(x_0) \pmod 8 \label{eqn:s-tilde} \\
+    4\tilde M_{ij} &= \Delta_{e_a}q(x_0 \oplus v^{(i)} \oplus v^{(j)}) - \Delta_{e_a}q(x_0 \oplus v^{(i)}) - \Delta_{e_a}q(x_0 \oplus v^{(j)}) + \Delta_{e_a}q(x_0) \pmod 8 \label{eqn:M-tilde}.
+\end{align}
+In other words $2\tilde s_i = \Delta_{v^{(i)}}\Delta_{e_a}q(x_0)$ and $4\tilde M_{ij} = \Delta_{v^{(i)}}\Delta_{v^{(j)}}\Delta_{e_a}q(x_0)$ are the first and second discrete derivatives of $\Delta_{e_a}q$ at $x_0$ in the directions of $V$'s basis vectors.
+Furthermore, we note the following facts about arithmetic over Boolean variables $a_i \in \mathbb F_2$ modulo 8:
+\begin{align}
+    2\bigoplus a_i &= 2\sum_i a_i - 4\sum_{i<j} a_ia_j \pmod 8 \label{eqn:2-xor} \\
+    4\bigoplus a_i &= 4\sum_{i} a_i \pmod 8 \label{eqn:4-xor}
+\end{align}
+We consider each case separately:
+\begin{enumerate}
+\item
+First, suppose that $\Delta_{e_a}\tilde q(c) = 4f(c) \pmod 8$ for some affine function $f: \mathbb F_2^r \to \mathbb F_2$. Write $f(c) = \bigoplus_i f_ic_i \oplus f_0$.
+Using \cref{eqn:4-xor}, we see that $\Delta_{e_a}\tilde q(c) = 4f_0 + 4\sum_i f_ic_i \pmod 8$.
+We can read off that $\tilde k := 4f_0 \in \{0, 4\}$, $2\tilde s_i := 4f_i$ is even and $\tilde M_{ij} = 0$ since there are no quadratic terms.
+
+Conversely, suppose $\tilde k \in \{0,4\}$, $\tilde s_i \in \{0,2\}$, and $\tilde M_{ij} = 0$.
+Then $f(c) := \left(\bigoplus_i \frac{s_i}{2}c_i\right) \oplus \frac{k}{4}$ is affine and $\widetilde D(c) = 4f(c)$ such that case \ref{thm:x-measurements:even-0-4} applies.
+
+\item
+Suppose $\Delta_{e_a}\tilde q(c) = 2 + 4g(c) \pmod 8$ for some function $g: \mathbb F_2^r \to \mathbb F_2$ such that $2g$ is a 3PP phase polynomial.
+Evaluating equations \eqref{eqn:k-tilde} and \eqref{eqn:s-tilde}, we get
+\begin{align*}
+    \tilde k &= \Delta_{e_a}\tilde q(0) = 2 + 4g(0) \pmod 8 \\
+    2\tilde s_i &= \Delta_{e_a}\tilde q(e_i) - \Delta_{e_a}\tilde q(0) = 4(g(e_i) - g(0)) \pmod 8
+\end{align*}
+showing that $\tilde k \in \{2,6\}$ and that all $\tilde s_i$ are even.
+Then
+\begin{align*}
+    4g(c)
+    = \Delta_{e_a}\tilde q(c) - 2
+    = \tilde k - 2 + 2\sum_i \tilde s_ic_i + 4\sum_{i<j} \tilde M_{ij}c_ic_j \pmod 8
+\end{align*}
+Using \cref{eqn:4-xor}, we conclude that
+\begin{equation} \label{eqn:g-quadratic}
+    g(c) = \frac{\tilde k - 2}{4} \oplus \left(\bigoplus_i \frac{\tilde s_i}{2}c_i\right) \oplus \left(\bigoplus_{i<j} \tilde M_{ij}c_ic_j\right).
+\end{equation}
+In other words, $g$ must be a quadratic Boolean function.
+Therefore, $\rank \tilde M \leq 2$ by Lemma~\ref{lem:3pp-rank}.
+
+Conversely, suppose $\tilde k \in \{2, 6\}$, $\tilde s_i \in \{0, 2\}$, and $\rank\tilde M \leq 2$.
+Define $g$ by \cref{eqn:g-quadratic} and use \cref{eqn:4-xor} to show
+\begin{align}
+    2+4g(c)
+    =\tilde k+2\sum_i\tilde s_i c_i
+    +4\sum_{i<j}\tilde M_{ij}c_ic_j
+    =\widetilde D(c)
+    \pmod 8.
+\end{align}
+By Lemma~\ref{lem:3pp-rank}, $2g$ is a 3PP phase polynomial such that case \ref{thm:x-measurements:even-2-6} applies.
+
+
+\item
+Suppose first that case \ref{thm:x-measurements:odd} applies.
+By absorbing the constant term of the affine function into the sign of $d$, we may write
+\begin{align}
+    \widetilde D(c)=\tilde k(-1)^{h(c)},
+    \qquad
+    h(c)=\bigoplus_i h_i c_i,
+\end{align}
+where $\tilde k$ is odd and $h_i\in\mathbb F_2$.
+Expanding the parity modulo $8$ gives
+\begin{align}
+    \widetilde D(c)
+    &=\tilde k-2\tilde k\sum_i h_i c_i
+    +4\tilde k\sum_{i<j}h_ih_jc_ic_j
+    \pmod 8.
+\end{align}
+Comparing coefficients yields
+\begin{align}
+    \tilde s_i&=-\tilde k h_i\pmod 4,\\
+    \tilde M_{ij}&=h_ih_j\pmod 2.
+\end{align}
+Since $\tilde k$ is odd, we also have $h_i=\tilde s_i\pmod 2$, proving the stated conditions.
+
+Conversely, suppose those conditions hold.
+Define $h_i:=\tilde s_i\pmod 2\in\mathbb F_2$ and $h(c):=\bigoplus_i h_ic_i$.
+The condition $\tilde s_i\in\{0,-\tilde k\}\pmod 4$ implies $\tilde s_i=-\tilde k h_i\pmod 4$, while the quadratic condition gives $\tilde M_{ij}=h_ih_j\pmod 2$.
+Therefore,
+\begin{align}
+    \tilde k(-1)^{h(c)}
+    &=\tilde k-2\tilde k\sum_i h_i c_i
+    +4\tilde k\sum_{i<j}h_ih_jc_ic_j\\
+    &=\tilde k+2\sum_i\tilde s_i c_i
+    +4\sum_{i<j}\tilde M_{ij}c_ic_j\\
+    &=\widetilde D(c)\pmod 8.
+\end{align}
+Thus case \ref{thm:x-measurements:odd} applies.
+\qedhere
+\end{enumerate}
+\end{proof}
+
+
+\begin{lemma} \label{lem:3pp-rank}
+    Let $g: \mathbb F_2^n \to \mathbb F_2$ be a quadratic Boolean function given by a bilinear form
+    \[ g(x) = g_0 \oplus \left( \bigoplus_i a_i x_i \right) \oplus \left( \bigoplus_{i<j} M_{ij}x_ix_j \right) \]
+    with $g_0 \in \mathbb F_2, a\in\mathbb F_2^n, M \in \mathbb F_2^{n\times n}$ where $M$ is symmetric with zero diagonal.
+    Then $2g$ is a 3PP phase polynomial iff $\rank M \leq 2$.
+\end{lemma}
+\begin{proof}
+We first put the quadratic part into canonical coordinates, then determine when the weighted polynomial for $2g$ contains quartic terms.
+Since $M$ is symmetric with zero diagonal, its rank is even, say $\operatorname{rank}M=2t$.
+An invertible linear change of coordinates puts $g$ into the form
+\begin{align}
+    \hat g(z)
+    =\ell(z)\oplus\bigoplus_{i=1}^t z_{2i-1}z_{2i},
+    \qquad z\in\mathbb F_2^n,
+\end{align}
+where $\ell$ is affine and may depend on all $n$ variables.
+By affine pullback in both directions, $2g$ is a third-order phase polynomial iff $2\hat g$ is one.
+
+Expanding the XOR modulo $8$ gives
+\begin{align}
+    2\hat g(z)
+    &=2\ell(z)+2\sum_{i=1}^t z_{2i-1}z_{2i}
+    -4\sum_{i=1}^t\ell(z)z_{2i-1}z_{2i}\\
+    &\quad-4\sum_{i<j}z_{2i-1}z_{2i}z_{2j-1}z_{2j}
+    \pmod 8.
+\end{align}
+The first term is a third-order phase polynomial because $\ell$ is affine.
+The second term has quadratic coefficients divisible by $2$.
+In the third term, the prefactor $4$ allows us to expand $\ell$ over $\mathbb F_2$, so this term has degree at most three and all coefficients are divisible by $4$.
+Thus, when $t\leq 1$, every term has the required weighted form.
+
+If $t\geq 2$, the last sum contains $z_1z_2z_3z_4$ with coefficient $4$ modulo $8$.
+None of the other terms has degree four, so this coefficient cannot cancel.
+By uniqueness of the multilinear polynomial representation modulo $8$, $2\hat g$ is then not a third-order phase polynomial.
+Consequently, $2g$ is a third-order phase polynomial iff $t\leq 1$, equivalently $\operatorname{rank}M\leq 2$.
+\end{proof}
