@@ -1,0 +1,164 @@
+\section{High-rate qLDPC codes}
+\label{app:high-rate-qLDPC-codes}
+
+In this section, we give the definitions of the qLDPC codes used in this work.
+
+\paragraph{Bivariate Bicycle (BB) codes}
+The construction of BB codes~\cite{bravyi_high-threshold_2024,yoder_tour_2025} begins with the $\ell\times\ell$ cyclic shift matrix $S_\ell$, where the $i$-th row contains a single nonzero entry in column $(i+1) \bmod \ell$.
+For example, $S_3$ is given by:
+\begin{equation}
+    S_3 = \begin{pmatrix}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        1 & 0 & 0
+    \end{pmatrix}.
+\end{equation}
+We define two generator matrices $x = S_\ell \otimes I_m$ and $y = I_\ell \otimes S_m$, where $\otimes$ denotes the Kronecker product.
+These generators satisfy $x^{\ell} = y^{m} = I_{\ell m}$, and any monomial $x^p y^q$ (for $0 \leq p < \ell$ and $0 \leq q < m$) corresponds to the matrix $S_\ell^p \otimes S_m^q$, allowing us to treat monomials and matrices interchangeably.
+We define the transpose of $x^p y^q$ to be $(x^p y^q)^\top = x^{\ell -p} y^{m - q} = x^{-p} y^{-q}$.
+
+A BB code is parameterized by two polynomials $A$ and $B$, each expressed as a sum of three distinct monomials:
+\begin{equation}
+    A = A_1 + A_2 + A_3, \quad B = B_1 + B_2 + B_3,
+\end{equation}
+where each $A_i$ and $B_i$ is a distinct monomial of the form $x^p y^q$.
+The parity-check matrices for the $X$ and $Z$ stabilizers are then constructed as:
+\begin{equation}
+H_X = [A|B], \quad H_Z = [B^\top|A^\top],
+\end{equation}
+where $H_X$ and $H_Z$ are $n/2 \times n$ matrices with $n = 2 \ell m$ qubits.
+
+A widely known example of BB codes is the $[[144,12,12]]$ code,
+which is defined by $ \ell = 12 $, $ m = 6 $, and the polynomials:
+\begin{equation}
+    A=1+y+x^{3} y^{-1}, \quad B=1+x+x^{-1} y^{-3}.
+\end{equation}
+% We use the logical representatives following Ref.~\cite[Eqs. (31)--(34)]{yoder_tour_2025} and syndrome extraction circuit in Ref.~\cite{bravyi_high-threshold_2024}.
+We use the logical Pauli representatives~\cite[Sec.~A.1]{yoder_tour_2025}
+that has undergone a series of optimizations~\cite{bravyi_high-threshold_2024,
+cross_improved_2024,williamson_low-overhead_2024,yoder_tour_2025}
+targeting logical operations with low-overhead ancilla system.
+Fortunately, such representatives are also friendly to injection,
+where overlaps are intentionally designed to be limited,
+and the weight of the logical Pauli representatives is exactly $ d=12 $.
+
+\paragraph{Hypergraph Product (HGP) Codes}
+
+We also inject on the $[[225,9,4]]$ HGP code 
+from~\cite{xu_constant-overhead_2023} to demonstrate the generality of our scheme.
+Such family of HGP codes are constructed as the product of classical LDPC codes defined by $(3,4)$-regular Tanner graphs, and have good circuit-level performance with constant overhead~\cite{xu_constant-overhead_2023},
+and fast, parallelizable logical computation~\cite{xu_fast_2024}.
+
+Denote the parity check matrices of the two codes as $H_1$ and $H_2$, with shape $ r_i \times n_i $ respectively.
+The parity check matrix of the HGP code is given by:
+
+\begin{equation}
+    \begin{aligned}
+    & H_X=\left(\begin{array}{ll}
+    H_1 \otimes I_{n_2} & I_{r_1} \otimes H_2^\top
+    \end{array}\right) \\
+    & H_Z=\left(\begin{array}{ll}
+    I_{n_1} \otimes H_2 & H_1^\top \otimes I_{r_2}
+    \end{array}\right),
+    \end{aligned}
+\end{equation}
+where $ I_{m} $ is the $ m $-dimensional identity matrix.
+
+The standard logical Pauli representatives construction for QEC codes~\cite[Sec.~4.1]{gottesman_stabilizer_1997}
+don't guarantee short-weight logical Pauli representatives for all the logical qubits.
+For HGP codes, we construct the logical Pauli representatives with shorter weight than the generic construction.
+We use the syndrome extraction circuit in Ref.~\cite{xu_constant-overhead_2023}.
+
+\section{Maximal injectable sets}
+\label{sec:maximal-injectable-sets}
+
+An index set $\cI \subseteq [k]$ is injectable under injection sites
+$\bm Q=\{Q_1,\dots,Q_k\}$ with $Q_i\in O_i$ if it satisfies
+injection site independence (\Cref{def:injection-site-independence})
+and compatible pairing (\Cref{def:generic-compatible}).
+
+We compute injectable sets by enumerating injection-site choices and then checking subset feasibility:
+\begin{enumerate}
+\item Enumerate the Cartesian product $\prod_i O_i$ to obtain candidate $\bm Q$.
+
+\item For fixed $\bm Q$, build a graph on vertices $\{1,\dots,k\}$, where edge $(i,j)$ means $i,j$ cannot be injected together because injection site independence is violated.
+Any injectable set must be an independent set in this graph.
+Compute all maximal independent sets (MISs) as candidates.
+
+\item For each MIS candidate, enumerate subsets and test compatible pairing using signatures.
+For each physical qubit $q$ in any $C_{i,j}$ (defined in \Cref{eq:unified-Cij}), define its signature
+\begin{equation}
+\sigma(q) \;:=\; \bigl(\mathbf 1[q\in C_{i,j}]\bigr)_{i,j\in\cI}.
+\label{eq:signature-def}
+\end{equation}
+Compatible pairing exists iff every signature class $\{q:\sigma(q)=s\}$ has even cardinality.
+Within each signature class, any disjoint pairing is valid.
+\end{enumerate}
+
+\section{Noise model}
+
+The noise model we used in this work is the same as the noise model in~\cite{li_magic_2015,lao_magic_2022}, as shown in \Cref{tab:li_noise_channels,tab:li_noise_model}.
+
+\begin{table}[t]
+    \centering
+    % \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{c|l}
+    \toprule
+    \textbf{Noise channel} & \textbf{Definition} \\
+    \midrule
+    $\mathrm{MERR}(p)$ &
+    $m \mapsto m\oplus e,\ \ e\sim \mathrm{Bernoulli}(p)$ \\
+    % \hline
+    $\mathrm{XERR}(p)$ &
+    $\rho \mapsto (1-p)\rho + p\,X\rho X$ \\
+    % \hline
+    $\mathrm{ZERR}(p)$ &
+    $\rho \mapsto (1-p)\rho + p\,Z\rho Z$ \\
+    % \hline
+    $\mathrm{DEP1}(p)$ &
+    $\rho \mapsto (1-p)\rho + \frac{p}{3}\sum_{P\in\{X,Y,Z\}} P\rho P$ \\
+    % \hline
+    $\mathrm{DEP2}(p)$ &
+    $\rho \mapsto (1-p)\rho + \frac{p}{15}\!\!\sum_{P\in\{I,X,Y,Z\}^{\otimes2}\setminus\{II\}}\!\! P\rho P$ \\
+    % \hline
+    \bottomrule
+\end{tabular}
+\caption{Definitions of the noise channels.}
+\label{tab:li_noise_channels}
+\end{table}
+
+ 
+\begin{table}[t]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{l|l}
+\toprule
+\textbf{Ideal operation} & \textbf{Noisy operation} \\
+\midrule
+% \hline
+$R_X$ (prepare ${+}1$ eigenstate of $X$)
+& $R_X \circ \mathrm{ZERR}(p_{\rm IN})$ \\
+$R_Y$ (prepare ${+}1$ eigenstate of $Y$)
+& $R_Y \circ \mathrm{XERR}(p_{\rm IN})$ \\
+$R_Z$ (prepare ${+}1$ eigenstate of $Z$)
+& $R_Z \circ \mathrm{XERR}(p_{\rm IN})$ \\
+% \hline
+$M_Z$ (measure $Z$)
+& $M_Z \circ \mathrm{MERR}(p_{\rm M})$ \\
+% \hline
+$M_X$ (measure $X$)
+& $M_X \circ \mathrm{MERR}(p_{\rm M})$ \\
+% \hline
+$U_1$ (any single-qubit unitary)
+& $U_1 \circ \mathrm{DEP1}(p_{\rm 1Q})$ \\
+% \hline
+$U_2$ (any two-qubit unitary)
+& $U_2 \circ \mathrm{DEP2}(p_{\rm 2Q})$ \\
+$\text{IDLE}$ (idle)
+& $\text{IDLE} \circ \mathrm{DEP1}(p_{\rm IDLE})$ \\
+% \hline
+\bottomrule
+\end{tabular}
+\caption{The noise model we used in this work, the same as circuit-level noise model in~\cite{li_magic_2015,lao_magic_2022}. The notation $G \circ \mathcal{E}$ indicates that the ideal operation $G$ is \emph{followed} by the noise channel $\mathcal{E}$.}
+\label{tab:li_noise_model}
+\end{table}

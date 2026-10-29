@@ -1,0 +1,143 @@
+\section{General k-injection details}
+\label{app:k-injection-details}
+
+In this section, we give the stabilizer-cleaning construction used in \Cref{sec:k-injection} and explain why it preserves the encoded logical information.
+
+\subsection{Logical representatives reduction}
+We describe a recursive algorithm for transforming the logical representatives to a set of $ k $ physical qubits.
+Let
+\begin{equation}
+\mathcal{L} := \{ \bar{X}_i, \bar{Z}_i \}_{i=1}^{k}
+\label{eq:tomas-current-logical-basis}
+\end{equation}
+be the current logical representatives, and let $\mathcal{S}$ be the current stabilizer generator
+set.
+
+The recursive reduction is as follows. Given a non-trivial stabilizer group, 
+% that is one where there must exist at least one stabilizer of weight greater than 1, 
+do the following:
+\begin{enumerate}
+    \item Pick a stabilizer $s \in \mathcal{S}$ with $\operatorname{wt}(s) > 1$.
+    \item Measure a single-qubit Pauli $P_j$ that anticommutes with $s$ on a qubit $j \in \operatorname{supp}(s)$, i.e.,
+    \begin{equation}
+    \{ P_j, s \} = 0;
+    \label{eq:tomas-step-anticommute}
+    \end{equation} denote the measurement outcome by $m \in \{ \pm 1 \}$.
+    \item Replace $s \in \mathcal{S}$ by the measured $P_j$.
+    \item Update any remaining stabilizers and logical representatives that
+    anticommute with $P_j$ by multiplying them by the replaced stabilizer $s$.
+\end{enumerate}
+
+To write this explicitly, let
+\begin{equation}
+\mathcal{S} \setminus \{ s \} = \{ g_a \}_{a=1}^{n-k-1} .
+\label{eq:tomas-step-other-stabilizers}
+\end{equation}
+The updated generator set is
+\begin{equation}
+\mathcal{S}' := \{ m P_j \} \cup \{ g_a' \}_{a=1}^{n-k-1},
+\label{eq:tomas-step-stabilizer-set}
+\end{equation}
+where
+\begin{equation}
+g_a' =
+\begin{cases}
+g_a, & [g_a, P_j] = 0, \\[3pt]
+g_a s, & \{ g_a, P_j \} = 0 .
+\end{cases}
+\label{eq:tomas-step-stabilizer-update}
+\end{equation}
+Similarly, each logical representative $L \in \mathcal{L}$ is updated to
+$L' \in \mathcal{L}'$ according to
+\begin{equation}
+L' =
+\begin{cases}
+L, & [L, P_j] = 0, \\[3pt]
+L s, & \{ L, P_j \} = 0 .
+\end{cases}
+\label{eq:tomas-step-logical-update}
+\end{equation}
+We denote the updated logical representatives by
+\begin{equation}
+\mathcal{L}' := \{ \bar{X}_i', \bar{Z}_i' \}_{i=1}^{k}.
+\label{eq:tomas-step-updated-logical-basis}
+\end{equation}
+
+Each reduction ``peels off'' a physical qubit $j$ from the original logical representatives $\mathcal{L}$, since qubit $j$ is fixed by a weight-$1$ Pauli $P_j$.
+We repeat the above reduction step
+until all stabilizers are weight-$1$, and obtain
+\begin{equation}
+\mathcal{S} \to \mathcal{S}', \quad
+\mathcal{L} \to \mathcal{L}',
+\end{equation}
+where $ \mathcal{S}' $ contains only weight-$1$ Pauli operators,
+and $ \mathcal{L}' $ is the new set of logical representatives that only live on a set of $ k $ physical qubits. 
+We call these $ k $ physical qubits the \emph{carrier qubits} and denote them by $\mathcal{Q}_L = \set{Q_i}_{i=1}^k$, and call the remaining $ n-k $ physical qubits supporting single-qubit Paulis in $ \mathcal{S}' $ the \emph{peeled qubits}, $\mathcal{Q}_P$.
+
+Since $ \mathcal{L}' $ is a valid conjugate logical representative,
+there exists a Clifford $C$ such that it maps the standard computational basis on the $ k $ carrier qubits to the new logical representatives $\mathcal{L}'$:
+\begin{equation}
+C X_{Q_i} C^\dagger = \bar{X}_i',
+\qquad
+C Z_{Q_i} C^\dagger = \bar{Z}_i'.
+\end{equation}
+And thus, $C Y_{Q_i} C^\dagger = \bar{Y}_i'$.
+
+Therefore, to prepare the $+1$ eigenstate of $ \bar{M}_i' $ for all $ i \in [k] $, we first prepare the carrier qubits $\set{Q_i}$ in the $+1$ eigenstates of $ \{M_{Q_i}\} $, then apply the Clifford circuit $C$ to the carrier qubits:
+\begin{equation}
+\begin{aligned}
+    \bar{M}_i' &= \cos\theta_i\, \bar{X}_i' + \sin\theta_i\, \bar{Y}_i' \\
+    &= C \bigl(\cos\theta_i\, X_{Q_i} + \sin\theta_i\, Y_{Q_i}\bigr) C^\dagger \\
+    &= C \;{M}_{Q_i}\; C^\dagger .
+\end{aligned}
+\end{equation}
+
+Although the construction above applies generally to arbitrary CSS codes and can inject all \(k\) logical qubits simultaneously, it has several caveats.
+One limitation is that the state-preparation Clifford circuit \(C\) is typically nonlocal and deep, and therefore not itself fault tolerant. 
+This issue may be mitigated by implementing or compiling \(C\) on the logical level instead of the physical level. 
+For instance, on an extractor architecture~\cite{he_extractors_2025} implementing Pauli-based computation~\cite{Bravyi2016}, a logical Clifford circuit can be implemented by changing the Pauli basis of subsequent logical Pauli-rotations. 
+In other words, instead of implementing \(C\), we simply change subsequent gates from \(e^{i\theta P}\) to \(e^{i\theta C^\dagger PC}\). 
+In a model where every Pauli rotation has roughly the same implementation cost~\cite{he_extractors_2025}, this Clifford rotation is essentially free.
+
+\subsection{Logical information preservation}
+
+During the reduction step, the update rule in
+\Cref{eq:tomas-step-stabilizer-update,eq:tomas-step-logical-update}
+preserves the logical subsystem for three reasons.
+
+First, the measurement of $P_j$ reveals no logical information. Let
+$\ket{\phi}$ be any state in the codespace of $S$, so in particular
+$s \ket{\phi} = \ket{\phi}$. Using \Cref{eq:tomas-step-anticommute},
+\begin{equation}
+\bra{\phi} P_j \ket{\phi}
+=
+\bra{\phi} s P_j s \ket{\phi}
+=
+- \bra{\phi} P_j \ket{\phi}
+= 0 .
+\label{eq:tomas-step-random-outcome}
+\end{equation}
+Hence the two outcomes $m = \pm 1$ occur with equal probability $1/2$,
+independently of the encoded logical state. The measurement therefore creates a
+new local stabilizer sign, but it does not read out any logical observable.
+
+Second, the number of encoded qubits is unchanged. The original generator $s \in \mathcal{S}$ is
+removed and replaced by the new independent generator $m P_j$. Thus
+$\mathcal{S}'$ again contains $n-k$ independent commuting generators, so the
+updated code still encodes exactly $k$ logical qubits.
+
+Third, the logical representatives are changed only by multiplication with the original
+stabilizer $s$. If $L' = L s$, then on the original codespace,
+\begin{equation}
+L' \ket{\phi} = L s \ket{\phi} = L \ket{\phi} .
+\label{eq:tomas-step-same-logical-action}
+\end{equation}
+Thus \Cref{eq:tomas-step-logical-update} changes only the
+\emph{representatives} of the logical Paulis, not the logical Pauli classes
+themselves.
+And thus, 
+\begin{equation}
+[\bar{M}_i', \proj_{\mathcal{S}}] = 0 \quad \forall i \in [k].
+\end{equation}
+In another word, if the state is prepared in the simultaneous $ +1 $ eigenstate of $ \bar{M}_i' $ for all $ i \in [k] $,
+then after the SE of $\mathcal{S}$, the state is the simultaneous $ +1 $ eigenstate of $ \bar{M}_i $ for all $ i \in [k] $.

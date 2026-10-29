@@ -1,0 +1,179 @@
+\section{Detector error model}
+\label{sec:detector-error-model}
+
+We use the detector error model (DEM)~\cite{gidney_stim_2021} as a compact description of the noisy syndrome extraction circuit.
+For our purposes, the DEM serves two roles.
+First, it provides a convenient first-order language for identifying harmful error mechanisms that survive postselection and induce logical injection errors.
+Second, it yields a simple explanatory proxy for the discard rate, which is one of the main quantities entering the spacetime-overhead analysis.
+This appendix also explains why the discard rate remains similar across different optimized initial configurations.
+
+\subsection{Definitions}
+
+A \emph{detector} is a binary parity check built from a specified subset of measurement-record bits.
+Detectors are defined so that, in the absence of noise, every detector outcome is deterministically $0$.
+Noise can toggle some of these detector outcomes to $1$.
+
+A DEM records how elementary stochastic mechanisms toggle detector outcomes and tracked logical observables, without explicitly tracking the full quantum state.
+For the analysis below, we represent the DEM as a collection of Bernoulli mechanisms indexed by $e$.
+Each mechanism is specified by a triple
+\begin{equation}
+(p_e, D_e, L_e),
+\label{eq:dem_mechanism_triple}
+\end{equation}
+where $p_e\in[0,1]$ is the occurrence probability of mechanism $e$, $D_e\subseteq\{1,\dots,N_D\}$ is the set of detectors toggled by $e$, and $L_e\subseteq\{1,\dots,N_L\}$ is the set of tracked logical observables toggled by $e$.
+Here $N_L$ is the number of logical observables included in the DEM analysis, and $N_D$ is the number of detectors.
+
+\subsection{Error mechanism counting}
+
+For MSI, the tracked logical observables are the injected logical observables indexed by $\cI$, so we take $L_e\subseteq \cI$.
+The most dangerous first-order mechanisms are those with
+\begin{equation}
+L_e \neq \emptyset,
+\qquad
+D_e = \emptyset,
+\end{equation}
+because they flip one or more injected logical observables without triggering any detector.
+Such mechanisms evade postselection and also leave no detector information for decoding.
+
+Because detector and logical outcomes combine by parity, multiple mechanisms can cancel each other.
+However, the probability that two distinct mechanisms $e_1$ and $e_2$ occur in the same shot is second order, namely $p_{e_1}p_{e_2}$.
+Accordingly, a standard first-order approximation is to assume that at most one DEM mechanism occurs during a shot.
+Previous MSI analyses use this viewpoint to count undetected logical-fault mechanisms and find good agreement with circuit-level Monte Carlo simulation~\cite{li_magic_2015,lao_magic_2022,gidney_cleaner_2023}.
+In our setting, this yields
+\begin{equation}
+p_\cJ \approx \sum_{e:\,L_e = \cJ} p_e,
+\end{equation}
+where $p_\cJ$ is the probability that the incorrect logicals are \emph{exactly} the subset $\cJ$.
+In \Cref{sec:evaluation}, we show that this first-order approximation closely matches circuit-level Monte Carlo simulation.
+
+\subsection{Postselection and discard rate}
+
+Let $P\subseteq\{1,\dots,N_D\}$ be the set of postselection detectors.
+In our simulations, $P$ consists of (i) fixed-stabilizer detectors from the first SE round and (ii) round-parity detectors comparing the first two SE rounds.
+A shot is \emph{accepted} if and only if all detectors in $P$ are $0$; otherwise the shot is discarded.
+
+Define the set of \emph{postselection-relevant} mechanisms by
+\begin{equation}
+R := \{e:\; D_e\cap P\neq \emptyset\}.
+\label{eq:relevant_mechanisms_set_simplified}
+\end{equation}
+If no mechanism in $R$ occurs, then every postselection detector remains $0$.
+Therefore, discard implies that at least one mechanism in $R$ occurred, which gives the upper bound
+\begin{equation}
+r_{\rm disc}
+\le
+\Pr\!\left(\exists e\in R:\; e\text{ occurs}\right).
+\end{equation}
+The inequality above is generally strict because multiple postselection-relevant mechanisms can occur simultaneously and cancel each other by parity.
+
+Under the Bernoulli-mechanism interpretation above, the probability that no mechanism in $R$ occurs is
+\begin{equation}
+a := \prod_{e\in R}(1-p_e).
+\end{equation}
+We call $a$ the \emph{acceptance proxy}.
+Equivalently,
+\begin{equation}
+\Pr\!\left(\exists e\in R:\; e\text{ occurs}\right)
+= 1-\prod_{e\in R}(1-p_e)
+= 1-a.
+\end{equation}
+This motivates the \emph{union proxy} for the discard rate,
+\begin{equation}
+r_{\rm disc}^{\rm UP} := 1-a = 1-\prod_{e\in R}(1-p_e).
+\label{eq:rdisc_up_def}
+\end{equation}
+As shown in \Cref{sec:evaluation}, the union proxy closely tracks the discard rate measured by circuit-level Monte Carlo simulation, $r_{\rm disc}^{\rm MC}$.
+
+\subsection{Acceptance factor decomposition}
+
+To explain why the discard rate varies little across optimized initial configurations, it is useful to separate mechanisms caught immediately by fixed-stabilizer detectors from those caught only by round-parity detectors.
+Let $P_{\rm fix}\subseteq P$ denote the set of fixed-stabilizer detectors in the first SE round, and let $|F|:=|P_{\rm fix}|$ be the number of fixed stabilizers.
+Then the acceptance proxy factorizes as
+\begin{align}
+a
+&= \prod_{e:\,D_e\cap P\neq \emptyset}(1-p_e) \\
+&=
+\underbrace{\prod_{e:\,D_e\cap P_{\rm fix}\neq \emptyset}(1-p_e)}_{a_{\rm fix}}
+\cdot
+\underbrace{\prod_{\substack{e:\,D_e\cap P\neq \emptyset\\ D_e\cap P_{\rm fix}=\emptyset}}(1-p_e)}_{a_{{\rm par}\mid{\rm fix}}}.
+\label{eq:acceptance_decomp}
+\end{align}
+Here $a_{\rm fix}$ captures the mechanisms that would be flagged directly by fixed-stabilizer detectors, while $a_{{\rm par}\mid{\rm fix}}$ captures the remaining postselection-relevant mechanisms that do \emph{not} trigger any fixed-stabilizer detector and are therefore caught only by round-parity detectors.
+The two underlying mechanism sets are disjoint, so the product factorization is exact.
+Substituting \Cref{eq:acceptance_decomp} into \Cref{eq:rdisc_up_def} gives
+\begin{equation}
+r_{\rm disc}^{\rm UP}(P)
+=
+1-a_{\rm fix}a_{{\rm par}\mid{\rm fix}}.
+\label{eq:rdisc_up_factored}
+\end{equation}
+
+\subsection{Explanation of similar discard rate across different initial configurations}
+\label{sec:explanation-similar-discard-rate}
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{ccccccc}
+    \toprule
+    $p$ & $|\mathcal{I}|$ & $|F|$    & $(a_{\rm fix},\, a_{{\rm par}\mid{\rm fix}})$ & $r_{\rm disc}^{\rm UP}(p)$ & $r_{\rm disc}^{\rm MC}(p)$ \\
+    \midrule
+$10^{-4}$ & 1 & 26 & (0.9563, 0.8018) & 0.2333 & 0.2331  \\
+$10^{-4}$ & 2 & 32 & (0.9487, 0.8062) & 0.2351 & 0.2352  \\
+$10^{-4}$ & 3 & 31 & (0.9495, 0.8056) & 0.2351 & 0.2346  \\
+$10^{-4}$ & 4 & 32 & (0.9484, 0.8061) & 0.2355 & 0.2352  \\
+$10^{-4}$ & 5 & 28 & (0.9517, 0.8040) & 0.2348 & 0.2346  \\
+$10^{-4}$ & 6 & 18 & (0.9650, 0.7965) & 0.2314 & 0.2315  \\
+\midrule
+$5 \times 10^{-4}$ & 1 & 26 & (0.7996, 0.3313) & 0.7351 & 0.7344  \\
+$5 \times 10^{-4}$ & 2 & 32 & (0.7683, 0.3407) & 0.7383 & 0.7380  \\
+$5 \times 10^{-4}$ & 3 & 31 & (0.7716, 0.3393) & 0.7382 & 0.7383  \\
+$5 \times 10^{-4}$ & 4 & 32 & (0.7672, 0.3404) & 0.7388 & 0.7387  \\
+$5 \times 10^{-4}$ & 5 & 28 & (0.7808, 0.3360) & 0.7376 & 0.7382  \\
+$5 \times 10^{-4}$ & 6 & 18 & (0.8367, 0.3205) & 0.7318 & 0.7316  \\
+\midrule
+$10^{-3}$ & 1 & 26 & (0.6394, 0.1097) & 0.9298 & 0.9300  \\
+$10^{-3}$ & 2 & 32 & (0.5903, 0.1160) & 0.9315 & 0.9312  \\
+$10^{-3}$ & 3 & 31 & (0.5954, 0.1151) & 0.9315 & 0.9311  \\
+$10^{-3}$ & 4 & 32 & (0.5886, 0.1159) & 0.9318 & 0.9318  \\
+$10^{-3}$ & 5 & 28 & (0.6096, 0.1129) & 0.9312 & 0.9313  \\
+$10^{-3}$ & 6 & 18 & (0.7001, 0.1027) & 0.9281 & 0.9278  \\
+    \bottomrule
+    \end{tabular}
+    \caption{For each physical error rate $p$ and injection configuration $|\mathcal{I}|$, we report the Monte Carlo discard rate $r_{\rm disc}^{\rm MC}$, the union proxy $r_{\rm disc}^{\rm UP}$, and the two acceptance factors $a_{\rm fix}$ and $a_{{\rm par}\mid{\rm fix}}$ defined in \Cref{eq:acceptance_decomp}. The factorization \(r_{\rm disc}^{\rm UP}=1-a_{\rm fix}a_{{\rm par}\mid{\rm fix}}\) is given by \Cref{eq:rdisc_up_factored}.}
+    \label{tab:discard_components}
+\end{table}
+
+
+\Cref{tab:discard_components} shows that the union proxy tracks the Monte Carlo discard rate very closely for all optimized BB code configurations we tested.
+It also explains why the discard rate changes only weakly across these configurations, even though the number of fixed stabilizers $|F|$ varies substantially.
+From
+\begin{equation}
+    r_{\rm disc}^{\rm UP} = 1 - a_{\rm fix} a_{{\rm par}\mid{\rm fix}},
+\end{equation}
+we obtain
+\begin{equation}
+    \frac{\partial r_{\rm disc}^{\rm UP}}{\partial a_{\rm fix}} = -a_{{\rm par}\mid{\rm fix}}.
+\end{equation}
+Thus, for a given change $\Delta a_{\rm fix}$,
+\begin{equation}
+|\Delta r_{\rm disc}^{\rm UP}| \approx a_{{\rm par}\mid{\rm fix}}\,|\Delta a_{\rm fix}|,
+\end{equation}
+so the sensitivity of the discard rate to changes in $a_{\rm fix}$ is itself controlled by $a_{{\rm par}\mid{\rm fix}}$.
+
+A representative comparison is provided by the optimized configurations with $|\cI|=5$ and $|\cI|=6$.
+At high physical error rate, for example $p=10^{-3}$, the change in $a_{\rm fix}$ is relatively large:
+\begin{equation}
+\Delta a_{\rm fix} \approx 0.7001 - 0.6096 \approx 0.091.
+\end{equation}
+However, in this regime $a_{{\rm par}\mid{\rm fix}}$ is small, about $0.10$, so the resulting change in discard rate is close to $10^{-2}$.
+By contrast, at low physical error rate, for example $p=10^{-4}$, the coefficient $a_{{\rm par}\mid{\rm fix}}$ is much larger, about $0.80$, but the change in $a_{\rm fix}$ becomes much smaller:
+\begin{equation}
+\Delta a_{\rm fix} \approx 0.9650 - 0.9517 \approx 0.013.
+\end{equation}
+Again, the resulting change in discard rate remains only of order $10^{-2}$.
+
+The same qualitative mechanism appears across the optimized configurations in \Cref{tab:discard_components}.
+At larger $p$, round-parity-only mechanisms are so prevalent that $a_{{\rm par}\mid{\rm fix}}$ is small, which suppresses the impact of variations in $a_{\rm fix}$.
+At smaller $p$, $a_{{\rm par}\mid{\rm fix}}$ is larger, but the optimized configurations have much closer values of $a_{\rm fix}$.
+Therefore, even substantial changes in the number of fixed stabilizers do not translate into equally large changes in the total discard rate.
+This explains why the discard rate remains similar across the optimized initial configurations considered in \Cref{sec:evaluation}.

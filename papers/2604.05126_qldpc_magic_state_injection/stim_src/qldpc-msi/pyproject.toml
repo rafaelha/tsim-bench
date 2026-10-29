@@ -1,0 +1,74 @@
+[build-system]
+requires = [
+    "setuptools>=61.0", # for PEP 660 editable support
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "qldpc-msi"
+version = "0.1.0"
+description = "Quantum LDPC codes magic state injection"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "Kun Liu", email = "kunliu.me@gmail.com" }]
+license = { text = "MIT" } # or license-file = "LICENSE"
+keywords = [
+    "quantum computing",
+    "quantum error correction",
+    "quantum LDPC codes",
+    "magic state injection",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "beliefmatching==0.2.0",
+    "galois==0.4.7",
+    "ldpc==2.4.1",
+    "loguru==0.7.3",
+    "networkx==3.6.1",
+    "ortools==9.14.6206",
+    "pandas==2.3.3",
+    "pulp==3.3.0",
+    "qldpc==0.2.6",
+    "scipy==1.17.0",
+    "sinter==1.13.0",
+    "stim==1.15.0",
+    "stimbposd==0.1.0",
+    "tqdm==4.67.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "black", "isort"]
+
+[tool.pytest.ini_options]
+testpaths = ["src"]
+python_files = "*_test.py"
+python_functions = "test_*"
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 120
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.tox
+  | venv
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"

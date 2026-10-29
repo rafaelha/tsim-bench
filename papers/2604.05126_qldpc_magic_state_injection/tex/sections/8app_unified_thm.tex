@@ -1,0 +1,255 @@
+\section{Proof of \Cref{thm:unified-sufficient-condition}}
+\label{sec:proof-all-in-one}
+
+\begin{proof}[Proof sketch]
+    For each injected logical $i$, decompose the logical representatives into two parts:
+    \[
+    \bar X_i = X_{O_i}X_{A_i},
+    \qquad
+    \bar Z_i = Z_{O_i}Z_{B_i}.
+    \]
+    And thus, assume $ |O_i| = 2t+1 $, we have
+    \[
+    \bar Y_i = (-1)^t Y_{O_i}X_{A_i}Z_{B_i}.
+    \]
+    The proof has two corresponding conceptual parts: first on $ A_i $ and $ B_i $ together, and second on $ O_i $ only.
+    
+    First, the prescribed preparation enforces a family of stabilizer constraints.
+    The Bell states on the compatible pairing $\cP$ imply that every overlap set
+    $C_{i,j}$ is stabilized by both $X_{C_{i,j}}$ and $Z_{C_{i,j}}$.
+    Together with the direct preparation of $\ket{+}$ on $A_i\setminus C$,
+    $\ket{0}$ on $B_i\setminus C$, and the $+1$ eigenstate of $M_{Q_i}$ on $Q_i$,
+    this yields
+    \begin{equation}
+    X_{A_i}|\psi_{\mathrm{in}}\rangle = |\psi_{\mathrm{in}}\rangle, \quad
+    Z_{B_i}|\psi_{\mathrm{in}}\rangle = |\psi_{\mathrm{in}}\rangle, \quad
+    \forall i\in\cI.
+    \label{eq:multi-prep-generic}
+    \end{equation}
+
+    Second, these constraints let us peel the logical support away from the
+    injection site.
+    The factors on $A_i$ and $B_i$ act trivially, so $\bar X_i$ and $\bar Y_i$
+    reduce to operators on $O_i$ only.
+    Then the Bell pairs inside $O_i\setminus\{Q_i\}$ cancel pairwise, leaving only
+    the single-weight operator on $Q_i$:
+    \begin{equation}
+    \begin{aligned}
+    \bar M_i|\psi_{\mathrm{in}}\rangle 
+    &= \left(\cos\theta_i\,X_{O_i} X_{A_i} + \sin\theta_i\,Y_{O_i} X_{A_i} Z_{B_i}\right) |\psi_{\mathrm{in}}\rangle \\
+    &= \left(\cos\theta_i\,X_{O_i} + \sin\theta_i\,Y_{O_i}\right) |\psi_{\mathrm{in}}\rangle \\
+    &= M_{Q_i}|\psi_{\mathrm{in}}\rangle = |\psi_{\mathrm{in}}\rangle,
+    \qquad \forall i\in\cI.
+    \end{aligned}
+    \label{eq:M-reduce-to-Qi-app}
+    \end{equation}
+\end{proof}
+
+Following the proof sketch, we prove in two parts.
+In Part 1 of the proof, we show \Cref{eq:multi-prep-generic}.
+In Part 2 of the proof, we show \Cref{eq:M-reduce-to-Qi-app}.
+
+\begin{proof}[Proof, Part 1]
+\textbf{Step 1: Record the stabilizers imposed directly by the preparation.}
+For each pair $\{u,v\}\in\cP$, let
+\[
+|\mathrm{Bell}_{\{u,v\}}\rangle := (|00\rangle+|11\rangle)/\sqrt2.
+\]
+By construction, the prepared state $|\psi_{\mathrm{in}}\rangle$ satisfies
+\begin{equation}
+    \begin{aligned}
+(X_uX_v)|\psi_{\mathrm{in}}\rangle &= |\psi_{\mathrm{in}}\rangle, \\
+(Z_uZ_v)|\psi_{\mathrm{in}}\rangle &= |\psi_{\mathrm{in}}\rangle, \quad
+\forall \{u,v\}\in\cP.
+\end{aligned}
+\label{eq:bell-pair-stabs-app}
+\end{equation}
+Also, for every $i\in\cI$,
+\begin{equation}
+\begin{aligned}
+X_{A_i\setminus C}|\psi_{\mathrm{in}}\rangle &= |\psi_{\mathrm{in}}\rangle, \\
+Z_{B_i\setminus C}|\psi_{\mathrm{in}}\rangle &= |\psi_{\mathrm{in}}\rangle, \\
+M_{Q_i}|\psi_{\mathrm{in}}\rangle &= |\psi_{\mathrm{in}}\rangle.
+\end{aligned}
+\label{eq:direct-prep-stabs-app}
+\end{equation}
+Injection site independence ensures that $Q_i$ is not required by any other
+logical support, so preparing the $+1$ eigenspace of $M_{Q_i}$ is compatible
+with the rest of the construction.
+
+\medskip
+\noindent
+\textbf{Step 2: Use compatible pairing to control every overlap set $C_{i,j}$.}
+Fix any $i,j\in\cI$.
+Because $\cP$ is compatible, each Bell pair is either fully contained in
+$C_{i,j}$ or disjoint from it.
+Hence the restricted set
+\[
+\cP_{i,j}:=\{\{u,v\}\in\cP:\{u,v\}\subseteq C_{i,j}\}
+\]
+partitions $C_{i,j}$.
+Therefore,
+\[
+X_{C_{i,j}}=\prod_{\{u,v\}\in\cP_{i,j}} X_uX_v,
+\qquad
+Z_{C_{i,j}}=\prod_{\{u,v\}\in\cP_{i,j}} Z_uZ_v.
+\]
+Using \Cref{eq:bell-pair-stabs-app}, we obtain
+\begin{equation}
+X_{C_{i,j}}|\psi_{\mathrm{in}}\rangle = |\psi_{\mathrm{in}}\rangle,
+\qquad
+Z_{C_{i,j}}|\psi_{\mathrm{in}}\rangle = |\psi_{\mathrm{in}}\rangle,
+\qquad \forall i,j\in\cI.
+\label{eq:cij-stabs-app}
+\end{equation}
+
+\medskip
+\noindent
+\textbf{Step 3: Extend from overlaps to the full sets $A_i$ and $B_i$.}
+We next show that \Cref{eq:multi-prep-generic} hold.
+
+Fix $i\in\cI$.
+Decompose
+\[
+A_i=(A_i\setminus C)\sqcup(A_i\cap C),
+\qquad
+B_i=(B_i\setminus C)\sqcup(B_i\cap C).
+\]
+The factors on $A_i\setminus C$ and $B_i\setminus C$ are already handled by
+\Cref{eq:direct-prep-stabs-app}, so it remains to treat the parts inside $C$.
+
+Consider $A_i\cap C$.
+Any qubit $u\in A_i\cap C$ lies in some overlap set
+$C_{i,j}=A_i\cap B_j$.
+Since $\cP$ is compatible, the partner of $u$ under $\cP$ lies in the same
+$C_{i,j}$, hence also in $A_i\cap C$.
+Therefore the Bell pairs that intersect $A_i\cap C$ actually partition
+$A_i\cap C$, so
+\[
+X_{A_i\cap C}
+=
+\prod_{\{u,v\}\subseteq A_i\cap C} X_uX_v.
+\]
+Every factor on the right stabilizes $|\psi_{\mathrm{in}}\rangle$ by
+\Cref{eq:bell-pair-stabs-app}, hence
+$X_{A_i\cap C}|\psi_{\mathrm{in}}\rangle=|\psi_{\mathrm{in}}\rangle$.
+Combining with \Cref{eq:direct-prep-stabs-app} yields
+\begin{equation}
+X_{A_i}|\psi_{\mathrm{in}}\rangle = |\psi_{\mathrm{in}}\rangle.
+\label{eq:Ai-stab-app}
+\end{equation}
+
+The same argument applies to $B_i\cap C$.
+Indeed, any $u\in B_i\cap C$ lies in some $C_{k,i}=A_k\cap B_i$, and
+compatibility forces its partner to lie in the same set, hence also in
+$B_i\cap C$.
+Thus
+\[
+Z_{B_i\cap C}
+=
+\prod_{\{u,v\}\subseteq B_i\cap C} Z_uZ_v,
+\]
+so $Z_{B_i\cap C}$ stabilizes $|\psi_{\mathrm{in}}\rangle$, and together with
+\Cref{eq:direct-prep-stabs-app} we get
+\begin{equation}
+Z_{B_i}|\psi_{\mathrm{in}}\rangle = |\psi_{\mathrm{in}}\rangle.
+\label{eq:Bi-stab-app}
+\end{equation}
+
+At this point, \Cref{eq:multi-prep-generic} is established.
+\medskip
+\noindent
+\end{proof}
+
+\begin{proof}[Proof, Part 2]
+\textbf{Step 4: Reduce $\bar X_i$ and $\bar Y_i$ to operators on $O_i$.}
+Fix $i\in\cI$.
+Recall the CSS representatives
+\begin{equation}
+\bar X_i = X_{O_i}X_{A_i},
+\qquad
+\bar Z_i = Z_{O_i}Z_{B_i}.
+\label{eq:css-reps-app}
+\end{equation}
+Using \Cref{eq:Ai-stab-app}, we can drop the $A_i$ factor when acting on
+$|\psi_{\mathrm{in}}\rangle$:
+\begin{equation}
+\bar X_i|\psi_{\mathrm{in}}\rangle = X_{O_i}|\psi_{\mathrm{in}}\rangle.
+\label{eq:X-reduce-to-Oi-app}
+\end{equation}
+
+Next, write $|O_i|=2t+1$.
+Then
+\[
+\bar Y_i := i\bar X_i\bar Z_i = (-1)^t Y_{O_i}X_{A_i}Z_{B_i}.
+\]
+Applying \Cref{eq:Ai-stab-app,eq:Bi-stab-app}, we obtain
+\begin{equation}
+\bar Y_i|\psi_{\mathrm{in}}\rangle = (-1)^t Y_{O_i}|\psi_{\mathrm{in}}\rangle.
+\label{eq:Y-reduce-to-Oi-app}
+\end{equation}
+
+So the logical rotated observable has already been reduced from the full
+logical support to the core set $O_i$.
+
+\medskip
+\noindent
+\textbf{Step 5: Peel off the paired qubits in $O_i\setminus\{Q_i\}$.}
+We now use the Bell-pair structure inside $O_i\setminus\{Q_i\}$ to reduce from
+$O_i$ all the way down to the single site $Q_i$.
+
+By compatibility, the restricted set
+\[
+\cP_{i,i}:=\{\{u,v\}\in\cP:\{u,v\}\subseteq O_i\setminus\{Q_i\}\}
+\]
+partitions $O_i\setminus\{Q_i\}$.
+Since $|O_i|=2t+1$, we may write
+\[
+O_i\setminus\{Q_i\}=\bigsqcup_{\ell=1}^t \{r_\ell,s_\ell\}.
+\]
+For each pair $\{r_\ell,s_\ell\}$, \Cref{eq:bell-pair-stabs-app} implies
+\[
+(X_{r_\ell}X_{s_\ell})|\psi_{\mathrm{in}}\rangle=|\psi_{\mathrm{in}}\rangle,
+\qquad
+(Z_{r_\ell}Z_{s_\ell})|\psi_{\mathrm{in}}\rangle=|\psi_{\mathrm{in}}\rangle.
+\]
+Multiplying these two relations gives
+\[
+(-Y_{r_\ell}Y_{s_\ell})|\psi_{\mathrm{in}}\rangle=|\psi_{\mathrm{in}}\rangle.
+\]
+Therefore the paired qubits cancel in both the $X$ and $Y$ channels:
+\begin{equation}
+X_{O_i}|\psi_{\mathrm{in}}\rangle = X_{Q_i}|\psi_{\mathrm{in}}\rangle,
+\qquad
+Y_{O_i}|\psi_{\mathrm{in}}\rangle = (-1)^t Y_{Q_i}|\psi_{\mathrm{in}}\rangle.
+\label{eq:O-to-Q-app}
+\end{equation}
+
+Combining \Cref{eq:X-reduce-to-Oi-app,eq:Y-reduce-to-Oi-app,eq:O-to-Q-app},
+we conclude
+\[
+\bar X_i|\psi_{\mathrm{in}}\rangle = X_{Q_i}|\psi_{\mathrm{in}}\rangle,
+\qquad
+\bar Y_i|\psi_{\mathrm{in}}\rangle = Y_{Q_i}|\psi_{\mathrm{in}}\rangle.
+\]
+Hence
+\[
+\bar M_i(\theta_i)|\psi_{\mathrm{in}}\rangle
+=
+\bigl(\cos\theta_i\,X_{Q_i}+\sin\theta_i\,Y_{Q_i}\bigr)|\psi_{\mathrm{in}}\rangle
+=
+M_{Q_i}|\psi_{\mathrm{in}}\rangle.
+\]
+Finally, \Cref{eq:direct-prep-stabs-app} gives
+$M_{Q_i}|\psi_{\mathrm{in}}\rangle=|\psi_{\mathrm{in}}\rangle$.
+Therefore
+\[
+\bar M_i|\psi_{\mathrm{in}}\rangle = |\psi_{\mathrm{in}}\rangle,
+\qquad \forall i\in\cI.
+\]
+
+In summary, the preparation supplies local and pairwise stabilizers,
+compatible pairing ensures that all relevant support away from $Q_i$ is
+organized into cancellable Bell pairs, and thus each logical rotated
+observable reduces exactly to the prepared single-site operator at $Q_i$.
+\end{proof}

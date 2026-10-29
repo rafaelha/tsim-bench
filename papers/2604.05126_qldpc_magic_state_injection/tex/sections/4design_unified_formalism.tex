@@ -1,0 +1,133 @@
+\section{Noise-aware injection scheme}
+\label{sec:improved-injection-scheme}
+
+In this section, we modify the scheme in \Cref{sec:k-injection} to improve the injection error rate via post-selection, inspired by Ref.~\cite{li_magic_2015}. The key idea is to directly prepare the state in the $+1$ eigenstate of the desired logical observables $ \bar M_i $,
+under the \emph{original} logical representatives $\mathcal{L}$.
+This method has two advantages: it removes the use of Clifford rotation, and enables post-selection using stabilizers with deterministic outcome in the first SE round. We call these \emph{fixed stabilizers}. Once an error flips the measurement outcome of any fixed stabilizer, we discard the shot and thus decrease the logical error rate of the kept shots.
+Such fixed stabilizers do not exist in the general $k$-injection scheme since all the stabilizers in $\mathcal{S}$ anticommute with the prepared single-qubit Pauli states by construction.
+
+An example of injecting two logicals $i$ and $j$ using the improved injection scheme is shown in \Cref{fig:inject-two-logicals}(d).
+In the following, we first introduce sufficient conditions to prepare the target state.
+Then, we introduce how to post-select on the measurement outcomes of fixed stabilizers to improve the injection error rate.
+
+\begin{figure*}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{figs/inject_two_logicals.pdf}
+    \caption{High-level summary of this work.
+    (a) In-logical overlap: Typical injection scheme for a single logical qubit.
+    For surface code, we perform $ R_z(\theta) $ on the injection site $ Q_i $,
+    which is the single-qubit sitting in the overlap of its logical $ X $ and $ Z $ supports. But for qLDPC codes, $ O_{i} := \supp(\bar X_i) \cap \supp(\bar Z_i) $ has cardinality above 1.
+    The solution is to prepare Bell states on $ O_{i} \setminus \{Q_i\} $.
+    (b) Cross-logical overlap (remainder overlap): When injecting two logical qubits, $ i $ and $ j $, the overlap of their supports, i.e., $ C_{i,j} $, may not be empty.
+    The solution is to prepare Bell states on $ C_{i,j} $.
+    (c) Overlap of overlaps: the above-mentioned types of overlaps will overlap with each other.
+    The solution is to identify a \emph{compatible pairing} (\Cref{def:generic-compatible}) s.t. the overlaps can be filled with Bell states.
+    (d) An example of injecting two logical qubits, $ i $ and $ j $.
+    Prepare Bell states on the overlaps,
+    and initialize the rest of the qubits in the appropriate Pauli eigenbases.
+    % \Shifan{I would suggest changing X support to something like physical qubits supporting X logical operator, to make it more intuitive.}
+    % \Kun{Tried but visually tedious. I think journal readers would be more familiar with the term ``support''?}
+    }
+    \label{fig:inject-two-logicals}
+\end{figure*}
+
+
+The challenge in preparing the desired eigenstate of $ \bar M_i $'s is to deal with the overlaps of the logical $ X $ and $ Z $ supports due to the nature of qLDPC codes.
+The central idea is to resolve these overlaps by Bell state preparation on carefully chosen qubit pairs.
+
+We formalize as follows three overlap types, in-logical overlap, cross-logical overlap, and overlap of overlaps, as shown in \Cref{fig:inject-two-logicals}(a,b,c).
+For each injected logical index $i\in\cI\subseteq [k]$, define the in-logical overlap $O_i$
+as the overlap of the logical $ X $ and $ Z $ supports:
+\begin{equation}
+O_i \;:=\; \supp(\bar X_i)\cap\supp(\bar Z_i).
+\end{equation}
+The \emph{$X$-remainder} and \emph{$Z$-remainder} are defined as the qubits outside the in-logical overlap:
+\begin{equation}
+A_i \;:=\; \supp(\bar X_i)\setminus O_i, \quad
+B_i \;:=\; \supp(\bar Z_i)\setminus O_i.
+\end{equation}
+Because $\{\bar X_i,\bar Z_i\}=0$ in CSS codes, $|O_i|$ is odd.
+Choose an \emph{injection site} $Q_i\in O_i$, where the qubit $Q_i$ is prepared in the $+1$ eigenstate of $M_{Q_i}$. The remaining qubits in the in-logical overlap are denoted as $O_i\setminus\{Q_i\}$.
+To treat in-logical and cross-logical overlaps uniformly, we define
+\begin{equation}
+    C_{i,j} =
+    \begin{cases}
+        A_i\cap B_j, & i\neq j,\\
+        O_i\setminus\{Q_i\}, & i=j.
+    \end{cases}
+    \label{eq:unified-Cij}
+\end{equation}
+and
+\begin{equation}
+C := \bigcup_{i,j\in\cI} C_{i,j}.
+\end{equation}
+
+The goal of preparing
+the state in the $+1$ eigenstate of the desired logical rotated Pauli observables $ \set{\bar M_i} $ is to satisfy the following logical constraints:
+\begin{equation}
+\bar M_i|\psi_{\mathrm{in}}\rangle = |\psi_{\mathrm{in}}\rangle,\quad \forall i\in\cI.
+\label{eq:goal-pre-se-state}
+\end{equation}
+
+Since $[\bar M_i,\proj_{\mathcal S}]=0$, projection by ideal SE preserves the logical constraints:
+\begin{equation}
+\bar M_i|\psi_{\mathrm{out}}\rangle = |\psi_{\mathrm{out}}\rangle,\quad \forall i\in\cI.
+\end{equation}
+
+The goal in \Cref{eq:goal-pre-se-state} holds
+if the following two \emph{sufficient} conditions hold:
+
+\begin{definition}[Injection site independence]
+    \label{def:injection-site-independence}
+\begin{equation}
+Q_i \notin \supp(\bar X_j)\cup \supp(\bar Z_j) \qquad \forall i\neq j \text{ in }\cI.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Compatible pairing]
+    \label{def:generic-compatible}
+    A pairing $\cP=\{\{u_t,v_t\}\}_{t=1}^T$ of $C$ is \emph{compatible} if for every $i,j\in\cI$ and every pair $\{u,v\}\in\cP$,
+    \begin{equation}
+    u\in C_{i,j}\ \Longleftrightarrow\ v\in C_{i,j}.
+    \end{equation}
+    Equivalently, each pair is either fully inside or disjoint from every $C_{i,j}$.
+\end{definition}
+
+\begin{theorem}[Sufficient conditions for improved injection scheme]
+\label{thm:unified-sufficient-condition}
+Assume injection site independence (\Cref{def:injection-site-independence}) and a compatible pairing (\Cref{def:generic-compatible}).
+Prepare the state by:
+\begin{enumerate}
+    \item Bell state on every pair in $\cP$;
+    \item $\ket{+}$ on $A_i\setminus C$ for each $i\in\cI$;
+    \item $\ket{0}$ on $B_i\setminus C$ for each $i\in\cI$;
+    \item the $+1$ eigenstate of $M_{Q_i}$ on each $Q_i$.
+\end{enumerate}
+Then \Cref{eq:goal-pre-se-state} holds, i.e.,
+$
+\bar M_i|\psi_{\mathrm{in}}\rangle = |\psi_{\mathrm{in}}\rangle
+$, $\forall i\in\cI$.
+\end{theorem}
+The proof is given in \Cref{sec:proof-all-in-one}. To satisfy injection site independence and compatible pairing,
+we might not be able to inject the full set of $ k $ logicals.
+We discuss how to find maximal injectable sets in \Cref{sec:maximal-injectable-sets}.
+
+% \subsection{Reducing injection error via fixed-stabilizer post-selection}
+% \label{subsec:improve-injection-error-rate}
+
+After fixing the preparation on qubits in
+$\supp(\bar X_i)\cup \supp(\bar Z_i)$ for all injected logicals,
+the remaining design freedom lies in how we initialize qubits outside these supports.
+We use this freedom to increase the protection of the injected logical observables in the first syndrome extraction round.
+
+The key mechanism is post-selection on \emph{fixed stabilizers}.
+Our initialization pattern ensures that in the absence of any noise, all the fixed stabilizers deterministically yield a $+1$ outcome.
+In the presence of noise, if any fixed stabilizer is measured as $-1$, we discard the shot.
+Thus, the usefulness of a given initialization pattern is determined by which first-order error mechanisms can be detected through flipped fixed stabilizers.
+
+Our objective is to choose the remaining qubit initializations so as to maximize the fixed-stabilizer protection of the injected logical supports.
+To keep the search space manageable and to avoid introducing additional first-round complexities, we restrict these extra choices to single-qubit Pauli-basis preparations.
+
+For qLDPC codes, this optimization problem is substantially more challenging than in surface code injection schemes.
+% qLDPC stabilizers are typically higher weight, lack simple 2D geometric structure, and act on a larger number of physical qubits.
+In \Cref{sec:max-protection-injected-supports}, we formulate the search for a high-protection initialization pattern as a mixed-integer linear programming (MILP) problem and solve it with off-the-shelf solvers.

@@ -1,0 +1,259 @@
+\section{Evaluation}
+\label{sec:evaluation}
+
+In this section, we evaluate the improved injection scheme under circuit-level noise. Our main goals are to validate the first-order analytical logical noise model (see \cref{sec:first-order}) against Monte Carlo simulation, to characterize how the injection error scales with the number of injected logical qubits, and to assess the sensitivity of the results to both the noise model and the optimization objective. We use the $[[144,12,12]]$ BB code as the main testbed and report four metrics: the total post-selected injection error rate, the correlated injection error rate, the discard rate, and the approximate injection error rate per logical qubit, when correlated errors are negligible. We then use the $[[225,9,4]]$ HGP code to test the generality of the proposed method, and compare against the best known surface code injection scheme to place our current results in context.
+
+\subsection{Injection procedure}
+
+We evaluate the improved injection scheme using the following simulation protocol:
+\begin{enumerate}
+    \item Prepare the state as in \Cref{thm:unified-sufficient-condition}.
+    \item Perform a round of SE.
+    \item Post-select on the fixed stabilizers. If the first-round measurement outcomes of the fixed stabilizers are not all $+1$, we discard the shot and restart the injection procedure. The corresponding detectors are called \emph{fixed-stabilizer detectors}.
+    \item Perform a second round of SE. We compare the full stabilizer outcome of the second round with that of the first round, and discard the shot if they disagree. The corresponding detectors are called \emph{round-parity detectors}.
+    \item Perform a further $r_2$ rounds of SE and decode using all retained syndrome information.
+\end{enumerate}
+
+This protocol is chosen because the dominant contribution to the injection error arises from faults before and during the first SE round. 
+Additional SE rounds can further suppress higher-order contributions, while potentially introducing more memory faults. 
+As a point of clarity, all stabilizers are measured in Step 2, but the shot is discarded at this stage only if the subset of fixed stabilizers do not give a $+1$ outcome. The discarding in Step 4 is a result of comparing \textit{all} stabilizer measurements with their corresponding result in Step 2.
+In our simulations, taking one extra decoding round beyond the two post-selection rounds captures the relevant behavior without materially changing the leading-order injection error rate. Accordingly, throughout this section we set $r_2 = 1$ or $ 2 $ for the sake of simulation efficiency. We use \texttt{stim} to simulate. Since \texttt{stim} only supports Clifford operations, we follow~\cite{gidney_cleaner_2023,sahay_fold-transversal_2025} and inject $\ket{\bar{Y}}$ states.
+
+
+\subsection{Noise model}
+\label{sec:noise-model}
+
+We employ the depolarizing noise model used in prior analyses of surface code injections~\cite{li_magic_2015,lao_magic_2022} for our simulations as summarized in \Cref{tab:li_noise_channels,tab:li_noise_model}. A qubit initialized in a $+1$ Pauli eigenstate may be flipped to the corresponding $-1$ eigenstate with probability $p_{\rm IN}$. A measurement outcome may be flipped with probability $p_{\rm M}$. An idling qubit undergoes a single-qubit depolarizing channel with error probability $p_{\rm IDLE}$. A single-qubit gate is followed by a single-qubit depolarizing channel with probability $p_{\rm 1Q}$, i.e., one of $\{X,Y,Z\}$ is applied uniformly at random with probability $p_{\rm 1Q}/3$. A two-qubit gate is followed by a two-qubit depolarizing channel with error probability $p_{\rm 2Q}$, i.e., one of the 15 nontrivial Pauli errors in $\{I,X,Y,Z\}^{\otimes 2} \setminus \{II\}$ is applied with probability $p_{\rm 2Q}/15$.
+
+We consider two concrete parameter settings. The first is the \emph{uniform depolarizing noise model}, where $p_{\rm IDLE} = p_{\rm IN} = p_{\rm M} = p_{\rm 1Q} = p_{\rm 2Q} = p$. The second is the \emph{hardware-motivated asymmetric noise model}, where error rates of the single-qubit gates are 10\% of the two-qubit gates, i.e., $p_{\rm IDLE} = p_{\rm IN} = p_{\rm M} = p_{\rm 1Q} = 0.1p_{\rm 2Q} = 0.1p$. Unless otherwise stated, the results below use one of these two models.
+
+We merge the state-preparation circuit and the first SE round whenever possible. This is important because idling errors before the first SE round can increase undetectable first-order initialization errors.
+    
+
+\subsection{First-order analytical results}
+\label{sec:first-order}
+
+We begin with a first-order analytical model for the BB code injection performance. Let $\cJ \subseteq \cI$ be a subset of the injected logical qubits, and let $p_\cJ$ denote the post-selected injection error rate when the incorrect logicals are \emph{exactly} those in $\cJ$:
+\begin{equation}
+p_\cJ := \Pr(\text{incorrect logicals are exactly } \cJ).
+\label{eq:p-cJ}
+\end{equation}
+
+The \emph{total} injection error rate is then
+\begin{equation}
+    p_{\cI}^{\rm tot} := \sum_{\substack{\forall \cJ \subseteq \cI \\ \cJ \neq \emptyset}} p_\cJ,
+    \label{eq:p-cI}
+\end{equation}
+and the \emph{correlated} injection error rate is
+\begin{equation}
+    p^{\text{corr}}_{\cI} := \sum_{\substack{\forall \cJ \subseteq \cI \\ |\cJ| > 1}} p_\cJ.
+    \label{eq:p-corr-cI}
+\end{equation}
+The first metric captures the overall probability of a logical injection failure after post-selection, while the second isolates the component involving multiple logical qubits, which has no analogue in single logical surface code injection.
+
+Most injection errors occur before and during the first SE round. Following~\cite{li_magic_2015,lao_magic_2022}, we analyze the first-order contribution to the injection error rate.
+In other words, we consider weight-one fault mechanisms that occur before or during the first SE round.
+
+An \emph{injection configuration} is specified by the injected logical set $\cI$ and the corresponding injection sites $\{Q_i\}_{i\in\cI}$. An \emph{initial configuration} further specifies the initializations used for that injection configuration. We use the optimization procedure in \Cref{sec:max-protection-injected-supports}
+to find, for each feasible injection configuration, the initial configuration that minimizes $p_{\cI}^{\rm tot}$. By enumerating the feasible configurations on the $[[144,12,12]]$ BB code, we find solutions for $|\cI|=1$ through 6.
+
+\begin{table}[htb]
+    \centering
+    \resizebox{\columnwidth}{!}{
+\begin{tabular}{ccccccccc}
+    \toprule
+    $|\mathcal{I}|$ & $\frac{p_{\cI}^{\rm tot}}{|\mathcal{I}|}$ & $p_{\cI}^{\rm tot}$ & $\frac{p^{\text{corr}}_\cI}{|\mathcal{I}|}$ & $p^{\text{corr}}_\cI$ & $\frac{p^{\text{corr}}_\cI}{p_{\cI}^{\rm tot}}$ & $|F|$ & $r_{\rm disc}^{\rm UP}(0.001)$ & $|\mathcal{P}|$ \\
+    \midrule
+    1 & 1.40$p$ & 1.40$p$ & 0 & 0 & 0 & 26 & 0.9298 & 0 \\
+    2 & 1.43$p$ & 2.87$p$ & 0 & 0 & 0 & 32 & 0.9315 & 0 \\
+    3 & 1.53$p$ & 4.60$p$ & 0 & 0 & 0 & 31 & 0.9315 & 2 \\
+    4 & 1.57$p$ & 6.27$p$ & 0.02$p$ & 0.07$p$ & 0.01 & 32 & 0.9318 & 3 \\
+    5 & 6.04$p$ & 30.20$p$ & 0.96$p$ & 4.80$p$ & 0.16 & 28 & 0.9311 & 5 \\
+    6 & 13.76$p$ & 82.53$p$ & 1.77$p$ & 10.60$p$ & 0.13 & 18 & 0.9281 & 10 \\
+    \bottomrule
+\end{tabular}
+}
+\caption{
+Under the uniform depolarizing noise model, first-order analytical results for the best BB code initial configuration found at each $|\mathcal{I}|$. Here $p_{\cI}^{\rm tot}$ is the total injection error rate defined in \Cref{eq:p-cI}; $p^{\text{corr}}_\cI$ is the correlated injection error rate defined in \Cref{eq:p-corr-cI}; $|F|$ is the number of fixed stabilizers in the first SE round; $r_{\rm disc}^{\rm UP}$ is the union proxy for the discard rate defined in \Cref{eq:rdisc_up_def}; and $|\mathcal{P}|$ is the number of Bell states. When correlated errors are negligible, $p_{\cI}^{\rm tot}/|\mathcal{I}|$ can be interpreted as an approximate injection error rate per logical qubit.
+}
+\label{tab:ana-error-rate}
+\end{table}
+
+The results are summarized in \Cref{tab:ana-error-rate}. For $|\cI|=1,2,3$, the best configurations have no first-order correlated errors. For $|\cI|=4$, the correlated component remains small: $p^{\rm corr}_{\cI}/p_{\cI}^{\rm tot}\approx 1\%$. In this regime, $p_{\cI}^{\rm tot}/|\cI|$ is a meaningful approximation to the injection error rate per logical qubit, and it lies between $1.40p$ and $1.57p$. As a reference point, Li's surface code injection scheme has first-order error rate $46/15\,p \approx 3.07p$ under the same uniform depolarizing model~\cite{li_magic_2015}. 
+In contrast, once $|\cI|$ increases to 5 or 6, both the total injection error and the correlated error component rise sharply. For these larger-$|\cI|$ configurations, $p_{\cI}^{\rm tot}/|\cI|$ is best viewed as a summary statistic rather than a clean per logical qubit error rate.
+
+We also derive the union proxy of the discard rate $r_{\rm disc}^{\rm UP}$ by applying union bounds on the detectable error mechanisms in the detector error model. Details are given in \Cref{sec:detector-error-model}.
+Across the best configurations in \Cref{tab:ana-error-rate}, the discard proxy varies only weakly even though the number of fixed stabilizers changes noticeably. For example, from $|\cI|=5$ to $|\cI|=6$, the number of fixed stabilizers drops from 28 to 18, whereas $r_{\rm disc}^{\rm UP}$ changes only from 0.9311 to 0.9281. This indicates that the discard behavior is not determined solely by the number of fixed stabilizers. Instead, a substantial part of the discard probability comes from mechanisms that are detected only after comparing the first two SE rounds, i.e., by the round-parity detectors. We explain this behavior in \Cref{sec:explanation-similar-discard-rate}.
+
+\subsection{Circuit-level simulation vs analytical results}
+
+Next, we compare the first-order analysis with circuit-level Monte Carlo simulation. We choose the $|\cI|=4$ configuration from \Cref{tab:ana-error-rate}, namely $\cI=\{4,5,7,10\}$, because its correlated injection error rate remains negligible.
+The resulting error breakdown is shown in \Cref{fig:LER-breakdown-4-491}. The numerical results agree closely with the analytical first-order prediction, both for the total injection error rate and for the distribution of the dominant $p_\cJ$ terms.
+Contributions that are nearly invisible correspond to subsets $\cJ$ whose logical error rates are second order or higher in $p$.
+Notably, the chosen configuration gives very little contribution to the correlated injection errors at first-order.
+
+
+The error from initialization ($p_{\rm IN}$) only contributes to $p_{\mathcal{J}}$ where $|\mathcal{J}
+| = 1$ (independent errors in \Cref{fig:LER-breakdown-4-491}) with $1\cdot p=0.001$. 
+This reflects the structure of the optimized configuration: aside from the injection sites themselves, \emph{all} qubits on the injected logical supports are protected by fixed stabilizers in the first SE round.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/LER-breakdown-max_supp_protection-4-491.pdf}
+    \caption{Breakdown of the circuit-level injection error rates for the $|\cI|=4$ BB code configuration $\cI=\{4,5,7,10\}$ under the uniform depolarizing noise model at $p=0.001$. The simulation uses $10^{8}$ shots and $r=2$ SE rounds. Each bar corresponds to a nonempty subset $\cJ\subseteq\cI$, where $p_\cJ$ is the post-selected injection error rate when exactly the logicals in $\cJ$ are incorrect. Summing all bars yields the total injection error rate $p_{\cI}^{\rm tot}=0.00647$, in close agreement with the analytical value $6.27p=0.00627$ from \Cref{tab:ana-error-rate}.}
+    \label{fig:LER-breakdown-4-491}
+\end{figure}
+
+
+\subsection{Scalability analysis}
+
+We now compare the first-order analysis and Monte Carlo simulation across all best BB code configurations in \Cref{tab:ana-error-rate}. The results in \Cref{fig:scalability} show close agreement for both the injection error rate and the discard rate. In particular, the low-correlation regime extends through $|\cI|=4$, where $p_{\cI}^{\rm tot}/|\cI|$ remains nearly flat, while the sharp increase at $|\cI|=5$ and 6 is reproduced by both analysis and simulation. This identifies $|\cI|=4$ as the largest practical BB code configurations we found under the uniform depolarizing model.
+
+The empirical discard rate $r_{\rm disc}^{\rm MC}$ also tracks the union proxy $r_{\rm disc}^{\rm UP}$ closely. For clarity, \Cref{fig:scalability} only overlays the union proxy for the $|\cI|=4$ configuration, but the same agreement holds across the other best configurations as well.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/scalability-li_uniform.pdf}
+    \caption{
+    Circuit-level simulation results of $[[144,12,12]]$ BB code under the uniform depolarizing noise model.
+    (a) Injection error rate per logical qubit and (b) discard rate for the best BB code configurations at each $|\cI|$ in \Cref{tab:ana-error-rate}. The union proxy $r_{\rm disc}^{\rm UP}$ matches the empirical discard rate $r_{\rm disc}^{\rm MC}$ closely; for clarity we overlay the proxy only for the $|\cI|=4$ configuration.
+    }
+    \label{fig:scalability}
+\end{figure}
+
+
+\subsection{Hardware-motivated asymmetric noise model}
+
+We also re-optimize the injection and initial configurations under the hardware-motivated asymmetric noise model. For the $[[144,12,12]]$ BB code, the same best configurations remain optimal at each $|\cI|$ as in the uniform depolarizing model. The analytical results are listed in \Cref{tab:ana-error-rate-li}, and the corresponding circuit-level results are shown in \Cref{fig:scalability-li}.
+
+\begin{table}[htb]
+    \centering
+    \resizebox{0.96\columnwidth}{!}{
+\begin{tabular}{ccccccccc}
+    \toprule
+    $|\mathcal{I}|$ & $\frac{p_\cI^{\rm tot}}{|\mathcal{I}|}$ & $p_\cI^{\rm tot}$ & $\frac{p^{\text{corr}}_\cI}{|\mathcal{I}|}$ & $p^{\text{corr}}_\cI$ & $\frac{p^{\text{corr}}_\cI}{p_\cI^{\rm tot}}$ & $|F|$ & $r_{\rm disc}^{\rm UP}(0.001)$ & $|\mathcal{P}|$ \\
+    \midrule
+    1 & 0.50$p$ & 0.50$p$ & 0 & 0 & 0 & 26 & 0.8082 & 0 \\
+    2 & 0.53$p$ & 1.07$p$ & 0 & 0 & 0 & 32 & 0.8100 & 0 \\
+    3 & 0.63$p$ & 1.90$p$ & 0 & 0 & 0 & 31 & 0.8101 & 2 \\
+    4 & 0.67$p$ & 2.67$p$ & 0.02$p$ & 0.07$p$ & 0.02 & 32 & 0.8104 & 3 \\
+    5 & 2.55$p$ & 12.77$p$ & 0.51$p$ & 2.57$p$ & 0.20 & 28 & 0.8099 & 5 \\
+    6 & 5.61$p$ & 33.63$p$ & 0.92$p$ & 5.50$p$ & 0.16 & 18 & 0.8070 & 10 \\
+    \bottomrule
+\end{tabular}
+}
+\caption{
+Analytical results for the best BB code initial configuration found at each $|\mathcal{I}|$ under the $p_{\rm 1Q}=0.1p_{\rm 2Q}$ noise model. The notation is the same as in \Cref{tab:ana-error-rate}. When correlated errors are negligible, $p_{\cI}^{\rm tot}/|\mathcal{I}|$ can be interpreted as an approximate injection error rate per logical qubit.
+}
+\label{tab:ana-error-rate-li}
+\end{table}
+
+Compared with the uniform model, the leading coefficients are substantially smaller because initialization, measurement, idle, and single-qubit gate faults are all downweighted relative to the two-qubit gate faults. For $|\cI|\in\{1,2,3,4\}$, the approximate injection error rate drops to $0.50p$--$0.67p$, below the two-qubit gate error rate $p$. The same qualitative transition occurs at larger $|\cI|$: the low-correlation regime persists through $|\cI|=4$, while the error rate rises sharply for $|\cI|\in\{5,6\}$.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/scalability-li_twoq_dominant.pdf}
+    \caption{
+        Circuit-level simulation results of $[[144,12,12]]$ BB code under the hardware-motivated asymmetric noise model.
+        (a) Injection error rate per logical qubit and (b) discard rate for the best BB code configurations at each $|\cI|$ in \Cref{tab:ana-error-rate-li}.
+    }
+    \label{fig:scalability-li}
+\end{figure}
+
+
+\subsection{Comparison of optimization objectives}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/cmp_fixing_methods.pdf}
+    \caption{
+        Histogram of the change in total injection error rate and in the number of fixed stabilizers when switching the objective from maximizing the total number of fixed stabilizers to maximizing the number of protected support qubits. All feasible BB code injection configurations are evaluated under the uniform depolarizing noise model.
+    }
+    \label{fig:cmp-fixing-methods}
+\end{figure}
+
+We next compare two optimization objectives for choosing the initial configuration: maximizing the total number of fixed stabilizers, and maximizing the number of protected qubits on the supports of the injected logical observables. For each feasible BB code injection configuration, we optimize once under each objective and compare the resulting first-order total injection error rates.
+
+As shown in \Cref{fig:cmp-fixing-methods}, maximizing protected support qubits consistently yields lower injection error rates across all enumerated configurations, even though it often produces fewer fixed stabilizers overall. This confirms that first-order performance is governed more directly by whether faults on the injected logical supports are detected than by the raw count of fixed stabilizers. In other words, fixed stabilizers that act primarily on qubits irrelevant to the injected observables contribute little towards suppressing the dominant injection faults.
+
+\subsection{Inject on Hypergraph Product Codes}
+
+We also apply the construction to the $[[225,9,4]]$ HGP code of~\cite{xu_constant-overhead_2023} in order to test generality rather than to optimize performance. For the logical Pauli representatives, we use a CSS-specific construction that yields smaller-weight representatives than the generic stabilizer code construction of~\cite[Sec.~4.1]{gottesman_stabilizer_1997}, which is advantageous for injection. For syndrome extraction, we use the product-coloration circuit proposed in~\cite[Alg.~2]{xu_constant-overhead_2023}.
+
+\begin{table}[htb]
+    \centering
+    \resizebox{\columnwidth}{!}{
+\begin{tabular}{ccccccccc}
+    \toprule
+    $|\mathcal{I}|$ & $ p_{\cI}^{\rm tot} / |\mathcal{I}| $ & $ p_{\cI}^{\rm tot} $ & $ p^{\text{corr}}_\cI / |\mathcal{I}| $ & $ p^{\text{corr}}_\cI $ & $ p^{\text{corr}}_\cI / p_{\cI}^{\rm tot} $ & $|F|$ & $ r_{\rm disc}^{\rm UP}(0.0001) $ & $|\mathcal{P}|$ \\
+    \midrule
+    1 & 6.33$p$ & 6.33$p$ & 0 & 0 & 0 & 14 & 0.6278 & 0 \\
+    2 & 6.50$p$ & 13.00$p$ & 0 & 0 & 0 & 19 & 0.6359 & 0 \\
+    3 & 6.78$p$ & 20.33$p$ & 0 & 0 & 0 & 26 & 0.6413 & 0 \\
+    4 & 7.25$p$ & 29.00$p$ & 0.08$p$ & 0.33$p$ & 0.01 & 25 & 0.6407 & 0 \\
+    5 & 7.67$p$ & 38.33$p$ & 0.13$p$ & 0.67$p$ & 0.02 & 27 & 0.6443 & 0 \\
+    6 & 8.00$p$ & 48.00$p$ & 0.17$p$ & 1.00$p$ & 0.02 & 28 & 0.6410 & 0 \\
+    \bottomrule
+\end{tabular}
+}
+\caption{
+Analytical results for the best HGP code initial configuration found at each $|\mathcal{I}|$ under the uniform depolarizing noise model. Here $r_{\rm disc}^{\rm UP}$ is reported at $p=10^{-4}$ because the discard rate at $p=10^{-3}$ is above $0.9999$ for all listed configurations. The notation is otherwise the same as in \Cref{tab:ana-error-rate}.
+}
+\label{tab:ana-error-rate-hgp}
+\end{table}
+
+We could inject up to 6 logical qubits at once, and list the configuration with the smallest $p_{\cI}^{\rm tot}$ for each $|\mathcal{I}|$ in \Cref{tab:ana-error-rate-hgp}. Notably, none of these HGP configurations requires Bell states. The corresponding circuit-level simulation results under the uniform depolarizing model are shown in \Cref{fig:scalability-xu-hgp-li-uniform}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\columnwidth]{figs/scalability-xu_hgp_n225-li_uniform.pdf}
+    \caption{
+        Circuit-level simulation on the HGP code $[[225,9,4]]$ from~\cite{xu_constant-overhead_2023} under uniform depolarizing noise model. (a) Injection error rate per logical qubit and (b) discard rate for the best configurations at each $|\cI|$ in \Cref{tab:ana-error-rate-hgp}. Each point uses $10^{7}$ shots.
+    }
+    \label{fig:scalability-xu-hgp-li-uniform}
+\end{figure}
+
+The current HGP results do not yet indicate near-term practicality: both the injection error rate and the discard rate are substantially worse than in the BB code case. We view this subsection primarily as a portability test. The present HGP study does not yet include code-specific optimization of logical representatives and syndrome extraction scheduling that tailor to injection. Since HGP codes cover a broad family of CSS qLDPC codes, these additional optimization directions make the HGP results a useful starting point rather than a final performance statement.
+
+\subsection{Comparison with surface code injection}
+
+To place our current BB code results in context, we compare against the hook injection scheme of Gidney~\cite{gidney_cleaner_2023}, which to our knowledge is the best-performing surface code magic state injection scheme at the raw injection level. This is a comparison of one-shot raw injection primitives, not of full cultivation or distillation pipelines. We compare four quantities: injection error rate, discard rate, discard-amortized spacetime volume, and physical qubit footprint.
+
+Surface code hook injection is usually described as a two-step procedure: first inject a small surface code patch of distance $d_1$ using two rounds of SE, then enlarge it to a target distance $d_2$ using additional SE rounds.
+
+\begin{table*}[htb]
+    {\setlength{\tabcolsep}{8pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+$p$ & $10^{-4}$ & $2 \times 10^{-4}$ & $3 \times 10^{-4}$ & $5 \times 10^{-4}$ & $7 \times 10^{-4}$ & $10^{-3}$ \\
+\midrule
+Surf., $p_{\{1\}}$ & $5.3 \times 10^{-5}$ & $1.2 \times 10^{-4}$ & $1.8 \times 10^{-4}$ & $3.3 \times 10^{-4}$ & $4.8 \times 10^{-4}$ & $8.4 \times 10^{-4}$ \\
+BB, $p_{\mathcal{I}}/|\mathcal{I}|$ & $1.5 \times 10^{-4}$ & $3.1 \times 10^{-4}$ & $4.6 \times 10^{-4}$ & $8 \times 10^{-4}$ & $1.1 \times 10^{-3}$ & $1.7 \times 10^{-3}$ \\
+\midrule
+Surf., $r_{\rm disc}$ & $0.04$ & $0.08$ & $0.11$ & $0.18$ & $0.25$ & $0.33$ \\
+BB, $r_{\rm disc}$ & $0.24$ & $0.42$ & $0.55$ & $0.74$ & $0.85$ & $0.93$ \\
+\midrule
+Surf., $|\mathcal{I}|\cdot V^{\rm surf}$ & $5538$ & $5607$ & $5679$ & $5832$ & $5996$ & $6274$ \\
+BB, $V^{\rm BB}$ & $7908$ & $10340$ & $13545$ & $23143$ & $39526$ & $88719$ \\
+\midrule
+Surf., \#Qubits & \multicolumn{6}{c}{$|\mathcal{I}|\cdot 2d_2^2 = 968$} \\
+BB, \#Qubits & \multicolumn{6}{c}{$288$} \\
+\bottomrule
+\end{tabular}
+}
+\caption{
+Comparison between Gidney's surface code hook injection and our BB code injection for the best $|\mathcal{I}|=4$ BB configuration under the uniform depolarizing noise model. We report the single logical surface code injection error rate $p_{\{1\}}$, the approximate BB injection error rate per logical qubit $p_{\mathcal{I}}/|\mathcal{I}|$, the discard rate $r_{\rm disc}$, the discard-amortized spacetime volume $V$, and the physical qubit count. For the surface code benchmark, we inject a $d_1=5$ patch using two SE rounds with post-selection on fixed stabilizers and then enlarge to $d_2=11$ with one additional SE round; decoding uses \texttt{pymatching}. For the BB code benchmark, we inject the full $[[144,12,12]]$ block using the same total number of SE rounds; decoding uses BP+OSD.
+}
+\label{tab:cmp-surface-bb}
+\end{table*}
+
+% \textit{Target code distance.}
+To choose a comparable target distance, we follow the memory-level comparison in~\cite[Fig.~2]{bravyi_high-threshold_2024}, which indicates that one $[[144,12,12]]$ BB block has memory performance similar to 12 surface code patches of distance 11 or 13. We therefore use $d_2=11$ as the target surface code distance in this benchmark. On the BB side, we benchmark the best $|\cI|=4$ configuration because its correlated injection error rate remains negligible.
+
+Let $r_{\rm disc}$ be the discard rate under post-selection on the fixed stabilizers, $V_{\rm inj}$ the spacetime volume of the injection procedure, and $V_{\rm grow}$ the spacetime volume of the code-enlargement procedure. We define spacetime volume as ``number of physical qubits'' times ``number of two-qubit gates on the critical path.'' The discard-amortized spacetime volume is then
+\begin{equation}
+V = \frac{V_{\rm inj}}{1 - r_{\rm disc}} + V_{\rm grow}.
+\label{eq:spacetime-volume}
+\end{equation}
+
+The comparison is summarized in \Cref{tab:cmp-surface-bb}. At present, the $[[144,12,12]]$ BB code injection scheme is not yet competitive with surface code hook injection in either injection error rate per logical qubit or discard-amortized spacetime volume. The main reason is that the entire BB block must be injected at once, which drives the discard rate high enough to outweigh the benefit of injecting multiple logical qubits simultaneously. 

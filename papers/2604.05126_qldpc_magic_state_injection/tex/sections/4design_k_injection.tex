@@ -1,0 +1,53 @@
+\section{General k-injection}
+\label{sec:k-injection} 
+In this section, we present our general $ k $-qubit injection scheme for arbitrary codes. The first step is to
+find a set of conjugate logical Pauli representatives $ \set{\bar{X}_i', \bar{Z}_i'} $ such that the support of all of the representatives can be partitioned into two sets, $\mathcal{Q}_L$ and $\mathcal{Q}_P$, where $|\mathcal{Q}_L| = k$. 
+% The set $\mathcal{Q}_L$ has size $k$, and the set $\mathcal{Q}_P$ satisfy the property that
+Moreover, for every qubit $j$ in $\mathcal{Q}_P$, there is a fixed single-qubit Pauli operator $P_j$ such that
+%  every representative $\bar{X}_i'$, $\bar{Z}_i'$ acts either trivially or by $P_j$ on qubit $j$.
+% with the following properties:
+\begin{align}
+   \forall i,  (\bar{X}_i')_j, (\bar{Z}_i')_j \in \{ I, P_j \}.
+    % (\bar{Z}_i')_j \in \{ I, P_j \},
+\end{align}
+In other words, the representatives \textit{locally commute} on qubits in $\mathcal{Q}_P$.
+% for all qubits $j$ in $\mathcal{Q}_P$, for some fixed set of $\{ P_j \}_{j \in \mathcal{Q}_P}$.
+% The purpose of choosing such a partition is that 
+Given such logical representatives, one can prepare an arbitrary target state on the $k$~qubits in~$\mathcal{Q}_L$ and prepare the qubits in $\mathcal{Q}_P$ in single-qubit states stabilized by $\{ P_j \}_{j \in \mathcal{Q}_P}$.
+% After this physical state preparation, 
+Consequently, the logical representatives are prepared in the target state.
+% the remaining qubits in fixed states $\{ P_j \}_{j \in \mathcal{Q}_P}$, which will prepare the logical representatives in the desired arbitrary state. 
+One would then project into the codespace by measuring all of the stabilizers of the code which, in the absence of noise, will not disturb the prepared logical representatives. 
+
+We describe how to find such a basis using a stabilizer-cleaning argument in \Cref{app:k-injection-details}, however there are equivalent approaches that achieve the same result by considering the binary symplectic matrices formed by the stabilizer generators and logical operators~\cite{gottesman_stabilizer_1997,cowtan_parallel_2025,shi_stabilizer_2025}.
+We explain in \cref{app:k-injection-details} why the stabilizer-cleaning preserves the encoded logical information. 
+
+The stabilizer-cleaning produces a new set of logical representatives $ \mathcal{L}' := \{ \bar{X}_i', \bar{Z}_i' \}_{i=1}^{k} $ together with an updated stabilizer generator set $ \mathcal{S}' $. The representatives in $ \mathcal{L}' $ are supported on $ k $ \emph{carrier qubits}, denoted by $\mathcal{Q}_L = \set{Q_i}_{i=1}^k$, while the remaining \emph{peeled qubits}, denoted by $\mathcal{Q}_P$, are fixed by the weight-$1$ Pauli generators in $ \mathcal{S}' $.
+Since $ \mathcal{L}' $ is again a valid conjugate logical Pauli basis, there exists a Clifford circuit $C$ on the carrier qubits that maps the standard single-qubit Paulis on $\mathcal{Q}_L$ to the reduced logical representatives:
+\begin{equation}
+C X_{Q_i} C^\dagger = \bar{X}_i',
+\qquad
+C Z_{Q_i} C^\dagger = \bar{Z}_i'.
+\label{eq:tomas-step-clifford-circuit}
+\end{equation}
+
+
+In summary, the whole $ k $-qubit injection scheme is:
+\begin{enumerate}
+    \item Prepare the $ k $ carrier qubits $\set{Q_i}$ in the $+1$ eigenstates of $ M_{Q_i} $ for all $ i \in [k] $.
+    \item Apply the Clifford circuit $C$ on the carrier qubits. (Such Clifford could be free. See discussion in \Cref{app:k-injection-details}).
+    \item Prepare the $ n-k $ peeled qubits in the eigenstates of the single-qubit Paulis in $ \mathcal{S}' $.
+    \item Measure the stabilizers of the original code, i.e., $ \mathcal{S} $.
+\end{enumerate}
+
+In this way, we inject $ k $ logical magic states encoded by $ \mathcal{L} $ simultaneously.
+
+\subsection{Analysis of injection error rate}
+
+Magic state injection schemes rely on encoding a set of qubits into the target codespace via syndrome extraction. This renders all stabilizer outcomes non-deterministic in the first SE round, providing no reliable check for post-selection or for suppressing preparation faults. While preparation faults on the magic-state qubits can never be detected, a careful choice of initial states can allow fixed stabilizers to detect faults on other qubits initialized in the $\ket{0}$ or $\ket{+}$ states. A general construction aimed at injecting the maximum number of logical qubits ignores this possibility. Consequently, faults occurring during state preparation and the first SE round can contribute directly to logical injection errors.
+
+
+We observe this behavior explicitly in circuit-level simulation (assuming the Clifford $C$ is free). For the \( [[144,12,12]] \) BB code, when injecting all \(k=12\) logical qubits under the uniform depolarizing noise model of \Cref{sec:noise-model} with physical error rate \(p=10^{-3}\), the injection error rate (per logical qubit) is \(0.0422\), which is \(42.2\times\) of the physical error rate. 
+This shows that utilizing first-round stabilizers to reduce the injection error rate might be necessary.
+
+To this end, in the next section, we will introduce an improved injection scheme to reduce the injection error rate.

@@ -1,0 +1,221 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%   Version 4.2a of REVTeX, December 2014
+%
+%   Copyright (c) 2014 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.2
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+ reprint,
+superscriptaddress,
+% groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+% preprint,
+%preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+% pra,
+prx,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+floatfix,
+]{revtex4-2}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+%%% --------- Begin: my packages ----------
+
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{algorithmic}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{braket}
+\usepackage{quantikz}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{totpages}
+\usepackage{cleveref}
+\usepackage{cancel}
+\usepackage[normalem]{ulem}
+% \usetikzlibrary{quantikz2}
+\usepackage{siunitx}
+\sisetup{detect-all}  % This makes siunitx adapt to the current font
+% \si{\us} % or \si{\us}
+\newcommand{\us}{\si{\micro\second}}
+% \newcommand{\Kun}[1]{\textcolor{teal}{Kun: #1}}
+% \newcommand{\Shifan}[1]{\textcolor{orange}{Shifan: #1}}
+% \newcommand{\Shraddha}[1]{\textcolor{red}{Shraddha: #1}}
+% \newcommand{\Tomas}[1]{\textcolor{blue}{Tomas: #1}}
+% \newcommand{\sunny}[1]{\textcolor{cyan}{Sunny: #1}}
+% \newcommand{\YD}[1]{\textcolor{purple}{Yongshan: #1}}
+\renewcommand{\selectlanguage}[1]{} % RevTex 4-2: Package babel Error: You haven't defined the language en yet
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\Pauli}{\mathcal{P}}
+\newcommand{\supp}{\mathrm{supp}}
+\renewcommand{\proj}{\Pi}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+% \newcommand{\supp}{\mathrm{supp}}
+% \newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\id}{\mathbb{I}}
+\newcommand{\etal}{\textit{et al}.}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+\newtheorem{example}{Example}
+\newtheorem{assumption}{Assumption}
+
+% fix: Sec. A --> Appendix A for \cleveref
+\AddToHook{cmd/appendix/before}{%
+  \crefalias{section}{appendix}%
+  \crefalias{subsection}{subappendix}%
+  \crefalias{subsubsection}{subsubappendix}%
+}
+
+\Crefname{equation}{Eq.}{Eqs.}
+\crefname{equation}{Eq.}{Eqs.}
+\Crefname{definition}{Def.}{Defs.}
+\crefname{definition}{Def.}{Defs.}
+\Crefname{figure}{Fig.}{Figs.}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{section}{Sec.}{Secs.}
+\crefname{section}{Sec.}{Secs.}
+\Crefname{assumption}{Assum.}{Assums.}
+\crefname{assumption}{Assum.}{Assums.}
+\Crefname{appendix}{Appendix}{Appendices}
+\crefname{appendix}{Appendix}{Appendices}
+
+%%% --------- End: my packages ------------
+
+
+\begin{document}
+
+\preprint{APS/123-QED}
+
+\title{In-Situ Simultaneous Magic State Injection on Arbitrary CSS qLDPC Codes}% Force line breaks with \\
+% \thanks{A footnote to the article title}%
+
+\author{Kun Liu}
+\email{kun.liu.kl944@yale.edu}
+\affiliation{Department of Computer Science, Yale University, New Haven, Connecticut 06511, USA}
+\affiliation{Yale Quantum Institute, Yale University, New Haven, Connecticut 06511, USA}
+
+\author{Shifan Xu}
+\affiliation{Yale Quantum Institute, Yale University, New Haven, Connecticut 06511, USA}
+\affiliation{Department of Applied Physics, Yale University, New Haven, Connecticut 06511, USA}
+
+\author{Tomas Jochym-O'Connor}
+\affiliation{IBM Quantum, IBM T.J. Watson Research Center, Yorktown Heights, New York 10598, USA}
+
+\author{Zhiyang He}
+\affiliation{Department of Mathematics, Massachusetts Institute of Technology, Cambridge, MA 02139, USA}
+
+\author{Shraddha Singh}
+\affiliation{IBM Quantum, IBM T.J. Watson Research Center, Yorktown Heights, New York 10598, USA}
+
+\author{Yongshan Ding}
+\email{yongshan.ding@yale.edu}
+\affiliation{Department of Computer Science, Yale University, New Haven, Connecticut 06511, USA}
+\affiliation{Yale Quantum Institute, Yale University, New Haven, Connecticut 06511, USA}
+\affiliation{Department of Applied Physics, Yale University, New Haven, Connecticut 06511, USA}
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\input{sections/0Abstract}
+%\keywords{Suggested keywords}%Use showkeys class option if keyword
+                              %display desired
+\maketitle
+
+% \Kun{TODO: remove TOC}
+% \tableofcontents 
+
+\input{sections/1intro_v4}
+
+\input{sections/2background}
+
+\input{sections/4design_k_injection.tex}
+\input{sections/4design_unified_formalism}
+
+% \input{sections/5evaluation}
+\input{sections/5eval_v2}
+
+\input{sections/7conclusion_v2}
+
+\begin{acknowledgments}
+We thank Hengyun (Harry) Zhou and J. Pablo Bonilla Ataides for providing the data of hypergraph product codes.
+We thank Patrick Rall for valuable insights and discussions.
+This work is supported in part by the National Science Foundation (under awards CCF-2312754 and CCF-2338063), in part by the Department of Energy Co-Design Center for Quantum Advantage (C2QA), in part by QuantumCT (under NSF Engines award ITE-2302908), in part by AFOSR MURI (FA9550-26-1-B036).
+Z.H. acknowledges support from the MIT Department of Mathematics, the MIT-IBM Watson AI Lab, and the NSF Graduate Research Fellowship Program under Grant No. 2141064.
+YD acknowledges partial support by Boehringer Ingelheim, and NSF NQVL-ERASE (under award OSI-2435244). External interest disclosure: YD is a scientific advisor to D-Wave Quantum, Inc.
+\end{acknowledgments}
+
+\section*{DATA AVAILABILITY}
+The data and code used to generate 
+the results in this paper is available on GitHub~\footnote{https://github.com/kunliu7/qldpc-msi}.
+\appendix
+
+\input{sections/8appendix}
+\input{sections/8app_k_injection}
+\input{sections/8app_unified_thm}
+\input{sections/4design_dem}
+\input{sections/4design_protection}
+% The \nocite command causes all entries in a bibliography to be printed out
+% whether or not they are actually referenced in the text. This is appropriate
+% for the sample file to show the different styles of references, but authors
+% most likely will not want to use it.
+% \nocite{*}
+
+
+
+\bibliography{ref_kun,ref_additional}
+% Produces the bibliography via BibTeX.
+
+\end{document}
+%
+% ****** End of file apssamp.tex ******

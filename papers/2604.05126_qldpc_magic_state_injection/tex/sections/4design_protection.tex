@@ -1,0 +1,295 @@
+\section{Maximize Protection of Logical Rotated Pauli Observables}
+\label{sec:max-protection-injected-supports}
+
+After the sufficient conditions in \Cref{sec:improved-injection-scheme} are satisfied, the remaining design freedom lies in the basis assignments on data qubits whose initialization is not already fixed by the injection construction. We use this freedom to improve the first-round post-selection of the scheme. More precisely, we formulate a mixed-integer linear programming problem that chooses these remaining basis assignments so as to maximize the number of qubits on the supports of the injected logical observables whose dominant reset faults are detected by fixed stabilizers in the first syndrome extraction round. This objective is a first-order surrogate for reducing the injection error rate: it does not optimize the full logical error probability directly, but it more closely tracks the harmful error mechanisms than simply maximizing the total number of fixed stabilizers.
+
+\subsection{Sets and notation}
+
+Assume we have already settled down the initializations for the qubits in $ \supp(\bar X_i) \cup \supp(\bar Z_i) $,
+and the prepared state $ \ket{\psi_{\mathrm{in}}} $ is stabilized by a set of \emph{initial stabilizers} $ \mathcal{R} $,
+distinct from the \emph{code stabilizers} $ \mathcal{S} $.
+An injectable set $ \cI $ gives a compatible pairing $ \cP = \set{\{u_t,v_t\}}_{t=1}^T $.
+So by \Cref{thm:unified-sufficient-condition}, $ \mathcal{R} $ includes
+\begin{enumerate}
+  \item $ X_{u_t}X_{v_t},\, Z_{u_t}Z_{v_t} $, $ \forall t\in [T] $,
+  \item $ M_{Q_i} $, $ \forall i \in \cI $,
+  \item $ X_q $, $ \forall q \in A_i \setminus C$, $\forall i \in \cI$,
+  \item $ Z_q $, $ \forall q \in B_i \setminus C$, $\forall i \in \cI$.
+\end{enumerate}
+
+In the remainder of this section,
+we assume we have removed the stabilizers that can never be fixed
+due to not commuting with some initial stabilizers in $ \mathcal{R} $.
+Then, \( m_X \) and \( m_Z \) are the number of remaining $X$-type and $Z$-type stabilizers, i.e., candidates for being fixed stabilizers.
+
+Let $I \subseteq [n]$
+denote the set of data qubits on the supports of the injected logical operators that we want to protect from errors (different from $ \cI $ which denotes the set of injected logicals).
+Here, let 
+\begin{equation}
+I = \bigcup_i \, \big((\supp(\bar X_i) \cup \supp(\bar Z_i)) \setminus \{Q_i\}\big).
+\end{equation}
+
+Let 
+\begin{equation}
+U = [n] \setminus I
+\end{equation}
+denote the set of data qubits whose single-qubit initialization basis we are free to choose, typically outside the supports of injected logicals.
+
+For each $X$-type or $ Z $-type row $r$ in $H_X$ or $H_Z$, define its full support
+\begin{equation}
+  \begin{aligned}
+  \supp^X(r) &:= \bigl\{ j \in [n] \;\big|\; (H_X)_{r,j} = 1 \bigr\}, \\
+  \supp^Z(r) &:= \bigl\{ j \in [n] \;\big|\; (H_Z)_{r,j} = 1 \bigr\},
+  \end{aligned}
+\end{equation}
+and its restriction to $U$,
+\begin{equation}
+  \begin{aligned}
+  \supp^X_U(r) &:= \supp^X(r) \cap U, \\
+  \supp^Z_U(r) &:= \supp^Z(r) \cap U.
+  \end{aligned}
+\end{equation}
+
+For each qubit $j \in I \setminus {\bm Q}$ the injection scheme already fixes its single-qubit basis,
+\begin{equation}
+  b_j \in \{X,Z\},
+\end{equation}
+meaning that $j$ is initialized in an $X$-eigenstate if $b_j = X$, or in a $Z$-eigenstate if $b_j = Z$.
+To prepare a Bell state $ \{u,v\} $ on $ I $ as described in \Cref{sec:improved-injection-scheme},
+we first initialize $ u $ and $ v $ in the $ X $ and $ Z $ bases, respectively,
+and then do a CNOT from $ u $ to $ v $.
+And thus, we set $ b_u = X $ and $ b_v = Z $.
+% The method we incorporate the Bell states in $ I $ is explained in the next subsection.
+
+For each $j \in I$, we define detection sets
+\begin{align}
+  D_X(j) &:= \bigl\{ r \in [m_X] \;\big|\; (H_X)_{r,j} = 1 \bigr\},
+  \label{eq:DX}
+  \\
+  D_Z(j) &:= \bigl\{ r \in [m_Z] \;\big|\; (H_Z)_{r,j} = 1 \bigr\}.
+  \label{eq:DZ}
+\end{align}
+Thus $D_X(j)$ are the $X$-type stabilizers that anticommute with a $Z_j$ error, and $D_Z(j)$ are the $Z$-type stabilizers that anticommute with an $X_j$ error.
+
+\subsection{Error model and protection}
+
+Following \cite{li_magic_2015,lao_magic_2022}, we adopt a simple noise model for single-qubit initialization (reset) errors:
+\begin{itemize}
+  \item If qubit $j$ is initialized in the $X$ basis ($b_j = X$), its reset error is modeled as a Pauli $Z_j$ applied after a perfect reset.
+  \item If qubit $j$ is initialized in the $Z$ basis ($b_j = Z$), its reset error is modeled as a Pauli $X_j$ applied after a perfect reset.
+\end{itemize}
+An $X$-type stabilizer $s^X_r$ detects a $Z_j$ error if and only if $(H_X)_{r,j} = 1$ (i.e., $r \in D_X(j)$); similarly, a $Z$-type stabilizer $s^Z_r$ detects an $X_j$ error if and only if $(H_Z)_{r,j} = 1$ (i.e., $r \in D_Z(j)$). 
+
+When single-qubit reset is the only allowed gate,
+a $ X $-type stabilizer is \emph{fixed}, i.e., having a deterministic measurement outcome, iff
+all the support qubits are initialized in the $ X $ basis;
+similarly for $ Z $-type stabilizers.
+However, we prepare Bell states to resolve the overlaps,
+which involves two-qubit gates;
+the injection site is prepared in +1 eigenstate of a rotated Pauli observable $ M $, which do not commute with any $X$-type  or $ Z $-type stabilizer.
+
+For the reasons above, we define the fixed stabilizers with respect to the optimization space $ U $:
+\begin{itemize}
+  \item An $X$-type row $r$ is \emph{fixed with respect to $U$} if every qubit in $\supp^X_U(r)$ is initialized in the $X$ basis.
+  \item A $Z$-type row $r$ is \emph{fixed with respect to $U$} if every qubit in $\supp^Z_U(r)$ is initialized in the $Z$ basis.
+\end{itemize}
+
+Note that reset errors on the qubits in the Bell state $ \{u,v\} $ are detectable by the fixed stabilizers,
+since both the $ Z $ error on the control qubit $ u $
+and the $ X $ error on the target qubit $ v $ penetrate through (commute with) the CNOT($ u $, $ v $). That is why we incorporate the Bell state $ \{u,v\} $ into the set $ I $ and set $ b_u = X $ and $ b_v = Z $.
+
+\subsection{MILP: Decision variables}
+
+We introduce three families of binary decision variables.
+
+\paragraph{Basis choice on $U$.}
+For each qubit $j \in U$, we define
+\begin{equation}
+  x_j \in \{0,1\},
+\end{equation}
+interpreted as
+\begin{equation}
+  \begin{aligned}
+    x_j = 1 \;\Longleftrightarrow\; \text{initialize qubit $j$ in the $X$ basis}, \\
+    x_j = 0 \;\Longleftrightarrow\; \text{initialize qubit $j$ in the $Z$ basis}.
+  \end{aligned}
+\end{equation}
+
+\paragraph{Row-fixed indicators.}
+For each $X$-type row $r$ with $\supp^X_U(r) \neq \emptyset$, we introduce
+\begin{equation}
+  f_r^X \in \{0,1\},
+\end{equation}
+indicating whether that $X$ stabilizer is fixed with respect to the basis choices on $U$. Similarly, for each $Z$-type row $r$ with $\supp^Z_U(r) \neq \emptyset$,
+\begin{equation}
+  f_r^Z \in \{0,1\}.
+\end{equation}
+Rows with $\supp^X_U(r) = \emptyset$ or $\supp^Z_U(r) = \emptyset$ are unaffected by basis choices on $U$ and are treated as outside the optimization.
+
+\paragraph{Protection indicators for targets.}
+For each target qubit $j \in I$, we define
+\begin{equation}
+  p_j \in \{0,1\},
+\end{equation}
+where $p_j = 1$ means that the reset error on qubit $j$ is detected by at least one fixed stabilizer, and $p_j = 0$ means that $j$ is unprotected.
+
+\subsection{MILP: Constraints}
+
+\paragraph{Fixed stabilizers and basis compatibility.}
+If an $X$-type row $r$ is fixed then all uninitialized qubits in its support must be in the $X$ basis; similarly for $Z$-type rows and the $Z$ basis. This yields the implications
+\begin{equation}
+  \begin{aligned}
+    f_r^X = 1 \;\Longrightarrow\; x_j = 1 \quad \forall j \in \supp^X_U(r), \\
+    f_r^Z = 1 \;\Longrightarrow\; x_j = 0 \quad \forall j \in \supp^Z_U(r).
+  \end{aligned}
+\end{equation}
+We encode these as the linear inequalities
+\begin{equation}
+  f_r^X \le x_j,
+  \quad
+  \forall r,\ \forall j \in \supp^X_U(r),
+  \label{eq:fixed-X}
+\end{equation}
+\begin{equation}
+  f_r^Z \le 1 - x_j,
+  \quad
+  \forall r,\ \forall j \in \supp^Z_U(r).
+  \label{eq:fixed-Z}
+\end{equation}
+These constraints ensure that whenever $f_r^{X}$ for $ f_r^Z $ is 1, the basis choices on $U$ are consistent with that row being fixed.
+
+% If some target qubits $j \in I$ also belong to $U$, their basis choices are fixed by the injection scheme. In that case we additionally impose
+% \begin{equation}
+%   x_j = 
+%   \begin{cases}
+%     1, & \text{if } b_j = X, \\
+%     0, & \text{if } b_j = Z,
+%   \end{cases}
+%   \quad \forall j \in I \cap U.
+%   \label{eq:fixed-basis}
+% \end{equation}
+
+\paragraph{Protection of target qubits.}
+For each target $j \in I$, we want $p_j = 1$ only if there exists at least one fixed stabilizer that detects the relevant reset error. Using the detection sets in \Cref{eq:DX,eq:DZ}:
+\begin{itemize}
+  \item If $b_j = X$, then the reset error is modeled as $Z_j$. This is detected by $X$-type rows in $D_X(j)$, but only if they are fixed. Thus we require
+  \begin{equation}
+    p_j \le \sum_{r \in D_X(j)} f_r^X,
+    \qquad \text{if } b_j = X.
+    \label{eq:protect-X}
+  \end{equation}
+  If $D_X(j) = \emptyset$, then there is no stabilizer that anticommutes with $Z_j$, and we simply impose $p_j = 0$.
+  \item If $b_j = Z$, then the reset error is modeled as $X_j$. This is detected by $Z$-type rows in $D_Z(j)$, but only if they are fixed. Thus we require
+  \begin{equation}
+    p_j \le \sum_{r \in D_Z(j)} f_r^Z,
+    \qquad \text{if } b_j = Z.
+    \label{eq:protect-Z}
+  \end{equation}
+  If $D_Z(j) = \emptyset$, then we again set $p_j = 0$.
+\end{itemize}
+\Cref{eq:protect-X,eq:protect-Z} ensure that a qubit can be marked as protected ($p_j = 1$) only if at least one corresponding fixed stabilizer is available.
+
+\paragraph{Integrality.}
+All variables are binary:
+\begin{equation}
+\begin{aligned}
+  x_j &\in \{0,1\}, \quad \forall j \in U, \\
+  f_r^X &\in \{0,1\}, \quad \forall r \text{ with } \supp^X_U(r) \neq \emptyset, \\
+  f_r^Z &\in \{0,1\}, \quad \forall r \text{ with } \supp^Z_U(r) \neq \emptyset, \\
+  p_j &\in \{0,1\}, \quad \forall j \in I.
+\end{aligned}
+\label{eq:integrality}
+\end{equation}
+
+\subsection{MILP: Objective}
+
+The goal of the optimization is to maximize the number of qubits on the supports of the injected logicals whose reset errors are detected by some fixed stabilizer. This is captured by the objective
+\begin{equation}
+  \max \sum_{j \in I} p_j.
+  \label{eq:objective}
+\end{equation}
+
+% Taken together, \Cref{eq:fixed-X,eq:fixed-Z,eq:protect-X,eq:protect-Z,eq:objective} define a 0--1 integer optimization problem over the basis choices $\{x_j\}_{j \in U}$ and fixed-stabilizer indicators $\{f_r^X\}, \{f_r^Z\}$, which yields a basis assignment and a set of fixed stabilizers that maximizes the number of protected qubits on the supports of the injected logicals.
+
+Together with \Cref{eq:integrality}, the complete optimization problem is:
+\begin{equation}
+  \label{eq:max-protection-opt}
+  \begin{aligned}
+    &\max_{\substack{\{x_j\}_{j \in U},\ \{f_r^X\},\\ \{f_r^Z\},\ \{p_j\}_{j \in I}}} \quad
+       \sum_{j \in I} p_j
+    \\[4pt]
+    \quad
+      & f_r^X \le x_j,
+      && \forall r,\ \forall j \in \supp^X_U(r),
+      \\[2pt]
+      & f_r^Z \le 1 - x_j,
+      && \forall r,\ \forall j \in \supp^Z_U(r),
+      \\[4pt]
+      % & x_j = 1,
+      % && \forall j \in I \cap U \text{ with } b_j = X,
+      % \\[2pt]
+      % & x_j = 0,
+      % && \forall j \in I \cap U \text{ with } b_j = Z,
+      % \\[4pt]
+      & p_j \le \sum_{r \in D_X(j)} f_r^X,
+      && \forall j \in I \text{ with } b_j = X,
+      \\[2pt]
+      & p_j \le \sum_{r \in D_Z(j)} f_r^Z,
+      && \forall j \in I \text{ with } b_j = Z.
+      % \\[4pt]
+      % & x_j \in \{0,1\},
+      % && \forall j \in U,
+      % \\[2pt]
+      % & f_r^X \in \{0,1\},
+      % && \forall r \text{ with } \supp^X_U(r) \neq \emptyset,
+      % \\[2pt]
+      % & f_r^Z \in \{0,1\},
+      % && \forall r \text{ with } \supp^Z_U(r) \neq \emptyset,
+      % \\[2pt]
+      % & p_j \in \{0,1\},
+      % && \forall j \in I.
+  \end{aligned}
+\end{equation}
+
+% \subsection{Maximize fixed stabilizers}
+
+Besides maximizing the number of protected qubits,
+with simple modifications,
+we can also maximize the number of fixed stabilizers:
+
+\begin{equation}
+  \begin{aligned}
+    \text{maximize } \quad &
+      \sum_{\substack{\forall r \\ \supp_U^X(r) \neq \emptyset}} f_r^X
+      +
+      \sum_{\substack{\forall r \\ \supp_U^Z(r) \neq \emptyset}} f_r^Z
+    \\[3pt]
+    \text{subject to } \quad &
+      f_r^X \le x_j,
+      \quad \forall\, r,\; j \in \supp_U^X(r),
+    \\[3pt]
+    &
+      f_r^Z \le 1 - x_j,
+      \quad \forall\, r,\; j \in \supp_U^Z(r).
+    % \\[3pt]
+    % &
+    %   x_j \in \{0,1\},
+    %   \quad \forall\, j \in U,
+    % \\[3pt]
+    % &
+    %   f_r^X \in \{0,1\},
+    %   \quad \forall\, r \in U_X \text{ with } \mathsf{supp}_U^X(r) \neq \emptyset,
+    % \\[3pt]
+    % &
+    %   f_r^Z \in \{0,1\},
+    %   \quad \forall\, r \in U_Z \text{ with } \mathsf{supp}_U^Z(r) \neq \emptyset.
+  \end{aligned}
+\end{equation}
+
+In \Cref{sec:evaluation},
+we compare the two solutions.
+It turns out that maximizing the protection yields lower injection error rate.
+This is because any error on the support of an injected logical ($ \bar X_i $ or $ \bar Z_i $),
+if not detected by any fixed stabilizer,
+will \emph{directly} lead to a first-order logical error on the logical rotated Pauli observable $ \bar M_{i} $.
+This is well-captured by the idea to maximize the number of protected qubits.

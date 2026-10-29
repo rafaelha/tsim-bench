@@ -1,0 +1,67 @@
+\section{Preliminaries}
+\label{sec:background}
+
+% \section{Preliminaries}
+% \label{sec:background}
+
+
+
+\subsection{Magic state injection}
+
+The Eastin-Knill theorem~\cite{eastin_restrictions_2009} states that no quantum error-correcting code admits a universal transversal gate set.
+A standard route to universality is therefore to prepare high-fidelity magic states and consume them through gate teleportation or related protocols~\cite{litinski_game_2019,litinski_magic_2019}.
+In this work, we focus on single-qubit magic states on the $XY$ plane of the Bloch sphere, namely the $+1$ eigenstates of observables of the form $\cos\theta\,X+\sin\theta\,Y$.
+For $\theta=\pi/4$, this is the $H_{\mathrm{XY}}$ eigenstate, i.e., the $\ket{T}$ state, which is the target output of recent cultivation protocols~\cite{gidney_magic_2024,sahay_fold-transversal_2025,chen_efficient_2025-1}.
+
+For a single-qubit rotation $R_z(\theta):=e^{-i\theta Z/2}$, define
+\begin{equation}
+|\theta\rangle := R_z(\theta)|+\rangle.
+\end{equation}
+This state is the $+1$ eigenstate of the \emph{rotated Pauli observable}~\cite{li_magic_2015}
+\begin{equation}
+M \, := \, R_z(\theta) X R_z(-\theta)
+= \cos\theta\,X + \sin\theta\,Y.
+\label{eq:single-qubit-magic-op}
+\end{equation}
+Since our formalism applies to arbitrary rotation angles, we suppress the angle $\theta$ in the notation whenever it is not essential.
+When $M$ is supported on physical qubit $q$, we write it as $M_q$.
+
+An $[[n,k,d]]$ stabilizer code is specified by a stabilizer group $S \subseteq \mathcal{P}_n$ with a chosen set of logical Pauli representatives $\{\bar X_i,\bar Z_i\}_{i=1}^k \subseteq N(S)\setminus S$, where $N(S)$ is the normalizer of $S$.
+In this work we focus on CSS codes, so the stabilizer generators are taken to be either $X$-type or $Z$-type.
+We write $\mathcal{S}=\{s_a\}_{a=1}^{n-k}$ for a chosen independent generating set, so that $S=\langle \mathcal{S}\rangle$.
+
+For logical qubit $i\in [k]:=\{1,2,\dots,k\}$, we define the \emph{logical rotated Pauli observable}
+\begin{equation}
+\begin{aligned}
+\bar M_i
+&:= e^{-i\theta_i \bar Z_i/2}\,\bar X_i\,e^{+i\theta_i \bar Z_i/2} \\
+&= \cos\theta_i\,\bar X_i + \sin\theta_i\,\bar Y_i,
+\label{eq:logical-rotated-x}
+\end{aligned}
+\end{equation}
+where $\bar Y_i:= i\bar X_i\bar Z_i$.
+The corresponding logical magic state $|\bar\theta_i\rangle$ satisfies $\bar M_i|\bar\theta_i\rangle = |\bar\theta_i\rangle$.
+The goal of magic state injection is therefore to prepare, with high fidelity and low qubit overhead, a code state that is a $+1$ eigenstate of $\bar M_i$ for one or more logical qubits in the same block.
+
+In many surface code MSI schemes~\cite{li_magic_2015,lao_magic_2022,gidney_cleaner_2023}, state preparation is followed by rounds of syndrome extraction (SE) that detect faults and, up to a Pauli frame, project the data back into the codespace.
+Pauli frame correction is optional and can be implemented in software.
+Abstractly, one round of SE can be modeled as the codespace projector
+\begin{equation}
+\proj_\mathcal{S} \,=\, \prod_{s\in\mathcal{S}} \frac{I+s}{2}.
+\label{eq:projector}
+\end{equation}
+Because $\bar X_i$, $\bar Y_i$, and $\bar Z_i$ all lie in $N(S)$, they commute with every stabilizer in $\mathcal{S}$, and hence
+\begin{equation}
+[\bar M_i,\,\proj_\mathcal{S}] = 0.
+\label{eq:commute-with-projector}
+\end{equation}
+Therefore, if the prepared state is a $+1$ eigenstate of desired logical rotated Pauli observables $\set{\bar M_i}$, then projection into the codespace preserves that eigenvalue.
+This observation is the starting point of our in-situ injection scheme: the design problem reduces to characterizing product-state initializations whose projection yields the target logical rotated observables.
+
+
+\subsection{High-rate qLDPC codes}
+
+Our main examples are the $[[144,12,12]]$ bivariate bicycle (BB) code~\cite{bravyi_high-threshold_2024} and the $[[225,9,4]]$ hypergraph product (HGP) code~\cite{xu_constant-overhead_2023}.
+These are two canonical CSS qLDPC code families in the recent literature, and both encode multiple logical qubits in a single block, making them natural testbeds for simultaneous magic state injection on multiple logical qubits.
+They also admit explicit syndrome extraction circuits, which is essential because the performance of our scheme depends not only on the code itself, but also on the chosen logical Pauli representatives and on the syndrome extraction schedule.
+We defer the detailed constructions of the logical representatives and syndrome extraction circuits used in this work to \cref{app:high-rate-qLDPC-codes}.
