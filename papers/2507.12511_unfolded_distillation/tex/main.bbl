@@ -1,0 +1,417 @@
+\begin{thebibliography}{81}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Shor(1994)]{shor1994algorithms}
+Peter~W Shor.
+\newblock Algorithms for quantum computation: discrete logarithms and factoring.
+\newblock In \emph{Proceedings 35th annual symposium on foundations of computer science}, pages 124--134. Ieee, 1994.
+
+\bibitem[Dalzell et~al.(2023)Dalzell, McArdle, Berta, Bienias, Chen, Gily{\'e}n, Hann, Kastoryano, Khabiboulline, Kubica, et~al.]{dalzell2023quantum}
+Alexander~M Dalzell, Sam McArdle, Mario Berta, Przemyslaw Bienias, Chi-Fang Chen, Andr{\'a}s Gily{\'e}n, Connor~T Hann, Michael~J Kastoryano, Emil~T Khabiboulline, Aleksander Kubica, et~al.
+\newblock Quantum algorithms: A survey of applications and end-to-end complexities.
+\newblock \emph{arXiv preprint arXiv:2310.03011}, 2023.
+
+\bibitem[Beverland et~al.(2022)Beverland, Murali, Troyer, Svore, Hoefler, Kliuchnikov, Low, Soeken, Sundaram, and Vaschillo]{beverland2022assessing}
+Michael~E Beverland, Prakash Murali, Matthias Troyer, Krysta~M Svore, Torsten Hoefler, Vadym Kliuchnikov, Guang~Hao Low, Mathias Soeken, Aarthi Sundaram, and Alexander Vaschillo.
+\newblock Assessing requirements to scale to practical quantum advantage.
+\newblock \emph{arXiv preprint arXiv:2211.07629}, 2022.
+
+\bibitem[Acharya et~al.(2024)Acharya, Abanin, Aghababaie-Beni, Aleiner, Andersen, Ansmann, Arute, Arya, Asfaw, Astrakhantsev, et~al.]{acharya2024quantum}
+Rajeev Acharya, Dmitry~A Abanin, Laleh Aghababaie-Beni, Igor Aleiner, Trond~I Andersen, Markus Ansmann, Frank Arute, Kunal Arya, Abraham Asfaw, Nikita Astrakhantsev, et~al.
+\newblock Quantum error correction below the surface code threshold.
+\newblock \emph{Nature}, 2024.
+
+\bibitem[Moses et~al.(2023)Moses, Baldwin, Allman, Ancona, Ascarrunz, Barnes, Bartolotta, Bjork, Blanchard, Bohn, et~al.]{moses2023race}
+Steven~A Moses, Charles~H Baldwin, Michael~S Allman, R~Ancona, L~Ascarrunz, C~Barnes, J~Bartolotta, B~Bjork, P~Blanchard, M~Bohn, et~al.
+\newblock A race-track trapped-ion quantum processor.
+\newblock \emph{Physical Review X}, 13\penalty0 (4):\penalty0 041052, 2023.
+
+\bibitem[Bluvstein et~al.(2024)Bluvstein, Evered, Geim, Li, Zhou, Manovitz, Ebadi, Cain, Kalinowski, Hangleiter, et~al.]{bluvstein2024logical}
+Dolev Bluvstein, Simon~J Evered, Alexandra~A Geim, Sophie~H Li, Hengyun Zhou, Tom Manovitz, Sepehr Ebadi, Madelyn Cain, Marcin Kalinowski, Dominik Hangleiter, et~al.
+\newblock Logical quantum processor based on reconfigurable atom arrays.
+\newblock \emph{Nature}, 626\penalty0 (7997):\penalty0 58--65, 2024.
+
+\bibitem[Shor(1996)]{shor1996fault}
+Peter~W Shor.
+\newblock Fault-tolerant quantum computation.
+\newblock In \emph{Proceedings of 37th conference on foundations of computer science}, pages 56--65. IEEE, 1996.
+
+\bibitem[Shor(1995)]{shor1995scheme}
+Peter~W Shor.
+\newblock Scheme for reducing decoherence in quantum computer memory.
+\newblock \emph{Physical review A}, 52\penalty0 (4):\penalty0 R2493, 1995.
+
+\bibitem[Steane(1996{\natexlab{a}})]{steane1996multiple}
+Andrew Steane.
+\newblock Multiple-particle interference and quantum error correction.
+\newblock \emph{Proceedings of the Royal Society of London. Series A: Mathematical, Physical and Engineering Sciences}, 452\penalty0 (1954):\penalty0 2551--2577, 1996{\natexlab{a}}.
+
+\bibitem[Aharonov and Ben-Or(1997)]{aharonov1997fault}
+Dorit Aharonov and Michael Ben-Or.
+\newblock Fault-tolerant quantum computation with constant error.
+\newblock In \emph{Proceedings of the twenty-ninth annual ACM symposium on Theory of computing}, pages 176--188, 1997.
+
+\bibitem[Kitaev(2003)]{kitaev2003fault}
+A~Yu Kitaev.
+\newblock Fault-tolerant quantum computation by anyons.
+\newblock \emph{Annals of physics}, 303\penalty0 (1):\penalty0 2--30, 2003.
+
+\bibitem[Knill et~al.(1998)Knill, Laflamme, and Zurek]{knill1998resilient}
+Emanuel Knill, Raymond Laflamme, and Wojciech~H Zurek.
+\newblock Resilient quantum computation.
+\newblock \emph{Science}, 279\penalty0 (5349):\penalty0 342--345, 1998.
+
+\bibitem[Eastin and Knill(2009)]{eastin2009restrictions}
+Bryan Eastin and Emanuel Knill.
+\newblock Restrictions on transversal encoded quantum gate sets.
+\newblock \emph{Physical review letters}, 102\penalty0 (11):\penalty0 110502, 2009.
+
+\bibitem[Bravyi and K{\"o}nig(2013)]{bravyi2013classification}
+Sergey Bravyi and Robert K{\"o}nig.
+\newblock Classification of topologically protected gates for local stabilizer codes.
+\newblock \emph{Physical review letters}, 110\penalty0 (17):\penalty0 170503, 2013.
+
+\bibitem[Bravyi and Kitaev(2005)]{bravyi2005universal}
+Sergey Bravyi and Alexei Kitaev.
+\newblock Universal quantum computation with ideal clifford gates and noisy ancillas.
+\newblock \emph{Physical Review A—Atomic, Molecular, and Optical Physics}, 71\penalty0 (2):\penalty0 022316, 2005.
+
+\bibitem[Zhou et~al.(2000)Zhou, Leung, and Chuang]{zhou2000methodology}
+Xinlan Zhou, Debbie~W Leung, and Isaac~L Chuang.
+\newblock Methodology for quantum logic gate construction.
+\newblock \emph{Physical Review A}, 62\penalty0 (5):\penalty0 052316, 2000.
+
+\bibitem[Chamberland et~al.(2022)Chamberland, Noh, Arrangoiz-Arriola, Campbell, Hann, Iverson, Putterman, Bohdanowicz, Flammia, Keller, et~al.]{chamberland2022building}
+Christopher Chamberland, Kyungjoo Noh, Patricio Arrangoiz-Arriola, Earl~T Campbell, Connor~T Hann, Joseph Iverson, Harald Putterman, Thomas~C Bohdanowicz, Steven~T Flammia, Andrew Keller, et~al.
+\newblock Building a fault-tolerant quantum computer using concatenated cat codes.
+\newblock \emph{PRX Quantum}, 3\penalty0 (1):\penalty0 010329, 2022.
+
+\bibitem[Gouzien et~al.(2023)Gouzien, Ruiz, Le~R{\'e}gent, Guillaud, and Sangouard]{gouzien2023performance}
+{\'E}lie Gouzien, Diego Ruiz, Francois-Marie Le~R{\'e}gent, J{\'e}r{\'e}mie Guillaud, and Nicolas Sangouard.
+\newblock Performance analysis of a repetition cat code architecture: Computing 256-bit elliptic curve logarithm in 9 hours with 126 133 cat qubits.
+\newblock \emph{Physical review letters}, 131\penalty0 (4):\penalty0 040602, 2023.
+
+\bibitem[Litinski(2019{\natexlab{a}})]{litinski2019magic}
+Daniel Litinski.
+\newblock Magic state distillation: Not as costly as you think.
+\newblock \emph{Quantum}, 3:\penalty0 205, 2019{\natexlab{a}}.
+
+\bibitem[Gidney et~al.(2024{\natexlab{a}})Gidney, Shutty, and Jones]{gidney2024magic}
+Craig Gidney, Noah Shutty, and Cody Jones.
+\newblock Magic state cultivation: growing t states as cheap as cnot gates.
+\newblock \emph{arXiv preprint arXiv:2409.17595}, 2024{\natexlab{a}}.
+
+\bibitem[Guillaud and Mirrahimi(2021)]{guillaud2021error}
+J{\'e}r{\'e}mie Guillaud and Mazyar Mirrahimi.
+\newblock Error rates and resource overheads of repetition cat qubits.
+\newblock \emph{Physical Review A}, 103\penalty0 (4):\penalty0 042413, 2021.
+
+\bibitem[Gidney and Fowler(2019)]{gidney2019efficient}
+Craig Gidney and Austin~G Fowler.
+\newblock Efficient magic state factories with a catalyzed $|\text{CC}{Z}\rangle$ to $2|{T}\rangle$ transformation.
+\newblock \emph{Quantum}, 3:\penalty0 135, 2019.
+
+\bibitem[Gottesman and Chuang(1999)]{gottesman1999demonstrating}
+Daniel Gottesman and Isaac~L Chuang.
+\newblock Demonstrating the viability of universal quantum computation using teleportation and single-qubit operations.
+\newblock \emph{Nature}, 402\penalty0 (6760):\penalty0 390--393, 1999.
+
+\bibitem[Steinacker et~al.(2024)Steinacker, Stuyck, Lim, Tanttu, Feng, Nickl, Serrano, Candido, Cifuentes, Hudson, et~al.]{steinacker2024300}
+Paul Steinacker, Nard~Dumoulin Stuyck, Wee~Han Lim, Tuomo Tanttu, MengKe Feng, Andreas Nickl, Santiago Serrano, Marco Candido, Jesus~D Cifuentes, Fay~E Hudson, et~al.
+\newblock A 300 mm foundry silicon spin qubit unit cell exceeding 99\% fidelity in all operations.
+\newblock \emph{arXiv preprint arXiv:2410.15590}, 2024.
+
+\bibitem[Aliferis and Preskill(2008)]{aliferis2008fault}
+Panos Aliferis and John Preskill.
+\newblock Fault-tolerant quantum computation against biased noise.
+\newblock \emph{Physical Review A—Atomic, Molecular, and Optical Physics}, 78\penalty0 (5):\penalty0 052331, 2008.
+
+\bibitem[Taylor et~al.(2005)Taylor, Engel, D{\"u}r, Yacoby, Marcus, Zoller, and Lukin]{taylor2005fault}
+JM~Taylor, H-A Engel, W~D{\"u}r, Amnon Yacoby, CM~Marcus, P~Zoller, and MD~Lukin.
+\newblock Fault-tolerant architecture for quantum computation using electrically controlled semiconductor spins.
+\newblock \emph{Nature Physics}, 1\penalty0 (3):\penalty0 177--183, 2005.
+
+\bibitem[Brito et~al.(2008)Brito, DiVincenzo, Koch, and Steffen]{brito2008efficient}
+Frederico Brito, David~P DiVincenzo, Roger~H Koch, and Matthias Steffen.
+\newblock Efficient one-and two-qubit pulsed gates for an oscillator-stabilized josephson qubit.
+\newblock \emph{New Journal of Physics}, 10\penalty0 (3):\penalty0 033027, 2008.
+
+\bibitem[Webster et~al.(2015)Webster, Bartlett, and Poulin]{webster2015reducing}
+Paul Webster, Stephen~D Bartlett, and David Poulin.
+\newblock Reducing the overhead for quantum computation when noise is biased.
+\newblock \emph{Physical Review A}, 92\penalty0 (6):\penalty0 062309, 2015.
+
+\bibitem[Mirrahimi et~al.(2014)Mirrahimi, Leghtas, Albert, Touzard, Schoelkopf, Jiang, and Devoret]{mirrahimi2014dynamically}
+Mazyar Mirrahimi, Zaki Leghtas, Victor~V Albert, Steven Touzard, Robert~J Schoelkopf, Liang Jiang, and Michel~H Devoret.
+\newblock Dynamically protected cat-qubits: a new paradigm for universal quantum computation.
+\newblock \emph{New Journal of Physics}, 16\penalty0 (4):\penalty0 045014, 2014.
+
+\bibitem[Guillaud and Mirrahimi(2019)]{guillaud2019repetition}
+J{\'e}r{\'e}mie Guillaud and Mazyar Mirrahimi.
+\newblock Repetition cat qubits for fault-tolerant quantum computation.
+\newblock \emph{Physical Review X}, 9\penalty0 (4):\penalty0 041053, 2019.
+
+\bibitem[Puri et~al.(2020)Puri, St-Jean, Gross, Grimm, Frattini, Iyer, Krishna, Touzard, Jiang, Blais, et~al.]{puri2020bias}
+Shruti Puri, Lucas St-Jean, Jonathan~A Gross, Alexander Grimm, Nicholas~E Frattini, Pavithran~S Iyer, Anirudh Krishna, Steven Touzard, Liang Jiang, Alexandre Blais, et~al.
+\newblock Bias-preserving gates with stabilized cat qubits.
+\newblock \emph{Science advances}, 6\penalty0 (34):\penalty0 eaay5901, 2020.
+
+\bibitem[R{\'e}glade et~al.(2024)R{\'e}glade, Bocquet, Gautier, Cohen, Marquet, Albertinale, Pankratova, Hall{\'e}n, Rautschke, Sellem, et~al.]{reglade2024quantum}
+Ulysse R{\'e}glade, Adrien Bocquet, Ronan Gautier, Joachim Cohen, Antoine Marquet, Emanuele Albertinale, Natalia Pankratova, Mattis Hall{\'e}n, Felix Rautschke, L-A Sellem, et~al.
+\newblock Quantum control of a cat qubit with bit-flip times exceeding ten seconds.
+\newblock \emph{Nature}, 629\penalty0 (8013):\penalty0 778--783, 2024.
+
+\bibitem[Rousseau et~al.(2025)Rousseau, Ruiz, Albertinale, d'Avezac, Banys, Blandin, Bourdaud, Campanaro, Cardoso, Cottet, et~al.]{rousseau2025enhancing}
+R{\'e}mi Rousseau, Diego Ruiz, Emanuele Albertinale, Pol d'Avezac, Danielius Banys, Ugo Blandin, Nicolas Bourdaud, Giulio Campanaro, Gil Cardoso, Nathanael Cottet, et~al.
+\newblock Enhancing dissipative cat qubit protection by squeezing.
+\newblock \emph{arXiv preprint arXiv:2502.07892}, 2025.
+
+\bibitem[Rojkov et~al.(2024)Rojkov, Simoni, Zapusek, Reiter, and Home]{rojkov2024stabilization}
+Ivan Rojkov, Matteo Simoni, Elias Zapusek, Florentin Reiter, and Jonathan Home.
+\newblock Stabilization of cat-state manifolds using nonlinear reservoir engineering.
+\newblock \emph{arXiv preprint arXiv:2407.18087}, 2024.
+
+\bibitem[Omanakuttan et~al.(2024)Omanakuttan, Buchemmavari, Gross, Deutsch, and Marvian]{omanakuttan2024fault}
+Sivaprasad Omanakuttan, Vikas Buchemmavari, Jonathan~A Gross, Ivan~H Deutsch, and Milad Marvian.
+\newblock Fault-tolerant quantum computation using large spin-cat codes.
+\newblock \emph{PRX Quantum}, 5\penalty0 (2):\penalty0 020355, 2024.
+
+\bibitem[DeBry et~al.(2025)DeBry, Meister, Martinez, Bruzewicz, Shi, Reens, McConnell, Chuang, and Chiaverini]{debry2025error}
+Kyle DeBry, Nadine Meister, Agustin~Valdes Martinez, Colin~D Bruzewicz, Xiaoyang Shi, David Reens, Robert McConnell, Isaac~L Chuang, and John Chiaverini.
+\newblock Error correction of a logical qubit encoded in a single atomic ion.
+\newblock \emph{arXiv preprint arXiv:2503.13908}, 2025.
+
+\bibitem[Ruiz et~al.(2025)Ruiz, Guillaud, Leverrier, Mirrahimi, and Vuillot]{ruiz2025ldpc}
+Diego Ruiz, J{\'e}r{\'e}mie Guillaud, Anthony Leverrier, Mazyar Mirrahimi, and Christophe Vuillot.
+\newblock Ldpc-cat codes for low-overhead quantum computing in 2d.
+\newblock \emph{Nature Communications}, 16\penalty0 (1):\penalty0 1040, 2025.
+
+\bibitem[Putterman et~al.(2025)Putterman, Noh, Hann, MacCabe, Aghaeimeibodi, Patel, Lee, Jones, Moradinejad, Rodriguez, et~al.]{putterman2025hardware}
+Harald Putterman, Kyungjoo Noh, Connor~T Hann, Gregory~S MacCabe, Shahriar Aghaeimeibodi, Rishi~N Patel, Menyoung Lee, William~M Jones, Hesam Moradinejad, Roberto Rodriguez, et~al.
+\newblock Hardware-efficient quantum error correction via concatenated bosonic qubits.
+\newblock \emph{Nature}, 638\penalty0 (8052):\penalty0 927--934, 2025.
+
+\bibitem[Hann et~al.(2024)Hann, Noh, Putterman, Matheny, Iverson, Fang, Chamberland, Painter, and Brand{\~a}o]{hann2024hybrid}
+Connor~T Hann, Kyungjoo Noh, Harald Putterman, Matthew~H Matheny, Joseph~K Iverson, Michael~T Fang, Christopher Chamberland, Oskar Painter, and Fernando~GSL Brand{\~a}o.
+\newblock Hybrid cat-transmon architecture for scalable, hardware-efficient quantum error correction.
+\newblock \emph{arXiv preprint arXiv:2410.23363}, 2024.
+
+\bibitem[Bonilla~Ataides et~al.(2021)Bonilla~Ataides, Tuckett, Bartlett, Flammia, and Brown]{bonilla2021xzzx}
+J~Pablo Bonilla~Ataides, David~K Tuckett, Stephen~D Bartlett, Steven~T Flammia, and Benjamin~J Brown.
+\newblock The xzzx surface code.
+\newblock \emph{Nature communications}, 12\penalty0 (1):\penalty0 2172, 2021.
+
+\bibitem[Singh et~al.(2022)Singh, Darmawan, Brown, and Puri]{singh2022high}
+Shraddha Singh, Andrew~S Darmawan, Benjamin~J Brown, and Shruti Puri.
+\newblock High-fidelity magic-state preparation with a biased-noise architecture.
+\newblock \emph{Physical Review A}, 105\penalty0 (5):\penalty0 052410, 2022.
+
+\bibitem[Steane(2002)]{steane2002quantum}
+Andrew~M Steane.
+\newblock Quantum reed-muller codes.
+\newblock \emph{IEEE Transactions on Information Theory}, 45\penalty0 (5):\penalty0 1701--1703, 2002.
+
+\bibitem[Koutsioumpas et~al.(2022)Koutsioumpas, Banfield, and Kay]{koutsioumpas2022smallest}
+Stergios Koutsioumpas, Darren Banfield, and Alastair Kay.
+\newblock The smallest code with transversal t.
+\newblock \emph{arXiv preprint arXiv:2210.14066}, 2022.
+
+\bibitem[Li(2015)]{li2015magic}
+Ying Li.
+\newblock A magic state’s fidelity can be superior to the operations that created it.
+\newblock \emph{New Journal of Physics}, 17\penalty0 (2):\penalty0 023037, 2015.
+
+\bibitem[Gidney(2023)]{gidney2023cleaner}
+Craig Gidney.
+\newblock Cleaner magic states with hook injection.
+\newblock \emph{arXiv preprint arXiv:2302.12292}, 2023.
+
+\bibitem[Fowler et~al.(2012)Fowler, Mariantoni, Martinis, and Cleland]{fowler2012surface}
+Austin~G Fowler, Matteo Mariantoni, John~M Martinis, and Andrew~N Cleland.
+\newblock Surface codes: Towards practical large-scale quantum computation.
+\newblock \emph{Physical Review A—Atomic, Molecular, and Optical Physics}, 86\penalty0 (3):\penalty0 032324, 2012.
+
+\bibitem[Haah and Hastings(2018)]{haah2018codes}
+Jeongwan Haah and Matthew~B Hastings.
+\newblock Codes and protocols for distilling $ t $, controlled-$ s $, and toffoli gates.
+\newblock \emph{Quantum}, 2:\penalty0 71, 2018.
+
+\bibitem[Horsman et~al.(2012)Horsman, Fowler, Devitt, and Van~Meter]{horsman2012surface}
+Dominic Horsman, Austin~G Fowler, Simon Devitt, and Rodney Van~Meter.
+\newblock Surface code quantum computing by lattice surgery.
+\newblock \emph{New Journal of Physics}, 14\penalty0 (12):\penalty0 123011, 2012.
+
+\bibitem[Fowler and Gidney(2018)]{fowler2018low}
+Austin~G Fowler and Craig Gidney.
+\newblock Low overhead quantum computation using lattice surgery.
+\newblock \emph{arXiv preprint arXiv:1808.06709}, 2018.
+
+\bibitem[Litinski(2019{\natexlab{b}})]{litinski2019game}
+Daniel Litinski.
+\newblock A game of surface codes: Large-scale quantum computing with lattice surgery.
+\newblock \emph{Quantum}, 3:\penalty0 128, 2019{\natexlab{b}}.
+
+\bibitem[Lee et~al.(2024)Lee, Thomsen, Fazio, Brown, and Bartlett]{lee2024low}
+Seok-Hyung Lee, Felix Thomsen, Nicholas Fazio, Benjamin~J Brown, and Stephen~D Bartlett.
+\newblock Low-overhead magic state distillation with color codes.
+\newblock \emph{arXiv preprint arXiv:2409.07707}, 2024.
+
+\bibitem[Lechner et~al.(2015)Lechner, Hauke, and Zoller]{lechner2015quantum}
+Wolfgang Lechner, Philipp Hauke, and Peter Zoller.
+\newblock A quantum annealing architecture with all-to-all connectivity from local interactions.
+\newblock \emph{Science advances}, 1\penalty0 (9):\penalty0 e1500838, 2015.
+
+\bibitem[Chao and Reichardt(2018)]{chao2018quantum}
+Rui Chao and Ben~W Reichardt.
+\newblock Quantum error correction with only two extra qubits.
+\newblock \emph{Physical review letters}, 121\penalty0 (5):\penalty0 050502, 2018.
+
+\bibitem[Gidney et~al.(2024{\natexlab{b}})Gidney, Newman, Brooks, and Jones]{gidney2024yoked}
+Craig Gidney, Michael Newman, Peter Brooks, and Cody Jones.
+\newblock Yoked surface codes.
+\newblock \emph{arXiv preprint arXiv:2312.04522}, 2024{\natexlab{b}}.
+
+\bibitem[Brown et~al.(2017)Brown, Laubscher, Kesselring, and Wootton]{brown2017poking}
+Benjamin~J Brown, Katharina Laubscher, Markus~S Kesselring, and James~R Wootton.
+\newblock Poking holes and cutting corners to achieve clifford gates with the surface code.
+\newblock \emph{Physical Review X}, 7\penalty0 (2):\penalty0 021029, 2017.
+
+\bibitem[Mantri et~al.(2017)Mantri, Demarie, and Fitzsimons]{mantri2017universality}
+Atul Mantri, Tommaso~F Demarie, and Joseph~F Fitzsimons.
+\newblock Universality of quantum computation with cluster states and (x, y)-plane measurements.
+\newblock \emph{Scientific reports}, 7\penalty0 (1):\penalty0 42861, 2017.
+
+\bibitem[Bombin and Martin-Delgado(2006)]{bombin2006topological}
+Hector Bombin and Miguel~Angel Martin-Delgado.
+\newblock Topological quantum distillation.
+\newblock \emph{Physical review letters}, 97\penalty0 (18):\penalty0 180501, 2006.
+
+\bibitem[Steane(1996{\natexlab{b}})]{steane1996error}
+Andrew~M Steane.
+\newblock Error correcting codes in quantum theory.
+\newblock \emph{Physical Review Letters}, 77\penalty0 (5):\penalty0 793, 1996{\natexlab{b}}.
+
+\bibitem[Kubica et~al.(2015)Kubica, Yoshida, and Pastawski]{kubica2015unfolding}
+Aleksander Kubica, Beni Yoshida, and Fernando Pastawski.
+\newblock Unfolding the color code.
+\newblock \emph{New Journal of Physics}, 17\penalty0 (8):\penalty0 083026, 2015.
+
+\bibitem[Selinger(2013)]{selinger2013quantum}
+Peter Selinger.
+\newblock Quantum circuits of t-depth one.
+\newblock \emph{Physical Review A—Atomic, Molecular, and Optical Physics}, 87\penalty0 (4):\penalty0 042302, 2013.
+
+\bibitem[Albert et~al.(2016)Albert, Shu, Krastanov, Shen, Liu, Yang, Schoelkopf, Mirrahimi, Devoret, and Jiang]{albert2016holonomic}
+Victor~V Albert, Chi Shu, Stefan Krastanov, Chao Shen, Ren-Bao Liu, Zhen-Biao Yang, Robert~J Schoelkopf, Mazyar Mirrahimi, Michel~H Devoret, and Liang Jiang.
+\newblock Holonomic quantum control with continuous variable systems.
+\newblock \emph{Physical review letters}, 116\penalty0 (14):\penalty0 140502, 2016.
+
+\bibitem[Heeres et~al.(2015)Heeres, Vlastakis, Holland, Krastanov, Albert, Frunzio, Jiang, and Schoelkopf]{heeres2015cavity}
+Reinier~W Heeres, Brian Vlastakis, Eric Holland, Stefan Krastanov, Victor~V Albert, Luigi Frunzio, Liang Jiang, and Robert~J Schoelkopf.
+\newblock Cavity state manipulation using photon-number selective phase gates.
+\newblock \emph{Physical review letters}, 115\penalty0 (13):\penalty0 137002, 2015.
+
+\bibitem[Krastanov et~al.(2015)Krastanov, Albert, Shen, Zou, Heeres, Vlastakis, Schoelkopf, and Jiang]{krastanov2015universal}
+Stefan Krastanov, Victor~V Albert, Chao Shen, Chang-Ling Zou, Reinier~W Heeres, Brian Vlastakis, Robert~J Schoelkopf, and Liang Jiang.
+\newblock Universal control of an oscillator with dispersive coupling to a qubit.
+\newblock \emph{Physical Review A}, 92\penalty0 (4):\penalty0 040303, 2015.
+
+\bibitem[Heeres et~al.(2017)Heeres, Reinhold, Ofek, Frunzio, Jiang, Devoret, and Schoelkopf]{heeres2017implementing}
+Reinier~W Heeres, Philip Reinhold, Nissim Ofek, Luigi Frunzio, Liang Jiang, Michel~H Devoret, and Robert~J Schoelkopf.
+\newblock Implementing a universal gate set on a logical qubit encoded in an oscillator.
+\newblock \emph{Nature communications}, 8\penalty0 (1):\penalty0 94, 2017.
+
+\bibitem[Eickbusch et~al.(2022)Eickbusch, Sivak, Ding, Elder, Jha, Venkatraman, Royer, Girvin, Schoelkopf, and Devoret]{eickbusch2022fast}
+Alec Eickbusch, Volodymyr Sivak, Andy~Z Ding, Salvatore~S Elder, Shantanu~R Jha, Jayameenakshi Venkatraman, Baptiste Royer, Steven~M Girvin, Robert~J Schoelkopf, and Michel~H Devoret.
+\newblock Fast universal control of an oscillator with weak dispersive coupling to a qubit.
+\newblock \emph{Nature Physics}, 18\penalty0 (12):\penalty0 1464--1469, 2022.
+
+\bibitem[Mehta et~al.(2025)Mehta, Teoh, Noh, Agrawal, Chamberlain, Chien, Curtis, Elfeky, Farzaneh, Gudlewski, et~al.]{mehta2025bias}
+Nitish Mehta, James~D Teoh, Taewan Noh, Ankur Agrawal, Richard Chamberlain, Tzu-Chiao Chien, Jacob~C Curtis, Bassel~Heiba Elfeky, SM~Farzaneh, Benjamin Gudlewski, et~al.
+\newblock Bias-preserving and error-detectable entangling operations in a superconducting dual-rail system.
+\newblock \emph{arXiv preprint arXiv:2503.10935}, 2025.
+
+\bibitem[Cod()]{CodeGithub}
+Code is available at \url{https://github.com/DiegoRuiz-Git/Unfolded_distillation}, Diego Ruiz, 2025.
+
+\bibitem[Gidney et~al.(2024{\natexlab{c}})Gidney, Jones, and Shutty]{gidney2024magicZenodo}
+Craig Gidney, Cody Jones, and Nicholas Shutty.
+\newblock {Data for "Magic state cultivation: growing T states as cheap as CNOT gates"}, 2024{\natexlab{c}}.
+\newblock URL \url{https://doi.org/10.5281/zenodo.13777072}.
+
+\bibitem[Gidney(2021)]{gidney2021stim}
+Craig Gidney.
+\newblock Stim: a fast stabilizer circuit simulator.
+\newblock \emph{{Quantum}}, 5:\penalty0 497, July 2021.
+\newblock ISSN 2521-327X.
+\newblock \doi{10.22331/q-2021-07-06-497}.
+\newblock URL \url{https://doi.org/10.22331/q-2021-07-06-497}.
+
+\bibitem[Panteleev and Kalachev(2021)]{panteleev2021degenerate}
+Pavel Panteleev and Gleb Kalachev.
+\newblock Degenerate quantum ldpc codes with good finite length performance.
+\newblock \emph{Quantum}, 5:\penalty0 585, 2021.
+
+\bibitem[Roffe et~al.(2020)Roffe, White, Burton, and Campbell]{roffe2020decoding}
+Joschka Roffe, David~R. White, Simon Burton, and Earl Campbell.
+\newblock Decoding across the quantum low-density parity-check code landscape.
+\newblock \emph{Physical Review Research}, 2\penalty0 (4), Dec 2020.
+\newblock ISSN 2643-1564.
+\newblock \doi{10.1103/physrevresearch.2.043423}.
+\newblock URL \url{http://dx.doi.org/10.1103/PhysRevResearch.2.043423}.
+
+\bibitem[Roffe(2022)]{Roffe_LDPC_Python_tools_2022}
+Joschka Roffe.
+\newblock {LDPC: Python tools for low density parity check codes}, 2022.
+\newblock URL \url{https://pypi.org/project/ldpc/}.
+
+\bibitem[M{\"u}ller et~al.(2025)M{\"u}ller, Alexander, Beverland, B{\"u}hler, Johnson, Maurer, and Vandeth]{muller2025improved}
+Tristan M{\"u}ller, Thomas Alexander, Michael~E Beverland, Markus B{\"u}hler, Blake~R Johnson, Thilo Maurer, and Drew Vandeth.
+\newblock Improved belief propagation is sufficient for real-time decoding of quantum memory.
+\newblock \emph{arXiv preprint arXiv:2506.01779}, 2025.
+
+\bibitem[Koutsioumpas et~al.(2025)Koutsioumpas, Sayginel, Webster, and Browne]{koutsioumpas2025automorphism}
+Stergios Koutsioumpas, Hasan Sayginel, Mark Webster, and Dan~E Browne.
+\newblock Automorphism ensemble decoding of quantum ldpc codes.
+\newblock \emph{arXiv preprint arXiv:2503.01738}, 2025.
+
+\bibitem[Gong et~al.(2024)Gong, Cammerer, and Renes]{gong2024toward}
+Anqi Gong, Sebastian Cammerer, and Joseph~M Renes.
+\newblock Toward low-latency iterative decoding of qldpc codes under circuit-level noise.
+\newblock \emph{arXiv preprint arXiv:2403.18901}, 2024.
+
+\bibitem[Ott et~al.(2025)Ott, Het{\'e}nyi, and Beverland]{ott2025decision}
+KR~Ott, B~Het{\'e}nyi, and ME~Beverland.
+\newblock Decision-tree decoders for general quantum ldpc codes, feb.
+\newblock \emph{arXiv preprint arXiv:2502.16408}, 2025.
+
+\bibitem[Hillmann et~al.(2024)Hillmann, Berent, Quintavalle, Eisert, Wille, and Roffe]{hillmann2024localized}
+Timo Hillmann, Lucas Berent, Armanda~O Quintavalle, Jens Eisert, Robert Wille, and Joschka Roffe.
+\newblock Localized statistics decoding: A parallel decoding algorithm for quantum low-density parity-check codes.
+\newblock \emph{arXiv preprint arXiv:2406.18655}, 2024.
+
+\bibitem[Wolanski and Barber(2024)]{wolanski2024ambiguity}
+Stasiu Wolanski and Ben Barber.
+\newblock Ambiguity clustering: an accurate and efficient decoder for qldpc codes.
+\newblock \emph{arXiv preprint arXiv:2406.14527}, 2024.
+
+\bibitem[Bjorner and et~al()]{z3}
+Nikolaj Bjorner and et~al.
+\newblock Z3 theorem prover.
+\newblock URL \url{https://github.com/Z3Prover/z3}.
+
+\bibitem[Biere et~al.(2024)Biere, Faller, Fazekas, Fleury, Froleyks, and Pollitt]{kissat}
+Armin Biere, Tobias Faller, Katalin Fazekas, Mathias Fleury, Nils Froleyks, and Florian Pollitt.
+\newblock {CaDiCaL}, {Gimsatul}, {IsaSAT} and {Kissat} entering the {SAT Competition 2024}.
+\newblock In Marijn Heule, Markus Iser, Matti J{\"a}rvisalo, and Martin Suda, editors, \emph{Proc.~of {SAT Competition} 2024 -- Solver, Benchmark and Proof Checker Descriptions}, volume B-2024-1 of \emph{Department of Computer Science Report Series B}, pages 8--10. University of Helsinki, 2024.
+
+\bibitem[Biere et~al.()Biere, Faller, Fazekas, Fleury, Froleyks, and Pollitt]{kissat-github}
+Armin Biere, Tobias Faller, Katalin Fazekas, Mathias Fleury, Nils Froleyks, and Florian Pollitt.
+\newblock The kissat sat solver.
+\newblock URL \url{https://github.com/arminbiere/kissat}.
+
+\end{thebibliography}
