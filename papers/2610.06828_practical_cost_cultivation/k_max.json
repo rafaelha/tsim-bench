@@ -1,0 +1,28 @@
+[
+  {
+    "file": "stim/color_code_cultivation_f3_T.stim",
+    "non_clifford_gates": {
+      "T_DAG": 8,
+      "T": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 2.23,
+    "clifft_k": 4,
+    "clifft_seconds": 0.73,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.27
+  },
+  {
+    "file": "stim/color_code_cultivation_f5_T.stim",
+    "non_clifford_gates": {
+      "T_DAG": 27,
+      "T": 26
+    },
+    "tsim_k": 6,
+    "tsim_seconds": 3.28,
+    "clifft_k": 10,
+    "clifft_seconds": 1.35,
+    "clifft_noschedule_k": 10,
+    "clifft_noschedule_seconds": 0.48
+  }
+]
