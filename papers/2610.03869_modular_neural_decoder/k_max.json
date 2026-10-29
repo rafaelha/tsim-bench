@@ -1,0 +1,50 @@
+[
+  {
+    "file": "stim/stability_d3_X_t100_alpha0.5_p0.001.stim",
+    "non_clifford_gates": {
+      "R_X": 24
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 43.97,
+    "clifft_k": 6,
+    "clifft_seconds": 0.5,
+    "clifft_noschedule_k": 6,
+    "clifft_noschedule_seconds": 0.47
+  },
+  {
+    "file": "stim/stability_d3_X_t20_alpha0.15_p0.001.stim",
+    "non_clifford_gates": {
+      "R_X": 24
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.94,
+    "clifft_k": 6,
+    "clifft_seconds": 0.08,
+    "clifft_noschedule_k": 6,
+    "clifft_noschedule_seconds": 0.07
+  },
+  {
+    "file": "stim/stability_d3_X_t20_alpha0.5_p0.001.stim",
+    "non_clifford_gates": {
+      "R_X": 24
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.93,
+    "clifft_k": 6,
+    "clifft_seconds": 0.08,
+    "clifft_noschedule_k": 6,
+    "clifft_noschedule_seconds": 0.07
+  },
+  {
+    "file": "stim/stability_d3_X_t20_alpha1.0_p0.001.stim",
+    "non_clifford_gates": {
+      "R_X": 24
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.91,
+    "clifft_k": 6,
+    "clifft_seconds": 0.08,
+    "clifft_noschedule_k": 6,
+    "clifft_noschedule_seconds": 0.07
+  }
+]
