@@ -1,0 +1,73 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X dot bb] (32) at (-9.5, 2.25) {};
+		\node [style=Z dot] (33) at (-2.25, 2.25) {};
+		\node [style=X dot bb] (34) at (-9.5, 0.75) {};
+		\node [style=Z dot] (35) at (-2.25, 0.75) {};
+		\node [style=X dot bb] (36) at (-9.5, -0.75) {};
+		\node [style=Z dot] (37) at (-2.25, -0.75) {};
+		\node [style=X dot bb] (53) at (-9.5, -2.75) {};
+		\node [style=Z dot] (54) at (-2.25, -2.75) {};
+		\node [style=none] (55) at (-7.5, 2.75) {};
+		\node [style=none] (56) at (-7.5, -3.25) {};
+		\node [style=none] (57) at (-3.5, -3.25) {};
+		\node [style=none] (58) at (-3.5, 2.75) {};
+		\node [style=none] (59) at (-7.5, 2.25) {};
+		\node [style=none] (60) at (-7.5, 0.75) {};
+		\node [style=none] (61) at (-7.5, -0.75) {};
+		\node [style=none] (63) at (-7.5, -2.75) {};
+		\node [style=none] (64) at (-3.5, -2.75) {};
+		\node [style=none] (66) at (-3.5, -0.75) {};
+		\node [style=none] (67) at (-3.5, 0.75) {};
+		\node [style=none] (68) at (-3.5, 2.25) {};
+		\node [style=none] (69) at (-5.5, -0.125) {$U$};
+		\node [style=none, rotate=90] (168) at (-8.25, -1.75) {$\cdots$};
+		\node [style=none, rotate=90] (169) at (-2.75, -1.75) {$\cdots$};
+		\node [style=none, rotate=90] (170) at (-2.75, 1.5) {$\cdots$};
+		\node [style=none, rotate=90] (195) at (-8.25, 1.5) {$\cdots$};
+		\node [style=X dot] (196) at (-1, 4.5) {};
+		\node [style=X dot] (197) at (0.5, 4.5) {};
+		\node [style=X dot] (198) at (2, 4.5) {};
+		\node [style=X dot] (199) at (3.5, 4.5) {};
+		\node [style=X phase dot] (200) at (-1, 5.75) {$\;d_0\pi\;$};
+		\node [style=X phase dot] (201) at (0.5, 5.75) {$\;d_k\pi\;$};
+		\node [style=Z dot] (202) at (2, 5.75) {};
+		\node [style=Z dot] (203) at (3.5, 5.75) {};
+		\node [style=none, rotate=90] (204) at (-0.5, 5) {$\vdots$};
+		\node [style=none, rotate=90] (205) at (2.5, 5) {$\vdots$};
+		\node [style=none] (210) at (-2.25, 2.25) {};
+		\node [style=none] (211) at (-2.25, 0.75) {};
+		\node [style=none] (212) at (-2.25, -0.75) {};
+		\node [style=none] (213) at (-2.25, -2.75) {};
+		\node [style=none] (215) at (-12.5, 0) {$P(d_0\dots d_k)\;=$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=boldedge] (55.center) to (58.center);
+		\draw [style=boldedge] (58.center) to (57.center);
+		\draw [style=boldedge] (57.center) to (56.center);
+		\draw [style=boldedge] (56.center) to (55.center);
+		\draw [style=boldedge] (68.center) to (33);
+		\draw [style=boldedge] (53) to (63.center);
+		\draw [style=boldedge] (36) to (61.center);
+		\draw [style=boldedge] (60.center) to (34);
+		\draw [style=boldedge] (32) to (59.center);
+		\draw [style=boldedge] (64.center) to (54);
+		\draw [style=boldedge] (37) to (66.center);
+		\draw [style=boldedge] (67.center) to (35);
+		\draw (196) to (200);
+		\draw (197) to (201);
+		\draw (198) to (202);
+		\draw (199) to (203);
+		\draw (170.center) to (170.center);
+		\draw (204.center) to (204.center);
+		\draw (205.center) to (205.center);
+		\draw [looseness=0.75, bend left] (196) to (210.center);
+		\draw [looseness=0.5, bend left=15] (196) to (211.center);
+		\draw [looseness=0.75, bend left=15] (197) to (211.center);
+		\draw [looseness=0.75, bend left=15] (197) to (213.center);
+		\draw [bend left=15] (198) to (212.center);
+		\draw [looseness=0.5, bend left] (199) to (212.center);
+		\draw [looseness=0.5, bend left=15] (199) to (211.center);
+		\draw [looseness=0.5, bend left] (199) to (213.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

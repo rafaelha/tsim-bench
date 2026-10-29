@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (286) at (0, 0) {$e^{-i\frac{\pi}{4}}$};
+		\node [style=Z phase dot] (288) at (2.25, 0) {$\frac{\pi}{2}$};
+		\node [style=Z phase dot] (289) at (4.75, 0) {$\frac{\pi}{2}$};
+		\node [style=X phase dot] (290) at (3.5, 0) {$\frac{\pi}{2}$};
+		\node [style=none] (291) at (5.75, 0) {};
+		\node [style=none] (292) at (7, 0) {$\equiv$};
+		\node [style=none] (293) at (8.25, 0) {};
+		\node [style=none] (294) at (10.75, 0) {};
+		\node [style=none] (282) at (13.25, 0) {};
+		\node [style=none] (283) at (15.75, 0) {};
+		\node [style=hadamard] (284) at (14.5, 0) {};
+		\node [style=none] (285) at (12, 0) {$\equiv$};
+		\node [style=none] (295) at (1.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (288) to (290);
+		\draw (290) to (289);
+		\draw (289) to (291.center);
+		\draw [style=hadamard edge] (293.center) to (294.center);
+		\draw (282.center) to (284);
+		\draw (284) to (283.center);
+		\draw (295.center) to (288);
+	\end{pgfonlayer}
+\end{tikzpicture}

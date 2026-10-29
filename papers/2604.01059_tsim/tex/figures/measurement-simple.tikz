@@ -1,0 +1,41 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z dot] (16) at (-10.25, -0.25) {};
+		\node [style=none] (184) at (-11.5, -0.25) {};
+		\node [style=none] (189) at (-9.5, 0.5) {};
+		\node [style=Z dot bb] (190) at (-19.5, 0.25) {};
+		\node [style=none] (191) at (-20.75, 0.25) {};
+		\node [style=none] (192) at (-18.25, 0.25) {};
+		\node [style=X dot bb] (193) at (-19.5, -0.75) {};
+		\node [style=none] (194) at (-20.75, -0.75) {};
+		\node [style=none] (195) at (-18.25, -0.75) {};
+		\node [style=Z dot] (201) at (-4, -0.25) {};
+		\node [style=none] (202) at (-5, -0.25) {};
+		\node [style=none] (203) at (-3, 0.25) {};
+		\node [style=none] (204) at (-3, -0.5) {};
+		\node [style=none] (205) at (-22.5, -0.25) {CNOT};
+		\node [style=none] (206) at (-14, -0.25) {MEASURE};
+		\node [style=none] (207) at (-6.5, -0.25) {COPY};
+		\node [style=X dot] (209) at (2.75, -0.25) {};
+		\node [style=none] (210) at (1.75, 0) {};
+		\node [style=none] (211) at (3.75, -0.25) {};
+		\node [style=none] (212) at (1.75, -0.5) {};
+		\node [style=none] (213) at (0.5, -0.25) {XOR};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=boldedge] (184.center) to (16);
+		\draw [bend left=15] (16) to (189.center);
+		\draw [style=boldedge] (191.center) to (190);
+		\draw [style=boldedge] (190) to (192.center);
+		\draw [style=boldedge] (194.center) to (193);
+		\draw [style=boldedge] (193) to (195.center);
+		\draw [style=boldedge] (190) to (193);
+		\draw [style=boldedge] (194.center) to (194.center);
+		\draw (202.center) to (201);
+		\draw [bend left=15] (201) to (203.center);
+		\draw [bend right=15] (201) to (204.center);
+		\draw [bend left=15] (210.center) to (209);
+		\draw (209) to (211.center);
+		\draw [looseness=1.25, bend left=15] (209) to (212.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

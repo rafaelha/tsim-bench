@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X phase dot] (9) at (-1, 0.25) {$\;f_1\pi\;$};
+		\node [style=X phase dot] (59) at (0.5, 0.25) {$\;f_2\pi\;$};
+		\node [style=X phase dot] (67) at (-2.5, 0.25) {$\;f_0\pi\;$};
+		\node [style=X phase dot] (102) at (2, 0.25) {$\;f_3\pi\;$};
+		\node [style=none] (124) at (-2.5, 1.25) {};
+		\node [style=none] (125) at (-1, 1.25) {};
+		\node [style=none] (126) at (0.5, 1.25) {};
+		\node [style=none] (127) at (2, 1.25) {};
+		\node [style=none] (79) at (-2.5, 2) {$D_0$};
+		\node [style=none] (80) at (-1, 2) {$D_1$};
+		\node [style=none] (81) at (0.5, 2) {$D_2$};
+		\node [style=none] (82) at (2, 2) {$O_0$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (9) to (125);
+		\draw (59) to (126);
+		\draw (67) to (124);
+		\draw (102) to (127);
+	\end{pgfonlayer}
+\end{tikzpicture}

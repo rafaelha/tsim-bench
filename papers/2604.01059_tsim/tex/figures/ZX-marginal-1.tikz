@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X dot bb] (32) at (-9.5, 2.25) {};
+		\node [style=Z dot] (33) at (-2.25, 2.25) {};
+		\node [style=X dot bb] (34) at (-9.5, 0.75) {};
+		\node [style=Z dot] (35) at (-2.25, 0.75) {};
+		\node [style=X dot bb] (36) at (-9.5, -0.75) {};
+		\node [style=Z dot] (37) at (-2.25, -0.75) {};
+		\node [style=X dot bb] (53) at (-9.5, -2.75) {};
+		\node [style=Z dot] (54) at (-2.25, -2.75) {};
+		\node [style=none] (55) at (-7.5, 2.75) {};
+		\node [style=none] (56) at (-7.5, -3.25) {};
+		\node [style=none] (57) at (-3.5, -3.25) {};
+		\node [style=none] (58) at (-3.5, 2.75) {};
+		\node [style=none] (59) at (-7.5, 2.25) {};
+		\node [style=none] (60) at (-7.5, 0.75) {};
+		\node [style=none] (61) at (-7.5, -0.75) {};
+		\node [style=none] (63) at (-7.5, -2.75) {};
+		\node [style=none] (64) at (-3.5, -2.75) {};
+		\node [style=none] (66) at (-3.5, -0.75) {};
+		\node [style=none] (67) at (-3.5, 0.75) {};
+		\node [style=none] (68) at (-3.5, 2.25) {};
+		\node [style=none] (69) at (-5.5, -0.125) {$U$};
+		\node [style=none, rotate=90] (168) at (-8.25, -1.75) {$\cdots$};
+		\node [style=none, rotate=90] (169) at (-2.75, -1.75) {$\cdots$};
+		\node [style=none, rotate=90] (170) at (-2.75, 1.5) {$\cdots$};
+		\node [style=none, rotate=90] (195) at (-8.25, 1.5) {$\cdots$};
+		\node [style=X phase dot] (196) at (-1, 2.25) {$0$};
+		\node [style=none] (215) at (-12.5, 0) {$P(m_1=0)\;=$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=boldedge] (55.center) to (58.center);
+		\draw [style=boldedge] (58.center) to (57.center);
+		\draw [style=boldedge] (57.center) to (56.center);
+		\draw [style=boldedge] (56.center) to (55.center);
+		\draw [style=boldedge] (68.center) to (33);
+		\draw [style=boldedge] (53) to (63.center);
+		\draw [style=boldedge] (36) to (61.center);
+		\draw [style=boldedge] (60.center) to (34);
+		\draw [style=boldedge] (32) to (59.center);
+		\draw [style=boldedge] (64.center) to (54);
+		\draw [style=boldedge] (37) to (66.center);
+		\draw [style=boldedge] (67.center) to (35);
+		\draw (33) to (196);
+		\draw (215.center) to (215.center);
+		\draw (196) to (196);
+		\draw (196) to (196);
+	\end{pgfonlayer}
+\end{tikzpicture}

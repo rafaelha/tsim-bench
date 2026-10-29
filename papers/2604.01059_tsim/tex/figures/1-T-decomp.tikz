@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z phase dot] (289) at (4.75, 0) {$\frac{\pi}{4}$};
+		\node [style=none] (291) at (5.75, 0) {};
+		\node [style=none] (292) at (6.75, 0) {$=$};
+		\node [style=none] (285) at (11.25, 0) {$+$};
+		\node [style=X dot] (293) at (9.25, 0) {};
+		\node [style=none] (294) at (10.25, 0) {};
+		\node [style=X phase dot] (295) at (15, 0) {$\pi$};
+		\node [style=none] (296) at (16.25, 0) {};
+		\node [style=none] (297) at (8, 0) {$\frac{1}{\sqrt{2}}$};
+		\node [style=none] (298) at (13, 0) {$\frac{1}{\sqrt{2}}e^{i\pi /4}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (289) to (291.center);
+		\draw (293) to (294.center);
+		\draw (295) to (296.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

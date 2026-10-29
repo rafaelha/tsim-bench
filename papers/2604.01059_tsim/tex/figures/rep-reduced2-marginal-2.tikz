@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X phase dot bb] (1) at (2.25, -0.5) {$\frac{\pi}{8}$};
+		\node [style=X phase dot] (49) at (9, -1.5) {$\;f_7\pi\;$};
+		\node [style=X phase dot] (96) at (9, -0.5) {$\;f_6\pi\;$};
+		\node [style=X dot] (130) at (10.75, -1.5) {};
+		\node [style=X phase dot] (131) at (10.75, -0.5) {$\;m_0\;$};
+		\node [style=X phase dot bb] (132) at (2.25, -1.5) {};
+		\node [style=X dot bb] (133) at (6.25, -1.5) {};
+		\node [style=Z dot bb] (134) at (6.25, -0.5) {};
+		\node [style=Z dot] (135) at (7.5, -0.5) {};
+		\node [style=Z dot] (136) at (7.5, -1.5) {};
+		\node [style=Z phase dot bb] (137) at (3.75, -0.5) {$\;f_8\pi\;$};
+		\node [style=X phase dot bb] (138) at (5.25, -0.5) {$\frac{\pi}{8}$};
+		\node [style=none] (139) at (-2, -1) {$P(m_0, m_1=0) = \frac{1}{P}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (49) to (130);
+		\draw (96) to (131);
+		\draw [style=boldedge] (1) to (134);
+		\draw [style=boldedge] (134) to (133);
+		\draw [style=boldedge] (132) to (133);
+		\draw [style=boldedge] (134) to (135);
+		\draw [style=boldedge] (133) to (136);
+		\draw (135) to (96);
+		\draw (136) to (49);
+	\end{pgfonlayer}
+\end{tikzpicture}

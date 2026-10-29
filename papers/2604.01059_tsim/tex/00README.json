@@ -1,0 +1,245 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "main.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/1-T-decomp.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/2-T-decomposition.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/ZX-marginal-1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/ZX-marginal-2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/ZX-marginal-3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/ZX-marginal-4.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/ZX-marginal-sum-detectors.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/ZX-marginal-sum.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/autoregressive1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/autoregressive2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/autoregressive3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cat-rot-5-decomp.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cat-rot-5-decomp2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/channel_flip.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/channel_flip_xz.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/channel_pauli1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/channel_pauli2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/channels.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/depolarizing_channel.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/deriv-rules-param.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/det_obs.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/doubling.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/doubling2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/edge_bold.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/edge_simple.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/hadamard.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/local-comp.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/magic-state-5-decomp.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/magic-state-decomposition-squash.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/measurement-cutting.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/measurement-simple-labels.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/measurement-simple.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/measurement.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/param-rules.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/param-rules2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/pi-copy.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/pivot.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-clifford-reduced.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-clifford.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-det_obs-sketch.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-reduced.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-reduced2-dets.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-reduced2-marginal-0.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-reduced2-marginal-1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-reduced2-marginal-2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-reduced2-obs.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-reduced2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep-sketch.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/rep2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/spider_bold.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/spider_simple.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/tensor.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/test.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/trace.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/xor.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "main.bbl"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "references.bib"
+      }
+   ],
+   "spec_version" : 1,
+   "texlive_version" : "2025",
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}

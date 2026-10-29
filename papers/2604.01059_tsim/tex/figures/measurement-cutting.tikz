@@ -1,0 +1,50 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z dot] (0) at (0, 0.25) {};
+		\node [style=none] (181) at (2.5, 0.25) {$=$};
+		\node [style=none] (185) at (1, 2.25) {};
+		\node [style=none] (186) at (-1.25, 0.75) {};
+		\node [style=none] (188) at (-1.25, -0.25) {};
+		\node [style=none] (190) at (1.25, 0.75) {};
+		\node [style=none] (191) at (1.25, -0.25) {};
+		\node [style=none] (194) at (9.5, 0.75) {};
+		\node [style=X phase dot] (198) at (10.5, 0.75) {$\pi$};
+		\node [style=none] (199) at (9.5, -0.25) {};
+		\node [style=X phase dot] (200) at (10.5, -0.25) {$\pi$};
+		\node [style=none] (201) at (13.5, 0.75) {};
+		\node [style=X phase dot] (202) at (12.5, 0.75) {$\pi$};
+		\node [style=none] (203) at (13.5, -0.25) {};
+		\node [style=X phase dot] (204) at (12.5, -0.25) {$\pi$};
+		\node [style=none] (205) at (12.5, 2.25) {};
+		\node [style=X phase dot] (206) at (11.5, 1.5) {$\pi$};
+		\node [style=none] (207) at (3.5, 0.75) {};
+		\node [style=X phase dot] (208) at (4.5, 0.75) {$0$};
+		\node [style=none] (209) at (3.5, -0.25) {};
+		\node [style=X phase dot] (210) at (4.5, -0.25) {$0$};
+		\node [style=none] (211) at (7.5, 0.75) {};
+		\node [style=X phase dot] (212) at (6.5, 0.75) {$0$};
+		\node [style=none] (213) at (7.5, -0.25) {};
+		\node [style=X phase dot] (214) at (6.5, -0.25) {$0$};
+		\node [style=none] (215) at (6.5, 2.25) {};
+		\node [style=X phase dot] (216) at (5.5, 1.5) {$0$};
+		\node [style=none] (217) at (8.5, 0.25) {$+$};
+		\node [style=none] (218) at (-2, 0.25) {$\sqrt{2}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [bend left=15] (186.center) to (0);
+		\draw [bend right=15] (188.center) to (0);
+		\draw [bend right=15] (185.center) to (0);
+		\draw [bend left=15] (0) to (190.center);
+		\draw [bend right=15] (0) to (191.center);
+		\draw (194.center) to (198);
+		\draw (199.center) to (200);
+		\draw (201.center) to (202);
+		\draw (203.center) to (204);
+		\draw [out=-165, in=60] (205.center) to (206);
+		\draw (207.center) to (208);
+		\draw (209.center) to (210);
+		\draw (211.center) to (212);
+		\draw (213.center) to (214);
+		\draw [out=-165, in=60] (215.center) to (216);
+	\end{pgfonlayer}
+\end{tikzpicture}

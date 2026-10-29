@@ -1,0 +1,77 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (74) at (11.75, 2.5) {};
+		\node [style=X dot bb] (3) at (3.5, -0.25) {};
+		\node [style=none] (76) at (16.5, 2.5) {};
+		\node [style=X dot bb] (14) at (3.5, 0.75) {};
+		\node [style=X dot bb] (15) at (3.5, -1.25) {};
+		\node [style=Z dot] (46) at (15.5, 0.75) {};
+		\node [style=X dot bb] (25) at (6.5, -0.25) {};
+		\node [style=X dot] (70) at (17.5, 1.75) {};
+		\node [style=X phase dot bb] (29) at (7.5, -0.25) {$\;e_2\pi\;$};
+		\node [style=X phase dot bb] (50) at (14.25, -1.25) {$\;e_{7}\pi\;$};
+		\node [style=Z dot bb] (24) at (10.5, 0.75) {};
+		\node [style=X phase dot bb] (20) at (5.5, 0.75) {$\;e_0\pi\;$};
+		\node [style=X phase dot bb] (43) at (11.75, -0.25) {$\;e_5\pi\;$};
+		\node [style=Z dot bb] (18) at (6.5, -1.25) {};
+		\node [style=X phase dot bb] (28) at (7.5, -1.25) {$\;e_3\pi\;$};
+		\node [style=X dot bb] (4) at (4.5, -0.25) {};
+		\node [style=X phase dot bb] (51) at (14.25, -0.25) {$\;e_{6}\pi\;$};
+		\node [style=X dot] (40) at (8.5, 1.75) {};
+		\node [style=none] (78) at (17.5, 2.5) {};
+		\node [style=Z dot bb] (16) at (4.5, 0.75) {};
+		\node [style=X dot bb] (37) at (10.5, -0.25) {};
+		\node [style=X phase dot bb] (42) at (11.75, 0.75) {$\;e_4\pi\;$};
+		\node [style=X dot] (68) at (16.5, 1.75) {};
+		\node [style=Z dot] (33) at (8.5, -0.25) {};
+		\node [style=X phase dot bb] (21) at (5.5, -0.25) {$\;e_1\pi\;$};
+		\node [style=Z dot] (54) at (15.5, -1.25) {};
+		\node [style=X dot bb] (47) at (13, -0.25) {};
+		\node [style=Z dot] (55) at (15.5, -0.25) {};
+		\node [style=Z dot bb] (32) at (13, -1.25) {};
+		\node [style=none] (72) at (8.5, 2.5) {};
+		\node [style=X dot bb] (36) at (9.5, -0.25) {};
+		\node [style=X dot] (62) at (11.75, 1.75) {};
+		\node [style=none] (79) at (8.5, 3.25) {$D_0$};
+		\node [style=none] (80) at (11.75, 3.25) {$D_1$};
+		\node [style=none] (81) at (16.5, 3.25) {$D_2$};
+		\node [style=none] (82) at (17.5, 3.25) {$O_0$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=boldedge] (3) to (4);
+		\draw [style=boldedge] (14) to (16);
+		\draw [style=boldedge] (15) to (18);
+		\draw [bend right=15] (46) to (68);
+		\draw [style=boldedge] (25) to (29);
+		\draw (70) to (78);
+		\draw [style=boldedge] (29) to (33);
+		\draw [style=boldedge] (50) to (54);
+		\draw [style=boldedge] (24) to (42);
+		\draw [style=boldedge] (24) to (37);
+		\draw [style=boldedge] (20) to (24);
+		\draw [style=boldedge] (43) to (47);
+		\draw [style=boldedge] (18) to (28);
+		\draw [out=90, in=270, style=boldedge] (18) to (25);
+		\draw [style=boldedge] (28) to (32);
+		\draw [style=boldedge] (4) to (21);
+		\draw [style=boldedge] (4) to (16);
+		\draw [style=boldedge] (51) to (55);
+		\draw (40) to (72);
+		\draw [style=boldedge] (16) to (20);
+		\draw [style=boldedge] (37) to (43);
+		\draw [style=boldedge] (42) to (46);
+		\draw (68) to (76);
+		\draw (33) to (40);
+		\draw (33) to (62);
+		\draw [style=boldedge] (21) to (25);
+		\draw [looseness=0.5, bend right=15] (54) to (68);
+		\draw [bend right=15] (54) to (70);
+		\draw [style=boldedge] (47) to (51);
+		\draw (55) to (62);
+		\draw [looseness=0.5, bend right=15] (55) to (68);
+		\draw [style=boldedge] (32) to (50);
+		\draw [style=boldedge] (32) to (47);
+		\draw [style=boldedge] (36) to (37);
+		\draw (62) to (74);
+	\end{pgfonlayer}
+\end{tikzpicture}

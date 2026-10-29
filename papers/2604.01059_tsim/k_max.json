@@ -1,0 +1,119 @@
+[
+  {
+    "file": "stim/distillation_color_d5_X.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.45,
+    "clifft_k": 4,
+    "clifft_seconds": 0.06,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.06
+  },
+  {
+    "file": "stim/distillation_color_d5_Y.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.48,
+    "clifft_k": 3,
+    "clifft_seconds": 0.06,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.05
+  },
+  {
+    "file": "stim/distillation_color_d5_Z.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.48,
+    "clifft_k": 3,
+    "clifft_seconds": 0.06,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.05
+  },
+  {
+    "file": "stim/distillation_steane_d3_X.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.47,
+    "clifft_k": 4,
+    "clifft_seconds": 0.05,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.06
+  },
+  {
+    "file": "stim/distillation_steane_d3_Y.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.47,
+    "clifft_k": 3,
+    "clifft_seconds": 0.05,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.05
+  },
+  {
+    "file": "stim/distillation_steane_d3_Z.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.47,
+    "clifft_k": 3,
+    "clifft_seconds": 0.05,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.06
+  },
+  {
+    "file": "stim/distillation_unencoded_X.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.46,
+    "clifft_k": 4,
+    "clifft_seconds": 0.05,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.05
+  },
+  {
+    "file": "stim/distillation_unencoded_Y.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.46,
+    "clifft_k": 3,
+    "clifft_seconds": 0.06,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.05
+  },
+  {
+    "file": "stim/distillation_unencoded_Z.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.46,
+    "clifft_k": 3,
+    "clifft_seconds": 0.05,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.05
+  }
+]

@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z phase dot] (0) at (-1.5, 0.488) {$\frac\pi4$};
+		\node [style=none] (1) at (-0.475, 0.487) {};
+		\node [style=Z phase dot] (2) at (-1.475, -0.512) {$\frac\pi4$};
+		\node [style=none] (3) at (-0.45, -0.513) {};
+		\node [style=none] (4) at (0.5, 0) {$=$};
+		\node [style=Z phase dot] (5) at (1.75, -0.012) {$\frac\pi2$};
+		\node [style=none] (6) at (2.775, 0.487) {};
+		\node [style=none] (8) at (2.8, -0.513) {};
+		\node [style=none] (9) at (4, 0) {$+\ e^{i\frac\pi4}$};
+		\node [style=X phase dot] (15) at (5.75, -0.01200000000000001) {$\pi$};
+		\node [style=none] (16) at (6.775, 0.487) {};
+		\node [style=none] (17) at (6.8, -0.5129999999999999) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (0);
+		\draw (3.center) to (2);
+		\draw [bend right] (6.center) to (5);
+		\draw [bend right] (5) to (8.center);
+		\draw [bend right] (16.center) to (15);
+		\draw [bend right] (15) to (17.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

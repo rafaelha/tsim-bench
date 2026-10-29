@@ -1,0 +1,53 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X phase dot bb] (1) at (2.25, -0.5) {$\frac{\pi}{8}$};
+		\node [style=X phase dot] (9) at (-1, 1) {$\;f_1\pi\;$};
+		\node [style=X phase dot] (43) at (6, 1) {$\;f_5\pi\;$};
+		\node [style=X phase dot] (49) at (9.5, 1) {$\;f_7\pi\;$};
+		\node [style=X phase dot] (59) at (1, 1) {$\;f_2\pi\;$};
+		\node [style=X phase dot] (61) at (4.5, 1) {$\;f_4\pi\;$};
+		\node [style=X phase dot] (67) at (-2.5, 1) {$\;f_0\pi\;$};
+		\node [style=X phase dot] (96) at (8, 1) {$\;f_6\pi\;$};
+		\node [style=X phase dot] (102) at (2.5, 1) {$\;f_3\pi\;$};
+		\node [style=none] (124) at (-2.5, 2) {};
+		\node [style=none] (125) at (-1, 2) {};
+		\node [style=none] (126) at (1, 2) {};
+		\node [style=none] (127) at (2.5, 2) {};
+		\node [style=none] (128) at (4.5, 2) {};
+		\node [style=none] (129) at (6, 2) {};
+		\node [style=none] (130) at (9.5, 2) {};
+		\node [style=none] (131) at (8, 2) {};
+		\node [style=X phase dot bb] (132) at (2.25, -1.5) {};
+		\node [style=X dot bb] (133) at (6.25, -1.5) {};
+		\node [style=Z dot bb] (134) at (6.25, -0.5) {};
+		\node [style=Z dot] (135) at (7.5, -0.5) {};
+		\node [style=Z dot] (136) at (7.5, -1.5) {};
+		\node [style=Z phase dot bb] (137) at (3.75, -0.5) {$\;f_8\pi\;$};
+		\node [style=X phase dot bb] (138) at (5.25, -0.5) {$\frac{\pi}{8}$};
+		\node [style=none] (94) at (-2.5, 2.75) {$D_0$};
+		\node [style=none] (95) at (-1, 2.75) {$D_1$};
+		\node [style=none] (139) at (2.5, 2.75) {$D_3$};
+		\node [style=none] (97) at (1, 2.75) {$D_2$};
+		\node [style=none] (98) at (6, 2.75) {$D_5$};
+		\node [style=none] (99) at (4.5, 2.75) {$D_4$};
+		\node [style=none] (100) at (9.5, 2.75) {$O_1$};
+		\node [style=none] (101) at (8, 2.75) {$O_0$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (9) to (125);
+		\draw (43) to (129);
+		\draw (49) to (130);
+		\draw (59) to (126);
+		\draw (61) to (128);
+		\draw (67) to (124);
+		\draw (96) to (131);
+		\draw (102) to (127);
+		\draw [style=boldedge] (1) to (134);
+		\draw [style=boldedge] (134) to (133);
+		\draw [style=boldedge] (132) to (133);
+		\draw [style=boldedge] (134) to (135);
+		\draw [style=boldedge] (133) to (136);
+		\draw [bend right=15] (135) to (96);
+		\draw [bend right] (136) to (49);
+	\end{pgfonlayer}
+\end{tikzpicture}

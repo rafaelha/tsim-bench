@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X phase dot bb] (1) at (-4.25, -0.25) {$\;e_i\pi\;$};
+		\node [style=none] (3) at (-5.5, -0.25) {};
+		\node [style=none] (4) at (-3, -0.25) {};
+		\node [style=Z phase dot bb] (12) at (5.75, -0.25) {$\;e_i\pi\;$};
+		\node [style=none] (13) at (4.5, -0.25) {};
+		\node [style=none] (14) at (7, -0.25) {};
+		\node [style=none] (15) at (-8.5, -0.25) {X flip channel};
+		\node [style=none] (16) at (1.5, -0.25) {Z flip channel};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=boldedge] (3.center) to (1);
+		\draw [style=boldedge] (12) to (14.center);
+		\draw [style=boldedge] (1) to (4.center);
+		\draw [style=boldedge] (13.center) to (12);
+	\end{pgfonlayer}
+\end{tikzpicture}

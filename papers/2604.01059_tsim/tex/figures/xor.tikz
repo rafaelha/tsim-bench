@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X dot] (0) at (0, 0.25) {};
+		\node [style=none] (185) at (1.25, 0.25) {};
+		\node [style=none] (186) at (-1.25, 1) {};
+		\node [style=none] (188) at (-1.25, -0.5) {};
+		\node [style=none] (189) at (-1.25, 0.25) {};
+		\node [style=none] (190) at (-2, 1) {$m_i$};
+		\node [style=none] (191) at (-2, -0.5) {$m_k$};
+		\node [style=none] (192) at (-2, 0.25) {$m_j$};
+		\node [style=none] (193) at (3.75, 0.25) {$m_i \oplus m_j \oplus m_k$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [bend left=15] (186.center) to (0);
+		\draw [bend right=15] (188.center) to (0);
+		\draw (185.center) to (0);
+		\draw (189.center) to (0);
+		\draw (186.center) to (186.center);
+		\draw (190.center) to (190.center);
+		\draw (193.center) to (193.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,167 @@
+\begin{thebibliography}{10}
+
+\bibitem{Sutcliffe_2025}
+Matthew Sutcliffe and Aleks Kissinger.
+\newblock Fast classical simulation of quantum circuits via parametric rewriting in the zx-calculus.
+\newblock {\em Electronic Proceedings in Theoretical Computer Science}, 426:247–269, August 2025.
+
+\bibitem{google2023suppressing}
+{Google Quantum AI}.
+\newblock Suppressing quantum errors by scaling a surface code logical qubit.
+\newblock {\em Nature}, 614(7949):676--681, 2023.
+
+\bibitem{ryan2024high}
+C~Ryan-Anderson, NC~Brown, CH~Baldwin, JM~Dreiling, C~Foltz, JP~Gaebler, TM~Gatterman, N~Hewitt, C~Holliman, CV~Horst, et~al.
+\newblock High-fidelity and fault-tolerant teleportation of a logical qubit using transversal gates and lattice surgery on a trapped-ion quantum computer (2024).
+\newblock {\em arXiv preprint arXiv:2404.16728}, 2024.
+
+\bibitem{sales2025experimental}
+Pedro Sales~Rodriguez, John~M Robinson, Paul~Niklas Jepsen, Zhiyang He, Casey Duckering, Chen Zhao, Kai-Hsin Wu, Joseph Campo, Kevin Bagnall, Minho Kwon, et~al.
+\newblock Experimental demonstration of logical magic state distillation.
+\newblock {\em Nature}, 645(8081):620--625, 2025.
+
+\bibitem{rosenfeld2025magic}
+Emma Rosenfeld, Craig Gidney, Gabrielle Roberts, Alexis Morvan, Nathan Lacroix, Dvir Kafri, Jeffrey Marshall, Ming Li, Volodymyr Sivak, Dmitry Abanin, et~al.
+\newblock Magic state cultivation on a superconducting quantum processor.
+\newblock {\em arXiv preprint arXiv:2512.13908}, 2025.
+
+\bibitem{bluvstein2026fault}
+Dolev Bluvstein, Alexandra~A Geim, Sophie~H Li, Simon~J Evered, J~Pablo Bonilla~Ataides, Gefen Baranes, Andi Gu, Tom Manovitz, Muqing Xu, Marcin Kalinowski, et~al.
+\newblock A fault-tolerant neutral-atom architecture for universal quantum computation.
+\newblock {\em Nature}, 649(8095):39--46, 2026.
+
+\bibitem{horsman2012surface}
+Dominic Horsman, Austin~G Fowler, Simon Devitt, and Rodney~Van Meter.
+\newblock Surface code quantum computing by lattice surgery.
+\newblock {\em New Journal of Physics}, 14(12):123011, 2012.
+
+\bibitem{zhou2024algorithmic}
+Hengyun Zhou, Chen Zhao, Madelyn Cain, Dolev Bluvstein, Casey Duckering, Hong-Ye Hu, Sheng-Tao Wang, Aleksander Kubica, and Mikhail~D Lukin.
+\newblock Algorithmic fault tolerance for fast quantum computing.
+\newblock {\em arXivorg}, 2024.
+
+\bibitem{gidney2024magic}
+Craig Gidney, Noah Shutty, and Cody Jones.
+\newblock Magic state cultivation: growing t states as cheap as cnot gates.
+\newblock {\em arXiv preprint arXiv:2409.17595}, 2024.
+
+\bibitem{derks2025designing}
+Peter-Jan~HS Derks, Alex Townsend-Teague, Ansgar~G Burchards, and Jens Eisert.
+\newblock Designing fault-tolerant circuits using detector error models.
+\newblock {\em Quantum}, 9:1905, 2025.
+
+\bibitem{gidney2021stim}
+Craig Gidney.
+\newblock Stim: a fast stabilizer circuit simulator.
+\newblock {\em Quantum}, 5:497, 2021.
+
+\bibitem{jax2018github}
+James Bradbury, Roy Frostig, Peter Hawkins, Matthew~James Johnson, Chris Leary, Dougal Maclaurin, George Necula, Adam Paszke, Jake Vander{P}las, Skye Wanderman-{M}ilne, and Qiao Zhang.
+\newblock {JAX}: composable transformations of {P}ython+{N}um{P}y programs, 2018.
+
+\bibitem{yoder2012generalization}
+Theodore~J Yoder.
+\newblock A generalization of the stabilizer formalism for simulating arbitrary quantum circuits.
+\newblock {\em See http://www. scottaaronson. com/showcase2/report/ted-yoder. pdf}, 2012.
+
+\bibitem{li2025soft}
+Riling Li, Keli Zheng, Yiming Zhang, Huazhe Lou, Shenggang Ying, Ke~Liu, and Xiaoming Sun.
+\newblock Soft: a high-performance simulator for universal fault-tolerant quantum circuits.
+\newblock {\em arXiv preprint arXiv:2512.23037}, 2025.
+
+\bibitem{rall2019simulation}
+Patrick Rall, Daniel Liang, Jeremy Cook, and William Kretschmer.
+\newblock Simulation of qubit quantum circuits via pauli propagation.
+\newblock {\em Physical Review A}, 99(6):062337, 2019.
+
+\bibitem{rudolph2025pauli}
+Manuel~S Rudolph, Tyson Jones, Yanting Teng, Armando Angrisani, and Zoe Holmes.
+\newblock Pauli propagation: A computational framework for simulating quantum systems.
+\newblock {\em arXiv preprint arXiv:2501.13101}, 2025.
+
+\bibitem{bravyi2019simulation}
+Sergey Bravyi, Dan Browne, Padraic Calpin, Earl Campbell, David Gosset, and Mark Howard.
+\newblock Simulation of quantum circuits by low-rank stabilizer decompositions.
+\newblock {\em Quantum}, 3:181, 2019.
+
+\bibitem{kissinger2022classical}
+Aleks Kissinger, John van~de Wetering, and Renaud Vilmart.
+\newblock Classical simulation of quantum circuits with partial and graphical stabiliser decompositions.
+\newblock {\em arXiv preprint arXiv:2202.09202}, 2022.
+
+\bibitem{kissinger2022simulating}
+Aleks Kissinger and John van~de Wetering.
+\newblock Simulating quantum circuits with zx-calculus reduced stabiliser decompositions.
+\newblock {\em Quantum Science \& Technology}, 7(4):044001, 2022.
+
+\bibitem{sutcliffe2025novel}
+Matthew Sutcliffe.
+\newblock {\em Novel methods for classical simulation of quantum circuits via ZX-calculus}.
+\newblock PhD thesis, University of Oxford, 2025.
+
+\bibitem{sutcliffe2024procedurally}
+Matthew Sutcliffe and Aleks Kissinger.
+\newblock Procedurally optimised zx-diagram cutting for efficient t-decomposition in classical simulation.
+\newblock {\em arXiv preprint arXiv:2403.10964}, 2024.
+
+\bibitem{codsi2022cutting}
+Julien Codsi.
+\newblock Cutting-edge graphical stabiliser decompositions for classical simulation of quantum circuits.
+\newblock Master's thesis, University of Oxford, 2022.
+
+\bibitem{wan2025cutting}
+Kwok~Ho Wan and Zhenghao Zhong.
+\newblock Cutting stabiliser decompositions of magic state cultivation with zx-calculus, 2025.
+
+\bibitem{wan2026simulatingmagicstatecultivation}
+Kwok~Ho Wan and Zhenghao Zhong.
+\newblock Simulating magic state cultivation with few clifford terms, 2026.
+
+\bibitem{kissinger2020Pyzx}
+Aleks Kissinger and John van~de Wetering.
+\newblock {PyZX: Large Scale Automated Diagrammatic Reasoning}.
+\newblock In Bob Coecke and Matthew Leifer, editors, {\em {\rm Proceedings 16th International Conference on} Quantum Physics and Logic, {\rm Chapman University, Orange, CA, USA., 10-14 June 2019}}, volume 318 of {\em Electronic Proceedings in Theoretical Computer Science}, pages 229--241. Open Publishing Association, 2020.
+
+\bibitem{bloqade2025}
+{QuEra Computing}.
+\newblock Bloqade circuit, 2025.
+
+\bibitem{cross2017open}
+Andrew~W Cross, Lev~S Bishop, John~A Smolin, and Jay~M Gambetta.
+\newblock Open quantum assembly language.
+\newblock {\em arXiv preprint arXiv:1707.03429}, 2017.
+
+\bibitem{cirq2025}
+{Cirq Developers}.
+\newblock Cirq, August 2025.
+
+\bibitem{qir2026spec}
+{QIR Alliance}.
+\newblock Qir specification, 2026.
+
+\bibitem{backens2019zhcomplete}
+Miriam Backens and Aleks Kissinger.
+\newblock {ZH}: {A} {Complete} {Graphical} {Calculus} for {Quantum} {Computations} {Involving} {Classical} {Non}-linearity.
+\newblock {\em Electronic Proceedings in Theoretical Computer Science}, 287:23--42, January 2019.
+\newblock arXiv: 1805.02175.
+
+\bibitem{paramzx2024}
+Matthew Sutcliffe.
+\newblock {ParamZX}: parameterised reduction and {GPU} evaluations for {PyZX}, 2024.
+
+\bibitem{van2020zx}
+John Van De~Wetering.
+\newblock Zx-calculus for the working quantum computer scientist.
+\newblock {\em arXiv preprint arXiv:2012.13966}, 2020.
+
+\bibitem{qassim2021improved}
+Hammam Qassim, Hakop Pashayan, and David Gosset.
+\newblock Improved upper bounds on the stabilizer rank of magic states.
+\newblock {\em Quantum}, 5:606, 2021.
+
+\bibitem{surti2025efficient}
+Samyak Surti, Lucas Daguerre, and Isaac~H Kim.
+\newblock Efficient simulation of logical magic state preparation protocols.
+\newblock {\em arXiv preprint arXiv:2512.23799}, 2025.
+
+\end{thebibliography}

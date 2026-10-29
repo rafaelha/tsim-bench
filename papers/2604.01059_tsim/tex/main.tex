@@ -1,0 +1,796 @@
+\documentclass[
+  a4paper,
+  onecolumn,
+  % twocolumn,
+  11pt,
+  % accepted=2017-05-09,
+  allowtoday
+]{quantumarticle}
+\pdfoutput=1
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath,amssymb}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{booktabs}
+
+\usepackage{tikzit}
+\input{quantum.tikzstyles}
+
+\newtheorem{theorem}{Theorem}
+
+% Compatibility shims for newer LaTeX/caption kernels with the journal class.
+\makeatletter
+\providecommand\caption@documentclass{standard}
+\providecommand\@afterenddocumenthook{}
+\makeatother
+
+\usepackage{listings}
+\definecolor{codebg}{HTML}{F7F7F7}
+\definecolor{codeframe}{HTML}{CCCCCC}
+\definecolor{codekw}{HTML}{1A56DB}
+\definecolor{codecomment}{HTML}{6B7280}
+\definecolor{codestr}{HTML}{9D174D}
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{codeframe},
+  framesep=6pt,
+  xleftmargin=8pt,
+  xrightmargin=8pt,
+  language=Python,
+  keywordstyle=\color{codekw}\bfseries,
+  commentstyle=\color{codecomment}\itshape,
+  stringstyle=\color{codestr},
+  showstringspaces=false,
+  aboveskip=10pt,
+  belowskip=10pt,
+  float=htbp,
+}
+
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO:} #1}}
+\newcommand{\chen}[1]{\textcolor{blue}{\textbf{Chen:} #1}}
+
+% Complexity notation macros
+\newcommand{\bigO}[1]{\mathcal{O}(#1)}
+\newcommand{\FF}{\mathrm{GF}(2)}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ngates}{G}          % number of gates in the circuit
+\newcommand{\nmagic}{T}          % number of non-Clifford gates
+\newcommand{\nerr}{E}            % number of error mechanisms
+\newcommand{\navgflip}{\delta}   % average number of detectors flipped per mechanism
+\newcommand{\perr}{p}            % physical error probability
+\newcommand{\batchsize}{s}       % shot batch size
+\newcommand{\stabrank}{\chi}     % stabilizer rank
+\newcommand{\decomprate}{\alpha} % decomposition rate constant
+\newcommand{\numqubits}{n}      % number of qubits in the circuit
+
+\begin{document}
+
+\title{Tsim: Fast Universal Simulator for Quantum Error Correction}
+\date{April 1, 2026}
+
+\author{Rafael Haenel}
+\email{rhaenel@quera.com}
+\affiliation{QuEra Computing Inc., Boston, USA}
+
+\author{Xiuzhe Luo}
+\affiliation{QuEra Computing Inc., Boston, USA}
+
+\author{Chen Zhao}
+\email{czhao@quera.com}
+\affiliation{QuEra Computing Inc., Boston, USA}
+
+\maketitle
+
+\begin{abstract}
+  We present Tsim, an open-source high-throughput simulator for universal noisy quantum circuits targeting quantum error correction. Tsim represents quantum circuits as ZX diagrams, where Pauli channels are modeled as parameterized vertices. Diagrams are simplified via parameterized ZX rules, and then compiled for vectorized sampling with GPU acceleration. After the one-time compilation, one can sample detector or measurement shots in linear time in the number of Clifford gates and exponentially only in the number of non-Clifford gates. Tsim implements the Stim API and fully supports the Stim circuit format, extending it with T and arbitrary single-qubit rotation instructions. For low-magic circuits, Tsim throughput can match the sampling performance of Stim.
+\end{abstract}
+
+\section{Introduction}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=1.0\linewidth]{figures/pipeline.pdf}
+  \caption{Overview of the Tsim simulation pipeline.
+    Quantum programs are translated into ZX diagrams in which Pauli noise channels appear as parameterized vertices with binary variables $e_i$.
+    ZX simplification factors the diagram into a classical part, that represents the Tanner graph, and a quantum part containing the observable circuit. Both parts define a new basis of \textit{error mechanisms} $f_i = \bigoplus_j T_{ij}\,e_j$.
+    The observable diagram
+    is used to compute marginal probabilities for autoregressive sampling. Here, each diagram is decomposed into a sum of Clifford terms via stabilizer rank decomposition~\cite{Sutcliffe_2025} and compiled into binary JAX tensors $g_{tki}$.
+    At sampling time, JIT-compiled XLA kernels contract $g_{tki}$ with batched noise configurations $f_i^{s}$ to evaluate marginal probabilities and autoregressively sample detector and observable bits.
+  }
+  \label{fig:pipeline}
+\end{figure}
+
+Quantum computing at utility scale requires quantum error correction (QEC) to achieve sufficiently low logical error rates. In recent years, quantum hardware has made significant strides toward this goal, with experimental demonstrations of key fault-tolerant primitives \cite{google2023suppressing, ryan2024high, sales2025experimental, rosenfeld2025magic, bluvstein2026fault}. Despite these advances, large-scale fault-tolerant quantum computers remain beyond current hardware capabilities. Consequently, the development, benchmarking, and validation of QEC protocols continue to rely heavily on classical simulation tools. To address this need, we introduce Tsim, a GPU-accelerated universal quantum circuit simulator based on stabilizer rank decomposition and the ZX-calculus. Tsim addresses the following key requirements of a practical QEC simulator.
+
+First, QEC simulations are typically performed at the gadget level. Rather than simulating full logical algorithms, one focuses on individual components such as stabilizer extraction circuits (e.g., quantum memory), single logical operations (e.g., lattice surgery and transversal gates \cite{horsman2012surface, zhou2024algorithmic}), or magic-state preparation protocols (e.g., magic state cultivation \cite{gidney2024magic}). Such gadgets can involve hundreds to thousands of physical qubits, yet are predominantly---and sometimes entirely---composed of Clifford operations, reflecting the structure of stabilizer codes. A practical QEC simulator must therefore scale to large qubit counts while exploiting the low-magic structure of these circuits.
+Tsim supports low-magic circuit simulation via stabilizer rank decomposition, yielding runtimes that scale polynomially in the number of qubits and exponentially only in the non-Clifford gate count.
+
+Second, QEC protocols must be evaluated under realistic noise models. In practice, much of the community's simulation effort focuses on Pauli noise at the circuit level~\cite{derks2025designing}. This approximation is often well justified: stabilizer measurements effectively project general noise channels onto discrete bit and phase flips. As a result, an efficient QEC simulator must handle Pauli errors with minimal overhead.
+Tsim addresses this by representing Pauli errors as parameterized ZX vertices, so that the expensive diagrammatic reduction needs only be performed once and is reused across noise configurations~\cite{Sutcliffe_2025}. This allows Tsim to reach linear-time sampling as in Stim for Clifford circuits with deterministic detectors.
+
+Third, simulators demand extremely high throughput to support Monte Carlo sampling at low error rates \cite{gidney2021stim}. For example, estimating the logical error rate of a QEC gadget at $10^{-9}$--$10^{-12}$ requires generating billions to trillions of shots from the probability distribution of its quantum circuit. Consequently, an ideal QEC simulator must support extremely high-throughput sampling. Tsim leverages JAX~\cite{jax2018github} and XLA compilation to vectorize shot execution on CPU and GPU, enabling high-throughput Monte Carlo sampling.
+
+In the landscape of existing QEC simulators, Stim~\cite{gidney2021stim} has emerged as the de facto standard for protocols composed entirely of Clifford gates and Pauli errors, achieving linear-time sampling via Pauli frame tracking and high throughput through vectorized execution. However, many practically relevant QEC gadgets contain a small number of non-Clifford operations, which require simulation techniques beyond the stabilizer formalism. Existing approaches include state-vector simulators (exponential in qubit count), tensor network methods such as matrix product states (efficient for limited entanglement), and low-magic simulation techniques such as extended tableau methods~\cite{yoder2012generalization,li2025soft}, Pauli propagation~\cite{rall2019simulation,rudolph2025pauli}, and stabilizer rank decomposition~\cite{bravyi2019simulation}. Among these, stabilizer rank decomposition combined with ZX-calculus simplification~\cite{kissinger2022classical,kissinger2022simulating,Sutcliffe_2025,sutcliffe2025novel,sutcliffe2024procedurally,codsi2022cutting} is particularly well suited to the high-entanglement, low-magic structure of QEC circuits, and has been shown to exploit protocol structure to achieve significantly lower stabilizer rank than previously known~\cite{wan2025cutting,wan2026simulatingmagicstatecultivation}. Tsim builds on these advances and is implemented on top of PyZX~\cite{kissinger2020Pyzx}.
+
+Tsim implements the Stim API for seamless integration with existing workflows and extends the Stim instruction set with non-Clifford gates. It supports sampling of either measurement outcomes or detector events. The software is available open-source under the Apache-2.0 license\footnote{\url{https://github.com/QuEraComputing/tsim}}. Tsim places strong emphasis on reliability and includes an automated test suite with more than 95\% coverage.
+
+This manuscript is organized as follows. In Sec.~\ref{sec:pipeline}, we present an overview of Tsim and describe the simulation pipeline in detail. In Sec.~\ref{sec:benchmarks}, we present performance benchmarks. We conclude in Sec.~\ref{sec:summary}. Additionally, we provide a summary of the ZX-calculus, a more detailed description of the simulation strategy, and the Tsim API in the Appendix.
+
+% We begin by describing the overall simulation pipeline in the language of the ZX calculus and work out a simple example. Next, we describe the software architecture. In Section~\ref{sec:benchmarks}, we present performance benchmarks. In Section~\ref{sec:examples}, we provide representative simulation results for Magic State Cultivation circuits and Space-Time efficient Analog Rotation (STAR) circuits.
+
+\section{Methods}
+\label{sec:pipeline}
+
+Tsim is distributed as a Python package (\texttt{bloqade-tsim}) and mirrors the full Stim Python API~\cite{gidney2021stim}. All Stim features are supported, including Clifford gates, single-qubit measurements and resets, Pauli product measurements, classically controlled Pauli gates, correlated Pauli noise channels, and detector and observable annotations. Tsim extends the instruction set with non-Clifford gates \texttt{T}, \texttt{T\_DAG}, \texttt{R\_X}, \texttt{R\_Y}, \texttt{R\_Z}, and \texttt{U3}. For many existing Stim-based workflows, a good starting point is to replace \texttt{import stim} with \texttt{import tsim}.
+
+The following listing illustrates Tsim on a minimal noisy non-Clifford circuit. Additionally, Tsim is tightly integrated into the Bloqade framework \cite{bloqade2025} (see Appendix~\ref{sec:frontend}).
+
+\begin{lstlisting}[caption={Minimal Tsim detector-sampling example.}, label={lst:detector_sampling}]
+  import tsim
+
+  c = tsim.Circuit("""
+    RX 0
+    R 1
+    R_Z(0.125) 0  # 0.125*pi rotation around Z
+    PAULI_CHANNEL_1(0.1, 0.1, 0.2) 0 1
+    H 0
+    CNOT 0 1
+    DEPOLARIZE2(0.01) 0 1
+    M 0 1
+    DETECTOR rec[-1] rec[-2]
+  """)
+
+  sampler = c.compile_detector_sampler()
+  samples = sampler.sample(shots=1_000_000)
+\end{lstlisting}
+
+The simulation workflow follows a compile-once, sample-many pattern (Fig.~\ref{fig:pipeline}). Tsim accepts quantum programs specified in Stim,
+Bloqade~\cite{bloqade2025},
+OpenQASM~\cite{cross2017open},
+Cirq~\cite{cirq2025},
+and QIR (Quantum Intermediate Representation)~\cite{qir2026spec}; these front-end formats are translated to Tsim's intermediate representation (IR).
+
+The noisy circuit in the IR is converted into a parameterized ZX diagram, where Pauli noise channels enter as symbolic parameters rather than concrete gates. Diagrammatic reduction rules (via PyZX) then simplify the parameterized diagram, usually resulting in disconnected detector and observable components. The reduced diagram is assembled into a contiguous array data structure, the compiled sampler, which is reused across noise configurations and sampling calls.
+
+At sampling time, the compiled sampler draws shots by evaluating the reduced diagram for many independent noise realizations in parallel, accelerated by JAX/XLA~\cite{jax2018github} on CPU or GPU. Circuits can be compiled into either measurement samplers or detector samplers. Measurement samplers return raw measurement outcomes, whereas detector samplers return detector and logical observable bits. As we show in Sec.~\ref{sec:detector_advantage}, detector sampling often admits a more efficient ZX formulation, since ZX reduction can separate detector bits from the logical circuit and evaluate each detector as an independent connected component.
+
+
+\subsection{ZX representation}
+Internally, Tsim represents circuits as ZX diagrams using the \textit{doubled} notation of the ZX-calculus for more compact representation of measurements (see Appendix~\ref{sec:doubling}). In this notation, bold wires and spiders denote quantum objects, while thin wires and spiders carry classical information such as measurement outcomes. Measurements correspond to thin spiders that consume a quantum wire and produce a classical one. Classical wires support non-unitary operations such as COPY and XOR, which allow native representation of detectors and observables within the diagram: detectors and observables are defined as XOR combinations of measurement results, and measurement results need to be copied because they may appear in multiple detectors and observables.
+\begin{equation}
+  \tikzfig{measurement-simple}
+  \label{eqn:doubled_notation}
+\end{equation}
+Doubled diagrams can easily be transpiled into regular diagrams following Eqs.~\eqref{eqn:doubling}--\eqref{eqn:doubling2}.
+
+Pauli noise channels are represented as parameterized X and Z spiders with phase in $[0,\pi]$.
+For example, X and Z bit-flip channels are represented by the following ZX diagrams:
+\begin{equation}
+  \tikzfig{channel_flip_xz}
+\end{equation}
+In this way, Tsim supports arbitrary correlated Pauli channels as detailed in Appendix~\ref{sec:pauli_channels}.
+The parameterized representation of Pauli channels allows ZX reduction and compilation in a way that
+is agnostic to a specific noise configuration.
+
+\subsection{Simulation pipeline}
+
+We describe the simulation pipeline using an example circuit containing two distance-2 repetition code blocks. The circuit is structured as follows: First, a round of stabilizer readout is performed, with CNOT gates followed by bit flip error channels. Next, we apply two logical $\pi/8$ rotations, separated by a phase flip error channel. Then, a transversal CNOT gate is applied between the two code blocks. Finally, a second round of stabilizer readout is performed, followed by terminal measurements. We define standard detectors as XOR operations
+that check the parity of data qubits between subsequent rounds (see Sec.~\ref{sec:detectors_observables}). Two observables
+are defined from the terminal measurements. This yields the following diagram:
+\begin{equation}
+  \tikzfig{rep2}
+  \label{eqn:rep2}
+\end{equation}
+
+A key insight underpinning Tsim's simulation pipeline is that ZX reduction
+of the detector sampling diagram yields a
+much simpler diagram comprising detector and observable components.
+For the example diagram \eqref{eqn:rep2}, we get the following equivalent diagrammatic representation:
+\begin{equation}
+  \tikzfig{rep-reduced2}
+  \label{eqn:rep_reduced2}
+\end{equation}
+Here, we have introduced new binary variables $f_i$
+that linearly depend on the $e_i$ as
+\begin{align}
+  f_i = T_{ij} e_j \;\bmod\; 2 \, .
+  \label{eqn:detector_sampling}
+\end{align}
+In general, there are multiple ways to introduce the $f_i$ variables. We choose a minimal set of $f_i$ by performing Gaussian elimination over $\FF$ on the binary matrix of Pauli variable dependencies, retaining only a linearly independent basis.
+
+Importantly, we see that ZX reduction has separated the diagram into two distinct parts: the detectors and the logical observables. The separation is a consequence of the absence
+of quantum correlations between the two components.
+In many cases, detectors and observables are only classically correlated via
+the shared $e_i$ variables in Eq.~\eqref{eqn:detector_sampling}.
+This allows us to evaluate the two parts independently and significantly
+simplify the sampling process.
+
+\subsubsection{Detectors}
+\label{sec:detector-sampling}
+
+The detector part of Eq.~\eqref{eqn:rep_reduced2} factors into 6 individual vertices, each connected only to an output:
+\begin{equation}
+  \tikzfig{rep-reduced2-dets}
+  \label{eqn:dets-only}
+\end{equation}
+Therefore, each detector bit is directly determined by a single $f_i$.
+In turn, the $f_i$ are related to the error bits $e_i$ via the binary matrix $T_{ij}$.
+Each column $j$ of $T_{ij}$ corresponds to an error location in the circuit,
+and $i$ corresponds to a detector or observable. A given detector $i$ is flipped
+by an error $j$ if $T_{ij} = 1$. Note that the matrix $T_{ij}$, obtained here purely through ZX rewriting, is equivalent to the bipartite graph (often referred to as the Tanner graph) of the detector error model constructed by Stim~\cite{gidney2021stim}.
+
+Error bits $e_j$ are sampled from a probability distribution $p(e_{i_k}, \ldots, e_{i_{k+n}})$ of the associated noise channel. A single distribution governs $e_i$ for $n$ columns, where $n$ is typically small (e.g., $n=1$ for a bit-flip channel or $n=4$ for two-qubit depolarizing channels, see Eq.~\eqref{eqn:channel_pauli2}). The detector sampling problem thus reduces to sampling binary variables $e_i$ from their respective error channels
+and computing $f_i$ as the $\FF$ matrix multiplication of Eq.~\eqref{eqn:detector_sampling}.
+
+In practice, many error locations may share the same column signature in $T_{ij}$ (i.e.\ the same detector--observable flip pattern). Multiple such error locations can be combined into an \textit{error mechanism}, provided the associated probability distributions are updated accordingly. Tsim performs a series of channel reduction steps that are detailed in Appendix~\ref{sec:channel_reduction}.
+
+Furthermore, following the same strategy as Stim~\cite{gidney2021stim}, Tsim optimizes error sampling for the low-noise regime by exploiting the fact that each error mechanism fires with probability $\perr \ll 1$. Rather than querying each of the $\nerr$ error mechanisms independently for each shot, Tsim samples the gap between successive firing events from a geometric distribution, reducing the expected per-shot cost from $\bigO{\nerr \navgflip}$ to $\bigO{\perr \nerr \navgflip + 1}$, where $\perr$ is the error probability and $\navgflip$ is the average number of detectors flipped by a single error mechanism.
+
+
+
+
+
+
+\subsubsection{Observables}
+
+Next, we consider the observable part of the diagram, which consists of a single connected component. The observable diagram represents the logical circuit on
+the two logical qubits:
+\begin{equation}
+  \tikzfig{rep-reduced2-obs}
+  \label{eqn:obs-only}
+\end{equation}
+In the Clifford case, for deterministic observables in the absence of noise, this part of the diagram
+would also have reduced to individual single-vertex components that could be sampled as described in Sec.~\ref{sec:detector-sampling}.
+
+When there are quantum correlations between observable bits, i.e., when the circuit has
+a non-trivial logical action, the observable diagram will be composed of one or more connected components. Here, the sampling strategy proceeds in three steps. First, for each connected component, an autoregressive chain of diagrams is constructed that corresponds to the marginal probabilities of its output bits.
+If a connected component has $n$ output bits, one constructs $n$ marginal probability diagrams sequentially (Algorithm~\ref{alg:autoregressive}, \cite{Sutcliffe_2025,kissinger2022simulating}). Second, each marginal diagram is evaluated via stabilizer rank decomposition~\cite{kissinger2022classical,kissinger2022simulating,bravyi2019simulation} (Appendix~\ref{sec:decomp}), which expresses it as a linear combination of parameterized Clifford ZX diagrams. Third, each Clifford diagram in this sum is evaluated as a symbolic expression over the noise parameters $f_i$ \cite{Sutcliffe_2025}, as described in Sec.~\ref{sec:paramzx}.
+
+% Note that in the non-Clifford case, there is additional freedom in choosing a basis for the $f_i$ parameters, since internal vertices also carry phase variables. Tsim finds a minimal set of $f_i$ by performing Gaussian elimination over $\FF$ on the binary matrix of phase variable dependencies, retaining only a linearly independent basis.
+
+In the present example, we have a single connected component, and autoregressive sampling is performed as follows:
+After isolating the observable component from the rest of the ZX graph, we first discard any accumulated scalar phase terms. These terms appear to depend parametrically on the $e_i$ variables, but they collectively form a normalization factor whose parameter dependence cancels. This normalization factor can be restored by evaluating the diagram with all outputs traced out:
+\begin{equation}
+  \tikzfig{rep-reduced2-marginal-0}
+\end{equation}
+
+Next, we compute $P(m_0=0)$, the probability that the first observable is 0, and sample a bit $\tilde{m}_0$ from this distribution.
+\begin{equation}
+  \tikzfig{rep-reduced2-marginal-1}
+\end{equation}
+Then, we compute the conditional probability $P(m_1=0 | m_0=\tilde{m}_0) = P(\tilde{m}_0, m_1=0) / P(\tilde{m}_0)$ and sample the observable bit $\tilde{m}_1$:
+\begin{equation}
+  \tikzfig{rep-reduced2-marginal-2}
+  \label{eqn:rep_reduced2_marginal_2}
+\end{equation}
+Each marginal probability diagram is itself a parameterized ZX diagram that is evaluated via stabilizer rank decomposition as a linear combination of Clifford terms. For $n$ observables, $n$ such diagrams plus an additional normalization factor need to be evaluated. As in Eq.~\eqref{eqn:rep_reduced2_marginal_2}, diagrams depend on previously sampled bits. The dependence on these bits is retained as parameterized vertices in the diagram~\cite{Sutcliffe_2025,sutcliffe2025novel}, allowing the same diagram to be reused across bit configurations and enabling efficient batched sampling of many shots in parallel (Sec.~\ref{sec:paramzx}).
+
+\subsubsection{The advantage of sampling detectors over measurements}
+\label{sec:detector_advantage}
+
+Weak simulation of quantum circuits, i.e.\ sampling bit strings from ZX diagrams, requires autoregressive evaluation of marginal probabilities (Algorithm~\ref{alg:autoregressive}, \cite{kissinger2022simulating}). When sampling raw measurement outcomes, this introduces an overhead proportional to the number of measurements $N_m$, since each measurement bit requires evaluating an additional diagram.
+
+Detector sampling largely avoids this overhead. In a well-designed fault-tolerant protocol, detectors are deterministic in the absence of noise, and ZX reduction maps each detector to an individual connected component consisting of a single internal vertex. Pauli noise channels may flip detectors and introduce correlations, but these correlations are captured classically through correlated sampling of the $f_i$ phase parameters and do not add edges to the ZX graph. Consequently, detector bits are obtained directly from the sampled $f_i$ configuration via Eq.~\eqref{eqn:detector_sampling}, with no autoregressive overhead.
+The autoregressive procedure is then needed only for the observable bits. However, in typical QEC experiments, there are $\bigO{1}$ observables.
+
+If we had sampled measurements, instead of detectors and observables, the ZX diagram would generally be a single connected component, reflecting the correlations of measurement bits. Compared to this case, detector sampling effectively reduces the per-shot sampling cost by a factor of $N_m$.
+
+We note that this separation is a heuristic property: ZX reduction may not cleanly split all detectors from the observables in the presence of non-Clifford gates, in which case some detectors may have to be evaluated autoregressively.
+
+\subsubsection{Complexity}
+
+Under the assumption that detectors and observables separate after ZX reduction and that the number of observables is $\bigO{1}$, we summarize the asymptotic cost of simulation. Let $\ngates$ denote the number of Clifford gates in the circuit, $\nmagic$ the number of non-Clifford gates, $\nerr$ the number of error mechanisms (typically $\bigO{\ngates}$), $\navgflip$ the average number of detectors flipped per mechanism (typically $\bigO{1}$), $\perr$ the physical error probability, $\batchsize$ the shot batch size, and $\stabrank = 2^{\decomprate \nmagic}$ the stabilizer rank of the decomposition, where $\decomprate \le 1$ is a constant that depends on the decomposition strategy (Appendix~\ref{sec:decomp}).
+
+\paragraph{Compilation.} The dominant costs are ZX graph reduction, which scales as $\bigO{\ngates^3}$ via local complementation and pivoting, and the assembly of the stabilizer rank decomposition tensors, which scales as $\bigO{\stabrank \nmagic^2}$. The total compilation cost is therefore $\bigO{\ngates^3 + \stabrank \nmagic^2}$. Compilation is performed once and amortized over all subsequent sampling calls.
+
+\paragraph{Sampling.} Each shot requires (i)~sampling error bits and computing detector flips via sparse $\FF$ matrix--vector multiplication at cost $\bigO{\perr \nerr \navgflip}$ (Sec.~\ref{sec:detector-sampling}), and (ii)~evaluating the observable diagram, which involves contracting binary matrices of dimension $\nmagic \times \nmagic \times \stabrank$ with the $\batchsize$-shot parameter batch, at cost $\bigO{\stabrank \nmagic^2 \batchsize}$ per marginal. The per-batch sampling cost is therefore $\bigO{\perr \nerr \navgflip \batchsize + \stabrank \nmagic^2 \batchsize}$. In the low-magic limit of small $\nmagic$, the dominant factor will be a linear dependence on the number of error mechanisms $\nerr$.
+
+\section{Benchmarks}
+\label{sec:benchmarks}
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/benchmark-figure.pdf}
+  \caption{(a) Shot sampling time comparison between Tsim and Stim for
+    $d=3,5$ distillation circuits from \cite{sales2025experimental}, $d=3$ cultivation circuit from \cite{gidney2024magic}, and a $d=7$ rotated surface code (7 rounds). Tsim runtime is normalized by the number of stabilizer terms in the decomposition. For reference, unnormalized runtimes are shown in Fig.~\ref{fig:benchmark-unnormalized}. (b) Runtime comparison between Tsim and quizx. Each data point corresponds to a randomly generated circuit of exponentiated Paulis of weight 2--4 and depth between 1 and 21. For Tsim, batch size is autotuned to maximize throughput. All CPU benchmarks were performed on an Apple M4 Pro. GPU benchmarks were conducted on an NVIDIA Grace Hopper GH200 system with a 72-core ARM Neoverse-V2 CPU.
+  }
+  \label{fig:benchmark}
+\end{figure}
+
+To evaluate performance, we performed a series of simulations on an
+Apple M4 Pro CPU and an NVIDIA Grace Hopper GH200 system with a 72-core
+ARM Neoverse-V2 CPU. For every simulation, we compiled a detector sampler and
+autotuned the batch size for maximum throughput. We then recorded the sampling
+time after a warmup step that includes the kernel's JAX/XLA just-in-time
+compilation.
+
+Fig.~\ref{fig:benchmark}(a) shows Stim (black dashed) and Tsim sampling time on CPU (solid blue) and GPU (solid green) as a function of physical error rate for the
+$d=3,5$ distillation circuits of \cite{sales2025experimental}, the $d=3$
+cultivation circuit of \cite{gidney2024magic}, and a $d=7$ rotated surface-code
+memory with seven rounds. Here, Tsim runtime is normalized by the number of
+stabilizer terms in the decomposition. This removes the exponential dependence
+on stabilizer rank. For reference, unnormalized data are shown in
+Fig.~\ref{fig:benchmark-unnormalized}.
+
+The first three panels show non-Clifford circuits. Since Stim only supports
+Clifford operations, we simulated proxy circuits in which T gates are replaced
+by S gates and rotations are omitted. Stim shows a clear runtime dependence on
+the error rate for $p>10^{-3}$. In this regime, entropy generation for Pauli
+channels becomes the bottleneck. Tsim also shows a $p$ dependence, but it is
+less pronounced. On CPU, the runtime is dominated by tensor contraction during
+diagrammatic evaluation. On GPU, this part is accelerated by roughly two orders
+of magnitude, which reveals the $p$ dependence when the stabilizer rank is not
+too large.
+
+For purely Clifford diagrams with deterministic detectors, Tsim uses a sparse geometric sampler based on Eq.~\eqref{eqn:detector_sampling}. This path is not GPU-accelerated, so CPU and GPU runtimes are similar, as shown in the bottom right panel of Fig.~\ref{fig:benchmark}(a). It also achieves the asymptotically optimal
+$\bigO{\perr}$ scaling, outperforming Stim for $\perr < 10^{-3}$.
+
+Figure~\ref{fig:benchmark}(b) compares Tsim with quizx on random circuits of
+exponentiated Pauli gates, following \cite{kissinger2022classical}. We sampled
+circuits of 20 qubits with Pauli strings of weight 2--4 and depth 1--21. For both Tsim and quizx, the Cat5 stabilizer rank decomposition (Eq.~\ref{eqn:cat5}) is used.
+For Tsim, we additionally inserted a depolarizing channel with $p=0.001$ after
+every gate. For each random circuit, we recorded the quizx and Tsim runtime. At
+low T count, Tsim on GPU is more than five orders of magnitude faster than
+quizx. This speedup reflects the fact that Tsim pays the $\bigO{\ngates^3}$ ZX
+simplification cost during compilation rather than during sampling. As the T
+count increases, this advantage narrows, but Tsim still achieves speedups of
+about $10^2$ on CPU and $10^4$ on GPU.
+
+% \begin{table}[t]
+%   \centering
+%   \footnotesize
+%   \caption{Sampling time per shot for QEC gadgets: Tsim on CPU (Apple M4) and GPU (NVIDIA GH200) compared to Stim on CPU (M4) for a Clifford proxy.}
+%   \label{tab:stim_comparison}
+%   \begin{tabular}{@{}ccc|ccc@{}}
+%     \toprule
+%     & & & \multicolumn{3}{c}{Time per shot} \\
+%     \cmidrule(l){4-6}
+%     Circuit & Qubits & \shortstack{Non-Clifford\\gates} & \shortstack{Tsim CPU\\(M4)} & \shortstack{Tsim GPU\\(GH200)} & \shortstack{Stim Clifford Proxy\\(M4)} \\
+%     \midrule
+%     5-to-1 distillation ($d{=}3$) \cite{sales2025experimental} & 35 & 10 & 3.7\,$\mu$s & 0.18\,$\mu$s & 0.16\,$\mu$s \\
+%     5-to-1 distillation ($d{=}3$) \cite{sales2025experimental} & 85 & 10 & 4.3\,$\mu$s & 0.47\,$\mu$s & 0.44\,$\mu$s \\
+%     cultivation ($d{=}3$) \cite{gidney2024magic} & 18 & 16 & 283\,$\mu$s  & 2.41\,$\mu$s & 0.07\,$\mu$s \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
+
+% \section{Future example section}
+% \label{sec:examples}
+% \begin{itemize}
+%   \item Cultivation
+%   \item STAR
+%   \item Example of compiler pipeline (squin $\to$ shuttle $\to$ noise)
+% \end{itemize}
+
+\section{Discussion}
+\label{sec:summary}
+
+We have presented Tsim, a GPU-accelerated simulator for universal noisy quantum circuits targeting quantum error correction, based on parameterized ZX-calculus reduction and stabilizer rank decomposition. Tsim implements the Stim API for seamless integration with existing QEC simulation workflows, and further accepts circuits in other formats, including Bloqade, OpenQASM, Cirq, and QIR. The compile-once, sample-many architecture enables per-stabilizer-term sampling performance on CPU that is comparable to or faster than Stim on both Clifford and non-Clifford practical QEC gadgets. GPU acceleration can further improve throughput by up to two orders of magnitude. Compared to quizx, Tsim achieves speedups of up to five orders of magnitude by amortizing the ZX simplification cost at compile time.
+
+There are several potential directions to be explored in the future.
+The primary computational bottleneck of the current approach is the exponential scaling of stabilizer rank with the number of non-Clifford gates. Possible approaches to reduce this cost include cutting decompositions that exploit circuit structure~\cite{wan2025cutting,wan2026simulatingmagicstatecultivation}, more efficient rewrite rules for the doubled diagram representation, and approximate decompositions that trade small errors in the output distribution for significantly reduced rank~\cite{bravyi2019simulation}. On the engineering side, replacing the Python-based ZX reduction with a Rust backend such as quizx~\cite{kissinger2022classical} would accelerate the compilation step, while techniques such as branch merging and extended autoregressive sampling could further improve sampling throughput. Looking further ahead, alternative graphical calculi such as the ZH calculus may enable more efficient native decompositions for non-Clifford gates beyond single-qubit rotations, such as the Toffoli gate~\cite{backens2019zhcomplete}. Finally, extending the noise model beyond Pauli channels to coherent errors, atom loss, and leakage would broaden Tsim's applicability to a wider range of hardware platforms and error models.
+
+\section*{Acknowledgments}
+
+% \todo{Add more.}
+
+We thank Matthew Sutcliffe, John van de Wetering, Sara Meng Li, and Lara Madison for insightful discussions and Matthew Sutcliffe for making the ParamZX extension~\cite{paramzx2024} to PyZX publicly available, on which parts of Tsim's parameterized ZX reduction pipeline are built. Following the initial release of Tsim, Kwok Ho Wan and Zhenghao Zhong~\cite{wan2026simulatingmagicstatecultivation} developed several extensions to the framework, showcasing significantly improved sampling throughput for magic state cultivation circuits. We added new features based on their optimized cutting decomposition and a fast geometric sampling routine, and plan to integrate
+additional components. R.H. would like to thank Phillip Weinberg, Casey Duckering, and Jonathan Wurtz  for fruitful discussions.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\onecolumn\newpage
+\appendix
+
+\section{ZX-Calculus}
+\subsection{Rewrite rules}
+\label{sec:zx}
+
+The ZX-calculus is a graphical tensor network representation for quantum circuits. It represents quantum processes as graphs composed of Z (green) and X (red) vertices, often referred to as \emph{spiders}. Each spider carries a phase parameter $\alpha \in \RR$ and corresponds to a linear map defined as follows:
+\begin{equation}
+  \tikzfig{tensor}
+  \label{eqn:tensor_def}
+\end{equation}
+Edges in ZX diagrams denote tensor contraction (composition of linear maps). Diagram juxtaposition corresponds to the tensor product.
+In addition to standard edges, the Hadamard operation is represented as a blue edge.
+\begin{equation}
+  \tikzfig{hadamard}
+  \label{eqn:hadamard}
+\end{equation}
+The ZX-calculus comes equipped with rewrite rules that preserve the semantics of the represented linear map, allowing diagrams to be transformed algebraically.
+Note that we use Latin letters to denote binary variables, whereas Greek letters represent continuous phases.
+\begin{equation*}
+  \tikzfig{param-rules2}
+  \label{eqn:param_rules}
+\end{equation*}
+
+In this work, we are interested in applying ZX rewrite rules to diagrams with parameterized Pauli vertices, i.e., vertices with either phase $0$ or $\pi$. In the Clifford segment, Pauli vertices assume a particularly trivial form: Paulis map to Paulis under Clifford conjugation. As such, Paulis can only flip measurement
+outcomes.
+
+An interesting consequence of this
+is that Clifford ZX reduction rules are agnostic to the presence of Pauli vertices. Explicitly, the ZX rules can be applied to vertices
+with phases $a\pi$ where $a\in[0,1]$.
+
+However, this does not hold for the
+$\pi$-commutation rule $(d)$ when it operates on non-Clifford vertices. The rewrite $(d)$ transforms phases $\alpha \mapsto -\alpha = \alpha - 2\alpha$, effectively generating a new term $-2\alpha$. For Clifford circuits, $\alpha$ is a multiple of $\pi/2$, so that $2\alpha$ is indeed a Pauli phase. However, when non-Clifford gates are present, the $\pi$-commutation rule generates phases that are no longer multiples of $\pi$. In diagrammatic notation, we have
+\begin{equation*}
+  \tikzfig{pi-copy}
+  \label{eqn:pi_copy}
+\end{equation*}
+where $(d.3)$ generates a parameterized Clifford phase $a\pi/2$, which is not a Pauli phase. In practice, we simply ignore the $\pi$-commutation rule when non-Clifford vertices are involved.
+
+The above rules can be used to derive two additional rules, referred to as the \emph{local complementation} rule
+\begin{equation}
+  \tikzfig{local-comp}
+  \label{eqn:local_comp}
+\end{equation}
+and the \emph{pivoting} rule
+\begin{equation}
+  \tikzfig{pivot}
+  \label{eqn:pivoting}
+\end{equation}
+These rewrites are useful as they reduce the number of vertices.
+For a ZX graph with only Clifford vertices, successive application of these rules removes all spiders, reducing the diagram to a single scalar term.
+This scalar could also be obtained by numerical tensor contraction of the underlying tensor network.
+However, ZX contraction of a Clifford graph scales only cubically in the number of vertices, whereas tensor contraction can scale exponentially in the number of qubits.
+
+\subsection{Doubled ZX notation}
+\label{sec:doubling}
+To represent measurements, we use the \emph{doubled} notation of the ZX calculus~\cite{van2020zx}. This notation introduces quantum vertices and wires, drawn in bold. A bold diagram denotes two independent copies with conjugated phases:
+\begin{equation}
+  \tikzfig{doubling}
+  \label{eqn:doubling}
+\end{equation}
+To represent the classical flow of information, we make use of mixed diagrams:
+\begin{equation}
+  \tikzfig{doubling2}
+  \label{eqn:doubling2}
+\end{equation}
+With this, Z measurements are represented as
+\begin{equation}
+  \tikzfig{measurement}
+  \label{eqn:measurement}
+\end{equation}
+where the classical wire carries the outcome of the measurement.
+The measurement operation can be understood by decomposing the diagram as
+\begin{equation}
+  \tikzfig{measurement-cutting}
+  \label{eqn:measurement_cutting}
+\end{equation}
+making it clear that the channel projects onto and re-initializes in either the $|0\rangle$ or $|1\rangle$ state, with the measurement outcome carried by a disconnected X spider.
+
+When a measurement result is not recorded, we obtain the trace. The ZX diagrams for discarding a Z or X measurement are identical, as a direct consequence of causality:
+\begin{equation}
+  \tikzfig{trace}
+  \label{eqn:trace}
+\end{equation}
+
+\subsection{Pauli noise channels}
+\label{sec:pauli_channels}
+Pauli noise channels are represented as parameterized X and Z vertices with phase in $[0,\pi]$.
+X, Y, or Z bit flip channels are represented by the following ZX diagrams:
+\begin{equation}
+  \tikzfig{channel_flip}
+  \label{eqn:channel_flip}
+\end{equation}
+Here, the binary variable $e_i$ is sampled from the channel's probability distribution.
+A general single-qubit Pauli channel
+\begin{equation}
+  \tikzfig{channel_pauli1}
+  \label{eqn:channel_pauli1}
+\end{equation}
+requires two random bits, where configuration $(e_i=1,e_j=0)$ is sampled with probability $p_x$, $(1,1)$ with probability $p_y$, $(0,1)$ with $p_z$, and $(0,0)$ with probability $1-p_x-p_y-p_z$.
+Multi-qubit Pauli channels are constructed analogously, e.g., with the diagram
+\begin{equation}
+  \tikzfig{channel_pauli2}
+  \label{eqn:channel_pauli2}
+\end{equation}
+which requires classical sampling of four bits $e_i,e_j,e_k,e_l$.
+
+\section{Channel reduction}
+\label{sec:channel_reduction}
+
+Each noise channel in the circuit defines a probability distribution $p(e_{i_1},\dots,e_{i_n})$ over a group of error bits that share a joint distribution. These bits correspond to columns in the binary matrix $T_{ij}$. The goal of channel reduction is to minimize the number of error bits that must be sampled per shot, without altering the induced distribution over detectors and observables.
+
+Tsim applies four successive transformations. First, \emph{null-column elimination} identifies error bits whose corresponding columns in $T_{ij}$ are identically zero, meaning they do not flip any detector or observable regardless of their value. These bits are marginalized out of their respective channels by summing over them, and channels that consist entirely of null bits are removed altogether.
+
+Second, \emph{channel normalization} sorts the column indices within each channel into a canonical order and permutes the probability array accordingly. This ensures that two channels affecting the same set of columns are represented identically, which is a prerequisite for the subsequent merging step.
+
+Third, \emph{identical-channel merging} groups all channels that share the same column signature and combines each group into a single channel by XOR convolution. Given two independent channels $A$ and $B$ over the same set of error bits, the probability of the combined outcome $o$ is $P(o) = \sum_{a \oplus b = o} P(A{=}a)\,P(B{=}b)$. This reduces multiple independent noise sources with identical detector--observable flip patterns to a single effective channel.
+
+Finally, \emph{subset absorption} identifies channels whose column signatures are strict subsets of another channel's signature. When channel $A$ acts on columns $\{c_1, c_2\}$ and channel $B$ acts on $\{c_1, c_2, c_3\}$, channel $A$ is expanded to the larger signature by embedding its distribution into the higher-dimensional space (assigning zero probability to outcomes involving the new bits) and then convolved with $B$. Channels are processed in decreasing order of signature size so that larger channels absorb smaller ones.
+
+Note that if all joint probability distributions are first factorized into approximate, independent single-bit channels, the above reduction pipeline yields a set of independent error mechanisms, each characterized by a single probability and a column signature in $T_{ij}$. This is precisely the detector error model~\cite{gidney2021stim}, which serves as the standard input for decoders.
+
+\section{Stabilizer decompositions}
+\label{sec:decomp}
+
+So far, we have described the evaluation of parameterized Clifford ZX diagrams.
+The ZX reduction rules (\ref{eqn:local_comp}, \ref{eqn:pivoting}) terminate when there are no internal $\pi/2$-vertices and no pairs
+of $\pi$-vertices. For the Clifford segment, this is sufficient to remove all vertices
+and obtain a single scalar term. However, when non-Clifford vertices are present, this
+routine generally does not produce a scalar diagram. Instead, one obtains diagrams
+with non-Clifford vertices and unpaired $\pi$-vertices.
+
+To proceed, we decompose non-Clifford vertices into a sum of Clifford
+vertices. For example, a T state can be decomposed into a sum of two Clifford terms:
+\begin{equation}
+  \tikzfig{1-T-decomp}
+\end{equation}
+Since one can always unfuse non-Clifford vertices, each $\pi/4$-vertex can be removed at the cost of doubling the number of diagrams. Naively, decomposing $n$ non-Clifford vertices generates $2^n$ Clifford diagrams, but more favorable identities exist when multiple vertices are decomposed simultaneously. For example, two T-gates can be decomposed as:
+\begin{equation}
+  \tikzfig{2-T-decomposition}
+\end{equation}
+This leads to exponential growth with $2^{\alpha n}$, where $\alpha=0.5$. By default, Tsim uses the partial \textit{Cat5} decomposition first proposed in~\cite{qassim2021improved}:
+\begin{equation}
+\label{eqn:cat5}
+  \tikzfig{cat-rot-5-decomp2}
+\end{equation}
+Importantly, this decomposition applies to arbitrary rotation angles $\theta$. For $\theta=\frac{\pi}{4}$, it reduces to the ZX diagram previously reported
+in~\cite{kissinger2022classical}.
+In the asymptotic limit, the exponential growth rate is $\alpha\approx 0.396$.
+
+\section{Sampling from marginals}
+
+Marginal probability distributions are represented by diagrams where measurements are traced out. For example, $P(m_0,\dots,m_{k-1})$ is given by:
+\begin{equation}
+  \tikzfig{ZX-marginal-sum}
+  \label{eqn:zx_marginal_sum}
+\end{equation}
+We sample bit strings from the circuit's output distribution via autoregressive conditioning on marginal probabilities~\cite{kissinger2022classical,kissinger2022simulating}. The procedure is summarized in Algorithm~\ref{alg:autoregressive}.
+
+\begin{algorithm}[H]
+  \caption{Autoregressive sampling from marginal probabilities}\label{alg:autoregressive}
+  \begin{algorithmic}[1]
+    \Require Marginal probability functions $P$, $P(m_0)$, $P(m_0, m_1)$, ..., $P(m_0, \dots, m_{n-1})$ obtained from ZX diagrams
+    \Ensure Sample $(\tilde m_0, \dots, \tilde m_{n-1})$ drawn from the circuit output distribution
+    \State $P_{\mathrm{prev}} \gets P$ \Comment{Normalization}
+    \For{$i = 0, \dots, n-1$}
+    \State $P_1 \gets P(m_0{=}\tilde m_0,\;\dots,\;m_{i-1}{=}\tilde m_{i-1},\;m_i{=}1)$
+    \State Draw $\tilde m_i \sim \mathrm{Bernoulli}(P_1 / P_{\mathrm{prev}})$
+    \If{$\tilde m_i = 1$}
+    \State $P_{\mathrm{prev}} \gets P_1$
+    \Else
+    \State $P_{\mathrm{prev}} \gets P_{\mathrm{prev}} - P_1$
+    \EndIf
+    \EndFor
+    \State \Return $(\tilde m_0, \dots, \tilde m_{n-1})$
+  \end{algorithmic}
+\end{algorithm}
+
+\subsection{Sampling detectors and observables}
+\label{sec:detectors_observables}
+
+In QEC experiments, one is usually not directly interested in measurements but rather in a smaller set of detectors and observables. Detectors and observables correspond to linear XOR transformations of measurements. For ZX graphs, XOR transformations have a simple representation:
+\begin{equation}
+  \tikzfig{xor}
+  \label{eqn:xor}
+\end{equation}
+Detector outcomes are then sampled by computing their marginal probabilities, e.g., by evaluating diagrams of the form:
+\begin{equation}
+  \tikzfig{ZX-marginal-sum-detectors}
+  \label{eqn:zx_marginal_detectors}
+\end{equation}
+
+\section{Parameterized evaluation of Clifford ZX diagrams}
+\label{sec:paramzx}
+
+In the presence of parameterized Pauli vertices, simplification of a Clifford ZX diagram results in a product of phases, each depending on parities of a subset of binary parameters $f_i$.
+Let us define parities of two specific subsets of the $f_i$ by
+\begin{align}
+  a &= f_{i_1} \oplus f_{i_2} \oplus \ldots \oplus f_{i_n} \\
+  b &= f_{j_1} \oplus \ldots \oplus f_{j_m}\,.
+\end{align}
+In terms of these parities, diagrammatic reduction rules give rise to phase terms with the following structure:
+\begin{table}[H]
+  \centering
+  {
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{>{\centering\arraybackslash}p{3cm} >{\centering\arraybackslash}p{5cm} >{\centering\arraybackslash}p{4cm}}
+      %\hline
+      \textbf{Name} &
+      \textbf{Form} &
+      \textbf{Origin} \\ \hline\hline
+
+      Node &
+      $1+e^{i\left(\alpha +a\pi\right)}$ &
+      (h) \\ \hline
+
+      Half-$\pi$ &
+      $e^{\pm i a \frac{\pi}{2}}$&
+      (d.2), \eqref{eqn:local_comp} \\ \hline
+
+      % $\pi$ &
+      % $e^{i a \pi}$&
+      % (d.1), (cutting) \\ \hline
+
+      $\pi$-pair &
+      $e^{i\pi a b} = (-1)^{ab}$ &
+      \eqref{eqn:pivoting}, (e) \\ \hline
+
+      Phase-pair &
+      $1+e^{i (\alpha + a\pi) } + e^{i(\beta + b\pi)} - e^{i (\alpha + \beta +a \pi+b\pi)}$ &
+      (b)  \\ \hline
+    \end{tabular}
+  }
+  \caption{Types of parameterized phase terms arising from ZX reduction, where $a, b \in \{0, 1\}$ are parities of the form $a = f_{i_1} \oplus f_{i_2} \oplus \ldots \oplus f_{i_n}$ and $b = f_{j_1} \oplus \ldots \oplus f_{j_m}$.}
+  \label{tab:paramzx:subtermtypes}
+\end{table}
+
+Formally, ZX reduction of a parameterized Clifford diagram yields a single scalar amplitude that is given, up to a global constant, by a product of phase factors from Table~\ref{tab:paramzx:subtermtypes}. Each phase factor depends on a subset of the binary parameters $f_i$.
+
+Without loss of generality, we restrict to phase-pair terms, since all other term types can be represented as special cases of phase-pair terms~\cite{Sutcliffe_2025}. Tsim tracks individual phase terms for efficient evaluation.
+
+Let $f_1, \ldots, f_n \in \{0,1\}$ denote the binary parameters. Each phase-pair term $k$ is associated with two selector vectors $u_{ki}, v_{ki} \in \{0,1\}$ that determine which parameters participate in its two parities:
+\begin{equation}
+  a_k = \bigoplus_{i} u_{ki} \, f_i \,,\qquad
+  b_k = \bigoplus_{i} v_{ki} \, f_i \,.
+  \label{eqn:parities}
+\end{equation}
+A single phase-pair term then reads
+\begin{equation}
+  h(\alpha_k, \beta_k; a_k, b_k)
+  = 1 + e^{i(\alpha_k + a_k\pi)}
+  + e^{i(\beta_k + b_k\pi)}
+  - e^{i(\alpha_k + \beta_k + a_k\pi + b_k\pi)}\,,
+  \label{eqn:phase_pair}
+\end{equation}
+where $\alpha_k, \beta_k$ are continuous phases fixed during diagram reduction.
+
+The complete scalar resulting from ZX reduction is
+\begin{equation}
+  S(f_1,\ldots,f_n) = c \prod_{k=1}^{m} h(\alpha_k, \beta_k; a_k, b_k)\,,
+  \label{eqn:scalar_product}
+\end{equation}
+where $c$ is a constant prefactor.
+
+When non-Clifford vertices are present, the diagram must first be decomposed into a sum of Clifford diagrams, each of which reduces to a product of phase terms. The total amplitude is then
+
+\begin{align}
+  P = \sum_t S^{t}(\{f_i\}) =\sum_t c^{t} \prod_{k=1}^{m} h(\alpha_k^{t}, \beta_k^{t}; \bigoplus_{i} u_{ki}^t f_i, \bigoplus_{i} v_{ki}^t f_i)\,,
+\end{align}
+
+A parameterized ZX diagram is thus completely specified by the tensors
+$c^t$, $\alpha_k^t$, $\beta_k^t$, $u_{ki}^t$, and $v_{ki}^t$,
+where $i$ indexes $f$-variables, $k$ indexes phase terms, and $t$ indexes stabilizer rank decomposition terms.
+
+For more efficient evaluation, especially on GPU, we introduce an additional batch dimension $l$ to compute multiple amplitudes with different parameter configurations $f_{il}$ in parallel:
+\begin{align}
+  P_l = \sum_t S^{t}(\{f_{il}\}) =\sum_t c^{t} \prod_{k=1}^{m} h(\alpha_k^{t}, \beta_k^{t}; \bigoplus_{i} u_{ki}^t f_{il}, \bigoplus_{i} v_{ki}^t f_{il})\,,
+\end{align}
+The computational bottleneck in evaluating $P_l$ is the tensor contraction $\bigoplus_{i} u_{ki}^t f_{il}$. Although $u_{ki}^t$
+and $f_{il}$ are binary, Tsim converts them to floating-point format before contraction to utilize fast BLAS kernels.
+
+
+\section{Validation}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/random_circuit_validation.pdf}
+  \caption{Validation of Tsim against a statevector simulator \cite{gidney2024magic} and PyZX tensor contraction for random circuits with terminal measurements.}
+  \label{fig:validation}
+\end{figure}
+
+The Tsim repository includes a CI-backed test suite with linting, type checking (pyright), formatting (black), docstring checks, unit tests, and integration tests, with more than 95\% test coverage. Because Tsim is a sampling simulator and output distributions can be difficult to compare directly based on samples alone, Tsim provides functionality to compute probabilities of bit-strings. Fig.~\ref{fig:validation} validates these against a state-vector simulator~\cite{gidney2024magic} and PyZX tensor contraction on random circuits with terminal measurements, with agreement up to fp32 precision across randomized circuits of varying depth and gate type.
+
+
+\section{Additional benchmarks}
+
+CPU benchmarks were performed on an Apple M4 Pro. GPU benchmarks were performed on an NVIDIA Grace Hopper GH200 system with a 72-core ARM Neoverse-V2 host CPU and on an NVIDIA RTX 5090 GPU with AMD Ryzen 9 9900X.
+
+For Tsim, we autotune the shot batch size separately for each benchmark instance: Starting from an initial batch size, we repeatedly double the batch size until the achieved throughput no longer improves or the requested batch no longer fits in device memory. On the GH200 system, the best throughput is typically obtained only at large batch sizes that make aggressive use of most of the available 96\,GB of VRAM on the GH200 or 32\,GB of VRAM on the RTX 5090.
+
+Figure~\ref{fig:benchmark}(a) shows normalized runtime comparison between Tsim and Stim, where Tsim runtime is normalized by the number of stabilizer terms in the decomposition. For reference, we present unnormalized data in Figure~\ref{fig:benchmark-unnormalized}.
+
+Figure~\ref{fig:benchmark-unnormalized} additionally shows execution time for both GH200 and RTX 5090. Here, Tsim throughput is marginally higher on the GH200 system.
+
+
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/tsim_vs_stim.pdf}
+  \caption{Shot-runtime comparison between Tsim and Stim for
+    $d=3,5$ distillation circuits from \cite{sales2025experimental}, $d=3$ cultivation circuit from \cite{gidney2024magic}, and a $d=7$ rotated surface code. All CPU benchmarks (blue dots) were performed on an Apple M4 Pro. GPU benchmarks were conducted on an NVIDIA Grace Hopper GH200 system with a 72-core ARM Neoverse-V2 CPU (green triangles) or an NVIDIA RTX 5090 GPU with AMD Ryzen 9 9900X (orange squares).
+  }
+  \label{fig:benchmark-unnormalized}
+\end{figure}
+
+\section{Related simulators}
+
+In Table~\ref{tab:simulator_comparison}, we present a high-level comparison of Tsim with two related simulators: Stim and SOFT~\cite{li2025soft}. In spirit, Tsim is related to Stim's Flip Simulator, whereas SOFT is closer to Stim's Tableau Simulator. This is because Tsim follows Stim's compile-once, sample-many pattern, while SOFT is a GPU-accelerated extended tableau simulator that supports non-Clifford gates. In the low-magic limit, Tsim has linear asymptotic scaling in the number of gates, while SOFT and Stim's Tableau Simulator scale at least quadratically in the number of qubits.
+
+Reference~\cite{li2025soft} reports a sampling time of $6.68\,\mu$s per shot for the $d=3$ magic state cultivation circuit~\cite{gidney2024magic} on a single H800 GPU, similar to Tsim's $2.4\,\mu$s on GH200. However, SOFT scales to the $d=5$ cultivation circuit, which Tsim is not yet able to simulate.
+
+A different simulation strategy has been introduced in \cite{surti2025efficient}. Here, efficient simulation relies on a low-rank decomposition of the noiseless gadget and the fact that, for many gadgets, Pauli errors propagate to Clifford errors at the end of the circuit. The authors report shot times $>10$ms for distance-3 cultivation circuit. Note that this approach is restricted to circuits that propagate Pauli errors to Cliffords.
+
+
+\begin{table}[t]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.15}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{@{}lllllll@{}}
+    \toprule
+    Name & Type & Universal & Compilation & Sampling (per shot) & GPU-accel. & SIMD \\
+    \midrule
+    Tsim & Stabilizer rank & Yes & $\bigO{\ngates^3 + 2^{\alpha \nmagic} \nmagic^2}$ & $\bigO{\perr \ngates \navgflip + 2^{\alpha \nmagic} \nmagic^2 }$ & Yes (JAX) & Yes (JAX) \\
+    Stim (flip)~\cite{gidney2021stim} & Pauli frame / flips & Clifford & $\bigO{\numqubits \ngates + \numqubits^3}$ & $\bigO{\ngates}$ & No & Yes \\
+    Stim (tableau)~\cite{gidney2021stim} & Tableau & Clifford & none & $\bigO{\numqubits \ngates + \numqubits^3}$ & No & Yes \\
+    SOFT~\cite{yoder2012generalization, li2025soft} & Generalized tableau & Yes & none & $\bigO{2^{ \nmagic}\numqubits \nmagic + \numqubits^2 \ngates}$ & Yes (CUDA) & GPU only \\
+    \bottomrule
+  \end{tabular}%
+  }
+  \caption{High-level comparison of Tsim with several related simulators. Asymptotic costs are written using the notation of this paper and are intended only as qualitative comparisons across methods.}
+  \label{tab:simulator_comparison}
+\end{table}
+
+\section{Tsim API}
+\label{sec:api}
+
+\subsection{Frontend}
+\label{sec:frontend}
+
+The Tsim frontend follows the Stim API and accepts Stim-style intermediate representations, as shown
+in Listing~\ref{lst:detector_sampling}.
+Additionally, Tsim is tightly integrated into the Bloqade framework \cite{bloqade2025}.
+Listing~\ref{lst:tsim_frontend_example} shows a simple example to construct a Tsim circuit from a Bloqade kernel.
+
+\begin{lstlisting}[caption={Constructing a Tsim circuit from a Bloqade kernel}, label={lst:tsim_frontend_example}]
+from bloqade.tsim import Circuit
+
+@squin.kernel
+def main():
+    q = squin.qalloc(2)
+    squin.h(q[0])
+    squin.t(q[0])
+    squin.broadcast.depolarize(0.01, q)
+    squin.cx(q[0], q[1])
+    bits = squin.broadcast.measure(q)
+    squin.set_detector(bits, coordinates=[0, 1])
+    squin.set_observable([bits[0]], idx=0)
+
+circuit = Circuit(main)
+sampler = circuit.compile_sampler()
+sampler.sample(shots=1_000_000, batch_size=100_000)
+\end{lstlisting}
+To sample detector and observable outcomes separately, one can use a detector sampler:
+
+\begin{lstlisting}[caption={Sampling detector and observable outcomes separately.}]
+sampler = circuit.compile_detector_sampler()
+detector_bits, observable_bits = sampler.sample(
+    shots=1_000_000,
+    separate_observables=True,
+)
+\end{lstlisting}
+
+\subsection{Compilation and sampling}
+
+Tsim follows a compile-once, sample-many workflow. Constructing a sampler, especially with \texttt{compile\_detector\_sampler()}, can be expensive because it performs the underlying compilation step. The first call to \texttt{sample()} may also be slow due to JAX/XLA compilation overhead.
+
+The \texttt{sample()} method takes two arguments: \texttt{shots} and \texttt{batch\_size}. By default, Tsim attempts to determine an appropriate batch size based on available RAM on CPU or VRAM on GPU. Changing \texttt{batch\_size} triggers JAX/XLA recompilation, so best performance is obtained by reusing the same batch size across repeated sampling calls.
+
+\subsection{Visualization}
+
+The \texttt{tsim.Circuit.diagram()} method supports several visualization modes.
+
+The \texttt{timeline-svg} and \texttt{timeslice-svg} modes use Stim's SVG backend to display the circuit. The \texttt{pyzx} mode uses PyZX D3 plotting to show the unsimplified ZX diagram, including detector and observable annotations.
+
+The \texttt{pyzx-meas} mode shows a full-reduced ZX diagram in which detectors and observables are removed and output vertices are connected directly to measurement outcomes. This graph forms the basis for autoregressive sampling, where marginal probabilities can be obtained by projecting or tracing over output vertices.
+
+Finally, \texttt{pyzx-dets} shows a full-reduced ZX diagram in which output vertices are connected to detectors and observables. For deterministic Clifford circuits, this representation captures the Tanner graph of the quantum error-correcting circuit.
+\end{document}

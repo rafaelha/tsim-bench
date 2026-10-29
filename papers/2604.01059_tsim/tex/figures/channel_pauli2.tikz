@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X phase dot bb] (7) at (0, -0.25) {$\;e_i\pi\;$};
+		\node [style=Z phase dot bb] (8) at (1.5, -0.25) {$\;e_j\pi\;$};
+		\node [style=none] (9) at (-1.25, -0.25) {};
+		\node [style=none] (10) at (2.75, -0.25) {};
+		\node [style=X phase dot bb] (11) at (0, -1.25) {$\;e_k\pi\;$};
+		\node [style=Z phase dot bb] (12) at (1.5, -1.25) {$\;e_l\pi\;$};
+		\node [style=none] (13) at (-1.25, -1.25) {};
+		\node [style=none] (14) at (2.75, -1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=boldedge] (9.center) to (7);
+		\draw [style=boldedge] (7) to (8);
+		\draw [style=boldedge] (8) to (10.center);
+		\draw [style=boldedge] (13.center) to (11);
+		\draw [style=boldedge] (11) to (12);
+		\draw [style=boldedge] (12) to (14.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

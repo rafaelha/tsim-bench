@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X phase dot bb] (1) at (5.25, -0.5) {$\frac{\pi}{4}$};
+		\node [style=X phase dot] (49) at (8.75, -1.5) {$\;f_7\pi\;$};
+		\node [style=X phase dot] (96) at (8.75, -0.5) {$\;f_6\pi\;$};
+		\node [style=Z dot] (130) at (10.5, -1.5) {};
+		\node [style=Z dot] (131) at (10.5, -0.5) {};
+		\node [style=X phase dot bb] (132) at (5.25, -1.5) {};
+		\node [style=X dot bb] (133) at (6.25, -1.5) {};
+		\node [style=Z dot bb] (134) at (6.25, -0.5) {};
+		\node [style=Z dot] (135) at (7.5, -0.5) {};
+		\node [style=Z dot] (136) at (7.5, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (49) to (130);
+		\draw (96) to (131);
+		\draw [style=boldedge] (1) to (134);
+		\draw [style=boldedge] (134) to (133);
+		\draw [style=boldedge] (132) to (133);
+		\draw [style=boldedge] (134) to (135);
+		\draw [style=boldedge] (133) to (136);
+		\draw [out=0, in=180] (135) to (96);
+		\draw [out=0, in=180] (136) to (49);
+		\draw (49) to (49);
+		\draw (49) to (49);
+	\end{pgfonlayer}
+\end{tikzpicture}

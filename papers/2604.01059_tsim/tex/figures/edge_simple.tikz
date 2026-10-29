@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (191) at (-14.75, 0.25) {};
+		\node [style=none] (192) at (-13.5, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (191.center) to (192.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,7 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z dot] (191) at (-0.25, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+	\end{pgfonlayer}
+\end{tikzpicture}

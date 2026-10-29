@@ -1,0 +1,57 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X phase dot] (9) at (1.25, 1) {$\;f_1\pi\;$};
+		\node [style=X phase dot] (49) at (11.75, 1) {$\;f_n\pi\;$};
+		\node [style=X phase dot] (59) at (2.75, 1) {$\;f_2\pi\;$};
+		\node [style=X phase dot] (67) at (-0.25, 1) {$\;f_0\pi\;$};
+		\node [style=X phase dot] (96) at (8.75, 1) {$\;f_{k}\pi\;$};
+		\node [style=none] (124) at (-0.25, 2) {};
+		\node [style=none] (125) at (1.25, 2) {};
+		\node [style=none] (126) at (2.75, 2) {};
+		\node [style=none] (130) at (11.75, 2) {};
+		\node [style=none] (131) at (8.75, 2) {};
+		\node [style=none] (132) at (4.25, 1) {$\ldots$};
+		\node [style=none] (135) at (10.25, 1) {$\ldots$};
+		\node [style=X dot bb] (1) at (2.75, -1.25) {};
+		\node [style=X dot bb] (140) at (2.75, -3.25) {};
+		\node [style=X dot bb] (133) at (6.75, -3.25) {};
+		\node [style=Z dot bb] (134) at (6.75, -1.25) {};
+		\node [style=Z dot] (141) at (7.75, -1.25) {};
+		\node [style=Z dot] (142) at (7.75, -3.25) {};
+		\node [style=Z phase dot bb] (143) at (4.25, -1.25) {$\;f_i\pi\;$};
+		\node [style=X phase dot bb] (144) at (5.75, -1.25) {$\frac{\pi}{4}$};
+		\node [style=none] (145) at (6.25, -2) {};
+		\node [style=none] (146) at (7.25, -2.5) {};
+		\node [style=Z phase dot bb] (148) at (5.5, -3.25) {$\;f_j\pi\;$};
+		\node [style=none] (149) at (4.75, -2.5) {};
+		\node [style=none] (150) at (2.75, -2) {$\vdots$};
+		\node [style=none] (151) at (6.25, -2.5) {};
+		\node [style=none] (152) at (7.75, -2) {$\vdots$};
+		\node [style=none] (153) at (5.5, -2.25) {$\dots$};
+		\node [style=X phase dot] (154) at (6, 1) {$\;f_{k-1}\pi\;$};
+		\node [style=none] (155) at (6, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (9) to (125);
+		\draw (49) to (130);
+		\draw (59) to (126);
+		\draw (67) to (124);
+		\draw (96) to (131);
+		\draw (49) to (49);
+		\draw (49) to (49);
+		\draw [style=boldedge] (1) to (134);
+		\draw [style=boldedge] (140) to (133);
+		\draw [style=boldedge] (134) to (141);
+		\draw [style=boldedge] (133) to (142);
+		\draw [looseness=0.75, bend right=45] (141) to (96);
+		\draw [out=0, in=-105, looseness=1.25] (142) to (49);
+		\draw (1) to (1);
+		\draw [style=boldedge] (134) to (145.center);
+		\draw [style=boldedge] (146.center) to (133);
+		\draw [style=boldedge] (149.center) to (148);
+		\draw [style=boldedge] (149.center) to (149.center);
+		\draw [style=boldedge] (151.center) to (151.center);
+		\draw [style=boldedge] (151.center) to (148);
+		\draw (154) to (155);
+	\end{pgfonlayer}
+\end{tikzpicture}

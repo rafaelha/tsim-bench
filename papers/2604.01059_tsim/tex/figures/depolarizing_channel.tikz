@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X phase dot bb] (1) at (0, 0) {$\;e_i\pi\;$};
+		\node [style=Z phase dot bb] (2) at (1.5, 0) {$\;e_j\pi\;$};
+		\node [style=none] (3) at (-1.5, 0) {};
+		\node [style=none] (4) at (3, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=boldedge] (3.center) to (1);
+		\draw [style=boldedge] (1) to (2);
+		\draw [style=boldedge] (2) to (4.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

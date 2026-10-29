@@ -1,0 +1,43 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z dot] (16) at (-5, 0.25) {};
+		\node [style=none] (17) at (-3.75, 1.5) {};
+		\node [style=none] (18) at (-6.25, 1.5) {};
+		\node [style=none] (19) at (-6.25, -1.25) {};
+		\node [style=none] (20) at (-3.75, -1.25) {};
+		\node [style=none] (21) at (-3.75, 0.5) {};
+		\node [style=none] (22) at (-6.25, 0.5) {};
+		\node [style=none, rotate=90] (23) at (-6, -0.25) {...};
+		\node [style=none, rotate=90] (24) at (-4, -0.25) {...};
+		\node [style=none] (181) at (-2.75, 0.25) {$=$};
+		\node [style=Z dot] (182) at (-0.5, 0.25) {};
+		\node [style=none] (183) at (0.75, 1.5) {};
+		\node [style=none] (184) at (-1.75, 1.5) {};
+		\node [style=none] (185) at (-1.75, -1) {};
+		\node [style=none] (186) at (0.75, -1.25) {};
+		\node [style=none] (187) at (0.75, 0.5) {};
+		\node [style=none] (188) at (-1.75, 0.5) {};
+		\node [style=none, rotate=90] (189) at (-1.5, -0.25) {...};
+		\node [style=none, rotate=90] (190) at (0.5, -0.25) {...};
+		\node [style=none] (191) at (-1.75, -1.25) {};
+		\node [style=none] (192) at (-1.75, 1.25) {};
+		\node [style=none] (193) at (-1.75, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=boldedge, in=-141, out=0, looseness=0.75] (19.center) to (16);
+		\draw [in=180, out=-39, looseness=0.75] (16) to (20.center);
+		\draw [looseness=0.75, bend left=15] (16) to (21.center);
+		\draw [in=180, out=39, looseness=0.75] (16) to (17.center);
+		\draw [style=boldedge, in=0, out=158, looseness=0.75] (16) to (22.center);
+		\draw [style=boldedge, in=141, out=0, looseness=0.75] (18.center) to (16);
+		\draw [bend right=15] (185.center) to (182);
+		\draw [in=180, out=-39, looseness=0.75] (182) to (186.center);
+		\draw [looseness=0.75, bend left=15] (182) to (187.center);
+		\draw [in=180, out=39, looseness=0.75] (182) to (183.center);
+		\draw [looseness=0.75, bend left=15] (182) to (188.center);
+		\draw [in=141, out=0, looseness=0.75] (184.center) to (182);
+		\draw [out=-15, in=150] (192.center) to (182);
+		\draw [bend right=15] (193.center) to (182);
+		\draw [out=15, in=240, looseness=0.75] (191.center) to (182);
+	\end{pgfonlayer}
+\end{tikzpicture}
