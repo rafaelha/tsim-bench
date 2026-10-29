@@ -1,0 +1,135 @@
+[
+  {
+    "file": "stim/coherent_surface_d3_r1_p1e-3_rz0p02.stim",
+    "non_clifford_gates": {
+      "R_Z": 65
+    },
+    "tsim_k": 0,
+    "tsim_seconds": 0.45,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/coherent_surface_d3_r3_p1e-3_rz0p02.stim",
+    "non_clifford_gates": {
+      "R_Z": 130
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/coherent_surface_d5_r1_p1e-3_rz0p02.stim",
+    "non_clifford_gates": {
+      "R_Z": 209
+    },
+    "tsim_k": 0,
+    "tsim_seconds": 0.41,
+    "clifft_k": 0,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 12,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/coherent_surface_d5_r5_p1e-3_rz0p02.stim",
+    "non_clifford_gates": {
+      "R_Z": 418
+    },
+    "tsim_k": 11,
+    "tsim_seconds": 0.59,
+    "clifft_k": 13,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 13,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/distillation.stim",
+    "non_clifford_gates": {
+      "R_X": 5,
+      "T_DAG": 5
+    },
+    "tsim_k": 3,
+    "tsim_seconds": 0.43,
+    "clifft_k": 3,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 5,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/MSC_circuit_d7_p0.0005.stim",
+    "non_clifford_gates": {
+      "T_DAG": 64,
+      "T": 63
+    },
+    "tsim_k": 8,
+    "tsim_seconds": 1.21,
+    "clifft_k": 19,
+    "clifft_seconds": 0.11,
+    "clifft_noschedule_k": 19,
+    "clifft_noschedule_seconds": 0.09
+  },
+  {
+    "file": "stim/msc_d3_inject_cultivate_p1e-3.stim",
+    "non_clifford_gates": {
+      "T_DAG": 15,
+      "T": 14
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.43,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/msc_d5_inject_cultivate_p1e-3.stim",
+    "non_clifford_gates": {
+      "T_DAG": 46,
+      "T": 45
+    },
+    "tsim_k": 6,
+    "tsim_seconds": 0.53,
+    "clifft_k": 10,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 10,
+    "clifft_noschedule_seconds": 0.04
+  },
+  {
+    "file": "stim/msc_proxy_d7_unverified_p1e-3.stim",
+    "non_clifford_gates": {
+      "T_DAG": 34,
+      "T": 33
+    },
+    "tsim_k": 6,
+    "tsim_seconds": 0.73,
+    "clifft_k": 10,
+    "clifft_seconds": 0.09,
+    "clifft_noschedule_k": 10,
+    "clifft_noschedule_seconds": 0.08
+  },
+  {
+    "file": "stim/pure_surface_d7_r7_p1e-3.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.5,
+    "clifft_k": 0,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/pure_surface_d9_r9_p1e-3.stim",
+    "non_clifford_gates": {},
+    "tsim_k": 0,
+    "tsim_seconds": 0.66,
+    "clifft_k": 0,
+    "clifft_seconds": 0.05,
+    "clifft_noschedule_k": 0,
+    "clifft_noschedule_seconds": 0.05
+  }
+]

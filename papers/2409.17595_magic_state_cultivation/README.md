@@ -36,3 +36,6 @@ Run: `uv run python make_circuits.py`, then `uv run python ../../tools/measure_k
 
 Tsim: main@883d787, default `active_statevector` strategy, largest statevector component width.
 Clifft 0.12.0: default HIR passes + `ActiveWidthSchedulePass()`, `peak_active_width`.
+
+Cross-check: `stim/inject_cultivate_d3_p0.001.stim` and `stim/inject_cultivate_d5_p0.001.stim` are byte-identical to the
+Clifft paper's published `qec_bench/circuits/cultivation_d3.stim` / `cultivation_d5.stim` (also SymFT's `msc_d3/d5_inject_cultivate`).
