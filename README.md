@@ -96,8 +96,10 @@ repository.
 - **Width comparison:** across the 164 circuits measured by both simulators, Tsim's k is smaller on 57, equal on 97, and larger on 10.
   - Tsim much smaller: Bravyi–Haah distillation with T teleportation (Magna) stays at k=3 for every size, while Clifft grows to 42 and
     overflows from bh60 on. Fold-transversal d=5 gives 8 vs 22, gauging d=7 8 vs 19, and RP² d=5 10 vs 18.
-  - Tsim larger: the 10 circuits are Merlin's "clean" distillation workloads (Tsim 4, Clifft 0). There the only noise is Z after the T_DAG
-    gates and the ideal output is undone, so Clifft's `PhasePolynomialPass` cancels every T gate.
+  - Tsim larger: the 10 circuits are Merlin's "clean" distillation workloads (Tsim 4, Clifft 0). The intermediate states are non-stabilizer,
+    but the only noise is Z after the T_DAG gates and the ideal output is undone before readout. By triorthogonality the whole circuit is then
+    Clifford as an operator, and Clifft's `PhasePolynomialPass` cancels every T gate. Switching off either ingredient brings Clifft back to
+    k ≥ 1 (variant table in `papers/2610.06811_merlin/README.md`).
   - Not measured by both: Clifft overflows on Magna bh60/80/100 (Tsim 3), and Tsim's `active_statevector` refuses Merlin's bt81, which
     would need 63 active qubits against a limit of 30 (Clifft 52).
   - `ActiveWidthSchedulePass` matters most on the STAR circuits, where it brings Clifft from k=d down to 2.

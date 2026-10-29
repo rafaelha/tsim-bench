@@ -40,11 +40,38 @@ The paper's simulator is [mark-koch/merlin-sim](https://github.com/mark-koch/mer
 | `distillation_bh6_p0.001.stim` | 32 T_DAG | 4 | 0 | 0 |
 | `distillation_bh8_p0.001.stim` | 40 T_DAG | 4 | 0 | 0 |
 
-**Distillation note.** Clifft reports k=0 for these distillation circuits. In this "clean" model the only noise is Z after the T_DAG gates,
-which commutes with them. The circuit also undoes the ideal output state for scoring. Clifft's `PhasePolynomialPass` then cancels all
-T gates: bh2 gives k=5 with no HIR passes and k=0 with `PhasePolynomialPass` alone. Tsim does not do this cancellation and gives k=4. Compare
-Magna's Bravyi–Haah circuits ([`../2610.22315_magna`](../2610.22315_magna)), which use T-teleportation with conditional S corrections:
-there Tsim gives k=3 and Clifft grows with k.
+**Why Clifft reports k=0 for the distillation circuits.** Every intermediate state of these circuits is a genuine
+non-stabilizer state, with stabilizer rank ≥ 2. The k=0 comes from Clifft not simulating the circuit as written: its
+`PhasePolynomialPass` first rewrites it into an equivalent circuit, and for this benchmark that rewritten circuit has no T gates.
+1. The 15-to-1 and Bravyi–Haah codes are triorthogonal. Encoder, transversal `T_DAG` on all physical qubits and decoder together act as
+   logical `T_DAG` on the outputs. The leftover Clifford phases are removed by the explicit Z/CZ corrections in `distillation.py`.
+2. With `target_scoring=True` (the default), the script then applies another `T_DAG` to every output before the X measurement. This
+   undoes the ideal output state, so a perfect run reads 0.
+3. As a phase polynomial the whole sequence collapses, with every parity term getting a multiple of π/2. The circuit is Clifford as an
+   operator.
+4. In the default "clean" noise model the only noise is Z after each physical `T_DAG`. Z is diagonal and commutes with all T gates, so it
+   passes through the cancellation and stays a Pauli error.
+
+The full noisy circuit is therefore exactly Clifford plus Pauli noise, and its detector and observable distribution can be sampled with k=0.
+Tsim does no global phase-polynomial rewriting and simulates the T gates as written (k=4). This k=0 is a correct exact simulation that
+exploits a special feature of the scored observable and the noise model. It does not show that simulating the distillation protocol is cheap.
+
+Switching off either ingredient removes the effect (`variants.py`; 15-to-1 and Bravyi–Haah k=6, p=0.001):
+
+| variant | 15-to-1: Clifft (all passes) | 15-to-1: Clifft (no passes) | 15-to-1: Tsim | bh6: Clifft (all passes) | bh6: Clifft (no passes) | bh6: Tsim |
+|---|---|---|---|---|---|---|
+| Z noise + target scoring (benchmark default) | **0** | 5 | 4 | **0** | 9 | 4 |
+| Z noise, no target scoring | 1 | 5 | 4 | 6 | 9 | 3 |
+| depolarizing noise + target scoring | 4 | 5 | 4 | 4 | 9 | 4 |
+| depolarizing noise, no target scoring | 4 | 5 | 4 | 8 | 9 | 3 |
+
+- **Without target scoring,** Clifft's k equals the number of distilled outputs (1 and 6). Each output is a real T state and needs at least
+  one active qubit.
+- **With depolarizing noise,** X/Y errors do not commute with T, so the cancellation fails and k = 4.
+- **With no HIR passes,** Clifft's k is at or above Tsim's.
+
+Magna's Bravyi–Haah circuits ([`../2610.22315_magna`](../2610.22315_magna)) teleport T gates with conditional S corrections, so this
+cancellation cannot happen there: Tsim gives k=3 and Clifft's k grows to 42.
 
 **bt81 note.** Tsim's `active_statevector` strategy refuses bt81, because one component would need 63 active qubits (limit 30).
 
