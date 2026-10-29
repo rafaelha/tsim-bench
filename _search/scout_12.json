@@ -1,0 +1,59 @@
+[
+  {
+    "arxiv_id": "2509.18294",
+    "title": "Transversal architecture for megaquop-scale quantum simulation with neutral atoms",
+    "authors": "Ismail, Chen, Zhao, Weiss, Liu, Zhou, Wang, Sornborger, Kornja\u010da",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/YQuantum-2026/QuEra-Challenge/tree/main/assets/star_circuits",
+      "https://github.com/YQuantum-2026/QuEra-Challenge/blob/main/challenge.md"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "The QuEra challenge explicitly describes these as STAR circuits for Tsim with default logical angle 0.01*pi and provides physical_angle() for retuning; actual file contents could not be fetched, so exact instructions and gate syntax remain unverified.",
+    "confidence": "medium",
+    "notes": "Seven .stim files at distances 3, 5, 7, 9, 11, 13, 15. Challenge references the paper and says circuits can be simulated with Tsim. QuEra released these as challenge materials; direct authorship or identity with paper simulation circuits is not established."
+  },
+  {
+    "arxiv_id": "2502.01743",
+    "title": "Efficient Magic State Cultivation on the Surface Code",
+    "authors": "Vaknin, Jacoby, Grimsmo, Retzker",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/tomirendo/surface-code-magic-state-cultivation"
+    ],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Inspect generate_injection_circuit and controlled transversal H/HXY checks; replace the Clifford surrogate injection and checking operations by their true non-Clifford decompositions using the paper appendix, including T rotations and CCZ/controlled-S as appropriate. Exact replacement sites unverified.",
+    "confidence": "medium",
+    "notes": "Author repository explicitly states circuit generation, Clifford Stim/Sinter and separate state-vector simulations, with step1_generate_circuits.bash and simulation.py. Paper journal title is High Rate Magic State Cultivation on the Surface Code. Generated Stim files described but their presence in repository not independently confirmed."
+  },
+  {
+    "arxiv_id": "2303.17380",
+    "title": "Fault Tolerant Non-Clifford State Preparation for Arbitrary Rotations",
+    "authors": "Choi, Chong, Englund, Ding",
+    "year": 2023,
+    "circuit_location": [
+      "https://github.com/Yale-QCS/non-clifford-state-prep"
+    ],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Reconstruct or translate Julia simulation and surface-code syndrome extraction into Stim-extended format; insert physical small-angle multi-rotations and postselection as in paper. No Stim generator or directly portable circuit verified.",
+    "confidence": "low",
+    "notes": "Paper explicitly links author-released Julia/Matlab numerical code. Julia repository is real; a Stim circuit release is not established, so this is a reconstruction lead only."
+  },
+  {
+    "arxiv_id": "2509.23642",
+    "title": "Low-Overhead and High-Fidelity Preparation of Logical Non-Clifford States with Multi-Level Transversal Injection",
+    "authors": "Zhang, Wei, Zhuang, Chen, Kong, Wu, Guo",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/Jiaxuan-quantum/data-for-MLTI-paper"
+    ],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Inspect multi_level_protocol.py and example.ipynb for encoding, rotations and syndrome checks; translate to extended Stim if needed. Contents and availability of a Stim circuit generator not independently verified.",
+    "confidence": "low",
+    "notes": "Repository explicitly identifies itself as code and data for this paper, with Python protocol and example notebook. No verified Stim support; reconstruction lead."
+  }
+]

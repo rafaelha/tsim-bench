@@ -1,0 +1,74 @@
+[
+  {
+    "arxiv_id": "2509.05212",
+    "title": "Fold-transversal surface code cultivation",
+    "authors": "Sahay, Tsai, Chang, Su, Smith, Singh, Puri",
+    "year": 2025,
+    "circuit_location": ["https://github.com/kaavyas99/MSC_foldedH", "https://github.com/kaavyas99/MSC_foldedH/tree/main/sample_circuits", "https://github.com/kaavyas99/MSC_foldedH/tree/main/src"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The released fault-distance-3 |Y> proxy must be modified to inject |T> and to implement the actual controlled fold-transversal H_XY checks, including non-Clifford controlled Clifford operations such as CCZ; consult the paper's circuit and handoff implementation. This is not a blanket S-to-T replacement; logical readout and detector assumptions must also be revised.",
+    "confidence": "high",
+    "notes": "Authors' paper explicitly links the repository and says it includes sample circuits. README identifies generated |Y> circuits with stabilizer-based escape and a distance-3 state-vector/stabilizer handoff. The proxy is not claimed to exactly reproduce magic-state performance."
+  },
+  {
+    "arxiv_id": "2503.18657",
+    "title": "Efficient Magic State Cultivation on RP²",
+    "authors": "Chen, Chen, Lu, Pan",
+    "year": 2025,
+    "circuit_location": ["https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2", "https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2/tree/main/circuit_garage", "https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2/blob/main/t_gadget.py"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Use the d3/d5 cultivation circuits and replace the appropriate injected stabilizer proxy by the physical T state, and restore the non-Clifford logical check as specified in the paper; identify individual locations from t_gadget.py and the circuit diagrams. Do not replace all S gates: many implement essential Clifford code operations. Revisit output observables and postselection.",
+    "confidence": "high",
+    "notes": "Author repository identifies circuit_garage as Stim circuits and includes T-gadget generation and end-to-end sampling for distance 3 and 5; Stim's circuit data reference independently lists it. The precise substitutions were not independently validated."
+  },
+  {
+    "arxiv_id": "2505.23567",
+    "title": "Scalable decoding protocols for fast transversal logic in the surface code",
+    "authors": "Turner, Campbell, Crawford, Gillespie, Camps",
+    "year": 2025,
+    "circuit_location": ["https://zenodo.org/records/15544576"],
+    "format": "stim files",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The t_gate_proxy_circuits are repeated logical teleportation proxies. The paper explicitly replaces all input states by logical |0>, removes classically controlled corrections and omits intervening H. Restore encoded |T> ancillas, the feed-forward logical S corrections and interleaved logical H from Fig. 4; encoded state preparation or injection must be supplied separately. Measurements and detector/observable annotations need reassessment.",
+    "confidence": "high",
+    "notes": "Zenodo archive explicitly identifies t_gate_proxy_circuits and deep_logical_circuits, and is cited by the published paper. Real T conversion is a protocol reconstruction rather than a one-gate substitution."
+  },
+  {
+    "arxiv_id": "2603.05429",
+    "title": "Constant-depth magic state cultivation with Clifford measurements by gauging",
+    "authors": "Hetényi, Brown, Williamson",
+    "year": 2026,
+    "circuit_location": ["https://github.com/IBM/gauging_clifford_measurement", "https://github.com/IBM/gauging_clifford_measurement/blob/main/color_code.py", "https://github.com/IBM/gauging_clifford_measurement/blob/main/escape_stage.py"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The Stim simulation prepares logical |+i> and measures Y. For the true |T> protocol use the paper's unitary |T> preparation and XS† gauging checks and adjust final verification; their d=3 Qiskit statevector construction is a reference. Identify exact gates in the generator before substituting, since the actual gauging circuit differs from the Clifford proxy.",
+    "confidence": "high",
+    "notes": "Paper links author's repository, which redirects to IBM repository; color_code.py generates gauging measurement circuits and escape_stage.py generates deformation. Its cultivation_stim_circuits directory contains Gidney benchmark circuits, not necessarily pre-generated gauging circuits. The IBM README has an erroneous unrelated arXiv number, but paper explicitly links the author redirect."
+  },
+  {
+    "arxiv_id": "2502.01743",
+    "title": "Efficient Magic State Cultivation on the Surface Code",
+    "authors": "Vaknin, Jacoby, Grimsmo, Retzker",
+    "year": 2025,
+    "circuit_location": ["https://github.com/tomirendo/surface-code-magic-state-cultivation", "https://github.com/tomirendo/surface-code-magic-state-cultivation/tree/main/2025/HCultivationSurfaceCode"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Use the provided Stim generation scripts and compare their Clifford injection and check sequences with the state-vector implementation to restore the physical T-state input and controlled Clifford checks; the necessary precise gate substitutions have not been verified. Change output observables if non-stabilizer readout becomes nondeterministic.",
+    "confidence": "medium",
+    "notes": "Companion repository identifies simulation.py, Stim/Sinter circuit generation, state-vector simulation, and a generated circuits directory. The README calls the repository paper Efficient Magic State Cultivation on the Surface Code; arXiv HTML has a later title variant High Rate Magic State Cultivation on the Surface Code."
+  },
+  {
+    "arxiv_id": "2412.01391",
+    "title": "Transversal Logical Clifford gates on rotated surface codes with reconfigurable neutral atom arrays",
+    "authors": "Chen, Chen, Lu, Pan",
+    "year": 2024,
+    "circuit_location": ["https://github.com/Zihan-Chen-PhMA/Dynamical-S-gate-decoding", "https://github.com/Zihan-Chen-PhMA/Dynamical-S-gate-decoding/tree/main/circuit_garage"],
+    "format": "both",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "These are logical S-gate and memory benchmarks, not an existing T-state cultivation proxy. Potential starting point for constructing a controlled fold-transversal Clifford measurement around an injected magic state, requiring extra ancillas and non-Clifford gates; replacing the physical S gates by T does not implement the same logical construction.",
+    "confidence": "low",
+    "notes": "The paper and Stim circuit references link the author's repository and circuit_garage. The repository includes phase_gadget.py and surface_codes.py. Included as a reconstructable maybe; no complete non-Clifford cultivation circuit established."
+  }
+]

@@ -1,0 +1,94 @@
+[
+  {
+    "arxiv_id": "2512.13908",
+    "title": "Magic state cultivation on a superconducting quantum processor",
+    "authors": "Rosenfeld, Gidney, Roberts, Morvan et al.",
+    "year": 2025,
+    "circuit_location": [
+      "https://zenodo.org/records/17872003",
+      "https://zenodo.org/records/17872003/files/README.md",
+      "https://arxiv.org/html/2512.13908"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Compare stim_X.stim and stim_Z.stim with accompanying cirq_circuit_X.json and cirq_circuit_Z.json to identify the replaced physical non-Clifford rotations and restore the actual rotations, including correct angles and conjugating H_YZ gates. Echo X gates are replaced by tagged identities in Stim; reconcile Pauli-frame changes when reconstructing the experimental circuit. Detectors and observables may no longer be deterministic.",
+    "confidence": "high",
+    "notes": "Author dataset explicitly documents Stim and Cirq circuits per experiment; fig2/fig3/fig4 archives are 733 MB to 1.6 GB each. Paper section VII provides interactive Crumble links for individual and full experimental circuits. README says Stim substitutes Clifford gates for non-Cliffords."
+  },
+  {
+    "arxiv_id": "2412.14256",
+    "title": "Scaling and logic in the color code on a superconducting quantum processor",
+    "authors": "Lacroix, Bourassa, Heras et al.",
+    "year": 2024,
+    "circuit_location": [
+      "https://zenodo.org/records/14238944",
+      "https://github.com/quantumlib/Stim/blob/main/doc/circuit_data_references.md"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Experiment injects a magic state by preparing the injection data qubit and growing into a color code. Determine whether the injection circuit is included in the archive; if so, substitute the intended physical rotation for its Clifford preparation proxy.",
+    "confidence": "low",
+    "notes": "Stim official circuit references list this dataset, but Zenodo describes it specifically as memory experiments; inclusion of injection experiment circuits is not established. Archive 738 MB was not downloaded."
+  },
+  {
+    "arxiv_id": "2412.01446",
+    "title": "Magic State Injection on IBM Quantum Processors Above the Distillation Threshold",
+    "authors": "Kim, Sevior, Usman",
+    "year": 2024,
+    "circuit_location": [
+      "https://codeocean.com/capsule/4035970/tree",
+      "https://www.nature.com/articles/s41598-026-40381-1"
+    ],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Source capsule may allow reconstruction of the 25-qubit injection circuit; locate physical initialization qubit and replace its stabilizer-state preparation with the requested magic-state rotation. Stim output and exact conversion have not been verified.",
+    "confidence": "low",
+    "notes": "Experimental IBM work; paper says source code and data are available in Code Ocean, and describes use of Stim to generate circuits for simulation. Capsule contents and whether injection-specific Stim circuit is exposed have not been independently verified."
+  },
+  {
+    "arxiv_id": "2506.20661",
+    "title": "Architectural mechanisms of a universal fault-tolerant quantum computer",
+    "authors": "Bluvstein, Geim, Li et al.",
+    "year": 2025,
+    "circuit_location": [
+      "https://doi.org/10.5281/zenodo.15685795",
+      "https://arxiv.org/src/2506.20661/anc",
+      "https://github.com/WonJoon-Yun/FTQC-NAQC"
+    ],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "For coherent-error experiments add the paper-specified global single-qubit rotations on data qubits between the corresponding stabilizer measurement time steps; map schedules and angles against raw experimental commands. Confirm simulator output is Stim before relying on it.",
+    "confidence": "low",
+    "notes": "Authors provide surface-code data and analysis and raw experimental commands. Independent repository reports a port of the released surface-code simulator; actual Stim emission and the correspondence to the coherent-rotation experiment remain unverified. Published title A fault-tolerant neutral-atom architecture for universal quantum computation."
+  },
+  {
+    "arxiv_id": "2412.15187",
+    "title": "Universal quantum computation via scalable measurement-free error correction",
+    "authors": "Veroni, Paler, Giudice",
+    "year": 2024,
+    "circuit_location": [
+      "https://zenodo.org/records/15707012",
+      "https://github.com/quantumlib/Stim/blob/main/doc/circuit_data_references.md"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Inspect released circuits and simulation code for the CCZ and disposable Toffoli gadgets; operation encoding and required conversion are not verified. This is a theoretical architecture rather than an experimental demonstration.",
+    "confidence": "medium",
+    "notes": "Authors dataset states it includes simulated circuits and code; official Stim circuit catalog identifies Stim circuits. Paper describes logical CCZ and measurement-free Toffoli gadgets, but archive contents were not inspected."
+  },
+  {
+    "arxiv_id": "2412.15165",
+    "title": "Experimental demonstration of logical magic state distillation",
+    "authors": "Sales Rodriguez, Robinson, Jepsen et al.",
+    "year": 2024,
+    "circuit_location": [
+      "https://github.com/haoliri0/SymFT_Test/tree/main/benchmark/circuit",
+      "https://arxiv.org/html/2412.15165"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Third-party benchmark includes a non-Clifford 85-qubit [17,1,5] distillation.stim; check its provenance and protocol against the experiment before calling it a reproduction. It uses an extended Stim-like dialect; verify angle units and simulator compatibility.",
+    "confidence": "low",
+    "notes": "The authors describe Stim-based simulations with non-magic entangled input and separate Qiskit ideal magic-state inputs, but author-released circuit code was not located. Third-party 85-qubit circuit is merely a possible related workload, not established as the experiment circuit; repository describes native extended-dialect non-Clifford gates but exact gate content of distillation file not independently checked."
+  }
+]

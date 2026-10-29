@@ -1,0 +1,103 @@
+[
+  {
+    "arxiv_id": "2409.17595",
+    "title": "Magic state cultivation: growing T states as cheap as CNOT gates",
+    "authors": "Gidney, Shutty, Jones",
+    "year": 2024,
+    "circuit_location": [
+      "https://zenodo.org/records/13777072",
+      "https://github.com/quantumlib/Stim/blob/main/doc/circuit_data_references.md"
+    ],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "For the injection and cultivation stages, replace the designated proxy S and S_DAG gates with T and T_DAG, respectively; do not replace unrelated Clifford gates. Paper figures 6–8 and 20–21 identify the relevant gates. Check output observables and feedback for the non-Clifford state.",
+    "confidence": "high",
+    "notes": "Zenodo provides circuits.zip and code.zip. The paper explicitly describes the S and Z proxy, warns T-state logical error can differ by about a factor of two, and gives gate replacements. Clifft publishes direct T-gate derivatives: https://unitaryfoundation.github.io/clifft/stable/guide/importance-sampling-tutorial/."
+  },
+  {
+    "arxiv_id": "2302.12292",
+    "title": "Cleaner magic states with hook injection",
+    "authors": "Gidney",
+    "year": 2023,
+    "circuit_location": [
+      "https://zenodo.org/records/7575030"
+    ],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Identify the injection rotation in the hook injection circuit and change the S-state proxy rotation to the corresponding T rotation. Do not globally replace S gates; adjust final state measurement/observable as appropriate.",
+    "confidence": "high",
+    "notes": "Zenodo contains generated noisy circuits and source; Stim circuit reference catalog identifies the dataset. Paper describes hook injection and single magical rotation; erasure-injection paper explicitly describes simulation of the S state with Gidney circuits."
+  },
+  {
+    "arxiv_id": "2504.02935",
+    "title": "Magic State Injection with Erasure Qubits",
+    "authors": "Jacoby, Vaknin, Retzker, Grimsmo",
+    "year": 2025,
+    "circuit_location": [
+      "https://zenodo.org/records/15874462"
+    ],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The paper uses S|+> as a proxy throughout; replace designated injection S with T, and designated S/S_DAG in color-code cultivation with T/T_DAG. Erasures are instantiated as sampled patterns and fully depolarizing channels; preserve their sampling semantics.",
+    "confidence": "high",
+    "notes": "Zenodo data/scripts are 248 MB; not downloaded. Stim circuit reference catalog describes scripts, Stim circuits, and results. Paper appendix C specifies the S-state proxy and use of per-run erasure sequences."
+  },
+  {
+    "arxiv_id": "2512.13908",
+    "title": "Magic state cultivation on a superconducting quantum processor",
+    "authors": "Rosenfeld, Gidney, Roberts, Morvan, et al.",
+    "year": 2025,
+    "circuit_location": [
+      "https://zenodo.org/records/17872003",
+      "https://zenodo.org/records/17872003/files/README.md"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Use corresponding cirq_circuit_X/Z.json to identify physical non-Clifford rotations replaced in stim_X/Z.stim; restore them with appropriate R_Y/R_Z gates, accounting for tagged H_YZ conjugation and echo frame changes. Reassess detector/observable determinism.",
+    "confidence": "high",
+    "notes": "README confirms paired experimental Cirq circuits and analysis Stim circuits, and explicitly says non-Clifford gates were replaced by Cliffords. Data zips total 3.2 GB; not downloaded."
+  },
+  {
+    "arxiv_id": "2412.15187",
+    "title": "Universal quantum computation via scalable measurement-free error correction",
+    "authors": "Veroni, Paler, Giudice",
+    "year": 2024,
+    "circuit_location": [
+      "https://zenodo.org/records/15707012",
+      "https://github.com/giacomogiudice/SparseStates.jl"
+    ],
+    "format": "both",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Reconstruct the Toffoli-like coherent feedback by reversing the deferred-measurement substitution, including restoring ancillas and CCX/CCZ. This is a structural conversion, not a simple gate substitution; inspect whether the archive includes the logical CCZ circuit.",
+    "confidence": "low",
+    "notes": "Dataset supplies simulated circuits and code; Stim circuit catalog confirms Stim circuits. Paper says its memory circuits replace Toffoli-like gates by virtual measurements and delayed classical processing, whereas the work also designs logical CCZ. Actual logical CCZ files not confirmed."
+  },
+  {
+    "arxiv_id": "2503.18657",
+    "title": "Efficient Magic State Cultivation on RP²",
+    "authors": "Chen, Chen, Lu, Pan",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2"
+    ],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Inspect circuit_garage and t_gadget.py to identify the proxy injection and cultivation rotations; substitute corresponding S/S_DAG by T/T_DAG only at those locations, and validate logical measurement and feedback.",
+    "confidence": "medium",
+    "notes": "Stim project circuit catalog links paper to circuit_garage, and repository explicitly contains Stim circuits and sampling scripts. Conversion is inferred from cultivation structure; precise replacement locations not independently verified."
+  },
+  {
+    "arxiv_id": "2502.01743",
+    "title": "Efficient Magic State Cultivation on the Surface Code",
+    "authors": "Vaknin, Jacoby, Grimsmo, Retzker",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/tomirendo/surface-code-magic-state-cultivation"
+    ],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Identify injected state preparation and cultivation checks in simulation.py; change designated Clifford stand-ins to the corresponding non-Clifford rotations and adjust measurement and feedback. Precise substitutions need inspection.",
+    "confidence": "medium",
+    "notes": "Repository README documents generate_injection_circuit, Stim generation scripts, and full-state-vector simulation. Generated circuit files may require running the scripts. Paper is cited by the erasure-qubit dataset paper."
+  }
+]

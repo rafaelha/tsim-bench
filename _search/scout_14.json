@@ -1,0 +1,38 @@
+[
+  {
+    "arxiv_id": "2412.15165",
+    "title": "Experimental Demonstration of Logical Magic State Distillation",
+    "authors": "Rodriguez, Robinson, Jepsen, He, Duckering, et al.",
+    "year": 2024,
+    "circuit_location": ["https://queracomputing.github.io/bloqade/v0.34.0/digital/examples/tsim/magic_state_distillation/", "https://github.com/QuEraComputing/bloqade-lanes/blob/173bf7803384de87de928dcde9cf754ad56ce200/python/bloqade/gemini/decoding/experiments.py"],
+    "format": "generator code",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "QuEra's executable Bloqade tutorial builds a Tsim Circuit from Squin kernels: the 85-qubit encoded protocol uses rx(theta) and t_adj on qubits 7+17*i before the color-code encoder; theta=-arccos(sqrt(1/3)). Non-Clifford gates are already present; export using Bloqade's Stim-compatible circuit representation. Bloqade documentation describes tagged Stim forms such as S_DAG[T] and I[R_X(theta=...)]; check the target parser's supported syntax.",
+    "confidence": "high",
+    "notes": "The QuEra tutorial explicitly identifies the Rodriguez experiment and implements its distance-5 five-to-one distillation with detectors, transversal gates, and tomography. It simplifies the experiment by taking the encoder as noiseless, so it is not a byte-for-byte experimental circuit. Bloqade-lanes also has a Steane-code non-Clifford prefix and Clifford logical circuit, though its documentation does not explicitly tie this function to the paper. The status enum denotes native non-Clifford generator operations, not literal T lines in a .stim file. Paper first appeared 2024, published 2025."
+  },
+  {
+    "arxiv_id": "2502.01743",
+    "title": "High Rate Magic State Cultivation on the Surface Code",
+    "authors": "Vaknin, Jacoby, Grimsmo, Retzker",
+    "year": 2025,
+    "circuit_location": ["https://github.com/tomirendo/surface-code-magic-state-cultivation"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Inspect 2025/HCultivationSurfaceCode/simulation.py generate_injection_circuit and generate_double_ghz, plus circuit generation scripts. Restore the paper's logical pi/8 injection rotations and controlled transversal H/HXY and swaps using physical CCZ/CCX and basis-changing Cliffords; identify exact replacement locations from the generator and paper before conversion. The Clifford simulation circuit is not automatically the full non-Clifford protocol; state-vector implementation provides a cross-check.",
+    "confidence": "medium",
+    "notes": "The author repository identifies 2502.01743 and documents Stim circuit generation, a circuits directory, and full state-vector simulations; published title differs from arXiv title 'Efficient Magic State Cultivation on the Surface Code'. This paper explicitly analyzes neutral-atom noise, three-qubit gates, and loss/erasure. Exact line-level proxy replacement and presence of already-generated files were not independently verified."
+  },
+  {
+    "arxiv_id": "2504.02935",
+    "title": "Magic State Injection with Erasure Qubits",
+    "authors": "Jacoby, Vaknin, Retzker, Grimsmo",
+    "year": 2025,
+    "circuit_location": ["https://github.com/shohamjac/injection-with-erasure-qubits", "https://zenodo.org/records/15874462"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The paper explicitly simulates injection of |S>=(|0>+i|1>)/sqrt(2) as a stabilizer proxy for |T>. At the injection preparation site replace the relevant S after H with T, or prepare the appropriate equivalent T state in the circuit's frame; restore corresponding rotated measurement if applicable. Cultivation circuits may require further T/S proxy replacements, so inspect individually. Its erasure simulator samples erasure locations and inserts fully depolarizing noise; retaining herald records and loss postselection requires the associated external logic.",
+    "confidence": "high",
+    "notes": "Author GitHub includes circuits, erasure_simulator.py, cultivation.ipynb, and end2end_script.py; the Stim reference index explicitly describes the Zenodo deposit as scripts, Stim circuits, and results. Archive is 248 MB and was not downloaded. Protocol addresses erasure qubits generically, including neutral-atom relevance, rather than claiming it is a QuEra experiment. Some scripts depend on Gidney hook-injection code."
+  }
+]

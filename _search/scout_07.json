@@ -1,0 +1,86 @@
+[
+  {
+    "arxiv_id": "2604.27058",
+    "title": "Clifft: Fast Exact Simulation of Near-Clifford Quantum Circuits",
+    "authors": "Chase, Labib",
+    "year": 2026,
+    "circuit_location": ["https://github.com/unitaryfoundation/clifft-paper", "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md", "https://github.com/haoliri0/SOFT/tree/main/benchmark/circuit"],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "No replacement required for the extended-Stim cultivation and distillation files; coherent-surface inputs use R_Z rotations. Rotation parameters are half-turns in Clifft/SymFT: verify Tsim's angle convention before using the coherent-noise files.",
+    "confidence": "high",
+    "notes": "Clifft paper companion repository supplies benchmarks; SymFT's checked-in corpus vendors Clifft-derived d=3/5 cultivation, 85-qubit distillation and four coherent-noise surface-code workloads. See its README and LICENSE-Clifft-paper. These are extended Stim, not parseable by vanilla Stim. The same circuit family appears under other entries. Exact LER work warns some declared cultivation detectors are not deterministic Pauli webs for true T circuits."
+  },
+  {
+    "arxiv_id": "2607.28600",
+    "title": "SymFT: Universal Fault-Tolerant Quantum Circuit Simulation via Symbolic Clifford--Pauli Frames and Stabilizer Coordinates",
+    "authors": "Fang, Lou, Li",
+    "year": 2026,
+    "circuit_location": ["https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md", "https://github.com/haoliri0/SOFT/tree/main/benchmark/circuit"],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "The msc_*, MSC_circuit_*, coherent_surface_* and distillation.stim files already use T, T_DAG, R_X or R_Z. The d=7 proxy marked unverified is an exception; follow the README and do not use its detector or logical statistics for correctness claims.",
+    "confidence": "high",
+    "notes": "Benchmark README explicitly identifies checked-in inputs, extended syntax, and d=3/5 MSC, d=7 workload, [17,1,5] distillation, coherent surface-code and Clifford surface-code cases. No regeneration script is provided. Many circuits are Clifft-derived and overlap other entries."
+  },
+  {
+    "arxiv_id": "2512.23037",
+    "title": "SOFT: a high-performance simulator for universal fault-tolerant quantum circuits",
+    "authors": "Li, Zheng, Zhang, Lou, Ying, Liu, Sun",
+    "year": 2025,
+    "circuit_location": ["https://github.com/haoliri0/SOFT/tree/main/benchmark/circuit", "https://unitaryfoundation.github.io/clifft/stable/guide/importance-sampling-tutorial/"],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "Use the native T/T_DAG cultivation files, e.g. msc_d3_inject_cultivate_p1e-3.stim and msc_d5_inject_cultivate_p1e-3.stim. Separate S-proxy circuits may require targeted S/S_DAG replacement only at the protocol's identified T positions.",
+    "confidence": "high",
+    "notes": "SOFT reports 42-qubit d=5 magic-state cultivation with 72 T/T-dagger gates. Current repository includes additional later cross-simulator benchmarks, including Clifft-derived inputs, so do not assume all files were present in the original 2025 release. Cultivation excludes escape; assess true-T detectors separately."
+  },
+  {
+    "arxiv_id": "2509.08658",
+    "title": "Simulating magic state cultivation with few Clifford terms",
+    "authors": "Wan, Zhong, Zapirain",
+    "year": 2025,
+    "circuit_location": ["https://github.com/kh428/accel-cutting-magic-state/blob/main/d_3_circuit_definitions.py", "https://github.com/kh428/accel-cutting-magic-state"],
+    "format": "generator code",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "The Python circuit_source_injection_T and circuit_source_projection_proj strings contain native T and T_DAG in Stim-like text; use the repository's assembly/noise code to reproduce its full d=3 circuit. No S-to-T substitution is required.",
+    "confidence": "high",
+    "notes": "Companion repository documents definitions and a Tsim-based pipeline; it also includes a separate Stim proxy benchmark. Circuit source is embedded Python strings rather than standalone .stim files. It is a later companion to the paper and overlaps the Gidney cultivation family."
+  },
+  {
+    "arxiv_id": "2609.18922",
+    "title": "Exact logical error rates for magic state cultivation",
+    "authors": "Wan, Zapirain",
+    "year": 2026,
+    "circuit_location": ["https://github.com/kh428/exact_ler_for_msc/tree/main/data/inputs", "https://github.com/kh428/exact_ler_for_msc/tree/main/data/alternatives/inputs", "https://github.com/haoliri0/SOFT/tree/main/benchmark/circuit"],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "Use the frozen actual-T d=3 and corrected d=5 cultivation inputs or the source files identified in Appendix A. The paper specifies SHA-256 859d925c74712efaae8bab1d944f9e5be4e042e226eeafcc6d7bef9d6fbfbae5 for its d=5 file. Confirm format and conventions for each alternative source before use.",
+    "confidence": "high",
+    "notes": "Independent exact Pauli-propagation/tensor benchmarks on the same Clifft/SOFT circuits, with frozen circuits and exact reference results. The repository later adds RP2, fold-transversal and repaired variants; fold d=5 is an author reconstruction, not matched to an original noisy T circuit. Only 16/20 d=3 and 93/107 d=5 declared detectors are Pauli webs of the actual T circuit."
+  },
+  {
+    "arxiv_id": "2604.01059",
+    "title": "Tsim: Fast Universal Simulator for Quantum Error Correction",
+    "authors": "Haenel, Luo, Zhao",
+    "year": 2026,
+    "circuit_location": ["https://github.com/QuEraComputing/tsim", "https://www.bloqade.quera.com/vendored/tsim/tutorials/magic_state_distillation/"],
+    "format": "generator code",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "The Tsim tutorial constructs a logical magic-state distillation circuit using Tsim's extended Stim API; follow the notebook to construct/export the circuit. No proxy conversion is needed for native T operations.",
+    "confidence": "medium",
+    "notes": "The paper benchmarks d=3/5 experimental distillation and d=3 cultivation; the linked tutorial is an author-project circuit example, but its exact identity with the paper's benchmark inputs is not established. Tutorial pages are generated from upstream notebooks."
+  },
+  {
+    "arxiv_id": "2610.06811",
+    "title": "Polynomial-time simulation of non-Clifford quantum error correction",
+    "authors": "Cercelescu, Koch, Pesah",
+    "year": 2026,
+    "circuit_location": ["https://github.com/mark-koch/merlin-sim", "https://pypi.org/project/merlin-sim/"],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Paper reports Bravyi-Haah distillation and CCZ code-switching benchmark circuits; Merlin accepts an extended Stim-like language. The public location and exact format of the benchmark inputs have not been verified, so further repository inspection is needed.",
+    "confidence": "low",
+    "notes": "Potentially valuable distinct [[27,3,3]] and [[81,3,5]] code-switching workloads. The existence of a simulator and benchmark claims does not establish that full benchmark circuits are publicly released. The paper reuses previously released Clifft/SymFT cultivation and distillation cases."
+  }
+]

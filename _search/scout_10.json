@@ -1,0 +1,62 @@
+[
+  {
+    "arxiv_id": "2603.05429",
+    "title": "Constant-depth magic state cultivation with Clifford measurements by gauging",
+    "authors": "Hetényi, Brown, Williamson",
+    "year": 2026,
+    "circuit_location": ["https://github.com/IBM/gauging_clifford_measurement", "https://github.com/IBM/gauging_clifford_measurement/blob/main/color_code.py"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "In ColorCode.Bell_prep, the Y proxy is initialized with R, H, S on qubit 0; for a T-state seed use R, H, T there, keeping the subsequent encoding. The Clifford measurement circuit itself is an XS† gauging circuit and should not be blindly changed. Check output observables and postselection for the non-stabilizer state; unitary_prep requires a separately verified conversion.",
+    "confidence": "high",
+    "notes": "The repository explicitly provides stim.Circuit generator code plus cultivation_stim_circuits benchmark files, the latter from Gidney et al. README links mistakenly to arXiv:2510.05225, an unrelated paper; the correct identifier is 2603.05429. Source https://arxiv.org/abs/2603.05429."
+  },
+  {
+    "arxiv_id": "2510.24615",
+    "title": "Efficient magic state cultivation with lattice surgery",
+    "authors": "Hirano, Toshio, Itogawa, Fujii",
+    "year": 2025,
+    "circuit_location": ["https://github.com/yutakahirano/msc-ls", "https://github.com/yutakahirano/msc-ls/blob/main/src/lattice_surgery_complementary_gap.py", "https://github.com/yutakahirano/msc-ls/tree/experiment-2025-sep"],
+    "format": "generator code",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "The generated Stim circuits support the lattice-surgery cultivation sequence. Locate the simulated input-state preparation and replace the relevant stabilizer proxy with an explicit non-Clifford preparation or injection; exact gate substitutions were not verified. Reassess observables and feedback under a non-stabilizer input.",
+    "confidence": "medium",
+    "notes": "Repository describes its complementary-gap script as end-to-end distillation, and code builds and samples stim.Circuit objects. The paper-specific version is experiment-2025-sep. I did not verify a single-gate conversion. https://arxiv.org/abs/2510.24615"
+  },
+  {
+    "arxiv_id": "2608.23819",
+    "title": "CircLS: Compiling Lattice Surgery to Physical Circuits with Dynamic Allocation",
+    "authors": "Zhang",
+    "year": 2026,
+    "circuit_location": ["https://github.com/John-YuehanZhang/CircLS", "https://github.com/John-YuehanZhang/CircLS/blob/main/experiments/REPRODUCE.md"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The paper explicitly replaces every T-state resource by an encoded |+> proxy. Modify the corresponding initialized magic-state patch to prepare encoded |T> instead, e.g. inject a physical |+> followed by T and encode/grow it; preserve each PPM and T gadget and implement outcome-conditioned Clifford corrections. This is a protocol extension, not a verified one-line substitution; detector and observable assumptions need revalidation.",
+    "confidence": "high",
+    "notes": "Compiler lowers Pauli product measurements to annotated physical Stim circuits and paper benchmarks non-Clifford programs using proxies; https://arxiv.org/html/2608.23819 section 6.1. README says Clifford QASM or PPM input."
+  },
+  {
+    "arxiv_id": "2409.17595",
+    "title": "Magic state cultivation: growing T states as cheap as CNOT gates",
+    "authors": "Gidney, Shutty, Jones",
+    "year": 2024,
+    "circuit_location": ["https://github.com/Strilanc/magic-state-cultivation", "https://github.com/Strilanc/magic-state-cultivation/tree/main/src/cultiv/_construction", "https://github.com/Strilanc/magic-state-cultivation/tree/main/testdata/surgery_scripts"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Generate --basis Y circuits and replace Y-proxy injection by T-state preparation: e.g. where |Y> = S H|0>, use T H|0>; for the teleportation variant replace the proxy Y-basis measurement with the corresponding T-basis measurement via a T† basis rotation followed by X measurement. Identify injection sites per variant; do not replace every S in the checks. Adjust measurement and detector interpretation.",
+    "confidence": "high",
+    "notes": "README supplies step1_make_circuits and three injection variants, as well as lattice-surgery factory scripts including ccz_4x3_7_tels.lat. The .lat descriptions are not themselves Stim circuits; generator output is under ignored out/. https://arxiv.org/abs/2409.17595"
+  },
+  {
+    "arxiv_id": "2405.00146",
+    "title": "Averting multi-qubit burst errors in surface code magic state factories",
+    "authors": "Chadwick, Kang, Viszlai, Lin, Chong",
+    "year": 2024,
+    "circuit_location": ["https://github.com/jasonchadwick/ray-delay", "https://github.com/jasonchadwick/ray-delay/tree/main/stim_lattice_surgery", "https://github.com/jasonchadwick/ray-delay/blob/main/experiments/06_lattice_surgery_distance.ipynb"],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Study the lattice surgery implementation and notebooks to determine whether they contain factory-level circuits and actual magic-state inputs. A genuine T-state or CCZ factory would require insertion of non-stabilizer resources and any conditional corrections; no specific substitution verified.",
+    "confidence": "low",
+    "notes": "Paper credits a lattice-surgery Stim simulation and links the author repository, which has a stim_lattice_surgery entry and a surgery-distance notebook. The entry may be a git submodule; presence of a complete magic factory circuit in the released tree was not verified. https://arxiv.org/abs/2405.00146"
+  }
+]

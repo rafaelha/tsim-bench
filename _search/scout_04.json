@@ -1,0 +1,74 @@
+[
+  {
+    "arxiv_id": "2302.12292",
+    "title": "Cleaner magic states with hook injection",
+    "authors": "Gidney",
+    "year": 2023,
+    "circuit_location": ["https://github.com/Strilanc/hook-injection"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Identify the intentional hook rotation in the S-state injection variant and replace that S or axis-equivalent pi/2 rotation with a T or pi/4 rotation; preserve other Clifford gates. Reassess observables and postselection for the non-stabilizer target.",
+    "confidence": "high",
+    "notes": "Author's repository identifies itself as code for the paper; later erasure-injection paper explicitly reuses its circuit generation code. Includes comparison to Li- and Singh-style methods. Proxy interpretation confirmed in https://arxiv.org/html/2409.17595 section 3; exact generated instruction location not independently inspected."
+  },
+  {
+    "arxiv_id": "2409.17595",
+    "title": "Magic state cultivation: growing T states as cheap as CNOT gates",
+    "authors": "Gidney, Shutty, Jones",
+    "year": 2024,
+    "circuit_location": ["https://github.com/Strilanc/magic-state-cultivation", "https://zenodo.org/records/13777072"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "For the designated injection and cultivation rotations replace S by T and S_DAG by T_DAG, not all unrelated S gates; figures 6–8 and 20–21 of https://arxiv.org/html/2409.17595 identify the relevant gates. Revisit detector/observable handling for non-Clifford sampling.",
+    "confidence": "high",
+    "notes": "Repository generates injection, cultivation and escape circuits; Zenodo has circuits.zip and code.zip. Includes unitary, Bell and teleport injection. Paper reports S proxy can underestimate the T-state error, so proxy rates should not be treated as exact."
+  },
+  {
+    "arxiv_id": "2504.02935",
+    "title": "Magic State Injection with Erasure Qubits",
+    "authors": "Jacoby, Vaknin, Retzker, Grimsmo",
+    "year": 2025,
+    "circuit_location": ["https://github.com/shohamjac/injection-with-erasure-qubits", "https://zenodo.org/records/15874462"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Paper explicitly simulates S|+> instead of T|+>. Replace designated injection S with T, or the equivalent axis rotation in hook and Lao-Criger circuits, and use suitable magic-state observables. Erasure handling samples a herald sequence and inserts depolarization; retain the heralds and postselection.",
+    "confidence": "high",
+    "notes": "Author repository contains circuits and simulation scripts; Stim's circuit reference identifies the Zenodo archive as including Stim circuits. Compares hook and Lao-Criger surface-code injection, expansion and color-code cultivation. Some scripts reuse Gidney's hook-injection repository."
+  },
+  {
+    "arxiv_id": "2503.18657",
+    "title": "Efficient Magic State Cultivation on RP^2",
+    "authors": "Chen, Chen, Lu, Pan",
+    "year": 2025,
+    "circuit_location": ["https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2", "https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2/tree/main/circuit_garage"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Replace the explicitly identified Clifford surrogate rotations in T-state injection and logical checks with their T/T_DAG analogues, following the circuit construction and t_gadget.py. Exact file-level substitutions require inspection; do not blindly replace all S gates.",
+    "confidence": "medium",
+    "notes": "Repository explicitly labels circuit_garage as Stim circuits and has generation and sampling scripts for distance-3 and distance-5 injection, cultivation, growth and rotated-surface-code escape. Based on Gidney cultivation code; full conversion map not verified."
+  },
+  {
+    "arxiv_id": "2502.01743",
+    "title": "High Rate Magic State Cultivation on the Surface Code",
+    "authors": "Vaknin, Jacoby, Grimsmo, Retzker",
+    "year": 2025,
+    "circuit_location": ["https://github.com/tomirendo/surface-code-magic-state-cultivation"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Inspect generate_injection_circuit and the Clifford simulation circuit for the state-preparation and check stand-ins, then substitute the appropriate non-Clifford rotations. Protocol includes controlled logical checks, so conversion can require decomposition beyond a single S-to-T substitution.",
+    "confidence": "medium",
+    "notes": "Author repository documents simulation.py generation of injection and syndrome circuits, Stim/Sinter Clifford simulation, and a separate full-state-vector simulation. Current paper title differs from the repository's earlier 'Efficient Magic State Cultivation on the Surface Code'. README says circuits/ holds generated Stim files, but checked-in status was not independently confirmed."
+  },
+  {
+    "arxiv_id": "2512.13908",
+    "title": "Magic state cultivation on a superconducting quantum processor",
+    "authors": "Rosenfeld et al.",
+    "year": 2025,
+    "circuit_location": ["https://arxiv.org/html/2512.13908"],
+    "format": "stim files",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Supplement section VII links to explicit injection, cultivation, grafting and complete experiment circuits in Crumble; use Show Import/Export to extract Stim text. Inspect injected-state preparation and experiment-specific rotations to restore the non-Clifford operation; exact substitutions and simulator compatibility are unverified.",
+    "confidence": "medium",
+    "notes": "Author-supplied paper explicitly states the linked circuits were constructed in Stim and include detectors. Circuit location is the HTML supplement containing embedded links, not a downloadable .stim archive; the links encode circuit content in their URLs."
+  }
+]

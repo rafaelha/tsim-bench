@@ -1,0 +1,26 @@
+[
+  {
+    "arxiv_id": "2604.05126",
+    "title": "In-Situ Simultaneous Magic State Injection on Arbitrary CSS qLDPC Codes",
+    "authors": "Liu, Xu, Jochym-O'Connor, He, Singh, Ding",
+    "year": 2026,
+    "circuit_location": ["https://github.com/kunliu7/qldpc-msi", "https://github.com/kunliu7/qldpc-msi/tree/main/prj_msi/20sim", "https://github.com/kunliu7/qldpc-msi/tree/main/src/qldpc_msi"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The paper explicitly simulates logical Y-state injection as a Clifford proxy. At each selected injection site replace the |Y> initialization (RY, equivalently RX then S) by |T> initialization (RX then T); preserve all other initialization, entangling and syndrome-extraction operations. Reassess final Y-basis readout, detectors and observables, which need not remain deterministic for |T>.",
+    "confidence": "high",
+    "notes": "Author-released repository and paper data-availability statement verified. README identifies inject_y_v2.py and inject_y_v2_xu_hgp.py and build_msi_circuit entry points; simulations cover [[144,12,12]] BB and [[225,9,4]] HGP. Noise and verification changes may be needed; a converted circuit is not a Stim stabilizer simulation."
+  },
+  {
+    "arxiv_id": "2510.07269",
+    "title": "Transversal Dimension Jump for Product qLDPC Codes",
+    "authors": "Li, Preskill, Xu",
+    "year": 2025,
+    "circuit_location": ["https://github.com/tinghui2012/transversal-dimension-jump", "https://github.com/tinghui2012/transversal-dimension-jump/blob/main/src/CCZCircuit.py", "https://github.com/tinghui2012/transversal-dimension-jump/blob/main/notebooks/3_ccz_error_detection_simulations.ipynb"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "CCZCircuit.py builds stim.Circuit objects and uses ccz_pauli_circuit with weight-five correlated Z faults as a surrogate, not an ideal CCZ. Insert physical CCZ for each nonzero P_CCZ_mat[i][j][k] between corresponding data_indices_b1[i], data_indices_b2[j], data_indices_b3[k], at the surrogate stage; retain or adapt the noise. Export and postprocess text because standard Stim cannot construct CCZ. Reconsider X-basis final detectors and logical observables for the actual non-Clifford state.",
+    "confidence": "high",
+    "notes": "Paper links author simulation repository; its CCZ error-detection simulation is not an ideal CCZ circuit. The matrix construction and depth scheduling need checking for the chosen code, and adding gates changes the experiment."
+  }
+]

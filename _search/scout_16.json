@@ -1,0 +1,86 @@
+[
+  {
+    "arxiv_id": "2604.27058",
+    "title": "Clifft: Fast Exact Simulation of Near-Clifford Quantum Circuits",
+    "authors": "Chase, Labib",
+    "year": 2026,
+    "circuit_location": ["https://github.com/unitaryfoundation/clifft-paper/tree/main/qec_bench/circuits", "https://github.com/unitaryfoundation/clifft-paper/tree/main/magic_state_cultivation", "https://github.com/haoliri0/SymFT_Test/tree/main/benchmark/circuit"],
+    "format": "both",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "Extended Stim templates include T/T_DAG cultivation and distillation; coherent-noise benchmarks use R_Z. No conversion needed; check rotation angle units and postselection conventions.",
+    "confidence": "high",
+    "notes": "Paper benchmark repository includes cultivation d=3,5, 85-qubit distillation, and coherent surface code. SymFT benchmark README documents byte-identical vendored cultivation files and explicit provenance. Full escape-stage code is separate. https://arxiv.org/abs/2604.27058"
+  },
+  {
+    "arxiv_id": "2607.28600",
+    "title": "SymFT: Universal Fault-Tolerant Quantum Circuit Simulation via Symbolic Clifford--Pauli Frames and Stabilizer Coordinates",
+    "authors": "Fang, Lou, Li",
+    "year": 2026,
+    "circuit_location": ["https://github.com/haoliri0/SymFT_Test/tree/main/benchmark/circuit", "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md"],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "The msc, distillation and coherent_surface files use extended Stim gates T, T_DAG, R_X or R_Z. Rotation parameters are half-turns, e.g. R_Z(0.02) = 0.02 pi radians.",
+    "confidence": "high",
+    "notes": "The benchmark README identifies checked-in inputs and their provenance. d=3 and d=5 cultivation files are copies of the Clifft paper corpus; d=7 is explicitly an unverified performance proxy, unsuitable for logical-error claims. https://arxiv.org/abs/2607.28600"
+  },
+  {
+    "arxiv_id": "2512.23037",
+    "title": "SOFT: a high-performance simulator for universal fault-tolerant quantum circuits",
+    "authors": "Li, Zheng, Zhang, Lou, Ying, Liu, Sun",
+    "year": 2025,
+    "circuit_location": ["https://github.com/haoliri0/SOFT", "https://github.com/haoliri0/SymFT_Test/tree/main/benchmark/circuit"],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "d=3 and d=5 T/T_DAG cultivation cases in the later SymFT benchmark corpus are usable extended Stim text. Check against original SOFT conventions before treating them as exact replication.",
+    "confidence": "medium",
+    "notes": "Paper reports d=5 with 42 qubits and 72 T/T-dagger gates and links SOFT repository. SymFT is its successor; the documented d=3/5 files are Clifft-derived, so direct identity to original SOFT input has not been verified. https://arxiv.org/abs/2512.23037"
+  },
+  {
+    "arxiv_id": "2509.08658",
+    "title": "Simulating magic state cultivation with few Clifford terms",
+    "authors": "Wan, Zhong, Zapirain",
+    "year": 2025,
+    "circuit_location": ["https://github.com/kh428/accel-cutting-magic-state/blob/main/run.py", "https://github.com/kh428/accel-cutting-magic-state"],
+    "format": "generator code",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "run.py contains T/T_DAG circuit strings; it substitutes S/S_DAG to use Stim noise tooling then restores T/T_DAG before building tsim.Circuit. Extract noisy_injection_str and projection for the d=3 circuit.",
+    "confidence": "high",
+    "notes": "Author companion repository specifies paper arXiv ID and implements exact d=3 simulation with bloqade-tsim. The paper also analyzes d=5, but this particular repo advertises d=3. https://arxiv.org/abs/2509.08658"
+  },
+  {
+    "arxiv_id": "2507.12511",
+    "title": "Unfolded distillation: very low-cost magic state preparation for biased-noise qubits",
+    "authors": "Ruiz, Guillaud, Vuillot, Mirrahimi",
+    "year": 2025,
+    "circuit_location": ["https://github.com/DiegoRuiz-Git/Unfolded_distillation/tree/main/Repetition%20code%20simulations", "https://github.com/DiegoRuiz-Git/Unfolded_distillation"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The paper says the simulated X^(1/2) Clifford rotations stand in for X^(1/4); identify the protocol's transversal proxy gates and replace with R_X(+/-0.25) in half-turn units, preserving the original sign and other Clifford rotations. Recheck detectors and output observable.",
+    "confidence": "medium",
+    "notes": "Paper's data availability links the author code repository; it contains repetition, surface-code, and Toffoli simulations. Exact generator filenames and precise proxy gate positions not yet verified. https://www.nature.com/articles/s41534-026-01197-z"
+  },
+  {
+    "arxiv_id": "2503.18657",
+    "title": "Efficient Magic State Cultivation on RP²",
+    "authors": "Chen, Chen, Lu, Pan",
+    "year": 2025,
+    "circuit_location": ["https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2/tree/main/circuit_garage", "https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2/blob/main/t_gadget.py"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Locate injection and logical verification proxy instructions using t_gadget.py and the paper; substitute the intended T-state injection and controlled-HXY construction, rather than replacing every S indiscriminately. Exact gate mapping remains to be verified.",
+    "confidence": "medium",
+    "notes": "Repository identifies Stim circuits in circuit_garage and d=3/d=5 cultivation and end-to-end sampling scripts. Paper discusses T injection and verification; proxy-to-native conversion has not been checked. https://arxiv.org/abs/2503.18657"
+  },
+  {
+    "arxiv_id": "2502.01743",
+    "title": "Efficient Magic State Cultivation on the Surface Code",
+    "authors": "Vaknin, Jacoby, Grimsmo, Retzker",
+    "year": 2025,
+    "circuit_location": ["https://github.com/tomirendo/surface-code-magic-state-cultivation"],
+    "format": "generator code",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Repository reports Stim/Sinter Clifford simulation and full state-vector simulation; identify and replace the injection and verification proxies using the non-Clifford protocol and state-vector implementation. The specific replacement sites were not checked.",
+    "confidence": "low",
+    "notes": "Author repository explicitly identifies its paper and provides surface-code cultivation circuit generation. The precise compatibility of generated circuits and non-Clifford conversion is unverified. https://arxiv.org/abs/2502.01743"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "arxiv_id": "2604.27058",
+    "title": "Clifft: Fast Exact Simulation of Near-Clifford Quantum Circuits",
+    "authors": "Chase, Labib",
+    "year": 2026,
+    "circuit_location": ["https://github.com/unitaryfoundation/clifft-paper", "https://github.com/unitaryfoundation/clifft-bench/tree/main/workloads/circuits"],
+    "format": "both",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "The coherent surface-code workloads already contain R_Z rotations in extended Stim syntax; no T conversion is needed. The companion paper states it provides exact circuit files and generation scripts. Cultivation workloads also contain real T gates.",
+    "confidence": "high",
+    "notes": "The paper benchmarks rotated memory-Z at (distance, rounds) (3,1), (3,3), (5,1), (5,5); the coherent variants use R_Z(0.02) at depolarization sites. R_Z is non-Clifford but the prescribed status vocabulary has no native-rotation option. Standard Stim cannot parse the extension. Paper: https://arxiv.org/html/2604.27058 ; check rotation angle conventions across simulators. Note SymFT README describes replacement of depolarization, whereas Clifft paper text says co-located; inspect the precise chosen file."
+  },
+  {
+    "arxiv_id": "2607.28600",
+    "title": "SymFT: Universal Fault-Tolerant Quantum Circuit Simulation via Symbolic Clifford--Pauli Frames and Stabilizer Coordinates",
+    "authors": "Fang, Lou, Li",
+    "year": 2026,
+    "circuit_location": ["https://github.com/haoliri0/SOFT/tree/main/benchmark/circuit", "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md"],
+    "format": "stim files",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "The coherent_surface_* files already contain R_Z(0.02), so no conversion is needed; these are extended Stim syntax, not parseable by ordinary Stim. README specifies angles in half turns: 0.02 means 0.02*pi radians. Check Tsim's convention before running.",
+    "confidence": "high",
+    "notes": "Four coherent rotated surface-code inputs at d/r 3/1, 3/3, 5/1, 5/5. README says generated DEPOLARIZE1 and DEPOLARIZE2 are replaced by R_Z on the same targets, while reset and measurement errors remain stochastic. Files are checked in, with no regeneration script; Clifft-derived so overlapping rather than independent workloads. Native R_Z has no corresponding option in the requested status vocabulary."
+  },
+  {
+    "arxiv_id": "2610.03869",
+    "title": "Modular Neural Decoder for Surface Code Memory and Logic on Superconducting Processors",
+    "authors": "Lange, Fjeldså, Johansson, Granath",
+    "year": 2026,
+    "circuit_location": ["https://github.com/LangeMoritz/modular-gnn-rnn-decoder", "https://github.com/LangeMoritz/modular-gnn-rnn-decoder/blob/main/gnnrnn/circuits.py", "https://zenodo.org/records/23335425"],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Use the released d=3 X-type stability circuit and insert R_X(alpha) on every measure qubit immediately before each readout, as specified by the paper; check angle units. The released simulations use stochastic models, while the coherent sweep was performed on IBM hardware.",
+    "confidence": "medium",
+    "notes": "Repository documents Stim simulation generator and noiseless stability/ZZ-merge circuit files; Zenodo contains measured detector events for the coherent-angle sweep, not claimed to contain extended Stim circuits. Confirm exact file syntax and whether the circuit faithfully captures the hardware no-reset schedule before claiming reproduction. Paper section IV.2: https://arxiv.org/html/2610.03869"
+  },
+  {
+    "arxiv_id": "2512.23037",
+    "title": "SOFT: a high-performance simulator for universal fault-tolerant quantum circuits",
+    "authors": "Li, Zheng, Zhang, Lou, Ying, Liu, Sun",
+    "year": 2025,
+    "circuit_location": ["https://github.com/haoliri0/SOFT/tree/main/legacy/softv1/magic_state_cultivation", "https://github.com/haoliri0/SOFT/tree/main/benchmark/circuit"],
+    "format": "unknown",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "The paper directly simulates d=5 cultivation with 72 T/T-dagger gates; inspect the legacy circuit files for the input dialect and whether translation to extended Stim is required. Current benchmark directory provides related extended Stim T-gate circuits.",
+    "confidence": "medium",
+    "notes": "The original paper explicitly cites the public SOFT repository for reproducing its results. This is a near-Clifford simulator/cultivation candidate, not a coherent-overrotation experiment; the present benchmark corpus is a later SymFT revision, so do not assume all benchmark files are exactly those of the 2025 paper. https://arxiv.org/html/2512.23037"
+  },
+  {
+    "arxiv_id": "2303.04672",
+    "title": "Coherent errors and readout errors in the surface code",
+    "authors": "Márton, Asbóth",
+    "year": 2023,
+    "circuit_location": ["https://github.com/martonaron88/Surface_code_FLO/blob/main/FLO_coherent_readout.py"],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Reconstruct the physical surface-code stabilizer measurements and Z rotations as a Stim-style circuit from the described phenomenological model; add measurement readout flips. This is not established as a ready-to-run Stim generator and reconstruction is substantive.",
+    "confidence": "low",
+    "notes": "The authors explicitly release the Python Majorana/FLO simulation used for the paper, but it does not appear to supply Stim circuits; included as a reconstructable lead, not as a verified Stim match. Phenomenological repeated measurements rather than a circuit-level gate-noise model. Paper reference: https://quantum-journal.org/papers/q-2023-09-21-1116/pdf/"
+  }
+]

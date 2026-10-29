@@ -1,0 +1,95 @@
+[
+  {
+    "arxiv_id": "2607.28600",
+    "title": "SymFT: Universal Fault-Tolerant Quantum Circuit Simulation via Symbolic Clifford--Pauli Frames and Stabilizer Coordinates",
+    "authors": "Fang, Lou, Li",
+    "year": 2026,
+    "circuit_location": [
+      "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md",
+      "https://github.com/haoliri0/SymFT_Test/tree/main/benchmark/circuit",
+      "https://github.com/haoliri0/SOFT"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "The benchmark describes distillation.stim as an extended Stim-like near-Clifford circuit containing non-Clifford operations; inspect the file for its exact gates and rotation conventions. SymFT and Clifft rotation arguments are in half-turns.",
+    "confidence": "high",
+    "notes": "The benchmark README identifies distillation.stim as an 85-qubit [[17,1,5]] magic-state distillation workload, usable with Tsim/Clifft/SymFT. The paper is about simulation, not the original protocol. README groups this file with circuits containing T, T_DAG, R_X or R_Z without specifying which of these occur in this specific file; classify as native non-Clifford rather than asserting a specific gate. Source circuit direct page could not be fetched by web tool."
+  },
+  {
+    "arxiv_id": "2604.27058",
+    "title": "Clifft: Fast Exact Simulation of Near-Clifford Quantum Circuits",
+    "authors": "Chase, Labib",
+    "year": 2026,
+    "circuit_location": [
+      "https://github.com/unitaryfoundation/clifft",
+      "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "Published cultivation_d3.stim and cultivation_d5.stim are native near-Clifford circuit fixtures. SymFT benchmark identifies exact copies msc_d3_inject_cultivate_p1e-3.stim and msc_d5_inject_cultivate_p1e-3.stim; no S-to-T substitution is needed.",
+    "confidence": "high",
+    "notes": "Simulation paper; benchmark fixtures derived from Gidney et al. Use d=3 Steane/color code and d=5 growth. SymFT benchmark supplies immutable upstream Clifft commit db7dc9f13a2c2854690e92390c779048a1ac1400 and notes its d=7 workload is unverified; do not use d=7 for logical error claims."
+  },
+  {
+    "arxiv_id": "2409.17595",
+    "title": "Magic state cultivation: growing T states as cheap as CNOT gates",
+    "authors": "Gidney, Shutty, Jones",
+    "year": 2024,
+    "circuit_location": [
+      "https://doi.org/10.5281/zenodo.13777072",
+      "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md",
+      "https://github.com/unitaryfoundation/clifft"
+    ],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Cultivation uses a Clifford S/S_DAG proxy for the corresponding T/T_DAG injection and logical-HXY verification rotations; substitute only protocol-designated proxy gates, not arbitrary S gates. Native converted d=3 and d=5 fixtures exist in Clifft and SymFT benchmarks.",
+    "confidence": "high",
+    "notes": "Author data identified by Stim circuit data catalog; Zenodo DOI could not be opened by web tool. SymFT README identifies original generator commit 871e68ff6df2f75190b1bfd6351459d1b5a037e3, and Clifft-derived circuits, with d=3 and d=5 specialized growth and verification. Overlaps other cultivation searches."
+  },
+  {
+    "arxiv_id": "2402.17761",
+    "title": "Quantum Circuit Discovery for Fault-Tolerant Logical State Preparation with Reinforcement Learning",
+    "authors": "Zen, Olle, Colmenarez, Puviani, Müller, Marquardt",
+    "year": 2024,
+    "circuit_location": [
+      "https://github.com/remmyzen/rlftqc",
+      "https://github.com/remmyzen/rlftqc/tree/main/circuits"
+    ],
+    "format": "both",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Only a stabilizer-state encoder and verification building block is demonstrated: making a magic state requires a separately designed non-Clifford preparation and compatible verification, not a simple gate substitution.",
+    "confidence": "low",
+    "notes": "Author repository explicitly supplies Stim circuits and generators, including seven-qubit Steane |0> and flag-based verification. It does not demonstrate non-stabilizer preparation; a possible source of components only and outside strict selection criteria."
+  },
+  {
+    "arxiv_id": "2508.14200",
+    "title": "Flag at origin: a modular fault-tolerant preparation for CSS codes",
+    "authors": "Forlivesi, Amaro",
+    "year": 2025,
+    "circuit_location": [
+      "https://qecirc.com/circuits/521",
+      "https://qecirc.com/circuits/728",
+      "https://arxiv.org/html/2508.14200"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "The [[17,1,5]] output is a |0> stabilizer preparation with flags, not a magic-state proxy. One must construct and validate an appropriate non-Clifford preparation and verification protocol; do not replace a random Clifford gate.",
+    "confidence": "low",
+    "notes": "QECirc provides a downloadable Stim rendering for a 17-qubit color-code FT |0> circuit, traced to paper source Notebook_1/SeventeenColorCode.json; also reusable flag gadgets. Third-party conversion of author circuits, not an author-released magic circuit. Included as a limited building-block lead."
+  },
+  {
+    "arxiv_id": "2408.11894",
+    "title": "Automated Synthesis of Fault-Tolerant State Preparation Circuits for Quantum Error Correction Codes",
+    "authors": "Peham, Schmid, Berent, Müller, Wille",
+    "year": 2024,
+    "circuit_location": [
+      "https://github.com/cda-tum/mqt-qecc",
+      "https://github.com/quantumlib/Stim/blob/main/doc/circuit_data_references.md"
+    ],
+    "format": "generator code",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Synthesizes verified CSS stabilizer preparation; extension to a non-Clifford magic-state protocol requires additional state injection and proper verification, not a simple replacement of a gate.",
+    "confidence": "low",
+    "notes": "Stim project catalog lists paper Stim circuits; paper points to author MQT QECC repository and describes distance-3 and distance-5 preparation and verification. No released magic-state circuit established; retained as a possible building-block source only."
+  }
+]

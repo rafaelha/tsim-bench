@@ -1,0 +1,86 @@
+[
+  {
+    "arxiv_id": "2409.17595",
+    "title": "Magic state cultivation: growing T states as cheap as CNOT gates",
+    "authors": "Gidney, Shutty, Jones",
+    "year": 2024,
+    "circuit_location": ["https://github.com/Strilanc/magic-state-cultivation", "https://zenodo.org/records/13777072", "https://github.com/haoliri0/SymFT_Test/tree/main/benchmark/circuit"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Generate the Y-basis injection/cultivation circuit; replace the specific S and S_DAG rotations standing in for T and T_DAG, respectively, not unrelated Clifford S gates. The paper's Figure 7 describes this replacement. Check non-Clifford detector/observable behavior and feedback. Independently converted d=3 and d=5 extended-Stim files are linked in SymFT_Test, derived from Clifft.",
+    "confidence": "high",
+    "notes": "Author repository generates unitary, Bell, and teleport injection plus cultivation and escape circuits. Paper notes that S-proxy results need not faithfully predict T-circuit behavior. SymFT's d=7 extension is explicitly unverified and is not an author release. Sources: https://arxiv.org/html/2409.17595 and https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md."
+  },
+  {
+    "arxiv_id": "2512.13908",
+    "title": "Magic state cultivation on a superconducting quantum processor",
+    "authors": "Rosenfeld, Gidney, Roberts, Morvan, Lacroix, et al.",
+    "year": 2025,
+    "circuit_location": ["https://zenodo.org/records/17872003", "https://zenodo.org/records/17872003/files/README.md"],
+    "format": "stim files",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The release explicitly states stim_X.stim and stim_Z.stim replace non-Clifford rotations by Clifford operations. Compare each with the corresponding cirq_circuit_X/Z.json to restore the actual rotations, accounting for echo-frame reversals and tagged H_YZ conjugations. Validate detectors and tomography separately.",
+    "confidence": "high",
+    "notes": "Author dataset contains experimental circuits and raw data in fig2/fig3/fig4 archives; total 3.2 GB, not downloaded. README confirms formats and substitution; paper's data availability links the dataset. Color-code injection, cultivation and grafting to surface code."
+  },
+  {
+    "arxiv_id": "2409.07707",
+    "title": "Low-overhead magic state distillation with color codes",
+    "authors": "Lee, Thomsen, Fazio, Brown, Bartlett",
+    "year": 2024,
+    "circuit_location": ["https://github.com/seokhyung-lee/color-code-stim", "https://github.com/seokhyung-lee/msd-magic-state-prep-cycle-simulation"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Use color-code-stim's cult+growing option (d=3 or 5) for the Gidney-style cultivation stage, and restore the magic-state rotations following the original cultivation construction; exact replacement sites and detector interpretation require inspection. This is not the complete 15-to-1 distillation circuit.",
+    "confidence": "medium",
+    "notes": "The paper's v5 adds integrated cultivation-plus-growing simulations. Author's package explicitly implements this circuit type. The separate msd-magic-state-prep-cycle-simulation repo is a classical timing/availability model, not a quantum circuit generator; do not confuse it with a released factory circuit."
+  },
+  {
+    "arxiv_id": "2404.07482",
+    "title": "Color code decoder with improved scaling for correcting circuit-level noise",
+    "authors": "Lee, Li, Bartlett",
+    "year": 2024,
+    "circuit_location": ["https://github.com/seokhyung-lee/color-code-stim"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Current package generates cult+growing circuits based on Gidney et al. for distance 3 or 5, and supports superdense extraction. Identify and convert the cultivation rotations from Clifford stand-ins following the original construction; inspect exact sites and validate. Original paper's memory circuits require adding a magic-state injection stage.",
+    "confidence": "medium",
+    "notes": "The cultivation feature was added after this decoder paper and is not a circuit studied in the original publication; it is author-released follow-on code. Repository documents a correction to its old bit-flip model and says circuit-level results are unaffected."
+  },
+  {
+    "arxiv_id": "2502.01743",
+    "title": "Efficient Magic State Cultivation on the Surface Code",
+    "authors": "Vaknin, Jacoby, Grimsmo, Retzker",
+    "year": 2025,
+    "circuit_location": ["https://github.com/tomirendo/surface-code-magic-state-cultivation"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Inspect 2025/HCultivationSurfaceCode/simulation.py and its injection and controlled-operation constructions, comparing full state-vector and Stim variants to restore non-Clifford operations; no safe general gate-by-gate substitution has been verified.",
+    "confidence": "medium",
+    "notes": "Comparative candidate: protocol cultivates on surface codes instead of color codes. Repository provides Stim generators, full state-vector code and a modified copy of Gidney's color-code cultivation code; generated files described in circuits/ but committed files not independently confirmed."
+  },
+  {
+    "arxiv_id": "2412.14256",
+    "title": "Scaling and logic in the color code on a superconducting quantum processor",
+    "authors": "Lacroix, Bourassa, et al.",
+    "year": 2024,
+    "circuit_location": ["https://zenodo.org/records/14238944"],
+    "format": "stim files",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "The released d=3/d=5 superdense memory circuits are potential bases for injection: add physical state preparation and encoding per the paper's state injection circuit, then adjust detectors and logical readout. The listed dataset describes memory experiments, not the injection experiment.",
+    "confidence": "low",
+    "notes": "Stim's official circuit-data index links the paper to this author dataset, but the 738.5 MB archive was not downloaded and the dataset describes only memory experiments. Magic-state injection circuits are not verified as released; this is a reconstructable lead, not an asserted exact match."
+  },
+  {
+    "arxiv_id": "2412.15165",
+    "title": "Experimental demonstration of logical magic state distillation",
+    "authors": "Sales Rodriguez, Robinson, Jepsen, et al.",
+    "year": 2024,
+    "circuit_location": ["https://queracomputing.github.io/bloqade/v0.34.0/digital/examples/tsim/magic_state_distillation/"],
+    "format": "generator code",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "The related QuEra Bloqade/Tsim tutorial constructs 85-qubit five-to-one distillation with [[17,1,5]] encoding and T/T-dagger magic input preparation. Export or translate its Bloqade kernels to the extended Stim dialect; verify rotation units and postselection. The tutorial itself is not a .stim release.",
+    "confidence": "low",
+    "notes": "Related platform-author tutorial implements the same general color-code distillation setting, but does not claim to reproduce the experiment or explicitly cite the paper; exact paper circuit code not established. Native T/T-dagger status refers to tutorial code, not a .stim file."
+  }
+]

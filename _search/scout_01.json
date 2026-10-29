@@ -1,0 +1,105 @@
+[
+  {
+    "arxiv_id": "2409.17595",
+    "title": "Magic state cultivation: growing T states as cheap as CNOT gates",
+    "authors": "Gidney, Shutty, Jones",
+    "year": 2024,
+    "circuit_location": [
+      "https://github.com/Strilanc/magic-state-cultivation",
+      "https://zenodo.org/records/13777072"
+    ],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Replace designated injection and kickback S/S_DAG proxies with T/T_DAG using correct signs; do not replace every S. Compare published exact Clifft circuits and verify detectors.",
+    "confidence": "high",
+    "notes": "Generator covers injection, cultivation and escape; Zenodo provides circuits.zip and code.zip."
+  },
+  {
+    "arxiv_id": "2502.01743",
+    "title": "High Rate Magic State Cultivation on the Surface Code",
+    "authors": "Vaknin, Jacoby, Grimsmo, Retzker",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/tomirendo/surface-code-magic-state-cultivation"
+    ],
+    "format": "generator code",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Identify proxy rotation or controlled-Clifford decomposition and replace with actual non-Clifford gates; conversion unverified.",
+    "confidence": "medium",
+    "notes": "Repository describes Stim/Sinter circuit generation and statevector simulations. Earlier title Efficient Magic State Cultivation on the Surface Code. H, HXY and CX protocols."
+  },
+  {
+    "arxiv_id": "2503.18657",
+    "title": "Efficient Magic State Cultivation on RP^2",
+    "authors": "Chen, Chen, Lu, Pan",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2/tree/main/circuit_garage",
+      "https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2"
+    ],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Locate injection and magic-check S/S_DAG proxies and selectively replace with T/T_DAG, verifying sign and detectors; exact conversion unverified.",
+    "confidence": "high",
+    "notes": "Author README identifies Stim files including rp_3_T_cult.stim and end-to-end growth."
+  },
+  {
+    "arxiv_id": "2509.05212",
+    "title": "Fold-transversal surface code cultivation",
+    "authors": "Sahay, Tsai, Chang, Su, Smith, Singh, Puri",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/kaavyas99/MSC_foldedH/tree/main/sample_circuits",
+      "https://github.com/kaavyas99/MSC_foldedH"
+    ],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Repository describes |Y> proxy; adapt injection and controlled fold-transversal measurement to non-Clifford gates using paper; exact conversion unverified.",
+    "confidence": "high",
+    "notes": "Includes fd3_baseline_ckt.stim and fd5_base_new.stim; generator describes fault-distance-3 |Y> cultivation and stabilizer-based escape."
+  },
+  {
+    "arxiv_id": "2603.05429",
+    "title": "Constant-depth magic state cultivation with Clifford measurements by gauging",
+    "authors": "Hetényi, Brown, Williamson",
+    "year": 2026,
+    "circuit_location": [
+      "https://github.com/hetenyib/gauging_clifford_measurement",
+      "https://github.com/IBM/gauging_clifford_measurement"
+    ],
+    "format": "both",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Inspect generated gauging and escape circuits to identify preparation and controlled-gate decomposition; no verified conversion.",
+    "confidence": "high",
+    "notes": "Paper links hetenyib repository; IBM repository describes Stim generators plus benchmark files from original cultivation. Its README gives an unrelated arXiv ID; 2603.05429 verified by title and authors."
+  },
+  {
+    "arxiv_id": "2509.08658",
+    "title": "Simulating magic state cultivation with few Clifford terms",
+    "authors": "Wan, Zhong, Zapirain",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/kh428/accel-cutting-magic-state/blob/main/d_3_circuit_definitions.py"
+    ],
+    "format": "generator code",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "Python definitions contain extended Stim-like text with T and T_DAG; extract or use supplied definitions. Standard Stim cannot parse non-Clifford gates.",
+    "confidence": "high",
+    "notes": "Companion provides d=3 non-Clifford benchmark and Clifford proxy. Paper studies d=5; see 2609.18922 for fault-distance analysis."
+  },
+  {
+    "arxiv_id": "2604.27058",
+    "title": "Clifft: Fast Exact Simulation of Near-Clifford Quantum Circuits",
+    "authors": "Chase, Labib",
+    "year": 2026,
+    "circuit_location": [
+      "https://github.com/unitaryfoundation/clifft-paper",
+      "https://github.com/haoliri0/SymFT_Test/tree/main/benchmark/circuit"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "Use d=3 and d=5 cultivation workloads with T/T_DAG already present; extended Stim dialect is not parseable by standard Stim.",
+    "confidence": "high",
+    "notes": "SymFT README identifies msc_d3_inject_cultivate_p1e-3.stim and msc_d5_inject_cultivate_p1e-3.stim as byte-for-byte copies of Clifft published files. 2609.18922 analyzes fault distances."
+  }
+]

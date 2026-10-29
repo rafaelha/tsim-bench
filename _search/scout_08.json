@@ -1,0 +1,63 @@
+[
+  {
+    "arxiv_id": "2409.17595",
+    "title": "Magic state cultivation: growing T states as cheap as CNOT gates",
+    "authors": "Gidney, Shutty, Jones",
+    "year": 2024,
+    "circuit_location": [
+      "https://github.com/Strilanc/magic-state-cultivation",
+      "https://zenodo.org/records/13777072",
+      "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md"
+    ],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The published Clifford simulation uses a phase-doubled |Y> proxy; identify injection/cultivation S and S_DAG stand-ins and convert to T and T_DAG, respecting basis and signs. Clifft-derived d3/d5 conversions are identified in the benchmark README; verify detector and observable meanings after conversion. Produces T states, usable as inputs to CCZ factories, not an entire CCZ factory.",
+    "confidence": "high",
+    "notes": "Author repository includes circuit generation and Zenodo provides circuits.zip and code.zip. Directly usable artifact; adjacent to requested factory angle."
+  },
+  {
+    "arxiv_id": "2309.08663",
+    "title": "Implementing fault-tolerant non-Clifford gates using the [[8,3,2]] color code",
+    "authors": "Honciuc Menendez, Ray, Vasmer",
+    "year": 2023,
+    "circuit_location": [
+      "https://github.com/MikeVasmer/832-code",
+      "https://assert.ing/circuit-corpus.html"
+    ],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "The paper specifies fault-tolerant encoding and transversal T/T-dagger implementation of logical CCZ. Reconstruct the circuit in extended Stim from the paper and check physical gate signs and measurement ordering. Independently implemented color-832-ccz oracle is described in the linked corpus, but not confirmed to be Stim.",
+    "confidence": "low",
+    "notes": "The author repository is explicitly data analysis and experimental results, not verified to contain circuit generator code or Stim files; corpus is third-party and independently derived, not an author release. Include only as a reconstruction lead."
+  },
+  {
+    "arxiv_id": "2608.09727",
+    "title": "Magic State Distillation via Codes over Binary Extension Fields",
+    "authors": "Gong, Pattison, Rall, Wills",
+    "year": 2026,
+    "circuit_location": [
+      "https://github.com/gongaa/MSD-binary-fields",
+      "https://github.com/gongaa/MSD-binary-fields/blob/main/notebooks/Small_protocols_CS.ipynb",
+      "https://github.com/gongaa/MSD-binary-fields/blob/main/notebooks/Small_protocols_CCZ.ipynb"
+    ],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Reconstruct encoding, transversal CS or CCZ layer, decoding and syndrome measurements from the code matrices and protocols in the SageMath notebooks, then emit extended Stim; no direct Stim exporter verified.",
+    "confidence": "low",
+    "notes": "Author-supplied SageMath code constructs and verifies CS-to-CS, CCZ-to-CCZ, and concatenated 8T-to-CCZ protocols; it is not demonstrated to generate physical circuits or Stim. Useful specific algebraic reconstruction lead."
+  },
+  {
+    "arxiv_id": "2605.21867",
+    "title": "Zero-level CCZ Distillation",
+    "authors": "Itogawa, Hirano, Akahoshi, Fujii",
+    "year": 2026,
+    "circuit_location": [
+      "https://arxiv.org/html/2605.21867"
+    ],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Reconstruct the explicit 22-qubit preparation and teleportation circuit from the paper and insert its specified transversal T/T_DAG pattern. The authors simulate a Clifford proxy with T gates omitted; no downloadable proxy circuit found, so insertion points and corrections require reconstruction from figures and appendix.",
+    "confidence": "low",
+    "notes": "Highly relevant [[8,3,2]] CCZ protocol and Clifford-proxy numerical methodology. No released circuit or code located; HTML paper is included as a circuit specification, not an artifact claim."
+  }
+]

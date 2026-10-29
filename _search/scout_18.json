@@ -1,0 +1,110 @@
+[
+  {
+    "arxiv_id": "2604.27058",
+    "title": "Clifft: Fast Exact Simulation of Near-Clifford Quantum Circuits",
+    "authors": "Chase, Labib",
+    "year": 2026,
+    "circuit_location": [
+      "https://github.com/unitaryfoundation/clifft-paper/tree/main/qec_bench",
+      "https://github.com/unitaryfoundation/clifft-paper/tree/main/magic_state_cultivation",
+      "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md"
+    ],
+    "format": "both",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "Existing extended-Stim cultivation d=3 and d=5 contain T/T_DAG; no conversion needed. Full cultivation/escape workflows compare real T against the S proxy; distinguish benchmark data and detector/observable conventions. Extended gates are not accepted by standard Stim.",
+    "confidence": "high",
+    "notes": "Logical cultivation, non-Clifford check circuits, 85-qubit distillation benchmark, and coherent-noise surface-code circuits. SymFT benchmark README identifies copies and exact provenance. The distillation workload has a proxy/correctness caveat: inspect benchmark documentation before interpreting as a validated factory."
+  },
+  {
+    "arxiv_id": "2512.23037",
+    "title": "SOFT: a high-performance simulator for universal fault-tolerant quantum circuits",
+    "authors": "Li, Zheng, Zhang, Lou, Ying, Liu, Sun",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/haoliri0/SOFT",
+      "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "Use the explicitly non-Clifford d=3/d=5 extended-Stim cultivation files; T and T_DAG already present. Check code version: current SOFT repository is successor SymFT, while original is under legacy/softv1.",
+    "confidence": "high",
+    "notes": "Paper describes 42-qubit d=5 cultivation with 72 T/T-dagger gates; corrected d=5 circuit overlaps Clifft and SymFT inputs, not an independent family. Paper code linked at https://arxiv.org/html/2512.23037."
+  },
+  {
+    "arxiv_id": "2607.28600",
+    "title": "SymFT: Universal Fault-Tolerant Quantum Circuit Simulation via Symbolic Clifford--Pauli Frames and Stabilizer Coordinates",
+    "authors": "Fang, Lou, Li",
+    "year": 2026,
+    "circuit_location": [
+      "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md",
+      "https://github.com/haoliri0/SOFT/tree/main/benchmark/circuit"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "Use msc_d3_inject_cultivate_p1e-3.stim or msc_d5_inject_cultivate_p1e-3.stim; native T/T_DAG. Coherent surface circuits have R_X or R_Z; angles documented in half-turns, verify Tsim conventions.",
+    "confidence": "high",
+    "notes": "Checked-in benchmark inputs, no regeneration script in this directory. d3/d5 byte-identical copies of Clifft circuits; 85-qubit distillation workload also present. The d7 workload is explicitly an unverified proxy and must not support claims about logical error or acceptance."
+  },
+  {
+    "arxiv_id": "2609.18922",
+    "title": "Exact logical error rates for magic state cultivation",
+    "authors": "Wan, Zapirain",
+    "year": 2026,
+    "circuit_location": [
+      "https://github.com/kh428/exact_ler_for_msc",
+      "https://github.com/unitaryfoundation/clifft-paper",
+      "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md"
+    ],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "The studied d=3 and corrected d=5 circuits are the Clifft/SymFT extended-Stim T-gate workloads; retain T/T_DAG. Paper fixes the d=5 input SHA-256 859d925c74712efaae8bab1d944f9e5be4e042e226eeafcc6d7bef9d6fbfbae5.",
+    "confidence": "high",
+    "notes": "Independent exact validation and logical error coefficients, not independent circuits. Paper appendix A documents circuit provenance, postselection, noise and magic-state logical observable, useful verification reference: https://arxiv.org/html/2609.18922."
+  },
+  {
+    "arxiv_id": "2409.17595",
+    "title": "Magic state cultivation: growing T states as cheap as CNOT gates",
+    "authors": "Gidney, Shutty, Jones",
+    "year": 2024,
+    "circuit_location": [
+      "https://zenodo.org/records/13777072",
+      "https://github.com/unitaryfoundation/clifft-paper/tree/main/magic_state_cultivation"
+    ],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "The cultivation-specific S/S_DAG layers proxy T/T_DAG: replace only identified proxy rotations, not all S gates. Use the Clifft paper implementation for an existing real-T conversion and verify noise and detector semantics.",
+    "confidence": "high",
+    "notes": "Original cultivation injection, logical double checking, growth and escape. Clifft/SOFT use adapted related circuits; paper and source provide provenance."
+  },
+  {
+    "arxiv_id": "2503.18657",
+    "title": "Efficient Magic State Cultivation on RP^2",
+    "authors": "Chen, Chen, Lu, Pan",
+    "year": 2025,
+    "circuit_location": [
+      "https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2",
+      "https://github.com/Zihan-Chen-PhMA/Cultiv_T_RP2/tree/main/circuit_garage"
+    ],
+    "format": "both",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Identify the physical S/S_DAG gates used as logical T-check proxy and restore T/T_DAG according to protocol; do not replace unrelated Clifford phase gates. Exact gate markers and output detector behavior require inspection.",
+    "confidence": "medium",
+    "notes": "Released circuit garage is indexed by Stim circuit-data references; new RP2 and SRP code family, injection, morphing, logical double checking and expansion. Author repo says code based on original magic cultivation project."
+  },
+  {
+    "arxiv_id": null,
+    "title": "tqec: A Python package for topological quantum error correction",
+    "authors": "Suau, Zhang, Thakre, Zhao, Dubey, Bolanos, et al.",
+    "year": 2026,
+    "circuit_location": [
+      "https://github.com/tqec/tqec",
+      "https://tqec.github.io/tqec/user_guide/quick_start.html",
+      "https://doi.org/10.21105/joss.09142"
+    ],
+    "format": "generator code",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "generate_stim_circuit emits physical Clifford Stim from a block graph. Add a correctly encoded non-Clifford injection or magic resource and adjust observables and feed-forward; no validated one-line conversion or complete logical T/QFT circuit identified.",
+    "confidence": "low",
+    "notes": "Maybe candidate: published compiler supports surface-code lattice surgery and physical Stim generation, demonstrated CNOT, but no direct evidence that shipped compiler emits complete T-gate logical algorithms. Other lattice-surgery compilers may emit abstract instructions rather than physical Stim."
+  }
+]

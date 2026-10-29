@@ -1,0 +1,50 @@
+[
+  {
+    "arxiv_id": "2403.13732",
+    "title": "Experimental fault-tolerant code switching",
+    "authors": "Pogorelov, Butt, Postler, Marciniak, Schindler, Müller, Monz",
+    "year": 2024,
+    "circuit_location": ["https://zenodo.org/records/14179894"],
+    "format": "generator code",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "The archive's circuits.zip generates Qiskit experimental circuits; translate gates, measurements and feedforward to extended Stim, including the logical T implementation for the morphed 10-qubit code. Exact gate decomposition and conversion have not been checked.",
+    "confidence": "low",
+    "notes": "Verified author-released 5.8 kB circuit archive; explicitly Qiskit, not verified Stim. Experiment switches between Steane and morphed [[10,1,2]] codes. Paper describes native non-Clifford logical T; archive gate content unverified. Publication https://www.nature.com/articles/s41567-024-02727-2. Year is arXiv first release; published 2025."
+  },
+  {
+    "arxiv_id": "2601.10964",
+    "title": "Stabilizer Code-Generic Universal Fault-Tolerant Quantum Computation",
+    "authors": "Papadopoulos, Ayanzadeh",
+    "year": 2026,
+    "circuit_location": ["https://github.com/CU-Quantum/stabilizer-code-generic-ftqc", "https://doi.org/10.5281/zenodo.18248298"],
+    "format": "generator code",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Inspect src/stim_experiments/circuits and Cirq universal_t implementations; translate the latter to extended Stim or combine the relevant Stim QEC component with the encoded T protocol. No specific proxy replacement has been verified.",
+    "confidence": "low",
+    "notes": "Author repository explicitly contains Stim circuit builders for QEC simulations and separate Cirq universal logical T experiments, with tetrahedral and Steane codes supported. It is unverified whether the Stim generators include a complete T gate protocol; ancillary-mediated approach is adjacent to code switching, not the same protocol."
+  },
+  {
+    "arxiv_id": "2604.02033",
+    "title": "High-threshold decoding of non-Pauli codes for 2D universality",
+    "authors": "Magdalena de la Fuente, Feldman, Eisert, Bauer",
+    "year": 2026,
+    "circuit_location": ["https://github.com/NoaFeldman/JustInTimeDecoding"],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Reconstruct the non-Pauli syndrome-extraction circuit from the paper and its released simulation code, translating the relevant CCZ/CS/T circuit operations into extended Stim and preserving just-in-time corrections. No Stim generator or simple gate replacement verified.",
+    "confidence": "low",
+    "notes": "Paper explicitly links repository; its README describes cubic-lattice JIT decoder data generation and twisted-error simulation, not a Stim circuit export. Related to JIT decoding for universality but not a 2D-to-3D color-code switch."
+  },
+  {
+    "arxiv_id": "2610.06730",
+    "title": "Qubit CSS codes with Universal Transversal Gates",
+    "authors": "Dua, Holmes, Gullans, Albert",
+    "year": 2026,
+    "circuit_location": ["https://arxiv.org/src/2610.06730v1/anc/depth_one_universal_codes.json"],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Reconstruct from ancillary code and gate descriptions, including seed-based T/T_DAG layers or CCZ, and the paper's syndrome-extraction schedule. Not a verified ready-to-run Stim circuit.",
+    "confidence": "low",
+    "notes": "The article simulates stabilizer projections in Stim and constructs universal codes using 15-qubit Reed–Muller and 3D color-code seeds. Ancillary JSON is a code/gate database, not verified circuit files; no public simulation circuit generator found. Include only as reconstruction lead."
+  }
+]

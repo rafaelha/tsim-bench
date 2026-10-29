@@ -1,0 +1,74 @@
+[
+  {
+    "arxiv_id": "2507.12511",
+    "title": "Unfolded distillation: very low-cost magic state preparation for biased-noise qubits",
+    "authors": "Ruiz, Guillaud, Vuillot, Mirrahimi",
+    "year": 2025,
+    "circuit_location": ["https://github.com/DiegoRuiz-Git/Unfolded_distillation", "https://www.nature.com/articles/s41534-026-01197-z"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Paper says its Stim simulations replace each intended X^(1/4) rotation by X^(1/2); change the specific proxy rotations to R_X(0.25) (or H T H, checking sign and rotation convention). Do not replace unrelated square-root X operations. Reassess detector and postselection semantics for the non-Clifford circuit.",
+    "confidence": "high",
+    "notes": "Author repository explicitly identifies repetition-code and surface-code simulation folders and a Toffoli bottom-up scheme. Paper confirms Stim proxy; exact source locations of rotation instructions were not verified. Protocol unfolds 15-to-1 Reed-Muller distillation into a 2D physical circuit."
+  },
+  {
+    "arxiv_id": "2607.28600",
+    "title": "SymFT: Universal Fault-Tolerant Quantum Circuit Simulation via Symbolic Clifford--Pauli Frames and Stabilizer Coordinates",
+    "authors": "Fang, Lou, Li",
+    "year": 2026,
+    "circuit_location": ["https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md", "https://github.com/haoliri0/SymFT_Test/tree/main/benchmark"],
+    "format": "stim files",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "No Clifford proxy conversion required; benchmark README describes distillation.stim as an extended Stim-like file with non-Clifford gates. Check rotation angle units (half-turns) and simulator dialect compatibility.",
+    "confidence": "high",
+    "notes": "README identifies 85-qubit [[17,1,5]] distillation workload, used with Tsim and Clifft. README states this file family contains T, T_DAG, R_X or R_Z; individual operations in distillation.stim were not independently inspected. It is not parseable by ordinary Stim."
+  },
+  {
+    "arxiv_id": "2604.27058",
+    "title": "Clifft: Fast Exact Simulation of Near-Clifford Quantum Circuits",
+    "authors": "Chase, Labib",
+    "year": 2026,
+    "circuit_location": ["https://github.com/unitaryfoundation/clifft-paper", "https://github.com/unitaryfoundation/clifft"],
+    "format": "generator code",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Inspect qec_bench/distillation_bench and its inputs before use; the benchmark workspace is explicitly listed but the precise circuit source and gate contents were not independently verified.",
+    "confidence": "medium",
+    "notes": "Paper authors' benchmark repository lists distillation_bench. Clifft's current documentation additionally describes 1,037 noiseless triorthogonal circuits collected by Matthew Cha; their public artifact location and association with this paper's original benchmark remain unverified."
+  },
+  {
+    "arxiv_id": "2409.17595",
+    "title": "Magic state cultivation: growing T states as cheap as CNOT gates",
+    "authors": "Gidney, Shutty, Jones",
+    "year": 2024,
+    "circuit_location": ["https://github.com/Strilanc/magic-state-cultivation", "https://github.com/Strilanc/magic-state-cultivation/tree/main/testdata/surgery_scripts", "https://doi.org/10.5281/zenodo.13777072"],
+    "format": "generator code",
+    "non_clifford_status": "Clifford proxy, convertible",
+    "conversion_notes": "Cultivation generators have S/Y-basis proxy variants. Replace only identified injection/cultivation stand-ins with corresponding T or T_DAG, preserving signs and feedback; actual factory surgery scripts require careful interpretation and may not be generated physical Stim circuits.",
+    "confidence": "medium",
+    "notes": "Repository identifies testdata/surgery_scripts as diagrams of magic-state distillation factories, and provides Stim generation for injection/cultivation. The diagrams are a possible factory-circuit starting point, not verified as complete non-Clifford distillation generators."
+  },
+  {
+    "arxiv_id": "1905.06903",
+    "title": "Magic State Distillation: Not as Costly as You Think",
+    "authors": "Litinski",
+    "year": 2019,
+    "circuit_location": ["https://github.com/litinski/magicstates"],
+    "format": "unknown",
+    "non_clifford_status": "unclear",
+    "conversion_notes": "Reconstruct circuit-level rotations from definitions.py and protocol descriptions, then export to extended Stim; no direct Stim circuit generation was confirmed.",
+    "confidence": "low",
+    "notes": "Author supplementary repository is resource-cost code, not verified Stim. It explicitly lists onelevel15to1.py, twolevel15to1.py, twolevel20to4.py and twolevel8toCCZ.py, making this a reconstructable lead rather than a direct circuit release."
+  },
+  {
+    "arxiv_id": "2412.15165",
+    "title": "Experimental Demonstration of Logical Magic State Distillation",
+    "authors": "Sales Rodriguez, Robinson, Jepsen, et al.",
+    "year": 2024,
+    "circuit_location": ["https://queracomputing.github.io/bloqade/v0.34.0/digital/examples/tsim/magic_state_distillation/", "https://github.com/haoliri0/SymFT_Test/blob/main/benchmark/README.md"],
+    "format": "generator code",
+    "non_clifford_status": "native T/CCZ in files",
+    "conversion_notes": "QuEra tutorial directly builds a noisy five-to-one circuit with T/T_DAG and rotations, and an 85-qubit [[17,1,5]] encoded version using Bloqade Circuit/Tsim; export to the extended Stim dialect. It is a related implementation, not verified to be the paper authors' original released circuit.",
+    "confidence": "low",
+    "notes": "The tutorial and SymFT benchmark are independently released implementations of related encoded five-to-one distillation. The paper describes a Stim-based Clifford channel simulation; a release of its own exact simulation code was not verified."
+  }
+]
