@@ -15,9 +15,12 @@ CS_DAG = [("T_DAG", (0,)), ("T_DAG", (1,)), ("CX", (0, 1)), ("T", (1,)), ("CX", 
 CH = [("S_DAG", (1,)), ("H", (1,)), ("T_DAG", (1,)), ("CX", (0, 1)), ("T", (1,)), ("H", (1,)), ("S", (1,))]
 CSWAP = [("CX", (2, 1)), ("CCX", (0, 1, 2)), ("CX", (2, 1))]
 CCZ = [("CCZ", (0, 1, 2))]
+# Controlled (S X) and (S_DAG X): X on the target, then S / S_DAG, if the control is 1.
+C_SX = [("CX", (0, 1))] + CS
+C_SDAGX = [("CX", (0, 1))] + CS_DAG
 
 DECOMPOSITIONS = {"T": T, "T_DAG": T_DAG, "CS": CS, "CS_DAG": CS_DAG, "CH": CH,
-                  "CSWAP": CSWAP, "CCZ": CCZ}
+                  "CSWAP": CSWAP, "CCZ": CCZ, "C_SX": C_SX, "C_SDAGX": C_SDAGX}
 
 
 def emit(decomposition, targets):
@@ -102,6 +105,10 @@ def reference(name):
         return 2, np.diag([1, 1, 1, -1j])
     if name == "CH":
         return 2, _controlled(2, _1Q["H"])
+    if name == "C_SX":
+        return 2, _controlled(2, _1Q["S"] @ _1Q["X"])
+    if name == "C_SDAGX":
+        return 2, _controlled(2, _1Q["S_DAG"] @ _1Q["X"])
     if name == "CCZ":
         return 3, np.diag([1] * 7 + [-1])
     if name == "CSWAP":

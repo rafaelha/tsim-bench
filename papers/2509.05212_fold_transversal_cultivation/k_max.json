@@ -1,0 +1,30 @@
+[
+  {
+    "file": "stim/fold-d3_native_T_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 17,
+      "CCZ": 8,
+      "T_DAG": 16
+    },
+    "tsim_k": 6,
+    "tsim_seconds": 0.47,
+    "clifft_k": 8,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 8,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fold-d5_native_T_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 45,
+      "CCZ": 40,
+      "T_DAG": 44
+    },
+    "tsim_k": 8,
+    "tsim_seconds": 0.88,
+    "clifft_k": 22,
+    "clifft_seconds": 0.14,
+    "clifft_noschedule_k": 22,
+    "clifft_noschedule_seconds": 0.11
+  }
+]
