@@ -17,6 +17,7 @@ Gate counts treat each `REPEAT` body once.
 | [2502.01743](papers/2502.01743_surface_code_cultivation) | Efficient Magic State Cultivation on the Surface Code | 14 | 6–9 | 8–15 |
 | [2503.18657](papers/2503.18657_rp2_cultivation) | Efficient Magic State Cultivation on RP² | 4 | 4–10 | 8–18 |
 | [2504.02935](papers/2504.02935_erasure_injection) | Magic State Injection with Erasure Qubits | 2 | 1–4 | 1–4 |
+| [2507.12511](papers/2507.12511_unfolded_distillation) | Unfolded distillation: very low-cost magic state preparation for biased-noise qubits | 6 | 4–4 | 4–5 |
 | [2509.05212](papers/2509.05212_fold_transversal_cultivation) | Fold-transversal surface code cultivation | 2 | 6–8 | 8–22 |
 | [2509.08658](papers/2509.08658_few_clifford_terms) | Simulating magic state cultivation with few Clifford terms | 1 | 4–4 | 4–4 |
 | [2509.18294](papers/2509.18294_transversal_star) | Transversal architecture for megaquop-scale quantum simulation with neutral atoms (transversal STAR) | 7 | 2–2 | 2–2 |
@@ -25,6 +26,7 @@ Gate counts treat each `REPEAT` body once.
 | [2512.23037](papers/2512.23037_soft) | SOFT: a high-performance simulator for universal fault-tolerant quantum circuits | 2 | 4–6 | 4–10 |
 | [2603.05429](papers/2603.05429_gauging_clifford_cultivation) | Constant-depth magic state cultivation with Clifford measurements by gauging | 3 | 4–8 | 4–19 |
 | [2604.01059](papers/2604.01059_tsim) | Tsim: Fast Universal Simulator for Quantum Error Correction | 9 | 3–4 | 3–4 |
+| [2604.05126](papers/2604.05126_qldpc_magic_state_injection) | In-Situ Simultaneous Magic State Injection on Arbitrary CSS qLDPC Codes | 6 | 1–1 | 1–1 |
 | [2604.27058](papers/2604.27058_clifft) | Clifft: Fast Exact Simulation of Near-Clifford Quantum Circuits | 8 | 0–11 | 0–13 |
 | [2607.28600](papers/2607.28600_symft) | SymFT: Universal Fault-Tolerant Quantum Circuit Simulation via Symbolic Clifford–Pauli Frames and Stabilizer Coordinates | 11 | 0–11 | 0–19 |
 | [2609.17706](papers/2609.17706_chan_color_code_cultivation) | Diagnosing and Restoring the Degraded Fault Distance of Magic State Cultivation | 6 | 4–6 | 4–10 |
@@ -74,6 +76,12 @@ Gate counts treat each `REPEAT` body once.
 | 2503.18657 | `rp_3_T_cult.stim` | 16 T, 15 T_DAG | 4 | 8 | 8 |
 | 2504.02935 | `hook_inject_T_d3_p0.001.stim` | 1 T | 1 | 1 | 1 |
 | 2504.02935 | `inject_cultivate_T_d3_p0.001.stim` | 8 T_DAG, 7 T | 4 | 4 | 4 |
+| 2507.12511 | `unfolded_repetition_no_preselection_pz1e-3_rounds2.stim` | 22 T, 11 T_DAG, 15 R_X | 4 | 4 | 5 |
+| 2507.12511 | `unfolded_repetition_no_preselection_pz1e-3_rounds4.stim` | 22 T, 11 T_DAG, 15 R_X | 4 | 5 | 5 |
+| 2507.12511 | `unfolded_repetition_no_preselection_pz1e-3_rounds6.stim` | 22 T, 11 T_DAG, 15 R_X | 4 | 5 | 5 |
+| 2507.12511 | `unfolded_surface_no_bitflip_pz1e-3_rounds2.stim` | 20 T, 10 T_DAG, 15 R_X | 4 | 4 | 5 |
+| 2507.12511 | `unfolded_surface_no_bitflip_pz1e-3_rounds4.stim` | 20 T, 10 T_DAG, 15 R_X | 4 | 4 | 5 |
+| 2507.12511 | `unfolded_surface_no_bitflip_pz1e-3_rounds6.stim` | 20 T, 10 T_DAG, 15 R_X | 4 | 4 | 5 |
 | 2509.05212 | `fold-d3_native_T_p0.001.stim` | 17 T, 8 CCZ, 16 T_DAG | 6 | 8 | 8 |
 | 2509.05212 | `fold-d5_native_T_p0.001.stim` | 45 T, 40 CCZ, 44 T_DAG | 8 | 22 | 22 |
 | 2509.08658 | `d3_cultivation_T_p0.001.stim` | 8 T_DAG, 8 T | 4 | 4 | 4 |
@@ -120,6 +128,12 @@ Gate counts treat each `REPEAT` body once.
 | 2604.01059 | `distillation_unencoded_X.stim` | 5 R_X, 5 T_DAG | 4 | 4 | 5 |
 | 2604.01059 | `distillation_unencoded_Y.stim` | 5 R_X, 5 T_DAG | 3 | 3 | 5 |
 | 2604.01059 | `distillation_unencoded_Z.stim` | 5 R_X, 5 T_DAG | 3 | 3 | 5 |
+| 2604.05126 | `bb144_cfg328_inj5_T_p0.001.stim` | 5 T | 1 | 1 | 5 |
+| 2604.05126 | `bb144_cfg342_inj3_T_p0.001.stim` | 3 T | 1 | 1 | 3 |
+| 2604.05126 | `bb144_cfg369_inj1_T_p0.001.stim` | 1 T | 1 | 1 | 1 |
+| 2604.05126 | `bb144_cfg422_inj2_T_p0.001.stim` | 2 T | 1 | 1 | 2 |
+| 2604.05126 | `bb144_cfg491_inj4_T_p0.001.stim` | 4 T | 1 | 1 | 4 |
+| 2604.05126 | `bb144_cfg88_inj6_T_p0.001.stim` | 6 T | 1 | 1 | 6 |
 | 2604.27058 | `coherent_d3_r1.stim` | 65 R_Z | 0 | 0 | 4 |
 | 2604.27058 | `coherent_d3_r3.stim` | 130 R_Z | 4 | 4 | 5 |
 | 2604.27058 | `coherent_d5_r1.stim` | 209 R_Z | 0 | 0 | 12 |

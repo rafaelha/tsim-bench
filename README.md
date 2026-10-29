@@ -64,8 +64,6 @@ repository.
 
 | arXiv | paper | reason |
 |---|---|---|
-| 2507.12511 | Unfolded distillation (Ruiz et al.) | Conversion written (`SQRT_X` proxy to R_X(0.25) plus feedforward of the first-round byproducts), but running the authors' simulation scripts was blocked in this session ("code from external"); folder left uncommitted |
-| 2604.05126 | In-situ magic state injection on qLDPC codes (Liu et al.) | Y-proxy circuits come from the authors' package, which loads pickled configs and needs qldpc/galois/ortools; installing it was blocked in this session |
 | 2510.07269 | Transversal dimension jump for product qLDPC codes | CCZ is modelled by a weight-5 Pauli surrogate; regenerating needs bposd/ldpc and notebook-generated code matrices |
 | 2505.23567 | Scalable decoding for fast transversal logic (Turner et al.) | Zenodo "T gate proxy" circuits are logical-level proxies with \|0⟩ inputs, no S feedforward and no H layers; real T gates need encoded \|T⟩ preparation and logical S corrections |
 | 2608.23819 | CircLS (Zhang) | Lattice-surgery compilations with every magic state replaced by a logical \|+⟩ patch; real T gates need encoded \|T⟩ preparation and conditional logical S |
@@ -95,7 +93,7 @@ repository.
   `papers/2509.05212_fold_transversal_cultivation`.
 - **Clifft parser strictness:** Clifft rejects target-less instructions such as `DEPOLARIZE1(0.001)` and `R`, and any tag outside
   `LEVEL_TRANSITION`, so several published files needed `tools/stimtext.py`.
-- **Width comparison:** across the 152 circuits measured by both simulators, Tsim's k is smaller on 55, equal on 87, and larger on 10.
+- **Width comparison:** across the 164 circuits measured by both simulators, Tsim's k is smaller on 57, equal on 97, and larger on 10.
   - Tsim much smaller: Bravyi–Haah distillation with T teleportation (Magna) stays at k=3 for every size, while Clifft grows to 42 and
     overflows from bh60 on. Fold-transversal d=5 gives 8 vs 22, gauging d=7 8 vs 19, and RP² d=5 10 vs 18.
   - Tsim larger: the 10 circuits are Merlin's "clean" distillation workloads (Tsim 4, Clifft 0). There the only noise is Z after the T_DAG
