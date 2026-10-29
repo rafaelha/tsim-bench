@@ -1,0 +1,8 @@
+{
+    "det_beam": 10,
+    "beam_climbing": true,
+    "no_revisit_dets": true,
+    "pqlimit": 10000,
+    "num_det_orders": 6,
+    "det_order_seed": 0
+}

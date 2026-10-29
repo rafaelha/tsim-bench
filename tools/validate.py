@@ -44,6 +44,9 @@ def check(text, proxy=None, shots=1024, seed=0):
     }
     if proxy is not None:
         ref, _ = sample(proxy, shots, seed)
-        deterministic = (det == 0) | (det == 1)
+        # Compare only detectors that are deterministic in both circuits: a Clifford stand-in can
+        # leave a check random that the real non-Clifford circuit makes deterministic.
+        deterministic = ((det == 0) | (det == 1)) & ((ref == 0) | (ref == 1))
         result["matches_proxy"] = bool(np.array_equal(det[deterministic], ref[deterministic]))
+        result["random_in_proxy_only"] = int(((ref > 0) & (ref < 1) & ((det == 0) | (det == 1))).sum())
     return result

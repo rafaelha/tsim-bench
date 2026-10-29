@@ -1,0 +1,80 @@
+QUBIT_COORDS(7, 8) 0
+QUBIT_COORDS(7, 9) 1
+QUBIT_COORDS(7, 10) 2
+QUBIT_COORDS(8, 7) 3
+QUBIT_COORDS(8, 8) 4
+QUBIT_COORDS(8, 9) 5
+QUBIT_COORDS(8, 10) 6
+QUBIT_COORDS(9, 8) 7
+QUBIT_COORDS(9, 9) 8
+QUBIT_COORDS(9, 10) 9
+QUBIT_COORDS(10, 9) 10
+H_YZ[conjugate] 5
+TICK
+I[injection] 5
+TICK
+H 3 0 4 1 2 6 9
+H_YZ[conjugate] 5
+TICK
+I[injection] 5
+TICK
+CZ 0 1 4 5 2 6
+TICK
+H 0 4 7 2
+TICK
+CZ 4 7
+TICK
+H 0 7 5 8
+I[echo] 4
+TICK
+CZ 0 4 7 8 1 5
+TICK
+H 0 4 8
+I[echo] 5
+TICK
+I[echo] 7
+TICK
+CZ 4 7 5 8
+TICK
+H 5 8
+I[echo] 4 0
+TICK
+CZ 3 4 8 9
+TICK
+H 0 4 7 1 5 8 10
+TICK
+CZ 0 4 7 8
+TICK
+I[echo] 1 10
+TICK
+CZ 4 5 1 2 8 10
+TICK
+H 1 10 9
+I[echo] 4 7 8 0
+TICK
+I[echo] 5
+TICK
+CZ 0 1 4 7 5 8 6 9
+TICK
+H 0 4 7 8 6 9
+I[echo] 1
+TICK
+CZ 3 4 1 5 8 10 2 6
+TICK
+H 4 1 5 8 6
+TICK
+I[echo] 4 8
+TICK
+M 4 1 6 8 3 0 7 5 10 2 9
+DETECTOR(0.125018, 0, 0, -1) rec[-8]
+DETECTOR(0.250036, 0, 0, -1) rec[-9]
+DETECTOR(0.375054, 0, 0, -1) rec[-10]
+DETECTOR(0.500072, 0, 0, -1) rec[-11]
+SHIFT_COORDS(0, 0, 1)
+DETECTOR(2.5, 1.5, 0, 4) rec[-4] rec[-5] rec[-6] rec[-7]
+DETECTOR(4.5, 2.5, 0, 3) rec[-1] rec[-3] rec[-4] rec[-5]
+DETECTOR(5, 1, 0, 5) rec[-1] rec[-2] rec[-4] rec[-6]
+OBSERVABLE_INCLUDE(0) rec[-1] rec[-2] rec[-3] rec[-4] rec[-5] rec[-6] rec[-7]
+TICK
+I[echo] 7 1 10 9 0 6
+TICK

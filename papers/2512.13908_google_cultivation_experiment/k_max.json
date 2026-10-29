@@ -1,0 +1,256 @@
+[
+  {
+    "file": "stim/fig2_cultivation_stim_X_T.stim",
+    "non_clifford_gates": {
+      "T": 8,
+      "T_DAG": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.4,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.05
+  },
+  {
+    "file": "stim/fig2_cultivation_stim_Z_T.stim",
+    "non_clifford_gates": {
+      "T": 8,
+      "T_DAG": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.45,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig2_injection_stim_X_T.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 0.4,
+    "clifft_k": 1,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.05
+  },
+  {
+    "file": "stim/fig2_injection_stim_Z_T.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 0.4,
+    "clifft_k": 1,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig2_simulation_stim_X_T.stim",
+    "non_clifford_gates": {
+      "T": 8,
+      "T_DAG": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig2_simulation_stim_Z_T.stim",
+    "non_clifford_gates": {
+      "T": 8,
+      "T_DAG": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.44,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig3_injection_stim_T.stim",
+    "non_clifford_gates": {
+      "T": 15,
+      "T_DAG": 14
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig3_simulation_stim_T.stim",
+    "non_clifford_gates": {
+      "T": 22,
+      "T_DAG": 21
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig3_simulation_zoom_stim_T.stim",
+    "non_clifford_gates": {
+      "T": 22,
+      "T_DAG": 21
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig3_with_idle_rounds_stim_T.stim",
+    "non_clifford_gates": {
+      "T": 22,
+      "T_DAG": 21
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig3_with_idle_rounds_zoom_stim_T.stim",
+    "non_clifford_gates": {
+      "T": 22,
+      "T_DAG": 21
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig3_without_idle_rounds_stim_T.stim",
+    "non_clifford_gates": {
+      "T": 22,
+      "T_DAG": 21
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig4_cultivation_N2_stim_X_T.stim",
+    "non_clifford_gates": {
+      "T": 8,
+      "T_DAG": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.41,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig4_cultivation_N2_stim_Z_T.stim",
+    "non_clifford_gates": {
+      "T": 8,
+      "T_DAG": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig4_cultivation_N3_stim_X_T.stim",
+    "non_clifford_gates": {
+      "T": 8,
+      "T_DAG": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig4_cultivation_N3_stim_Z_T.stim",
+    "non_clifford_gates": {
+      "T": 8,
+      "T_DAG": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.43,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.04
+  },
+  {
+    "file": "stim/fig4_injection_N2_stim_X_T.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 0.42,
+    "clifft_k": 1,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig4_injection_N2_stim_Z_T.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 0.41,
+    "clifft_k": 1,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig4_simulation_injection_N2_stim_X_T.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 0.41,
+    "clifft_k": 1,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/fig4_simulation_injection_N2_stim_Z_T.stim",
+    "non_clifford_gates": {
+      "T": 1
+    },
+    "tsim_k": 1,
+    "tsim_seconds": 0.42,
+    "clifft_k": 1,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 1,
+    "clifft_noschedule_seconds": 0.03
+  }
+]
