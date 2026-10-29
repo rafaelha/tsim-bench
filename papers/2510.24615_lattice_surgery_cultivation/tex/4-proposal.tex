@@ -1,0 +1,252 @@
+\section{Magic state cultivation with lattice surgery}
+\label{sec:msc-ls}
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.6cm]{fig/msc-ls-protocol.pdf}
+\caption{
+Magic state cultivation with lattice surgery (MSC-LS) for $d_{\mathrm{color}} = 3$.
+The left area represents the spatial resource (physical qubits) used by the rotated surface code, and the right area represents those used by the color code.
+``Encode T'' denotes the non-fault-tolerant encoding of a magic state into the distance-3 2D color code.
+Two consecutive ``Check T'' denote the application of two Hadamard tests.
+``LS (ZZ)'' denotes the $ZZ$ measurement implemented by lattice surgery.
+``PS'' denotes postselection, and ``SE'' denotes syndrome extraction.
+The detectors obtained from the syndrome extractions marked in red are used for early rejection via the lookup table.}
+\label{fig:msc-ls-protocol}
+\Description{Timeline-style schematic of magic state cultivation with lattice surgery for d_color equal to 3.
+The figure is split into two vertical regions labeled Surface on the left and Color on the right, representing the spatial resources used by the rotated surface code and the color code.
+Time progresses downward.
+The upper part contains the injection and cultivation stages, with an Encode T block followed by a postselection block and two Check T blocks on the color code side, and corresponding lattice surgery and postselection blocks on the surface code side.
+The lower part shows the escape stage, beginning with code expansion and followed by three syndrome extraction blocks, with additional syndrome extraction rounds repeated r times.
+Syndrome extraction blocks before code expansion are highlighted in red to indicate the rounds whose detectors are used for early rejection.}
+\end{figure}
+
+In this section, we describe our proposed protocol: \textit{magic state cultivation with lattice surgery} (MSC-LS).
+\autoref{fig:msc-ls-protocol} depicts the protocol with $d_{\mathrm{color}} = 3$.
+The protocol shares the injection and cultivation stages with the original magic state cultivation (MSC).
+Afterward, the magic state is transferred to the rotated surface code of distance $d_{\mathrm{intermediate}}$ using lattice surgery~\cite{Horsman2012, poulsen2017fault}.
+This transfer requires $d_{\mathrm{color}}$ rounds of syndrome extraction.
+At the end of the lattice surgery procedure, we perform additional postselection using a lookup table that stores error syndromes that are available at the stage.
+We then perform code expansion, followed by $d_{\mathrm{color}}$ rounds of syndrome extraction to stabilize the code.
+Finally, we compute the complementary gap and perform postselection based on its value.
+We perform $r$ rounds of syndrome extraction while waiting for the QEC decoder to compute the complementary gap.
+Similar to the magic state cultivation case, the fault distance of the resulting magic state depends on the complementary gap threshold.
+
+Our protocol differs from MSC in three key aspects: (1) adopting the space-efficient rotated surface code as the final QEC code, (2) using an intermediate code distance during the lattice surgery procedure to reduce the spatial overhead in the early stages, and (3) incorporating the lookup table to enable early rejection.
+Although $d_\mathrm{color}$ additional rounds of syndrome extraction are needed for code stabilization after code expansion, the spatial overhead reduction and early rejection outweigh the additional time overhead, as shown later in \autoref{sec:performance-evaluation}.
+
+In Ref.~\cite{Gidney2024MagicStateCultivation}, Gidney \textit{et al.} considered the use of lattice surgery in the escape stage but observed that, in their setting, lattice surgery preserved the fault distance without allowing the code distance to increase during the lattice surgery procedure.
+Consequently, the code distance remained $d_\mathrm{color}$ rather than increasing to the larger target distance required for subsequent error correction, leading to logical error probabilities that were orders of magnitude higher than the target state error probability.
+
+In our protocol, lattice surgery likewise preserves the fault distance $d_\mathrm{color}$.
+We then perform $d_\mathrm{color}$ additional rounds of syndrome extraction following lattice surgery.
+Instead of immediately transitioning to standard error correction---which would reduce the effective fault distance to $\lfloor (d_\mathrm{color}+1)/2 \rfloor$---we use the syndrome information from this stabilization period in the complementary gap calculation for final postselection.
+Final postselection based on the complementary gap prevents degradation of the effective fault distance during this stabilization period, and as shown later in \autoref{sec:performance-evaluation}, the resulting logical error probabilities remain comparable to those of MSC.
+
+We detail the lattice surgery and code expansion procedures in the following subsections.
+We describe how to construct and use the lookup table in \autoref{subsec:msc-ls-lookup-table}.
+
+\subsection{Lattice surgery}
+\label{subsec:msc-ls-ls}
+In the lattice surgery procedure, we teleport the magic state from the 2D color code to the rotated surface code of distance $d_{\mathrm{intermediate}}$, following the spirit of the zero-level distillation protocol~\cite{itogawa2025efficient}.
+Specifically, we encode $\ket{+}_L$ into the rotated surface code, perform a $Z_LZ_L$ measurement via lattice surgery, and finally measure all physical qubits of the color code in the $X$ basis.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=6.5cm]{fig/msc-ls-qubit-coordinates.pdf}
+\caption{
+Physical qubit positions.
+Qubits $0$--$6$ are data qubits of the distance-3 2D color code, and qubits $a$--$e$ are data qubits on the top edge of the rotated surface code.
+}
+\label{fig:msc-ls-qubit-coordinates}
+\Description{Physical qubit positions.
+Qubit 0 is at (3, 13), qubit 1 is at (1, 15), qubit 2 is at (6, 12), qubit 3 is at (5, 15), qubit 4 is at (2, 12), qubit 5 is at (3, 15), and qubit 6 is at (2, 10).
+Qubit a is at (1, 17), qubit b is at (3, 17), qubit c is at (5, 17), qubit d is at (7, 17), and qubit e is at (9, 17).
+Two qubits can interact when they are at positions (x, y) and (x + 1, y - 1), for any x and y.}
+\end{figure}
+
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=15cm]{fig/msc-ls-ls.pdf}
+\caption{
+Lattice surgery operation to teleport a magic state from the 2D color code of distance 3 to the rotated surface code of distance 5.
+$X$ stabilizers are colored red, and $Z$ stabilizers are colored green.
+A red circle on a physical qubit represents initialization or measurement of a physical qubit in the $X$ basis.
+(a) The magic state is encoded in the color code, and each physical qubit in the rotated surface code is initialized to $\ket{+}$.
+(b) $Z$ stabilizers on the merged boundaries ($Z_{1a}$, $Z_{35bc}$, and $Z_{de}$) are measured three times. Meanwhile, all stabilizers on both codes are measured, except $X_{0145ab}$.
+(c) Physical qubits on the color code are measured in the $X$ basis. The $X$ stabilizers on the top boundary of the surface code ($X_{ab}$ and $X_{cd}$) are recovered. $X$ stabilizers $X_{0145ab}$, $X_{0235}$, and $X_{0246}$ are measured, and the outcomes are subject to postselection. $X_{146}$ is the logical $X$ measurement outcome.
+}
+\label{fig:msc-ls-ls}
+\Description{Three panels labeled (a), (b), and (c) showing the progression of a lattice surgery operation between a small color code patch and a rotated surface code patch.
+In panel (a), the color code patch appears above the rotated surface code patch. The color code qubits labeled 0 through 6 form a small polygonal patch, and the surface code qubits labeled a through e lie along the top boundary of a rectangular surface code array below.
+In panel (b), the color code patch is connected to the top boundary of the surface code patch by the green Z stabilizers Z_{1a}, Z_{35bc}, and Z_{de}.
+In panel (c), the color code patch is removed by transversal X measurement, leaving only the labeled qubit positions 0 through 6 above the surface code patch, while the surface code patch remains below.
+The figure shows the initial separated layout, the merged layout during lattice surgery, and the final layout after measurement of the color code qubits.}
+\end{figure*}
+
+In this subsection, we focus on the case where $d_\mathrm{color} = 3$, and we leave the implementations for larger color code distances to future work.
+We denote the physical qubits on the color code as qubits 0--6, and physical qubits on the top edge of the rotated surface code as $a$--$e$ (\autoref{fig:msc-ls-qubit-coordinates}).
+\autoref{fig:msc-ls-ls} illustrates the sequence for teleporting a magic state from the color code of distance 3 to the rotated surface code of distance 5.
+In the first step, the magic state is encoded in the color code prepared during the injection and cultivation stages discussed in \autoref{subsec:preliminary-magic-state-cultivation}, and each physical qubit in the rotated surface code is initialized to $\ket{+}$ (\autoref{fig:msc-ls-ls} (a)).
+
+In the second step, $Z$ stabilizers on the merged boundaries are measured (\autoref{fig:msc-ls-ls} (b)).
+Each measurement is performed three times to detect measurement errors.
+Meanwhile, stabilizers on both codes are measured.
+Note that, during the construction of the merged code, a four-weight $X$ stabilizer $X_{0145}$ becomes a six-weight $X$ stabilizer $X_{0145ab}$ because $X_{0145}$ and $Z_{1a}$ do not commute.
+Since performing a six-weight syndrome extraction is costly, we skip syndrome extraction for $X_{0145ab}$.
+
+Lastly, physical qubits on the color code are measured in the $X$ basis (\autoref{fig:msc-ls-ls} (c)). 
+We also recover the $X$ stabilizers along the top edge of the surface code. 
+These yield $X$ syndrome measurement outcomes $X_{0145ab}$, $X_{0235}$, and $X_{0246}$, along with the logical $X$ measurement outcome $X_L = X_{146}$.
+If the logical $X$ measurement outcome is 1, then we apply the logical $Z$ operator to the magic state encoded in the rotated surface code.
+This can be performed classically using the Pauli feedforward mechanism~\cite{riesebos2017pauli}.
+
+In the second step, we use the superdense cycle~\cite{gidney2023new} for syndrome extraction on the color code to measure corresponding $X$ and $Z$ stabilizers simultaneously.
+Specifically, in the first syndrome extraction round, we check the following stabilizers: (1) $Z_{0145}$, (2) $Z_{0235}$ and $X_{0235}$, and (3) $Z_{0246}$ and $X_{0246}$.
+In the second round, we check (4) $Z_{0145}$, (5) $Z_{0235}$, and (6) $Z_{0246}$.
+In the third step of the lattice surgery procedure, we derive (7) $X_{0145ab}$, (8) $X_{0235}$, and (9) $X_{0246}$ from destructive $X$ measurement outcomes on the color code and the syndrome measurement outcome of $X_{ab}$.
+In summary, we perform two rounds of syndrome extraction for each stabilizer on the color code except $X_{0145}$, and one round for $X_{0145ab}$ in this procedure.
+
+The lattice surgery procedure performs a $Z_LZ_L$ measurement followed by an $X_L$ measurement.
+During the $Z_LZ_L$ measurement, $Z$ errors commute with the logical observable of interest and therefore do not alter the measurement outcome.
+Consequently, color code $X$ stabilizer measurements performed prior to the final destructive transversal $X$ measurements are not required to preserve the fault distance.
+This explains why skipping the syndrome extraction for $X_{0145ab}$ in the first round does not degrade the fault distance.
+
+Nevertheless, measuring additional $X$ stabilizers can still reduce the logical error probability by detecting intermediate accumulations of $Z$ errors before they form a logical operator.
+Whether this reduction materializes in practice depends on the syndrome extraction cost.
+Accordingly, we skip $X_{0145ab}$ and retain the other $X$ stabilizer checks in the first round.
+
+During the sequence, color code syndrome extractions are performed in an error-detecting manner to preserve the fault distance of the magic state.
+This means that if any error syndrome is nontrivial, the distillation process is rejected.
+The same applies to the parities of the $Z$ stabilizers on the merged boundaries.
+By contrast, error correction is performed for stabilizers on the rotated surface code.
+This is justified when $d_{\mathrm{intermediate}}$ is larger than the fault distance.
+As we use a MWPM decoder that requires a detector error model compatible with matching decoders, we provide the decoder with a modified detector error model in which error vertices corresponding to errors on color code qubits are excluded.
+These errors are handled purely via error detection and postselection (as described above), rather than correction through matching.
+
+This detector error model modification affects only the decoder input, and we do not modify the underlying circuit-level noise model.
+For example, later in this paper (\autoref{sec:performance-evaluation}), we perform numerical simulation using Stim~\cite{gidney2021stim} under uniform depolarizing circuit noise.
+There, we maintain two detector error models for the simulation: the complete detector error model and the modified detector error model that is compatible with matching decoders.
+We use the former detector error model for sampling, and we give the latter to the PyMatching decoder~\cite{higgott2025sparse}; therefore, all physical error mechanisms are fully represented in the simulation.
+
+The initial measurement outcomes for the $X$ stabilizers introduced in the last step of lattice surgery (except for $X_{ab}$) are non-deterministic.
+Hence, extra rounds of syndrome extraction are required to stabilize the code; in \autoref{fig:msc-ls-protocol}, three rounds of syndrome extraction are performed after code expansion.
+This is different from the grafted code case, where all the syndrome measurement outcomes are deterministic at the end of the escape stage, and thus no additional rounds are needed (\autoref{fig:preliminary-msc-protocol}).
+
+\subsection{Code expansion}
+\label{subsec:msc-ls-code-expansion}
+In the code expansion procedure, we increase the distance of the rotated surface code from $d_{\mathrm{intermediate}}$ to $d_{\mathrm{final}}$.
+The primary motivation for code expansion is to reduce the qubit count during the early stages of distillation.
+Specifically, by teleporting the magic state into a smaller rotated surface code, we reduce the number of physical qubits required during the lattice surgery procedure.
+Another advantage of using a small code distance during the lattice surgery procedure is that it shortens the logical $Z$ operator of the rotated surface code, thereby reducing the number of measurements subject to postselection (e.g., $Z_{de}$ in \autoref{fig:msc-ls-ls} (b)) and thus increasing the distillation success probability.
+
+% As illustrated in \autoref{fig:msc-ls-upward-downward-code-expansion}, after performing lattice surgery, the surface code patch can be expanded upward or downward.
+% Upward expansion is more efficient in terms of packing, because we can reuse the physical qubits used for the color code for the final surface code patch (with a sufficiently large $d_{\mathrm{final}}$), though its implementation is more involved.
+% For simplicity of implementation, in this study, we focus on the downward expansion and leave upward expansion for future work.
+
+As illustrated in \autoref{fig:msc-ls-upward-downward-code-expansion}, after performing lattice surgery, the surface code patch can be expanded upward or downward.
+While these schemes have the same spacetime overhead for a single distillation trial, upward expansion has a packing advantage because the physical qubits used for the color code can be reused for the final surface code patch when $d_{\mathrm{final}}$ is sufficiently large.
+Nevertheless, this work focuses on the cost of a single distillation trial; optimizing how multiple trials are packed, scheduled, and repeated to achieve a high overall success probability is a system-level scheduling problem beyond the scope of this work.
+For simplicity of implementation, we therefore focus on downward expansion and leave upward expansion and multi-trial scheduling for future work.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8cm]{fig/msc-ls-upward-downward-expansion.pdf}
+\caption{
+Upward surface code expansion (top) and downward surface code expansion (bottom).
+$\ket{m}$ denotes a magic state.
+}
+\label{fig:msc-ls-upward-downward-code-expansion}
+\Description{Two three-step sequences comparing upward and downward surface code expansion.
+In both sequences, the color code qubits are initially positioned above a small rotated surface code patch.
+The color code is then removed and the surface code patch is expanded.
+The top row, labeled Upward, shows the case where the bottom edge of the surface code patch is kept and the patch grows upward.
+The bottom row, labeled Downward, shows the case where the top edge of the surface code patch is kept and the patch grows downward.}
+\end{figure}
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8cm]{fig/msc-ls-code-expansion.pdf}
+\caption{
+Surface code expansion from distance 5 to distance 7.
+A red (green) circle on a physical qubit represents a $\ket{+}$ ($\ket{0}$) initialization.
+(a) Additional physical qubits are initialized to $\ket{0}$ or $\ket{+}$ according to their locations.
+(b) Additional stabilizers are placed.
+}
+\label{fig:msc-ls-code-expansion}
+\Description{
+Two panels labeled (a) and (b) showing surface code expansion from distance 5 to distance 7.
+In panel (a), additional qubits are placed around the original patch.
+The bottom-left added qubits are initialized in the X basis, and the top-right added qubits are initialized in the Z basis.
+In panel (b), additional stabilizers are placed so that the enlarged distance-7 rotated surface code patch is formed.}
+\end{figure}
+
+We use Li's protocol~\cite{li2015magic} for the rotated surface code.
+\autoref{fig:msc-ls-code-expansion} illustrates the code expansion sequence.
+We initialize each physical qubit to $\ket{0}$ or $\ket{+}$, depending on its location, and perform surface code syndrome extraction.
+
+Similar to the discussion in \autoref{subsec:msc-ls-ls}, because the initial syndrome measurement outcomes of some of the newly introduced stabilizers are non-deterministic, several rounds of surface code syndrome extraction are needed to stabilize the code.
+This can also be done in parallel with the code stabilization required for lattice surgery.
+Hence, we perform $d_{\mathrm{color}}$ rounds of syndrome extraction after code expansion (see \autoref{fig:msc-ls-protocol} for an example).
+
+\subsection{Lookup table}
+\label{subsec:msc-ls-lookup-table}
+After code expansion, we perform $d_{\mathrm{color}}$ rounds of syndrome extraction to stabilize the code, and $r$ rounds of syndrome extraction while waiting for the decoder to compute the complementary gap.
+In this subsection, we describe the lookup table, a data structure used to reject distillation attempts before code expansion.
+This reduces the average distillation overhead by allowing us to reject such attempts without waiting for $d_{\mathrm{color}} + r$ rounds.
+
+A lookup table contains syndromes obtained prior to code expansion that would likely be rejected by the final postselection.
+At the end of the lattice surgery procedure (before code stabilization), we check whether the obtained error syndrome appears in the table; if so, we reject the distillation attempt.
+This is equivalent to predicting whether the logical error probability of the resulting magic state is larger than a certain threshold given the error syndrome.
+
+We expect that whether an error syndrome appears in a lookup table can be checked immediately, because it is significantly simpler than calculating the complementary gap.
+Of course, the feasibility of the lookup table depends on the number of entries and the accuracy of the predictions.
+We note that our protocol is suitable for the lookup table approach, since $d_{\mathrm{intermediate}}$ is generally small and the error syndromes obtained prior to code expansion are limited in length, resulting in fewer table entries.
+
+\begin{figure}[!t]
+  \captionsetup{type=algorithmfigure}
+  \hrule \vspace{10pt}
+  \caption{Construct a lookup table.}
+  \label{alg:construct-lookup-table}
+  \hrule \vspace{2pt}
+  \begin{algorithmic}
+    \State $table = \{\}$
+    \State $k \gets $ the size of a syndrome obtained before code expansion
+    \For{$shot$ \textbf{in} $shots$}
+      \State $synd \gets \text{the error syndrome for } shot$
+      \State $pattern \gets synd[0..k]$
+      \State $gap \gets$ the complementary gap of $synd$
+      \If {$table$ has $pattern$}
+        \State $(num\_valid, num\_invalid) \gets table.get(pattern)$
+      \Else
+        \State $(num\_valid, num\_invalid) \gets (0, 0)$
+      \EndIf
+      \State $valid \gets$ \textbf{true} if the resulting magic state is correct
+      \If {$gap \ge g_\mathrm{th}$ \textbf{and} $valid$}
+        \State $num\_valid \pluseq 1$
+      \Else
+        \State $num\_invalid \pluseq 1$
+      \EndIf
+      \State $table.set(pattern, (num\_valid, num\_invalid))$
+    \EndFor
+  \State{Remove entries from $table$ where $num\_valid > 0$.}
+  \State{Remove entries from $table$ where $num\_invalid < c_\mathrm{th}$.}
+  \State \textbf{return} $table$
+  \end{algorithmic}
+  \vspace{2pt} \hrule
+\end{figure}
+
+\autoref{alg:construct-lookup-table} presents the algorithm for constructing a lookup table.
+The algorithm has three inputs: a list of distillation attempts $shots$, the complementary gap threshold $g_\mathrm{th}$, and the threshold on the number of invalid cases $c_\mathrm{th}$.
+
+When the target logical error probability is very small (equivalently, when the target complementary gap is large), it may be that any distillation attempt with a nontrivial syndrome before the code expansion should be rejected.
+In this case, we do not store entries in the lookup table.
+We instead set a boolean flag $remove\_all\_nontrivial$ in the lookup table.
+If the flag is set, the lookup table rejects all nontrivial syndromes.
+
+The lookup table allows us to predict whether the logical error probability of the resulting magic state exceeds a certain threshold, given an error syndrome, while requiring far less computation than calculating the complementary gap.
+More sophisticated logic than a simple existence check may further reduce memory requirements and improve prediction accuracy.
+In this study, we employ this simple implementation and leave further investigation for future work.
+As shown later in \autoref{sec:performance-evaluation}, under our simulation setting with a high complementary gap threshold, a lookup table with 160 thousand entries reduces the average spacetime overhead of distillation by 15\%.
+For more memory-constrained systems, a smaller lookup table can be used.

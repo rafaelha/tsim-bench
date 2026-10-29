@@ -1,0 +1,108 @@
+\documentclass[10pt,twocolumn,amsmath,amssymb,aps,superscriptaddress,pra]{revtex4-2}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{url}
+\usepackage{comment}
+\usepackage{tabularx,theorem}
+\usepackage{indentfirst}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{qcircuit}
+\usepackage{ulem}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=magenta]{hyperref}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclareCaptionType{algorithm}[Algorithm][List of Algorithms]
+\providecommand*\algorithmautorefname{Algorithm}
+
+\renewcommand{\sectionautorefname}{Section}
+%% \newcommand{\algorithmautorefname}{Algorithm}
+
+% Separate algorithm counter (independent from figures)
+\newcounter{algorithmfigure}
+\renewcommand{\thealgorithmfigure}{\arabic{algorithmfigure}}
+\DeclareCaptionType{algorithmfigure}[Algorithm][List of Algorithms]
+\DeclareCaptionLabelFormat{alglabel}{Algorithm~#2}
+\captionsetup[algorithmfigure]{labelformat=alglabel,name=Algorithm}
+
+% \newcommand{\update}[1]{\textcolor{red}{#1}}
+
+\newcommand{\pluseq}{\mathrel{+}=}
+\newcommand{\hiddenforreview}[1]{#1}
+
+% \Description is provided for figure captions (see https://www.acm.org/publications/taps/describing-figures/). Ignore it in this document.
+\newcommand{\Description}[1]{}
+
+\begin{document}
+
+\title{Efficient magic state cultivation with lattice surgery}
+
+\author{Yutaka Hirano}
+\affiliation{
+    Graduate School of Engineering Science, The University of Osaka, 1-3 Machikaneyama, Toyonaka, Osaka 560-8531, Japan
+}
+
+\author{Riki Toshio}
+\affiliation{
+Quantum Laboratory, Fujitsu Research, Fujitsu Limited,
+4-1-1 Kawasaki, Kanagawa 211-8588, Japan
+}
+\affiliation{
+Fujitsu Quantum Computing Joint Research Division,
+Center for Quantum Information and Quantum Biology, The University of Osaka, 1-2 Machikaneyama, Toyonaka, Osaka, 565-8531, Japan
+}
+
+\author{Tomohiro Itogawa}
+\affiliation{
+    Graduate School of Engineering Science, The University of Osaka, 1-3 Machikaneyama, Toyonaka, Osaka 560-8531, Japan
+}
+
+\author{Keisuke Fujii}
+\affiliation{
+    Graduate School of Engineering Science, The University of Osaka, 1-3 Machikaneyama, Toyonaka, Osaka 560-8531, Japan
+}
+\affiliation{
+    School of Engineering Science, The University of Osaka, 1-3 Machikaneyama, Toyonaka, Osaka 560-8531, Japan
+}
+\affiliation{
+    Center for Quantum Information and Quantum Biology, The University of Osaka, 1-2 Machikaneyama, Toyonaka 560-0043, Japan
+}
+\affiliation{
+    RIKEN Center for Quantum Computing (RQC), Hirosawa 2-1, Wako, Saitama 351-0198, Japan
+}
+
+\date{\today}
+
+\input{0-abstract}
+  
+\maketitle
+
+\input{1-introduction}
+\input{2-preliminary}
+\input{3-msc-bottleneck}
+\input{4-proposal}
+\input{5-performance-evaluation}
+\input{6-conclusion}
+
+\section*{Author contributions}
+YH designed the protocol and performed the numerical simulations.
+RT and TI refined the protocol and suggested the use of lookup tables.
+KF supervised the work.
+All authors contributed to the discussion of the results and the writing of the manuscript.
+Large language models were used to refine the writing of the manuscript and assist in the visualization of the numerical simulation results.
+
+\section*{Acknowledgment}
+The authors thank Yosuke Ueno for helpful feedback on the manuscript.
+This work is supported by MEXT Quantum Leap Flagship Program (MEXT Q-LEAP) Grant No. JPMXS0120319794, JST COI-NEXT Grant No. JPMJPF2014, JST Moonshot R\&D Grant No. JPMJMS2061, and JST CREST JPMJCR24I3.
+
+\clearpage
+\bibliographystyle{unsrt}
+\bibliography{refs}
+
+\end{document}

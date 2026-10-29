@@ -1,0 +1,28 @@
+[
+  {
+    "file": "stim/inject-check-3_T.stim",
+    "non_clifford_gates": {
+      "T_DAG": 8,
+      "T": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/lattice-surgery-complementary-gap-3-to-5-to-7_T.stim",
+    "non_clifford_gates": {
+      "T_DAG": 8,
+      "T": 7
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.74,
+    "clifft_k": 4,
+    "clifft_seconds": 0.15,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.08
+  }
+]

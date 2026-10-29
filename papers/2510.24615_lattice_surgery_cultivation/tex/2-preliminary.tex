@@ -1,0 +1,168 @@
+\section{Preliminary}
+\label{sec:preliminary}
+
+\subsection{Detector error model}
+\label{subsec:preliminary-detector-error-model}
+Quantum error correction involves two procedures: \textit{syndrome extraction} (or \textit{syndrome measurement}) and \textit{decoding}.
+Syndrome extraction runs quantum circuits (\textit{syndrome extraction circuits}) to gather error information (\textit{error syndrome}).
+Decoding is a classical computation process that identifies the locations of errors from the error syndrome.
+In FTQC, syndrome extraction circuits are also noisy, and the decoding process must diagnose errors in both the syndrome extraction circuits and the data qubits.
+The concepts of detectors and detector error models~\cite{McEwen2023RelaxingHardware, derks2024designing} are useful in such circumstances, and we therefore introduce them here.
+
+\begin{figure}[t!]
+\centering
+\[
+\Qcircuit @C=.4em @R=.8em {
+ \lstick{a: \ket{0}} & \targ     & \targ     & \meter & \push{\ket{0}} & \targ     & \targ     & \meter \\
+ \lstick{0: \ket{+}} & \ctrl{-1} & \qw       & \qw    & \qw            & \ctrl{-1} & \qw       & \qw \\
+ \lstick{1: \ket{+}} & \qw       & \ctrl{-2} & \qw    & \qw            & \qw       & \ctrl{-2} & \qw    
+}
+\]
+\caption{
+An example of a detector.
+}
+\label{fig:preliminary-detector}
+\Description{Two-round syndrome extraction circuit for measuring a two-qubit Z stabilizer on data qubits 0 and 1 with an ancilla qubit a.
+Although each ancilla measurement outcome can vary, the parity of the two outcomes is deterministic when no error occurs.
+The figure illustrates that this deterministic parity is called a detector.}
+\end{figure}
+
+A \textit{detector} is defined as the parity of measurement outcomes that is deterministic in the absence of errors.
+For example, \autoref{fig:preliminary-detector} illustrates two rounds of syndrome extraction.
+Each syndrome extraction circuit performs an indirect measurement of $Z_0Z_1$.
+Although the individual measurement outcomes are non-deterministic, the parity of these outcomes is always 0 in the absence of errors and thus forms a detector.
+We say that a Pauli error is detected by a detector if the error changes the parity.
+For example, in \autoref{fig:preliminary-detector}, an $X$ error on qubit 0 occurring between the two rounds is detected by the detector.
+
+A \textit{Tanner graph}~\cite{tanner2003recursive,loeliger2004introduction} is a useful data structure for capturing the error structure of a syndrome extraction circuit.
+A Tanner graph is a bipartite graph $(U, V, E)$ where $U$ and $V$ are disjoint sets of vertices, and $E$ is the set of edges between $U$ and $V$.
+In our context, $U$ represents errors, $V$ represents detectors, and an edge exists between an error and a detector if and only if the detector detects the error.
+We call a probability assignment to all errors a \textit{noise model}.
+A \textit{detector error model} is defined as a Tanner graph together with a noise model.
+A QEC decoder diagnoses the locations of errors given a detector error model and an error syndrome.
+
+Matching decoders~\cite{brown2023conservation} require that each error with nonzero probability be detected by at most two detectors in the detector error model.
+Such a detector error model is therefore said to be compatible with matching decoders.
+For example, the detector error model for the typical syndrome extraction circuit of a rotated surface code is compatible with matching decoders, whereas the detector error model for the typical syndrome extraction circuit of a 2D color code is not.
+
+\subsection{Complementary gap}
+\label{subsec:preliminary-complementary-gap}
+The minimum-weight perfect matching (MWPM) decoder~\cite{fowler2012towards} maps the decoding problem to a graph matching problem and then solves it using Edmonds' algorithm~\cite{edmonds1965paths, edmonds1965maximum}.
+Specifically, it finds a correction with minimum log-likelihood weight, where the log-likelihood weight of a correction is the sum of the prior log-likelihood ratios of the individual error mechanisms included in that correction.
+The \textit{complementary gap}~\cite{gidney2025yoked} quantifies the decoder's confidence in its decoding result given an error syndrome, and it can be computed using the MWPM decoder.
+In this subsection, for simplicity, we consider only $Z$ errors.
+We also assume that syndrome extraction circuits are noise-free, and each syndrome measurement forms a detector.
+\autoref{fig:preliminary-complementary-gap} shows the Tanner graphs of the distance-5 rotated surface code under these assumptions.
+Each $X$ stabilizer check corresponds to a detector (gray circle), and each data qubit corresponds to an error location (black circle).
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=7.5cm]{fig/preliminary-complementary-gap.pdf}
+\caption{
+A Tanner graph of the distance-5 rotated surface code (for $Z$ errors only) with an error syndrome.
+Gray, black, and purple circles indicate detectors, error locations, and detectors that detect $Z$ errors, respectively.
+The left and right panels show matching results that are complementary to each other, with matching paths colored orange.
+}
+\label{fig:preliminary-complementary-gap}
+\Description{Fully described in the text.}
+\end{figure}
+
+The MWPM decoder solves the matching problem to identify error locations.
+\autoref{fig:preliminary-complementary-gap} shows two matching solutions, with matching paths colored orange.
+Both are valid matching results, and they are complementary to each other in the sense that the union of the matching paths forms a logical $Z$ chain.
+If the two solutions are equally likely, the decoder’s confidence in the decoding result is low.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=7.5cm]{fig/preliminary-complementary-gap-confidence-examples.pdf}
+\caption{
+Examples of error syndrome patterns that yield low and high decoding confidence.
+The Tanner graphs are shown for a rotated surface code with only $Z$ errors.
+Gray, black, and purple circles indicate detectors, error locations, and detectors that detect $Z$ errors, respectively.
+The orange and green paths represent candidate correction paths in different logical classes.
+(Top) The two candidate paths have similar lengths, resulting in similar weights and a low complementary gap.
+(Bottom) The orange path is much longer than the green path, resulting in a high complementary gap.
+}
+\label{fig:preliminary-complementary-gap-confidence-examples}
+\Description{Fully described in the text.}
+\end{figure}
+
+The complementary gap quantifies how strongly the decoder favors one logical class over its complementary class.
+It is defined as $|w(1) - w(2)|$, where $w(1)$ is the log-likelihood weight of the best correction conditioned on one logical class and $w(2)$ is the log-likelihood weight of the best correction conditioned on the complementary logical class.
+To compute this value, the MWPM decoder is run twice with modified detector error models~\cite{hutter2014efficient}, once for a logical class and once for its complementary class.
+The complementary gap can be used for soft-output decoding of concatenated codes~\cite{gidney2025yoked} and for postselection in resource preparation to lower the logical error probability~\cite{Gidney2024MagicStateCultivation, vaknin2025magic, chen2025efficient, sahay2025fold, claes2025cultivating, sunami2025entanglement}.
+In this work, we use the complementary gap as the final postselection criterion.
+Specifically, a distillation attempt is rejected when the complementary gap falls below the chosen threshold.
+\autoref{fig:preliminary-complementary-gap-confidence-examples} shows two syndrome examples that yield low and high complementary gaps, respectively.
+In the top panel, the orange and green paths contain similar numbers of error locations, leading to similar weights and a low complementary gap; such a low-confidence case would be rejected by postselection.
+By contrast, in the bottom panel, the orange path contains many more error locations than the green path, leading to a high complementary gap; such a high-confidence case would pass postselection.
+
+
+\subsection{Magic state cultivation}
+\label{subsec:preliminary-magic-state-cultivation}
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8cm]{fig/preliminary-msc-protocol.pdf}
+\caption{
+Magic state cultivation~\cite{Gidney2024MagicStateCultivation} for $d_{\mathrm{color}} = 3$.
+``Encode T'' denotes the non-fault-tolerant encoding of a magic state into the distance-3 2D color code.
+Two consecutive ``Check T'' represent the application of two Hadamard tests.
+``PS'' denotes postselection, and ``SE'' denotes syndrome extraction.
+}
+\label{fig:preliminary-msc-protocol}
+\Description{Timeline-style schematic of magic state cultivation for d_color equal to 3.
+A vertical arrow indicates the forward progression of time.
+The diagram is divided into three labeled stages: injection at the top, cultivation in the middle, and escape at the bottom.
+The injection stage consists of an Encode T block followed by a postselection block.
+The cultivation stage consists of two Check T blocks.
+The escape stage consists of three blocks, each representing syndrome extraction and postselection.
+After the escape stage, r more syndrome extraction blocks follow.}
+\end{figure}
+
+Magic state cultivation is an efficient magic state distillation protocol.
+It consists of three stages: injection, cultivation, and escape.
+In the injection stage, a magic state is injected non-fault-tolerantly into the distance-3 2D color code.
+In the cultivation stage, the fault distance of the magic state is increased to $d_{\mathrm{color}}$.
+Here, we define the \textit{fault distance} of a circuit or a state as the minimum number of errors required to cause a logical error without being detected by any detector.
+In the escape stage, the color code is transformed into the grafted code, another QEC code compatible with matching decoders.
+Finally, we compute the complementary gap and perform postselection based on its value.
+We perform $r$ rounds of syndrome extraction while waiting for the QEC decoder to compute the complementary gap.
+\autoref{fig:preliminary-msc-protocol} depicts the protocol for $d_{\mathrm{color}} = 3$.
+
+\subsubsection{Injection stage}
+\label{subsec:preliminary-magic-state-cultivation-injection}
+In the injection stage, similar to the preceding physical-level distillation protocols~\cite{Goto2016Minimizing, itogawa2025efficient}, a magic state is injected non-fault-tolerantly into the distance-3 2D color code, also known as the Steane seven-qubit code~\cite{Steane1996ErrorCorrecting}.
+The original magic state cultivation proposal provides three injection methods: unitary injection, teleport injection, and Bell injection.
+In this work, we use unitary injection, which is an injection circuit composed of unitary gates, throughout because it has the best performance of the three.
+After the magic state is injected, we perform one round of syndrome extraction followed by postselection; if the error syndrome is nontrivial, we reject the distillation attempt.
+At the end of this stage, a magic state with fault distance 1 is encoded in the distance-3 2D color code.
+
+\subsubsection{Cultivation stage}
+\label{subsec:preliminary-magic-state-cultivation-cultivation}
+In the cultivation stage, the fault distance of the magic state is increased.
+Conceptually, this is done by performing Hadamard tests, as in the preceding proposals using physical-level distillation~\cite{Goto2016Minimizing, chamberland2020very, itogawa2025efficient}.
+This relies on two facts: (1) the magic state $\ket{T} = T\ket{+}$ is the +1 eigenstate of $H_{XY} = (X + Y) / \sqrt{2}$, and (2) 2D color codes admit transversal $H_{XY}$.
+Magic state cultivation employs an efficient implementation of a pair of Hadamard tests (corresponding to the two ``Check T'' boxes in \autoref{fig:preliminary-msc-protocol}) that is well-suited to the square-grid connectivity.
+
+When $d_\mathrm{color} = 3$, the cultivation stage ends here.
+With a larger $d_\mathrm{color}$, the 2D color code is expanded and the code distance increases by 2.
+After performing syndrome extraction and postselection for code stabilization, another pair of Hadamard tests is performed to increase the fault distance.
+This procedure is repeated until the fault distance reaches $d_\mathrm{color}$.
+
+At the end of this stage, a magic state with fault distance $d_\mathrm{color}$ is encoded in the 2D color code of distance $d_\mathrm{color}$.
+Similar to the injection stage, in this stage, any nontrivial measurement outcome leads to rejection of the distillation attempt.
+
+\subsubsection{Escape stage}
+\label{subsec:preliminary-magic-state-cultivation-escape}
+In the escape stage, the 2D color code of distance $d_\mathrm{color}$ is transformed into the grafted code of distance $d_\mathrm{grafted}$, another QEC code compatible with matching decoders.
+The transformation involves three steps:
+(1) creating a combination of a surface code and a color code,
+(2) stabilizing the code by measuring its stabilizers several times, and
+(3) making the color code region matchable by dropping some stabilizers and decomposing others into two-body stabilizers.
+During the stabilization step, we manually perform postselection for some detectors on the color code region and remove them from the detector error model used by the QEC decoder to keep the detector error model compatible with matching decoders.
+
+Because the grafted code is compatible with matching decoders, we can compute the complementary gap and perform postselection based on it.
+Note that the fault distance of the resulting magic state depends on the complementary gap threshold.
+The grafted code of distance $d$ is similar to the rotated surface code of distance $d$ but has a higher logical error probability.
+For example, Gidney~\textit{et al.}~\cite{Gidney2024MagicStateCultivation} report that the logical error probability of the grafted code of distance 15 is comparable to that of the rotated surface code of distance 11.

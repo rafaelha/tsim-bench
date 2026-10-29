@@ -1,0 +1,75 @@
+\section{Bottlenecks in magic state cultivation} \label{sec:msc-bottleneck}
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.5cm]{fig/msc-bottleneck-msc-qubit-count.pdf}
+\caption{
+Qubit usage during magic state cultivation with $d_\mathrm{color} = 3$, $d_\mathrm{grafted} = 15$, and $r = 10$.
+Each column represents a round.
+See \autoref{subsec:performance-evaluation-simulation-settings} for the definition of ``round''.
+The dashed line represents the number of physical qubits required for the distance-11 rotated surface code.
+}
+\label{fig:msc-bottleneck-qubit-count}
+\Description{Step plot of qubit usage across the rounds of magic state cultivation.
+The horizontal axis lists the stages from Encode T through Stabilize, Check T, Escaped, repeated wait-for-gap rounds, and ready.
+The vertical axis shows the number of qubits.
+The plot begins at a low qubit count during the color-code stage, then rises sharply at the transition to the grafted code and remains flat at a much higher level, 454 physical qubits, through the remaining rounds.
+A horizontal dashed line marks the qubit count of a distance-11 rotated surface code, 241 physical qubits, and lies well below the long high plateau of the grafted-code stage.}
+\end{figure}
+
+
+In this section, we discuss bottlenecks in magic state cultivation.
+\autoref{fig:msc-bottleneck-qubit-count} shows the qubit usage during distillation with parameters described later in \autoref{sec:performance-evaluation}.
+Specifically, we use parameters $d_\mathrm{color} = 3$, $d_\mathrm{grafted} = 15$, and $r = 10$.
+As shown in the figure, the spatial cost of the distance-15 grafted code, which is 454 qubits, is dominant.
+Moreover, we need to wait $r = 10$ rounds for the QEC decoder to compute the complementary gap, which increases the impact of the final code's spatial cost on the total spacetime overhead.
+Gidney~\textit{et al.}~\cite{Gidney2024MagicStateCultivation} report that the logical error probability of the grafted code of distance 15 is comparable to that of the rotated surface code of distance 11.
+The distance-11 rotated surface code requires 241 qubits (the dashed line in \autoref{fig:msc-bottleneck-qubit-count}); hence, if we were able to replace the distance-15 grafted code with the distance-11 rotated surface code---as our proposal later enables---the impact would be substantial.
+
+As discussed in \autoref{sec:introduction}, the grafted code is complex, making its implementation unattractive to practitioners.
+A key issue is that this complexity persists beyond the distillation process: the magic state encoded in the grafted code remains until it is consumed by gate teleportation.
+While the distillation process is isolated from the rest of the system, once distillation completes the grafted code patch storing the magic state participates in the system's normal error-correction cycle.
+Consequently, this additional architectural complexity is more problematic than complexity confined to the distillation process.
+
+More concretely, supporting both the grafted code and the rotated surface code affects multiple layers of the control stack.
+First, the syndrome extraction schedules for the two codes must be synchronized, as analyzed in Ref.~\cite{maurya2025synchronization}.
+Second, real-time decoding must support both QEC codes.
+For example, architectures based on extensive lattice surgery~\cite{Litinski2019GameOfSurfaceCodes} are expected to rely on parallel-window decoding in practical systems.
+Supporting both codes makes implementing parallel-window decoding more challenging.
+Moreover, in compilation schemes that allow distillation factories to be placed at arbitrary locations~\cite{hirano2025locality}, the system must support the grafted code at arbitrary locations as well, further increasing the implementation burden.
+Avoiding such additional architectural complexity is therefore desirable.
+
+In some architectures where the rotated surface code is used for computation, supporting the rotated surface code as the final code would provide additional benefits beyond those discussed above.
+For example, Zhou~\textit{et al.}~\cite{zhou2025resource} use magic state cultivation in their transversal architecture for reconfigurable atom arrays.
+To enable transversal CX for gate teleportation, they transform the grafted code into the rotated surface code by expanding the grafted code and cutting away the color code region.
+This additional conversion incurs extra spatial cost---an overhead that would be unnecessary if the final code were the rotated surface code instead of the grafted code.
+
+Another important metric is the cumulative success probability across rounds, as illustrated in \autoref{fig:msc-bottleneck-survival-probability}.
+The blue region in the figure represents the proportion of attempts surviving up to each round of the distillation process.
+For example, the end-to-end success probability of the distillation process in the figure is 29\%.
+While the proportion of rejected attempts is important, the timing of rejection also matters.
+In the figure, 26\% of attempts are rejected by the final postselection.
+Rejecting those attempts in earlier stages would enable retrying distillation earlier and thus reduce the average spacetime cost of distillation.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.5cm]{fig/msc-bottleneck-msc-survival-probability.pdf}
+\caption{
+Survival probability during magic state cultivation with $d_\mathrm{color} = 3$, $d_\mathrm{grafted} = 15$, and $r = 10$.
+The logical error probability of the resulting $S\ket{+}$ state is $1.6 \times 10^{-6}$.
+Each column represents a round.
+}
+\label{fig:msc-bottleneck-survival-probability}
+\Description{Step plot of survival probability across the rounds of magic state cultivation.
+The horizontal axis lists the stages from Encode T through Stabilize, Check T, Escaped, repeated wait-for-gap rounds, and ready.
+The vertical axis shows survival probability from 0 to 1.
+The plot starts at 1.0, decreases in several steps during the early rounds, stays nearly flat at about 0.55 through the repeated wait-for-gap rounds, and then drops again at the final ready stage to about 0.29.
+The blue shaded region marks the surviving fraction after each round.}
+\end{figure}
+
+Following the proposal of magic state cultivation, several related protocols have been proposed~\cite{vaknin2025magic, chen2025efficient, sahay2025fold, claes2025cultivating}.
+These protocols rely on non-local connectivity to perform the cultivation stage on QEC codes other than 2D color codes.
+For example, Refs.~\cite{sahay2025fold, claes2025cultivating} use unrotated surface codes, and Ref.~\cite{chen2025efficient} uses SRP codes.
+Several of these protocols achieve lower spacetime overhead than magic state cultivation, partly because the conversion from the QEC code used for the cultivation stage to the final QEC code is more efficient than the conversion from the color code to the grafted code in magic state cultivation.
+However, their reliance on non-local connectivity limits their applicability to hardware architectures that do not support non-local operations, such as nearest-neighbor superconducting architectures.
+In this work, we address the same bottleneck under the square-grid connectivity constraint: MSC-LS efficiently transfers the magic state from the color code to the rotated surface code using lattice surgery and code expansion.

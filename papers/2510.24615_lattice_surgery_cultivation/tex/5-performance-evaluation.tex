@@ -1,0 +1,200 @@
+\section{Numerical simulation}
+\label{sec:performance-evaluation}
+
+This section presents a performance evaluation of magic state cultivation with lattice surgery (MSC-LS).
+We use Stim~\cite{gidney2021stim} and PyMatching~\cite{higgott2025sparse} for the evaluation.
+Our implementation is available at \hiddenforreview{\url{https://github.com/yutakahirano/msc-ls/}}.
+Because Stim can only simulate Clifford circuits, we replace $T$ gates in the injection and cultivation stages with $S$ gates.
+This modification causes the distillation circuit to output $S\ket{+}$ instead of $T\ket{+}$.
+Gidney~\textit{et al.}~\cite{Gidney2024MagicStateCultivation} conjecture that cultivating $T\ket{+}$ has a logical error probability approximately twice as high as cultivating $S\ket{+}$.
+We note that, in the parameter regime considered below (\autoref{subsec:performance-evaluation-simulation-settings}), namely $d_\mathrm{color} = 3$ and $p_\mathrm{phys} = 10^{-3}$, the validity of this approximation for the injection and cultivation stages is supported by statevector simulations reported in Ref.~\cite{Gidney2024MagicStateCultivation}.
+This approximation may also quantitatively affect complementary-gap-based postselection, and thus the final logical error probability and success probability.
+Nevertheless, we adopt it in this section because Clifford simulation with this approximation is standard practice in MSC-style analyses.
+Recently, several techniques~\cite{wan2025simulate, surti2025efficient, li2025soft} have been proposed to enable simulations of MSC-like protocols without this approximation.
+Applying such techniques to MSC-LS is an important direction for future work.
+
+\subsection{Simulation settings} \label{subsec:performance-evaluation-simulation-settings}
+We evaluate the performance of MSC-LS using several parameters.
+These include the color code distance $d_{\mathrm{color}} = 3$, the intermediate rotated surface code distance $d_\mathrm{intermediate}$, the final rotated surface code distance $d_\mathrm{final}$, and the number of rounds of syndrome extraction $r$ performed while waiting for the complementary gap computation.
+Simulations are carried out under uniform depolarizing circuit noise of strength $p_\mathrm{phys}$.
+Unless otherwise specified, we set $d_\mathrm{final} = 11$, $r = 10$, and $p_\mathrm{phys} = 10^{-3}$.
+For the original magic state cultivation, we use a grafted code distance of $d_\mathrm{grafted} = 15$, following the observation of Gidney~\textit{et al.}~\cite{Gidney2024MagicStateCultivation} that the logical error probability of the distance-15 grafted code is comparable to that of the distance-11 rotated surface code.
+
+We take a ``round'' as the unit of distillation time.
+A round is a series of circuit layers that corresponds to one round of syndrome extraction in the 2D color code or the rotated surface code.
+This unit allows us to compare the spacetime overhead of distillation with magic state cultivation.
+\autoref{alg:performance-evaluation-spacetime-cost} presents the algorithm for calculating the spacetime overhead of distillation.
+
+\begin{figure}[!t]
+  \captionsetup{type=algorithmfigure}
+  \hrule \vspace{10pt}
+  \caption{Calculate the spacetime overhead}
+  \label{alg:performance-evaluation-spacetime-cost}
+  \hrule \vspace{2pt}
+  \begin{algorithmic}
+    \State $cost \gets 0$
+    \For{each round}
+      \State $q \gets$ the number of qubits used in this round
+      \State $p \gets$ the success probability of this round
+      \State $cost \gets (cost + q) / p$ 
+    \EndFor
+    \State \textbf{return} $cost$
+  \end{algorithmic}
+  \vspace{2pt} \hrule
+\end{figure}
+
+\subsection{Results}
+\label{subsec:performance-evaluation-results}
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8cm]{fig/performance-evaluation-error-detection.pdf}
+\caption{Logical $X$ and $Z$ error probabilities introduced by the lattice surgery procedure.}
+\label{fig:performance-evaluation-error-detection}
+\Description{Fully described in the text.}
+\end{figure}
+
+\autoref{fig:performance-evaluation-error-detection} illustrates $X$ and $Z$ logical error probabilities resulting from the lattice surgery procedure described in \autoref{subsec:msc-ls-ls} as a function of $p_\mathrm{phys}$.
+Here, to focus on the logical errors caused by lattice surgery, the simulation runs the following sequence.
+First, an ideal $\ket{+}_L$ ($\ket{0}_L$) state is encoded in the distance-3 2D color code.
+Next, the lattice surgery procedure described in \autoref{subsec:msc-ls-ls} is performed to teleport the quantum state to the rotated surface code of distance $d_\mathrm{intermediate} = 5$.
+Finally, we apply one round of noise-free syndrome extraction on the rotated surface code, followed by postselection and a noise-free logical measurement in the $X$ ($Z$) basis, after which we verify the outcome.
+This evaluates the $Z$ ($X$) logical error probability of the procedure.
+Fitting the data to the form $C\,p_{\mathrm{phys}}^{\alpha}$ gives $\alpha \approx 2.92$ for $Z$ errors and $\alpha \approx 3.30$ for $X$ errors, indicating that the procedure preserves a fault distance of 3, consistent with expectations.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.5cm]{fig/performance-evaluation-end-to-end.pdf}
+\caption{
+Logical error probability of the resulting magic state as a function of distillation success probability.
+Blue: MSC-LS with $d_\mathrm{intermediate} = 3$; orange: MSC-LS with $d_\mathrm{intermediate} = 5$; green: MSC.
+Here we do not use the lookup table for MSC-LS.
+}
+\label{fig:performance-evaluation-end-to-end}
+\Description{Plot of logical error probability versus distillation success probability for three protocols.
+The horizontal axis shows distillation success probability, and the vertical axis shows logical error probability on a logarithmic scale.
+Three increasing curves are shown.
+The blue and green curves lie close to each other over much of the plotted range, indicating similar logical error probabilities.
+The orange curve lies below them over much of the range, indicating lower logical error probability at the same distillation success probability.
+For a fixed logical error probability, the orange curve extends farther to the right than the others, indicating higher distillation success probability.}
+\end{figure}
+
+\autoref{fig:performance-evaluation-end-to-end} illustrates the trade-off between the logical error probability and end-to-end distillation success probability of MSC-LS and MSC.
+Each point in a series corresponds to a different complementary gap threshold used in the final postselection.
+MSC-LS achieves logical error probabilities comparable to those of MSC but outperforms it in end-to-end distillation success probability.
+Moreover, MSC-LS with $d_\mathrm{intermediate} = 5$ outperforms MSC-LS with $d_\mathrm{intermediate} = 3$.
+% We attribute the small residual difference in the minimum achievable logical error probability between MSC and MSC-LS with $d_\mathrm{intermediate} = 5$ primarily to skipping syndrome extraction for the six-weight stabilizer $X_{0145ab}$ in the lattice surgery procedure (\autoref{subsec:msc-ls-ls}).
+
+The logical error probability in the injection and cultivation stages is $2 \times 10^{-7}$, compared to $8 \times 10^{-7}$ for the lattice surgery procedure (shown in \autoref{fig:performance-evaluation-error-detection}) and $1.6 \times 10^{-6}$ for the end-to-end protocol (shown in \autoref{fig:performance-evaluation-end-to-end}).
+This is consistent with the observation in Ref.~\cite{Gidney2024MagicStateCultivation} that the escape stage dominates the logical error budget.
+
+To evaluate the sensitivity of these results to the noise model, we vary each error component independently while keeping the others fixed.
+\autoref{fig:performance-evaluation-sensitivity-more} and \autoref{fig:performance-evaluation-sensitivity-less} show the resulting logical error probability as a function of the distillation success probability when the error probability of each component is increased and decreased, respectively.
+These results show how each error source affects MSC-LS separately, providing a more detailed view of which hardware improvements would most directly improve the performance of the protocol.
+In particular, the logical error probability is more sensitive to changes in the idling and two-qubit gate error probabilities than to changes in the other error probabilities.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.5cm]{fig/performance-evaluation-sensitivity-more.pdf}
+\caption{
+Logical error probability of the resulting magic state as a function of distillation success probability.
+The orange curve represents the baseline noise model, which is uniform depolarizing circuit noise of strength $10^{-3}$.
+The other curves represent modified noise models in which one error component is set to $1.5 \times 10^{-3}$ while the other error probabilities are kept at their baseline values.
+}
+\label{fig:performance-evaluation-sensitivity-more}
+\Description{Plot of logical error probability versus distillation success probability for the baseline noise model and modified noise models with increased single-qubit gate, two-qubit gate, reset, measurement, and idling error probabilities.
+The horizontal axis shows distillation success probability, and the vertical axis shows logical error probability on a logarithmic scale.}
+\end{figure}
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.5cm]{fig/performance-evaluation-sensitivity-less.pdf}
+\caption{
+Logical error probability of the resulting magic state as a function of distillation success probability.
+The orange curve represents the baseline noise model, which is uniform depolarizing circuit noise of strength $10^{-3}$.
+The other curves represent modified noise models in which one error component is set to $6.7 \times 10^{-4}$ while the other error probabilities are kept at their baseline values.
+}
+\label{fig:performance-evaluation-sensitivity-less}
+\Description{Plot of logical error probability versus distillation success probability for the baseline noise model and modified noise models with decreased single-qubit gate, two-qubit gate, reset, measurement, and idling error probabilities.
+The horizontal axis shows distillation success probability, and the vertical axis shows logical error probability on a logarithmic scale.}
+\end{figure}
+
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.5cm]{fig/performance-evaluation-lookup-table-coverage.pdf}
+\caption{
+Coverage of the lookup table.
+The horizontal axis denotes the ratio of distillation attempts that would be additionally rejected by the lookup table.
+The vertical axis represents the number of entries in the table.
+}
+\label{fig:performance-evaluation-lookup-table-coverage}
+\Description{Plot of lookup table size versus coverage.
+The horizontal axis shows coverage, and the vertical axis shows the number of entries in the lookup table.
+The curve rises gradually at low coverage and then increases sharply near coverage 0.096, reaching about 160,000 entries.}
+\end{figure}
+
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.5cm]{fig/performance-evaluation-distillation-lifetime-without-lookup-table.pdf}
+\caption{
+Qubit usage and survival probability during distillation without the lookup table.
+Each column represents a round.
+The blue region represents the survival probability of distillation.
+The orange region represents the physical qubit usage normalized to the maximum qubit usage (241 qubits in this case). 
+}
+\label{fig:performance-evaluation-distillation-lifetime-without-lookup-table}
+\Description{Fully described in the text.}
+\end{figure}
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.5cm]{fig/performance-evaluation-distillation-lifetime-with-lookup-table.pdf}
+\caption{
+Qubit usage and survival probability during distillation with the lookup table, using the same color scheme as \autoref{fig:performance-evaluation-distillation-lifetime-without-lookup-table}.
+}
+\label{fig:performance-evaluation-distillation-lifetime-with-lookup-table}
+\Description{Combined step plot of qubit usage and survival probability during distillation with the lookup table.
+Because additional lookup-table-based postselection is performed before code expansion, the survival probability is lower from that point until the final postselection.
+The final survival probability is unchanged.}
+\end{figure}
+
+We construct lookup tables using \autoref{alg:construct-lookup-table} with various complementary gap thresholds $g_\mathrm{th}$.
+For each $g_\mathrm{th}$ setting, we sample $10^{10}$ shots, with the threshold for invalid cases set to $c_\mathrm{th} = 100$.
+\autoref{fig:performance-evaluation-lookup-table-coverage} shows the coverage of the lookup table with $g_\mathrm{th} = 15.48$.
+For this table, the offline construction took about 5.7 hours using 90 CPU cores on Intel Xeon Platinum 9242 processors, corresponding to approximately 510 core-hours.
+At maximum size, the table contains 159,321 entries and rejects 9.6\% of distillation attempts.
+\autoref{fig:performance-evaluation-distillation-lifetime-without-lookup-table} and \autoref{fig:performance-evaluation-distillation-lifetime-with-lookup-table} show the qubit usage and survival probability during distillation.
+Without the lookup table (\autoref{fig:performance-evaluation-distillation-lifetime-without-lookup-table}), 43\% of samples are rejected before code expansion, 22\% by the final postselection, and 35\% are accepted.
+By contrast, with the lookup table (\autoref{fig:performance-evaluation-distillation-lifetime-with-lookup-table}), 52\% of samples are rejected before code expansion, 13\% are rejected by the final postselection, and 35\% are accepted.
+This early rejection reduces the spacetime overhead by 15\% in this setting.
+
+% Our lookup-table construction is conservative because it uses a large number of Monte Carlo samples and retains only syndrome patterns observed at least $c_\mathrm{th}$ times.
+% We quantify this conservative nature using the false-rejection rate, defined as the fraction of all distillation attempts that are rejected by the lookup table but would have passed the final postselection.
+% For example, for $g_\mathrm{th} = 15.48$, a Monte Carlo simulation with $2 \times 10^9$ shots yielded 706,469,472 accepted shots with the correct logical output, 1,153 accepted shots with a logical error, and 1,293,529,375 rejected shots when only the final postselection was applied.
+% When the lookup-table-based early rejection was also applied, the same simulation yielded 706,469,365 accepted shots with the correct logical output, 1,153 accepted shots with a logical error, and 1,293,529,482 rejected shots.
+% Thus, there were 107 false rejections, corresponding to an observed false-rejection rate of $107/(2 \times 10^9) = 5.35 \times 10^{-8}$, which is negligibly small.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.5cm]{fig/performance-evaluation-distillation-overhead.pdf}
+\caption{
+Spacetime overhead of MSC-LS with and without the lookup table and MSC.
+}
+\label{fig:performance-evaluation-distillation-overhead}
+\Description{Plot of logical error probability versus spacetime overhead of distillation for MSC-LS without table, MSC-LS with table, and MSC.
+The horizontal axis shows spacetime overhead in qubit-rounds, and the vertical axis shows logical error probability on a logarithmic scale.
+All three curves decrease as spacetime overhead increases.
+The two MSC-LS curves lie to the left of the MSC curve, and the lookup-table version lies slightly to the left of the version without the table in the lower logical-error region.}
+\end{figure}
+
+\autoref{fig:performance-evaluation-distillation-overhead} depicts the spacetime overhead of distillation of MSC-LS and MSC.
+It shows that in the logical error probability range of $[10^{-6}, 10^{-5}]$, MSC-LS requires less than half the spacetime overhead required for MSC.
+For example, MSC-LS reduces the spacetime overhead by 59\% (55\%) when distilling an $S\ket{+}$ state with a logical error probability of $2 \times 10^{-6}$ ($4 \times 10^{-6}$).
+The lookup table performs more effectively in the lower range of logical error probability, which is expected, given that postselection is performed more strongly in this range.
+
+\autoref{fig:performance-evaluation-lookup-table-coverage} also shows that the lookup table is useful even when the number of entries in the table is limited.
+For example, with only 5,000 entries, the coverage reaches 8\%.
+Hence, the lookup table is useful even in memory-constrained systems.
+The number of detectors contained in a table entry is 54 with our simulation setting, and hence each table entry requires only 54 bits and is very lightweight.

@@ -1,0 +1,24 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+In this study, we proposed magic state cultivation with lattice surgery, an efficient magic state distillation protocol.
+The efficiency of our protocol arises from (1) adopting the space-efficient rotated surface code as the final QEC code, (2) using an intermediate code distance smaller than $d_\mathrm{final}$ during the lattice surgery procedure to reduce the spatial overhead in early stages, and (3) incorporating the lookup table to enable early rejection.
+Our protocol also provides simplicity, as it avoids the complex grafting procedure and the grafted code.
+Numerical simulations show that our protocol achieves a logical error probability for the resulting magic state comparable to that of magic state cultivation, while requiring only about half the spacetime overhead of magic state cultivation.
+Although we leave implementations with larger color code distances for future work, the $d_\mathrm{color} = 3$ implementation studied here is already useful in practical regimes, as discussed below.
+Therefore, we conclude that magic state cultivation with lattice surgery offers a practical path to more efficient magic state distillation in fault-tolerant quantum computation, thereby reducing the total spacetime cost of $T$-intensive quantum computation.
+
+In this study, we have focused on implementations with $d_\mathrm{color} = 3$.
+We see no fundamental obstacles to implementations at larger color code distances.
+Whether such implementations are more efficient than magic state cultivation with the corresponding color code distance remains open and is an important direction for future work.
+Nevertheless, MSC-LS with $d_\mathrm{color} = 3$ is already relevant in practical regimes.
+It prepares a $T$ magic state with a logical error probability of approximately $3 \times 10^{-6}$, which is useful in the megaquop regime~\cite{preskill2025beyond}.
+This regime is an important next milestone beyond NISQ and includes many promising applications of early fault-tolerant quantum computation.
+Moreover, $T$ magic states prepared by our protocol can be used as inputs to further distillation~\cite{Litinski2019magicstate}.
+For example, the $8T$-to-$\mathrm{CCZ}$ distillation protocol~\cite{Campbell2017Unified} can prepare a higher-fidelity $\mathrm{CCZ}$ magic state, which can be used to implement the Toffoli gate.
+Since the $8T$-to-$\mathrm{CCZ}$ protocol's leading-order output logical error probability is $28p^2$, $T$ magic states prepared by MSC-LS with $d_\mathrm{color} = 3$ can be used as inputs to prepare $\mathrm{CCZ}$ magic states with a logical error probability on the order of $10^{-10}$.
+
+Another important direction for future work is to develop a more concrete distillation pipeline.
+Both MSC and MSC-LS have relatively low end-to-end success probabilities, and the average spacetime cost of distillation is evaluated under the assumption that distillation can be parallelized and pipelined.
+For instance, satisfying this assumption requires additional code expansion schemes beyond the downward expansion discussed in \autoref{subsec:msc-ls-code-expansion}.
+This capability is critical for using the protocol in compilation schemes that require a small, on-demand distillation factory~\cite{hirano2025locality}.
