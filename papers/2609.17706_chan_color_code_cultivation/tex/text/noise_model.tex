@@ -1,0 +1,42 @@
+\section{Noise Model}
+\label{sec:noise_model}
+In this paper we use the standard depolarising noise model,
+in which the following \emph{error processes} occur each with probability $p$
+(the characteristic noise level of the circuit):
+\begin{enumerate}
+	\item each qubit preparation prepares the orthogonal state;
+	\item each qubit measurement reports the opposite outcome;
+	\item each 1-qubit gate (including idle) is followed by
+	a Pauli drawn randomly from $`{\X, \Y, \Z}$;
+	\item each 2-qubit gate is followed by a Pauli drawn randomly from
+	$`{\I, \X, \Y, \Z}^{\otimes 2} \setminus `{\I^{\otimes 2}}$.
+	\label[process]{item:2_qubit_depolarisation}
+\end{enumerate}
+These error processes give rise to 1, 1, 3, and 15 disjoint error events respectively
+e.g.\ the 2-qubit depolarising channel (\cref{item:2_qubit_depolarisation}) after a CX
+gives rise to the $\I_\d \Y_3$ error event that occurs with probability $p/15$
+in \cref{fig:2_fault_configuration}.
+
+Constructing a fault set $\mathcal F$ requires
+the error events be \emph{independent} rather than \emph{disjoint}~\cite[\S 4.1]{Umbrarescu2026}.
+Fortunately,
+Granet et al.~\cite[\S III.C.1]{Granet2025} show how to factorise
+any channel $\mathcal N(\rho) =\sum_{P \in \mathcal{P}_k} p_P P \rho P$
+with disjoint Pauli error events into a sequential composition
+$\bigcirc_{P \in \mathcal{P}_k \setminus `{\I^{\otimes k}}} \mathcal N_{q_P, P}$
+of independent channels
+$\mathcal N_{q_P, P}(\rho) :=(1 -q_P)\rho +q_P P \rho P$
+each with one Pauli error event.
+Applying this to the 1-qubit depolarising channel,
+where $p_\I =1 -p$ and $p_\X =p_\Y =p_\Z =p/3$, yields
+\begin{equation}
+	q_\X =q_\Y =q_\Z =\frac{1}{2}`\Big[1 - `\Big(1 -\frac{4}{3}p)^{1/2}].
+\end{equation}
+Applying this to the 2-qubit depolarising channel,
+where $p_P =p/15~\forall P \in \mathcal P_2 \setminus `{\I^{\otimes 2}}$,
+yields
+\begin{equation}
+	q_P =\frac{1}{2}`\Big[1 -`\Big(1 -\frac{16}{15}p)^{1/8}]
+	~\forall P \in \mathcal P_2 \setminus `{\I^{\otimes 2}}.
+\end{equation}
+We use these probabilities to make our disjoint error events independent.

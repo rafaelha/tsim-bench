@@ -1,0 +1,192 @@
+\begin{thebibliography}{10}
+
+\bibitem{Gidney2024}
+Craig Gidney, Noah Shutty, and Cody Jones.
+\newblock ``Magic state cultivation: growing {T} states as cheap as {CNOT} gates''~(2024).
+\newblock  \href{http://arxiv.org/abs/2409.17595}{arXiv:2409.17595}.
+
+\bibitem{Chen2026}
+Zi-Han Chen, Ming-Cheng Chen, Chao-Yang Lu, and Jian-Wei Pan.
+\newblock ``Efficient magic state cultivation on $\mathbb{RP}^2$''.
+\newblock \href{https://dx.doi.org/10.1103/9kys-3whh}{PRX Quantum {\bf 7}, 010315}~(2026).
+
+\bibitem{Claes2025}
+Jahan Claes.
+\newblock ``Cultivating {T} states on the surface code with only two-qubit gates''~(2025).
+\newblock  \href{http://arxiv.org/abs/2509.05232}{arXiv:2509.05232}.
+
+\bibitem{Sahay2026}
+Kaavya Sahay, Pei-Kai Tsai, Kathleen~(Katie) Chang, Qile Su, Thomas~B. Smith, Shraddha Singh, and Shruti Puri.
+\newblock ``Fold-transversal surface code cultivation''.
+\newblock \href{https://dx.doi.org/10.1103/gpvl-lg4c}{PRX Quantum {\bf 7}, 033006}~(2026).
+
+\bibitem{Vaknin2025}
+Yotam Vaknin, Shoham Jacoby, Arne Grimsmo, and Alex Retzker.
+\newblock ``Efficient magic state cultivation on the surface code''~(2025).
+\newblock  \href{http://arxiv.org/abs/2502.01743}{arXiv:2502.01743}.
+
+\bibitem{Wan2025b}
+Kwok~Ho Wan and Zhenghao Zhong.
+\newblock ``Cutting stabiliser decompositions of magic state cultivation with {ZX}-calculus''~(2025).
+\newblock  \href{http://arxiv.org/abs/2509.01224}{arXiv:2509.01224}.
+
+\bibitem{Hirano2025a}
+Yutaka Hirano, Riki Toshio, Tomohiro Itogawa, and Keisuke Fujii.
+\newblock ``Efficient magic state cultivation with lattice surgery''~(2025).
+\newblock  \href{http://arxiv.org/abs/2510.24615}{arXiv:2510.24615}.
+
+\bibitem{Rosenfeld2025}
+Emma Rosenfeld et~al.
+\newblock ``Magic state cultivation on a superconducting quantum processor''~(2025).
+\newblock  \href{http://arxiv.org/abs/2512.13908}{arXiv:2512.13908}.
+
+\bibitem{Hetenyi2026}
+Bence Hetényi, Benjamin~J. Brown, and Dominic~J. Williamson.
+\newblock ``Constant depth magic state cultivation with {Clifford} measurements by gauging''~(2026).
+\newblock  \href{http://arxiv.org/abs/2603.05429}{arXiv:2603.05429}.
+
+\bibitem{Chen2026a}
+I-Chi Chen, Matheus da~Silva~Fonseca, and Andrew Sornborger.
+\newblock ``Efficient magic state cultivation for $\sqrt{T}$ gates''~(2026).
+\newblock  \href{http://arxiv.org/abs/2606.10430}{arXiv:2606.10430}.
+
+\bibitem{Xu2025}
+Qian Xu, Hengyun Zhou, Dolev Bluvstein, Madelyn Cain, Marcin Kalinowski, John Preskill, Mikhail~D. Lukin, and Nishad Maskara.
+\newblock ``Batched high-rate logical operations for quantum {LDPC} codes''~(2025).
+\newblock  \href{http://arxiv.org/abs/2510.06159}{arXiv:2510.06159}.
+
+\bibitem{Ibe2025}
+Yohei Ibe, Yutaka Hirano, Yasuo Ozu, Toru Kawakubo, and Keisuke Fujii.
+\newblock ``Measurement-based fault-tolerant quantum computation on high-connectivity devices: A resource-efficient approach toward early {FTQC}''~(2025).
+\newblock  \href{http://arxiv.org/abs/2510.18652}{arXiv:2510.18652}.
+
+\bibitem{Hines2026}
+Jordan Hines, Corey Ostrove, Kenneth Rudinger, Stefan Seritan, Kevin Young, Robin Blume-Kohout, and Timothy Proctor.
+\newblock ``Simulating quantum error correction beyond {Pauli} stochastic errors''~(2026).
+\newblock  \href{http://arxiv.org/abs/2603.18457}{arXiv:2603.18457}.
+
+\bibitem{Gidney2021a}
+Craig Gidney.
+\newblock ``{Stim}: a fast stabilizer circuit simulator''.
+\newblock \href{https://dx.doi.org/10.22331/q-2021-07-06-497}{{Quantum} {\bf 5}, 497}~(2021).
+
+\bibitem{Wan2026}
+Kwok~Ho Wan, Zhenghao Zhong, and Ainhoa Zapirain.
+\newblock ``Simulating magic state cultivation with few {Clifford} terms''.
+\newblock \href{https://dx.doi.org/10.22331/q-2026-06-12-2134}{{Quantum} {\bf 10}, 2134}~(2026).
+
+\bibitem{Chen2026b}
+I-Chi Chen, Hrushikesh~Pramod Patil, Huiyang Zhou, and Andrew Sornborger.
+\newblock ``Efficient magic state factory via transversal non-clifford gate''~(2026).
+\newblock  \href{http://arxiv.org/abs/2606.16199}{arXiv:2606.16199}.
+
+\bibitem{Li2025}
+Riling Li, Keli Zheng, Yiming Zhang, Huazhe Lou, Shenggang Ying, Ke~Liu, and Xiaoming Sun.
+\newblock ``{SOFT}: a high-performance simulator for universal fault-tolerant quantum circuits''~(2025).
+\newblock  \href{http://arxiv.org/abs/2512.23037}{arXiv:2512.23037}.
+
+\bibitem{Tuloup2026}
+Thomas Tuloup and Thomas Ayral.
+\newblock ``Computing logical error thresholds with the {Pauli} frame sparse representation''~(2026).
+\newblock  \href{http://arxiv.org/abs/2603.14670}{arXiv:2603.14670}.
+
+\bibitem{Chase2026}
+Bradley~A. Chase and Farrokh Labib.
+\newblock ``{Clifft}: Fast exact simulation of near-{Clifford} quantum circuits''~(2026).
+\newblock  \href{http://arxiv.org/abs/2604.27058}{arXiv:2604.27058}.
+
+\bibitem{Fang2026a}
+Wang Fang, Huazhe Lou, and Riling Li.
+\newblock ``{SymFT}: Universal fault-tolerant quantum circuit simulation via symbolic {Clifford}--{Pauli} frames and stabilizer coordinates''~(2026).
+\newblock  \href{http://arxiv.org/abs/2607.28600}{arXiv:2607.28600}.
+
+\bibitem{Daguerre2025}
+Lucas Daguerre and Isaac~H. Kim.
+\newblock ``Code switching revisited: Low-overhead magic state preparation using color codes''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevResearch.7.023080}{Physical Review Research {\bf 7}, 023080}~(2025).
+
+\bibitem{Chao2018}
+Rui Chao and Ben~W. Reichardt.
+\newblock ``Quantum error correction with only two extra qubits''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevLett.121.050502}{Physical Review Letters {\bf 121}, 050502}~(2018).
+
+\bibitem{Chan2026c_quantum_bibstyle}
+Tim Chan~(2026).
+\newblock  url:~\url{https://github.com/timchan0/cliffordea}.
+
+\bibitem{Aaronson2004}
+Scott Aaronson and Daniel Gottesman.
+\newblock ``Improved simulation of stabilizer circuits''.
+\newblock \href{https://dx.doi.org/10.1103/physreva.70.052328}{Physical Review A{\bf 70}}~(2004).
+
+\bibitem{Kubica2015}
+Aleksander Kubica and Michael~E. Beverland.
+\newblock ``Universal transversal gates with color codes: A simplified approach''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevA.91.032330}{Physical Review A {\bf 91}, 032330}~(2015).
+
+\bibitem{Tansuwannont2025}
+Theerapat Tansuwannont, Yugo Takada, and Keisuke Fujii.
+\newblock ``{Clifford} gates with logical transversality for self-dual {CSS} codes''~(2025).
+\newblock  \href{http://arxiv.org/abs/2503.19790}{arXiv:2503.19790}.
+
+\bibitem{Itogawa2025}
+Tomohiro Itogawa, Yugo Takada, Yutaka Hirano, and Keisuke Fujii.
+\newblock ``Efficient magic state distillation by zero-level distillation''.
+\newblock \href{https://dx.doi.org/10.1103/thxx-njr6}{PRX Quantum {\bf 6}, 020356}~(2025).
+
+\bibitem{Umbrarescu2026}
+George Umbrarescu and David Amaro.
+\newblock ``{SyQMA}: A memory-efficient, symbolic and exact universal simulator for quantum error correction''~(2026).
+\newblock  \href{http://arxiv.org/abs/2604.15043}{arXiv:2604.15043}.
+
+\bibitem{Wan2026a}
+Kwok~Ho Wan and Ainhoa Zapirain.
+\newblock ``Exact logical error rates for magic state cultivation''~(2026).
+\newblock  \href{http://arxiv.org/abs/2609.18922}{arXiv:2609.18922}.
+
+\bibitem{Surti2026}
+Samyak Surti, Lucas Daguerre, and Isaac~H. Kim.
+\newblock ``Efficient simulation of logical magic state preparation protocols''.
+\newblock \href{https://dx.doi.org/10.1103/fby6-xjbm}{PRX Quantum {\bf 7}, 020329}~(2026).
+
+\bibitem{Daguerre2025a}
+Lucas Daguerre, Robin Blume-Kohout, Natalie~C. Brown, David Hayes, and Isaac~H. Kim.
+\newblock ``Experimental demonstration of high-fidelity logical magic states from code switching''.
+\newblock \href{https://dx.doi.org/10.1103/dck4-x9c2}{Physical Review X {\bf 15}, 041008}~(2025).
+
+\bibitem{Richards2015_quantum_bibstyle}
+Andrew Richards.
+\newblock ``\href{https://doi.org/10.5281/zenodo.22558}{University of Oxford Advanced Research Computing}''.
+\newblock ~(2015).
+
+\bibitem{Rudolph2026}
+Manuel~S. Rudolph, Tyson Jones, Yanting Teng, Armando Angrisani, and Zo\"e Holmes.
+\newblock ``{Pauli} propagation: A computational framework for simulating quantum systems''.
+\newblock \href{https://dx.doi.org/10.1103/6vd7-l9bn}{PRX Quantum {\bf 7}, 032001}~(2026).
+
+\bibitem{Hartweg2026}
+Tom Hartweg and Asier~Piñeiro Orioli.
+\newblock ``Comparing magic state cultivation methods using matrix product states''~(2026).
+\newblock  \href{http://arxiv.org/abs/2609.19116}{arXiv:2609.19116}.
+
+\bibitem{Beverland2024}
+Michael~E. Beverland, Shilin Huang, and Vadym Kliuchnikov.
+\newblock ``Fault tolerance of stabilizer channels''~(2024).
+\newblock  \href{http://arxiv.org/abs/2401.12017}{arXiv:2401.12017}.
+
+\bibitem{Thorvaldson2026}
+Ian~D. Thorvaldson, Jeffrey Marshall, Jack~R. Craig, Samuel~K. Gorman, Charles~D. Hill, and Michelle~Y. Simmons.
+\newblock ``The magic scroll: Leveraging biased noise to improve magic state cultivation in register-based architectures''~(2026).
+\newblock  \href{http://arxiv.org/abs/2608.09018}{arXiv:2608.09018}.
+
+\bibitem{McEwen2023}
+Matt McEwen, Dave Bacon, and Craig Gidney.
+\newblock ``Relaxing hardware requirements for surface code circuits using time-dynamics''.
+\newblock \href{https://dx.doi.org/10.22331/q-2023-11-07-1172}{{Quantum} {\bf 7}, 1172}~(2023).
+
+\bibitem{Granet2025}
+Etienne Granet, K\'evin H\'emery, and Henrik Dreyer.
+\newblock ``Analog simulation of noisy quantum circuits''.
+\newblock \href{https://dx.doi.org/10.1103/PhysRevResearch.7.013213}{Physical Review Research {\bf 7}, 013213}~(2025).
+
+\end{thebibliography}

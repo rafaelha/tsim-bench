@@ -1,0 +1,35 @@
+\tikzset{
+	msc wire above/.style={
+		preaction={
+			draw=#1,
+			line width=2.6pt,
+			opacity=0.6,
+			transform canvas={yshift=1.3pt},
+		},
+	},
+	msc wire below/.style={
+		preaction={
+			draw=#1,
+			line width=2.6pt,
+			opacity=0.6,
+			transform canvas={yshift=-1.3pt},
+		},
+	},
+	msc control left/.style={
+		preaction={
+			draw=#1,
+			line width=2.6pt,
+			opacity=0.6,
+			transform canvas={xshift=-1.3pt},
+		},
+	},
+	msc control right/.style={
+		preaction={
+			draw=#1,
+			line width=2.6pt,
+			opacity=0.6,
+			transform canvas={xshift=1.3pt},
+		},
+	},
+	msc event/.style={text=black},
+}

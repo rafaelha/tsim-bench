@@ -1,0 +1,90 @@
+\section{Motivating Example: Degraded Fault Distance in Cultivation}
+\label{sec:fault_distance_of_magic_state_cultivation}
+The reason for the widening T--S discrepancy is that for S-state cultivation,
+the double checks have the fault distance they were designed for.
+For T-state cultivation,
+the final distance-3 (-5) double check
+instead has fault distance 2 (3);
+this means that the logical error rate per kept shot
+scales as $p^2$ ($p^3$) instead of $p^3$ ($p^5$), for noise level $p$.
+For the rest of this paper we thus focus on the final double check.
+The following shows an explicit example of
+two error events that can lead to a logical error
+in distance-3 T-state cultivation.
+
+\begin{eg}\label{eg:d3_color_code_acceptance_probability}
+Consider two 1-qubit error events, each occurring with probability $\upTheta(p)$;
+namely, an $\X_1$ and a $\Y_3$ error event
+at the locations shown in \cref{fig:2_fault_configuration}.
+The $\X_1$ is a hook error:
+it propagates through two CXs to become $\X_{0 \a 1}$,
+but ancilla qubit $\a$ is measured in the X-basis
+so the X error on it will have no effect.
+This leaves us with $\X_{0 1} \Y_3$ immediately before the T-gates,
+which will go undetected past this circuit.
+Note that the data qubits $(0, 1, 3)$ support a logical Pauli;
+we will omit their subscripts in what follows.
+Pushing any unitary $U$ through a gate $G$ transforms $U$ into $GUG^\dag$;
+now consider pushing $\X\X\Y$ through the given T-gates:
+\begin{align}
+	E
+	&:=
+	(\T \T^\dag \T)
+	(\X \X \Y)
+	(\T \T^\dag \T)^\dag \notag \\
+	&=-(\H_+)_0 (\H_-)_{1 3}.
+	\label{eq:clifford_error_in_superposition}
+\end{align}
+The theory we develop in the next section,
+together with \cref{lem:insert_projector},
+shows that
+the Clifford error $E$ flips no subsequent detectors
+with probability of 1/4 and,
+if so,
+leads to an undetected logical error.
+An intuitive explanation is:
+$E$ completely randomises two X-type stabiliser generators of the code,
+so the probability of both returning to their +1 eigenvalue is $(1/2)^2$.
+As for the logical information,
+$E$ anticommutes with the stabiliser $\overline{H_+}$
+that defines the logical state,
+so it rotates the logical state to the orthogonal one.
+\end{eg}
+
+To contrast,
+we briefly show why the error $\X_{0 1} \Y_3$
+never leads to logical error in the analogous circuit for S-state cultivation.
+\begin{eg}
+\label{eg:d3_color_code_s_state}
+In S-state cultivation,
+the T-gates are replaced by S-gates.
+Consider pushing $\X\X\Y$ through these S-gates:
+\begin{equation}
+	(\S\S^\dag \S) (\X\X\Y)(\S\S^\dag \S)^\dag
+	=\Y_{0 1} \X_3.
+\end{equation}
+This Pauli error anticommutes with $G_2$
+from the set of stabiliser generators
+\cref{eq:d3_color_stabilizer_generators};
+hence, it is deterministically detected.
+\end{eg}
+
+The next section is motivated by
+the question posed at the end of
+\cref{eg:d3_color_code_acceptance_probability}
+(\textit{how often does the Clifford error evade detection
+and end up as an accepted logical error?});
+unfortunately however,
+the final double check is followed immediately by the escape stage,
+whose details are quite involved.
+We avoid propagating the Clifford error $E$ through this stage
+using our lemma in \cref{sec:reducing_code_conversion_to_codespace_projection},
+which allows us to insert
+an imaginary noiseless stabiliser measurement round beforehand
+without affecting the post-escape state.
+We can then analyse the effect of $E$ on that imaginary round instead,
+which is the topic of the next section.
+Then, in \cref{sec:thorough_analysis},
+we resume our analysis of MSC
+by enumerating the low-weight logical errors
+in MSC-3 and -5.

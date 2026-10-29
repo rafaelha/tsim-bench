@@ -1,0 +1,144 @@
+\begin{figure}[h]
+	\centering
+	\input{figures/from_yquant/yquant_circuits/2_fault_configuration.tex}
+	\hfill
+	\includegraphics[width=0.77\linewidth]{figures/summary.pdf}
+	\begin{subfigure}[b]{0.24\linewidth}
+		\centering
+		\caption{In T-state cultivation,
+		two Pauli error events can propagate into a weight-3 Clifford error
+		that can lead to an undetected logical error.}
+		\label{fig:2_fault_configuration}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.27\linewidth}
+		\centering
+		\caption{The double check fault distance
+		is 2 (3) for distance-3 (-5) T-state cultivation,
+		rather than 3 (5) for its S-state proxy.
+		Missing datapoints are exactly zero.}
+		\label{fig:lep_against_fault_count}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.43\linewidth}
+		\centering
+		\caption{In distance-5 T-state cultivation,
+		detecting the degrading hook errors with our Z flags
+		improves the simulated pre-escape logical error rate per kept shot.
+		Shading shows the region within a factor of 1000 of the maximum likelihood.}
+		\label{fig:d5_pre_escape_ler}
+	\end{subfigure}
+	\caption{Summary of results.
+	Blue (orange) plot data correspond to cultivating S (T) states.}
+	\label{fig:summary}
+\end{figure}
+
+\section{Introduction}
+\label{sec:introduction}
+
+Magic state cultivation (MSC)~\cite{Gidney2024},
+or T-state cultivation,
+is a relatively new protocol for producing logical T states
+that has recently exploded in popularity
+\cite{Chen2026,Claes2025,Sahay2026,Vaknin2025,Wan2025b,Hirano2025a,Rosenfeld2025,Hetenyi2026,Chen2026a}
+due to its practicality:
+it shrinks the spacetime cost of a logical T state
+to that of a lattice surgery CX.
+Simulating MSC on a classical computer is costly
+due to its non-Clifford nature,
+so early numerical benchmarks \cite{Xu2025,Ibe2025,Hines2026}
+relied on simulating a Clifford proxy,
+S-state cultivation,
+on a stabiliser simulator such as Stim~\cite{Gidney2021a}.
+Since the T- and S-state cultivation circuits share the same structure,
+it was expected that their logical error rates would be similar.
+However, simulations from the original paper~\cite{Gidney2024} showed that
+distance-3 T-state cultivation in its early stages
+has a (roughly 2$\times$) higher logical error rate
+than its S-state analogue.
+Subsequent papers \cite{Wan2026,Chen2026b} observed that
+this T--S discrepancy widens as the noise level decreases.
+More recent papers \cite{Li2025,Tuloup2026,Chase2026,Fang2026a}
+simulate distance-5 cultivation
+and observe an even larger (roughly 11$\times$) T--S discrepancy
+that also widens as the noise level decreases;
+this has yet to be explained.
+This raises concerns for resource estimates that rely on MSC,
+and highlights the danger of
+using Clifford proxies to simulate
+the error behaviour of non-Clifford protocols.
+
+Motivated by this,
+we analytically explain the widening T--S discrepancy
+with hopes to improve cultivation in the future.
+We adopt the approach taken by Daguerre and Kim~\cite[\S V]{Daguerre2025},
+which is to consider the Clifford errors that result from
+propagating Pauli errors through a layer of non-Clifford gates.
+Then,
+instead of Monte Carlo sampling,
+we exhaustively enumerate the dominant contributions
+to the logical error rate,
+which directly tells us the \emph{fault distance}
+i.e.\ level of logical-error suppression in the physical noise level.
+It is known that the fault distance of a subcircuit,
+called the \emph{double check},
+within distance-3 (-5) S-state cultivation is 3 (5): as expected.
+To our knowledge,
+we are the first to show that it is instead 2 (3) in T-state cultivation;
+see \cref{fig:lep_against_fault_count}.
+This is due to the following reason:
+the CXs spread Pauli errors which are then rotated
+to multiqubit Clifford errors by the physical T-gates in the circuit;
+\cref{fig:2_fault_configuration} shows an example.
+Rather than merely changing the signs of the code stabilisers,
+such an error transforms the code into a different stabiliser code
+whose codespace can overlap the original,
+allowing postselection to accept a logically erroneous component.
+By contrast,
+the corresponding errors remain Pauli in S-state cultivation
+and are deterministically detected.
+
+To analyse these Clifford errors,
+we derive a formula (\cref{theorem:probability_trivial_syndrome})
+for the probability to observe a trivial syndrome
+for any mixed state encoded in any Pauli stabiliser code afflicted with any Clifford error.
+We also provide an algorithm (\cref{alg:probability_trivial_syndrome})
+to compute this probability in $\mathcal O(n^3)$ time
+for fixed logical-qubit count,
+where $n$ is the physical qubit count.
+These two general results may be of independent interest.
+We then calculate the fidelity (\cref{prop:resulting_fidelity})
+specifically for T states afflicted with
+the Clifford errors that are encountered in MSC,
+conditioned on a trivial syndrome.
+
+Having enumerated the malignant Clifford errors in MSC,
+we use the technique of flags~\cite{Chao2018}
+to design 2D-local Z-flagged versions of the double checks that detect those errors.
+We then use the fast universal simulator SymFT~\cite{Fang2026a}
+to simulate the whole MSC protocol except
+the final so-called `escape' stage, which is purely Clifford.
+Monte Carlo sampling shows these Z flags recover
+the intended scaling of logical error rate with noise level,
+which suggests hook Clifford errors
+are the sole reason for the degraded fault distance of pre-escape MSC.
+These sampling results are summarised in \cref{fig:d5_pre_escape_ler}
+which shows the practical improvement
+these Z flags bring to distance-5 T-state cultivation.
+This demonstrates that the fault tolerance of non-Clifford circuits
+can be improved by considering the propagation of non-Pauli errors,
+even with the simple addition of more Clifford gates.
+
+\Cref{sec:background} covers the prerequisite theory.
+We first show the lower-than-expected fault distance in MSC
+in \cref{sec:fault_distance_of_magic_state_cultivation},
+then present our general Clifford-error analysis in \cref{sec:clifford_error_analysis}.
+We quantitatively analyse the fault configurations in \cref{sec:thorough_analysis}
+before evaluating our Z-flagged version of MSC in \cref{sec:z_flagged_double_checks}
+and concluding in \cref{sec:conclusion}.
+\Cref{sec:formal_definitions} provides definitions
+required for the rest of the appendices
+and \cref{sec:additional_figures} shows alternative figures to those in the main text.
+The code for \cref{alg:probability_trivial_syndrome}
+and for all the numerics in this paper
+is on GitHub at \cite{Chan2026c_quantum_bibstyle}.

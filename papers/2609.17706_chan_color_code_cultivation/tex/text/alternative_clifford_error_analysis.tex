@@ -1,0 +1,62 @@
+\section{Alternative Clifford-Error Analysis}
+\label{sec:alternative_clifford_error_analysis}
+In this section we go through
+\cref{eg:d3_color_code_acceptance_probability},
+but instead treat the Clifford error $E$
+as a superposition of Paulis.
+This alternative analysis is computationally slower but
+recovers the same results,
+is potentially more intuitive,
+and can handle general unitary errors beyond Clifford.
+
+Restricting focus to data qubits $(0, 1, 3)$,
+write $E =-(\H_+)_0 (\H_-)_{1 3}$ as $(\Z\I\I) \H_-^{\otimes 3}$
+up to a global phase, then
+\begin{align}
+	\H_-^{\otimes 3}
+	&=\frac{1}{2^{3/2}} (\X -\Y)^{\otimes 3} \notag \\
+	&=\frac{1}{2^{3/2}} `\big[
+		(\X\X\X -\Y\Y\Y) +
+		(\Y\Y\X -\X\X\Y) +
+		(\Y\X\Y -\X\Y\X) +
+		(\X\Y\Y -\Y\X\X)], \notag \\
+	(\Z\I\I) \H_-^{\otimes 3}
+	&=\frac{1}{2}(\Z\I\I -\I\Z\I -\I\I\Z -\Z\Z\Z)
+	`\Big[\frac{1}{\sqrt{2}}(\X\X\X -\Y\Y\Y)].
+\end{align}
+The term in the square brackets
+is a logical representative of $\H_+$,
+so stabilises $\ket{\overline{T}}$;
+we can therefore ignore it.
+The remaining factor is
+an equal superposition of four terms,
+only the last of which is a valid logical operator (logical Z).
+At this point we cannot yet conclude
+$E$ leads to a logical error 1/4 of the time
+because the four terms are still in superposition
+[for example:
+$\frac{1}{\sqrt{2}}(\X\ket{\T} +\Y\ket{\T})$ does not mean
+an X or Y error on $\ket{\T}$ each with probability 1/2;
+it equals $\H_+\ket{\T} =\ket{\T}$].
+By \cref{lem:insert_projector},
+we can consider the effect of this superposition on
+an imaginary stabiliser measurement round.
+The superposition collapses to one of the four terms
+with equal probability:
+the last term has trivial syndrome and leads to a $\overline{Z}$ error;
+the other three terms have distinct nontrivial syndromes and lead to
+abortion (in the case of error detection)
+or identity (in the case of error correction).
+Z errors maximally affect $\ket{T}$ states
+i.e.\ rotate them to the orthogonal state.
+
+To conclude,
+the probability to observe a trivial syndrome is
+$\pr(\v s =\v 0) =1/4$,
+in which case the fidelity of
+the resulting state to $\ket{\overline{T}}$ is 0.
+For physical qubit count $n$,
+this analysis runs in $\mathcal O(2^n)$ time
+since $w \le n$ single-qubit Clifford errors
+expands to a superposition of $\mathcal O(2^w)$ Pauli terms,
+each of which must be analysed individually.

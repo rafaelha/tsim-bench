@@ -1,0 +1,82 @@
+\begin{tikzpicture}
+\begin{yquant}[/yquant/operator/minimum width=0mm]
+
+qubit {} d[3];
+nobit a[3];
+nobit f;
+
+init {$\ket{\overline{T}}$} (d);
+init {$\ket{+}$} a[0];
+init {$\ket{0}$} a[1,2];
+
+align -;
+cnot a[1]|a[0];
+cnot a[2]|a[0];
+init {$\ket{0}$} f;
+cnot f|a[1];
+align -;
+cnot f|a[2];
+dmeter {Z} f;
+discard f;
+
+box {$\H_\pm$} d[0]|a[0];
+[operator/separation=-2.5mm]
+box {$\H_\pm$} d[1]|a[1];
+[operator/separation=-2.5mm]
+box {$\H_\pm$} d[2]|a[2];
+
+dmeter {X} a;
+discard a;
+
+barrier (-);
+
+init {$\ket{+}$} a[0];
+init {$\ket{0}$} a[1,2];
+
+cnot a[1]|a[0];
+cnot a[2]|a[0];
+
+box {$\H_\pm$} d[0]|a[0];
+[operator/separation=-2.5mm]
+box {$\H_\pm$} d[1]|a[1];
+[operator/separation=-2.5mm]
+box {$\H_\pm$} d[2]|a[2];
+
+cnot a[2]|a[0];
+cnot a[1]|a[0];
+
+dmeter {X} a[0];
+dmeter {Z} a[1,2];
+discard a;
+
+barrier (-);
+
+init {$\ket{+}$} a;
+
+box {$\H_\pm$} d[0]|a[0];
+[operator/separation=-2.5mm]
+box {$\H_\pm$} d[1]|a[1];
+[operator/separation=-2.5mm]
+box {$\H_\pm$} d[2]|a[2];
+
+cnot a[2]|a[0];
+cnot a[1]|a[0];
+
+dmeter {X} a[0];
+discard a[0];
+init {$\ket{+}$} a[0];
+
+cnot a[1]|a[0];
+cnot a[2]|a[0];
+
+box {$\H_\pm$} d[2]|a[2];
+[operator/separation=-2.5mm]
+box {$\H_\pm$} d[1]|a[1];
+[operator/separation=-2.5mm]
+box {$\H_\pm$} d[0]|a[0];
+
+dmeter {X} a;
+discard a;
+
+\end{yquant}
+\end{tikzpicture}

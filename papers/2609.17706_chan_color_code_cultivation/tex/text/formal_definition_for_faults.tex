@@ -1,0 +1,55 @@
+\section{Formal Definitions}\label{sec:formal_definitions}
+
+\subsection{Codespace Projector}
+Given a commuting set $\mathcal G$ of Paulis,
+define
+\begin{equation}
+\upPi_{\mathcal G} :=\prod_{P \in \mathcal G} \frac{\I +P}2
+\label{eq:pj_defn}
+\end{equation}
+as the projector onto their simultaneous +1 eigenspace.
+Specifically,
+if $\mathcal G$ generates a stabiliser code,
+$\upPi_{\mathcal G}$ projects onto its codespace.
+In most cases in these appendices,
+the representative of a logical operator
+appears multiplied by $\upPi_{\mathcal G}$
+so the choice of representative makes no difference;
+when it is not, we specify the representative.
+
+\subsection{Faults}\label{sec:faults}
+We adapt the definitions in Beverland et al.~\cite[\S 3]{Beverland2024}
+and more formally define some concepts introduced in \cref{sec:fault_distance}.
+Given a stabiliser circuit,
+define a set $\mathcal{F}$ of independent events called \emph{faults}.
+Each fault $f$ specifies a pair $(P_f, \v\sigma_f)$,
+where the \emph{resultant effect} $P_f$ is a Pauli acting on the data qubits,
+and the \emph{signature} $\v\sigma_f$ is a binary vector
+whose support indicates the detectors the fault flips.
+Each fault induces a function $\pi_f(p)$
+that outputs its occurrence probability,
+and assume $\pi_f(p) =\upTheta(p)$ for noise level $p \ll 1$.
+
+To construct $\mathcal{F}$ from a set of independent error events,
+propagate each one to the end of the circuit,
+thereby associating it with a pair $(P, \v \sigma)$.
+For each distinct pair,
+define one fault representing all its associated error events.
+Its occurrence probability $\pi_f(p)$ is
+the probability an odd number of those events occur.
+Coarse-graining from error events to faults
+makes the error analysis of circuits much faster.
+
+A \emph{$|\mathcal C|$-fault configuration} (or \emph{configuration} for short)
+is a combination $\mathcal C \subseteq \mathcal F$ of faults whose
+resultant effect, signature, and occurrence probability is given respectively by
+\begin{align}
+	P(\mathcal C) &=\prod_{f \in \mathcal C} P_f \\
+	\v\sigma(\mathcal C) &=\bigoplus_{f \in \mathcal C} \v\sigma_f \\
+	\pi_\mathcal C(p)
+	&=`\Big[\prod_{f \in \mathcal C} \frac{\pi_f(p)}{1 -\pi_f(p)}]
+	\prod_{f \in \mathcal F} [1 -\pi_f(p)]
+	\label{eq:configuration_probability}
+\end{align}
+where the second product in \cref{eq:configuration_probability}
+is independent of $\mathcal C$.

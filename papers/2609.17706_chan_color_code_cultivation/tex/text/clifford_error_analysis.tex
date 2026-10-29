@@ -1,0 +1,265 @@
+\section{Clifford-Error Analysis}
+\label{sec:clifford_error_analysis}
+
+In this section,
+we consider in a general context how physical Clifford errors
+affect logical states.
+Specifically,
+we consider afflicting a physical Clifford error on an encoded state,
+then noiselessly measuring the stabiliser generators
+(which we assume to be Paulis)
+of the code.
+Since the error in general is not Pauli,
+these noiseless measurements in general are nondeterministic.
+We may get a trivial syndrome ($\v s =\v 0$),
+in which case the afflicted state is projected back into the codespace.
+We are interested in two quantities:
+(1) the probability to observe this trivial syndrome,
+and (2) the fidelity of the resulting state given a trivial syndrome.
+
+Conceptually,
+our analysis uses that since Cliffords preserve commutation,
+the Clifford error will transform the code
+into a slightly different stabiliser code.
+Calculating (1) involves counting
+how many new stabilisers overlap with the old ones;
+the time complexity of this is
+polynomial in physical qubit count.
+As for (2),
+the result depends on the overlap between
+the original projector defining the logical state
+and the transformed projector.
+\Cref{sec:acceptance_probability} answers (1) generally,
+and \cref{sec:resulting_fidelity} answers (2)
+in the case of T-state encoded in the colour code.
+
+\subsection{Acceptance Probability}
+\label{sec:acceptance_probability}
+Here we present a general expression for
+the probability $\pr(\v s =\v 0)$ to observe a trivial syndrome.
+\begin{theorem}
+\label{theorem:probability_trivial_syndrome}
+Consider an arbitrary $k$-qubit mixed state $\rho$
+encoded in an $\llbracket n, k\rrbracket$ Pauli stabiliser code,
+which then suffers a physical Clifford error $E$.
+Let $\mathcal G$ be a set of $n-k$ independent stabiliser
+generators, which we measure noiselessly after the error.
+The probability of a trivial syndrome is
+\begin{equation}
+\label{eq:probability_trivial_syndrome}
+\pr(\v s =\v 0)
+=\begin{cases*}
+0, & if $`<E^\dagger \mathcal G E>
+\cap \big(-`<\mathcal G>\big)
+\neq \varnothing$, \\
+2^{-s} \sum_{L} \omega_L \alpha_L,
+& else,
+\end{cases*}
+\end{equation}
+where the coefficients $\{\alpha_L\}_L$ define $\rho$ by
+\cref{eq:pauli_decomposition},
+and $s :=\rk`< \mathcal G\cup E^\dagger\mathcal G E > -(n -k)$ is
+the number of new constraints imposed by the transformed stabilisers.
+The sum is over all $L\in\mathcal P_k$ whose logical representative satisfies
+\begin{equation}
+\label{eq:logical_membership}
+\overline L
+\in \omega_L
+`<E^\dagger \mathcal G E>
+\langle\mathcal G\rangle
+\end{equation}
+for some sign $\omega_L\in\{\pm1\}$;
+in the nonzero case, this sign is unique.
+\end{theorem}
+
+% \blue{
+% \begin{theorem}
+% Consider an arbitrary $k$-qubit mixed state $\rho$
+% encoded in an $\llbracket n,k\rrbracket$ Pauli stabiliser code,
+% which then suffers a physical Clifford error $E$.
+% Let $\mathcal G$ be a set of $n-k$ independent stabiliser
+% generators, which we measure noiselessly after the error.
+% The probability of a trivial syndrome is
+% \begin{equation}
+%     \label{eq:probability_trivial_syndrome_zero}
+%     \pr(\v s=\v 0)=0,
+%     \qquad \text{if}\quad
+%     \langle E^\dagger\mathcal G E\rangle
+%     \cap \bigl(-\langle\mathcal G\rangle\bigr)
+%     \neq \varnothing.
+% \end{equation}
+
+% Otherwise, let $\mathcal L_E\subseteq\mathcal P_k$ contain
+% precisely those logical Paulis $L$ for which there exist
+% a physical Pauli representative $\overline L$ of $L$
+% and a sign $\omega_L\in\{+1,-1\}$ satisfying
+% \begin{equation}
+%     \label{eq:logical_membership}
+%     \omega_L\overline L
+%     \in \langle E^\dagger\mathcal G E\rangle.
+% \end{equation}
+% Then
+% \begin{equation}
+%     \label{eq:probability_trivial_syndrome}
+%     \pr(\v s=\v 0)
+%     =
+%     2^{-s}
+%     \sum_{L\in\mathcal L_E}\omega_L\alpha_L,
+% \end{equation}
+% where $\{\alpha_L\}_L$ are the Pauli coefficients of $\rho$
+% defined in \cref{eq:pauli_decomposition}, and
+% \[
+%     s :=
+%     \rk\langle\mathcal G\cup E^\dagger\mathcal G E\rangle
+%     -(n-k)
+% \]
+% is the number of additional independent Pauli generators
+% contributed by the transformed checks beyond the original
+% stabiliser group.
+% \end{theorem}
+% Note that for each $L$ satisfying \cref{eq:logical_membership}, the sign $\omega_L$ is unique.
+% }
+
+\noindent
+In words:
+if the transformed stabiliser group contains
+the negative of an original stabiliser,
+the probability vanishes.
+Otherwise,
+a given logical Pauli component contributes to the probability if
+any representative is a transformed stabiliser up to a sign.
+We can interpret $2^{-s}$ as the acceptance probability for a maximally
+mixed logical input, while the sum accounts for dependence on the
+logical state.
+We prove this statement in \cref{sec:clifford_error_analysis_proofs}
+and present an $\mathcal O(n^3)$-time algorithm
+to evaluate \cref{eq:probability_trivial_syndrome}
+in \cref{sec:acceptance_probability_algorithm}.
+In most cases considered in this paper,
+the only logical that satisfies \cref{eq:logical_membership}
+is identity.
+Other logicals can contribute however,
+if e.g.\ $E$ maps a stabiliser directly to that logical.
+
+In the special case $E$ is a Pauli then either:
+	$E$ flips at least one stabiliser in $\mathcal G$,
+	in which case $\pr(\v s =\v 0) =0$,
+	or $E^\dag \mathcal G E =\mathcal G$,
+	in which case $s =0$ and only $L =\I$ satisfies
+	\cref{eq:logical_membership} with $\omega_\I =1$,
+	so $\pr(\v s =\v 0) =1$.
+
+\begin{eg*}
+To recap,
+we have a T-state,
+i.e.\ the state stabilised by $\H_+$,
+encoded in the $\llbracket 7, 1, 3 \rrbracket$ hexagonal colour code,
+which then suffers the Clifford error
+$E =-(\H_+)_0 (\H_-)_{1 3}$.
+$E$ transforms only $G_1$ and $G_2$ out of $\mathcal G$;
+this can be seen from the support of $E$
+and by using \cref{eq:h_pm_action,eq:d3_color_stabilizer_generators}.
+Since $E=E^\dagger$,
+\begin{equation}
+(E^\dagger G_1E,\ldots,E^\dagger G_6E)=(
+-\mathrm{YYXIXII},
+\mathrm{IYXYIXI},
+G_3,G_4,G_5,G_6).
+\end{equation}
+One checks that
+$\langle E^\dagger \mathcal G E\rangle
+\cap
+\bigl(-\langle\mathcal G\rangle\bigr)=\varnothing$
+and
+$s=\rk\langle\mathcal G\cup E^\dagger\mathcal G E\rangle-n +k
+=8-7+1=2$.
+Also,
+\begin{equation}
+\proj{\T}
+=\frac12\left(\I+\frac{\X+\Y}{\sqrt2}\right).
+\end{equation}
+Among the nonzero Pauli-basis coefficients,
+only $L=\I$ satisfies \cref{eq:logical_membership},
+with $\omega_\I=1$.
+Therefore \cref{theorem:probability_trivial_syndrome}
+gives $\pr(\v s=\v0) =2^{-s} \omega_\I \alpha_\I =1/4$.
+\end{eg*}
+\noindent
+As an aside,
+we recover the following result
+that was implied by Aaronson and Gottesman~\cite[p~5]{Aaronson2004}.
+\begin{cor}
+The fidelity between two pure stabiliser states
+whose Pauli stabiliser groups are
+$\mathcal A$ and $\mathcal B$ respectively,
+is $0$ if $\mathcal B \cap
+(-\mathcal A)
+\neq \varnothing$,
+else $2^{-s}$
+where $s := \rk\langle \mathcal A\cup \mathcal B \rangle -n$.
+\end{cor}
+\begin{proof}
+Take $k =0$
+in \cref{theorem:probability_trivial_syndrome},
+and let $\mathcal A =`<\mathcal G>$
+and $\mathcal B =`<E^\dag \mathcal G E>$
+(i.e.\ the physical state stabilised by $\mathcal B$
+is that of $\mathcal A$,
+transformed by the Clifford $E^\dag$);
+then the fidelity is $\pr(\v s =\v 0)$.
+The density operator of the 0-qubit state is unity
+i.e.\ $\alpha_1 =1$,
+so \cref{eq:logical_membership}
+reduces to $\overline{1} =\I \in \omega_1 \mathcal B \mathcal A$.
+If $\omega_1 =-1$ then we are in the first branch of
+\cref{eq:probability_trivial_syndrome} and the fidelity vanishes.
+Else,
+we are in the second branch and
+$\sum_L \omega_L \alpha_L =\omega_1 \alpha_1 =1$.
+\end{proof}
+
+\subsection{Resulting Fidelity}
+\label{sec:resulting_fidelity}
+To answer the second question
+(\textit{given a trivial syndrome,
+what is the fidelity of the resulting state?}),
+we consider the more specific scenario,
+which we also prove in \cref{sec:clifford_error_analysis_proofs}:
+
+\begin{prop}\label{prop:resulting_fidelity}
+Consider a T-state encoded in an $\llbracket n, 1, d \rrbracket$
+hexagonal colour code,
+which then suffers a tensor product $E$ of Clifford errors from $`{\I, \H_\pm, \Z}$
+up to global phase.
+The operators $\H_+$, $\H_-$, and $\Z$
+square to $\I$ and pairwise anticommute,
+so $E$ either commutes or anticommutes with
+$\overline{H_+}$ defined in \cref{eq:logical_H_is_transversal}.
+If we noiselessly measure a minimal set $\mathcal G$ of stabiliser generators
+and observe a trivial syndrome,
+the fidelity of the resulting state is
+one (zero) if $E$ commutes (anticommutes) with
+$\overline{H_+}$;
+determining this takes $\mathcal O(n)$ time.
+\end{prop}
+
+\begin{eg*}
+For $E =-(\H_+)_0(\H_-)_{1 3}$,
+the only tensor factor that anticommutes with the corresponding
+factor of $\overline{H_+}=(\H_+)_{0 2 3 6}(\H_-)_{1 4 5}$
+is at qubit 3.
+Thus $E$ anticommutes with $\overline{H_+}$, so the fidelity is zero.
+\end{eg*}
+
+Lastly,
+we note there is an alternative analysis
+(to \cref{theorem:probability_trivial_syndrome,prop:resulting_fidelity})
+that treats the Clifford error as a superposition of Paulis
+instead of focusing on how it transforms the stabilisers.
+This recovers the same results
+and is potentially more intuitive,
+but is slower:
+computing $\pr(\v s =\v 0)$ in $\mathcal O(2^n)$ time.
+In \cref{sec:alternative_clifford_error_analysis}
+we walk through \cref{eg:d3_color_code_acceptance_probability}
+using this alternative analysis.

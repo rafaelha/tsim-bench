@@ -1,0 +1,102 @@
+\begin{tikzpicture}
+\begin{yquant}
+
+qubit {0} q0;
+qubit {a} qa;
+qubit {b} qb;
+qubit {1} q1;
+[darkred]
+qubit {\alpha} qalpha;
+qubit {c} qc;
+qubit {2} q2;
+qubit {d} qd;
+qubit {3} q3;
+[darkred]
+qubit {\beta} qbeta;
+qubit {4} q4;
+qubit {e} qe;
+qubit {5} q5;
+qubit {6} q6;
+qubit {f} qf;
+
+setstyle {darkred, dashed} qalpha,qbeta;
+discard qa,qb,qalpha,qbeta,qc,qd,qe,qf;
+hspace {1mm} -;
+box {T} q1,q4,q5;
+box {T$^\dag$} q0,q2,q3,q6;
+init {$\ket{+}$} qa,qb,qc,qd,qe,qf;
+align -;
+
+cnot q0|qa;
+cnot q4|qe;
+cnot q3|qd;
+cnot q2|qc;
+cnot q1|qb;
+cnot q6|qf;
+[darkred]
+init {$\ket{0}$} qalpha,qbeta;
+
+[dashedcnot]
+cnot qalpha|q1;
+[dashedcnot]
+cnot qbeta|q2;
+[dashedcnot]
+cnot qalpha|q2;
+[dashedcnot]
+cnot qbeta|qe;
+
+align -;
+cnot qa|q1;
+cnot qd|q2;
+cnot qf|qe;
+
+cnot q1|q2;
+cnot q5|qe;
+
+cnot qe|q2;
+
+dmeter {X} q2;
+discard q2;
+init {$\ket{+}$} q2;
+align q2;
+
+cnot qe|q2;
+
+align -;
+cnot q1|q2;
+cnot q5|qe;
+
+cnot qa|q1;
+cnot qd|q2;
+cnot qf|qe;
+
+[dashedcnot]
+cnot qalpha|q2;
+[dashedcnot]
+cnot qbeta|qe;
+[dashedcnot]
+cnot qalpha|q1;
+[dashedcnot]
+cnot qbeta|q2;
+
+align -;
+cnot q0|qa;
+cnot q4|qe;
+cnot q3|qd;
+cnot q2|qc;
+cnot q1|qb;
+cnot q6|qf;
+[darkred]
+dmeter {Z} qalpha,qbeta;
+discard qalpha,qbeta;
+
+align -;
+dmeter {X} qa,qb,qc,qd,qe,qf;
+discard qa,qb,qc,qd,qe,qf;
+box {T$^\dag$} q1,q4,q5;
+box {T} q0,q2,q3,q6;
+
+hspace {1mm} -;
+
+\end{yquant}
+\end{tikzpicture}

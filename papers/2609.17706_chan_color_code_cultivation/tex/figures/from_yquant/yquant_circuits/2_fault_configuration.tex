@@ -1,0 +1,80 @@
+\begingroup
+
+\definecolor{mscXEvent}{HTML}{D62728}
+\definecolor{mscYEvent}{HTML}{009E73}
+\definecolor{mscAfterT}{HTML}{E69F00}
+
+\tikzset{
+	msc x wire/.style={msc wire above=mscXEvent},
+	msc y wire/.style={msc wire above=mscYEvent},
+	msc after t wire/.style={msc wire above=mscAfterT},
+	msc x control/.style={msc control left=mscXEvent},
+	msc circle event/.style={
+		msc event,
+		shape=yquant-circle,
+	},
+	msc x event/.style={
+		msc circle event,
+		fill=mscXEvent!25,
+		draw=mscXEvent!85!black,
+	},
+	msc y event/.style={
+		msc circle event,
+		fill=mscYEvent!25,
+		draw=mscYEvent!85!black,
+	},
+}
+
+\yquantset{
+	msc x cnot/.style={
+		every control line/.append style={msc x control},
+	},
+}
+
+\begin{tikzpicture}
+\begin{yquant}
+
+qubit {0} q0;
+qubit {a} qa;
+qubit {b} qb;
+qubit {1} q1;
+qubit {c} qc;
+qubit {2} q2;
+qubit {d} qd;
+qubit {3} q3;
+
+[msc x event]
+box {X} q1;
+setstyle {msc x wire} q1;
+align q0,qa,qb,q1,qc,q2,qd,q3;
+
+[msc x cnot]
+cnot qa|q1;
+setstyle {msc x wire} qa;
+cnot qd|q2;
+
+[msc x cnot]
+cnot q0|qa;
+setstyle {msc x wire} q0;
+cnot q3|qd;
+cnot q2|qc;
+cnot q1|qb;
+
+[msc y event]
+box {Y} q3;
+setstyle {msc y wire} q3;
+align q0,qa,qb,q1,qc,q2,qd,q3;
+
+dmeter {X} qa,qb,qc,qd;
+discard qa,qb,qc,qd;
+box {T} q0;
+box {T$^\dag$} q1;
+box {T} q3;
+box {T} q2;
+
+setstyle {msc after t wire} q0,q1,q3;
+hspace {1mm} q0,qa,qb,q1,qc,q2,qd,q3;
+
+\end{yquant}
+\end{tikzpicture}
+\endgroup

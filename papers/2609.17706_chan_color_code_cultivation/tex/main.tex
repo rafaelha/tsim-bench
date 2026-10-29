@@ -1,0 +1,219 @@
+\documentclass[a4paper,unpublished,onecolumn]{quantumarticle}
+\pdfoutput=1
+
+\usepackage[colorlinks,allcolors=quantumviolet]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[phfqit,spalign]{tchshortcuts}
+\usepackage{amsthm}
+\usepackage[
+	print-unity-mantissa=false,
+	range-phrase=--
+]{siunitx}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage[rightcaption]{sidecap}
+\usepackage{algorithm}
+\usepackage{algpseudocodex}
+\usepackage[capitalise,nameinlink]{cleveref}
+\usepackage{stmaryrd}
+\usepackage{xcolor}
+\usepackage[compat=0.6]{yquant}
+% appendix fix from https://github.com/latex3/hyperref/issues/362#issuecomment-2466490063
+\AddToHook{cmd/appendix/before}{
+	\crefalias{section}{appendix}
+	\crefalias{subsection}{appendix}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{cond}{Condition}
+\newtheorem{eg}{Example}
+\newtheorem*{eg*}{\Cref{eg:d3_color_code_acceptance_probability} cont}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+
+\crefname{process}{process}{processes}
+\crefname{prop}{Proposition}{Propositions}
+\crefname{lem}{Lemma}{Lemmas}
+\crefname{eg}{Example}{Examples}
+
+\usetikzlibrary{positioning, arrows.meta, shapes, calc}
+
+\definecolor{lightred}{rgb}{1, 0.7, 0.7}
+\definecolor{darkred}{rgb}{0.9, 0, 0}
+\definecolor{lightgreen}{rgb}{0.7, 1, 0.7}
+\definecolor{darkgreen}{rgb}{0, 0.6, 0}
+\definecolor{darkyellow}{rgb}{0.7, 0.7, 0}
+\definecolor{zblue}{RGB}{76,166,255}
+\tikzset{
+    xerror/.style={darkred, ultra thick},
+    yerror/.style={darkgreen, ultra thick},
+    sxerror/.style={darkyellow, ultra thick},
+    every picture/.append style={scale=0.85},
+}
+\yquantset{
+    xerror/.style={style=darkred, control style={ultra thick}},
+    yerror/.style={style=darkgreen, control style={ultra thick}},
+	dashedcnot/.style={style=darkred, control style={dashed}},
+}
+\input{figures/from_yquant/highlight_styles.tex}
+
+% Let yquant use TikZ’s shape outlines to clip qubit wires for these
+% non-yquant shapes, keeping their fills opaque without size drawing mode.
+\makeatletter
+\newcommand{\yquantclipfrombackground}[1]{%
+  \csletcs{pgf@sh@cliphorz@#1}{pgf@sh@bg@#1}%
+}
+\makeatother
+\yquantclipfrombackground{diamond}
+\yquantclipfrombackground{regular polygon}
+
+\newcommand\blue[1]{{\color{blue}#1}}
+\newcommand\AS[1]{{\color{magenta}AS: #1}}
+
+\newcommand{\materialsaddress}{\affiliation{Department of Materials,
+University of Oxford,
+Parks Road,
+Oxford OX1 3PH,
+United Kingdom}}
+
+\newcommand{\engaddress}{\affiliation{Department of Engineering Science, University of Oxford, Parks Road, Oxford OX1 3PJ, United Kingdom}}
+
+\newcommand{\mathaddress}{\affiliation{Mathematical Institute, University of Oxford, Woodstock Road, Oxford OX2 6GG, United Kingdom}}
+
+\newcommand{\qmaddress}{\affiliation{Quantum Motion, 9 Sterling Way, London N7 9HJ, United Kingdom}}
+
+\newcommand{\qiqbaddress}{\affiliation{Center for Quantum Information and Quantum Biology, The University of Osaka, 1-2 Machikaneyama, Toyonaka 560-0043, Japan}}
+
+\newcommand{\impaddress}{\affiliation{Department of Computing, Imperial College London, 180 Queen's Gate, London SW7 2AZ, United Kingdom}}
+
+\begin{document}
+
+\title{Diagnosing and Restoring the Degraded Fault Distance of Magic State Cultivation}
+% \title{Hook Clifford Errors Degrade the Fault Distance of Magic State Cultivation}
+
+\author{Tim Chan}
+\email{timothy.chan@materials.ox.ac.uk}
+\materialsaddress
+\qiqbaddress
+\orcid{0000-0001-6187-7402}
+
+\author{Armands Strikis}
+\mathaddress
+\qmaddress
+
+\author{Zhu Sun}
+\materialsaddress
+\mathaddress
+\qmaddress
+
+\author{Zhenyu Cai}
+\impaddress
+\qmaddress
+\engaddress
+\email{z.cai1@imperial.ac.uk}
+
+
+\begin{abstract}
+	T-state cultivation is a resource-efficient protocol producing logical T states
+	but recent benchmarks show that its logical error rate
+	is considerably higher than intended
+	i.e.\ than S-state cultivation,
+	which is the analogous protocol for producing logical S states.
+	In this paper,
+	we explain this T--S discrepancy by analytically showing,
+	under circuit-level depolarising noise,
+	that distance-3 (-5) T-state cultivation has fault distance 2 (3)
+	due to Pauli hook errors that propagate to
+	coherent Clifford errors after its final double-check circuit;
+	such errors remain Pauli in S-state cultivation,
+	which consequently retains fault distance 3 (5).
+	As part of our analysis we derive a general formula,
+	and an $\mathcal O(n^3)$-time algorithm for fixed logical-qubit count,
+	for the acceptance probability of
+	a logical mixed state afflicted with a Clifford error,
+	where $n$ is the physical qubit count.
+	We then design flags that detect the malignant hook errors in cultivation,
+	improving the pre-escape logical error rate
+	from $\upTheta(p^3)$ to $\upTheta(p^5)$.
+	At noise level $p =\num{1e-3}$,
+	this is a 4.9$\times$ improvement,
+	costing a 1.36$\times$ increase in attempts per accepted shot.
+\end{abstract}
+
+\maketitle
+\input{text/intro.tex}
+\input{text/background.tex}
+\input{text/magic_state_cultivation_example.tex}
+\input{text/clifford_error_analysis.tex}
+\input{text/fault_distance_of_magic_state_cultivation.tex}
+\input{text/flagged_double_checks.tex}
+\input{text/conclusion.tex}
+\input{text/author_contributions.tex}
+
+\begin{acknowledgments}
+We thank
+Craig Gidney,
+Theerapat Tansuwannont,
+Yutaka Hirano,
+Tom Scruby,
+Keisuke Fujii,
+and Kwok Ho Wan,
+for useful discussions.
+TC acknowledges the use of Crumble
+in designing the flag circuits.
+TC acknowledges support from
+an EPSRC DTP studentship and
+JST ASPIRE Japan Grant Number JPMJAP2319.
+AS thanks UKRI for the Future Leaders Fellowship Theory to Enable Practical Quantum Advantage (MR/Y015843/1). ZC acknowledges support from the EPSRC Quantum Technologies Career Acceleration Fellowship (UKRI1226).
+We acknowledge
+the use of
+the University of Oxford Advanced Research Computing
+(ARC)
+facility~\cite{Richards2015_quantum_bibstyle},
+and three EPSRC projects:
+QCS Hub (EP/T001062/1),
+RoaRQ (EP/W032635/1),
+and SEEQA (EP/Y004655/1). 
+We acknowledge the use of ChatGPT Edu
+to assist with the programming and testing
+of our emulation code,
+and we take full responsibility for its content.
+For the purpose of Open Access, the authors have applied a CC BY public copyright licence to any Author Accepted Manuscript version arising from this submission.
+\end{acknowledgments}
+
+\paragraph{Note added:}
+Two related preprints were announced in the same arXiv posting as this preprint.
+Wan and Zapirain~\cite{Wan2026a} exactly compute the logical error rate of
+cultivation using Pauli propagation~\cite{Rudolph2026}
+and tensor-network constructions.
+Their approach is similar to that in \cref{sec:alternative_clifford_error_analysis}
+but further quotients the terms in each Pauli superposition by the stabilisers,
+helping keep the calculation tractable.
+Before announcement,
+we privately communicated to them our finding that
+the fault distances of MSC-3 and -5 are respectively 2 and 3,
+which their analysis now corroborates.
+Hartweg and Piñeiro Orioli~\cite{Hartweg2026} use tensor-network simulation methods
+to analyse the T--S discrepancy and propose cultivation protocols
+hosted entirely on the rotated surface code.
+
+\bibliographystyle{quantum}
+\bibliography{tchbib}
+
+\appendix
+
+\input{text/formal_definition_for_faults.tex}
+\input{text/additional_figures.tex}
+\input{text/reducing_code_conversion_to_codespace_projection.tex}
+\input{text/clifford_error_analysis_proofs.tex}
+\input{text/acceptance_algorithm.tex}
+\input{text/alternative_clifford_error_analysis.tex}
+\input{text/noise_model.tex}
+\input{text/logical_error_rate_per_kept_shot.tex}
+
+\end{document}

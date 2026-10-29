@@ -1,0 +1,372 @@
+\section{Background}
+\label{sec:background}
+In this paper,
+we will use the following notation.
+An overline indicates
+logical states and operator representatives
+e.g.\ $\ket{\overline{0}}, \overline{Z}$.
+Physical operators are without overline
+and the standard ones are typed upright:
+I, X, Y, Z,
+$\S =\diag(1, \i)$,
+$\T =\diag(1, \e^{\i \uppi /4})$,
+CX.
+We use the shorthand $\H_\pm :=\frac{1}{\sqrt{2}}(\X \pm \Y)$.
+Sets are typed calligraphically e.g.\ $\mathcal{Q}$.
+If clear from the context,
+we refer to elements from the Pauli (Clifford) group
+simply as Paulis (Cliffords).
+Given a 1-qubit unitary $U$,
+define $U_\mathcal{Q} :=\prod_{q \in \mathcal{Q}} U_q$
+for integer set $\mathcal{Q} \subseteq `{1, \dots, n}$,
+where $U_q$ denotes $U$ acting on qubit $q$
+and $\I$ acting on the other qubits.
+The \emph{support} of a multiqubit unitary
+is the set of qubits on which it acts something other than $\I$,
+e.g., the support of $U_\mathcal{Q}$ is $\mathcal{Q}$.
+A \emph{stabiliser circuit} is a quantum circuit comprising
+Clifford gates and 1-qubit Z preparations and measurements~\cite{Aaronson2004}.
+The parameters of a quantum error correction code are written as
+$\llbracket n, k, d \rrbracket$
+for physical qubit count $n$,
+logical qubit count $k$,
+and distance $d$.
+In the case distance is unimportant,
+we write $\llbracket n, k\rrbracket$.
+The logical action of any operator $U$
+on a code may be realised by
+multiple physically distinct representatives;
+throughout, we use $\overline{U}$ to denote
+a \emph{specific} representative.
+
+The set
+$\mathcal P_k:=\{\I,\X,\Y,\Z\}^{\otimes k}$
+of phaseless $k$-qubit Paulis
+is a basis for the space of
+$2^k \times 2^k$ Hermitian matrices over $\mathbb R$.
+So,
+the density operator of any $k$-qubit state $\rho$
+can be decomposed into this basis:
+\begin{equation}
+\rho =
+2^{-k} \sum_{L \in \mathcal{P}_k} \alpha_L L,
+\qquad \alpha_L \in \mathbb R,
+\qquad \alpha_\I =1.
+\label{eq:pauli_decomposition}
+\end{equation}
+Here $\alpha_\I$ is obtained
+by ensuring $\tr \rho =1$,
+and noting $\tr L =2^k$ if $L =\I$ else 0.
+
+Cliffords map Paulis to Paulis.
+Any Clifford can be defined up to a global phase
+by how it maps the X and Z operators on each input, e.g.:
+\begin{equation}\label{eq:h_pm_action}
+	\H_\pm: \begin{cases}
+		\X &\mapsto \pm \i \X\Z \\
+		\Z &\mapsto -\Z.
+	\end{cases}
+\end{equation}
+
+\subsection{The Hexagonal Colour Code}
+Here we review the $\llbracket n, 1, d \rrbracket$ hexagonal colour code
+for its relevance to MSC,
+and for examples later on in this paper.
+For this code,
+choose the representatives
+$\overline{X} =\X^{\otimes n}$ and $\overline{Z} =\Z^{\otimes n}$.
+For the $\llbracket 7, 1, 3 \rrbracket$ instance in particular,
+we label the data qubits according to \cref{fig:d3_layout}
+and choose the following set $\mathcal G$ of six stabiliser generators:
+\begin{equation}
+(G_1,\ldots,G_6) =(
+\mathrm{XXXIXII},
+\mathrm{IXXXIXI},
+\mathrm{IIXIXXX},
+\mathrm{ZZZIZII},
+\mathrm{IZZZIZI},
+\mathrm{IIZIZZZ}).
+\label{eq:d3_color_stabilizer_generators}
+\end{equation}
+\begin{figure}[b]
+	\begin{subfigure}{0.48\linewidth}
+		\centering
+		\includegraphics[width=0.55\textwidth]{figures/d3_layout.png}
+		\caption{The physical qubit layout used in
+		Stage 1 of the magic state cultivation protocol.
+		Numbers 0--6 label the data qubits of
+		the $\llbracket 7, 1, 3 \rrbracket$ colour code.
+		Letters a--f label the ancilla qubits used for
+		stabiliser and logical Clifford measurement.}
+		\label{fig:d3_layout}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.48\linewidth}
+		\centering
+		\includegraphics[width=0.7\textwidth]{figures/BipartiteGraph.pdf}
+		\caption{Representing the
+		$\llbracket 19, 1, 5 \rrbracket$ colour code
+		as a bipartite graph
+		between light and dark nodes.
+		Figure from \cite{Kubica2015}.}
+		\label{fig:bipartite_graph}
+	\end{subfigure}
+	\caption{Distance-3 and -5 hexagonal colour codes.
+	Each colour-shaded polygon
+	represents an X- and a Z-type stabiliser generator,
+	whose support is the set of qubits at its corners.}
+\end{figure}
+\noindent
+We later use the following.
+\begin{lem}\label{lem:logical_H_is_transversal}
+On the $\llbracket n, 1, d \rrbracket$ hexagonal colour code,
+logical $\H_\pm$ can be implemented transversally as follows.
+Represent the physical qubits of the code as nodes,
+and its plaquette edges as edges,
+on a bipartite graph as the example in \cref{fig:bipartite_graph} shows.
+Let $\mathcal{L}$ and $\mathcal{S}$ denote the two parts of the bipartition,
+labelled such that $|\mathcal L|-|\mathcal S|\equiv 1 \pmod 4$;
+such a labelling is always possible because $n$ is odd.
+Then the implementation is
+\begin{equation}
+\overline{H_\pm} :=(\H_\pm)_\mathcal{L} (\H_\mp)_\mathcal{S}.
+\label{eq:logical_H_is_transversal}
+\end{equation}
+\end{lem}
+\begin{proof}
+	It suffices to show $\overline{H_\pm}$ preserves the stabiliser group
+	and has the desired logical action.
+	The code comprises $w$-sided plaquettes where $w \in `{4, 6}$,
+	each corresponding to a weight-$w$ stabiliser generator
+	supported on an equal number of qubits from $\mathcal{L}$ and $\mathcal{S}$.
+	Given this and \cref{eq:h_pm_action},
+	$\overline{H_\pm}$ transforms the stabiliser generators as
+	$\X^{\otimes w} \mapsto \X^{\otimes w} \Z^{\otimes w}$
+	or $\Z^{\otimes w} \mapsto \Z^{\otimes w}$,
+	hence preserves the stabiliser group.
+	Also,
+	$\overline{H_\pm}$ maps the logical X and Z observables in the desired way:
+	$\X^{\otimes n}
+	\mapsto\pm (-1)^{|\mathcal S|} \i^n \X^{\otimes n} \Z^{\otimes n}
+	=\pm \i \X^{\otimes n} \Z^{\otimes n}$
+	and $\Z^{\otimes n} \mapsto -\Z^{\otimes n}$.
+\end{proof}
+\noindent
+This bipartition-based construction
+was originally used for $\overline{S}$
+\cite[\S II.C]{Kubica2015}
+(hence provides a proof shortcut using $\overline{H_+} =\e^{-\i \uppi/4} \overline{SX}$),
+but note other valid allocations of $\H_+, \H_-$ exist
+\cite[Lemma~3]{Tansuwannont2025}.
+For the rest of this paper,
+$\overline{H_+}$ for hexagonal colour codes will refer to
+the implementation in \cref{eq:logical_H_is_transversal}.
+
+\subsection{Fault Distance}\label{sec:fault_distance}
+In quantum error correction we naturally deal with
+noisy quantum circuits that propagate and manipulate logical information.
+These circuits usually contain measurements
+that enable the construction of detectors:
+a \emph{detector} is a set of Pauli measurements
+whose parity is deterministic in the absence of noise.
+For a given noisy circuit run,
+the \emph{syndrome} is a binary vector $\v s$ whose support
+indicates the detectors whose parities differ from expected.
+We call $\v s =\v 0$ a \emph{trivial} syndrome.
+We define an \emph{error event} as an unintended event
+that occurs independently (from other error events)
+at a specific location in the circuit
+with a probability proportional to
+some characteristic noise level $p$ of the system
+e.g.\ a Pauli X after an S gate.
+A \emph{hook error} is an error event that,
+due to a physical entangling gate in the circuit,
+spreads to eventually affect more than one data qubit.
+
+Often, different error events
+	flip the same set of detectors
+	and have the same resultant Pauli effect on the data qubits
+		when propagated to the end of the stabiliser circuit.
+Whenever this occurs,
+we group these equivalent error events together
+into the same \emph{fault},
+defined abstractly by that detector signature and resultant effect
+(we give a proper definition in \cref{sec:faults}).
+Then, instead of modelling noise as a large set of error events,
+we can model it more efficiently as a smaller set of independent faults.
+For those familiar with the \emph{detector error model} formalism~\cite{Gidney2021a}:
+a fault is similar to an error mechanism
+but carries slightly more information;
+we define it this way on purpose to allow
+subsequent propagation of the resultant effect through non-Cliffords.
+A \emph{$k$-fault configuration} is a set of $k$ faults occurring together;
+its \emph{fault count} is its cardinality, $k$.
+
+\emph{Fault distance},
+also known as \emph{circuit distance},
+generalises the notion of code distance
+(a property of the code) to circuits.
+It is the minimum number of error events
+(equivalently, faults)
+needed to flip a logical observable
+without flipping any detectors \cite[\S 3.1]{Gidney2024}.
+For a subcircuit with quantum inputs,
+we define its fault distance assuming error-free inputs
+and count only error events occurring within the subcircuit.
+A high fault distance is desirable because
+as $p \to 0$, and conditioned on a trivial syndrome,
+the logical error rate of a circuit of fault distance $d$ is $\upTheta(p^d)$.
+
+\subsection{Magic State Cultivation}
+\label{sec:magic_state_cultivation}
+
+\begin{figure}
+	\centering
+	\input{figures/from_yquant/yquant_circuits/check_options.tex}
+	\begin{subfigure}{0.25\linewidth}
+		\caption{The \emph{short single check}, used in
+		Itogawa et al.~\cite{Itogawa2025}.
+		This involves preparing a fault-tolerant GHZ state
+		and measuring it transversally;
+		the $\overline{H_+}$ measurement is the
+		parity of these X measurements.}
+		\label{fig:short_single_check_sketch}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.24\linewidth}
+		\caption{The \emph{long single check}, used in
+		Sahay et al.~\cite{Sahay2026}.
+		This involves encoding a GHZ state,
+		unencoding it,
+		and measuring it;
+		the $\overline{H_+}$ measurement is the
+		single physical X measurement.}
+		\label{fig:long_single_check_sketch}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.45\linewidth}
+		\caption{The \emph{double check}, used in
+		Gidney et al.~\cite{Gidney2024}.
+		This is conceptually (a) preceded by its time reverse,
+		and constitutes two $\overline{H_+}$ measurements:
+		the first is the X measurement midway;
+		the second is the parity of the X measurements at the end.}
+		\label{fig:double_check_sketch}
+	\end{subfigure}
+	\caption{A sketch of three different methods to measure
+	$\overline{H_+}$ from \cref{lem:logical_H_is_transversal}.
+	The top three qubits represent the $n >3$ data qubits of the colour code.
+	The size of the GHZ state in each method is flexible~\cite[\S B.3.b]{Sahay2026}.}
+	\label{fig:check_options}
+\end{figure}
+There are two variants of MSC:
+MSC-3 and MSC-5,
+named after the distance of the largest colour code used.
+Both variants comprise three stages:
+injection, cultivation, and escape.
+
+We first describe MSC-3.
+The magic state $\ket{\T} \propto \ket{0} +\e^{\i \uppi/4} \ket{1}$
+is the state stabilised by the Clifford $\H_+$,
+so $\ket{\overline{T}}$ is stabilised by $\overline{H_+}$.
+\begin{description}
+	\item[Stage 1] (injection) prepares a $\ket{\overline{T}}$ state
+	in the $\llbracket 7, 1, 3 \rrbracket$ colour code
+	using a unitary circuit of fault distance 1,
+	followed by one stabiliser measurement round.
+	\item[Stage 2] (cultivation) measures the observable $\overline{H_+}$ twice;
+	out of the possible methods outlined in \cref{fig:check_options} for this,
+	MSC uses the \emph{double check} in \cref{fig:double_check_sketch}
+	as it is the most amenable to 2D nearest-neighbour connectivity.
+	Its explicit form for MSC-3,
+	which we call the \emph{distance-3 double check},
+	is shown in \cref{fig:d3a6};
+	this relies on the decompositions
+	$\H_+ =\T\X\T^\dag$ and
+	$\H_- =\T^\dag \X\T$,
+	and has two further optimisations:
+	$\T^\dag$ cancels $\T$ between the two applications of controlled-$\H_\pm$,
+	and the GHZ-state (un)encoding is morphed onto some data qubits
+	for connectivity reasons.
+	Note the circuit in the original paper~\cite[Figure~7]{Gidney2024} mistakenly
+	measures $\H_+^{\otimes 7}$ which is logically equivalent to $\overline{H_-}$.
+	\item[Stage 3] (escape) converts the colour code into a much larger surface code.
+	Throughout the whole protocol up until this point:
+	any detector flip causes the attempt to be aborted.
+	Otherwise, after conversion,
+	some number of stabiliser measurement rounds are performed;
+	the syndrome is given to a decoder and the state is accepted
+	if the confidence of the decoder exceeds some preset threshold.
+\end{description}
+MSC-3 is summarised in \cref{fig:stage_flowchart},
+and is intended to have fault distance 3 before its escape stage.
+\begin{SCfigure}
+	\includegraphics{figures/from_yquant/d3a6.pdf}
+	\caption{The double-check circuit of distance-3 T-state cultivation.
+	The qubits are labelled according to \cref{fig:d3_layout}.
+	Each X measurement corresponds to a detector.
+	The dashed box is the region shown in \cref{fig:2_fault_configuration}.
+	For S-state cultivation, replace T with S;
+	click
+	\href{https://algassert.com/crumble\#circuit=Q(0,0)0;Q(0,1)1;Q(1,0)2;Q(1,1)3;Q(2,0)4;Q(2,1)5;Q(2,2)6;Q(2,3)7;Q(3,0)8;Q(3,1)9;Q(3,2)10;Q(4,0)11;Q(4,1)12;POLYGON(0,0,1,0.25)8_11_10_5;POLYGON(0,1,0,0.25)7_10_5_3;POLYGON(1,0,0,0.25)3_5_8_0;TICK;MPP_Y0*Y8*Y11*Y10*Y7*Y5*Y3;TICK;MPP_X8*X0*X3*X5;TICK;MPP_X3*X5*X10*X7;TICK;MPP_X11*X8*X5*X10;TICK;MPP_Z8*Z0*Z3*Z5;TICK;MPP_Z7*Z10*Z5*Z3;TICK;MPP_Z11*Z8*Z5*Z10;TICK;RX_12_9_4_2_6_1;S_3_8_10;S_DAG_0_5_7_11;TICK;CX_1_0_9_8_6_7_4_5_2_3_12_11;TICK;CX_3_1_5_6_9_12;TICK;CX_5_3_9_10;TICK;CX_5_9;TICK;MX_5;DT(0,0,0)rec[-1]_rec[-8];TICK;RX_5;TICK;CX_5_9;TICK;CX_5_3_9_10;MARKX(0)3;TICK;CX_3_1_5_6_9_12;TICK;CX_1_0_9_8_6_7_12_11_4_5_2_3;MARKY(0)7;TICK;MX_12_9_4_2_6_1;S_5_11_7_0;S_DAG_3_8_10;DT(4,1,1)rec[-6];DT(3,1,1)rec[-5];DT(2,1,1)rec[-4]_rec[-7];DT(1,0,1)rec[-3];DT(2,2,1)rec[-2];DT(0,1,1)rec[-1];TICK;MPP_X8*X0*X3*X5;DT(3,0,2)rec[-1]_rec[-8]_rec[-14];TICK;MPP_X7*X10*X5*X3;DT(1,1,3)rec[-1]_rec[-9]_rec[-14];TICK;MPP_X11*X8*X5*X10;DT(4,0,4)rec[-1]_rec[-10]_rec[-14];TICK;MPP_Z8*Z0*Z3*Z5;DT(3,0,5)rec[-1]_rec[-14];TICK;MPP_Z7*Z10*Z5*Z3;DT(2,3,6)rec[-1]_rec[-14];TICK;MPP_Z11*Z8*Z5*Z10;DT(4,0,7)rec[-1]_rec[-14];TICK;MPP_Y0*Y8*Y11*Y10*Y7*Y5*Y3;OI(0)rec[-1]_rec[-8]_rec[-9]_rec[-12]_rec[-13]}{this Crumble link}
+	to see that circuit with the error events from \cref{fig:2_fault_configuration}.}
+	\label{fig:d3a6}
+\end{SCfigure}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		stage/.style={
+			draw=black,
+			text centered,
+			text depth=.25ex,
+			text height=1.5ex
+		},
+		arrow/.style={-{Stealth[length=2mm]}},
+	]
+	% nodes
+	\node[stage] (prepare) {prepare $\llbracket 7, 1, 3 \rrbracket$};
+	\node[stage] (stabilise) [right=of prepare] {stabilise};
+	\node[stage] (double_check) [right=of stabilise] {double check};
+	\node[stage] (escape) [right=of double_check] {escape};
+	\node[stage, yshift=3mm] (grow) [below=of $(stabilise)!0.5!(double_check)$] {grow distance by 2};
+	% lines
+	\draw[arrow] (prepare.east) -- (stabilise.west);
+	\draw[arrow] (stabilise.east) -- (double_check.west);
+	\draw[arrow] (double_check.east) -- (escape.west);
+	\draw[arrow,dashed] (double_check.south) -- ([xshift=8mm]grow.north);
+	\draw[arrow,dashed] ([xshift=-8mm]grow.north) -- (stabilise.south);
+	\end{tikzpicture}
+	\caption{Summary of magic state cultivation.
+	Distance-5 cultivation traverses the dashed path once.}
+	\label{fig:stage_flowchart}
+\end{figure}
+
+MSC-5,
+also summarised in \cref{fig:stage_flowchart},
+is the same as MSC-3 through to the distance-3 double check,
+after which the $\llbracket 7, 1, 3 \rrbracket$ colour code
+is grown into a $\llbracket 19, 1, 5\rrbracket$ colour code.
+Three stabiliser measurement rounds are performed,
+then $\overline{H_+}$ is again measured twice
+using the distance-5 analogue of \cref{fig:d3a6};
+we call this the \emph{distance-5 double check}.
+Stage 3 is the same as for MSC-3---with
+larger initial and final codes.
+MSC-5 is intended to have fault distance 4 before its escape stage;
+this increases to 5 if four instead of three stabiliser rounds
+are performed before the distance-5 double check~\cite[\S 2.3]{Gidney2024} \cite[\S 4]{Hetenyi2026}.
+Gidney et al.~\cite{Gidney2024} chose three instead of four rounds
+because the spacetime cost of adding another round is not worth
+the small improvement in logical error rate at practically relevant noise levels.
+
+The Clifford analogue of T-state cultivation
+is S-state cultivation,
+whose circuit can be obtained by replacing all
+T ($\T^\dag$) gates with S ($\S^\dag$).
+As \cref{sec:introduction} mentions,
+multiple papers~\cite{Gidney2024,Li2025,Tuloup2026,Chase2026,Fang2026a,Chen2026b}
+report an unexplained difference in
+the pre-escape logical error rate per kept shot
+between T- and S-state cultivation,
+which increases as the noise level decreases.

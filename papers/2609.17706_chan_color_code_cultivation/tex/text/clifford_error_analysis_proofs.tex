@@ -1,0 +1,144 @@
+\section{Clifford Error Analysis Proofs}
+\label{sec:clifford_error_analysis_proofs}
+In this section we prove \cref{theorem:probability_trivial_syndrome,prop:resulting_fidelity}.
+First note the following.
+We can write the density operator of
+the logical state corresponding to \cref{eq:pauli_decomposition} in terms of
+	$\mathcal G$ (defining the code)
+	and the coefficients $`{\alpha_L}_L$ (defining the logical state):
+\begin{align}
+\overline{\rho}
+=\upPi_{\mathcal G} 2^{-k} \sum_{L \in \mathcal{P}_k} \alpha_L \overline{L}.
+\label{eq:density_logical_psi}
+\end{align}
+Here, $\upPi_{\mathcal G}$ projects onto the codespace of $\mathcal G$,
+and the other term projects onto the specific logical state within the codespace.
+Note $\upPi_{\mathcal G}$ commutes with each $\overline{L}$.
+
+\subsection{Proof of \texorpdfstring
+{\cref{theorem:probability_trivial_syndrome}}
+{Theorem~\ref{theorem:probability_trivial_syndrome}}}
+Let
+$\mathcal A:=\langle\mathcal G\rangle$,
+$\mathcal B:=\langle E^\dagger\mathcal G E\rangle$,
+$\mathcal K:=\mathcal A\cap\mathcal B$,
+and $r :=n-k$.
+The probability to observe a trivial syndrome
+is the expectation value of $\upPi_{\mathcal G}$
+[recall \cref{eq:pj_defn}]:
+\begin{align}
+	\pr(\v s =\v 0)
+	&=\tr`*(\upPi_{\mathcal G} E\overline{\rho} E^\dag) \notag \\
+	&=\tr`*(\upPi_{E^\dag \mathcal G E} \overline{\rho}) \notag \\
+	&\overset{\eqref{eq:density_logical_psi}}=
+	2^{-k}\sum_{L\in\mathcal P_k}\alpha_L \tr\left(
+	\upPi_{E^\dagger \mathcal G E}\upPi_{\mathcal G} \overline L
+	\right).
+	\label{eq:sum_of_traces_fully_expanded}
+\end{align}
+If $\mathcal B\cap(-\mathcal A)\ne\varnothing$,
+then $\upPi_{E^\dagger \mathcal G E}\upPi_{\mathcal G}$
+contains $(\I -P)(\I +P) =0$ for some Pauli $P \in \mathcal A$,
+so the probability is zero.
+Assume otherwise.
+
+Multiply out the two stabiliser projectors:
+\begin{equation}
+\label{eq:trace_triple}
+\pr(\v s =\v 0)
+=2^{-2r -k} \sum_{L \in \mathcal P_k} \alpha_L
+\sum_{a \in \mathcal A} \sum_{b \in \mathcal B}
+\tr`\big(ba \overline{L}).
+\end{equation}
+Since nontrivial Paulis are traceless,
+we need only consider products
+$ba \overline{L}$
+that are proportional to $\I$.
+Thus, each $L$ term contributes iff \cref{eq:logical_membership} holds;
+equivalently,
+iff $\mathcal B\cap\omega_L\overline L\mathcal A$ is nonempty
+for some sign $\omega_L\in\{\pm1\}$.
+(This sign is real:
+	$\overline{L}$ and all Paulis in $\mathcal A$ and $\mathcal B$ are Hermitian,
+	and $\overline{L}$ commutes with each Pauli in $\mathcal A$.
+The sign is also unique:
+	if $b=\omega\overline L a$ and
+	$b'=-\omega\overline L a'$ with
+	$b,b'\in\mathcal B$ and $a,a'\in\mathcal A$,
+	then $bb'=-aa'\in\mathcal B\cap(-\mathcal A)$,
+	a contradiction.)
+If the intersection is nonempty and contains $b_L$,
+then it is a coset of $\mathcal K$:
+\begin{equation}
+\mathcal B\cap\omega_L\overline L\mathcal A=b_L\mathcal K,
+\end{equation}
+so it has $2^{\rk\mathcal K}$ elements.
+Each surviving trace contributes
+$\tr \omega_L \I= \omega_L 2^n =\omega_L 2^{r +k}$,
+and therefore the total prefactor is
+$2^{-r+\rk\mathcal K}$,
+where
+$r-\rk\mathcal K
+=\rk\langle\mathcal G\cup E^\dagger\mathcal G E\rangle-r
+=s$. \qed
+
+\subsection{Proof of \texorpdfstring
+{\cref{prop:resulting_fidelity}}
+{Proposition~\ref{prop:resulting_fidelity}}}
+The fidelity of the resulting state $\ket{\Omega}$
+to $\ket{\overline{T}}$ is $|`<\overline{T}|\Omega>|^2$.
+Using the notation of \cref{eq:pj_defn}:
+\begin{align}
+	\ket{\Omega}
+	&=\frac1{\sqrt{\pr(\v s =\v 0)}}
+	\upPi_{\mathcal G}
+	E\ket{\overline{T}} \notag \\
+	|`<\overline{T}|\Omega>|^2 \pr(\v s =\v 0)
+	&=\tr`\big(E^\dag \proj{\overline{T}}E \proj{\overline{T}}).
+\end{align}
+Similar to \cref{eq:density_logical_psi},
+we can write $\proj{\overline{T}} =\upPi_{\mathcal G} \frac12(\I +\overline{H_+})$,
+where $\overline{H_+}$ here refers to
+the logical representative from \cref{eq:logical_H_is_transversal}.
+Let $a=0$ if $E$ commutes with $\overline{H_+}$
+and $a=1$ if it anticommutes,
+then $E^\dag \overline{H_+}E =(-1)^a \overline{H_+}$.
+Substitute these two facts in:
+\begin{align}
+|`<\overline{T}|\Omega>|^2 \pr(\v s =\v 0)
+&=\tr`\bigg[E^\dag \upPi_{\mathcal G} E \frac{\I +(-1)^a \overline{H_+}}2 \upPi_{\mathcal G} \frac{\I +\overline{H_+}}2]
+\notag \\
+&=
+\tr`\bigg[\upPi_{E^\dagger \mathcal G E}\upPi_{\mathcal G}
+\frac{\I +(-1)^a \overline{H_+}}2
+\frac{\I +\overline{H_+}}2].
+\end{align}
+If $a =1$,
+the last two projectors multiply to zero,
+so $|`<\overline{T}|\Omega>|^2 =0$.
+If $a =0$,
+they are the same projector;
+since projectors are idempotent,
+we keep only one of them in our expression.
+That remaining logical projector is multiplied by $\upPi_{\mathcal G}$
+i.e.\ acts only on the codespace,
+so we can replace it with
+the logically equivalent projector
+$\sum_{L \in \mathcal P_1} \alpha_L \overline{L}$
+from \cref{eq:density_logical_psi}
+(here $\alpha_\I =1$ and $\alpha_X =\alpha_Y =\frac1{\sqrt{2}}$).
+Then:
+\begin{equation}
+|`<\overline{T}|\Omega>|^2 \pr(\v s =\v 0)
+=2^{-1}\sum_{L\in\mathcal P_k}\alpha_L \tr\left(
+\upPi_{E^\dagger \mathcal G E}\upPi_{\mathcal G} \overline L
+\right),
+\label{eq:sum_of_traces_T_fully_expanded}
+\end{equation}
+This is identical to the right-hand side of
+\cref{eq:sum_of_traces_fully_expanded},
+so $|`<\overline{T}|\Omega>|^2 =1$.
+
+The stated time complexity comes from determining $a$;
+this requires checking the commutation of each pair of tensor factors,
+which takes $\mathcal O(n)$ time. \qed

@@ -1,0 +1,57 @@
+\section{Conclusion}\label{sec:conclusion}
+Our paper makes three main contributions.
+First,
+we analytically show that distance-3 (-5) T-state cultivation
+has fault distance 2 (3) before its escape stage;
+this is the main reason for the T--S discrepancy
+in logical error rate.
+Second,
+we derive a general formula for,
+and an algorithm for calculating,
+the acceptance probability of
+an arbitrary encoded mixed state suffering a physical Clifford error.
+Third,
+we design 2D-local flags that restore
+the degraded fault distance of T-state cultivation,
+and which are practical for distance 5.
+These flags demonstrate the utility of considering
+coherent non-Pauli errors arising from non-Clifford circuits
+for improving their fault tolerance.
+There are various avenues for future work.
+
+Surti et al.~\cite{Surti2026} show that
+in many logical magic state preparation circuits
+(even those with multiple layers of non-Cliffords),
+each Pauli error propagates to a Clifford error.
+\Cref{prop:resulting_fidelity} could be generalised to
+the same level of generality as \cref{theorem:probability_trivial_syndrome}
+using the same proof technique.
+These two facts could then be combined with
+\cref{alg:probability_trivial_syndrome}
+to quickly and analytically verify the fault distance
+(by enumerating low-fault-count fault configurations)
+of other circuits, such as
+the double checks~\cite{Chen2026,Vaknin2025,Claes2025}
+or the constant-depth logical measurement by gauging~\cite{Hetenyi2026}
+from more recent cultivation proposals.
+The transversal-T code-switching protocol
+from Daguerre et al.~\cite{Daguerre2025,Daguerre2025a},
+which is an alternative to cultivation,
+could also be analysed in this way.
+
+One motivation for designing the Z-flagged circuits
+was to retain the use of the double check
+for its low spacetime cost under 2D connectivity constraints.
+As \cref{sec:z_flagged_double_checks} mentions however,
+the Z flags themselves complicate the connectivity
+to next-nearest-neighbour;
+it would be interesting to devise a qubit layout
+that maintains nearest-neighbour connectivity.
+This should be combined with
+a more rigorous and systematic flag design process
+than the hand-optimised one described in \cref{sec:flag_design_process}.
+Additionally,
+it is unknown how degraded the fault distance is for higher-distance MSC;
+if the trend continues from MSC-3 and -5,
+our Z flags could become increasingly effective at improving
+the logical error rate.

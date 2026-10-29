@@ -1,0 +1,35 @@
+\section{Additional Figures}\label{sec:additional_figures}
+In \cref{sec:thorough_analysis} we enumerate all undetected fault configurations
+in the distance-3 and -5 double checks.
+\Cref{fig:fcc_against_fault_count} shows
+the number of such configurations,
+after grouping by fault count and whether they are benign or malignant.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.72\linewidth]{figures/fcc_against_fault_count.pdf}
+	\caption{The number of undetected fault configurations
+	in the double-check circuit for magic state cultivation,
+	grouped by fault count i.e.\ number of faults in the configuration.
+	(a) and (b) correspond to distance-3 and -5 cultivation respectively.
+	In both subfigures:
+	blue (orange) data correspond to cultivating S (T) states.
+	Benign (malignant) configurations
+	lead to a logical fidelity of 1 (0).
+	Five low-fault-count malignant counts are annotated.}
+	\label{fig:fcc_against_fault_count}
+\end{figure}
+
+In \cref{sec:z_flagged_double_checks} we show
+our Z-flagged distance-3 double check as a detector slice diagram.
+\Cref{fig:d3a6f2_conventional_diagram} shows
+the same circuit more conventionally.
+\begin{SCfigure}
+	\input{figures/from_yquant/yquant_circuits/d3a6f2.tex}
+	\caption{A Z-flagged version of the distance-3 double-check circuit
+	that detects the four fault configurations
+	shown in \cref{fig:all_2_fault_configurations}.
+	The two added flag qubits {\alpha} and {\beta},
+	and the four additional CX layers,
+	are drawn red and dashed.}
+	\label{fig:d3a6f2_conventional_diagram}
+\end{SCfigure}

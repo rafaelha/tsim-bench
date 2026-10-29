@@ -1,0 +1,203 @@
+\begingroup
+
+\definecolor{mscCircle}{HTML}{0072B2}
+\definecolor{mscSquare}{HTML}{E69F00}
+\definecolor{mscDiamond}{HTML}{009E73}
+\definecolor{mscTriangle}{HTML}{CC79A7}
+
+\tikzset{
+	msc circle wire/.style={msc wire above=mscCircle},
+	msc square wire/.style={msc wire above=mscSquare},
+	msc diamond wire/.style={msc wire below=mscDiamond},
+	msc triangle wire/.style={msc wire above=mscTriangle},
+	msc circle square wire/.style={
+		msc wire above=mscCircle,
+		msc wire below=mscSquare,
+	},
+	msc square diamond wire/.style={
+		msc wire above=mscSquare,
+		msc wire below=mscDiamond,
+	},
+	msc circle control/.style={msc control left=mscCircle},
+	msc square control/.style={msc control left=mscSquare},
+	msc diamond control/.style={msc control left=mscDiamond},
+	msc triangle control/.style={msc control left=mscTriangle},
+	msc circle square control/.style={
+		msc control left=mscCircle,
+		msc control right=mscSquare,
+	},
+	msc square diamond control/.style={
+		msc control left=mscSquare,
+		msc control right=mscDiamond,
+	},
+	msc circle event/.style={
+		msc event,
+		shape=yquant-circle,
+		fill=mscCircle!25,
+		draw=mscCircle!85!black,
+	},
+	msc square event/.style={
+		msc event,
+		fill=mscSquare!25,
+		draw=mscSquare!85!black,
+	},
+	msc diamond event/.style={
+		msc event,
+		shape=diamond,
+		fill=mscDiamond!25,
+		draw=mscDiamond!85!black,
+		inner timesep=0.3mm,
+		inner spacesep=0.3mm,
+	},
+	msc triangle event/.style={
+		msc event,
+		shape=regular polygon,
+		regular polygon sides=3,
+		fill=mscTriangle!25,
+		draw=mscTriangle!85!black,
+		inner timesep=0.1mm,
+		inner spacesep=0.1mm,
+	},
+}
+
+\yquantset{
+	msc circle cnot/.style={
+		every control line/.append style={msc circle control},
+	},
+	msc square cnot/.style={
+		every control line/.append style={msc square control},
+	},
+	msc diamond cnot/.style={
+		every control line/.append style={msc diamond control},
+	},
+	msc triangle cnot/.style={
+		every control line/.append style={msc triangle control},
+	},
+	msc circle square cnot/.style={
+		every control line/.append style={msc circle square control},
+	},
+	msc square diamond cnot/.style={
+		every control line/.append style={msc square diamond control},
+	},
+}
+
+\begin{tikzpicture}[trim left=10.5pt]
+\begin{yquant}
+
+qubit {0} q0;
+qubit {a} qa;
+qubit {b} qb;
+qubit {1} q1;
+qubit {c} qc;
+qubit {2} q2;
+qubit {d} qd;
+qubit {3} q3;
+qubit {4} q4;
+qubit {e} qe;
+qubit {5} q5;
+qubit {6} q6;
+qubit {f} qf;
+
+discard qa,qb,qc,qd,qe,qf;
+hspace {1mm} q0,qa,qb,q1,qc,q2,qd,q3,q4,qe,q5,q6,qf;
+box {T} q1,q4,q5;
+box {T$^\dag$} q0,q2,q3,q6;
+init {$\ket{+}$} qa,qb,qc,qd,qe,qf;
+
+cnot q0|qa;
+cnot q4|qe;
+cnot q3|qd;
+cnot q2|qc;
+cnot q1|qb;
+cnot q6|qf;
+
+cnot qa|q1;
+cnot qd|q2;
+cnot qf|qe;
+
+[msc circle event]
+box {X} q1;
+[msc square event]
+box {X} q2;
+[msc diamond event]
+box {X} qe;
+setstyle {msc circle wire} q1;
+setstyle {msc square wire} q2;
+setstyle {msc diamond wire} qe;
+align q0,qa,qb,q1,qc,q2,qd,q3,q4,qe,q5,q6,qf;
+
+[msc square cnot]
+cnot q1|q2;
+setstyle {msc circle square wire} q1;
+[msc diamond cnot]
+cnot q5|qe;
+setstyle {msc diamond wire} q5;
+
+[msc square cnot]
+cnot qe|q2;
+setstyle {msc square diamond wire} qe;
+
+dmeter {X} q2;
+discard q2;
+init {$\ket{+}$} q2;
+setstyle {} q2;
+
+cnot qe|q2;
+
+cnot q1|q2;
+[msc square diamond cnot]
+cnot q5|qe;
+setstyle {msc square wire} q5;
+
+[msc triangle event]
+box {X} q2;
+setstyle {msc triangle wire} q2;
+align q0,qa,qb,q1,qc,q2,qd,q3,q4,qe,q5,q6,qf;
+
+[msc circle square cnot]
+cnot qa|q1;
+setstyle {msc circle square wire} qa;
+[msc triangle cnot]
+cnot qd|q2;
+setstyle {msc triangle wire} qd;
+[msc square diamond cnot]
+cnot qf|qe;
+setstyle {msc square diamond wire} qf;
+
+[msc circle square cnot]
+cnot q0|qa;
+setstyle {msc circle square wire} q0;
+[msc square diamond cnot]
+cnot q4|qe;
+setstyle {msc square diamond wire} q4;
+[msc triangle cnot]
+cnot q3|qd;
+setstyle {msc triangle wire} q3;
+cnot q2|qc;
+cnot q1|qb;
+[msc square diamond cnot]
+cnot q6|qf;
+setstyle {msc square diamond wire} q6;
+
+[msc circle event]
+box {Y} q3;
+[msc square event]
+box {Y} q4;
+[msc triangle event]
+box {Y} q4;
+[msc diamond event]
+box {Y} q0;
+
+dmeter {X} qa,qb,qc,qd,qe,qf;
+discard qa,qb,qc,qd,qe,qf;
+align -;
+box {T$^\dag$} q1,q4,q5;
+box {T} q0,q2,q3,q6;
+setstyle {} q0,q1,q2,q3,q4,q5,q6;
+
+hspace {1mm} q0,q1,q2,q3,q4,q5,q6;
+
+\end{yquant}
+\end{tikzpicture}
+
+\endgroup

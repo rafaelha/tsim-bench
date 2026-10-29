@@ -1,0 +1,70 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tchshortcuts}[2023-11-22 Tim Chan shortcuts]
+
+% load essential packages
+\RequirePackage{datetime2}
+\RequirePackage{mathtools}\mathtoolsset{centercolon}
+\RequirePackage{amssymb, bm, fixmath, phfparen, mathcommand, alphabeta}
+
+% options section
+\DeclareOption{derivative}{\AtEndOfPackage{
+  \RequirePackage{derivative}
+  \derivset{\pdv}[delims-eval=.)]
+  \RenewDerivative\fdv{\updelta}
+  \RenewDerivative\adv{\upDelta}
+}}
+\DeclareOption{spalign}{\AtEndOfPackage{
+  \RequirePackage[matdelimskip=]{spalign}
+  \let\mat=\spalignmat
+}}
+\DeclareOption{phfqit}{\AtEndOfPackage{
+  \RequirePackage[qitobjdef=none]{phfqit}
+}}
+\DeclareOption{siunitx}{\AtEndOfPackage{
+  \RequirePackage[print-unity-mantissa=false]{siunitx}
+}}
+\ProcessOptions\relax
+
+% declare commands which only apply in math mode e.g. \BG
+\LoopCommands{\lettersAll
+{AB}{Ad}{ad}{BG}{CF}{Cl}{cl}{CM}{dB}{DQ}{EM}{GU}{HS}{KL}{LJ}{nd}{NC}{II}{PB}{PI}{rd}{SC}{SE}{SO}{SU}{st}{th}{TV}{UC}
+{amp}{aux}{des}{eff}{enc}{ent}{env}{exc}{ext}{FSR}{gas}{GHZ}{HFS}{liq}{out}{Pau}{QFT}{QHO}{QPE}{res}{rev}{RMS}{rot}{sol}{sub}{sys}{tot}{tra}{vap}{vib}  % SO works not
+{const}
+}{\declaremathcommand#2{\textnormal{#1}}}
+
+% declare upright Greek commands in math mode e.g. \upalpha
+\LoopCommands\lettersGreekAll[up#1][#1]
+{\declaremathcommand#2{\textnormal{#3}}}
+
+% declare operatornames which only apply in math mode
+\LoopCommands{
+{AR}{id}{im}{Br}{ch}{db}{DU}{GF}{LN}{pj}{Po}{pr}{sh}{Sp}{rk}
+{cov}{Eig}{erf}{Exp}{Geo}{LER}{Lie}{med}{NCF}{per}{Res}{sgn}{var}
+{atan}{bias}{sech}{sinc}{csch}{ReLU}
+{Cauchy}
+{polylog}
+}{\DeclareMathOperator#2{#1}}
+
+% redefine \v to typeset vectors
+\renewmathcommand\v{\bm}
+% define \tens to typeset tensors (requires \usepackage{lmodern} to properly generate latin letters)
+\newcommand\tens[1]{\text{\sffamily\bfseries\itshape #1}}
+% separately define operatorname atan2 because it works not with \LoopCommands for some reason
+\DeclareMathOperator{\atan2}{atan2}
+% define normal ordering command from https://tex.stackexchange.com/a/214406/240977
+\newcommand{\normord}[1]{%
+	{:\mathrel{\mspace{1mu}#1\mspace{1mu}}:}%
+}
+% define symmetric difference binary operator
+% use declaremathcommand instead of newmathcommand as revtex4-2 already defines \sd
+\declaremathcommand\sd{\mathbin{\vartriangle}}
+% define big symmetric difference operator (requires \usepackage{relsize})
+\newmathcommand\bigsd{\operatorname*{\mathlarger{\triangle}}}
+
+% command to show [number of marks] when writing exam questions
+% modified from exam_mac.tex provided here: https://canvas.ox.ac.uk/courses/67877/pages/new-part-b-2014
+% to use, type \oxmarks{number of marks}
+\newcommand{\oxmarks}[1]{\vadjust{\vbox to 0pt%
+         {
+	\vss\hbox{\hskip\hsize\qquad\makebox [.5cm][r]{[#1]}}
+	\hrule height 0pt depth 0pt}}\ifmmode\else\vskip3pt\fi}

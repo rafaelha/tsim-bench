@@ -1,0 +1,252 @@
+\section{Acceptance Probability Algorithm}
+\label{sec:acceptance_probability_algorithm}
+In this section,
+$\mathbb{F}_2$ denotes the finite field with $2$ elements.
+For $\v v \in \mathbb{F}_2^n$,
+write $P_{\v v} :=\bigotimes_{q =1}^n P^{v_q}$ for $P \in\{\X, \Z\}$.
+
+\begin{prop}
+\label{prop:probability_runtime}
+\Cref{alg:probability_trivial_syndrome} computes
+\cref{eq:probability_trivial_syndrome}
+in $\mathcal O(n^3+N_\alpha k^2)$ time,
+where $N_\alpha \le 4^k$ is the number of nonzero coefficients
+$\alpha_L$ defining $\rho$ by \cref{eq:pauli_decomposition}.
+\end{prop}
+
+\begin{algorithm}[H]
+\caption{Probability of a trivial syndrome after suffering a Clifford error.}
+\label{alg:probability_trivial_syndrome}
+\begin{algorithmic}[1]
+\Require Encoder $C$, Clifford error $E$,
+and logical coefficients $\{\alpha_L:L\in\mathcal P_k\}$.
+\Ensure $\pr(\v s=\v 0)$.
+\State Set $F\gets C^\dag EC$ and build $R$ as in \cref{eq:forget_check_Z_matrix}.
+\State Row-reduce $R$ to obtain $\rk R$, a basis $\mathcal{B}$ for $\ker R$,
+an image test, and a solver for $R\v x=\v y$.
+\State Precompute the data to evaluate $\chi$ using
+\cref{eq:chi_phase_formula}.
+\ForAll{$\v e \in \mathcal{B}$}
+	\If{$\chi(\v e)=1$}
+		\State \Return $0$
+	\EndIf
+\EndFor
+\State $\eta\gets0$
+\ForAll{$L\in\mathcal P_k$ with $\alpha_L\ne0$}
+	\If{$\v \rho(\I^{\otimes r}\otimes L) \in\im R$}
+	\label{line:image_membership_test}
+		\State $\eta\gets\eta+(-1)^{\chi(\v u_L)}\alpha_L$,
+		where $\v u_L$ is any solution to
+		$R\v u_L =\v \rho(\I^{\otimes r} \otimes L)$
+	\EndIf
+\EndFor
+\State \Return $2^{-\rk R}\eta$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{proof}
+Let $r :=n-k$.
+It helps to work in unencoded space:
+choose an encoder $C$ such that the encoded state is
+$\overline{\rho} =C \big(\proj{0}^{\otimes r} \otimes \rho\big) C^\dag$.
+Then the unencoded stabiliser generators are simply
+$\mathcal Z:=\{\Z_1,\ldots,\Z_r\}$
+and the unencoded Clifford error is $F:=C^\dag EC$.
+Write the transformed stabiliser element corresponding to
+$\v u\in\mathbb{F}_2^r$ as $\Z'_{\v u}:=F^\dag\Z_{\v u}F$.
+In unencoded space, \cref{eq:trace_triple} becomes
+\begin{equation}
+\pr(\v s=\v 0)
+=
+2^{-2r-k}
+\sum_{L\in\mathcal P_k}\alpha_L
+\sum_{\v u,\v v\in\mathbb{F}_2^r}
+\tr\left[\Z_{\v u}'\Z_{\v v}(\I^{\otimes r}\otimes L)\right].
+\label{eq:single_conjugated_trace_expansion}
+\end{equation}
+As before,
+we need only consider products
+$\Z_{\v u}'\Z_{\v v}(\I^{\otimes r}\otimes L)$
+that are proportional to $\I$.
+For a given $L$,
+this occurs if there exists a $\Z_{\v u}'$ whose...
+\begin{enumerate}
+	\item first $r$ tensor factors are in $\{\I, \Z\}$,
+	\item last $k$ tensor factors match $L$ up to a sign.
+\end{enumerate}
+These two conditions can be restated as
+the single equation
+$R\v u=\v \rho(\I^{\otimes r}\otimes L)$,
+where we have defined
+$\v \rho(P)
+:=(\v x^\T\mid z_{r+1},\ldots,z_n)^\T
+\in\mathbb{F}_2^{n+k}$
+for a Hermitian $n$-qubit Pauli $P$
+whose binary symplectic vector is
+$(\v x^\T \mid\v z^\T)^\T$,
+and the matrix
+\begin{equation}
+R:=\big[\v \rho(F^\dag\Z_1F),\ldots,\v \rho(F^\dag\Z_rF)\big].
+\label{eq:forget_check_Z_matrix}
+\end{equation}
+There can be multiple solutions to
+$R\v u=\v \rho(\I^{\otimes r}\otimes L)$;
+we define the \emph{fibre} over $L$ as the solution set:
+\begin{equation}
+\Phi_L:=
+\{\v u\in\mathbb{F}_2^r:R\v u=\v \rho(\I^{\otimes r}\otimes L)\}.
+\label{eq:fibre_defn}
+\end{equation}
+For $\v u\in\Phi_L$,
+there is a unique $\v v(\v u)\in\mathbb{F}_2^r$ such that
+$\Z_{\v v(\v u)}$ matches the first $r$ tensor factors of $\Z_{\v u}'$
+i.e.
+\begin{equation}
+\Z'_{\v u}\Z_{\v v(\v u)}(\I^{\otimes r}\otimes L)
+=(-1)^{\chi(\v u)}\I.
+\label{eq:chi_defn}
+\end{equation}
+\Cref{lem:trivial_syndrome_phase_evaluation}
+gives an explicit formula for $\chi: \mathbb{F}_2^r \to \mathbb{F}_2$
+and shows that it depends only on $\v u$, not on $L$.
+
+The zero case of \cref{theorem:probability_trivial_syndrome}
+is detected on $\ker R$:
+by \cref{eq:chi_defn} with $L=\I$,
+$\chi(\v k)=1$ iff
+$\Z'_{\v k}\in-\langle\mathcal Z\rangle$.
+By \cref{lem:kernel_chi_linear},
+checking $\chi$ on a basis of $\ker R$
+detects precisely whether this happens.
+
+Assume the algorithm does not return zero.
+\Cref{line:image_membership_test} selects
+exactly the $L$'s satisfying \cref{eq:logical_membership}.
+For any solution $\v u_L\in\Phi_L$,
+\cref{eq:chi_defn} identifies the sign in
+\cref{eq:probability_trivial_syndrome} as
+$\omega_L=(-1)^{\chi(\v u_L)}$.
+This sign is solution-independent by
+\cref{theorem:probability_trivial_syndrome}.
+Finally,
+$\rk R=s$
+because $R$ records the transformed stabilisers modulo
+the original unencoded stabiliser group.
+Thus the accumulator $\eta$ is the sum in
+\cref{eq:probability_trivial_syndrome},
+and the algorithm returns the prefactor $2^{-s}=2^{-\rk R}$.
+
+It remains to prove the stated time complexity:
+\begin{enumerate}
+	\item Tableau composition computes
+	$F=C^\dag EC$ in $\mathcal O(n^3)$ time
+	\cite[\S III]{Aaronson2004}
+	\cite[\S 2.3.2]{Gidney2021a},
+	after which the columns $F^\dag\Z_iF$ are read from the tableau.
+	The same preprocessing row-reduces $R$, builds the image-membership test
+	and precomputes the phase data in
+	\cref{eq:chi_phase_formula}; checking $\chi$ on a basis of $\ker R$
+	is also $\mathcal O(n^3)$ time.
+	\item For each nonzero coefficient $\alpha_L$:
+	one need not explicitly form $\v u_L\in\mathbb{F}_2^r$.
+	After row-reduction, the membership test and
+	$\chi(\v u_L)$ can be precomposed with the binary symplectic
+	vector of $L$. This gives linear and quadratic forms in $2k$ variables,
+	respectively, which can be evaluated in $\mathcal O(k^2)$ time.
+	\qedhere
+\end{enumerate}
+\end{proof}
+
+\noindent
+The following kernel fact is used in the proof.
+
+\begin{lem}
+\label{lem:kernel_chi_linear}
+The restriction $\chi|_{\ker R}$ is linear
+i.e.\ $\chi(\v k+\v l)
+=\chi(\v k)+\chi(\v l)\pmod 2$ for $\v k, \v l \in \ker R$.
+\end{lem}
+\begin{proof}
+$
+(-1)^{\chi(\v k+\v l)}\I
+\overset{\eqref{eq:chi_defn}}=
+\Z_{\v k+\v l}'\Z_{\v v(\v k+\v l)}
+=
+\Z_{\v k}'\Z_{\v v(\v k)}
+\Z_{\v l}'\Z_{\v v(\v l)}
+\overset{\eqref{eq:chi_defn}}=
+(-1)^{\chi(\v k)+\chi(\v l)}
+\I$.
+\end{proof}
+
+\begin{lem}
+\label{lem:trivial_syndrome_phase_evaluation}
+Let
+\[
+F^\dag\Z_iF=\i^{\phi_i}\X_{\v x_i}\Z_{\v z_i},
+\qquad
+\v \phi=(\phi_1,\ldots,\phi_r)^\T\in\mathbb Z_4^r,
+\qquad
+X=[\v x_1,\ldots,\v x_r],
+\qquad
+Z=[\v z_1,\ldots,\v z_r].
+\]
+Then the function $\chi$ in \cref{eq:chi_defn} is
+\begin{equation}
+\chi(\v u)
+:=
+\frac{\v \phi^\T\v u-(X\v u)^\T(Z\v u)}2
++\sum_{i<j} u_i u_j\,\v z_i^\T\v x_j
+\pmod 2,
+\label{eq:chi_phase_formula}
+\end{equation}
+where the matrix--vector products $X\v u$ and $Z\v u$ are over $\mathbb{F}_2$,
+then interpreted as $0/1$ integer vectors in the numerator.
+The half is well-defined on this domain because
+the numerator is always even.
+\end{lem}
+\begin{proof}
+Consider first
+\begin{align}
+\Z_{\v u}'
+&=\prod_{j \in \supp \v u} F^\dag \Z_j F \notag \\
+&=\i^{\v \phi^\T \v u} \prod_{j \in \supp \v u}
+\X_{\v x_j} \Z_{\v z_j}
+\end{align}
+We want to express this product
+as one pure-X Pauli followed by one pure-Z Pauli.
+In moving
+all X components to the left and
+all Z components to the right,
+we accumulate factors of $-1$
+because Paulis either commute or anticommute.
+Specifically,
+each time we move an $\X_{\v x_j}$
+past a $\Z_{\v z_i}$ for $i <j$,
+we pick up a $(-1)^{\v z_i^\T \v x_j}$ factor.
+Thus,
+the total number of $-1$ factors accumulated is
+$\sum_{i <j} u_i u_j \v z_i^\T \v x_j$.
+The X-component vector is $\sum_{j \in \supp \v u} \v x_j =X\v u$;
+similarly for Z.
+So the result is
+\begin{equation}
+\label{eq:raw_transformed_unencoded_product}
+\Z'_{\v u}
+=
+\i^{\v \phi^\T\v u}
+(-1)^{\sum_{i<j} u_i u_j\,\v z_i^\T\v x_j}
+\X_{X\v u}\Z_{Z\v u}.
+\end{equation}
+Substituting this into \cref{eq:chi_defn},
+we see that $\X_{X\v u}\Z_{Z\v u}$
+equals $\Z_{\v v(\v u)}(\I^{\otimes r}\otimes L)$,
+but without the powers of $\i$
+from any $\Y$ tensor factors that appear in
+$\Z_{\v v(\v u)}(\I^{\otimes r}\otimes L)$.
+There are $(X\v u)^\T(Z\v u)$ such tensor factors
+i.e.\ $\i^{(X\v u)^\T(Z\v u)} \X_{X\v u}\Z_{Z\v u}
+=\Z_{\v v(\v u)}(\I^{\otimes r}\otimes L)$.
+Substituting this into \cref{eq:raw_transformed_unencoded_product}
+then into \cref{eq:chi_defn} implies the result.
+\end{proof}

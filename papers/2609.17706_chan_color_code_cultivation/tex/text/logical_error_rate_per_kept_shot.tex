@@ -1,0 +1,71 @@
+\section{Logical Error Rate per Kept Shot}
+\label{sec:logical_error_rate_per_kept_shot}
+Consider all error events within
+the final double check minus the second layer of T gates
+e.g.\ for distance 3, this is the circuit before the dashed line in
+\cref{fig:all_2_fault_configurations}.
+Define the signature $\v \sigma$ of each fault over all detectors
+that are not probabilistic for any considered error event;
+namely:
+	all detectors within,
+	plus those corresponding to Z stabilisers after,
+the double check.
+The logical error rate per kept shot of that double check is
+\begin{align}
+\LER(p)
+&=\pr(\text{malignant} \mid \text{kept}; p) \notag \\
+&=\frac{\pr(\text{malignant} \cap \text{kept}; p)}{\pr(\text{kept}; p)}.
+\end{align}
+Recall that a shot is kept only if no detectors flip,
+so we need only consider the set $\mathcal{U}
+:=`{\mathcal{C} \subseteq \mathcal{F}: \v\sigma(\mathcal{C}) =\v 0}$
+of all \emph{undetectable} configurations.
+This turns out to be one of the most impactful optimisations in our analysis,
+since $|\mathcal{U}|$ is much smaller than the total number $2^{|\mathcal F|}$ of configurations.
+
+Write the second layer of T gates as $\T_{\mathcal L} \T^\dag_{\mathcal S}$
+using $\mathcal L$ and $\mathcal S$ from \cref{lem:logical_H_is_transversal}.
+Each resultant effect $P \in \mathcal P_n$
+propagates past this layer into a Clifford error $E =\T_{\mathcal L} \T^\dag_{\mathcal S}
+P (\T_{\mathcal L} \T^\dag_{\mathcal S})^\dag$.
+It then has
+probability $\kappa(P) :=`<\overline{T}| E^\dag \upPi_{\mathcal G}E |\overline{T}>$
+of being kept (by \cref{lem:insert_projector}),
+and probability $\mu(P) =\kappa(P)[1 -\varphi(E)]$ of being kept \emph{and} malignant,
+where $\varphi(E) \in `{0, 1}$ is the fidelity referred to in \cref{prop:resulting_fidelity}.
+E.g.\ the resultant effect $P =\X_{01}\Y_3$ in
+\cref{eg:d3_color_code_acceptance_probability}
+has $\kappa(P) =\mu(P) =1/4$.
+Then
+\begin{equation}
+	\LER(p)
+	=\frac
+	{\sum_{\mathcal{C} \in \mathcal{U}} \pi_\mathcal{C}(p) \mu`\big(P(\mathcal{C}))}
+	{\sum_{\mathcal{C} \in \mathcal{U}} \pi_\mathcal{C}(p) \kappa`\big(P(\mathcal{C}))}.
+	\label{eq:ler_per_kept_shot}
+\end{equation}
+The sum $\sum_{\mathcal{C} \in \mathcal{U}}$ can contain up to $2^{|\mathcal F|}$ terms,
+making direct evaluation intractable,
+but since $\pi_\mathcal{C}(p) =\upTheta(p^{|\mathcal{C}|})$ for $p \ll 1$
+we can approximate it by considering only low-fault-count configurations.
+So partition $\mathcal{U} =\mathcal{U}_0 \cup \mathcal{U}_1 \cup \dots \cup \mathcal{U}_{|\mathcal F|}$
+where $\mathcal{U}_k :=`{\mathcal{C} \in \mathcal{U}: |\mathcal{C}| =k}$,
+and substitute this and \cref{eq:configuration_probability}
+into \cref{eq:ler_per_kept_shot}:
+\begin{align}
+	\LER(p)
+	&=\frac
+	{\sum_{k=0}^{|\mathcal{F}|} g_k[\mu; p]}
+	{\sum_{k=0}^{|\mathcal{F}|} g_k[\kappa; p]}, \\
+	g_k[h; p]
+	&:=\sum_{\mathcal{C} \in \mathcal{U}_k} h`\big(P(\mathcal{C}))
+	\prod_{f \in \mathcal{C}} \frac{\pi_f(p)}{1 -\pi_f(p)}
+	\qquad\forall h:\mathcal P_n \to [0, 1].
+\end{align}
+This is an exact expression;
+its tractable approximation to order $l$ is given by
+\begin{equation}
+	\LER(p) =\frac
+	{\sum_{k=0}^l g_k[\mu; p]}
+	{\sum_{k=0}^l g_k[\kappa; p]} +\mathcal{O}(p^{l +1}).
+\end{equation}
