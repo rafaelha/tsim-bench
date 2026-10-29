@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+    \begin{pgfonlayer}{nodelayer}
+        \node [style=Z dot] (0) at (0.00, 1.00) {};
+        \node [style=none] (1) at (2.00, 1.00) {};
+        \node [style=none] (2) at (-2.00, 1.00) {};
+        \node [style=X dot] (3) at (0.00, -1.00) {};
+        \node [style=none] (4) at (-2.00, -1.00) {};
+        \node [style=none] (5) at (2.00, -1.00) {};
+    \end{pgfonlayer}
+    \begin{pgfonlayer}{edgelayer}
+        \draw (0) to (3);
+        \draw (0) to (2);
+        \draw (0) to (1);
+        \draw (3) to (4);
+        \draw (3) to (5);
+        \draw[red,line width = 2.0 pt, opacity = 0.5] (0) to ($(3)!0.5!(0)$);
+        \end{pgfonlayer}
+\end{tikzpicture}
+

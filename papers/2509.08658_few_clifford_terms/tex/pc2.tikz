@@ -1,0 +1,93 @@
+
+\begin{tikzpicture}[yshift=6.5cm]
+    \begin{pgfonlayer}{nodelayer}
+        \node [style=Z dot] (2) at (4.50, -4.50) {};
+        \node [style=X dot] (3) at (6.50, -11.00) {};
+        \node [style=X dot] (4) at (1.50, -8.50) {};
+        \node [style=X dot] (6) at (1.50, -5.50) {};
+        \node [style=none] (8) at (5.50, -11.50) {};
+        \node [style=X dot] (9) at (2.50, -2.00) {};
+        \node [style=Z dot] (10) at (0.50, -6.50) {};
+        \node [style=Z dot] (11) at (1.50, -7.50) {};
+        \node [style=Z phase dot] (14) at (4.50, -0.50) {$\frac{\pi}{4}$};
+        \node [style=Z dot] (16) at (2.50, -6.50) {};
+        \node [style=X dot] (17) at (-0.50, -11.00) {};
+        \node [style=Z dot] (18) at (1.50, -4.50) {};
+        \node [style=Z dot] (20) at (2.50, -4.50) {};
+        \node [style=X dot] (23) at (0.50, -7.50) {};
+        \node [style=Z dot] (24) at (6.50, -4.50) {};
+        \node [style=Z dot] (29) at (0.50, -4.50) {};
+        \node [style=X dot] (30) at (3.50, -7.50) {};
+        \node [style=Z dot] (36) at (-0.50, -6.50) {};
+        \node [style=Z dot] (37) at (3.50, -4.50) {};
+        \node [style=Z dot] (39) at (6.50, -6.50) {};
+        \node [style=Z dot] (40) at (2.50, -11.00) {};
+        \node [style=X dot] (43) at (2.50, -5.50) {};
+        \node [style=Z dot] (48) at (2.50, -7.50) {};
+        \node [style=Z dot] (50) at (4.50, -6.50) {};
+        \node [style=none] (51) at (7.25, -5.50) {};
+        \node [style=none] (52) at (7.25, -8.50) {};
+        \node [style=X dot] (54) at (3.50, -8.50) {};
+        \node [style=Z dot] (59) at (3.50, -11.00) {};
+        \node [style=X phase dot] (60) at (1.50, -12.50) {$\frac{\pi}{4}$};
+        \node [style=X dot] (62) at (6.50, -7.50) {};
+        \node [style=X dot] (66) at (-0.50, -7.50) {};
+        \node [style=Z dot] (67) at (-0.50, -4.50) {};
+        \node [style=none] (72) at (7.25, -2.00) {};
+        \node [style=none] (73) at (7.00, -3.25) {$\vdots$};
+        \node [style=X dot] (74) at (0.50, -11.00) {};
+        \node [style=X dot] (75) at (-0.50, -8.50) {};
+        % \node [style=none] (77) at (3.00, -6.50) {$A$};
+        \node [style=none] (79) at (7.00, -9.75) {$\vdots$};
+        \node [style=none] (80) at (0.00, -1.50) {};
+        \node [style=X dot] (81) at (-0.50, -5.50) {};
+        \node [style=X dot] (82) at (-0.50, -2.00) {};
+        \node [style=X dot] (83) at (4.50, -11.00) {};
+    \end{pgfonlayer}
+    \begin{pgfonlayer}{edgelayer}
+        \draw (2) to (37);
+        \draw (2) to (14);
+        \draw (2) to (24);
+        \draw (3) to (83);
+        \draw (4) to (60);
+        \draw (4) to (11);
+        \draw (4) to (54);
+        \draw (4) to (75);
+        \draw (6) to (18);
+        \draw (6) to (81);
+        \draw (6) to (43);
+        \draw (9) to (72);
+        \draw (9) to (20);
+        \draw (9) to (82);
+        \draw (10) to (36);
+        \draw (10) to (16);
+        \draw (10) to (74);
+        \draw (11) to (23);
+        \draw (11) to (48);
+        \draw (16) to (43);
+        \draw (16) to (50);
+        \draw (17) to (74);
+        \draw (18) to (20);
+        \draw (18) to (29);
+        \draw (20) to (37);
+        \draw (23) to (29);
+        \draw (23) to (66);
+        \draw (29) to (67);
+        \draw (30) to (37);
+        \draw (30) to (48);
+        \draw (30) to (62);
+        \draw (39) to (50);
+        \draw (40) to (59);
+        \draw (40) to (74);
+        \draw (43) to (51);
+        \draw (50) to (83);
+        \draw (52) to (54);
+        \draw (54) to (59);
+        \draw (59) to (83);
+        \draw[dashed] (7.25, 0.25) -- (7.25, -12.25);
+
+    \end{pgfonlayer}
+	\draw [fill = white] (8) rectangle (80);
+    \node [] (84) at (3.00, -6.500) {$\mathcal{G}$};
+    \node [style=none] (7) at (7.25, 0.85) {$t=\tau$};
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1) at (0.75, -0.5) {};
+		\node [style=none] (8) at (1.5, -0.5) {};
+		\node [style=none] (11) at (0, -0.5) {};
+		\node [style=Z dot] (12) at (0, 0.5) {};
+		\node [style=Z dot] (13) at (0.75, 0.5) {};
+		\node [style=Z dot] (14) at (1.5, 0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (11.center) to (12);
+		\draw (13) to (1.center);
+		\draw (8.center) to (14);
+	\end{pgfonlayer}
+\end{tikzpicture}

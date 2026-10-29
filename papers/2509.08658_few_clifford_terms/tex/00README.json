@@ -1,0 +1,901 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "main.tex"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_0.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_1.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_10.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_11.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_12.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_13.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_14.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_15.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_16.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_17.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_18.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_19.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_2.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_20.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_21.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_22.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_23.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_24.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_25.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_3.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_4.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_5.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_6.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_7.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_8.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/det_9.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_0.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_10.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_11.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_12.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_13.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_14.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_15.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_16.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_17.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_18.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_19.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_20.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_21.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_22.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_23.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_24.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_25.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_4.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_5.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_6.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_7.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_8.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_det_webs/tikz/det_9.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d3_with_web.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_100.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_26.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_27.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_28.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_29.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_30.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_31.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_32.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_33.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_34.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_35.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_36.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_37.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_38.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_39.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_40.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_41.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_42.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_43.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_44.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_45.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_46.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_47.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_48.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_49.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_50.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_51.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_52.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_53.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_54.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_55.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_56.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_57.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_58.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_59.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_60.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_61.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_62.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_63.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_64.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_65.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_66.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_67.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_68.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_69.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_70.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_71.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_72.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_73.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_74.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_75.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_76.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_77.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_78.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_79.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_80.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_81.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_82.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_83.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_84.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_85.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_86.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_87.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_88.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_89.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_90.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_91.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_92.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_93.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_94.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_95.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_96.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_97.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_98.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "d5_det_webs/det_99.pdf"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/MSC_d_3_full.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/MSC_d_3_full_simp.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/MSC_d_5_full.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/Tdaggate.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/Tdagstate.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/Tstate.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/ahbox.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cat-4-decomp.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cat-6-decomp.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cat-state.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cat_state_to_Ts.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cc_meas.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cfdcLHS.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cfdc_f_t0.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cfdc_f_t1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cfdct0.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cfdct1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cfdct2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cfdct3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/check_free_dc.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/clifford_zx_diag.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/clifford_zx_diag_2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cnot_err_l.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cnot_err_r.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cultiv_DC_d3_pi_by_4.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cultiv_DC_d5_pi_by_4.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cut2_term0_s.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/cut2_term1_s.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/d3_error.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/d3_error_pi_s.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/d3_unfused_non_clifford.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/d5_dashed.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/d5_with_errors.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/deg_inj_d_3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/ihbox.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/magic-state-5-decomp.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/magic-state-dag.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/magic-state.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/measurement_spider_green.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/measurement_spider_green_a_pi.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/measurement_spider_red.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/measurement_spider_red_a_pi.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/orange_edge_l.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/orange_edge_r.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/spider_decomp_abs_L.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/spider_decomp_abs_R_1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/spider_decomp_abs_R_2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-1/1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-1/2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-1/star.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-2/1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-2/2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-2/3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-2/star.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3-state/1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3-state/2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3-state/3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3-state/4.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3-state/star-0.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3-state/star-pi2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3/1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3/2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3/3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3/4.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3/5.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/star-3/star.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/tikz_largest_component.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/tikz_plugged_paper.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/xnpi.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/znpi.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_15_to_1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_15_to_1_s_web0.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_15_to_1_s_web1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_15_to_1_s_web2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_15_to_1_s_web3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_X_spider.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_X_spider_Hdef.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_Z_spider.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_basic_rules.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_basic_rules_old.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_bss_decomp.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_cnot.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_hadamard_box.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_hadamard_line.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_local_comp.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_pauli_web_types.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_pivot.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_sgate.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_tgate.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "figures/zx_intro_tgate_consume.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "pc1.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "pc2.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "pc3.tikz"
+      },
+      {
+         "usage" : "ignore",
+         "filename" : "pc4.tikz"
+      }
+   ],
+   "spec_version" : 1,
+   "texlive_version" : "2025",
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}

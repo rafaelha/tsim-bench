@@ -1,0 +1,69 @@
+
+\begin{tikzpicture}
+    \begin{pgfonlayer}{nodelayer}
+        \node [style=X phase dot] (0) at (19.75, 1.50) {$\pi$};
+        \node [style=none] (1) at (17.00, 1.00) {};
+        \node [style=X dot] (2) at (19.00, 2.00) {};
+        \node [style=none] (3) at (22.75, -1.25) {$\vdots$};
+        \node [style=X dot] (4) at (19.00, -0.00) {};
+        \node [style=none] (5) at (24.00, -0.00) {};
+        \node [style=X dot] (6) at (22.00, -3.00) {};
+        \node [style=Z phase dot] (7) at (18.00, 2.00) {$\frac{7\pi}{4}$};
+        \node [style=none] (8) at (17.00, -3.00) {};
+        \node [style=none] (9) at (24.00, 2.00) {};
+        \node [style=none] (10) at (18.25, -1.25) {$\vdots$};
+        \node [style=Z phase dot] (11) at (23.00, -3.00) {$\frac{\pi}{4}$};
+        \node [style=X phase dot] (12) at (19.75, 0.50) {$\pi$};
+        \node [style=none] (13) at (17.00, 2.00) {};
+        \node [style=X dot] (14) at (22.00, 1.00) {};
+        \node [style=X dot] (15) at (22.00, 2.00) {};
+        \node [style=X dot] (16) at (19.00, -3.00) {};
+        \node [style=Z phase dot] (17) at (18.00, 1.00) {$\frac{7\pi}{4}$};
+        \node [style=Z phase dot] (18) at (18.00, -3.00) {$\frac{7\pi}{4}$};
+        \node [style=Z phase dot] (19) at (23.00, 2.00) {$\frac{\pi}{4}$};
+        \node [style=X dot] (20) at (21.25, 0.50) {};
+        \node [style=X dot] (21) at (21.25, 2.50) {};
+        \node [style=X dot] (22) at (22.00, -0.00) {};
+        \node [style=X dot] (23) at (21.25, -2.50) {};
+        \node [style=Z phase dot] (24) at (23.00, 1.00) {$\frac{\pi}{4}$};
+        \node [style=none] (25) at (17.00, -0.00) {};
+        \node [style=X phase dot] (26) at (19.75, 2.50) {$\pi$};
+        \node [style=Z phase dot] (27) at (18.00, -0.00) {$\frac{7\pi}{4}$};
+        \node [style=Z phase dot] (28) at (23.00, -0.00) {$\frac{\pi}{4}$};
+        \node [style=X phase dot] (29) at (19.75, -2.50) {$\pi$};
+        \node [style=X dot] (30) at (21.25, 1.50) {};
+        \node [style=none] (31) at (24.00, -3.00) {};
+        \node [style=none] (32) at (24.00, 1.00) {};
+        \node [style=X dot] (33) at (19.00, 1.00) {};
+    \end{pgfonlayer}
+    \begin{pgfonlayer}{edgelayer}
+        \draw (0) to (33);
+        \draw (1) to (17);
+        \draw (2) to (7);
+        \draw (2) to (15);
+        \draw (2) to (26);
+        \draw (4) to (22);
+        \draw (4) to (27);
+        \draw (4) to (12);
+        \draw (5) to (28);
+        \draw (6) to (23);
+        \draw (6) to (16);
+        \draw (6) to (11);
+        \draw (7) to (13);
+        \draw (8) to (18);
+        \draw (9) to (19);
+        \draw (11) to (31);
+        \draw (14) to (33);
+        \draw (14) to (30);
+        \draw (14) to (24);
+        \draw (15) to (19);
+        \draw (15) to (21);
+        \draw (16) to (18);
+        \draw (16) to (29);
+        \draw (17) to (33);
+        \draw (20) to (22);
+        \draw (22) to (28);
+        \draw (24) to (32);
+        \draw (25) to (27);
+    \end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,12 @@
+
+\begin{tikzpicture}
+    \begin{pgfonlayer}{nodelayer}
+        \node [style=hadamard] (0) at (-1.00, 0.00) {$a$};
+        \node [style=none] (1) at (0.00, 0.00) {};
+        \node [style=none] (2) at (-2.00, 0.00) {};
+    \end{pgfonlayer}
+    \begin{pgfonlayer}{edgelayer}
+        \draw (0) to (2);
+        \draw (0) to (1);
+    \end{pgfonlayer}
+\end{tikzpicture}

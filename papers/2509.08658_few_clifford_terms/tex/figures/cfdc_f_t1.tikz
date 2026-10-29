@@ -1,0 +1,37 @@
+
+\begin{tikzpicture}
+    \begin{pgfonlayer}{nodelayer}
+        \node [style=none] (1) at (17.00, 2.00) {};
+        \node [style=none] (2) at (24.00, -3.00) {};
+        \node [style=Z phase dot] (3) at (19.50, 1.00) {$\frac{3\pi}{2}$};
+        \node [style=none] (4) at (17.00, -0.00) {};
+        \node [style=none] (5) at (18.25, -1.25) {$\vdots$};
+        \node [style=none] (6) at (17.00, 1.00) {};
+        \node [style=X phase dot] (7) at (21.50, 2.00) {$\pi$};
+        \node [style=X phase dot] (8) at (21.50, -3.00) {$\pi$};
+        \node [style=X phase dot] (9) at (21.50, 1.00) {$\pi$};
+        \node [style=none] (10) at (24.00, 1.00) {};
+        \node [style=Z phase dot] (11) at (19.50, -3.00) {$\frac{3\pi}{2}$};
+        \node [style=Z phase dot] (12) at (19.50, 2.00) {$\frac{3\pi}{2}$};
+        \node [style=X phase dot] (13) at (21.50, -0.00) {$\pi$};
+        \node [style=none] (14) at (24.00, -0.00) {};
+        \node [style=none] (15) at (24.00, 2.00) {};
+        \node [style=none] (16) at (17.00, -3.00) {};
+        \node [style=Z phase dot] (17) at (19.50, -0.00) {$\frac{3\pi}{2}$};
+        \node [style=none] (18) at (22.75, -1.25) {$\vdots$};
+    \end{pgfonlayer}
+    \begin{pgfonlayer}{edgelayer}
+        \draw (1) to (12);
+        \draw (2) to (8);
+        \draw (3) to (9);
+        \draw (3) to (6);
+        \draw (4) to (17);
+        \draw (7) to (12);
+        \draw (7) to (15);
+        \draw (8) to (11);
+        \draw (9) to (10);
+        \draw (11) to (16);
+        \draw (13) to (14);
+        \draw (13) to (17);
+    \end{pgfonlayer}
+\end{tikzpicture}

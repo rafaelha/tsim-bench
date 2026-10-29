@@ -1,0 +1,15 @@
+[
+  {
+    "file": "stim/d3_cultivation_T_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 8,
+      "T": 8
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.42,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  }
+]

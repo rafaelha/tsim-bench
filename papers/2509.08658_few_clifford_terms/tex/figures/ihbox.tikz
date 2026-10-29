@@ -1,0 +1,14 @@
+
+\begin{tikzpicture}
+    \begin{pgfonlayer}{nodelayer}
+        \node [style=hadamard] (0) at (-1.20, 0.00) {$-i$};
+        \node [style=none] (1) at (1.20, 0.00) {};
+        \node [style=none] (2) at (-2.20, 0.00) {};
+        \node [style=X phase dot] (3) at (0.20, 0.00) {$\pi$};
+    \end{pgfonlayer}
+    \begin{pgfonlayer}{edgelayer}
+        \draw (0) to (2);
+        \draw (0) to (3);
+        \draw (1) to (3);
+    \end{pgfonlayer}
+\end{tikzpicture}

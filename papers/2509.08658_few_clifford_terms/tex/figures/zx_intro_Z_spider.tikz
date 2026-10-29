@@ -1,0 +1,23 @@
+
+\begin{tikzpicture}[yshift = 0.3cm,scale = 0.5]
+    \begin{pgfonlayer}{nodelayer}
+        \node [style=none,scale=.5] (0) at (1.00, 0.00) {$i_1$};
+        \node [style=none,scale=.5] (1) at (1.00, -1.00) {$i_2$};
+        \node [style=none,scale=.5] (2) at (1.00, -2.00) {$i_3$};
+        \node [style=none,scale=.5] (3) at (2.00, -2.00) {$i_4$};
+        \node [style=Z phase dot] (4) at (3.50, -0.00) {$\alpha$};
+        \node [style=none,scale=.5] (20) at (6.00, 0.00) {\hspace{0.05cm}$i_{m}$};
+        \node [style=none,scale=.5] (21) at (6.00, -1.00) {$i_{m-1}$};
+        \node [style=none,scale=.5] (23) at (5.00, -2.00) {\hspace{0.2cm}$i_{m-2}$};
+        \node [style=none,scale=.5] (24) at (3.50, -2.00) {$\dots$};
+    \end{pgfonlayer}
+    \begin{pgfonlayer}{edgelayer}
+        \draw (0) to (4);
+        \draw (1) to (4);
+        \draw (2) to (4);
+        \draw (3) to (4);
+        \draw (4) to (20);
+        \draw (4) to (21);
+        \draw (4) to (23);
+    \end{pgfonlayer}
+\end{tikzpicture}

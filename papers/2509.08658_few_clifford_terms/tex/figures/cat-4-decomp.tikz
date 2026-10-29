@@ -1,0 +1,52 @@
+\begin{tikzpicture}[scale=2]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z phase dot] (3) at (-1.113, -0.825) {$\frac\pi4$};
+		\node [style=none] (4) at (-0.762, -0.825) {};
+		\node [style=Z dot] (6) at (-1.75, 0.05) {};
+		\node [style=Z phase dot] (7) at (-1.113, -0.225) {$\frac\pi4$};
+		\node [style=none] (8) at (-0.762, -0.225) {};
+		\node [style=Z phase dot] (10) at (-1.113, 0.35) {$\frac\pi4$};
+		\node [style=none] (11) at (-0.762, 0.35) {};
+		\node [style=Z phase dot] (13) at (-1.113, 0.95) {$\frac\pi4$};
+		\node [style=none] (14) at (-0.762, 0.95) {};
+		\node [style=none] (19) at (0, 0) {$=$};
+		\node [style=none] (21) at (2.637, -0.875) {};
+		\node [style=Z phase dot] (22) at (1.75, 0) {$~-\frac\pi2~$};
+		\node [style=none] (23) at (2.637, -0.275) {};
+		\node [style=none] (24) at (2.637, 0.3) {};
+		\node [style=none] (25) at (2.637, 0.9) {};
+		\node [style=none] (28) at (3.2, 0) {$+~i$};
+		\node [style=Z dot] (30) at (4.387, -0.875) {};
+		\node [style=Z dot] (31) at (3.75, 0) {};
+		\node [style=Z dot] (32) at (4.387, -0.275) {};
+		\node [style=Z dot] (33) at (4.387, 0.3) {};
+		\node [style=Z dot] (34) at (4.387, 0.9) {};
+		\node [style=none] (35) at (4.637, -0.875) {};
+		\node [style=none] (36) at (4.637, -0.275) {};
+		\node [style=none] (37) at (4.637, 0.3) {};
+		\node [style=none] (38) at (4.637, 0.9) {};
+		\node [style=none] (39) at (0.875, 0) {$\frac{e^{-i\pi/4}}{\sqrt2}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (4.center) to (3);
+		\draw [style=hadamard edge, in=165, out=-75] (6) to (3);
+		\draw (8.center) to (7);
+		\draw (11.center) to (10);
+		\draw (14.center) to (13);
+		\draw [style=hadamard edge, in=180, out=-45] (6) to (7);
+		\draw [style=hadamard edge, in=45, out=180] (10) to (6);
+		\draw [style=hadamard edge, in=-165, out=75] (6) to (13);
+		\draw [in=165, out=-75] (22) to (21.center);
+		\draw [in=180, out=-45] (22) to (23.center);
+		\draw [in=45, out=180] (24.center) to (22);
+		\draw [in=-165, out=75] (22) to (25.center);
+		\draw [style=hadamard edge, in=165, out=-75] (31) to (30);
+		\draw [style=hadamard edge, in=180, out=-45] (31) to (32);
+		\draw [style=hadamard edge, in=45, out=180] (33) to (31);
+		\draw [style=hadamard edge, in=-165, out=75] (31) to (34);
+		\draw (35.center) to (30);
+		\draw (36.center) to (32);
+		\draw (37.center) to (33);
+		\draw (38.center) to (34);
+	\end{pgfonlayer}
+\end{tikzpicture}
