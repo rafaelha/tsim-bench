@@ -1,0 +1,28 @@
+[
+  {
+    "file": "stim/circuit_d3_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 15,
+      "T": 14
+    },
+    "tsim_k": 4,
+    "tsim_seconds": 0.47,
+    "clifft_k": 4,
+    "clifft_seconds": 0.03,
+    "clifft_noschedule_k": 4,
+    "clifft_noschedule_seconds": 0.03
+  },
+  {
+    "file": "stim/circuit_d5_p0.001.stim",
+    "non_clifford_gates": {
+      "T_DAG": 33,
+      "T": 39
+    },
+    "tsim_k": 6,
+    "tsim_seconds": 0.52,
+    "clifft_k": 10,
+    "clifft_seconds": 0.04,
+    "clifft_noschedule_k": 10,
+    "clifft_noschedule_seconds": 0.04
+  }
+]
