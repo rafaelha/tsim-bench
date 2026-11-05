@@ -1,0 +1,1069 @@
+\section{Summary of Notation}
+
+To facilitate reading the rest of the supplementary information, we summarize our notation in Tab.~\ref{tab:conventions}.
+
+\begin{table*}
+\begin{tabular}{|c|l|}
+\hline
+$\mathcal{C}$ & Ideal Clifford quantum circuit with magic state inputs and feed-forward operations\\\hline
+$|\overline{0}\rangle$ & Logical $|0\rangle$ initial state prepared via random stabilizer projections\\\hline
+$|\ooverline{0}\rangle$ & Ideal logical $|0\rangle$ code state, with all stabilizers fixed to +1\\\hline
+$\overline{CNOT}$ & Logical CNOT operation\\\hline
+$CNOT$ & Physical CNOT operation\\\hline
+$M$ & Number of ideal (logical) measurements performed in the ideal (logical) circuit\\\hline
+$T$ & Number of gate operation layers\\\hline
+$B$ & Maximal number of code blocks at any given time\\\hline
+$q$ & Number of logical qubit initializations performed in the Pauli basis\\\hline
+$\vec{b}_{\mathcal{C}}\in \mathbb{Z}_2^M$  & Logical bit string sampled from circuit $\mathcal{C}$\\\hline
+$\vec{b}_j$ & Vector formed by the first $j$ logical measurement results of a given shot\\\hline
+$f_{\mathcal{C}}\in (\mathbb{Z}_2^M\rightarrow \mathbb{R})$ & Distribution of logical bit strings sampled from circuit $\mathcal{C}$\\\hline
+$p$ & Parameter characterizing the noise strength\\\hline
+$p_{th}$ & Error threshold\\\hline
+$\mathcal{Q}$ & Quantum code\\\hline
+$r$ & Upper bound on stabilizer weight\\\hline
+$c$ & Upper bound on number of stabilizers each qubit is involved in\\\hline
+$t$ & Maximal number of qubits within a code block connected by transversal gates \\\hline
+$s$ & Size of connected cluster in the decoding hypergraph\\\hline
+$v$ & Maximal degree of a node in a hypergraph\\\hline
+$d$ & Code distance\\\hline
+$\tcal{C}$ & Transversal realization of ideal circuit $\mathcal{C}$\\\hline
+$\tcal{C}_e$ & Transversal realization of ideal circuit $\mathcal{C}$ with error realization $e$\\\hline
+$\tcal{C}_0$ & Transversal realization of ideal circuit $\mathcal{C}$ with no errors\\\hline
+$|_j$ & \makecell{Object for the circuit up to the $j$th logical measurement, e.g. $\tcal{C}|_j$ denotes\\ the transversal realization of the ideal circuit up to the $j$th logical measurement} \\\hline
+$\mathcal{E}$ & Set of elementary errors (faults)\\\hline
+$e\in \mathbb{Z}_2^{|\mathcal{E}|}$ & A given error realization\\\hline
+$\mathcal{D}$ & Set of detectors \\\hline
+$\partial e\in \mathbb{Z}_2^{|\mathcal{D}|}$ & Set of detectors a given error $e$ triggers\\\hline
+$\Gamma$ & Hypergraph corresponding to the detector error model\\\hline
+$\Xi$ & Line graph of $\Gamma$, also known as syndrome adjacency graph in Ref.~\cite{gottesman2013fault}\\\hline
+$\kappa\in \mathbb{Z}_2^{|\mathcal{E}|}$ & Recovery returned by the most likely error decoder\\\hline
+$\mathcal{G}$ & Set of frame variables, corresponding to distinct patterns of $Z$ operators applied on the $|\ooverline{0}\rangle$ initial state \\\hline
+$g\in \mathbb{Z}_2^{|\mathcal{G}|}$ & A given realization of frame variables \\\hline
+$g_l$ & Frame logical variable, i.e. a frame variable that commutes with all stabilizers\\\hline
+$\Lambda$ & Matrix describing how frame logical variables flip logical measurement results\\\hline
+$\lambda$ & An inferred assignment of frame variables that returns the code to the codespace with all stabilizers equal to +1\\\hline
+$f=e\oplus\kappa$ & Fault configuration, formed from the mod 2 addition of errors and error recovery operators\\\hline
+$h=g\oplus\lambda$ & Frame configuration, formed from the mod 2 addition of frame variables and inferred frame repair operators\\\hline
+$P(e)$ & Forward propagation of operator $e$ through the Clifford circuit to logical measurements\\\hline
+$z$ & Physical measurement results that a logical measurement corresponds to\\\hline
+$z_i$ & \makecell{Physical measurement results that would have occurred\\ if no errors happened after the initial random stabilizer projections}\\\hline
+$L_j$ & $j$-th logical operator\\\hline
+$\overline{L}(z)$ & Logical measurement result inferred from the physical measurement results $z$\\\hline
+$\overline{F}(e)$, $\overline{F}(g)$ & Change in the logical measurement result due to error or frame operators\\\hline
+$\overline{L}_c(z,\kappa,\lambda)$ & Corrected logical measurement result after applying the inferred recovery operator $\kappa$ and frame operator $\lambda$\\\hline
+\end{tabular}\\
+\caption{Summary of conventions employed in this paper.
+%
+For the error and frame variables, we use the same notation for both the binary variables and the Pauli operators they correspond to, where the meaning should be clear based on the context.
+%
+An overline distinguishes operations and variables at the logical level from the corresponding ones at the physical level.
+\label{tab:conventions}}
+\end{table*}
+
+
+\section{Detailed Description of Protocol}
+\label{sec:formal_description}
+
+In this section, we provide detailed descriptions of our protocol, further elaborating on the ``key concepts'' section from Methods.
+%
+QEC experts may wish to skip ahead to Sec.~\ref{si_sec:frame}, in which we provide a formal description of the randomness associated with measurement-based logical qubit initialization, and clarify how to interpret non-deterministic logical measurement outcomes.
+
+\subsection{Ideal Quantum Circuits}
+First, let us describe our protocol for turning a target quantum circuit into a fault-tolerant circuit.
+%
+We assume that the circuit is specified in a computational model with Pauli basis state preparation and measurement, single- and two-qubit Clifford gate operations, and $|T\rangle=T|+\rangle$ magic state inputs.
+
+\begin{definition}[Ideal quantum circuit]
+\label{def:ideal_circuit}
+Define $\mathcal{C}$, an ideal Clifford quantum circuit with magic state inputs and feed-forward operations (henceforth ideal quantum circuit), to be a quantum circuit that consists of layers of the following operations:
+\begin{enumerate}
+\item Qubit initialization in state $|0\rangle$.
+\item Single-qubit $Z$ gates.
+\item Single-qubit $H$ gates.
+\item Single-qubit $S$ gates.
+\item $CNOT$ gate between any pair of qubits.
+\item Identity gate, if no other operation is specified on a given qubit.
+\item Measurement of a subset of qubits in the $Z$ basis.
+\item Feed-forward Clifford operations of the above types. Conditional on certain qubit measurement results, perform some combination of the preceding operations on the remaining qubits.
+\item Qubit initialization in the magic state $|T\rangle=T|+\rangle$.
+\end{enumerate}
+\end{definition}
+Note that to simplify the construction of an error-corrected version of these circuits, we have compiled the Clifford circuit into a particular set of operations.
+%
+$X$ or $Y$ basis operations can be obtained from the $Z$ basis via $H$ and/or $S$ gates.
+
+\subsection{Noise Models}
+In practice, quantum circuits will experience noise.
+%
+For our theoretical analysis, we adopt the local stochastic noise model as a simplified description of actual noise channels~\cite{gottesman2013fault}.
+%
+Consider a set of possible elementary errors (faults) $\mathcal{E}$, and denote a given error realization by the vector $e\in \mathbb{Z}_2^{|\mathcal{E}|}$, where the $i$th entry of the vector is equal to one if and only if the $i$th error in $\mathcal{E}$ occurred.
+%
+The local stochastic noise model satisfies the following property: the probability that an error $e$ of weight $s$ occurs is at most $p^{s}$, where $p$ is the error rate.
+%
+For the set of possible elementary errors, we choose the following data-syndrome error set~\cite{gottesman2013fault}: data qubits experience error rate $p$ per initialization, syndrome extraction, and measurement, and the syndrome bit readout experiences error rate $p$.
+%
+Following Ref.~\cite{gottesman2013fault}, we do not add extra errors for transversal gates themselves but only the round of syndrome extraction that follow them.
+%
+Incorporating gate errors just corresponds to a rescaling of the error rate.
+%
+While this error model is simplified compared to experimental noise models, threshold proofs for the former can be readily generalized to the latter by choosing a different set of elementary errors and noting that syndrome extraction circuits for QLDPC codes typically have bounded depth, and therefore error propagation is also bounded.
+%
+The change in error model only results in a quantitative modification of the threshold, without changing the overall conclusions.
+%
+Thus, we use the simplified local stochastic noise model for our proofs, and more detailed circuit-level noise models (Sec.~\ref{si:numerics}) for numerical simulations.
+
+To capture the effect of a given set of errors on logical measurements, we also define the forward-propagated error $P(e)$.
+%
+An error $E$ on some data qubits occurring before a unitary $U$ is equivalent to $UEU^\dagger$ occurring after the unitary.
+%
+We can thus propagate any error event forward in time through the circuit.
+%
+Note that syndrome measurement errors do not directly act on a physical data qubit, and therefore are not propagated forward.
+%
+For a set of errors $e$, we can keep propagating the error forward until it reaches either a logical measurement or an unmeasured output logical qubit of the circuit.
+%
+We denote the resulting operator as $P(e)$, and its restriction onto the $j$th logical measurement as $P(e)|_j$.
+
+
+\subsection{Error-Corrected Quantum Circuits}
+We now describe how to realize the ideal quantum circuit in this noisy setting, using logical qubits and quantum error correction.
+%
+We consider CSS stabilizer quantum codes $\mathcal{Q}$, encoding $k$ logical qubits into $n$ physical data qubits, with code distance $d$, denoted by the notation $[[n,k,d]]$.
+%
+We restrict our attention to quantum low-density parity check (QLDPC) codes, where each stabilizer generator has weight $\leq r$ and each data qubit is involved in $\leq c$ stabilizer generators.
+%
+QLDPC codes have the nice property that the resulting syndrome adjacency graph (see following discussion) has bounded degree, thereby causing fault configurations to form small connected clusters that are more easily corrected.
+%
+There are many QLDPC code constructions, including surface codes~\cite{kitaev2000unpaired,fowler2012surface}, color codes~\cite{bombin2006topological}, and various high-rate constructions based on products and/or polynomials~\cite{tillich2014quantum,breuckmann2021quantum,bravyi2013homological,hastings2021fiber,breuckmann2020balanced,panteleev2022quantum,panteleev2022asymptotically,kovalev2013quantum,bravyi2024high}.
+%
+We only consider the case where all code blocks belong to the same code family, instead of the more general case where different codes may be mixed and matched.
+%
+We will also focus on the case where all code blocks have the same size.
+
+Our analysis focuses on transversal operations, which have well-behaved error propagation.
+%
+Transversal gates are defined relative to a partition of the code blocks~\cite{eastin2009restrictions,jochym-oconnor2018disjointness}.
+%
+We choose the same, fixed partition for all code blocks, and use the parameter $t$ to denote the maximal size of any part within a code block.
+%
+We call a physical implementation $U$ of a logical operation $\overline{U}$ transversal with respect to this partition, if it exclusively couples qubits within the same part (see Methods and below for specific examples in state preparation and measurements, as well as gate operations).
+%
+We will also focus only on transversal operations consisting of depth-one quantum circuits (excluding SE rounds), which cover most common transversal Clifford gates.
+%
+The advantage of transversal gates is that the spread of errors is constrained to be within each partition.
+
+We now consider how a given ideal circuit $\mathcal{C}$ can be implemented using error-correcting codes and transversal operations, subject to the local stochastic noise model described above.
+
+\begin{definition}[Transversal realization $\tcal{C}$ of ideal circuit $\mathcal{C}$]
+\label{def:error_corrected_circuit}
+%
+Consider an ideal quantum circuit $\mathcal{C}$, and a QEC code $\mathcal{Q}$ with some set of transversal operations.
+%
+If there exists a sequence of transversal operations of $\mathcal{Q}$, such that the logical operations implement the ideal quantum circuit on some of the logical qubits, then we call the following circuit a transversal realization $\tcal{C}$ of the ideal circuit $\mathcal{C}$:
+%
+\begin{enumerate}
+\item Qubit initialization in the $Z$ basis is replaced by initialization of all physical qubits in a code block in $\ket{0}$, followed by one syndrome extraction (SE) round.
+\item Single-qubit Pauli gates do not lead to any physical action, but are tracked in the logical Pauli frame.
+\item Clifford gate operations are performed via transversal gate operations, including transversal CNOT gates between blocks and fold-transversal gates within each block~\cite{kubica2015unfolding,moussa2016transversal,breuckmann2024fold,quintavalle2023partitioning}, followed by one SE round.
+\item Qubit measurement in the $Z$ basis is replaced by measuring all data qubits in a code block in the $Z$ basis.
+\item Feed-forward operations and magic state teleportation are executed in the same way as the ideal circuit, based on the decoded logical measurement results.
+\item Magic states are assumed to be provided with all stabilizers fixed to +1, followed by local stochastic data qubit noise of strength $p$.
+\end{enumerate}
+\end{definition}
+
+The magic states are assumed to be prepared via some separate procedure in this formulation.
+%
+In practice, as they are often obtained via magic state distillation~\cite{bravyi2005universal} involving Clifford circuits and noisy state injection, we conjecture that our conclusions can be generalized to include these procedures as well.
+
+A simple example of a transversal realization of a circuit is the preparation and measurement of correlations of a Bell pair.
+%
+Using the transversal CNOT for CSS codes, we can implement this using two blocks of any CSS QLDPC code, where only one logical qubit in each block is used to create the Bell pair.
+%
+This then enables implementing the target circuit with a family of codes with growing distance, allowing us to use the threshold theorem below and achieve exponential error suppression for the given circuit.
+
+Note that for a general CSS QLDPC code family, the above prescription may only allow the implementation of a subset of ideal quantum circuits.
+%
+For a quantum code encoding many logical qubits, all logical qubits within a given code block must be initialized and measured in the same basis.
+%
+Moreover, transversal gate operations for this code may only be able to implement a subset of Clifford gates~\cite{breuckmann2024fold}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{methods_figures/surface_code_ops_with_coords.pdf}
+\caption{(a) Illustration of the non-rotated surface code. White circles indicate data qubits. Orange (green) plaquettes are $Z$ ($X$) stabilizers. The logical $\overline{Z}$ ($\overline{X}$) operator runs vertically (horizontally), and we choose our convention for fixing $Z$ ($X$) stabilizers to be performing a chain of $X$ ($Z$) flips to the left (bottom) boundary, as illustrated by the red line.
+%
+We refer to the rows (columns) that have data qubits on the outer edge as major rows(columns).
+%
+We have also labeled the qubit coordinate system convention.
+%
+(b) Illustration of transversal $\overline{H}$ gate, consisting of physical $H$ gates followed by a reflection along the diagonal.
+%
+We choose to perform a reflection instead of rotation to limit the transversal partition size to two.
+%
+(c) Illustration of transversal $\overline{S}$ gate, consisting of $S$ and $S^\dagger$ gates along the diagonal, together with $CZ$ gates between mirrored qubits.
+}
+\label{fig:surface_code}
+\end{figure}
+
+However, using the surface code, which has a transversal implementation of the whole Clifford group, we can obtain a transversal realization $\tcal{C}$ of any ideal circuit $\mathcal{C}$.
+%
+The same conclusion also applies to other codes with transversal Clifford operations, such as the 2D color code.
+
+We now review the definition of the surface code.
+%
+We focus on the non-rotated surface code for our proof, due to the relative simplicity of gate implementations, but we expect the conclusions to readily apply to other variations as well.
+%
+We illustrate the non-rotated surface code in Fig.~\ref{fig:surface_code}.
+%
+The distance $d$ surface code consists of $n=d^2+(d-1)^2$ data qubits and $n-1$ stabilizers.
+%
+The logical operators $\overline{X}$ and $\overline{Z}$ are shown in Fig.~\ref{fig:surface_code} as well.
+
+We can now obtain a transversal realization of any ideal quantum circuit described in Def.~\ref{def:ideal_circuit}.
+
+\begin{definition}[Surface code transversal realization]
+\label{def:surface_code_circuit}
+Given an ideal quantum circuit $\mathcal{C}$ with magic state inputs and feed-forward operations (Def.~\ref{def:ideal_circuit}), we define its surface code transversal realization $\tcal{C}$ of distance $d$ by replacing each of the operations as follows:
+\begin{enumerate}
+\item Qubit initialization in the $Z$ basis is replaced by initialization of physical data qubits in $|0\rangle$, followed by one SE round.
+\item Single-qubit $Z$ gates do not lead to any physical action, but are tracked in the logical Pauli frame.
+\item Single-qubit $H$ gates are replaced by a transversal $H$ gate, in which we apply an $H$ gate on each physical qubit of the code block, followed by a reflection across the diagonal, and one SE round (Fig.~\ref{fig:surface_code}(b)).
+\item Single-qubit $S$ gates are replaced by a fold-transversal $S$ gate~\cite{kubica2015unfolding,moussa2016transversal}, in which physical $S$, $S^\dagger$ gates are applied in an alternating fashion on qubits on the diagonal, and $CZ$ gates are applied on pairs of qubits that are matched together when folding across a diagonal (Fig.~\ref{fig:surface_code}(c)). This is followed by one SE round.
+\item $CNOT$ gates are replaced by transversal $CNOT$s between pairs of logical qubits, followed by one SE round.
+\item Identity gates are replaced by one SE round.
+\item Measurements in the $Z$ basis are replaced by a transversal measurement of all corresponding physical qubits in the $Z$ basis.
+\item Feedforward Clifford operations are executed in the same way as above, based on the decoded logical measurement results.
+\item Magic states are assumed to be provided with all stabilizers fixed to +1, followed by local stochastic data qubit noise of strength $p$.
+\end{enumerate}
+Here, all logical qubits (code blocks) are non-rotated surface codes of the same code distance $d$.
+\end{definition}
+
+The syndrome measurement for the surface code can be performed simultaneously in both bases~\cite{fowler2012surface}.
+%
+When initializing the logical qubit, the values in one basis are already deterministic, and therefore we only need to measure the complementary basis.
+%
+However, for simplicity of analysis, we include both bases here.
+
+Each logical operation is followed by one SE round in our construction.
+%
+This is primarily for simplicity of our analysis, and the number of rounds should be optimized in practice depending on the given target circuit and target logical error rate, possibly even performing multiple gate operations before one SE round~\cite{cain2024correlated}.
+%
+Notice also that we never perform $d$ SE rounds following any given operation.
+
+\subsection{Error Correction and Decoding}
+\label{si:decoding}
+Having specified the error-corrected quantum circuit, let us now describe how we handle errors and interpret logical measurement results.
+%
+To start with, we consider the standard decoding approach, in which a detector error model (decoding hypergraph) is constructed, and a recovery operator $\kappa$ is identified that reproduces the observed syndrome patterns.
+
+As above, consider a given error realization $e\in \mathbb{Z}_2^{|\mathcal{E}|}$, where the $i$th entry of the vector is one iff the $i$th error in $\mathcal{E}$ occurred.
+%
+We will also use the same notation to denote the Pauli operator the error realization corresponds to, where the meaning should be clear from the context.
+%
+In the absence of errors, certain products of stabilizer measurement outcomes are deterministic.
+%
+For example, with an idling logical qubit, the product of successive stabilizer outcomes is deterministic in the absence of errors.
+%
+We denote these deterministic products as detectors (checks), and a generating set of detectors is denoted as $\mathcal{D}$.
+%
+In the presence of an error $e$, some set of detectors will be triggered, which we denote as $\partial e$.
+%
+We can construct the detector error model (decoding hypergraph) $\Gamma$, in which vertices are detectors, and (hyper)edges are error events.
+%
+This also motivates the boundary operator notation $\partial$, as the boundary of the hyperedges are the detector nodes.
+%
+To analyze error clusters, we also introduce the related notion of the syndrome adjacency graph $\Xi$~\cite{gottesman2013fault}.
+%
+In this hypergraph, vertices are elementary fault locations, and hyperedges are detectors connecting the fault locations they flip.
+
+Due to the feed-forward operations, the circuit must be constructed in a sequential manner, where the actual circuit to be executed only becomes available after interpreting and committing to past measurement results.
+%
+Generically, the circuit $\tcal{C}|_j$ for the $j$th logical measurement is only constructed after interpreting the first $j-1$ logical measurements, and performing any requisite feed-forward operations.
+%
+It also varies between different shots of executing the logical algorithm, due to randomness in the measurement results.
+%
+Similarly, we construct a decoding problem $\Gamma|_j$ for each shot based on the circuit and errors that occur up to the $j$th logical measurement.
+%
+In the following, we will use $\Gamma|_j$ to determine the $j$th logical measurement.
+%
+We also ensure that the assigned measurement results for the first $j-1$ logical measurements are consistent with the feed-forwards and circuits chosen, as discussed below.
+
+Let us now discuss the concrete construction of detectors for the surface code.
+%
+The construction can be readily extended to the case of general LDPC codes.
+%
+We construct detectors in a time-local fashion, using the fact that logical gate operations are interspersed with SE rounds.
+%
+To describe the detectors, we label the syndrome extraction result with the logical qubit index $i$, syndrome round index $r$, location within code block $(x,y)$, and basis $B=X$ or $Z$.
+%
+Our physical qubit location coordinate system starts from the bottom left, with the bottom left data qubit having the label $(0,0)$.
+%
+We place data qubits at coordinates $(x,y)$ with $x+y\equiv 0\mod 2$, e.g. the next data qubit to the right is at coordinate $(2,0)$ (Fig.~\ref{fig:surface_code}(a)).
+%
+Stabilizers are placed at the center of the corresponding plaquette.
+%
+With this convention, we can label the measurement result of the bottom left $Z$ stabilizer of logical qubit 1, in round 3, as $S(i=1,r=3,x=1,y=0,B=Z)$.
+%
+The first stabilizer measurement round is labeled round 1.
+%
+For initialization in the $\overline{Z}$ basis, we set the round 0 $Z$ stabilizer values to be +1, since they are initialized with a deterministic eigenvalue, and construct a detector comparing the round 1 $Z$ stabilizer value with this.
+%
+Meanwhile, the $X$ stabilizer values are random and hence there is no detector comparing the first $X$ stabilizer value to previous results.
+%
+For measurements in the $\overline{Z}$ basis, we construct a final round $Z$ stabilizer value by multiplying the measurement results of the corresponding data qubits, and do not assign $X$ stabilizer values since they are unknown when performing a transversal $Z$ measurement.
+%
+The detectors can now be constructed for each of the logical operations as follows:
+
+\begin{enumerate}
+\item For an identity gate on logical qubit $i$ before SE round $r$, the detector is
+\begin{align*}
+S(i,r-1,x,y,B)S(i,r,x,y,B).
+\end{align*}
+\item For a $\overline{H}$ gate on logical qubit $i$ before SE round $r$, the detectors are
+\begin{align*}
+S(i,r-1,x,y,X)S(i,r,y,x,Z),\\
+S(i,r-1,x,y,Z)S(i,r,y,x,X).
+\end{align*}
+%
+In other words, we compare against the stabilizer after mirroring across the diagonal.
+\item For a transversal $\overline{CNOT}$ from logical qubit $i$ to logical qubit $j$, before SE round $r$, the detectors are
+\begin{gather*}
+S(j,r-1,x,y,X)S(j,r,x,y,X),\\
+S(i,r-1,x,y,Z)S(i,r,x,y,Z),\\
+S(i,r-1,x,y,X)S(j,r-1,x,y,X)S(i,r,x,y,X),\\
+S(i,r-1,x,y,Z)S(j,r-1,x,y,Z)S(j,r,x,y,Z).
+\end{gather*}
+See also Ref.~\cite{cain2024correlated}. The transversal $\overline{CNOT}$ propagates $X$ errors from control to target, and $Z$ errors from target to control, thereby leading to the higher-weight detectors.
+\item For a $\overline{S}$ gate on logical qubit $i$ before SE round $r$, the detectors are
+\begin{gather*}
+S(i,r-1,x,y,Z)S(i,r,x,y,Z),\\
+S(i,r-1,x,y,X)S(i,r-1,y,x,Z)S(i,r,x,y,X).
+\end{gather*}
+This bears some similarity to the $\overline{CNOT}$ gate, but couples the $X$ and $Z$ components of the decoding problem together rather than that of two logical qubits. More precisely, the measurement error of the $Z$-stabilizer on the control qubit at position $(r-1, x, y)$ before $\overline{CNOT}$ is analogous to the measurement error of the $Z$-stabilizer at position $(r-1, x, y)$ before $\overline{S}$, because they both flip two detectors in round $r$, resulting in a weight-3 hyperedge when combined with previous rounds. Similarly, the measurement error of the $Z$-stabilizer on the target qubit at position $(r-1, x, y)$ before $\overline{CNOT}$ is analogous to the measurement error of the $X$-stabilizer at position $(r-1, x, y)$ before $\overline{S}$, because they only flip one single detector in round $r$.
+\end{enumerate}
+
+Given the detector error model and a detector shot $\partial e$, a decoder returns a recovery operator $\kappa$, such that $\partial\kappa=\partial e$.
+%
+The total action of error and recovery is then given by $f=e\oplus\kappa$, where addition is understood to be mod 2.
+%
+In slight abuse of terminology, we will refer to this joint action as the fault configuration.
+%
+By linearity, we have that $\partial(\kappa\oplus e)=0$.
+%
+For the purposes of our discussion, we will make use of the most likely error (MLE) decoder, also known as the minimum weight decoder.
+%
+The MLE decoder returns the \textit{most likely error} $\kappa\in \mathbb{Z}_2^{|\mathcal{E}|}$ that is consistent with the observed detectors.
+%
+Note that this decoder solves the most likely error problem instead of the maximum likelihood problem, i.e. it does not consider the entropy factor associated with the number of cosets.
+%
+Additionally, for generic decoding problems, identifying the most likely error may be computationally challenging, although efficient heuristics exist (see Decoding Complexity, Methods).
+
+\subsection{Logical Qubit Initialization and Frame Variables}
+\label{si_sec:frame}
+
+We now introduce some useful concepts to describe the randomness associated with measurement-based logical qubit initialization, and clarify how to interpret random logical measurement outcomes.
+
+Due to the random initial projection when measuring $X$ stabilizers during $\lket{0}$ initialization, the physical state is not initially in the code space, where all stabilizers should have eigenvalue +1.
+%
+To describe this, we adapt and formalize a concept introduced and implemented in Stim~\cite{gidney2021stim}.
+%
+There, to capture the randomness introduced when measuring a physical qubit initialized in $|0\rangle$ in the $X$ basis, a $Z$ operator on that site is multiplied into the state with 50$\%$ probability.
+%
+Starting from a reference sample of measurement results, the full measurement result distribution can then be obtained by considering the distribution over these random $Z$ operators and error events.
+%
+We refer to these $Z$ operators that act on the initialization boundary as ``frame operators" ($Z$ operator acting on each physical qubit of the initial logical qubit), and variables describing them as ``frame variables", where the name is meant to indicate that they describe the reference frame of random stabilizer initialization, and the reference frame in which we will interpret our logical measurement results.
+
+Formally, consider a $\lket{0}$ logical qubit initialization.
+%
+For each data qubit in the code block, associate a $Z$ operator.
+%
+Some of these $Z$ operators will have inter-dependencies due to $Z$ stabilizer constraints.
+%
+Therefore, we can construct a basis $\mathcal{G}$ of frame operators as follows:
+%
+For each data qubit $i$, we add $Z_i$ to $\mathcal{G}$ if it is not equivalent to any combination of operators in $\mathcal{G}$ up to stabilizers.
+%
+For an $[[n,k,d]]$ quantum code with $r_Z$ independent $Z$ stabilizer generators, we have $|\mathcal{G}|=n-r_Z$.
+%
+We use $g$ to denote both a product of frame operators taken from $\mathcal{G}$ and a binary vector $g\in \mathbb{Z}_2^{|\mathcal{G}|}$ describing it.
+
+Some of the frame operators will flip $X$ stabilizers, and correspond to different effective code spaces (reference frames) that we may project into during the initial random stabilizer measurement results.
+%
+We denote these by $g_s$, and refer to them as frame stabilizer operators.
+%
+There are also frame operators $g_l$ that do not flip any $X$ stabilizers, instead corresponding to a logical $\overline{Z}$ operator of the code block.
+%
+We refer to them as frame logical operators.
+%
+While applying these frame logical operators does not change the initial physical state $\lket{0}$, it does lead to different interpretations of the logical measurement result without changing the measurement distribution, a fact that is crucial for our construction.
+%
+To capture the relation between frame logical operators $g_l$ and logical measurement results that they might flip, for each circuit $\tcal{C}|_j$, we introduce a matrix $\Lambda\in \mathbb{Z}_2^{j\times q_j}$, where $q_j$ is the number of logical initializations in the Pauli basis (thereby producing $q_j$ frame logical operators), and $j$ is the number of logical measurements that have been performed up to this point.
+%
+Note that if more than one logical qubit is encoded in each code block, there will be as many $Z$ frame logical operators as there are logical qubits.
+%
+For a given circuit $\tcal{C}|_j$, $\Lambda$ can be efficiently constructed by propagating the frame logical operators until they reach the logical measurements, using standard techniques for propagating Pauli operators through Clifford circuits.
+
+As a concrete example, let us define a basis of frame operators for the surface code (Fig.~\ref{fig:surface_code}).
+%
+As mentioned above, we will choose $\overline{X}$ to be the product of $X$ operators on the top row, and $\overline{Z}$ to be the product of $Z$ operators on the rightmost column.
+%
+We choose the frame logical operator to be the $\overline{Z}$ logical operator representative above.
+%
+For each $X$ stabilizer $s$, we choose a frame operator $g_s$ consisting of a string of $Z$ operators along the column that the $X$ stabilizer is located in, starting from the bottom data qubit of the stabilizer and ending at the bottom boundary (see red line in Fig.~\ref{fig:surface_code}(a)).
+%
+By definition, $g_s$ will only flip the single stabilizer $s$, while all other stabilizers and logical operators remain unchanged.
+%
+Together, these form a basis $\mathcal{G}$ of frame operators for the surface code.
+%
+While any equivalent choice of logical qubit and frame operators is valid (Lemma~\ref{lemma:frame_trivial}), we choose this particular convention so that fixing the stabilizer values will not change the logical qubit readout result.
+
+\subsection{Interpreting Logical Measurement Results}
+
+With these concepts in hand, we now consider how logical measurement results are interpreted, particularly in the case where the logical measurement results are random.
+%
+The majority of error correction analyses and simulations focus on the case of a deterministic observable, as they provide a simple characterization of logical error rates.
+%
+However, the case of non-deterministic observables is equally important, and the interpretation of them can be more intricate.
+
+To start with, let us describe the logical qubit initialization procedure in terms of frame variables.
+%
+To initialize a logical qubit in $\lket{0}$, we start with all physical qubits in $\ket{0}$, and perform a single SE round.
+%
+This projects the $X$ stabilizers to take on random values.
+%
+The quantum state can be described in terms of frame variables as $\lket{0}=g|\ooverline{0}\rangle$, where $|\ooverline{0}\rangle$ is the ideal $\ket{0}$ logical state with all stabilizers fixed to +1, and $g$ is some appropriate frame variable.
+%
+Intuitively, we start from $|\ooverline{0}\rangle$ and flip certain $X$ stabilizers to reach the actual state $\lket{0}$.
+%
+Similar to the error variable $e$, the frame variable $g$ will not be directly accessible to us, and must be inferred from our observations.
+
+We will now describe the procedure of interpreting the logical measurement outcome of a noisy error-corrected quantum circuit in three steps.
+
+First, we apply the standard decoding procedure in Sec.~\ref{si:decoding} to obtain an inferred error recovery operator $\kappa$, such that $\partial(e\oplus\kappa)=0$.
+%
+This ensures that the resulting frame configuration $f=e\oplus\kappa$ does not trigger any detectors.
+
+Next, we perform the analogous procedure to error recovery for the frame variables, which we refer to as a frame repair operation $\lambda\in\mathbb{Z}_2^{|\mathcal{G}|}$.
+%
+Whereas error recovery aims to ensure that no detectors are triggered in the bulk of the quantum circuit, frame repair aims to ensure that we return to the ideal code space with all stabilizers set to +1 when interpreting a logical measurement.
+%
+Therefore, we choose $\lambda$, such that the combined effect of error operator $e$, recovery operator $\kappa$, frame operator $g$ and frame repair operator $\lambda$ does not violate any stabilizers.
+%
+In other words, $(e\oplus\kappa)\oplus(g\oplus\lambda)$ should act as a stabilizer or logical operator.
+%
+We refer to the combination $h=g\oplus\lambda$ as the ``frame configuration", again mirroring the notation for faults.
+
+Finally, we evaluate the logical observable after applying the above corrections.
+%
+Denote the raw logical observable inferred from the bit strings as $$\overline{L}(z)=\bigoplus_{z_i\in \overline{L}} z_i.$$
+
+The raw logical observable already incorporates the effect of $e$ and $g$, which physically occurred.
+%
+To obtain the corrected logical observable, we propagate the effects of the error recovery operation $\kappa$ and frame repair operation $\lambda$ to the measured logical qubit.
+%
+Recalling that $P(\kappa)|_j$ denotes the forward propagation of operator $\kappa$ to the $j$th logical measurement $\overline{L}$, we can define the parity flip of the logical observable due to $\kappa$:
+\begin{align}
+\overline{F}(\kappa)=
+\begin{cases}
+0, & \left[P(\kappa)|_j, \overline{L}\right]=0,\\
+1, & \left[P(\kappa)|_j, \overline{L}\right]\neq 0,
+\end{cases}
+\end{align}
+where the bracket indicates taking the commutator.
+%
+The corrected logical observable is then given by
+\begin{align}
+\overline{L_c}(z,\kappa,\lambda)=\overline{L}(z)\oplus \overline{F}(\kappa)\oplus \overline{F}(\lambda).
+\end{align}
+
+Now let us consider how the error recovery and frame repair procedures affect the logical measurement result.
+
+First, consider the case when the inference reproduces the error and frame operators applied exactly, i.e. $(e\oplus\kappa)\oplus(g\oplus\lambda)$ is the identity operator.
+%
+In this case, the circuit and quantum state are equivalent to preparing ideal code states with all stabilizers set to +1, executing the logical circuit, and performing logical measurements.
+%
+As everything is ideal and all stabilizers are +1 throughout, standard arguments show that the logical quantum circuit $\tcal{C}$ executes the ideal quantum circuit $\mathcal{C}$ correctly and reproduces the same distribution of logical bit strings $f_{\tcal{C}}=f_{\mathcal{C}}$.
+
+Next, consider the case where no errors were applied, but we still have the initial random stabilizer projection described by the frame operator $g$, and our frame repair operation $\lambda$ may differ from $g$.
+%
+Define a fixed transversal Clifford circuit with magic state inputs $\tcal{C}_{fix}$ by taking a transversal realization $\tcal{C}$, fixing the first $j-1$ logical measurement results and their resulting feed-forward operations, and considering the quantum circuit up to the $j$th logical measurement, thereby obtaining a non-adaptive quantum circuit $\tcal{C}_{fix}$.
+%
+We can then show the following lemma:
+
+\begin{lemma}[Frame variables do not affect measurement distribution]
+\label{lemma:frame_trivial}
+Consider a fixed transversal Clifford circuit with magic state inputs $\tcal{C}_{fix}$ and a fixed, arbitrary fault configuration $f=e\oplus\kappa$ such that $\partial f=0$.
+%
+Then for any choice of frame configuration $h=g\oplus\lambda\in \mathbb{Z}_2^{|\mathcal{G}|}$, the corrected logical observable $\overline{L_c}$ has the same measurement distribution regardless of the choice of $h$.
+\end{lemma}
+
+Consider the difference in the corrected logical observable between $h=g\oplus\lambda$ and $h_0=I$.
+%
+By construction, the combination $h=g\oplus\lambda$ must return the logical qubit to the codespace.
+%
+$h$ must thus commute with all $X$ stabilizers, and as $h$ is composed of $Z$ operators, it can therefore only be a combination of $Z$ stabilizers and $Z$ logical operators.
+%
+By definition, $h$ is applied on the ideal logical initial state $|\ooverline{0}\rangle$, so we conclude that $h$ acts as a logical $\overline{Z}$ operator on $|\ooverline{0}\rangle$, i.e. the corrected logical observable has the same measurement distribution for $h$ and $h_0$.
+\qed
+
+Intuitively, this is because what random stabilizer pattern we projected into should not affect the logical measurement results.
+%
+It is important to emphasize that this statement only applies to the \textit{distribution} of measurement results: for any given shot, different choices of frame variables may still lead to different interpretations, a feature that we will make use of in our decoding strategy.
+
+Note that this lemma is formulated in the case of a fixed circuit, which will not generally be the case in the presence of feed-forward operations.
+%
+In the latter case, we can still make use of this lemma as follows: consider the full conditional circuit $\tcal{C}_{cond}$, the fixed circuit corresponding to the given branch of conditional operations $\tcal{C}_{fix}$, as well as their corresponding ideal versions $\mathcal{C}_{cond}$ and $\mathcal{C}_{fix}$.
+%
+Lemma~\ref{lemma:frame_trivial} shows that for a noiseless circuit, the measurement distribution of the ideal and error-corrected circuits are identical, $f_{\tcal{C}_{fix}}=f_{\mathcal{C}_{fix}}$, regardless of the frame variables.
+%
+This immediately implies that the marginal distribution conditioned on some fixed set of previous measurement results are identical.
+%
+On the other hand, conditioned on the fixed set of previous measurement results, the fixed and conditional circuits are identical, i.e. $f_{\tcal{C}_{cond}}=f_{\tcal{C}_{fix}}$, $f_{\mathcal{C}_{cond}}=f_{\mathcal{C}_{fix}}$.
+%
+This implies that $f_{\tcal{C}_{cond}}=f_{\mathcal{C}_{cond}}$.
+%
+Thus, Lemma~\ref{lemma:frame_trivial} can be readily applied to the setting with feed-forward operations as well.
+
+Finally, we briefly comment on the case with noisy operations, with more details provided in the proofs in the next section.
+%
+In this case, we first apply the error recovery operator $\kappa$, which handles any detectors in the bulk.
+%
+As some error clusters may have terminated on the initialization boundary, the total effect of $e\oplus\kappa$ may lead to both logical errors and a change in the reference frame.
+%
+We therefore make corresponding modifications to the frame repair operation $\lambda$ as well, before applying the preceding arguments.
+
+\subsection{Decoding Strategy}
+In this section, we provide a description of our full decoding strategy, which includes decoding errors, inferring frame variables, and interpreting logical measurement results.
+%
+As described in the main text, the key idea is to perform correlated decoding across the logical algorithm, thereby utilizing all relevant syndrome information.
+%
+However, we may need to apply additional frame operators in order to ensure that the executed quantum circuit feed-forward is consistent with past logical measurement results.
+
+When executing transversal Clifford quantum circuits, decoding and performing recovery operations are only necessary when interpreting logical measurement results (i.e. the classical outputs of the quantum computation), which can lead to different executed circuits due to feed-forward operations.
+%
+To capture this dependency, we sort the set of logical measurements into an ordering $\{\bar{L}_1, \bar{L}_2, \bar{L}_3,...,\bar{L}_M\}$ based on the time they occur and conditional dependencies.
+%
+We require that for any pair $i<j$, the logical measurement result $\bar{L}_i$ must not depend on the subsequent logical measurement result $\bar{L}_j$.
+%
+If multiple measurements occur simultaneously, then we can place them in any order, since there are no direct inter-dependencies.
+
+We can now recursively define our decoding strategy.
+%
+For each logical measurement $\bar{L}_j$, we assume that the previous logical measurement results $\{\bar{L}_1,...,\bar{L}_{j-1}\}$ have been decoded and interpreted, and we have committed to these previous results in order to perform any necessary feed-forward operations.
+
+\begin{definition}[Decoding strategy]
+\label{def:decoding_strategy}
+For the $j$th logical measurement, we perform two steps to decode and interpret the measurement result:
+\begin{enumerate}
+\item \textbf{Partial decoding (correlated decoding):} Based on the current circuit $\tcal{C}|_j$ up to the $j$th logical measurement (including the applied feed-forward operations), construct the detector error model $\Gamma|_j$. Apply the MLE decoder to $\Gamma|_j$ and the available detector data $\mathcal{D}|_j$ to identify and apply (in the Pauli frame) an inferred error recovery operator $\kappa$. From this, obtain logical measurement values $\vec{b}_j^{(1)}$ for the first $j$ logical measurements, where the superscript $(1)$ denotes the first step of decoding.
+\item \textbf{Consistency check:} Solve the linear equation over $\mathbb{Z}_2$
+\begin{align}
+\qty(\Lambda g_l)_{1,...,j-1}= \left(\vec{b}_j^{(1)}\right)_{1,...,j-1}\oplus\vec{b}_{j-1},
+\label{eq:consistency_equation}
+\end{align}
+where the outer subscript denotes taking the first $j-1$ components of the vector, and $\vec{b}_{j-1}$ are the first $j-1$ logical measurement results that we have already committed to.
+%
+If there is a solution $g_l$, apply the frame logical operators $g_l$ and update the logical measurement result $\vec{b}_j=\vec{b}_j^{(1)}\oplus \Lambda g_l$, committing to the $j$th measurement result (this guarantees consistency with the first $j-1$ logical measurement results).
+%
+If not, a heralded failure has occurred and we abort the execution.
+\end{enumerate}
+\end{definition}
+
+Notice that each time we perform partial decoding, we only commit to the logical measurement result, without committing to the corrections and reference frame throughout.
+%
+In other words, we only commit to the minimal amount of information necessary to determine the feed-forward operations.
+%
+We leave possible relaxations of this, where more pieces of information are fixed, to future work.
+
+In this definition, we processed the logical measurement results and feedforward one by one.
+%
+The technique, however, also readily applies to the case where we instead partition the logical measurements based on layers of Clifford feedforward operations, resulting in fewer rounds of decoding.
+
+To show that this decoding strategy has a high probability of success, we need to show two things: first, the probability of a heralded error should be low; second, the probability of a regular logical error should be low, such that the measurement distribution should be close in total variation distance (TVD) to the measurement distribution of the ideal circuit.
+%
+We will now prove these statements.
+
+\section{Proof of Fault Tolerance}
+\label{sec:fault_tolerance_proof}
+
+In this section, we prove the fault tolerance of our decoding strategy, in a setting where we assume fast classical decoding and access to low-noise magic states.
+%
+Compared to existing analyses of fault tolerance of qLDPC codes~\cite{gottesman2013fault}, there are two main differences: First, since multiple rounds of correlated decoding may lead to differing interpretations of the same logical measurement result (Fig.~3b of main text and Sec.~\ref{si_sec:consistency}), we need to carefully reason about the process of restoring consistency and show that this is possible with high probability; Second, instead of analyzing each gadget separately in a modular fashion, we must analyze the logical algorithm as a whole.
+%
+We will first characterize the effect of low weight physical errors within a single decoding round in Sec.~\ref{si_sec:physical_error}, showing that they cannot lead to a flip of logical measurement results.
+%
+In Sec.~\ref{si_sec:logical_error}, we then use this to show that any type of logical error---either a logical flip or an inconsistency between multiple decoding rounds---requires $\Theta(d)$ physical errors to occur.
+%
+In Sec.~\ref{si_sec:threshold}, we combine this with standard methods for counting the probability of error clusters of a given size to bound the total logical error rate and demonstrate exponential error suppression.
+
+\subsection{Characterizing the Effect of Errors}
+\label{si_sec:physical_error}
+
+We start by examining how physical errors propagate under transversal gate operations.
+%
+Transversality guarantees that a given error cannot cause too many errors on a given code block when propagated to the qubit measurements.
+
+\begin{lemma}[Transversal gates limit error propagation]
+\label{lemma:transversal}
+Consider a transversal realization $\tcal{C}$ of an ideal circuit, with maximal size $t$ of the fixed transversal partition.
+%
+Then any fault configuration $f$, when forward propagated $P(f)$ to any logical measurement, has support on at most $t|f|$ data qubits, where $|f|$ is the weight of the fault configuration $f$.
+\end{lemma}
+
+This lemma is a straightforward consequence of the definition of transversal gates.
+%
+By construction, each individual error can only spread to at most $t$ qubits within each code block, and therefore $P(f)$ has support on at most $t|f|$ data qubits on each code block.
+\qed
+
+For our data-syndrome noise model, in which errors occur on data qubits between SE rounds and on the syndrome value itself, we do not need to consider error propagation due to the syndrome extraction procedure itself.
+%
+For practical SE circuits, for QLDPC codes with bounded syndrome extraction circuit depth, this only produces a constant factor difference due to the bounded error propagation and doesn't change our qualitative conclusions.
+
+As discussed above, for the special case of the non-rotated surface code and the set of transversal operations that we consider, we have $t=2$.
+%
+Intuitively, an error can only affect the given qubit and the qubit that it is paired with via a reflection across the diagonal (Fig.~\ref{fig:surface_code}).
+
+We now introduce a technical lemma characterizing the effect of the fault configuration and frame configuration after applying decoding and error correction.
+%
+Here and below, we will use the notation with a hat $\hat{\lambda}$ to indicate a frame repair operator that leads to trivial logical action on the logical measurements of interest for the given shot, and that without a hat $\lambda$ to indicate any other frame repair operator, e.g. those determined from consistency checks.
+
+\begin{figure*}
+\centering
+\includegraphics{methods_figures/proof_figure.pdf}
+\caption{\textbf{Illustration of error recovery and frame repair procedures.}
+%
+We illustrate the procedure for the surface code, where a cross-sectional view with one spatial axis and one time axis is shown.
+%
+We only illustrate $X$ errors and $Z$ stabilizer measurement errors, which are relevant to interpreting the $\overline{Z}$ measurement.
+%
+$X$ errors can terminate on orange boundaries, but cannot terminate on cyan boundaries.
+%
+The transversal $\overline{CNOT}$ copies $X$ errors from the top to the bottom, resulting in a branching point (black cross) and an error cluster spanning both code blocks.
+%
+(a) Error chains and frame flips. Chains of $X$-type errors (orange lines) lead to syndromes (end points) or terminate on appropriate boundaries.
+%
+A line segment in the vertical direction is a data qubit $X$ error, while a line segment in the horizontal direction is a measurement error.
+%
+Note that the $X$-type error cannot terminate on the transversal $Z$ measurement boundary. The random stabilizer initialization leads to a frame configuration on the logical $\lket{+}$ initialization, as illustrated by the blue line and the flipped $Z$ stabilizer (blue point).
+%
+This is similar to the frame stabilizer operator $g_s$ illustrated in Fig.~\ref{fig:surface_code}(a).
+%
+(b) We first infer an error recovery operator, which has the same boundary as the error chain.
+%
+Together, the error and recovery operator form the fault configuration, which triggers no detectors.
+%
+We illustrate a few examples (orange lines) that do not lead to a logical error: (1) the fault configuration forms a closed loop and is equivalent to applying a stabilizer; (2) the fault configuration terminates on an initialization boundary; (3) the fault configuration terminates on an out-going, unmeasured logical qubit, but the forward-propagated errors onto the measured logical qubit are equivalent to a stabilizer.
+%
+A logical error can only happen when the fault configuration spans across two opposing spatial boundaries (red line), which requires an error of weight $\Theta(d)$.
+%
+(c,d) The frame repair operation returns the logical qubit to the code space with all stabilizers +1, corresponding to cancelling any residual flipped stabilizers on the initialization boundary.
+%
+Note that the error recovery process may also lead to a change that needs to be accounted for by frame repair.
+%
+An example choice of frame repair is shown in (c), which applies an overall $X$ operator on the logical measurement result.
+%
+Alternatively, a different choice of frame repair shown in (d), related to the previous one by a frame logical flip, results in identity operation on the logical measurement result.
+}
+\label{fig:proof_sketch_si}
+\end{figure*}
+
+\begin{lemma}[Correction on codespace for low weight faults]
+\label{lemma:trivial_action}
+Consider the $j$th logical measurement and the associated syndrome adjacency graph $\Xi|_j$ in a given execution of the transversal realization $\tcal{C}$.
+%
+Consider any fault configuration $f=e\oplus \kappa$ in $\Xi|_j$, where the largest weight of any connected cluster of error vertices is less than $d/t$.
+
+Then there exists a choice of frame repair operator $\hat{\lambda}$, such that the combined effect of fault configuration and frame configuration $P(e\oplus \kappa)\oplus P(g\oplus \hat{\lambda})$ does not flip the results of any of the $j$ logical measurements.
+\end{lemma}
+
+As we described in Def.~\ref{def:error_corrected_circuit}, measurements are performed in the $Z$ basis ($X$ basis measurements can be performed by an $\overline{H}$ gate followed by a $\overline{Z}$ measurement).
+%
+To show that no logical measurement result is flipped, i.e. the combined effect is trivial, we need to show that for the $Z$ measurements we perform, $P(f)\oplus P(g\oplus \hat{\lambda})$ acts as a combination of stabilizers and the logical $\overline{Z}$ operator, which will not change the logical measurement result.
+%
+Here, $f=e\oplus \kappa$ as before.
+
+We will analyze each connected cluster $f_i$ of $f$ separately.
+%
+Because the different clusters are disjoint, $\partial f=0$ implies that $\partial f_i=0$.
+%
+As $P(f)$ is linear in the input error, we can analyze the effect of each connected component independently.
+%
+By Lemma~\ref{lemma:transversal} and the condition that $\textrm{wt}(f_i)<d/t$ for all $i$, we have that $\textrm{wt}(P(f_i))<d$.
+
+We now show that $\partial f_i=0$ and $\textrm{wt}(P(f_i))<d$ implies that there exists a choice of frame repair operator $\hat{\lambda}_i$, such that $P(f_i)\oplus P(g\oplus \hat{\lambda}_i)$ acts trivially on the logical measurements.
+%
+If this is the case, then we can combine the fault configurations
+\begin{align}
+f=\bigoplus_i f_i,\label{eq:combine_fault}  
+\end{align}
+and combine the frame configurations 
+\begin{align}
+\hat{\lambda}=g\oplus\qty(\bigoplus_i (\hat{\lambda}_i\oplus g)).\label{eq:combine_frame}
+\end{align}
+%
+Since each component $P(f_i \oplus (\hat{\lambda}_i\oplus g))$ has trivial logical action on the measurement results, by linearity, so does the combined effect $P(f\oplus (g\oplus\hat{\lambda}))$.
+
+Case 1: First, we consider the case where $f_i$ is not connected to any detectors that involve an initial syndrome measurement during $\lket{0}$ state initialization.
+%
+Intuitively, this is the case where $f_i$ is not connected to the initialization boundary.
+%
+In this case, if we choose $\hat{\lambda}_i=g$, then the combined action of fault configuration and frame configuration is $P(f_i)\oplus P(g\oplus \hat{\lambda}_i)=P(f_i)$.
+%
+Since $\partial f_i=0$ and $f_i$ is not connected to an initialization boundary, $P(f_i)$ must be a product of $X$ stabilizers and $X$ logical operators.
+%
+Since $\textrm{wt}(P(f_i))<d$, it cannot be a logical $\overline{X}$ operator that changes the $\overline{Z}$ measurement result.
+%
+Therefore, it does not flip the logical measurement result.
+
+Case 2: Now consider the case where $f_i$ is connected to a $\lket{0}$ initialization boundary.
+%
+Let $\lambda_i$ be the frame repair operation we choose, and let $h_i=g\oplus\lambda_i$.
+%
+If $P(f_i\oplus h_i)$ does not flip the logical measurement result, then we have already satisfied our requirements, and we can set $\hat{\lambda}_i=\lambda_i$.
+%
+Otherwise, suppose $P(f_i\oplus h_i)=\overline{L}$, where $\overline{L}$ is some nontrivial logical operator.
+%
+Since $\textrm{wt}(P(f_i))<d$, the logical operator must have some contribution from the frame configuration $h_i$ located on the initialization boundary.
+%
+Similar to Eq.~(\ref{eq:consistency_equation}), we can thus find a frame logical operator $g_l$ to apply on the initialization boundary, such that $P(g_l)=\overline{L}$.
+%
+Choosing $\hat{\lambda}_i=\lambda_i\oplus g_l$ then implies that $P(f_i\oplus(g\oplus \hat{\lambda}_i))$ cancels the application of $\overline{L}$ on the logical measurement, such that $\hat{\lambda}_i$ acts trivially on the logical measurements.
+
+Combining the fault configurations and frame configurations as in Eqs.~(\ref{eq:combine_fault},\ref{eq:combine_frame}), the frame configuration $\hat{\lambda}$ will be such that the combined effect of fault configuration and frame configuration does not flip any of the $j$ logical measurements.
+\qed
+
+When considering clusters connected to initialization boundaries, we only need to consider those connected to Pauli basis initialization boundaries and not $\lket{T}$ magic state inputs.
+%
+This is because per Def.~\ref{def:error_corrected_circuit}, the magic states are provided with known stabilizer values up to local stochastic noise.
+%
+As the stabilizer values are known with confidence, detectors can be constructed in both bases to detect and correct any errors nearby.
+%
+In other words, unlike $\lket{0}$ initialization, errors cannot terminate on magic state inputs without being detectable.
+
+Lemma~\ref{lemma:trivial_action} only requires such a frame repair operation to exist, but does not require us to explicitly apply it.
+%
+We simply use its existence to guarantee consistency between multiple rounds of decoding.
+%
+The reason that finding this particular frame repair operation is not important is that per Lemma~\ref{lemma:frame_trivial}, this choice does not affect the logical measurement distribution.
+%
+Our decoding strategy only requires us to find frame repair operations that guarantee consistency between multiple rounds of decoding of the same logical measurement in a given shot, without requiring the logical action for a given shot to be trivial.
+
+Let us briefly illustrate this lemma in the case of the surface code.
+%
+In Fig.~\ref{fig:proof_sketch_si}(a), we illustrate an instance of physical errors $e$ (orange lines) and initial random frame projection $g$ (blue line).
+%
+The error recovery and frame repair procedures are illustrated in Fig.~\ref{fig:proof_sketch_si}(b,c), canceling any bulk detectors and returning the stabilizers to the +1 subspace, respectively.
+%
+We illustrate different types of clusters that can appear in Fig.~\ref{fig:proof_sketch_si}(b): case 1 in Lemma~\ref{lemma:trivial_action} is illustrated with the orange lines labeled 1 and 3, while case 2 is illustrated by the orange line labeled 2.
+%
+For case 1, the frame configuration acts trivially when forward-propagated to the logical measurement, automatically satisfying our requirements.
+%
+For case 2, the frame configuration flips some stabilizers, which we take into account in the frame repair stage (Fig.~\ref{fig:proof_sketch_si}(c)).
+%
+After the error recovery and frame repair stage, it is possible that an overall $X$ operator is applied at initialization, which propagates through the CNOT to flip the logical measurement result.
+%
+However, one can choose an alternative frame configuration (Fig.~\ref{fig:proof_sketch_si}(d)), which negates the logical operator and thereby acts trivially on the logical measurement, as required by Lemma~\ref{lemma:trivial_action}.
+
+
+\subsection{Characterizing Logical Errors}
+\label{si_sec:logical_error}
+
+It is important to note that we are only guaranteed to not flip the logical qubits that we have performed a measurement on, and only in the basis that we measured.
+%
+There could be residual errors on the remaining qubits, or a $Z$ flip on a logical qubit measured in the $Z$ basis.
+%
+However, the former will get fixed in later rounds of decoding, so long as we can maintain consistency on the logical measurement results, while the latter does not influence any measurement results.
+%
+Thus, they should not cause any effects on the logical measurement distribution.
+%
+We formalize this idea in the following key lemma, which characterizes the structure of logical errors.
+%
+It shows that small clusters of errors cannot give rise to logical errors on logical qubits that have been measured.
+
+\begin{lemma}[Logical errors must be composed of at least $d/t$ faults]
+\label{lemma:logical_error_weight}
+
+Consider the $j$th logical measurement and the associated syndrome adjacency graph $\Xi|_j$ in a given execution of the transversal realization $\tcal{C}$.
+%
+Consider any fault configuration $f=e\oplus \kappa$ in $\Xi|_j$, where the largest weight of any connected cluster of error vertices is less than $d/t$.
+
+Then there exists a choice of frame repair operator $\lambda_j$, such that
+\begin{enumerate}
+\item The first $j-1$ measurement results are consistent with the previous rounds of decoding, if the previous rounds of decoding also satisfy the same conditions above.
+\item The distribution of the $j$th measurement, conditioned on the outcome of the first $j-1$ measurement results from the previous round of decoding, is identical to the ideal distribution.
+\end{enumerate}
+\end{lemma}
+
+Recall our notation convention, where $\hat{\lambda}$ indicates a frame repair operator that has trivial action for the given shot, and $\lambda$ is the frame repair operator that we apply based on consistency conditions.
+%
+In other words, \mbox{$P(f)\oplus P(\hat{h})$} has trivial logical action when the latter term $\hat{h}=g\oplus\hat{\lambda}$ has a hat.
+
+Let us start by proving property 2.
+%
+The proof here is similar to our discussion following Lemma~\ref{lemma:frame_trivial}.
+%
+Conditioned on the outcome of the first $j-1$ measurement results, the circuit up to the $j$th measurement is now a deterministic circuit $\tcal{C}_{fix}$, and we can construct a given syndrome adjacency graph $\Xi|_j$.
+%
+By Lemma~\ref{lemma:trivial_action}, there exists a choice of frame repair operator $\hat{\lambda}$ that produces the same measurement distribution as the corresponding fixed ideal circuit $\mathcal{C}_{fix}$, i.e. $f_{\tcal{C}_{fix}}=f_{\mathcal{C}_{fix}}$.
+%
+In particular, conditioned on the first $j-1$ measurement results, it also reproduces the marginal distribution of the $j$th measurement result.
+
+Conditioned on the first $j-1$ measurement results, the fixed circuit $\mathcal{C}_{fix}$ and adaptive circuit $\mathcal{C}$ are identical and have the same marginal distribution for the $j$th logical measurement, for both the ideal and error-corrected case, i.e. $f_{\mathcal{C}}=f_{\mathcal{C}_{fix}}$, and $f_{\tcal{C}}=f_{\tcal{C}_{fix}}$ for a fixed frame repair operator.
+%
+Therefore, with frame repair operator $\hat{\lambda}$, the marginal distribution of the $j$th logical measurement for the fixed circuit $\tcal{C}_{fix}$ matches that of the ideal circuit $\mathcal{C}$.
+%
+By Lemma~\ref{lemma:frame_trivial}, different choices of frame configuration give rise to the same measurement distribution for a fixed circuit.
+%
+In particular, if we can show the existence of a frame repair operator $\lambda_j$ that satisfies property 1, then it will have the same marginal measurement distribution for the $j$th measurement under $\tcal{C}_{fix}$.
+%
+Conditioned on the previous $j-1$ measurement results, this is the same as the marginal measurement distribution for $\tcal{C}$, thereby completing the proof of property 2.
+
+Let us now prove property 1.
+%
+By our assumption, the decoding problems of both the first $j-1$ measurement results and the first $j$ measurement results also satisfy the condition that the fault configuration has largest weight of any connected cluster less than $d/t$.
+%
+By Lemma~\ref{lemma:trivial_action}, there exists a frame repair operation $\hat{\lambda}|_{j-1}$ and hence frame configuration $\hat{h}|_{j-1}=g\oplus\hat{\lambda}|_{j-1}$, such that $P(f|_{j-1})\oplus P(\hat{h}|_{j-1})$ acts trivially on the first $j-1$ logical measurement results.
+%
+Similarly for the $j$th logical measurement, there exists $\hat{\lambda}|_j$ and $\hat{h}|_j=g\oplus\hat{\lambda}|_j$, such that $P(f|_j)\oplus P(\hat{h}|_j)$ acts trivially for the first $j$ logical measurement results.
+
+The actual frame configuration we chose for decoding the first $j-1$ measurements, $h|_{j-1}$, may differ from $\hat{h}|_{j-1}$, as we needed to maintain consistency with previously committed measurements.
+%
+This may lead to different measurement outcomes for this specific shot (note that the distribution still remains the same).
+%
+For joint decoding of the first $j$ measurements, let us therefore choose the following inferred frame assignment
+\begin{align}
+\lambda|_j=\hat{h}|_{j-1}\oplus h|_{j-1}\oplus \hat{\lambda}|_j.
+\end{align}
+%
+With this assignment and by linearity, the action on the codespace is
+\begin{align}
+&P(f|_j)\oplus P(\hat{h}|_{j-1})\oplus P(h|_{j-1})\oplus P(\hat{h}|_j)\nonumber\\
+=&\qty[P(f|_j)\oplus P(\hat{h}|_j)]\oplus\qty[P(\hat{h}|_{j-1})\oplus P(h|_{j-1})].
+\end{align}
+
+$P(f|_j)\oplus P(\hat{h}|_j)$ has trivial logical action by construction (the hat is present), so the combined action is identical to that of $P(\hat{h}|_{j-1})\oplus P(h|_{j-1})$.
+%
+Similarly, $P(f|_{j-1})\oplus P(\hat{h}|_{j-1})$ has trivial logical action by construction, so on the first $j-1$ measurements, we have that
+\begin{align}
+&P(\hat{h}|_{j-1})\oplus P(h|_{j-1})\nonumber\\=&[P(f|_{j-1})\oplus P(\hat{h}|_{j-1})]\oplus [P(f|_{j-1})\oplus P(h|_{j-1})]\nonumber\\
+=&P(f|_{j-1})\oplus P(h|_{j-1}),
+\end{align}
+which is exactly the same as the final logical action for the decoding problem of the first $j-1$th measurements.
+%
+Therefore, for this choice of $\lambda|_j$, the first $j-1$ measurement results are consistent with the previous round of decoding, proving property 1.
+\qed
+
+\subsection{Threshold Theorem}
+\label{si_sec:threshold}
+
+Using the preceding characterization of errors, we prove our main result in this section, the existence of a threshold below which logical errors are exponentially suppressed in the code distance.
+
+First, we reproduce a lemma that bounds the number of connected clusters of a given size, a core component of a number of fault-tolerance proofs~\cite{aliferis2007accuracy,bombin2015single,kovalev2013fault,gottesman2013fault,kubica2022single}.
+%
+We will make use of the presentation from Ref.~\cite{gottesman2013fault}, specializing to the case where the specific set is a single vertex, as is needed for the main theorem.
+
+\begin{lemma}[Counting lemma on vertices, Lemma 5 of \cite{aliferis2007accuracy}]
+\label{lemma:counting}
+Consider a specific vertex $\alpha$ in a graph for which every vertex has degree at most $v$.
+%
+Let $N_v(s,\alpha)$ be the number of connected sets containing $\alpha$ and a total of $s$ vertices (i.e. $s-1$ vertices beyond $\alpha$).
+%
+Then \mbox{$N_v(s,\alpha)\leq(v\e)^{s-1}$}, with $\e$ the usual base of the natural logarithm.
+\end{lemma}
+
+Using the counting lemma, we can now complete the proof of our main theorem.
+
+\begin{thm}[Fault tolerance of decoding strategy in Def.~\ref{def:decoding_strategy}]
+Consider a transversal realization $\tcal{C}$ of an ideal quantum circuit $\mathcal{C}$ (Def.~\ref{def:error_corrected_circuit}),  subject to the local stochastic noise model with probability $p$, with the circuit involving at most $B$ code blocks of an $[[n,k,d]]$ CSS $(r,c)$-LDPC quantum code family, $T$ layers of operations, with a single SE round following each operation, and $M$ logical measurements.
+%
+Then there exists a threshold $p_0$, such that for $p<\frac{121}{144}p_0$, the probability $P_{err}$ of either heralded errors or regular logical errors for the entire circuit, when using the decoding strategy in Def.~\ref{def:decoding_strategy}, is at most $C(p/p_0)^{\frac{d}{2t}}$.
+%
+Here, $d$ is the code distance, $t$ is the maximal part size in the transversal partition, $p_0=\frac{1}{(96\e cr)^2}$, $C=\frac{MBT(4n-k)}{4\e cr}$.
+\end{thm}
+
+First, let us count the number of possible fault locations under our local stochastic error model.
+%
+There are $nB$ physical qubits, each of which experiences at most 3 types of errors $(X,Y,Z)$, leading to $3nBT$ possible data qubit fault locations.
+%
+Each logical qubit has $n-k$ independent stabilizer generators that we measure, so there are $(n-k)B$ possible stabilizer measurement errors.
+%
+Since there are $T$ layers of operations, the number of fault locations in the circuit is at most
+\begin{align}
+N_f\leq 3nBT+(n-k)BT=(4n-k)BT.
+\end{align}
+By definition, this is also the number of vertices in the syndrome adjacency graph $\Xi$.
+
+Next, let us bound the number of neighboring vertices for any vertex in $\Xi$.
+%
+By definition, the stabilizer weight is upper bounded by $r\geq 1$, while the number of stabilizers each qubit is involved in is upper bounded by $c\geq 1$.
+%
+Therefore, each data qubit error can cause an error on at most $c$ stabilizers.
+%
+Since we focus on depth-one transversal operations, each stabilizer is involved in at most four detectors (at most 2 in the past and 2 in the future due to the branching detectors for CNOTs).
+%
+Therefore, each data qubit error is connected to at most $4c$ edges.
+%
+Each measurement error affects a single stabilizer, which is involved in at most four detectors, so the number of edges it is connected to is also upper bounded by $4c$.
+%
+Each detector consists of at most three stabilizers for a depth-one transversal operation, each of which is connected to at most $r$ qubits, where each qubit has at most three types of elementary errors under a depolarizing channel.
+%
+Together with the three measurement errors on the stabilizers, each hyperedge is connected to at most $9r+3$ error types.
+%
+Putting this together, the number of neighboring vertices for any vertex in $\Xi$ is upper bounded by the constant
+\begin{align}
+v\leq 4c(9r+3)\leq 48cr.
+\end{align}
+
+Suppose a given fault configuration involves $s$ faults.
+%
+As we are using the MLE decoder, this implies that the error $e$ must involve at least $\lceil s/2\rceil$ faults.
+%
+Since each fault has probability at most $p$, the probability that this fault configuration appears is at most
+\begin{align}
+\sum_{i=\lceil s/2\rceil}^s {s \choose i}p^i\leq \qty[\sum_{i=0}^s {s \choose i}]p^{s/2}=2^s p^{s/2}.
+\end{align}
+
+For each logical measurement, by Lemma~\ref{lemma:logical_error_weight}, the fault configuration must involve a connected cluster of at least $d/t$ faults.
+%
+Therefore, applying Lemma~\ref{lemma:counting} to $\Xi$ consisting of $N_f$ vertices, the number of connected clusters $N_s$ of size $s$ is upper bounded by the sum of clusters which contain any given vertex:
+\begin{align}
+N_s\leq N_f (v\e)^{s-1}.
+\end{align}
+
+By Lemma~\ref{lemma:logical_error_weight}, if none of the first $j$ rounds of decoding involve a connected cluster of size at least $d/t$, then the decoding strategy (Def.~\ref{def:decoding_strategy}) will not output FAIL, and the output measurement distribution of the first $j$ measurement results will be the same as the ideal distribution.
+%
+Since there are $M$ measurements in total, taking the union bound, the total probability $P_{err}$ of outputting FAIL or having a logical error is at most
+\begin{align}
+P_{err}&\leq M\sum_{s=d/t}^\infty N_s 2^s p^{s/2}\nonumber\\
+&\leq M\sum_{s=d/t}^\infty N_f(v\e)^{s-1}(2\sqrt{p})^s\nonumber\\
+&= \frac{MN_f}{v\e}\frac{(2v\e\sqrt{p})^{d/t}}{1-2v\e\sqrt{p}}\nonumber\\
+&\leq \frac{MBT(4n-k)}{48\e cr}\frac{(96\e cr\sqrt{p})^{d/t}}{1-96\e cr\sqrt{p}}\nonumber\\
+&\leq \frac{MBT(4n-k)}{48\e cr(1-96\e cr\sqrt{p})}\qty(\frac{p}{1/(96\e cr)^2})^{d/2t}
+\end{align}
+
+The threshold is thus given by $p_0=1/(96\e cr)^2$, but because the summation still goes to infinity exactly at the threshold, we choose to work below a slightly smaller value than the threshold in order to have a finite constant prefactor.
+%
+The prefactor can be tuned if one constrains the range of error rates $p$ differently.
+%
+Choosing $p<(11/12)^2 p_0$, we have
+\begin{align}
+P_{err}\leq C\qty(\frac{p}{p_0})^{d/2t},
+\end{align}
+where
+\begin{align}
+p_0&=\frac{1}{(96\e cr)^2},\label{eq:p0}\\
+C&=\frac{MBT(4n-k)}{4\e cr}.\label{eq:c}
+\end{align}
+
+\qed
+
+This theorem demonstrates that below a certain physical error threshold, the logical error rate is exponentially suppressed in the code distance.
+%
+Thus, despite never requiring $d$ rounds of syndrome measurement anywhere in the circuit, we can still maintain fault-tolerance.
+%
+As is the case with threshold proofs, many of the bounds here are loose and the actual threshold will be much higher, as we demonstrated numerically.
+%
+While we assumed magic state inputs with known stabilizer values for this theorem, we conjecture that the same techniques, when applied jointly to magic state distillation and the main computation, will still yield a $\Theta(d)$ saving when classical decoding is sufficiently fast.
+
+The logical error rate of our protocol scales linearly with the space-time volume of the original circuit.
+%
+As only a single SE round follows each operation, another potential benefit of our approach is that there are fewer potential error locations, which may lead to a more favorable constant factor for the logical error rate.
+%
+This can partially offset any reduction in the threshold, which our numerics find to be rather minimal.
+
+We can directly apply this theorem to the case of the surface code, plugging in the specific constants.
+%
+This leads to the following theorem:
+
+\begin{thm}[Fault tolerance for any ideal quantum circuit with magic state inputs]
+Consider a surface code transversal realization $\tcal{C}$ of an ideal quantum circuit $\mathcal{C}$ (Def.~\ref{def:surface_code_circuit}), subject to the local stochastic noise model with probability $p$, with the circuit involving at most $B$ code blocks of a $[[d^2+(d-1)^2,1,d]]$ non-rotated surface code, $T$ layers of operations, with a single SE round following each operation, and $M$ logical measurements.
+%
+Then there exists a threshold $p_0$, such that for $p<\frac{121}{144}p_0$, the probability $P_{err}$ of either heralded errors or regular logical errors for the entire circuit, when using the decoding strategy in Def.~\ref{def:decoding_strategy}, is at most $C(p/p_0)^{\frac{d}{4}}$.
+%
+Here, $d$ is the code distance,  $p_0=\frac{1}{(1536\e)^2}$, $C=\frac{MBTd^2}{8\e}$.
+\end{thm}
+
+For the non-rotated surface code, we have $n=d^2+(d-1)^2\leq 2d^2$, $r=c=4$, $t=2$.
+%
+$t=2$ comes from the fold-transversal $S$ gate, leading to a $d/4$ scaling exponent, but this can likely be improved with more careful error analysis.
+%
+Plugging this into Eqs.~(\ref{eq:p0},\ref{eq:c}), we have
+\begin{align}
+p_0&=\frac{1}{(96\e cr)^2}=\frac{1}{(1536\e)^2}\\
+C&=\frac{MBT(4n-k)}{4\e cr}\leq \frac{8d^2MBT}{64\e}=\frac{MBTd^2}{8\e}.
+\end{align}
+\qed
+
+\subsection{Single-Shot Patch Growth}
+\label{sec:fault_tolerance_magic_state}
+
+We now extend our results to the case where the magic state input has a smaller code distance $d_1$ that is grown to the full distance $d$ in a single EC round.
+
+
+\begin{definition}[Single-shot patch growth]
+\label{def:single_shot_patch_growth}
+Given an ideal quantum circuit $\mathcal{C}$ with magic state inputs and feed-forward operations (Def.~\ref{def:ideal_circuit}), we define its surface code transversal realization with reduced magic state inputs $\mathcal{C}_m$, with distances $(d,d_1)$, as the surface code transversal realization of distance $d$ defined in Def.~\ref{def:surface_code_circuit}, together with the following operations:
+\begin{enumerate}
+\item Initialization of some sets of logical qubits of distance $d_1\leq d$ in state $\lket{T}=T\lket{+}$, and with all stabilizer values fixed to +1, up to local stochastic noise on each physical qubit of strength $p$.
+\item Logical qubit block growth~\cite{li2015magic,lao2022magic} from distance $d_1$ to $d$, by performing the initialization in the pattern shown in Fig.~\ref{fig:patch_growth} and performing one SE round.
+\end{enumerate}
+\end{definition}
+
+\begin{figure}
+\centering
+\includegraphics{methods_figures/patch_growth.pdf}
+\caption{Illustration of logical qubit growth process for the surface code.
+%
+The initial $d_1=3$ logical qubit, located on the top right, is grown into a larger logical qubit with $d=5$ by initializing the qubits in the top left in $|+\rangle$ and the bottom right in $|0\rangle$.
+%
+The strips indicated in red have deterministic stabilizer values, which leads to a lower bound on the weight of an undetectable logical error.}
+\label{fig:patch_growth}
+\end{figure}
+
+Although we grow the patch in a single step, the information provided by transversal measurements still allows us to maintain a code distance of $d_1$.
+%
+Our discussion focuses on the surface code case, although it is likely that this can be extended to other scenarios.
+%
+We use the same decoding strategy defined in Def.~\ref{def:decoding_strategy}.
+%
+The statement is then essentially the same as before, except the distance $d$ is replaced by $d_1\leq d$, the size of the magic state input.
+%
+This is because all $Z$/$X$ stabilizers in the region highlighted in red in Fig.~\ref{fig:patch_growth} are deterministic, and a chain of errors that spans this region, in order to produce a logical error, must have weight at least $d_1$.
+%
+We can readily generalize the rest of our results to prove an analogous fault tolerance theorem, with the distance replaced by the reduced distance of the magic state input.
+
+\section{Limiting Errors in Multi-Stage Distillation Factories}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{proof_figures/low_weight_distillation.pdf}
+    \caption{(a) We consider a multi-stage distillation factory, where the inputs (gray boxes) are protected to distance $d_{in}$, and then grown via $O(1)$ rounds of syndrome measurement. A correlated set of measurement errors, starting from the inputs, snaking through the factory, and terminating on the output qubit, can propagate a non-local frame variable to the output qubit. (b) When combined with a physical error of weight $d_{in}$, this creates a genuine logical error. (c) The structure of the measurement errors is associated with a distance $f$ error of the distillation code.}
+    \label{fig:low_weight_distillation}
+\end{figure}
+
+There is an interesting interplay that occurs when we combine $O(1)$ SE rounds per logical operation with a multi-stage distillation factory. In a multi-stage factory, we input a target state (i.e. $\lket{S}$ or $\lket{T}$) prepared at some small distance $d_{in}$, and use single-shot patch growth to inject the state into a larger code with distance $d_{out}$.
+%
+The distillation code, based on a distance $f$ code with a suitable transversal gate, is then used to improve the quality of the magic state.
+%
+In the absence of measurement errors, the resulting logical state should be protected to distance $\min\{d_{in} f,d_{out}\}$.
+%
+However, we find that performing $O(1)$ SE rounds per logical operation causes the error protection to go from multiplicative ($d_{in} f$) to additive ($d_{in}+f$), due to error correlations between multiple patches.
+%
+Therefore, care must be taken when designing multi-stage factories based on transversal gates to ensure that the output achieves the target distance.
+
+We illustrate the structure of such errors in Fig.~\ref{fig:low_weight_distillation}.
+%
+Consider the set of $Z$ stabilizer measurement errors illustrated in Fig.~\ref{fig:low_weight_distillation}(a), where the errors occur at the same transversal coordinate of the code patch.
+%
+This set of $O(f)$ measurement errors is undetectable by the factory, but combined with the frame variable, it generates a physical error-string of weight $d_{out} - d_{in}$ on the output.
+%
+As shown in Fig.~\ref{fig:low_weight_distillation}(b), when combined with a physical error chain of length $d_{in}$, it produces a genuine logical error on the output state, which cannot be detected and corrected by future transversal measurements.
+%
+Thus, the output state in this multi-stage factory is only protected to distance $O(d_{in} + f)$.
+
+This example highlights the care needed when analyzing state injection in the transversal setting with $O(1)$ SE rounds per logical gate.
+%
+Our numerics in Fig.~4 of the main text shows that these issues are alleviated at small code distances and moderate logical error rates, where we do not see any deviation from the leading-order multiplicative behavior.
+%
+Practical magic state distillation factories often employ $d_{in}\approx 15$ and $d_{out\approx 30}$, so it is likely that inserting a few more SE rounds during state injection, comparable to the depth of the Clifford part of the distillation factory, will be sufficient to suppress these correlated errors to a sufficiently low level.

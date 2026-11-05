@@ -1,0 +1,34 @@
+[
+  {
+    "file": "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d3_p0.001_pinj0.1.stim",
+    "non_clifford_gates": {
+      "T": 2
+    },
+    "tsim_k": 1,
+    "clifft_k": 2
+  },
+  {
+    "file": "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d5_p0.001_pinj0.1.stim",
+    "non_clifford_gates": {
+      "T": 2
+    },
+    "tsim_k": 1,
+    "clifft_k": 2
+  },
+  {
+    "file": "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d7_p0.001_pinj0.1.stim",
+    "non_clifford_gates": {
+      "T": 2
+    },
+    "tsim_k": 1,
+    "clifft_k": 2
+  },
+  {
+    "file": "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d9_p0.001_pinj0.1.stim",
+    "non_clifford_gates": {
+      "T": 2
+    },
+    "tsim_k": 1,
+    "clifft_k": 2
+  }
+]

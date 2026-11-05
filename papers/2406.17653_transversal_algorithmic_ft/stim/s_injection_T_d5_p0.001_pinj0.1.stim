@@ -1,0 +1,602 @@
+QUBIT_COORDS(0.5, 0.5) 1
+QUBIT_COORDS(1.5, 0.5) 2
+QUBIT_COORDS(2.5, 0.5) 3
+QUBIT_COORDS(3.5, 0.5) 4
+QUBIT_COORDS(4.5, 0.5) 5
+QUBIT_COORDS(0.5, 1.5) 6
+QUBIT_COORDS(1.5, 1.5) 7
+QUBIT_COORDS(2.5, 1.5) 8
+QUBIT_COORDS(3.5, 1.5) 9
+QUBIT_COORDS(4.5, 1.5) 10
+QUBIT_COORDS(0.5, 2.5) 11
+QUBIT_COORDS(1.5, 2.5) 12
+QUBIT_COORDS(2.5, 2.5) 13
+QUBIT_COORDS(3.5, 2.5) 14
+QUBIT_COORDS(4.5, 2.5) 15
+QUBIT_COORDS(0.5, 3.5) 16
+QUBIT_COORDS(1.5, 3.5) 17
+QUBIT_COORDS(2.5, 3.5) 18
+QUBIT_COORDS(3.5, 3.5) 19
+QUBIT_COORDS(4.5, 3.5) 20
+QUBIT_COORDS(0.5, 4.5) 21
+QUBIT_COORDS(1.5, 4.5) 22
+QUBIT_COORDS(2.5, 4.5) 23
+QUBIT_COORDS(3.5, 4.5) 24
+QUBIT_COORDS(4.5, 4.5) 25
+QUBIT_COORDS(1.0, 0.0) 26
+QUBIT_COORDS(3.0, 0.0) 27
+QUBIT_COORDS(1.0, 1.0) 28
+QUBIT_COORDS(2.0, 1.0) 29
+QUBIT_COORDS(3.0, 1.0) 30
+QUBIT_COORDS(4.0, 1.0) 31
+QUBIT_COORDS(5.0, 1.0) 32
+QUBIT_COORDS(0.0, 2.0) 33
+QUBIT_COORDS(1.0, 2.0) 34
+QUBIT_COORDS(2.0, 2.0) 35
+QUBIT_COORDS(3.0, 2.0) 36
+QUBIT_COORDS(4.0, 2.0) 37
+QUBIT_COORDS(1.0, 3.0) 38
+QUBIT_COORDS(2.0, 3.0) 39
+QUBIT_COORDS(3.0, 3.0) 40
+QUBIT_COORDS(4.0, 3.0) 41
+QUBIT_COORDS(5.0, 3.0) 42
+QUBIT_COORDS(0.0, 4.0) 43
+QUBIT_COORDS(1.0, 4.0) 44
+QUBIT_COORDS(2.0, 4.0) 45
+QUBIT_COORDS(3.0, 4.0) 46
+QUBIT_COORDS(4.0, 4.0) 47
+QUBIT_COORDS(2.0, 5.0) 48
+QUBIT_COORDS(4.0, 5.0) 49
+QUBIT_COORDS(6.5, 0.5) 50
+QUBIT_COORDS(7.5, 0.5) 51
+QUBIT_COORDS(8.5, 0.5) 52
+QUBIT_COORDS(6.5, 1.5) 53
+QUBIT_COORDS(7.5, 1.5) 54
+QUBIT_COORDS(8.5, 1.5) 55
+QUBIT_COORDS(6.5, 2.5) 56
+QUBIT_COORDS(7.5, 2.5) 57
+QUBIT_COORDS(8.5, 2.5) 58
+QUBIT_COORDS(7.0, 0.0) 59
+QUBIT_COORDS(7.0, 1.0) 60
+QUBIT_COORDS(8.0, 1.0) 61
+QUBIT_COORDS(9.0, 1.0) 62
+QUBIT_COORDS(6.0, 2.0) 63
+QUBIT_COORDS(7.0, 2.0) 64
+QUBIT_COORDS(8.0, 2.0) 65
+QUBIT_COORDS(8.0, 3.0) 66
+QUBIT_COORDS(9.5, 0.5) 67
+QUBIT_COORDS(10.5, 0.5) 68
+QUBIT_COORDS(9.5, 1.5) 69
+QUBIT_COORDS(10.5, 1.5) 70
+QUBIT_COORDS(9.5, 2.5) 71
+QUBIT_COORDS(10.5, 2.5) 72
+QUBIT_COORDS(6.5, 3.5) 73
+QUBIT_COORDS(7.5, 3.5) 74
+QUBIT_COORDS(8.5, 3.5) 75
+QUBIT_COORDS(9.5, 3.5) 76
+QUBIT_COORDS(10.5, 3.5) 77
+QUBIT_COORDS(6.5, 4.5) 78
+QUBIT_COORDS(7.5, 4.5) 79
+QUBIT_COORDS(8.5, 4.5) 80
+QUBIT_COORDS(9.5, 4.5) 81
+QUBIT_COORDS(10.5, 4.5) 82
+QUBIT_COORDS(9.0, 0.0) 83
+QUBIT_COORDS(10.0, 1.0) 84
+QUBIT_COORDS(11.0, 1.0) 85
+QUBIT_COORDS(9.0, 2.0) 86
+QUBIT_COORDS(10.0, 2.0) 87
+QUBIT_COORDS(7.0, 3.0) 88
+QUBIT_COORDS(9.0, 3.0) 89
+QUBIT_COORDS(10.0, 3.0) 90
+QUBIT_COORDS(11.0, 3.0) 91
+QUBIT_COORDS(6.0, 4.0) 92
+QUBIT_COORDS(7.0, 4.0) 93
+QUBIT_COORDS(8.0, 4.0) 94
+QUBIT_COORDS(9.0, 4.0) 95
+QUBIT_COORDS(10.0, 4.0) 96
+QUBIT_COORDS(8.0, 5.0) 97
+QUBIT_COORDS(10.0, 5.0) 98
+
+# Inject(P2 (from P1) => YBasis)
+RX 1
+T 1
+Z_ERROR(0.1) 1
+TICK
+RX 2
+DEPOLARIZE1(0.001) 2
+RX 3
+DEPOLARIZE1(0.001) 3
+R 6
+DEPOLARIZE1(0.001) 6
+R 7
+DEPOLARIZE1(0.001) 7
+RX 8
+DEPOLARIZE1(0.001) 8
+R 11
+DEPOLARIZE1(0.001) 11
+R 12
+DEPOLARIZE1(0.001) 12
+R 13
+DEPOLARIZE1(0.001) 13
+TICK
+R 26
+DEPOLARIZE1(0.001) 26
+RX 28
+DEPOLARIZE1(0.001) 28
+R 29
+DEPOLARIZE1(0.001) 29
+RX 30
+DEPOLARIZE1(0.001) 30
+RX 33
+DEPOLARIZE1(0.001) 33
+R 34
+DEPOLARIZE1(0.001) 34
+RX 35
+DEPOLARIZE1(0.001) 35
+R 39
+DEPOLARIZE1(0.001) 39
+TICK
+CX 28 7 33 11 35 13 2 26 8 29 12 34
+DEPOLARIZE2(0.001) 28 7 33 11 35 13 2 26 8 29 12 34
+DEPOLARIZE1(0.001) 1 3 6 30 39
+TICK
+CX 28 6 30 8 35 12 3 29 7 34 13 39
+DEPOLARIZE2(0.001) 28 6 30 8 35 12 3 29 7 34 13 39
+DEPOLARIZE1(0.001) 1 2 11 26 33
+TICK
+CX 28 2 33 6 35 8 1 26 7 29 11 34
+DEPOLARIZE2(0.001) 28 2 33 6 35 8 1 26 7 29 11 34
+DEPOLARIZE1(0.001) 3 12 13 30 39
+TICK
+CX 28 1 30 3 35 7 2 29 6 34 12 39
+DEPOLARIZE2(0.001) 28 1 30 3 35 7 2 29 6 34 12 39
+DEPOLARIZE1(0.001) 8 11 13 26 33
+TICK
+M(0.0006666666666666666) 26
+MX(0.0006666666666666666) 28
+M(0.0006666666666666666) 29
+MX(0.0006666666666666666) 30 33
+M(0.0006666666666666666) 34
+MX(0.0006666666666666666) 35
+M(0.0006666666666666666) 39
+TICK
+DETECTOR(1.0) rec[-5]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 1, round 1)
+DETECTOR(1.0) rec[-3]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 1, round 1)
+DETECTOR(1.0) rec[-1]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 1, round 1)
+R 26
+DEPOLARIZE1(0.001) 26
+RX 28
+DEPOLARIZE1(0.001) 28
+R 29
+DEPOLARIZE1(0.001) 29
+RX 30
+DEPOLARIZE1(0.001) 30
+RX 33
+DEPOLARIZE1(0.001) 33
+R 34
+DEPOLARIZE1(0.001) 34
+RX 35
+DEPOLARIZE1(0.001) 35
+R 39
+DEPOLARIZE1(0.001) 39
+TICK
+CX 28 7 33 11 35 13 2 26 8 29 12 34
+DEPOLARIZE2(0.001) 28 7 33 11 35 13 2 26 8 29 12 34
+DEPOLARIZE1(0.001) 1 3 6 30 39
+TICK
+CX 28 6 30 8 35 12 3 29 7 34 13 39
+DEPOLARIZE2(0.001) 28 6 30 8 35 12 3 29 7 34 13 39
+DEPOLARIZE1(0.001) 1 2 11 26 33
+TICK
+CX 28 2 33 6 35 8 1 26 7 29 11 34
+DEPOLARIZE2(0.001) 28 2 33 6 35 8 1 26 7 29 11 34
+DEPOLARIZE1(0.001) 3 12 13 30 39
+TICK
+CX 28 1 30 3 35 7 2 29 6 34 12 39
+DEPOLARIZE2(0.001) 28 1 30 3 35 7 2 29 6 34 12 39
+DEPOLARIZE1(0.001) 8 11 13 26 33
+TICK
+M(0.0006666666666666666) 26
+MX(0.0006666666666666666) 28
+M(0.0006666666666666666) 29
+MX(0.0006666666666666666) 30 33
+M(0.0006666666666666666) 34
+MX(0.0006666666666666666) 35
+M(0.0006666666666666666) 39
+TICK
+DETECTOR(1.0) rec[-16] rec[-8]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-15] rec[-7]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-14] rec[-6]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-13] rec[-5]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-12] rec[-4]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-11] rec[-3]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-10] rec[-2]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-9] rec[-1]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 1, round 2)
+RX 4
+DEPOLARIZE1(0.001) 4
+RX 5
+DEPOLARIZE1(0.001) 5
+RX 9
+DEPOLARIZE1(0.001) 9
+RX 10
+DEPOLARIZE1(0.001) 10
+RX 14
+DEPOLARIZE1(0.001) 14
+RX 15
+DEPOLARIZE1(0.001) 15
+R 16
+DEPOLARIZE1(0.001) 16
+R 17
+DEPOLARIZE1(0.001) 17
+R 18
+DEPOLARIZE1(0.001) 18
+R 19
+DEPOLARIZE1(0.001) 19
+RX 20
+DEPOLARIZE1(0.001) 20
+R 21
+DEPOLARIZE1(0.001) 21
+R 22
+DEPOLARIZE1(0.001) 22
+R 23
+DEPOLARIZE1(0.001) 23
+R 24
+DEPOLARIZE1(0.001) 24
+R 25
+DEPOLARIZE1(0.001) 25
+TICK
+R 26
+DEPOLARIZE1(0.001) 26
+R 27
+DEPOLARIZE1(0.001) 27
+RX 28
+DEPOLARIZE1(0.001) 28
+R 29
+DEPOLARIZE1(0.001) 29
+RX 30
+DEPOLARIZE1(0.001) 30
+R 31
+DEPOLARIZE1(0.001) 31
+RX 32
+DEPOLARIZE1(0.001) 32
+RX 33
+DEPOLARIZE1(0.001) 33
+R 34
+DEPOLARIZE1(0.001) 34
+RX 35
+DEPOLARIZE1(0.001) 35
+R 36
+DEPOLARIZE1(0.001) 36
+RX 37
+DEPOLARIZE1(0.001) 37
+RX 38
+DEPOLARIZE1(0.001) 38
+R 39
+DEPOLARIZE1(0.001) 39
+RX 40
+DEPOLARIZE1(0.001) 40
+R 41
+DEPOLARIZE1(0.001) 41
+RX 42
+DEPOLARIZE1(0.001) 42
+RX 43
+DEPOLARIZE1(0.001) 43
+R 44
+DEPOLARIZE1(0.001) 44
+RX 45
+DEPOLARIZE1(0.001) 45
+R 46
+DEPOLARIZE1(0.001) 46
+RX 47
+DEPOLARIZE1(0.001) 47
+R 48
+DEPOLARIZE1(0.001) 48
+R 49
+DEPOLARIZE1(0.001) 49
+TICK
+CX 28 7 30 9 33 11 35 13 37 15 38 17 40 19 43 21 45 23 47 25 2 26 4 27 8 29 10 31 12 34 14 36 18 39 20 41 22 44 24 46
+DEPOLARIZE2(0.001) 28 7 30 9 33 11 35 13 37 15 38 17 40 19 43 21 45 23 47 25 2 26 4 27 8 29 10 31 12 34 14 36 18 39 20 41 22 44 24 46
+DEPOLARIZE1(0.001) 1 3 5 6 16 32 42 48 49
+TICK
+CX 28 6 30 8 32 10 35 12 37 14 38 16 40 18 42 20 45 22 47 24 3 29 5 31 7 34 9 36 13 39 15 41 17 44 19 46 23 48 25 49
+DEPOLARIZE2(0.001) 28 6 30 8 32 10 35 12 37 14 38 16 40 18 42 20 45 22 47 24 3 29 5 31 7 34 9 36 13 39 15 41 17 44 19 46 23 48 25 49
+DEPOLARIZE1(0.001) 1 2 4 11 21 26 27 33 43
+TICK
+CX 28 2 30 4 33 6 35 8 37 10 38 12 40 14 43 16 45 18 47 20 1 26 3 27 7 29 9 31 11 34 13 36 17 39 19 41 21 44 23 46
+DEPOLARIZE2(0.001) 28 2 30 4 33 6 35 8 37 10 38 12 40 14 43 16 45 18 47 20 1 26 3 27 7 29 9 31 11 34 13 36 17 39 19 41 21 44 23 46
+DEPOLARIZE1(0.001) 5 15 22 24 25 32 42 48 49
+TICK
+CX 28 1 30 3 32 5 35 7 37 9 38 11 40 13 42 15 45 17 47 19 2 29 4 31 6 34 8 36 12 39 14 41 16 44 18 46 22 48 24 49
+DEPOLARIZE2(0.001) 28 1 30 3 32 5 35 7 37 9 38 11 40 13 42 15 45 17 47 19 2 29 4 31 6 34 8 36 12 39 14 41 16 44 18 46 22 48 24 49
+DEPOLARIZE1(0.001) 10 20 21 23 25 26 27 33 43
+TICK
+M(0.0006666666666666666) 26 27
+MX(0.0006666666666666666) 28
+M(0.0006666666666666666) 29
+MX(0.0006666666666666666) 30
+M(0.0006666666666666666) 31
+MX(0.0006666666666666666) 32 33
+M(0.0006666666666666666) 34
+MX(0.0006666666666666666) 35
+M(0.0006666666666666666) 36
+MX(0.0006666666666666666) 37 38
+M(0.0006666666666666666) 39
+MX(0.0006666666666666666) 40
+M(0.0006666666666666666) 41
+MX(0.0006666666666666666) 42 43
+M(0.0006666666666666666) 44
+MX(0.0006666666666666666) 45
+M(0.0006666666666666666) 46
+MX(0.0006666666666666666) 47
+M(0.0006666666666666666) 48 49
+TICK
+DETECTOR(1.0) rec[-31] rec[-22]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-29] rec[-20]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-18]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-28] rec[-17]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-26] rec[-15]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-13]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-8]	# Surface code detector for X-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-32] rec[-24]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-30] rec[-21]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-27] rec[-16]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-25] rec[-11]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-6]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-4]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-2]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-1]	# Surface code detector for Z-check during Inject(P2 => YBasis) (phase 2, round 1)
+
+# SetNoiseStatus(on = false, P2)
+
+# Noise has been turned off for qubits 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49
+
+# Inject(P4 (from P3) => YBasis)
+
+# Noise has been turned off for qubits 50
+RX 50
+T 50
+
+# Noise has been turned on for qubits 50
+TICK
+
+# Noise has been turned off for qubits 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66
+RX 51 52
+R 53 54
+RX 55
+R 56 57 58
+TICK
+R 59
+RX 60
+R 61
+RX 62 63
+R 64
+RX 65
+R 66
+TICK
+CX 60 54 63 56 65 58 51 59 55 61 57 64
+TICK
+CX 60 53 62 55 65 57 52 61 54 64 58 66
+TICK
+CX 60 51 63 53 65 55 50 59 54 61 56 64
+TICK
+CX 60 50 62 52 65 54 51 61 53 64 57 66
+TICK
+M 59
+MX 60
+M 61
+MX 62 63
+M 64
+MX 65
+M 66
+TICK
+DETECTOR(1.0) rec[-5]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 1, round 1)
+DETECTOR(1.0) rec[-3]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 1, round 1)
+DETECTOR(1.0) rec[-1]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 1, round 1)
+R 59
+RX 60
+R 61
+RX 62 63
+R 64
+RX 65
+R 66
+TICK
+CX 60 54 63 56 65 58 51 59 55 61 57 64
+TICK
+CX 60 53 62 55 65 57 52 61 54 64 58 66
+TICK
+CX 60 51 63 53 65 55 50 59 54 61 56 64
+TICK
+CX 60 50 62 52 65 54 51 61 53 64 57 66
+TICK
+M 59
+MX 60
+M 61
+MX 62 63
+M 64
+MX 65
+M 66
+TICK
+DETECTOR(1.0) rec[-16] rec[-8]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-15] rec[-7]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-14] rec[-6]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-13] rec[-5]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-12] rec[-4]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-11] rec[-3]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-10] rec[-2]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 1, round 2)
+DETECTOR(1.0) rec[-9] rec[-1]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 1, round 2)
+
+# Noise has been turned on for qubits 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66
+
+# Noise has been turned off for qubits 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98
+RX 67 68 69 70 71 72
+R 73 74 75 76
+RX 77
+R 78 79 80 81 82
+TICK
+R 59 83
+RX 60
+R 61
+RX 62
+R 84
+RX 85 63
+R 64
+RX 65
+R 86
+RX 87 88
+R 66
+RX 89
+R 90
+RX 91 92
+R 93
+RX 94
+R 95
+RX 96
+R 97 98
+TICK
+CX 60 54 62 69 63 56 65 58 87 72 88 74 89 76 92 78 94 80 96 82 51 59 67 83 55 61 70 84 57 64 71 86 75 66 77 90 79 93 81 95
+TICK
+CX 60 53 62 55 85 70 65 57 87 71 88 73 89 75 91 77 94 79 96 81 52 61 68 84 54 64 69 86 58 66 72 90 74 93 76 95 80 97 82 98
+TICK
+CX 60 51 62 67 63 53 65 55 87 70 88 57 89 71 92 73 94 75 96 77 50 59 52 83 54 61 69 84 56 64 58 86 74 66 76 90 78 93 80 95
+TICK
+CX 60 50 62 52 85 68 65 54 87 69 88 56 89 58 91 72 94 74 96 76 51 61 67 84 53 64 55 86 57 66 71 90 73 93 75 95 79 97 81 98
+TICK
+M 59 83
+MX 60
+M 61
+MX 62
+M 84
+MX 85 63
+M 64
+MX 65
+M 86
+MX 87 88
+M 66
+MX 89
+M 90
+MX 91 92
+M 93
+MX 94
+M 95
+MX 96
+M 97 98
+TICK
+DETECTOR(1.0) rec[-31] rec[-22]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-29] rec[-20]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-18]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-28] rec[-17]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-26] rec[-15]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-13]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-8]	# Surface code detector for X-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-32] rec[-24]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-30] rec[-21]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-27] rec[-16]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-25] rec[-11]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-6]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-4]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-2]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 2, round 1)
+DETECTOR(1.0) rec[-1]	# Surface code detector for Z-check during Inject(P4 => YBasis) (phase 2, round 1)
+
+# Noise has been turned on for qubits 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98
+
+# SetNoiseStatus(on = false, P4)
+
+# Noise has been turned off for qubits 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98
+
+# CX(P2, P4)
+CX 1 50 2 51 3 52 4 67 5 68 6 53 7 54 8 55 9 69 10 70 11 56 12 57 13 58 14 71 15 72 16 73 17 74 18 75 19 76 20 77 21 78 22 79 23 80 24 81 25 82
+TICK
+R 26 27 29 31 34 36 39 41 44 46 48 49 59 83 61 84 64 86 66 90 93 95 97 98
+RX 28 30 32 33 35 37 38 40 42 43 45 47 60 62 85 63 65 87 88 89 91 92 94 96
+TICK
+CX 28 7 30 9 33 11 35 13 37 15 38 17 40 19 43 21 45 23 47 25 2 26 4 27 8 29 10 31 12 34 14 36 18 39 20 41 22 44 24 46 60 54 62 69 63 56 65 58 87 72 88 74 89 76 92 78 94 80 96 82 51 59 67 83 55 61 70 84 57 64 71 86 75 66 77 90 79 93 81 95
+TICK
+CX 28 6 30 8 32 10 35 12 37 14 38 16 40 18 42 20 45 22 47 24 3 29 5 31 7 34 9 36 13 39 15 41 17 44 19 46 23 48 25 49 60 53 62 55 85 70 65 57 87 71 88 73 89 75 91 77 94 79 96 81 52 61 68 84 54 64 69 86 58 66 72 90 74 93 76 95 80 97 82 98
+TICK
+CX 28 2 30 4 33 6 35 8 37 10 38 12 40 14 43 16 45 18 47 20 1 26 3 27 7 29 9 31 11 34 13 36 17 39 19 41 21 44 23 46 60 51 62 67 63 53 65 55 87 70 88 57 89 71 92 73 94 75 96 77 50 59 52 83 54 61 69 84 56 64 58 86 74 66 76 90 78 93 80 95
+TICK
+CX 28 1 30 3 32 5 35 7 37 9 38 11 40 13 42 15 45 17 47 19 2 29 4 31 6 34 8 36 12 39 14 41 16 44 18 46 22 48 24 49 60 50 62 52 85 68 65 54 87 69 88 56 89 58 91 72 94 74 96 76 51 61 67 84 53 64 55 86 57 66 71 90 73 93 75 95 79 97 81 98
+TICK
+M 26 27 29 31 34 36 39 41 44 46 48 49 59 83 61 84 64 86 66 90 93 95 97 98
+MX 28 30 32 33 35 37 38 40 42 43 45 47 60 62 85 63 65 87 88 89 91 92 94 96
+TICK
+DETECTOR(1.0) rec[-112] rec[-48]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-111] rec[-47]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-109] rec[-46]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-107] rec[-45]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-104] rec[-44]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-102] rec[-43]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-99] rec[-42]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-97] rec[-41]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-94] rec[-40]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-92] rec[-39]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-90] rec[-38]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-89] rec[-37]	# Surface code detector for Z-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-24] rec[-110] rec[-70]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-23] rec[-108] rec[-68]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-22] rec[-106] rec[-66]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-21] rec[-105] rec[-65]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-20] rec[-103] rec[-63]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-19] rec[-101] rec[-61]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-18] rec[-100] rec[-60]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-17] rec[-98] rec[-58]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-16] rec[-96] rec[-56]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-15] rec[-95] rec[-55]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-14] rec[-93] rec[-53]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-13] rec[-91] rec[-51]	# Surface code detector for X-check during CNOT(P2, P4) (ctrl)
+DETECTOR(1.0) rec[-70] rec[-12]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-68] rec[-11]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-66] rec[-10]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-65] rec[-9]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-63] rec[-8]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-61] rec[-7]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-60] rec[-6]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-58] rec[-5]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-56] rec[-4]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-55] rec[-3]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-53] rec[-2]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-51] rec[-1]	# Surface code detector for X-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-72] rec[-36] rec[-112]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-71] rec[-35] rec[-111]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-69] rec[-34] rec[-109]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-67] rec[-33] rec[-107]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-64] rec[-32] rec[-104]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-62] rec[-31] rec[-102]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-59] rec[-30] rec[-99]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-57] rec[-29] rec[-97]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-54] rec[-28] rec[-94]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-52] rec[-27] rec[-92]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-50] rec[-26] rec[-90]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+DETECTOR(1.0) rec[-49] rec[-25] rec[-89]	# Surface code detector for Z-check during CNOT(P2, P4) (target)
+
+# Measure(P2 => XBasis, P4 => ZBasis)
+MX 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+M 50 51 52 67 68 53 54 55 69 70 56 57 58 71 72 73 74 75 76 77 78 79 80 81 82
+DETECTOR(1.0) rec[-74] rec[-50] rec[-49] rec[-45] rec[-44]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-73] rec[-48] rec[-47] rec[-43] rec[-42]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-72] rec[-46] rec[-41]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-71] rec[-45] rec[-40]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-70] rec[-44] rec[-43] rec[-39] rec[-38]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-69] rec[-42] rec[-41] rec[-37] rec[-36]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-68] rec[-40] rec[-39] rec[-35] rec[-34]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-67] rec[-38] rec[-37] rec[-33] rec[-32]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-66] rec[-36] rec[-31]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-65] rec[-35] rec[-30]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-64] rec[-34] rec[-33] rec[-29] rec[-28]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-63] rec[-32] rec[-31] rec[-27] rec[-26]	# Surface code detector for X-check during Measure(P2 => XBasis)
+DETECTOR(1.0) rec[-86] rec[-25] rec[-24]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-85] rec[-23] rec[-22]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-84] rec[-24] rec[-23] rec[-19] rec[-18]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-83] rec[-22] rec[-21] rec[-17] rec[-16]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-82] rec[-20] rec[-19] rec[-15] rec[-14]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-81] rec[-18] rec[-17] rec[-13] rec[-12]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-80] rec[-14] rec[-13] rec[-9] rec[-8]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-79] rec[-12] rec[-11] rec[-7] rec[-6]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-78] rec[-10] rec[-9] rec[-5] rec[-4]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-77] rec[-8] rec[-7] rec[-3] rec[-2]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-76] rec[-4] rec[-3]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+DETECTOR(1.0) rec[-75] rec[-2] rec[-1]	# Surface code detector for Z-check during Measure(P4 => ZBasis)
+TICK
+
+# SetPauliStringObservable(is_deterministic = true, P2 => XBasis, P4 => ZBasis)
+OBSERVABLE_INCLUDE(0) rec[-50] rec[-49] rec[-48] rec[-47] rec[-46] rec[-25] rec[-20] rec[-15] rec[-10] rec[-5]

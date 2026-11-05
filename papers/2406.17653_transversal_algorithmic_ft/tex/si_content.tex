@@ -1,0 +1,307 @@
+\input{proof}
+
+\section{Necessity of Restoring Consistency}
+\label{si_sec:consistency}
+In this section, we provide an explicit example of how the usual decoding procedure has a high chance (linear in the physical error rate $p$) of changing the assignment of a logical measurement result, and how the step of restoring consistency addresses this issue.
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{proof_figures/surface_code_ops_X_basis_error.pdf}
+\caption{(a) Logical circuit illustrating how future syndrome information changes the interpretation of logical measurement results with probability linear in the physical error rate. The red dashed line separates the two rounds of decoding, and there is an $O(p)$ chance that the assignments disagree.
+%
+(b) Illustration of the rule for pairing the initial random stabilizer values, where we pair all excitations to the left boundary. Note that unlike the usual decoding problem, all patterns of Z stabilizer values are equally likely, so any pairing rule works.
+%
+(c) Illustration of how an incorrect inference of a single stabilizer (A) will lead to a string of $X$ errors.}
+\label{fig:consistency_example}
+\end{figure}
+
+As shown in Fig.~\ref{fig:consistency_example}(a), we consider two logical qubits, one prepared in $\lket{+}$ and one in $\lket{0}$, followed by a transversal CNOT. Next, we measure the first logical qubit in the $Z$ basis and commit to its measurement result with the existing information, as it may be used for feed-forward operations on other logical qubits. Finally, we measure the second logical qubit in the Z basis, and perform joint decoding across the system. Each logical qubit is a surface code, and for pairing the initially random Z stabilizers when initializing $\lket{+}$, we choose a convention that always pairs to the left boundary, as illustrated Fig.~\ref{fig:consistency_example}(b). Since the initial projection of stabilizers is fully random, any convention here is valid.
+
+We assume the following simplified error model to illustrate that there is an $O(p)$ chance that the two decoding results disagree: each syndrome measurement has error $p$, the final transversal measurement has error $p+\epsilon$, and there are no other errors.
+
+Now, consider a single stabilizer measurement error on the $Z$ plaquette labeled by $A$ in the top logical qubit $\lket{+}$, as illustrated in Fig.~\ref{fig:consistency_example}(c).
+%
+When performing the first round of decoding, in which we only have syndrome information up to the first logical qubit measurement, we will observe an inconsistency between the stabilizer value of $A$ measured in the first round, and that inferred from the transversal logical measurement.
+%
+This has two possible explanations of low weight:
+\begin{enumerate}
+\item The stabilizer $A$ was measured incorrectly during initialization, with probability $p$.
+\item The data qubit $c$ was measured incorrectly during readout, with probability $p+\epsilon$.
+\end{enumerate}
+
+Since the latter event has higher probability, we will choose correction (2). Together with the $X$ string chosen during initialization, this causes a logical $X$ flip on the readout value.
+
+Now consider the second round of decoding, which happens when the second logical qubit is also measured. Upon performing correlated decoding, the additional syndrome information on the bottom patch is consistent with $A$ being measured incorrectly and the data qubit being measured correctly. Therefore, the probability of case (2) above is now updated to $(p+\epsilon)^2<p$, so we choose correction (1). This leads to no logical $X$ flip on the readout value.
+
+Comparing the two cases, we see that the first round of decoding in the presence of partial information resulted in a logical flip, while the second round of decoding, due to its extra syndrome information, did not result in a logical flip. In other words, the logical measurement results differ.
+
+This shows that the probability that the decoding result changes when more syndrome information is available scales linearly with the physical error rate, rather than $p^{(d+1)/2}$, and therefore a direct application of standard procedures does not achieve fault tolerance in the presence of non-FT state prep and feed-forward operations.
+
+Our procedure addresses this issue by using the application of a logical Pauli stabilizer to restore consistency:
+\begin{enumerate}
+\item When decoding the first logical qubit LQ1, our assignment of errors incorrectly applies a logical $X$ flip to LQ1, relative to the value that an oracle with access to the actual errors will choose. However, since the marginal logical outcome was 50/50, the distribution is unchanged by this flip.
+\item When decoding the second logical qubit, we conclude that a logical $X$ flip should not have been applied to LQ1. However, since this is inconsistent with our previous commitment, we apply the logical stabilizer $X_1X_2$, which flips both LQ1 and LQ2. This guarantees that we assign the same result in both steps to LQ1.
+\item Because the marginal distribution of the first step and the conditional distribution in the second step are correct with high probability, and we assign the same result to the same qubits in different steps, the joint logical measurement distribution is correct with high probability.
+\end{enumerate}
+
+
+\section{Example: Repetition Code}
+
+We now consider a simple illustrative example of the fault-tolerance approach.
+%
+For illustration purposes, we will focus on a repetition code example~\cite{haah2024what}, although the lessons readily generalize to the surface code.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{proof_figures/repetition_code_example.pdf}
+\caption{Repetition code example. The bottom logical qubit is prepared via a single round of stabilizer measurements, and then executes a transversal CNOT on the top logical qubit $|\psi\rangle_L$.
+%
+Although the state preparation of the bottom logical qubit is not fault-tolerant in the conventional sense, we are still able to reproduce the logical measurement statistics of an ideal circuit with high probability as the distance $d\rightarrow \infty$.}
+\label{fig:repetition_code_example}
+\end{figure}
+
+Consider two repetition code logical qubits.
+%
+The first is prepared in an unknown logical quantum state $\lket{\psi}$, while the second logical qubit is prepared in a single-shot manner in the $\lket{+}$ state, by preparing all physical qubits in $|+\rangle$ and measuring neighboring $ZZ$ stabilizers once.
+%
+At this stage, the physical state of the second logical qubit is in fact a mixture of product states~\cite{hastings2011topological} if we try to directly fix the stabilizer values back to the code space.
+%
+This is because we have not gained sufficient confidence about the $ZZ$ stabilizer values from the single faulty measurement, and therefore may incorrectly pair up excitations, potentially causing a larger string of $X$ errors.
+%
+Importantly, however, it is not yet necessary to fix the stabilizer values back to the code space, as we have not yet performed a logical measurement.
+%
+The transversal logical measurement later on will help us avoid harmful long $X$ error strings due to its reliable syndrome information.
+
+We then perform a transversal CNOT, with the second logical qubit as control and first logical qubit as target.
+%
+Following this, we measure the first logical qubit in the $Z$ basis.
+%
+With Pauli feedforward, this circuit can teleport the unknown state $\lket{\psi}$ to the second logical qubit.
+
+At this point, we may naively be concerned about the correctness of the first measurement result, since the string of $X$ errors can lead to a probability linear in the physical error rate $p$ of flipping this measurement result.
+%
+However, the situation is a bit more subtle: when defining correctness of a quantum computer execution in a model of classical inputs and outputs, what we really care about is that the ideal measurement distribution is reproduced, rather than a given shot being interpreted in a particular way.
+%
+In the circuit that we are executing here, the logical CNOT propagates the randomness to the first logical qubit, and thus the measurement result will be a 50/50 random number.
+%
+By itself, flipping the logical readout result therefore does not change the measurement distribution of the first logical qubit measurement, and so in a sense, the long $X$ error string does not yet cause a logical error at this stage.
+%
+More broadly, consider any logical measurement where we may be worried about large error strings from some Pauli initialization.
+%
+In order for the error string to have an effect, the initialized Pauli stabilizer, upon propagating through the Clifford circuit, must anti-commute with the logical measurement.
+%
+This, however, implies that the measurement result was random, so a flip of the measurement result does not change the measurement distribution.
+
+Although the measurement distribution for the first logical qubit is unchanged, this does not yet mean the whole circuit is executed correctly: we still need to guarantee that the joint distribution between all logical measurements is the same as the ideal circuit.
+%
+To understand this, we need to provide more specification on our unknown state $\lket{\psi}$.
+%
+In particular, we need to specify whether we have already prepared it in a fault-tolerant fashion, such that the residual noise on it is local stochastic, or whether some of the stabilizers have not yet been fault-tolerantly assigned.
+
+First, consider the former case, where we have already fault-tolerantly prepared the unknown magic state $\lket{\psi}$ through some method.
+%
+For the surface code, this may come from another circuit that involved e.g. magic state distillation.
+%
+The transversal measurement of the first logical qubit reveals information about the product of stabilizers at the same location on the two logical qubits, up to local stochastic errors, since we directly measure the physical qubits and therefore errors can be regarded as data errors rather than syndrome errors.
+%
+Since we know the stabilizers of the first logical qubit with only local stochastic errors, we have also effectively made inferences about the stabilizer initialization values of the second logical qubit.
+
+In the second case where the first logical qubit also has unknown stabilizer initialization values, its preparation must trace back to some Pauli basis input state.
+%
+For example, consider the case where the first logical qubit was also initialized in a single step in $\lket{+}$.
+%
+The transversal logical measurement still reveals information about the product of stabilizers, but now we no longer learn the initialization values of each of the stabilizers.
+%
+Fortunately, this is not a concern, as only the product of stabilizers is relevant to interpreting the logical measurement result.
+%
+Later logical measurements will give us additional information that will allow us to learn the individual values of stabilizers when they are necessary.
+%
+Indeed, we can extend the intuition of anti-commutation between logical measurements and logical Pauli stabilizers discussed above.
+%
+Products of multiple logical measurements that anti-commute with some Pauli initialization are random, and therefore their distribution does not get affected by logical flips.
+%
+Products that commute with all Pauli initializations, on the other hand, are insensitive to the large error string due to the commutation, and therefore are not affected either.
+%
+Because Pauli initializations propagate to Pauli products through the Clifford circuit, and all logical measurements are in the Pauli basis, the two must either commute or anti-commute.
+
+When we now measure the second logical qubit, in our decoding strategy, we will re-decode the existing portion of our circuit.
+%
+This may cause a different assignment of the first logical measurement result.
+%
+However, we can apply an $\overline{X}$ operation at initialization on the second logical qubit, which doesn't change the $\lket{+}$ state.
+%
+Propagating this $\overline{X}$ flip through, this will flip both logical measurement results, flipping the first measurement back to being consistent with the previous measurement, while also flipping the second measurement result.
+%
+We thus interpret the second measurement result as having taken the flipped value, so that we maintain consistency with the first measurement.
+%
+With this method, our theorem shows that the measurement distribution of the noisy circuit can be made arbitrarily close to the ideal circuit, as the code distance is increased.
+
+
+
+\section{Example: Non-Clifford Operations}
+\label{si:non_clifford}
+
+In this section, we discuss the example in Fig.~2 of main text in more detail, where we perform $\lket{T}$ state teleportation and feed-forward operations.
+
+Again, one might be worried about making an incorrect commitment to the measurement result used for teleportation, since a non-trivial feed-forward $S$ gate has been applied (Fig.~2(b) of main text).
+%
+However, as illustrated in Fig.~2(c) and discussed throughout our paper, applying an $\overline{X}$ on the $\lket{+}$ initial state does not change the state.
+%
+Propagating this through, we find that the combination of an $X$ operator on the bottom qubit and a $Y$ on the middle qubit also stabilizes the state.
+%
+Thus, if we infer a different logical measurement result for the bottom qubit later on, we can flip it back to our originally-committed result, as long as we also apply a $Y$ to the middle qubit.
+
+Another possible concern is how a logical measurement result that, due to a magic state input, is no longer deterministic or 50/50 random would be affected by the non-fault-tolerant Pauli basis initialization.
+%
+However, as discussed in the previous section, a logical measurement that can be affected by the large error string originating from a Pauli basis initialization must by necessity, also anti-commute with the initial logical stabilizer, ensuring that it will be a 50/50 random variable.
+%
+This is indeed the case for the circuit illustrated in Fig.~2 of the main text.
+%
+Otherwise, the relevant basis has deterministic stabilizers to begin with on all input logical qubits, and errors can be appropriately detected and corrected.
+
+
+\section{Analysis of Single-Round Lattice Surgery}
+%
+In this section, we analyze single-round lattice surgery in more detail, and explain why unlike the transversal case, it is not fault-tolerant.
+%
+We note that our example is very similar to the one discussed in Appendix D of Ref.~\cite{kim2022fault}.
+%
+Our analysis indicates that the scheme proposed there is not fault-tolerant, although suitable modifications based on transversal algorithmic fault tolerance should be able to recover most of their conclusions.
+
+We analyze a variant of the circuit shown in Fig.~3 of the main text.
+%
+Here, instead of preparing the bottom three qubits in $\lket{0}$, we prepare them in some arbitrary quantum state $\lket{\psi}$, with known stabilizer values up to local stochastic noise.
+%
+This closely mirrors the typical situation in a deep circuit.
+%
+We perform a transversal CNOT from the GHZ state to three qubits initialized in $\lket{\psi}$, and then measure the original GHZ qubits in the $\overline{X}$ basis.
+%
+With a $\overline{Z}$ feed-forward on each qubit, the correlations of the GHZ state are now imprinted onto the bottom 3 qubits.
+%
+However, with state preparation based on lattice surgery, knowledge of the specific GHZ state we prepare relies on obtaining the product of values of $Z$ stabilizers of the larger surface code patch, along the seams between the different logical qubits.
+%
+More specifically, labeling the logical qubits with 1 to 3 from top to bottom, the correlator $\overline{Z}_1\overline{Z}_2$ is initialized to a random value when we perform the initial random projection of the larger surface code.
+%
+In the absence of errors, this correlator will be equal to the product of $Z$ stabilizers along the corresponding boundary.
+%
+However, a single measurement error can cause us to misinterpret $\overline{Z}_1\overline{Z}_2$, and we have no way of obtaining and correcting this error later on.
+%
+Therefore, in the case of single-shot lattice surgery, a single physical error can lead to a logical error.
+%
+Note that we measure the GHZ state in the $\overline{X}$ basis, so that it is not possible to deduce $\overline{Z}_1\overline{Z}_2$ directly through the logical measurements.
+
+We can contrast this with our transversal algorithmic fault tolerance construction.
+%
+In this case, even if later decoding steps assign a different logical measurement result to the ancilla qubit, we can apply a frame logical variable to obtain the same result as our previous commitment.
+%
+The transversal measurement also ensures that no harmful error events can terminate on the measurement time boundary, and therefore there are no time-like errors that flip the logical measurement result, as occurs in the case of lattice surgery.
+%
+Thus, single-shot logical operations are fault-tolerant in the transversal scheme, but not in the case of lattice surgery.
+
+A key distinction between our transversal construction and lattice surgery is thus how the logical information is measured.
+%
+For transversal gates, we always directly access the logical information through transversal measurements, in the process obtaining the relevant information to process and correct errors and interpret logical measurements correctly.
+%
+In contrast, the logical information is contained in noisy syndrome measurements for lattice surgery, thereby necessitating repetition before one can gain confidence about the results.
+
+\section{Details of Numerical Simulations}
+\label{si:numerics}
+
+Here we describe the numerical simulations conducted to evaluate the performance of our decoding strategy. 
+To simulate a logical circuit, we first generate a description of the physical circuit and noise model using Stim~\cite{gidney2021stim}, an open-source Clifford simulation package. 
+From this description, we specify the detectors and logical observables of the circuit.
+Because in practice Stim requires logical observables to be deterministic under noiseless exectution, we label non-deterministic logical observables as \textit{gauge detectors}, whose ideal measurement outcome can be non-deterministic. 
+We then use Stim to Monte-Carlo sample the detectors and logical observables over different physical noise realizations.
+Each sample is decoded using our decoding strategy, with each logical measurement interpreted using only the partial syndrome information up to that point, and a logical error is observed if either a heralded inconsistency or a regular logical error occured.
+The logical error rate for a given circuit is computed from the mean over many Monte-Carlo samples, and the error bars correspond to the Clopper-Pearson confidence interval based on a Beta distribution with a significance level of $0.05$.
+
+
+We specify the physical operations used to generate the rotated surface code logical operations following Definition~\ref{def:surface_code_circuit}.
+In addition to these operations, we also allow physical measurements and initialization in the $X$ basis (rather than using a $H$ operation plus measurement or initialization in the $Z$ basis). 
+We perform a SE round by using a sequence of four physical CNOTs to map each stabilizer value to an ancilla qubit, using the gate ordering described in Ref.~\cite{acharya2023suppressing}.
+Because our main result enables $O(1)$ rounds of SE between transversal CNOTs, we have flexibility in where SE is performed within the circuit.
+In Figs.~3(a-b) and Fig.~4(c-d), for example, we perform one SE round after each transversal CNOT on the logical qubits involved in the gate.
+In contrast, no intermediate SE rounds are performed in Fig.~3(d).
+
+We add noise to each physical operation using a  circuit-level noise model similar to  Ref.~\cite{higgott2023improved}. 
+Concretely, for a chosen physical error rate $p$, we add a depolarizing channel with probability $p$ to each physical operation. We apply a two-qubit depolarizing channel after each entangling gate, a single-qubit depolarizing channel after each single-qubit gate and initialization, and a single-qubit depolarizing channel before each measurement. 
+In contrast to Ref.~\cite{higgott2023improved}, we do not apply noise to idling qubits during measurement and initialization. 
+However, we do apply a single-qubit depolarizing channel to idling qubits during gate operations.
+
+For the $\lket{Y}$ state distillation factory simulations in Fig.~4 of the main text, we perform state injection from the corner qubit at distance $d_0=3$ (Fig.~4b), following the procedure described in Ref.~\cite{lao2022magic}.
+%
+More precisely, we perform two rounds of SE during the first phase of state injection, growing the patch size from one to $d_0$, and post-select on having consistent stabilizer values between the two rounds as well as the correct stabilizer value for the deterministically-initialized stabilizers. Then we perform the single step patch growth from distance $d_0$ to $d_1$.
+%
+In order to probe the performance of the state distillation factory without prohibitive sampling costs, we add extra $Z$ errors with probability $p_{Z}$ on the injected physical qubit to increase the error rate.
+%
+The output state infidelity is probed by performing a noiseless $\overline{S}$ rotation via $S$ gate teleportation with a noiseless-injected ancilla patch and performing an $X$ basis measurement.
+
+For the single-level distillation factory simulations, we set $d_0 = 3$ and vary $d_1$ in the set $\{3, 5, 7, 9\}$. Each data point in Fig. 4(c) represents $10^5$ samples after post-selection during the state injection step. After generating a sample of measurement results that succeeded in all state injection checks, we first partially decode the logical $Z$ basis measurements on all injected qubits and logical $X$ basis measurements on the remaining qubits other than the output qubit to filter out factory failures. Then, we decode all qubits to estimate the output infidelity of the $\lket{Y}$ state.
+%
+For the two-level distillation factory simulation, the input states of the second-level factory are the output states from the first-level factories followed by a single step patch growth from distance $d_1$ to $d_2$. We set $d_0 = 3$, $d_1=5$, and $d_2=9$.
+%
+To decode the two-level factory efficiently in practice, we first sample measurement results for the entire circuit.
+%
+We then decode each level-1 factory and discard runs in which any of the physical state injections or level-1 factories failed, in order to reduce the computational cost.
+%
+For instances where all level-1 factories succeeded, we perform correlated decoding on the entire level-2 factory, with the output $\lket{Y}$ state rotation and measurement, to determine the output and estimate the logical error rate.
+%
+Assuming $p_Z = 10\%$ and $p = 0.1\%$, we obtain $99620000$ raw shots in total, of which $312825$ shots passed all factory checks, and $3$ logical errors were observed.
+
+As the state injection protocol itself is noisy, the infidelity of the injected logical state $p_{\mathrm{inj}}$ is greater than $p_Z$. In order to estimate the infidelity of the input logical $\lket{Y}$ state, we simulate the state injection protocol itself by injecting a $\lket{Y}$ state, followed by a perfect $\overline{S}$ gate and an $X$ basis measurement described above. All input infidelities in Fig.~4(c-d) refer to $p_{\mathrm{inj}}$ instead of $p_Z$.
+
+Finally, our main Theorem assumes that partial decoding is performed using the MLE decoder, which in practice may have a runtime that grows exponentially with the size of the decoding problem.
+However, in practice we find that our decoding strategy still yields a threshold with belief propagation augmented hypergraph union find (belief-HUF), an efficient decoder which runs in polynomial time~\cite{delfosse2022toward, cain2024correlated}. The detailed implementation of belief-HUF for partial decoding is described as follows. We generate the partial decoding hypergraph $\Gamma|_j$ as well as its decomposed version $\Gamma'|_j$ at each partial decoding step $j$. 
+Here, $\Gamma'|_j$, which contains essential hyperedges only, can be generated by setting $\mathtt{decompose\_errors = True}$ in Stim from $\Gamma|_j$~\cite{gidney2021stim}. 
+Given a sampled detector configuration, we first perform $\mathtt{bp\_{rounds}=5}$ rounds of belief propagation to update the posterior probabilities of error mechanisms for $\Gamma|_j$ and transfer these probabilities into $\Gamma'|_j$. Finally, we apply a hypergraph union-find decoder on $\Gamma'|_j$ with the hyperparameter $\mathtt{weight\_exponent} = 0$ to obtain the decoded logical observables~\cite{cain2024correlated}.
+
+Fig.~3a in the main text presents the total logical error rate $P_L$, which is the probability of either a heralded error or a regular logical error occurring, as a function of the physical error rate $p$, using the MLE decoder. In Fig.~\ref{fig:bhuf}(b), we show the corresponding results for belief-HUF as well.
+%
+These simulations imply the presence of a threshold when using the belief-HUF decoder in practice. As the total logical error rates approach their upper bounds at physical error rates near the thresholds, we cannot precisely estimate the threshold by fitting the universal scaling hypothesis. Nevertheless, we can still estimate a lower bound of the belief-HUF and MLE thresholds by identifying the highest physical error rate at which $P_L$ monotonically decreases as $d$ increases, as shown in Fig.~\ref{fig:bhuf}(a).
+%
+We estimate that the threshold for the MLE decoder is $\gtrsim 0.85\%$ and for the belief-HUF decoder is $\gtrsim 0.56\%$, consistent with previous simulation results~\cite{cain2024correlated}.
+%
+We expect future optimizations of the decoder to further improve the performance and bring it closer to the MLE decoder.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\columnwidth]{proof_figures/figure_bhuf.pdf}
+    \caption{Numerical results for decoding repeated Bell pair measurements with the belief-HUF and MLE decoders. (a) The total logical error rate decreases with the code distance at $p=0.56\%$ for belief-HUF and at $0.85\%$ for MLE (top); the same trend at $p=0.1\%$ (bottom). (b) The total logical error rate as a function of the physical error rate for belief-HUF and MLE.}
+    \label{fig:bhuf}
+\end{figure}
+
+\section{Comparison with Existing Approaches to Single-Shot Quantum Error Correction}
+
+In this section, we contrast our approach with existing approaches to single-shot quantum error correction.
+%
+We highlight the crucial distinction between single-shot quantum error correction, which analyzes an error correction gadget individually, and single-shot logical operations, which applies also to logical operations and analyzes fault tolerance as a whole.
+
+The concept of single-shot quantum error correction was originally proposed by Bombin~\cite{bombin2015single}.
+%
+Here, redundancies are present in the syndrome extraction results, allowing one to robustly infer the actual stabilizer values up to small residual errors, in a fashion similar to classical error correction on the syndrome readings.
+%
+These ideas were later extended to certain families of quantum low-density parity-check (qLDPC) codes~\cite{quintavalle2020single,campbell2019theory,fawzi2018constant,gu2024single}, where expansion and the so-called confinement property lead to single-shot QEC for quantum memories.
+%
+In this case, however, there are usually no stabilizer redundancies, and so the randomly initialized stabilizer values cannot be reliably inferred in the conventional FT strategies.
+%
+Here, one only guarantees that the output error after a round of error correction is controlled if both the input error and added noise are controlled, and one may still require $d$ rounds of repetition to learn the initialized values of the stabilizers with sufficient confidence for the individual state preparation gadget.
+
+When considering a full-fledged FTQC, the time cost may be modified, and logical operations are often no longer single-shot.
+%
+As mentioned above, state initialization for LDPC codes using conventional FT constructions may require $d$ rounds of repetition, as the values of randomly initialized stabilizers need to be learned reliably.
+%
+Moreover, the most general methods for performing logical operations on LDPC codes make use of lattice surgery, which also requires $d$ rounds of syndrome extraction to maintain FT~\cite{cohen2022low,xu2024constant}, similar to the lattice surgery example for the surface code we analyzed.
+%
+Therefore, logical gates typically require order of $d$ time cost.
+%
+The same consideration also applies to other constant-space-overhead schemes, such as those based on code concatenation~\cite{yamasaki2024time}.
+%
+Many logical operations can be implemented in 3D codes in a single-shot fashion~\cite{bombin2015single}, or alternatively using 2D codes and the time direction in a just-in-time decoding fashion~\cite{bombin2018,scruby2022numerical}, but the space-time volume scales as $d^3$, effectively corresponding to a space-time trade-off when compared to the conventional surface code scheme and not leading to a clear advantage~\cite{beverland2021cost}.
+%
+As such, while there are multiple approaches with potential promise to produce lower space-time overhead when implementing a generic quantum circuit, to the best of our knowledge, further research is required to show an end-to-end space-time overhead reduction when compared to the standard surface code schemes based on lattice surgery.
+
+In conclusion, single-shot QEC focuses on the fault-tolerance and error-reducing effect of individual error correction gadgets, rather than the complete end-to-end algorithmic context.
+%
+This is in contrast to our FT strategy, which uses all accessible information throughout the algorithm, and analyzes the fault tolerance of logical operations.
+%
+Our scheme thus has much more forgiving requirements on the code properties, and can serve as a drop-in replacement to existing compilation schemes with an immediate space-time overhead reduction.

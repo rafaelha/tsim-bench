@@ -1,0 +1,668 @@
+\begin{thebibliography}{100}
+
+\bibitem{dalzell2023}
+Alexander~M. Dalzell, Sam McArdle, Mario Berta, Przemyslaw Bienias, Chi-Fang
+  Chen, Andr{\'{a}}s Gily{\'{e}}n, Connor~T. Hann, Michael~J. Kastoryano,
+  Emil~T. Khabiboulline, Aleksander Kubica, Grant Salton, Samson Wang, and
+  Fernando G. S.~L. Brand{\~{a}}o.
+\newblock {\em {Quantum algorithms: A survey of applications and end-to-end
+  complexities}}.
+\newblock Cambridge University Press, oct 2025.
+
+\bibitem{beverland2022assessing}
+Michael~E. Beverland, Prakash Murali, Matthias Troyer, Krysta~M. Svore, Torsten
+  Hoefler, Vadym Kliuchnikov, Guang~Hao Low, Mathias Soeken, Aarthi Sundaram,
+  and Alexander Vaschillo.
+\newblock {Assessing requirements to scale to practical quantum advantage}.
+\newblock {\em arXiv preprint arXiv:2211.07629}, 2022.
+
+\bibitem{babbush2021focus}
+Ryan Babbush, Jarrod~R. McClean, Michael Newman, Craig Gidney, Sergio Boixo,
+  and Hartmut Neven.
+\newblock {Focus beyond Quadratic Speedups for Error-Corrected Quantum
+  Advantage}.
+\newblock {\em PRX Quantum}, 2(1):010103, 2021.
+
+\bibitem{gottesman2010introduction}
+Daniel Gottesman.
+\newblock {An Introduction to Quantum Error Correction and Fault-Tolerant
+  Quantum Computation}.
+\newblock {\em arXiv preprint arXiv:0904.2557}, 2010.
+
+\bibitem{gottesman2013fault}
+Daniel Gottesman.
+\newblock {Fault-Tolerant Quantum Computation with Constant Overhead}.
+\newblock {\em Quantum Information and Computation}, 14(15-16):1338--1372,
+  2013.
+
+\bibitem{steane1996error}
+A.~M. Steane.
+\newblock {Error Correcting Codes in Quantum Theory}.
+\newblock {\em Physical Review Letters}, 77(5):793, 1996.
+
+\bibitem{shor1996fault}
+Peter~W. Shor.
+\newblock {Fault-tolerant quantum computation}.
+\newblock In {\em Proceedings of 37th conference on foundations of computer
+  science}, pages 56--65. IEEE, 1996.
+
+\bibitem{kitaev2003fault}
+A.~Yu Kitaev.
+\newblock {Fault-tolerant quantum computation by anyons}.
+\newblock {\em Annals of Physics}, 303(1):2--30, 2003.
+
+\bibitem{bravyi1998quantum}
+Sergey~B Bravyi, Alexei~Yu Kitaev, and L~D Landau.
+\newblock {Quantum codes on a lattice with boundary}.
+\newblock {\em arXiv preprint arXiv:quant-ph/9811052}, 1998.
+
+\bibitem{dennis2002topological}
+Eric Dennis, Alexei Kitaev, Andrew Landahl, and John Preskill.
+\newblock {Topological quantum memory}.
+\newblock {\em Journal of Mathematical Physics}, 43(9):4452--4505, 2002.
+
+\bibitem{horsman2012surface}
+Clare Horsman, Austin~G. Fowler, Simon Devitt, and Rodney~Van Meter.
+\newblock {Surface code quantum computing by lattice surgery}.
+\newblock {\em New Journal of Physics}, 14(12):123011, 2012.
+
+\bibitem{litinski2019game}
+Daniel Litinski.
+\newblock {A Game of Surface Codes: Large-Scale Quantum Computing with Lattice
+  Surgery}.
+\newblock {\em Quantum}, 3:128, 2019.
+
+\bibitem{fowler2012surface}
+Austin~G. Fowler, Matteo Mariantoni, John~M. Martinis, and Andrew~N. Cleland.
+\newblock {Surface codes: Towards practical large-scale quantum computation}.
+\newblock {\em Physical Review A}, 86(3):032324, 2012.
+
+\bibitem{litinski2022active}
+Daniel Litinski and Naomi Nickerson.
+\newblock {Active volume: An architecture for efficient fault-tolerant quantum
+  computers with limited non-local connections}.
+\newblock {\em arXiv preprint arXiv:2211.15465}, 2022.
+
+\bibitem{cain2024correlated}
+Madelyn Cain, Chen Zhao, Hengyun Zhou, Nadine Meister, J.~Pablo~Bonilla
+  Ataides, Arthur Jaffe, Dolev Bluvstein, and Mikhail~D Lukin.
+\newblock {Correlated Decoding of Logical Algorithms with Transversal Gates}.
+\newblock {\em Physical Review Letters}, 133(24):240602, 2024.
+
+\bibitem{gidney2019how}
+Craig Gidney and Martin Eker{\aa}.
+\newblock {How to factor 2048 bit RSA integers in 8 hours using 20 million
+  noisy qubits}.
+\newblock {\em Quantum}, 5:1--31, 2019.
+
+\bibitem{Note1}
+The notation $g(x)=\Theta (f(x))$ indicates that two functions $f(x)$ and
+  $g(x)$ have the same asymptotic scaling with $x$, or more precisely, that
+  there exists some constants $c_1$ and $c_2$ such that $c_1f(x)\leq g(x)\leq
+  c_2f(x)$ for sufficiently large $x$.
+
+\bibitem{hastings2011topological}
+Matthew~B. Hastings.
+\newblock {Topological order at nonzero temperature}.
+\newblock {\em Physical Review Letters}, 107(21):210501, 2011.
+
+\bibitem{raussendorf2005quantum}
+Robert Raussendorf.
+\newblock {Quantum computation via translation-invariant operations on a chain
+  of qubits}.
+\newblock {\em Physical Review A - Atomic, Molecular, and Optical Physics},
+  72(5), 2005.
+
+\bibitem{cohen2022low}
+Lawrence~Z. Cohen, Isaac~H. Kim, Stephen~D. Bartlett, and Benjamin~J. Brown.
+\newblock {Low-overhead fault-tolerant quantum computing using long-range
+  connectivity}.
+\newblock {\em Science Advances}, 8(20), 2022.
+
+\bibitem{xu2024constant}
+Qian Xu, J.~Pablo {Bonilla Ataides}, Christopher~A Pattison, Nithin Raveendran,
+  Dolev Bluvstein, Jonathan Wurtz, Bane Vasi{\'{c}}, Mikhail~D Lukin, Liang
+  Jiang, and Hengyun Zhou.
+\newblock {Constant-overhead fault-tolerant quantum computation with
+  reconfigurable atom arrays}.
+\newblock {\em Nature Physics}, 2024.
+
+\bibitem{yamasaki2024time}
+Hayata Yamasaki and Masato Koashi.
+\newblock {Time-Efficient Constant-Space-Overhead Fault-Tolerant Quantum
+  Computation}.
+\newblock {\em Nature Physics}, 20(2):247--253, 2024.
+
+\bibitem{bravyi2024high}
+Sergey Bravyi, Andrew~W. Cross, Jay~M. Gambetta, Dmitri Maslov, Patrick Rall,
+  and Theodore~J. Yoder.
+\newblock {High-threshold and low-overhead fault-tolerant quantum memory}.
+\newblock {\em Nature}, 627(8005):778--782, 2024.
+
+\bibitem{tremblay2022constant}
+Maxime~A. Tremblay, Nicolas Delfosse, and Michael~E. Beverland.
+\newblock {Constant-Overhead Quantum Error Correction with Thin Planar
+  Connectivity}.
+\newblock {\em Physical Review Letters}, 129(5):050504, 2022.
+
+\bibitem{higgott2024constructions}
+Oscar Higgott and Nikolas~P. Breuckmann.
+\newblock {Constructions and Performance of Hyperbolic and Semi-Hyperbolic
+  Floquet Codes}.
+\newblock {\em PRX Quantum}, 5(4):040327, 2024.
+
+\bibitem{bombin2015single}
+H{\'{e}}ctor Bomb{\'{i}}n.
+\newblock {Single-shot fault-tolerant quantum error correction}.
+\newblock {\em Physical Review X}, 5(3):031043, 2015.
+
+\bibitem{campbell2019theory}
+Earl~T. Campbell.
+\newblock {A theory of single-shot error correction for adversarial noise}.
+\newblock {\em Quantum Science and Technology}, 4(2):025006, 2019.
+
+\bibitem{fawzi2018constant}
+Omar Fawzi, Antoine Grospellier, and Anthony Leverrier.
+\newblock {Constant Overhead Quantum Fault-Tolerance with Quantum Expander
+  Codes}.
+\newblock In {\em 2018 IEEE 59th Annual Symposium on Foundations of Computer
+  Science (FOCS)}, volume 2018-Octob, pages 743--754. IEEE, 2018.
+
+\bibitem{kubica2022single}
+Aleksander Kubica and Michael Vasmer.
+\newblock {Single-shot quantum error correction with the three-dimensional
+  subsystem toric code}.
+\newblock {\em Nature Communications 2022 13:1}, 13(1):1--12, 2022.
+
+\bibitem{gu2024single}
+Shouzhen Gu, Eugene Tang, Libor Caha, Shin~Ho Choe, Zhiyang He, and Aleksander
+  Kubica.
+\newblock {Single-Shot Decoding of Good Quantum LDPC Codes}.
+\newblock {\em Communications in Mathematical Physics}, 405(3), 2024.
+
+\bibitem{beverland2021cost}
+Michael~E. Beverland, Aleksander Kubica, and Krysta~M. Svore.
+\newblock {Cost of Universality: A Comparative Study of the Overhead of State
+  Distillation and Code Switching with Color Codes}.
+\newblock {\em PRX Quantum}, 2(2):020341, 2021.
+
+\bibitem{aharonov1999fault}
+Dorit Aharonov and Michael Ben-Or.
+\newblock {Fault-Tolerant Quantum Computation With Constant Error Rate}.
+\newblock {\em SIAM Journal on Computing}, 38(4):1207--1282, 1999.
+
+\bibitem{delfosse2023spacetime}
+Nicolas Delfosse and Adam Paetznick.
+\newblock {Spacetime codes of Clifford circuits}.
+\newblock {\em arXiv preprint arXiv:2304.05943}, 2023.
+
+\bibitem{gidney2021stim}
+Craig Gidney.
+\newblock {Stim: a fast stabilizer circuit simulator}.
+\newblock {\em Quantum}, 5, 2021.
+
+\bibitem{gottesman2022opportunities}
+Daniel Gottesman.
+\newblock {Opportunities and Challenges in Fault-Tolerant Quantum Computation}.
+\newblock {\em arXiv preprint arXiv:2210.15844}, 2022.
+
+\bibitem{cai2023looped}
+Zhenyu Cai, Adam Siegel, and Simon Benjamin.
+\newblock {Looped Pipelines Enabling Effective 3D Qubit Lattices in a Strictly
+  2D Device}.
+\newblock {\em PRX Quantum}, 4(2):020345, 2023.
+
+\bibitem{duckering2020virtualized}
+Casey Duckering, Jonathan~M. Baker, David~I. Schuster, and Frederic~T. Chong.
+\newblock {Virtualized Logical Qubits: A 2.5D Architecture for Error-Corrected
+  Quantum Computing}.
+\newblock {\em Proceedings of the Annual International Symposium on
+  Microarchitecture, MICRO}, 2020-Octob:173--185, 2020.
+
+\bibitem{calderbank1996good}
+A.~R. Calderbank and Peter~W. Shor.
+\newblock {Good quantum error-correcting codes exist}.
+\newblock {\em Physical Review A}, 54(2):1098, 1996.
+
+\bibitem{bravyi2005universal}
+Sergey Bravyi and Alexei Kitaev.
+\newblock {Universal quantum computation with ideal Clifford gates and noisy
+  ancillas}.
+\newblock {\em Physical Review A}, 71(2):022316, 2005.
+
+\bibitem{postler2022demonstration}
+Lukas Postler, Sascha Heu{\ss}en, Ivan Pogorelov, Manuel Rispler, Thomas
+  Feldker, Michael Meth, Christian~D. Marciniak, Roman Stricker, Martin
+  Ringbauer, Rainer Blatt, Philipp Schindler, Markus M{\"{u}}ller, and Thomas
+  Monz.
+\newblock {Demonstration of fault-tolerant universal quantum gate operations}.
+\newblock {\em Nature}, 605(7911):675--680, 2022.
+
+\bibitem{ryan-anderson2022implementing}
+C.~Ryan-Anderson, N.~C. Brown, M.~S. Allman, B.~Arkin, G.~Asa-Attuah,
+  C.~Baldwin, J.~Berg, J.~G. Bohnet, S.~Braxton, N.~Burdick, J.~P. Campora,
+  A.~Chernoguzov, J.~Esposito, B.~Evans, D.~Francois, J.~P. Gaebler, T.~M.
+  Gatterman, J.~Gerber, K.~Gilmore, D.~Gresh, A.~Hall, A.~Hankin, J.~Hostetter,
+  D.~Lucchetti, K.~Mayer, J.~Myers, B.~Neyenhuis, J.~Santiago, J.~Sedlacek,
+  T.~Skripka, A.~Slattery, R.~P. Stutz, J.~Tait, R.~Tobey, G.~Vittorini,
+  J.~Walker, and D.~Hayes.
+\newblock {Implementing Fault-tolerant Entangling Gates on the Five-qubit Code
+  and the Color Code}.
+\newblock {\em arXiv preprint arXiv:2208.01863}, 2022.
+
+\bibitem{bluvstein2024logical}
+Dolev Bluvstein, Simon~J. Evered, Alexandra~A. Geim, Sophie~H. Li, Hengyun
+  Zhou, Tom Manovitz, Sepehr Ebadi, Madelyn Cain, Marcin Kalinowski, Dominik
+  Hangleiter, J.~Pablo {Bonilla Ataides}, Nishad Maskara, Iris Cong, Xun Gao,
+  Pedro {Sales Rodriguez}, Thomas Karolyshyn, Giulia Semeghini, Michael~J.
+  Gullans, Markus Greiner, Vladan Vuleti{\'{c}}, and Mikhail~D. Lukin.
+\newblock {Logical quantum processor based on reconfigurable atom arrays}.
+\newblock {\em Nature}, 626(7997):58--65, 2024.
+
+\bibitem{eastin2009restrictions}
+Bryan Eastin and Emanuel Knill.
+\newblock {Restrictions on Transversal Encoded Quantum Gate Sets}.
+\newblock {\em Physical Review Letters}, 102(11):110502, 2009.
+
+\bibitem{jochym-oconnor2018disjointness}
+Tomas Jochym-O'Connor, Aleksander Kubica, and Theodore~J. Yoder.
+\newblock {Disjointness of Stabilizer Codes and Limitations on Fault-Tolerant
+  Logical Gates}.
+\newblock {\em Physical Review X}, 8(2):021047, 2018.
+
+\bibitem{SM}
+See Supplemental Material for more details.
+
+\bibitem{li2015magic}
+Ying Li.
+\newblock {A magic state's fidelity can be superior to the operations that
+  created it}.
+\newblock {\em New Journal of Physics}, 17(2):023037, 2015.
+
+\bibitem{lao2022magic}
+Lingling Lao and Ben Criger.
+\newblock {Magic state injection on the rotated surface code}.
+\newblock {\em ACM International Conference Proceeding Series}, pages 113--120,
+  2022.
+
+\bibitem{gidney2023cleaner}
+Craig Gidney.
+\newblock {Cleaner magic states with hook injection}.
+\newblock {\em arXiv preprint arXiv:2302.12292}, 2023.
+
+\bibitem{haah2024what}
+Jeongwan Haah.
+\newblock {What is Your Logical Qubit}.
+\newblock In {\em Simon's Institute Workshop on Advances in Quantum Coding
+  Theory}. Simons Institute for the Theory of Computing, 2024.
+
+\bibitem{cain2025fast}
+Madelyn Cain, Dolev Bluvstein, Chen Zhao, Shouzhen Gu, Nishad Maskara, Marcin
+  Kalinowski, Alexandra~A. Geim, Aleksander Kubica, Mikhail~D. Lukin, and
+  Hengyun Zhou.
+\newblock {Fast correlated decoding of transversal logical algorithms}.
+\newblock {\em arXiv preprint arXiv:2505.13587}, 2025.
+
+\bibitem{serra-peralta2025decoding}
+Marc Serra-Peralta, Mackenzie~H. Shaw, and Barbara~M. Terhal.
+\newblock {Decoding across transversal Clifford gates in the surface code}.
+\newblock {\em arXiv preprint arXiv:2505.13599}, 2025.
+
+\bibitem{kovalev2013fault}
+Alexey~A. Kovalev and Leonid~P. Pryadko.
+\newblock {Fault tolerance of quantum low-density parity check codes with
+  sublinear distance scaling}.
+\newblock {\em Physical Review A - Atomic, Molecular, and Optical Physics},
+  87(2):020304, 2013.
+
+\bibitem{higgott2023improved1}
+Oscar Higgott, Thomas~C. Bohdanowicz, Aleksander Kubica, Steven~T. Flammia, and
+  Earl~T. Campbell.
+\newblock {Improved Decoding of Circuit Noise and Fragile Boundaries of
+  Tailored Surface Codes}.
+\newblock {\em Physical Review X}, 13(3):031007, 2023.
+
+\bibitem{gurobi}
+{Gurobi Optimization, LLC}.
+\newblock {Gurobi Optimizer Reference Manual}, 2024.
+
+\bibitem{Note2}
+Four transversal gates and one SE round require 8 CNOT gates in total, compared
+  to $16d+4$ with $d$ SE rounds.
+
+\bibitem{kim2022fault}
+Isaac~H. Kim, Ye-Hua Liu, Sam Pallister, William Pol, Sam Roberts, and Eunseok
+  Lee.
+\newblock {Fault-tolerant resource estimate for quantum chemical simulations:
+  Case study on Li-ion battery electrolyte molecules}.
+\newblock {\em Physical Review Research}, 4(2):023019, 2022.
+
+\bibitem{fowler2018low}
+Austin~G. Fowler and Craig Gidney.
+\newblock {Low overhead quantum computation using lattice surgery}.
+\newblock {\em arXiv preprint arXiv:1808.06709}, 2018.
+
+\bibitem{turner2025scalable}
+Mark~L. Turner, Earl~T. Campbell, Ophelia Crawford, Neil~I. Gillespie, and Joan
+  Camps.
+\newblock {Scalable decoding protocols for fast transversal logic in the
+  surface code}.
+\newblock {\em arXiv preprint arXiv:2505.23567}, 2025.
+
+\bibitem{fowler2015minimum}
+Austin~G. Fowler.
+\newblock {Minimum weight perfect matching of fault-tolerant topological
+  quantum error correction in average O(1) parallel time}.
+\newblock {\em Quantum Information and Computation}, 15(1\&2):145--158, 2015.
+
+\bibitem{duclos-cianci2010fast}
+Guillaume Duclos-Cianci and David Poulin.
+\newblock {Fast decoders for topological quantum codes}.
+\newblock {\em Physical Review Letters}, 104(5), 2010.
+
+\bibitem{terhal2015quantum}
+Barbara~M. Terhal.
+\newblock {Quantum error correction for quantum memories}.
+\newblock {\em Reviews of Modern Physics}, 87(2):307--346, 2015.
+
+\bibitem{breuckmann2021quantum}
+Nikolas~P. Breuckmann and Jens~Niklas Eberhardt.
+\newblock {Quantum Low-Density Parity-Check Codes}.
+\newblock {\em PRX Quantum}, 2(4), 2021.
+
+\bibitem{tillich2014quantum}
+Jean~Pierre Tillich and Gilles Zemor.
+\newblock {Quantum LDPC codes with positive rate and minimum distance
+  proportional to the square root of the blocklength}.
+\newblock {\em IEEE Transactions on Information Theory}, 60(2):1193--1202,
+  2014.
+
+\bibitem{panteleev2022asymptotically}
+Pavel Panteleev and Gleb Kalachev.
+\newblock {Asymptotically good Quantum and locally testable classical LDPC
+  codes}.
+\newblock {\em Proceedings of the Annual ACM Symposium on Theory of Computing},
+  pages 375--388, 2022.
+
+\bibitem{bombin2015gauge}
+H{\'{e}}ctor Bomb{\'{i}}n.
+\newblock {Gauge color codes: optimal transversal gates and gauge fixing in
+  topological stabilizer codes}.
+\newblock {\em New Journal of Physics}, 17(8):083002, 2015.
+
+\bibitem{kubica2015unfolding}
+Aleksander Kubica, Beni Yoshida, and Fernando Pastawski.
+\newblock {Unfolding the color code}.
+\newblock {\em New Journal of Physics}, 17(8):083026, 2015.
+
+\bibitem{vasmer2019three}
+Michael Vasmer and Dan~E. Browne.
+\newblock {Three-dimensional surface codes: Transversal gates and
+  fault-tolerant architectures}.
+\newblock {\em Physical Review A}, 100(1):012312, 2019.
+
+\bibitem{brown2020fault}
+Benjamin~J. Brown.
+\newblock {A fault-tolerant non-Clifford gate for the surface code in two
+  dimensions}.
+\newblock {\em Science Advances}, 6(21):4929--4951, 2020.
+
+\bibitem{bombin2018transversal}
+Hector Bombin.
+\newblock {Transversal gates and error propagation in 3D topological codes}.
+\newblock {\em arXiv preprint arXiv:1810.09575}, 2018.
+
+\bibitem{zhu2023non}
+Guanyu Zhu, Shehryar Sikander, Elia Portnoy, Andrew~W. Cross, and Benjamin~J.
+  Brown.
+\newblock {Non-Clifford and parallelizable fault-tolerant logical gates on
+  constant and almost-constant rate homological quantum LDPC codes via higher
+  symmetries}.
+\newblock {\em arXiv preprint arXiv:2310.16982}, 2023.
+
+\bibitem{nielsen2010quantum}
+Michael~A. Nielsen and Isaac~L. Chuang.
+\newblock {\em {Quantum Computation and Quantum Information}}.
+\newblock Cambridge University Press, 2010.
+
+\bibitem{pattison2025hierarchical}
+Christopher~A. Pattison, Anirudh Krishna, and John Preskill.
+\newblock {Hierarchical memories: Simulating quantum LDPC codes with local
+  gates}.
+\newblock {\em Quantum}, 9:1728, 2025.
+
+\bibitem{bravyi2020quantum}
+Sergey Bravyi, David Gosset, Robert K{\"{o}}nig, and Marco Tomamichel.
+\newblock {Quantum advantage with noisy shallow circuits}.
+\newblock {\em Nature Physics 2020 16:10}, 16(10):1040--1045, 2020.
+
+\bibitem{moussa2016transversal}
+Jonathan~E. Moussa.
+\newblock {Transversal Clifford gates on folded surface codes}.
+\newblock {\em Physical Review A}, 94(4), 2016.
+
+\bibitem{breuckmann2024fold}
+Nikolas~P. Breuckmann and Simon Burton.
+\newblock {Fold-Transversal Clifford Gates for Quantum Codes}.
+\newblock {\em Quantum}, 8, 2024.
+
+\bibitem{quintavalle2023partitioning}
+Armanda~O. Quintavalle, Paul Webster, and Michael Vasmer.
+\newblock {Partitioning qubits in hypergraph product codes to implement logical
+  gates}.
+\newblock {\em Quantum}, 7:1153, 2023.
+
+\bibitem{bombin2023modular}
+H{\'{e}}ctor Bomb{\'{i}}n, Chris Dawson, Ye-Hua Liu, Naomi Nickerson, Fernando
+  Pastawski, and Sam Roberts.
+\newblock {Modular decoding: parallelizable real-time decoding for quantum
+  computers}.
+\newblock {\em arXiv preprint arXiv:2303.04846}, 2023.
+
+\bibitem{higgott2023improved}
+Oscar Higgott and Nikolas~P. Breuckmann.
+\newblock {Improved Single-Shot Decoding of Higher-Dimensional
+  Hypergraph-Product Codes}.
+\newblock {\em PRX Quantum}, 4(2):020332, 2023.
+
+\bibitem{landahl2011fault}
+Andrew~J. Landahl, Jonas~T. Anderson, and Patrick~R. Rice.
+\newblock {Fault-tolerant quantum computing with color codes}.
+\newblock {\em arXiv preprint arXiv:1108.5738}, 2011.
+
+\bibitem{bravyi2015doubled}
+Sergey Bravyi and Andrew Cross.
+\newblock {Doubled Color Codes}.
+\newblock {\em arXiv preprint arXiv:1509.03239}, 2015.
+
+\bibitem{bacon2014sparse}
+Dave Bacon, Steven~T. Flammia, Aram~W. Harrow, and Jonathan Shi.
+\newblock {Sparse Quantum Codes from Quantum Circuits}.
+\newblock {\em Proceedings of the forty-seventh annual ACM symposium on Theory
+  of Computing}, pages 327--334, 2014.
+
+\bibitem{aliferis2007accuracy}
+Panos Aliferis, Daniel Gottesman, and John Preskill.
+\newblock {Accuracy threshold for postselected quantum computation}.
+\newblock {\em Quantum Information and Computation}, 8(3-4):181--244, 2007.
+
+\bibitem{bravyi2016trading}
+Sergey Bravyi, Graeme Smith, and John~A. Smolin.
+\newblock {Trading classical and quantum computational resources}.
+\newblock {\em Physical Review X}, 6(2):021043, 2016.
+
+\bibitem{yoganathan2018quantum}
+Mithuna Yoganathan, Richard Jozsa, and Sergii Strelchuk.
+\newblock {Quantum advantage of unitary Clifford circuits with magic state
+  inputs}.
+\newblock {\em Proceedings of the Royal Society A: Mathematical, Physical and
+  Engineering Sciences}, 475(2225), 2018.
+
+\bibitem{gidney2018halving}
+Craig Gidney.
+\newblock {Halving the cost of quantum addition}.
+\newblock {\em Quantum}, 2:74, 2018.
+
+\bibitem{cuccaro2004new}
+Steven~A. Cuccaro, Thomas~G. Draper, Samuel~A. Kutin, and David~Petrie Moulton.
+\newblock {A new quantum ripple-carry addition circuit}.
+\newblock {\em arXiv preprint arXiv:quant-ph/0410184}, 2004.
+
+\bibitem{babbush2018encoding}
+Ryan Babbush, Craig Gidney, Dominic~W. Berry, Nathan Wiebe, Jarrod McClean,
+  Alexandru Paler, Austin Fowler, and Hartmut Neven.
+\newblock {Encoding Electronic Spectra in Quantum Circuits with Linear T
+  Complexity}.
+\newblock {\em Physical Review X}, 8(4), 2018.
+
+\bibitem{fowler2012time}
+Austin~G. Fowler.
+\newblock {Time-optimal quantum computation}.
+\newblock {\em arXiv preprint arXiv:1210.4626}, 2012.
+
+\bibitem{knill2004quantum}
+E.~Knill.
+\newblock {Quantum Computing with Very Noisy Devices}.
+\newblock {\em Nature}, 434(7029):39--44, 2004.
+
+\bibitem{gidney2019flexible}
+Craig Gidney and Austin~G. Fowler.
+\newblock {Flexible layout of surface code computations using AutoCCZ states}.
+\newblock {\em arXiv preprint arXiv:1905.08916}, 2019.
+
+\bibitem{bravyi2012magic}
+Sergey Bravyi and Jeongwan Haah.
+\newblock {Magic-state distillation with low overhead}.
+\newblock {\em Physical Review A - Atomic, Molecular, and Optical Physics},
+  86(5):052329, 2012.
+
+\bibitem{acharya2023suppressing}
+Rajeev Acharya, Igor Aleiner, Richard Allen, Trond~I. Andersen, Markus Ansmann,
+  Frank Arute, Kunal Arya, Abraham Asfaw, Juan Atalaya, Ryan Babbush, Dave
+  Bacon, Joseph~C. Bardin, Joao Basso, Andreas Bengtsson, Sergio Boixo, Gina
+  Bortoli, Alexandre Bourassa, Jenna Bovaird, Leon Brill, Michael Broughton,
+  Bob~B. Buckley, David~A. Buell, Tim Burger, Brian Burkett, Nicholas Bushnell,
+  Yu~Chen, Zijun Chen, Ben Chiaro, Josh Cogan, Roberto Collins, Paul Conner,
+  William Courtney, Alexander~L. Crook, Ben Curtin, Dripto~M. Debroy, Alexander
+  {Del Toro Barba}, Sean Demura, Andrew Dunsworth, Daniel Eppens, Catherine
+  Erickson, Lara Faoro, Edward Farhi, Reza Fatemi, Leslie {Flores Burgos},
+  Ebrahim Forati, Austin~G. Fowler, Brooks Foxen, William Giang, Craig Gidney,
+  Dar Gilboa, Marissa Giustina, Alejandro {Grajales Dau}, Jonathan~A. Gross,
+  Steve Habegger, Michael~C. Hamilton, Matthew~P. Harrigan, Sean~D. Harrington,
+  Oscar Higgott, Jeremy Hilton, Markus Hoffmann, Sabrina Hong, Trent Huang,
+  Ashley Huff, William~J. Huggins, Lev~B. Ioffe, Sergei~V. Isakov, Justin
+  Iveland, Evan Jeffrey, Zhang Jiang, Cody Jones, Pavol Juhas, Dvir Kafri,
+  Kostyantyn Kechedzhi, Julian Kelly, Tanuj Khattar, Mostafa Khezri,
+  M{\'{a}}ria Kieferov{\'{a}}, Seon Kim, Alexei Kitaev, Paul~V. Klimov,
+  Andrey~R. Klots, Alexander~N. Korotkov, Fedor Kostritsa, John~Mark
+  Kreikebaum, David Landhuis, Pavel Laptev, Kim~Ming Lau, Lily Laws, Joonho
+  Lee, Kenny Lee, Brian~J. Lester, Alexander Lill, Wayne Liu, Aditya Locharla,
+  Erik Lucero, Fionn~D. Malone, Jeffrey Marshall, Orion Martin, Jarrod~R.
+  McClean, Trevor McCourt, Matt McEwen, Anthony Megrant, Bernardo {Meurer
+  Costa}, Xiao Mi, Kevin~C. Miao, Masoud Mohseni, Shirin Montazeri, Alexis
+  Morvan, Emily Mount, Wojciech Mruczkiewicz, Ofer Naaman, Matthew Neeley,
+  Charles Neill, Ani Nersisyan, Hartmut Neven, Michael Newman, Jiun~How Ng,
+  Anthony Nguyen, Murray Nguyen, Murphy~Yuezhen Niu, Thomas~E. O'Brien, Alex
+  Opremcak, John Platt, Andre Petukhov, Rebecca Potter, Leonid~P. Pryadko,
+  Chris Quintana, Pedram Roushan, Nicholas~C. Rubin, Negar Saei, Daniel Sank,
+  Kannan Sankaragomathi, Kevin~J. Satzinger, Henry~F. Schurkus, Christopher
+  Schuster, Michael~J. Shearn, Aaron Shorter, Vladimir Shvarts, Jindra Skruzny,
+  Vadim Smelyanskiy, W.~Clarke Smith, George Sterling, Doug Strain, Marco
+  Szalay, Alfredo Torres, Guifre Vidal, Benjamin Villalonga, Catherine
+  {Vollgraff Heidweiller}, Theodore White, Cheng Xing, Z.~Jamie Yao, Ping Yeh,
+  Juhwan Yoo, Grayson Young, Adam Zalcman, Yaxing Zhang, and Ningfeng Zhu.
+\newblock {Suppressing quantum errors by scaling a surface code logical qubit}.
+\newblock {\em Nature}, 614(7949):676--681, 2023.
+
+\bibitem{wootton2012high}
+James~R. Wootton and Daniel Loss.
+\newblock {High threshold error correction for the surface code}.
+\newblock {\em Physical Review Letters}, 109(16), 2012.
+
+\bibitem{fowler2013optimal}
+Austin~G. Fowler.
+\newblock {Optimal complexity correction of correlated errors in the surface
+  code}.
+\newblock {\em arXiv preprint arXiv:1310.0863}, 2013.
+
+\bibitem{delfosse2022toward}
+Nicolas Delfosse, Vivien Londe, and Michael~E. Beverland.
+\newblock {Toward a Union-Find Decoder for Quantum LDPC Codes}.
+\newblock {\em IEEE Transactions on Information Theory}, 68(5):3187--3199,
+  2022.
+
+\bibitem{panteleev2019degenerate}
+Pavel Panteleev and Gleb Kalachev.
+\newblock {Degenerate Quantum LDPC Codes With Good Finite Length Performance}.
+\newblock {\em Quantum}, 5:585, 2019.
+
+\bibitem{wu2024hypergraph}
+Yue Wu, Lin Zhong, and Shruti Puri.
+\newblock {Hypergraph Minimum-Weight Parity Factor Decoder for QEC}.
+\newblock In {\em Bulletin of the American Physical Society}. American Physical
+  Society, 2024.
+
+\bibitem{bombin2013gauge}
+H{\'{e}}ctor Bomb{\'{i}}n.
+\newblock {Gauge Color Codes: Optimal Transversal Gates and Gauge Fixing in
+  Topological Stabilizer Codes}.
+\newblock {\em New Journal of Physics}, 17(8), 2013.
+
+\bibitem{liyanage2023scalable}
+Namitha Liyanage, Yue Wu, Alexander Deters, and Lin Zhong.
+\newblock {Scalable Quantum Error Correction for Surface Codes using FPGA}.
+\newblock {\em Proceedings - 31st IEEE International Symposium on
+  Field-Programmable Custom Computing Machines, FCCM 2023}, page 217, 2023.
+
+\bibitem{richardson2008modern}
+Tom Richardson and Ruediger Urbanke.
+\newblock {\em {Modern coding theory}}.
+\newblock Cambridge University Press, 2008.
+
+\bibitem{wu2023fusion}
+Yue Wu and Lin Zhong.
+\newblock {Fusion Blossom: Fast MWPM Decoders for QEC}.
+\newblock In {\em Proceedings - 2023 IEEE International Conference on Quantum
+  Computing and Engineering, QCE 2023}, volume~1, pages 928--938, 2023.
+
+\bibitem{grospellier2019}
+Antoine Grospellier.
+\newblock {\em {Constant time decoding of quantum expander codes and
+  application to fault-tolerant quantum computation}}.
+\newblock PhD thesis, Sorbonne Universit{\'e}, 2019.
+
+\bibitem{tan2023scalable}
+Xinyu Tan, Fang Zhang, Rui Chao, Yaoyun Shi, and Jianxin Chen.
+\newblock {Scalable Surface-Code Decoders with Parallelization in Time}.
+\newblock {\em PRX Quantum}, 4(4):040344, 2023.
+
+\bibitem{skoric2023parallel}
+Luka Skoric, Dan~E. Browne, Kenton~M. Barnes, Neil~I. Gillespie, and Earl~T.
+  Campbell.
+\newblock {Parallel window decoding enables scalable fault tolerant quantum
+  computation}.
+\newblock {\em Nature Communications}, 14(1):7040, 2023.
+
+\bibitem{bluvstein2022quantum}
+Dolev Bluvstein, Harry Levine, Giulia Semeghini, Tout~T. Wang, Sepehr Ebadi,
+  Marcin Kalinowski, Alexander Keesling, Nishad Maskara, Hannes Pichler, Markus
+  Greiner, Vladan Vuleti{\'{c}}, and Mikhail~D. Lukin.
+\newblock {A quantum processor based on coherent transport of entangled atom
+  arrays}.
+\newblock {\em Nature 2022 604:7906}, 604(7906):451--456, 2022.
+
+\bibitem{pino2021demonstration}
+J.~M. Pino, J.~M. Dreiling, C.~Figgatt, J.~P. Gaebler, S.~A. Moses, M.~S.
+  Allman, C.~H. Baldwin, M.~Foss-Feig, D.~Hayes, K.~Mayer, C.~Ryan-Anderson,
+  and B.~Neyenhuis.
+\newblock {Demonstration of the trapped-ion quantum CCD computer architecture}.
+\newblock {\em Nature 2021 592:7853}, 592(7853):209--213, 2021.
+
+\bibitem{bartolucci2021switch}
+Sara Bartolucci, Patrick Birchall, Damien Bonneau, Hugo Cable, Mercedes
+  Gimeno-Segovia, Konrad Kieling, Naomi Nickerson, Terry Rudolph, and Chris
+  Sparrow.
+\newblock {Switch networks for photonic fusion-based quantum computing}.
+\newblock {\em arXiv preprint arXiv:2109.13760}, 2021.
+
+\end{thebibliography}

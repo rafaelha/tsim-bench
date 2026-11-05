@@ -1,0 +1,480 @@
+\documentclass[prl,twocolumn,superscriptaddress,secnumarabic,balancelastpage,amsmath,amssymb]{revtex4-2}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{braket}
+\usepackage{gensymb}
+%\usepackage[braket, qm]{qcircuit}
+\usepackage{graphicx}
+\usepackage{makecell}
+\renewcommand{\cellalign}{cl}
+\renewcommand{\theadalign}{cl}
+\usepackage{verbatim}
+\usepackage{graphicx}% Include figure files
+\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=black,filecolor=black]{hyperref}
+\usepackage{physics}
+\usepackage{ulem}
+
+\newcommand{\e}{\mathfrak{e}}
+\newcommand{\lket}[1]{|{\overline{#1}}\rangle}
+\newcommand{\ooverline}[1]{\overline{\overline{#1}}}
+\newcommand{\outline}[1]{\textbf{#1}}
+\newcommand{\tcal}[1]{\tilde{\mathcal{#1}}}
+
+\newcommand{\cut}[1]{\sout{#1}} % Use this line to show deleted text as struck out
+\newcommand{\hzc}[1]{{\color[rgb]{0.0,0.8,0.0}[HZ: #1]}} % Harry's comments in green
+\newcommand{\hz}[1]{{\color[rgb]{0.0,0.8,0.0}#1}}
+\newcommand{\hzcut}[1]{{\color[rgb]{0.0,0.8,0.0}\cut{#1}}}
+\newcommand{\ak}[1]
+{{\color[rgb]{0.5,0,1}[AK: #1]}}
+\newcommand{\mc}[1]
+{{\color[rgb]{.196, .667, .498}[MC: #1]}}
+\newcommand{\cz}[1]{{\color[rgb]{0.0, 0.5, 0.8}#1}}
+% \newcommand{\hzc}[1]{}
+% \newcommand{\ak}[1]{}
+% \newcommand{\mc}[1]{}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{lemma}[thm]{Lemma}
+
+
+\begin{document}
+
+\title{Low-Overhead Transversal Fault Tolerance for Universal Quantum Computation}
+
+\author{Hengyun Zhou}
+\thanks{These authors contributed equally}
+\email{hyzhou@quera.com}
+\affiliation{QuEra Computing Inc., 1284 Soldiers Field Road, Boston, MA, 02135, US}
+\affiliation{Department of Physics, Harvard University, Cambridge, Massachusetts 02138, USA}
+
+\author{Chen Zhao}
+\thanks{These authors contributed equally}
+\affiliation{QuEra Computing Inc., 1284 Soldiers Field Road, Boston, MA, 02135, US}
+
+\author{Madelyn Cain}
+\affiliation{Department of Physics, Harvard University, Cambridge, Massachusetts 02138, USA}
+
+\author{Dolev Bluvstein}
+\affiliation{Department of Physics, Harvard University, Cambridge, Massachusetts 02138, USA}
+
+\author{Nishad Maskara}
+\affiliation{Department of Physics, Harvard University, Cambridge, Massachusetts 02138, USA}
+
+\author{Casey Duckering}
+\affiliation{QuEra Computing Inc., 1284 Soldiers Field Road, Boston, MA, 02135, US}
+
+\author{Hong-Ye Hu}
+\affiliation{Department of Physics, Harvard University, Cambridge, Massachusetts 02138, USA}
+
+\author{Sheng-Tao Wang}
+\affiliation{QuEra Computing Inc., 1284 Soldiers Field Road, Boston, MA, 02135, US}
+
+\author{Aleksander Kubica}
+\affiliation{AWS Center for Quantum Computing, Pasadena, California 91125, USA}
+\affiliation{California Institute of Technology, Pasadena, California 91125, USA}
+\affiliation{Department of Applied Physics, Yale University, New Haven, Connecticut 06511, USA}
+
+\author{Mikhail D. Lukin}
+\email{lukin@physics.harvard.edu}
+\affiliation{Department of Physics, Harvard University, Cambridge, Massachusetts 02138, USA}
+
+
+\begin{abstract}
+Fast, reliable logical operations are essential for realizing useful quantum computers~\cite{dalzell2023,beverland2022assessing,babbush2021focus}.
+%
+By redundantly encoding logical qubits into many physical qubits and using syndrome measurements to detect and correct errors, one can achieve low logical error rates.
+%
+However, for many practical quantum error correcting (QEC) codes such as the surface code, due to syndrome measurement errors, standard constructions require multiple extraction rounds---on the order of the code distance $d$---for fault-tolerant computation, particularly considering fault-tolerant state preparation~\cite{gottesman2010introduction,gottesman2013fault,steane1996error,shor1996fault,kitaev2003fault,bravyi1998quantum, dennis2002topological,horsman2012surface,litinski2019game,fowler2012surface,litinski2022active}. 
+%
+Here, we show that logical operations can be performed fault-tolerantly with only a constant number of extraction rounds for a broad class of QEC codes, including the surface code with magic state inputs and feed-forward, to achieve ``transversal algorithmic fault tolerance".
+%
+Through the combination of transversal operations~\cite{shor1996fault} and novel strategies for correlated decoding~\cite{cain2024correlated}, despite only having access to partial syndrome information, we prove that the deviation from the ideal logical measurement distribution can be made exponentially small in the distance, even if the instantaneous quantum state cannot be made close to a logical codeword due to measurement errors.
+%
+We supplement this proof with circuit-level simulations in a range of relevant settings, demonstrating the fault tolerance and competitive performance of our approach.
+%
+Our work sheds new light on the theory of quantum fault tolerance and has the potential to reduce the space-time cost of practical fault-tolerant quantum computation by over an order of magnitude.
+\end{abstract}
+\maketitle
+
+%\outline{Introduction}
+
+Quantum computers have the potential to solve certain computational problems much faster than their classical counterparts~\cite{dalzell2023,gidney2019how}.
+%
+Since most known applications require quantum computers with extremely low error rates, quantum error correction (QEC) and strategies for fault-tolerant quantum computing (FTQC) are necessary.
+%
+These methods encode logical quantum information into a QEC code involving many physical qubits, such that the lowest weight logical error has weight equal to the code distance $d$ and is therefore unlikely.
+
+Performing large-scale computation, however, comes with significant overhead~\cite{gidney2019how,beverland2022assessing}.
+%
+By performing syndrome extraction (SE), one can reveal error information and use a classical decoder to correct physical errors in software and interpret logical measurement results.
+%
+However, in the presence of noisy syndrome measurements~\cite{gottesman2010introduction,gottesman2013fault,steane1996error,shor1996fault,dennis2002topological}, one typically requires a number of SE rounds that scales linearly in $d$, i.e., $\Theta(d)$~\footnote{The notation $g(x)=\Theta(f(x))$ indicates that two functions $f(x)$ and $g(x)$ have the same asymptotic scaling with $x$, or more precisely, that there exists some constants $c_1$ and $c_2$ such that $c_1f(x)\leq g(x)\leq c_2f(x)$ for sufficiently large $x$.} (see Fig.~\ref{fig:fig1}(a)).
+%
+This is the case, for example, for the celebrated surface code~\cite{kitaev2003fault,bravyi1998quantum,dennis2002topological}, one of the leading candidates for practical FTQC due to its simple 2D layout and competitive error thresholds.
+%
+Here, even the most basic task of fault-tolerantly preparing a logical $\lket{0}$ state requires $\Theta(d)$ SE rounds~\cite{hastings2011topological},
+reducing the logical clock speed by a factor proportional to the code distance (typically 10\,--100~\cite{gidney2019how,litinski2022active}).
+%
+Alternative methods for FT state preparation exist~\cite{raussendorf2005quantum}, but incur a space-time trade-off and do not reduce the space-time volume.
+%
+The same considerations also apply to state preparation and logical operations in many quantum low-density parity-check (QLDPC) codes~\cite{cohen2022low,xu2024constant}.
+%
+While there have been various efforts at addressing this challenge~\cite{gottesman2013fault,yamasaki2024time}, these alternative approaches introduce higher hardware complexity~\cite{bravyi2024high,tremblay2022constant,xu2024constant,higgott2024constructions} or necessitate certain properties of the underlying codes, such as the single shot QEC property~\cite{bombin2015single,campbell2019theory,fawzi2018constant,kubica2022single,gu2024single,beverland2021cost}.
+
+\begin{figure}
+\centering
+\includegraphics{proof_figures/figure_1_v5.pdf}
+\caption{\textbf{Transversal algorithmic fault tolerance.}
+%
+(a)~Conventional FT analysis separately examines each gadget (red boxes) in the circuit and ensures they are individually FT~\cite{gottesman2010introduction,shor1996fault,aharonov1999fault}.
+%
+This typically requires $\Theta(d)$ syndrome extraction (SE) rounds to achieve FT.
+%
+(b)~Transversal algorithmic FT directly uses all accessible syndrome information up to a logical measurement (blue box), and guarantees FT of the logical measurement result, even if the gadgets are not individually FT and if future syndrome information is not yet accessible (partial decoding).
+%
+We realize this through transversal operations, and only require a single SE round per logical operation.
+}
+\label{fig:fig1}
+\end{figure}
+
+We introduce and develop an approach to FTQC that we refer to as ``transversal algorithmic fault tolerance", and show that it can lead to a substantial reduction in space-time cost for universal quantum computation.
+%
+The key idea is to consider the fault tolerance of the algorithm as a whole (Fig.~\ref{fig:fig1}(b))~\cite{delfosse2023spacetime,gidney2021stim,gottesman2022opportunities}, allowing us to produce the correct \textit{classical logical measurement output} with confidence in the presence of feed-forward operations, even though the intermediate \textit{quantum state} is far from the ideal logical state.
+%
+Contrary to the common assumption that fault-tolerant Pauli state preparation lower bounds the time cost of logical circuits by $d$~\cite{dennis2002topological,beverland2021cost,cai2023looped,duckering2020virtualized}, unless additional space-time trade-offs are made~\cite{raussendorf2005quantum}, we show that for any Calderbank-Shor-Steane (CSS) QLDPC code~\cite{steane1996error,calderbank1996good}, all transversal Clifford operations (including logical Pauli state preparation) can be performed with only constant time overhead per operation, provided that decoding can be implemented efficiently.
+%
+We verify these results through a combination of proofs and circuit-level numerical simulations of our protocol, including a simulation of state distillation factories~\cite{bravyi2005universal,fowler2012surface}, finding little change in error threshold compared to the standard surface code memory.
+%
+Specializing to the surface code, our results reduce the number of SE rounds from $\Theta(d)$ to $\Theta(1)$,
+%
+representing a direct reduction in the overall space-time overhead when classical decoding is sufficiently fast.
+%
+This is particularly relevant for neutral atoms and trapped ions, where transversal gates have been natively implemented~\cite{postler2022demonstration,ryan-anderson2022implementing,bluvstein2024logical}, and the operation timescales provide sufficient time to perform the more complex decoding problems.
+
+\section*{Transversal Algorithmic Fault Tolerance}
+
+\begin{figure*}
+\centering
+\includegraphics{proof_figures/figure_2.pdf}
+\caption{\textbf{Illustration of fault tolerance strategy.}
+%
+(a) Illustration of the measurement distribution remaining invariant under the application of Pauli initialization errors.
+%
+(b) Logical quantum circuit with measurement and feed-forward.
+%
+All logical operations are transversal and interleaved with a single SE round, instead of $d$ SE rounds.
+%
+We must decode and commit mid-circuit to a measurement result for the top qubit, despite lacking complete syndrome information on the remaining qubits (partial decoding).
+%
+(c) With the measurement result of the top qubit, a feed-forward operation is applied and the circuit continues execution.
+%
+Upon reaching a new logical measurement, decoding is performed again on the whole circuit.
+%
+The new decoding round may assign a different result to the top qubit, causing an inconsistency in feed-forward operations.
+%
+(d) To restore consistency and reliably interpret the logical measurement results given past measurements, we apply a $\overline{Z}$ operator on the $\lket{0}$ initial state, which acts trivially on $\lket{0}$, but changes the interpreted logical measurement results to be consistent with before.
+%
+This also leads to a re-interpretation of the new logical measurement result.
+%
+Inset: Illustration of a single syndrome measurement error in the surface code, which causes a Pauli initialization error between distinct decoding rounds.
+}
+\label{fig:fig2}
+\end{figure*}
+
+We focus on logical circuits comprised of Clifford operations and magic state inputs, where logical Clifford operations are transversal, i.e. implemented via depth-one quantum circuits~\cite{eastin2009restrictions,jochym-oconnor2018disjointness}.
+%
+This is interleaved with SE rounds using ancilla qubits, which reveal error information on the data qubits and enable error correction.
+%
+In addition to transversal gates~\cite{shor1996fault}, we refer to preparation of data qubits in $|0\rangle$ followed by one SE round as transversal state preparation, and $Z$ basis measurement of all data qubits as transversal measurement.
+%
+To achieve universality, we allow teleporting in low-noise magic states with feed-forward operations based on past measurement results, and use the same Clifford operations above to prepare high quality magic states via magic state distillation~\cite{bravyi2005universal}.
+%
+We make use of CSS QLDPC codes, where each data or ancilla qubit interacts with a constant number of other qubits, thereby limiting error propagation, and each stabilizer generator consists of all $X$ or all $Z$ operators~\cite{calderbank1996good,steane1996error}.
+%
+Within this setting, our key result can be formulated as the following theorem:
+
+\textbf{Theorem 1 (informal): Exponential error suppression for transversal Clifford operations with a \textit{constant} number of SE rounds per operation.}
+%
+\textit{For a transversal Clifford circuit with low-noise magic state inputs and feed-forward operations, that can be implemented with a given CSS QLDPC code family $\mathcal{Q}_d$ of growing code distance $d$, there exists a nonzero threshold $p_\mathrm{th}$, such that if the physical error rate $p<p_\mathrm{th}$ under the basic model of fault tolerance~\cite{gottesman2013fault}, then our protocol can perform logical operations with only a single SE round per operation, while suppressing the total logical error rate as $P_L=\exp(-\Theta(d))$.}
+
+The formal theorem statement and the corresponding proof can be found in Supplementary Materials~\cite{SM}.
+%
+Following the model in Ref.~\cite{gottesman2013fault}, our proof assumes the most likely error (MLE) decoder and fast classical computation.
+%
+While this is not efficient for general hypergraph decoding problems, our simulations show that a threshold still exists for heuristic polynomial time decoders~\cite{SM}.
+%
+Fast decoders are an important area of future research, and we outline possible approaches towards this for practically-relevant circuits in the Methods section.
+%
+We consider the local stochastic noise model, where we apply depolarizing errors on each data qubit every SE round and errors on each SE measurement, with a probability that decays exponentially in the weight of the total error event.
+%
+Finally, we assume that all code patches are identical.
+%
+While this theorem assumes low-noise magic state inputs, we conjecture that for the surface code, where methods for state injection are well-developed~\cite{li2015magic,lao2022magic,gidney2023cleaner}, the same approach can be applied to certain magic state distillation procedures~\cite{bravyi2005universal} to reduce the space-time cost by a factor of $\Theta(d)$.
+
+To understand why this result may be surprising, let us first consider the most basic task of fault-tolerantly preparing the logical $\lket{0}$ state in the surface code.
+%
+The standard procedure prepares all data qubits in $\ket{0}$, followed by $d$ SE rounds and Pauli corrections.
+%
+This allows one to gain confidence about $X$ stabilizer values, which were initially 50/50 random.
+
+If one performs only a single SE round, as our approach prescribes, then a single measurement error on the randomly-initialized $X$ stabilizers can lead to a long, erroneous chain of $Z$ corrections (inset of Fig.~\ref{fig:fig2}(d)), bringing us far from the desired logical state.
+%
+Indeed, with only $O(1)$ SE rounds and applying corrections, the resulting state is a mixture of product states and not close to any logical codeword~\cite{hastings2011topological}.
+%
+With this unreliable state preparation, we may be concerned about incorrect logical measurements and feed-forward gates~\cite{haah2024what}, which are crucial for achieving universality via magic state teleportation.
+%
+Indeed, as we numerically demonstrate in Fig.~\ref{fig:fig3}(b) and show with an explicit example in SI, new syndrome information as the circuit continues execution has a high chance of changing our assignment of a logical measurement result (Fig.~\ref{fig:fig2}(b,c)), seemingly leading to an inconsistent Clifford feed-forward operation  (Fig.~\ref{fig:fig2}(c)).
+%
+For this reason, prior work analyzing circuits with transversal gates assumed that at least $d$ SE rounds separated Pauli state initialization and measurements or out-going qubits~\cite{beverland2021cost,cai2023looped,duckering2020virtualized}.
+%
+As we discuss in Methods, Pauli state initialization is used in many important algorithmic subroutines, and the $d$ SE rounds therefore lead to a substantial cost.
+%
+Our approach overcomes this lower bound by instead considering the algorithm as a whole and exploiting the structure of initialization errors to fix these apparent inconsistencies in software.
+
+The result of a quantum computation is fully characterized by its classical logical measurement distribution $P(z_j,z_{j-1},...,z_1)$.
+%
+Our crucial observation is that errors which do not change this distribution, such as the initialization errors described above, do not affect the output (Fig.~\ref{fig:fig2}(a)), even if they cause the intermediate quantum state to be far from an ideal logical state.
+
+The core reason for this is that universal quantum computation is realized here by an adaptive Clifford circuit on Pauli and magic state inputs.
+%
+As the computation proceeds, Clifford feedforward gates are applied, such that the circuit executed so far is a fixed transversal Clifford circuit.
+%
+A Clifford circuit maps Paulis to Paulis, thereby mapping both Pauli initialization errors and logical Pauli stabilizers identically to other Paulis (Fig.~\ref{fig:fig2}(d)).
+%
+For each new measurement, if there is a product of measurements involving the new one that commutes with all Pauli initialization errors, then these initialization errors will not affect the product, and we can reliably and consistently infer the new measurement outcome~\cite{cain2025fast,serra-peralta2025decoding}.
+%
+If no such product exists, a Pauli error that anti-commutes with a measurement can flip its result, naively causing a logical flip.
+%
+However, the distribution is unchanged, because the anti-commutation of the measurement and corresponding logical stabilizer guarantees the result to already be 50/50 random.
+%
+At an intuitive level, the reason this always works is because an $\bar{X}$ error does not do anything on a $\lket{+}$ state.
+
+
+We now provide additional elaboration of this result and show how it is concretely implemented.
+%
+We consider the joint measurement distribution of the first $j$ logical measurements (Fig.~\ref{fig:fig2}(c)):
+\begin{align}
+P(z_j,z_{j-1},...)=P(z_j|z_{j-1},z_{j-2},...)\cdot P(z_{j-1},z_{j-2},...),
+\label{eq:conditional_distribution}
+\end{align}
+where $P(z_j|z_{j-1},z_{j-2},...)$ is the probability of the $j$th measurement, conditioned on previous measurement results $P(z_{j-1},z_{j-2},...)$ (Fig.~\ref{fig:fig2}(b)).
+%
+To ensure that this follows the ideal distribution, we need to guarantee two things with high confidence.
+%
+First, we must ensure that our assignment of previous measurement results $z_{j-1},\cdots,z_1$ remain unchanged, so that we maintain consistency with the feed-forward we applied (Fig.~\ref{fig:fig2}(c)).
+%
+Second, we must ensure that the conditional probability $P(z_j|z_{j-1},z_{j-2},...)$ follows the ideal conditional distribution.
+
+By considering the algorithm as a whole and leveraging the deterministic propagation of errors through transversal Clifford circuits, one can use the surrounding syndrome history to correct for noisy measurements (Fig.~\ref{fig:fig1}(b))~\cite{cain2024correlated}.
+%
+Because the resulting decoding hypergraph (characterizing how errors triggers syndrome checks) has bounded degree, the number of connected error clusters with size $s=\Theta(d)$ is bounded~\cite{gottesman2013fault,kovalev2013fault}, limiting the probability of a logical error caused by errors that do not intersect with any state initialization.
+%
+However, we still need to account for error clusters that reach a state initialization.
+
+More specifically, upon decoding with new syndrome information, there is a non-negligible chance that we change our assignment of the logical measurement result (green curves in Fig.~\ref{fig:fig3}(b)), seemingly leading to an inconsistent feed-forward (Fig.~\ref{fig:fig2}(c)).
+%
+Crucially, however, the logical errors that lead to these inconsistencies are structured: since magic state inputs are prepared with low-noise, they do not lead to such inconsistencies.
+%
+Therefore, the inconsistencies always correspond to a logical Pauli $X$/$Z$ operator acting on the $\lket{+}$/$\lket{0}$ initial state.
+%
+Propagating this Pauli initialization error through the executed Clifford circuit results in a Pauli product.
+
+There are two possibilities for how this error affects a logical measurement (Fig.~\ref{fig:fig2}(d)).
+%
+First, if the measurement basis commutes with the resulting Pauli error (green), then it is unaffected and the result will be correct.
+%
+Second, if the measurement basis anti-commutes with the resulting Pauli error (red), then the result will be flipped by the error.
+%
+However, because correlated decoding ensures the correlations between current and prior measurements are correct, there is always a logical stabilizer associated with the $\lket{+}$/$\lket{0}$ initial state, which flips the logical measurements identically as the initialization error.
+%
+Applying this logical stabilizer when interpreting the logical measurement allows us to restore consistency with our previously-committed result (Fig.~\ref{fig:fig2}(d)).
+%
+This process can be efficiently determined by solving a linear system of equations~\cite{SM}.
+%
+Failure to restore consistency requires an error cluster of size $d$ that is not connected to any initialization~\cite{SM}, which has a probability exponentially small in $d$.
+%
+The above arguments show that both conditions for Eq.~(\ref{eq:conditional_distribution}) to reproduce the ideal distribution are satisfied with exponentially-vanishing failure probability, proving Thm.~1 (see SI~\cite{SM} for further details).
+
+Specializing to the surface code and utilizing the full transversal Clifford gate set accessible to the surface code (Methods), an immediate corollary of our main theorem is a threshold result for performing constant time logical operations with an arbitrary transversal Clifford circuit, when classical decoding is sufficiently fast.
+%
+This result supports universal quantum computing when we allow magic state inputs prepared with sufficiently low noise.
+
+Preparing high quality magic state inputs, in turn, can be performed simply with the same Clifford operations and easy-to-prepare non-fault-tolerant magic states~\cite{li2015magic,lao2022magic,gidney2023cleaner}, a procedure known as magic state distillation~\cite{bravyi2005universal}.
+%
+It will be interesting to extend our analysis to magic state distillation, where the ability to remove $d$ SE rounds from Pauli state initialization will be crucial to achieve the full savings~\cite{duckering2020virtualized,beverland2021cost,cai2023looped}.
+%
+The distillation factory and main computation can then be combined by applying our
+decoding approach to the joint system.
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{proof_figures/figure_3_v5.pdf}
+\caption{\textbf{Numerical verification of fault tolerance.}
+%
+(a)~Simulation of circuit with repeated $\overline{ZZ}$ measurement (inset), where we commit mid-circuit to each measurement result of the logical ancilla using only the syndrome information up to that point.
+%
+The total logical error rate as a function of circuit-level physical error rate $p$, for varying code distance $d$, shows clear threshold behavior.
+%
+(b)~Probability of inconsistent assignments of logical measurement results with and without the second step of our decoding strategy, as a function of code distance and for different physical error rates, for the same circuit as (a).
+%
+Only with both steps do we observe exponential suppression of the logical error rate.
+%
+(c)~Comparison of two different methods for logical state preparation between three rotated surface codes and subsequent teleportation, for fixed circuit noise $p=0.3\%$.
+%
+We use transversal gates (left) and lattice surgery (right), in both cases with only a single SE round.
+%
+(d)~With transversal gates, the error rate decreases exponentially with the code distance.
+%
+With a single round of lattice surgery, the error rate instead increases linearly with code distance, as a single stabilizer measurement error affects the logical $\overline{ZZ}$ measurement result.}
+\label{fig:fig3}
+\end{figure}
+
+\section*{Competitive Numerical Performance}
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{proof_figures/figure_4.pdf}
+\caption{\textbf{$\lket{S}$ state distillation factory.}
+%
+(a)~Illustration of a $\lket{S}$ state distillation factory based on the [[7,1,3]] Steane code, consisting of state initialization, layers of transversal CNOTs, followed by a teleported $\overline{S}$ gate.
+%
+Each operation involves only a single SE round.
+%
+Two of the CNOTs in the first layer act trivially and can be omitted.
+%
+(b)~The $\lket{S}$ resource state is prepared via state injection at the first level, and via the first-level factory for the second level.
+%
+(c) 1-level factory output state infidelity as a function of input state infidelity, for fixed circuit noise $p=0.1\%$ and varying levels of artificially injected $Z$ errors.
+%
+The ideal curve is calculated assuming the gate operations in the factory are perfect.
+%
+(d) Performance for one and two rounds of distillation, showing good agreement with the expected scaling.
+}
+\label{fig:fig4}
+\end{figure}
+
+We now turn to circuit-level simulations of our protocol to numerically evaluate its performance~\cite{gidney2021stim}, and contrast it with existing methods.
+%
+We consider various test cases of our approach that also serve as key subroutines in large-scale algorithms.
+
+We first consider a simple circuit with intermediate logical measurements (inset of Fig.~\ref{fig:fig3}(a)) to evaluate the threshold and logical performance under partial syndrome information and without fault-tolerant state preparation.
+%
+In this example, two logical qubits are transversally initialized in $\lket{+}$, and an ancilla logical qubit is used to measure the $\overline{Z}\overline{Z}$ correlation a total of eight times, before the two logical qubits are transversally measured in the $\overline{Z}$ basis.
+%
+While individual logical measurement results are random, a correct realization of this circuit should yield the same result for $\overline{Z}\overline{Z}$ each time, despite only using syndrome information accessible up to that point.
+%
+We use the rotated surface code, a circuit-level depolarizing noise model~\cite{higgott2023improved1,cain2024correlated}, a MLE decoder based on integer programming which is not efficient in general~\cite{gurobi,cain2024correlated}, and employ the two-step process described above (see SI~\cite{SM}).
+
+Figure~\ref{fig:fig3}(a-b) show the results of numerical simulations. 
+%
+We find that the total logical error rate shows characteristic threshold behavior, with an estimated threshold $\gtrsim 0.85\%$.
+%
+This is close to the circuit-noise memory threshold, which can be understood from the fact that an SE round involves four times as many CNOT layers as a transversal CNOT, and therefore dominates the effective error rate.
+%
+The number of SE rounds can be further optimized.
+For example, in Ref.~\cite{cain2024correlated}, performing one SE round every four gate layers minimized the space-time cost per CNOT, suggesting that the practical improvement may be $\gtrsim 2d$ in some regimes~\footnote{Four transversal gates and one SE round require 8 CNOT gates in total, compared to $16d+4$ with $d$ SE rounds.}.
+%
+In Fig.~\ref{fig:fig3}(b), we further compare the scaling of heralded failure rates in the presence and absence of the second step of our decoding procedure that restores consistency, as a function of code distance $d$.
+%
+Here, the heralded failure rate is the probability that distinct rounds of decoding assign different values to the same logical measurement.
+%
+We find that this additional step is necessary to achieve exponential suppression with the code distance in our setting where the logical Pauli states are prepared with only a single SE round.
+
+We now contrast our approach with lattice surgery in a single SE round setting~\cite{horsman2012surface,litinski2019game,kim2022fault,fowler2018low}.
+%
+We consider the logical circuit in Fig.~\ref{fig:fig3}(c), where a GHZ state preparation circuit is followed by teleportation of the GHZ state to another set of logical qubits, and then measurement in the $\overline{Z}$ basis~\cite{SM}.
+%
+Using transversal gates with only a single SE round during $\lket{+}$ and $\lket{0}$ state preparation, and decoding each logical measurement with only accessible information at that stage, we find that the logical error rate decreases exponentially with the code distance, consistent with our FT analysis.
+%
+In contrast, state preparation based on a single round of lattice surgery~\cite{kim2022fault}, which involves performing syndrome extraction with a larger code patch and then splitting it into three individual logical qubits, does not yield improved logical error rate as the code distance increases, as a single error can lead to incorrect inference of the $\overline{Z}\overline{Z}$ correlation of the GHZ state (SI).
+%
+Unlike transversal measurements, logical information here is contained in noisy stabilizer products, which require repetition to reliably infer.
+
+Next, we simulate a state distillation factory, which involves the use of noisy state injection and is a key algorithmic subroutine for improving the quality of resource states.
+%
+We focus on distillation of the $\lket{S}=\overline{S}\lket{+}$ state using the [[7,1,3]] Steane code (Fig.~\ref{fig:fig4}(a)),
+which can be efficiently simulated classically and allows the easy implementation of $\overline{S}$ gates in the surface code. 
+%
+Since this circuit has a similar structure to the practically relevant $\lket{T}$ magic state distillation factories (Extended Data Fig.~\ref{fig:t_factory}), and the state injection procedure is agnostic to the particular state that is injected, we expect the results to readily generalize to $\lket{T}$ magic state factories. 
+%
+We fix the error rate of the circuit to $p=0.1\%$, and vary the input infidelity $P_{\mathrm{in}}$ in Fig.~\ref{fig:fig4}(c).
+%
+We post-select on all $X$ logical stabilizers of the Steane code being correct to achieve cubic suppression of logical error rates (Methods).
+%
+Examining the output $\lket{S}$ of a one-level factory, we find that as the code distance is increased, the output logical error rate $P_{\mathrm{out}}$ approaches the fidelity expected for ideal Clifford logical gates in the factory $P_{\mathrm{out}}=7P_{\mathrm{in}}^3+O(P_{\mathrm{in}}^4)$ (see Methods for the full expression), across the explored fidelity regime.
+
+Finally, we simulate the logical error rate for a two-level $\lket{S}$ state distillation factory, involving a total of 113 logical qubits, where the output $\lket{S}$ states of a $d_1=5$ factory is fed into a second factory with $d_2=9$, with the distance chosen such that the logical error is dominated by the input state infidelity $P_{\mathrm{in}}=10\%$.
+%
+As shown in Fig.~\ref{fig:fig4}(d), the logical error rates at each level of the distillation procedure are consistent with that expected based on the ideal factory formula.
+%
+We note that when performing the multi-stage distillation procedure at larger code distances, additional SE rounds may be needed to account for correlated logical errors arising from newly-initialized stabilizers in later stages (SI).
+
+\section*{Discussion and Outlook}
+Transversal operations and correlated decoding were recently found to be highly effective in experiments with reconfigurable  
+neutral atom arrays~\cite{bluvstein2024logical}.
+%
+The principles of transversal algorithmic fault-tolerance described here are the core underlying mechanisms of these observations, such as correlated decoding of a logical Bell state~\cite{bluvstein2024logical}.
+%
+While recent work has provided strong evidence that this time cost reduction is possible for circuits consisting purely of Clifford gates and Pauli basis inputs~\cite{cain2024correlated}, up to now it has generally been believed that this conclusion does not hold when performing universal quantum computation~\cite{beverland2021cost,cai2023looped,duckering2020virtualized}, which crucially relies on the use of magic states and feed-forward operations.
+%
+The present work not only demonstrates that this time cost reduction is broadly applicable to universal quantum computing, but also provides a theoretical foundation for it through mathematical fault tolerance proofs.
+
+Although our analysis focused on the use of an MLE decoder, which is inefficient in general, our numerical simulations suggest that algorithms with polynomial runtime can still achieve a competitive threshold~\cite{SM}. 
+%
+The development of improved, parallel correlated decoders and designing compilations that keep the decoding volume well-controlled is an important area of future research (see Methods for discussion).
+%
+Indeed, recent analysis~\cite{cain2025fast,serra-peralta2025decoding,turner2025scalable} shows that surface code transversal algorithms can be decoded using a fast matching decoder, without substantial increase in complexity compared to conventional decoding of individual logical qubits.
+%
+Taking into account the decoding time overhead, asymptotically, we may eventually need to insert more SE rounds (e.g. $\Theta(\log d)$ rounds for certain fast decoders~\cite{fowler2015minimum,duclos-cianci2010fast}) to simplify decoding or wait for decoding completion~\cite{terhal2015quantum}, as is also needed for FT protocols that rely on single-shot quantum error correction~\cite{bombin2015single}.
+%
+In light of recent experimental advances
+~\cite{bluvstein2024logical}, a full compilation and evaluation of the space-time savings in parallel reconfigurable architectures such as neutral atom arrays is an important next step.
+%
+Finally, it will be interesting to investigate how these results can be combined with recent progress toward constant-space-overhead quantum computation~\cite{gottesman2013fault,breuckmann2021quantum,tillich2014quantum,panteleev2022asymptotically,tremblay2022constant,xu2024constant,fawzi2018constant,gu2024single} or generalized to transversal non-Clifford gates~\cite{bombin2015gauge,beverland2021cost,kubica2015unfolding,vasmer2019three,brown2020fault,bombin2018transversal,zhu2023non}, in order to further reduce the space-time volume of large-scale quantum computation.
+
+\noindent\textbf{Acknowledgements: }
+We acknowledge helpful discussions with G.~Baranes, P.~Bonilla, E.~Campbell, S.~Evered, S.~Geim, L.~Jiang, M.~Kalinowski, A.~Krishna, S.~Li, D.~Litinski, T.~Manovitz, Y.~Wu, and Q.~Xu.
+%
+We would particularly like to thank C.~Pattison for early discussions and suggesting the simulation of the $\lket{S}$ state distillation factory, and J.~Haah for stimulating discussions and deep insights.
+%
+We would also like to thank M.~Beverland, K.~Brown, U.~Vazirani and the reviewers for suggestions on presentation.
+%
+We acknowledge financial support from IARPA and the Army Research Office, under the Entangled Logical Qubits program (Cooperative Agreement Number W911NF-23-2-0219), the DARPA ONISQ program (W911NF2010021), the DARPA IMPAQT program (HR0011-23-3-0012), the DARPA MeasQuIT program (HR0011-24-9-0359), the Center for Ultracold Atoms (a NSF Physics Frontiers Center, PHY-1734011), the National Science Foundation (grant number PHY-2012023 and grant number CCF-2313084), the Army Research Office MURI (grant number W911NF-20-1-0082), DOE/LBNL (grant number DE-AC02-05CH11231), the Wellcome Leap Quantum for Bio program.
+%
+M.C. acknowledges support from Department of Energy Computational Science Graduate Fellowship under award number DE-SC0020347. 
+%
+D.B. acknowledges support from the NSF Graduate Research Fellowship Program (grant DGE1745303) and The Fannie and John Hertz Foundation.
+%
+This research was developed with funding from the Defense Advanced Research Projects Agency (DARPA). 
+%
+The views, opinions, and/or findings expressed are those of the author(s) and should not be interpreted as representing the official views or policies of the Department of Defense or the U.S. Government.
+
+\noindent\textbf{Author Contributions: }
+H.Z. formulated the decoding strategy and developed an initial proof sketch through discussions with C.Z., M.C., D.B., C.D., S.-T.W., A.K., and M.D.L..
+%
+C.Z., M.C., H.Z., and H.H. performed numerical simulations.
+%
+H.Z., A.K., C.Z., M.C., N.M., and C.D. proved the fault tolerance of the scheme.
+%
+All authors contributed to writing the manuscript.
+
+\noindent\textbf{Data Availability: }
+The data that supports the findings of this study are available at \href{https://zenodo.org/records/16552626}{https://zenodo.org/records/16552626}.
+
+\noindent\textbf{Correspondence and requests for materials} should be addressed to H.Z. and M.D.L.\\
+
+\bibliography{main}
+\bibliographystyle{unsrt}
+%\bibliographystyle{apsrev4-2}
+
+\clearpage
+\input{methods}
+
+%\newpage
+%\input{si_content}
+\end{document}
