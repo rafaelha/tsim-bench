@@ -9,7 +9,7 @@ k_max ≤ 11; larger circuits show – there. [`SUMMARY.md`](SUMMARY.md) has the
 Clifft's numbers added.
 
 <!-- benchmark-table:begin -->
-| circuit | k_max | CPU&nbsp;(single-core) | RTX&nbsp;5090 | M4&nbsp;Pro |
+| circuit | k_max | CPU&nbsp;(single-core) | RTX&nbsp;5090 | M4&nbsp;Pro&nbsp;(GPU/Metal) |
 |---|---|---|---|---|
 | **[2302.12292](https://arxiv.org/abs/2302.12292)** Gidney (2023), *Cleaner magic states with hook injection* | | | | |
 | [`hook_inject_T_d15_pd5_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2302.12292_hook_injection/stim/hook_inject_T_d15_pd5_p0.001.stim) | 1 | 1.51&nbsp;M | 122&nbsp;M&nbsp;(81x) | unsupported |
@@ -86,15 +86,15 @@ Clifft's numbers added.
 | [`star_d=7`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.18294_transversal_star/stim/star_d=7.stim) | 2 | 9.02&nbsp;M | 817&nbsp;M&nbsp;(91x) | 281&nbsp;M&nbsp;(31x) |
 | [`star_d=9`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.18294_transversal_star/stim/star_d=9.stim) | 2 | 4.99&nbsp;M | 419&nbsp;M&nbsp;(84x) | 149&nbsp;M&nbsp;(30x) |
 | **[2510.07269](https://arxiv.org/abs/2510.07269)** Li et al. (2025), *Transversal dimension jump for product qLDPC codes* | | | | |
-| [`blp_27_3_3`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/blp_27_3_3.stim) | 26 | – | – | – |
+| [`blp_27_3_3`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/blp_27_3_3.stim) | 26 | 35.1&nbsp;s/shot | – | – |
 | [`toric_375_3_5`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/toric_375_3_5.stim) | 186* | – | – | – |
 | [`toric_81_3_3`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/toric_81_3_3.stim) | 63* | – | – | – |
-| [`tricycle_12_3_2`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_12_3_2.stim) | 16 | – | – | – |
-| [`tricycle_15_3_2`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_15_3_2.stim) | 16 | – | – | – |
-| [`tricycle_18_3_2`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_18_3_2.stim) | 20 | – | – | – |
-| [`tricycle_21_3_3`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_21_3_3.stim) | 23 | – | – | – |
-| [`tricycle_24_3_2`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_24_3_2.stim) | 20 | – | – | – |
-| [`tricycle_27_3_3`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_27_3_3.stim) | 24 | – | – | – |
+| [`tricycle_12_3_2`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_12_3_2.stim) | 16 | 451 | – | – |
+| [`tricycle_15_3_2`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_15_3_2.stim) | 16 | 195 | – | – |
+| [`tricycle_18_3_2`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_18_3_2.stim) | 20 | 10.4 | – | – |
+| [`tricycle_21_3_3`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_21_3_3.stim) | 23 | 4.11&nbsp;s/shot | – | – |
+| [`tricycle_24_3_2`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_24_3_2.stim) | 20 | 3.19 | – | – |
+| [`tricycle_27_3_3`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_27_3_3.stim) | 24 | 11.5&nbsp;s/shot | – | – |
 | [`tricycle_6_3_2`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_6_3_2.stim) | 9 | 2.3&nbsp;M | 138&nbsp;M&nbsp;(60x) | 13.4&nbsp;M&nbsp;(5.8x) |
 | [`tricycle_9_3_2`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_9_3_2.stim) | 11 | 116&nbsp;k | 19.1&nbsp;M&nbsp;(165x) | 443&nbsp;k&nbsp;(3.8x) |
 | **[2510.24615](https://arxiv.org/abs/2510.24615)** Hirano et al. (2025), *Efficient magic state cultivation with lattice surgery* | | | | |
@@ -182,7 +182,7 @@ Clifft's numbers added.
 | [`stability_d3_X_t20_alpha0.5_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha0.5_p0.001.stim) | 3 | 373&nbsp;k | 1.5&nbsp;B&nbsp;(4032x) | 104&nbsp;M&nbsp;(278x) |
 | [`stability_d3_X_t20_alpha1.0_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha1.0_p0.001.stim) | 3 | 200&nbsp;k | 974&nbsp;M&nbsp;(4880x) | 81.5&nbsp;M&nbsp;(409x) |
 | **[2610.06811](https://arxiv.org/abs/2610.06811)** Cercelescu et al. (2026), *Polynomial-time simulation of non-Clifford quantum error correction (Merlin)* | | | | |
-| [`code_switching_bt27_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/code_switching_bt27_p0.001.stim) | 26 | – | – | – |
+| [`code_switching_bt27_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/code_switching_bt27_p0.001.stim) | 26 | 41&nbsp;s/shot | – | – |
 | [`code_switching_bt81_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/code_switching_bt81_p0.001.stim) | 63* | – | – | – |
 | [`cultivation_d3_t`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/cultivation_d3_t.stim) | 4 | 29.4&nbsp;M | 13.4&nbsp;B&nbsp;(458x) | 1.3&nbsp;B&nbsp;(44x) |
 | [`cultivation_d5_t`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/cultivation_d5_t.stim) | 6 | 1.23&nbsp;M | 1.4&nbsp;B&nbsp;(1140x) | 164&nbsp;M&nbsp;(134x) |
@@ -239,8 +239,9 @@ Clifft's numbers added.
   rate because they share memory bandwidth, so all CPU numbers are from serial runs.
 - **RTX 5090:** the CUDA draft, [PR #219](https://github.com/QuEraComputing/tsim/pull/219) (`a2af975f`).
 - **M4 Pro:** the Metal prototype (branch `metal-statevector-executor`, `3c01b549`), on a 20-core GPU with 48 GB of memory.
-- **Which circuits run where:** the CPU columns skip circuits with k_max above 15, and the GPUs skip those above 11 (the most their
-  executors support). Skipped cells show –.
+- **Which circuits run where:** the GPUs only run circuits with k_max up to 11, the most their executors support. The CPU column goes
+  up to 15, and up to 26 for the tricycle factories (2510.07269) and Merlin's code switching. At k_max = 26 one shot takes 35–41 s on
+  one core. Skipped cells show –.
 
 Everything is produced by [`tools/benchmark.py`](tools/benchmark.py) (`uv run python tools/benchmark.py all`), and the raw numbers are
 in [`results/benchmark.json`](results/benchmark.json).

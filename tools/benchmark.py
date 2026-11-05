@@ -72,7 +72,7 @@ PLATFORM_ENVS = {"tsim-cpu": "linux", "tsim-gpu": "linux", "tsim-sparse": "linux
 BUILD_LABEL = {"tsim-sparse": "Tsim PR #270 (96b86e8b)"}
 TSIM_ENV = "tsim-cpu"  # set by --tsim-env
 CPU_MAX_K, GPU_MAX_K = 15, 11
-TIMEOUT = {"kmax": 1800, "cpu": 1200, "gpu": 900, "metal": 900, "clifft_cpu": 3600}
+TIMEOUT = {"kmax": 1800, "cpu": 3600, "gpu": 900, "metal": 900, "clifft_cpu": 3600}
 # Memory: every worker runs in its own systemd scope with a hard MemoryMax (no swap), so a worker that
 # blows up is killed alone instead of exhausting the machine (60 GB). Parallel workers share
 # MEMORY_BUDGET_GB; circuits whose file is at least LARGE_BYTES run afterwards, one at a time, with
@@ -131,11 +131,11 @@ def run_worker(mode, path, core=None, extra=(), memory_gb=MEMORY_BUDGET_GB):
     return json.loads(lines[-1])
 
 
-def run_step(mode, jobs, only_errors=False, only=None, sims=("tsim", "clifft")):
+def run_step(mode, jobs, only_errors=False, only=None, sims=("tsim", "clifft"), max_k=None):
     results = load()
     paths = [p for p in circuits() if not only or only in p]
     if mode in ("cpu", "gpu", "metal", "clifft_cpu"):
-        limit = GPU_MAX_K if mode in ("gpu", "metal") else CPU_MAX_K
+        limit = GPU_MAX_K if mode in ("gpu", "metal") else (max_k or CPU_MAX_K)
         simulator = "clifft" if mode == "clifft_cpu" else "tsim"
         todo = []
         for p in paths:
@@ -209,6 +209,8 @@ def rate(r):
         return failure(r["error"])
     x = r["shots_per_s"]
     mark = "‡" if r.get("build") else ""
+    if x < 1:  # wide circuits: seconds per shot reads better than a fraction of a shot
+        return f"{1 / x:.3g}&nbsp;s/shot{mark}"
     for unit, scale in (("B", 1e9), ("M", 1e6), ("k", 1e3)):
         if x >= scale:
             return f"{x / scale:.3g}&nbsp;{unit}{mark}"  # no line break between number and unit
@@ -276,7 +278,7 @@ def paper_meta(folder):
 def table():
     results = load()
     lines = [
-        "| circuit | k_max | CPU&nbsp;(single-core) | RTX&nbsp;5090 | M4&nbsp;Pro |",
+        "| circuit | k_max | CPU&nbsp;(single-core) | RTX&nbsp;5090 | M4&nbsp;Pro&nbsp;(GPU/Metal) |",
         "|---|---|---|---|---|",
     ]
     by_folder = {}
@@ -307,6 +309,8 @@ def main():
     parser.add_argument("--jobs", type=int, default=8)
     parser.add_argument("--tsim-env", default="tsim-cpu", choices=["tsim-cpu", "tsim-sparse"],
                         help="environment for Tsim k_max and CPU throughput (default: Tsim 1.0.0)")
+    parser.add_argument("--max-k", type=int, default=None,
+                        help="cpu/clifft: run circuits up to this k_max (default 15)")
     parser.add_argument("--sims", default="tsim,clifft", help="kmax: which simulators to measure")
     parser.add_argument("--only", default=None, help="restrict to circuits whose path contains this substring")
     parser.add_argument("--only-errors", action="store_true", help="run only circuits without a result for this step, or whose last result was an error")
@@ -321,7 +325,7 @@ def main():
             table()
         else:
             run_step("clifft_cpu" if step == "clifft" else step, args.jobs, args.only_errors, args.only,
-                     tuple(args.sims.split(",")))
+                     tuple(args.sims.split(",")), args.max_k)
 
 
 if __name__ == "__main__":

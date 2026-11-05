@@ -86,9 +86,14 @@ def throughput(text, mode, target, max_bytes):
         return time.perf_counter() - t
 
     t0 = time.perf_counter()
-    call(1024)  # warm-up (JIT / NVRTC)
+    call(1)  # warm-up (JIT / NVRTC)
+    one = call(1)
+    if one < target / 1024:  # a fast circuit: warm up the batched path as before
+        call(1024)
+        n = 1024
+    else:  # a wide circuit (seconds per shot): start from the shots that fill the target
+        n = max(1, int(target / one))
     warmup_s = time.perf_counter() - t0
-    n = 1024
     while True:
         elapsed = call(n)
         if elapsed >= target or n >= cap:
