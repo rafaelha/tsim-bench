@@ -3,7 +3,7 @@
  "point": "yield_gauging_d9_p1e-04",
  "spec_key": "3755417fa28591fd",
  "circuit": "yield_gauging_d9_p1e-04",
- "circuit_sha256": "5aac910411386f06515f2468dc66860d304cc9a948f1c1a3a2a2b0553d494672",
+ "circuit_sha256": "52416434cfef9f6e8c9c35ff10b104c17a768df362cb9b21dde7181d41119f40",
  "tsim": {
   "version": "0.1.5",
   "commit": "a2af975fbcc2d41dda3b4104caba415b87f36a91"
@@ -20,29 +20,29 @@
   {
    "seed": 3556902519,
    "shots": 100000000,
-   "kept": 12015143,
-   "errors": 12015143,
+   "kept": 17700908,
+   "errors": 17700908,
    "obs_ones": [
-    12015143
+    17700908
    ],
-   "seconds": 0.325,
-   "compile_seconds": 3.07,
+   "seconds": 0.326,
+   "compile_seconds": 2.51,
    "backend": "CudaShotSampler",
    "gpu": "NVIDIA GeForce RTX 5090",
    "host": "rafaelha-B850-EAGLE-WIFI6E",
-   "started": "2026-11-05T11:29:37",
-   "finished": "2026-11-05T11:29:38",
+   "started": "2026-11-05T13:51:30",
+   "finished": "2026-11-05T13:51:30",
    "stop_reason": "max_shots"
   }
  ],
  "totals": {
   "shots": 100000000,
-  "kept": 12015143,
-  "errors": 12015143,
-  "seconds": 0.325,
-  "compile_seconds": 3.07,
+  "kept": 17700908,
+  "errors": 17700908,
+  "seconds": 0.326,
+  "compile_seconds": 2.51,
   "obs_ones": [
-   12015143
+   17700908
   ]
  }
 }

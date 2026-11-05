@@ -349,5 +349,7 @@ def checks(results):
             for p, y in zip(pj["err_list"], pj[str(d)]["yield"]):
                 r = results.get(yname(proto, d, p))
                 if r:
-                    rows.append(common.check_row(f"{proto} d={d} p={p:.0e} success (pickle)", "clifford", dict(value=y), r["totals"], quantity="acceptance"))
+                    # The pickled yields are multiples of 1e-6, i.e. 1e6 shots per point: binomial sigma.
+                    rows.append(common.check_row(f"{proto} d={d} p={p:.0e} success (pickle)", "clifford",
+                                                 dict(value=y, sigma=(y * (1 - y) / 1e6) ** .5), r["totals"], quantity="acceptance"))
     return [x for x in rows if x]

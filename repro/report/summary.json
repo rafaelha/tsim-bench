@@ -1,8 +1,8 @@
 {
  "gidney_cultivation": {
-  "seconds": 1726.724,
-  "compile": 16.28,
-  "shots": 7507275807140,
+  "seconds": 2086.7699999999995,
+  "compile": 16.61,
+  "shots": 8740158534596,
   "points": 35
  },
  "wan_few_clifford_terms": {
@@ -24,40 +24,40 @@
   "points": 0
  },
  "gauging_cultivation": {
-  "seconds": 1989.3800000000006,
-  "compile": 90.73999999999997,
-  "shots": 9324514992532,
-  "points": 55
+  "seconds": 1995.6609999999996,
+  "compile": 287.0100000000001,
+  "shots": 9330614992532,
+  "points": 116
  },
  "fold_transversal": {
-  "seconds": 2782.72,
-  "compile": 9.669999999999998,
-  "shots": 3688967067707,
-  "points": 12
+  "seconds": 2789.7579999999994,
+  "compile": 10.729999999999999,
+  "shots": 3715263240483,
+  "points": 16
  },
  "chan_flags": {
-  "seconds": 2479.759,
-  "compile": 24.54,
-  "shots": 10927616963767,
-  "points": 32
+  "seconds": 5525.303000000002,
+  "compile": 28.54,
+  "shots": 18209140678788,
+  "points": 48
  },
  "magna": {
-  "seconds": 704.191,
-  "compile": 9.34,
-  "shots": 3010616911400,
-  "points": 28
+  "seconds": 2162.417,
+  "compile": 14.189999999999998,
+  "shots": 12177821511845,
+  "points": 45
  },
  "google_experiment": {
-  "seconds": 265.5450000000001,
-  "compile": 169.09000000000012,
-  "shots": 1480000000000,
-  "points": 278
+  "seconds": 556.4609999999991,
+  "compile": 246.4900000000001,
+  "shots": 3300000000000,
+  "points": 369
  },
  "star_injection": {
-  "seconds": 1226.6309999999999,
-  "compile": 16.059999999999995,
-  "shots": 7632431423807,
-  "points": 30
+  "seconds": 3907.3089999999997,
+  "compile": 31.880000000000006,
+  "shots": 20888822580203,
+  "points": 60
  },
  "rp2_ungrown": {
   "seconds": 22.93,
@@ -72,9 +72,9 @@
   "points": 6
  },
  "vaknin_full_vector": {
-  "seconds": 0.0,
-  "compile": 0.0,
-  "shots": 0,
-  "points": 0
+  "seconds": 2950.773,
+  "compile": 13.93,
+  "shots": 2193025517757,
+  "points": 12
  }
 }
