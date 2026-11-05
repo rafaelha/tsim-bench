@@ -15,7 +15,7 @@ Environments (in .venvs/, git-ignored):
 - tsim-cpu: bloqade-tsim==1.0.0 (PyPI) and clifft==0.13.0. Used for k_max and the CPU throughput.
 - tsim-gpu: Tsim draft PR #219 (``cuda-statevector-executor``, head a2af975f) with its ``gpu`` extra
   (CuPy for CUDA 13).
-- tsim-metal: the Metal prototype (local branch ``metal-statevector-executor`` at 3c01b549, rebased on
+- tsim-metal: the Metal prototype (local branch ``metal-statevector-executor`` at 8b4700d4, rebased on
   the CUDA draft) with its ``metal`` extra (PyObjC Metal). Set TSIM_METAL_REPO to the tsim checkout
   that has the commit.
 
@@ -66,7 +66,7 @@ ENVS = {
     "tsim-sparse": ["bloqade-tsim @ git+https://github.com/QuEraComputing/tsim@96b86e8b", "clifft==0.13.0"],
     "tsim-metal": ["bloqade-tsim[metal] @ git+file://"
                    + os.environ.get("TSIM_METAL_REPO", str(pathlib.Path.home() / "Documents/quera/tsim"))
-                   + "@3c01b549"],
+                   + "@8b4700d4"],
 }
 PLATFORM_ENVS = {"tsim-cpu": "linux", "tsim-gpu": "linux", "tsim-sparse": "linux", "tsim-metal": "darwin"}
 BUILD_LABEL = {"tsim-sparse": "Tsim PR #270 (96b86e8b)"}

@@ -37,7 +37,12 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "error": "ValueError: 55 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 54571205.72251591,
+   "shots": 4880644,
+   "seconds": 0.0894,
+   "compile_seconds": 2.84,
+   "warmup_seconds": 0.56,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -79,7 +84,12 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "error": "ValueError: 56 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 50119830.978275314,
+   "shots": 4814985,
+   "seconds": 0.0961,
+   "compile_seconds": 2.7,
+   "warmup_seconds": 0.17,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -121,7 +131,12 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "error": "ValueError: 103 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 21553219.198379643,
+   "shots": 2609336,
+   "seconds": 0.1211,
+   "compile_seconds": 7.66,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -163,7 +178,12 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "error": "ValueError: 105 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 21930162.814052667,
+   "shots": 2574920,
+   "seconds": 0.1174,
+   "compile_seconds": 6.62,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -205,7 +225,12 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "error": "ValueError: 62 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 43437012.15032737,
+   "shots": 4382619,
+   "seconds": 0.1009,
+   "compile_seconds": 3.01,
+   "warmup_seconds": 0.17,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -247,7 +272,12 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "error": "ValueError: 62 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 43973409.03673492,
+   "shots": 4382619,
+   "seconds": 0.0997,
+   "compile_seconds": 2.81,
+   "warmup_seconds": 0.11,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -289,7 +319,12 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "error": "ValueError: 97 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 21053621.302889273,
+   "shots": 2788939,
+   "seconds": 0.1325,
+   "compile_seconds": 5.48,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -331,7 +366,12 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "error": "ValueError: 98 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 21262550.675078012,
+   "shots": 2749658,
+   "seconds": 0.1293,
+   "compile_seconds": 5.3,
+   "warmup_seconds": 0.17,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -373,11 +413,11 @@
    "tsim_version": "0.1.5"
   },
   "metal": {
-   "shots_per_s": 1735930416.8875332,
+   "shots_per_s": 3042870664.4000187,
    "shots": 268435456,
-   "seconds": 0.1546,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.11,
+   "seconds": 0.0882,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.1,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -420,11 +460,11 @@
    "tsim_version": "0.1.5"
   },
   "metal": {
-   "shots_per_s": 1375077141.4822803,
+   "shots_per_s": 2687431674.5522137,
    "shots": 134217728,
-   "seconds": 0.0976,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.15,
+   "seconds": 0.0499,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.11,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -467,11 +507,11 @@
    "tsim_version": "0.1.5"
   },
   "metal": {
-   "shots_per_s": 708334057.2583542,
+   "shots_per_s": 1269196376.3451407,
    "shots": 76695844,
-   "seconds": 0.1083,
-   "compile_seconds": 0.13,
-   "warmup_seconds": 0.13,
+   "seconds": 0.0604,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.12,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -514,11 +554,11 @@
    "tsim_version": "0.1.5"
   },
   "metal": {
-   "shots_per_s": 478839027.54832244,
+   "shots_per_s": 846022019.5719767,
    "shots": 48806446,
-   "seconds": 0.1019,
-   "compile_seconds": 0.14,
-   "warmup_seconds": 0.12,
+   "seconds": 0.0577,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.11,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -561,11 +601,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 119412950.47427021,
+   "shots_per_s": 230851851.1990128,
    "shots": 16777216,
-   "seconds": 0.1405,
+   "seconds": 0.0727,
    "compile_seconds": 1.07,
-   "warmup_seconds": 1.86,
+   "warmup_seconds": 0.29,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -608,11 +648,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 469537041.7954054,
+   "shots_per_s": 602928332.1150794,
    "shots": 61356675,
-   "seconds": 0.1307,
-   "compile_seconds": 0.3,
-   "warmup_seconds": 0.26,
+   "seconds": 0.1018,
+   "compile_seconds": 0.28,
+   "warmup_seconds": 0.25,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -655,11 +695,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 64491415.78331594,
+   "shots_per_s": 104273303.4342597,
    "shots": 9761289,
-   "seconds": 0.1514,
-   "compile_seconds": 2.4,
-   "warmup_seconds": 0.56,
+   "seconds": 0.0936,
+   "compile_seconds": 2.44,
+   "warmup_seconds": 0.58,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -702,11 +742,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 127712124.25879313,
+   "shots_per_s": 149861614.1924134,
    "shots": 26512143,
-   "seconds": 0.2076,
+   "seconds": 0.1769,
    "compile_seconds": 0.71,
-   "warmup_seconds": 0.55,
+   "warmup_seconds": 0.34,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -749,11 +789,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 67339472.21200149,
+   "shots_per_s": 114537664.27819473,
    "shots": 7924293,
-   "seconds": 0.1177,
-   "compile_seconds": 2.02,
-   "warmup_seconds": 0.29,
+   "seconds": 0.0692,
+   "compile_seconds": 2.06,
+   "warmup_seconds": 0.3,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -796,11 +836,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 43889279.97211633,
+   "shots_per_s": 68309275.28600684,
    "shots": 6242685,
-   "seconds": 0.1422,
-   "compile_seconds": 3.14,
-   "warmup_seconds": 0.33,
+   "seconds": 0.0914,
+   "compile_seconds": 3.17,
+   "warmup_seconds": 0.57,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -843,11 +883,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1332172661.0244513,
+   "shots_per_s": 1489208585.798212,
    "shots": 715827882,
-   "seconds": 0.5373,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.01,
+   "seconds": 0.4807,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.15,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -890,11 +930,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 165749660.2650498,
+   "shots_per_s": 170289635.1150217,
    "shots": 134217728,
-   "seconds": 0.8098,
-   "compile_seconds": 0.22,
-   "warmup_seconds": 0.29,
+   "seconds": 0.7882,
+   "compile_seconds": 0.21,
+   "warmup_seconds": 0.3,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -937,11 +977,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 34712416.31697809,
+   "shots_per_s": 40162120.90635404,
    "shots": 11243369,
-   "seconds": 0.3239,
-   "compile_seconds": 1.08,
-   "warmup_seconds": 0.77,
+   "seconds": 0.2799,
+   "compile_seconds": 1.09,
+   "warmup_seconds": 0.49,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -984,11 +1024,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 36505699.156044036,
+   "shots_per_s": 42076659.24863584,
    "shots": 11243369,
-   "seconds": 0.308,
-   "compile_seconds": 1.11,
-   "warmup_seconds": 0.61,
+   "seconds": 0.2672,
+   "compile_seconds": 1.12,
+   "warmup_seconds": 0.51,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1031,11 +1071,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 36351382.54285616,
+   "shots_per_s": 42549102.89037917,
    "shots": 11184810,
-   "seconds": 0.3077,
-   "compile_seconds": 1.14,
-   "warmup_seconds": 0.64,
+   "seconds": 0.2629,
+   "compile_seconds": 1.17,
+   "warmup_seconds": 0.34,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1078,11 +1118,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 7015410.403793303,
+   "shots_per_s": 7397997.075402853,
    "shots": 4194304,
-   "seconds": 0.5979,
-   "compile_seconds": 2.35,
-   "warmup_seconds": 1.51,
+   "seconds": 0.567,
+   "compile_seconds": 2.4,
+   "warmup_seconds": 1.56,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1125,11 +1165,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 7006164.955848568,
+   "shots_per_s": 7385898.975997623,
    "shots": 4194304,
-   "seconds": 0.5987,
-   "compile_seconds": 2.41,
-   "warmup_seconds": 1.51,
+   "seconds": 0.5679,
+   "compile_seconds": 2.47,
+   "warmup_seconds": 1.55,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1172,11 +1212,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 52573459.15932522,
+   "shots_per_s": 52489350.72977823,
    "shots": 33554432,
-   "seconds": 0.6382,
-   "compile_seconds": 0.15,
-   "warmup_seconds": 0.61,
+   "seconds": 0.6393,
+   "compile_seconds": 0.17,
+   "warmup_seconds": 0.33,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1219,11 +1259,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 52072139.77203325,
+   "shots_per_s": 51955738.940093644,
    "shots": 33554432,
-   "seconds": 0.6444,
-   "compile_seconds": 0.16,
-   "warmup_seconds": 0.64,
+   "seconds": 0.6458,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.32,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1266,11 +1306,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 52513477.97732619,
+   "shots_per_s": 52411363.63998023,
    "shots": 33554432,
-   "seconds": 0.639,
-   "compile_seconds": 0.16,
-   "warmup_seconds": 0.61,
+   "seconds": 0.6402,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.32,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1313,11 +1353,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 184350397.70195678,
+   "shots_per_s": 186486022.82618564,
    "shots": 134217728,
-   "seconds": 0.7281,
-   "compile_seconds": 0.14,
-   "warmup_seconds": 0.71,
+   "seconds": 0.7197,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.42,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1360,11 +1400,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 52307885.75042248,
+   "shots_per_s": 52112063.20448542,
    "shots": 33554432,
-   "seconds": 0.6415,
-   "compile_seconds": 0.15,
-   "warmup_seconds": 0.61,
+   "seconds": 0.6439,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.32,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1407,11 +1447,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 110258047.7894409,
+   "shots_per_s": 110493517.64879222,
    "shots": 67108864,
-   "seconds": 0.6087,
-   "compile_seconds": 0.15,
-   "warmup_seconds": 0.57,
+   "seconds": 0.6074,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.3,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1454,11 +1494,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 109243602.62670662,
+   "shots_per_s": 109571686.40180476,
    "shots": 67108864,
-   "seconds": 0.6143,
-   "compile_seconds": 0.16,
-   "warmup_seconds": 0.57,
+   "seconds": 0.6125,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.32,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1501,11 +1541,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 14567714.916187221,
+   "shots_per_s": 14455184.53466058,
    "shots": 8388608,
-   "seconds": 0.5758,
-   "compile_seconds": 0.19,
-   "warmup_seconds": 1.03,
+   "seconds": 0.5803,
+   "compile_seconds": 0.21,
+   "warmup_seconds": 1.05,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1548,11 +1588,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 14457392.437635796,
+   "shots_per_s": 14252098.14423099,
    "shots": 8388608,
-   "seconds": 0.5802,
-   "compile_seconds": 0.2,
-   "warmup_seconds": 1.03,
+   "seconds": 0.5886,
+   "compile_seconds": 0.21,
+   "warmup_seconds": 1.06,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1595,11 +1635,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 843270842.8644584,
+   "shots_per_s": 977753333.8065033,
    "shots": 357913941,
-   "seconds": 0.4244,
-   "compile_seconds": 0.13,
-   "warmup_seconds": 0.31,
+   "seconds": 0.3661,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.33,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1635,11 +1675,11 @@
    "skipped": "clifft k_max 18 > 15"
   },
   "metal": {
-   "shots_per_s": 6808834.204613542,
+   "shots_per_s": 6783628.6054589655,
    "shots": 4194304,
-   "seconds": 0.616,
-   "compile_seconds": 0.33,
-   "warmup_seconds": 1.15,
+   "seconds": 0.6183,
+   "compile_seconds": 0.32,
+   "warmup_seconds": 1.16,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1675,10 +1715,10 @@
    "skipped": "clifft k_max 18 > 15"
   },
   "metal": {
-   "shots_per_s": 11245399.620105036,
+   "shots_per_s": 11581275.034244059,
    "shots": 8388608,
-   "seconds": 0.746,
-   "compile_seconds": 0.85,
+   "seconds": 0.7243,
+   "compile_seconds": 0.88,
    "warmup_seconds": 1.28,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -1722,11 +1762,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 435497537.20739436,
+   "shots_per_s": 636448854.6868216,
    "shots": 67108864,
-   "seconds": 0.1541,
-   "compile_seconds": 0.22,
-   "warmup_seconds": 0.36,
+   "seconds": 0.1054,
+   "compile_seconds": 0.21,
+   "warmup_seconds": 0.38,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1769,11 +1809,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2474251553.804312,
+   "shots_per_s": 3319025966.0233426,
    "shots": 715827882,
-   "seconds": 0.2893,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.18,
+   "seconds": 0.2157,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.21,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1816,11 +1856,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1620132834.9796085,
+   "shots_per_s": 1874263983.561677,
    "shots": 715827882,
-   "seconds": 0.4418,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.24,
+   "seconds": 0.3819,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.21,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -1858,7 +1898,12 @@
    "tsim_version": "0.1.5"
   },
   "metal": {
-   "error": "ValueError: 487 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 3361012.21708721,
+   "shots": 552194,
+   "seconds": 0.1643,
+   "compile_seconds": 31.77,
+   "warmup_seconds": 0.13,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -1888,7 +1933,13 @@
    "error": "out of memory (worker capped at 40 GB)"
   },
   "metal": {
-   "skipped": "not run: the Metal build is based on Tsim 1.0.0, whose compile runs out of memory here (see gpu)"
+   "shots_per_s": 1771148.3779498886,
+   "shots": 322251,
+   "seconds": 0.1819,
+   "compile_seconds": 95.33,
+   "warmup_seconds": 0.21,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d21_p0.001.stim": {
@@ -1917,7 +1968,13 @@
    "error": "out of memory (worker capped at 40 GB)"
   },
   "metal": {
-   "skipped": "not run: the Metal build is based on Tsim 1.0.0, whose compile runs out of memory here (see gpu)"
+   "shots_per_s": 924746.452166896,
+   "shots": 210971,
+   "seconds": 0.2281,
+   "compile_seconds": 223.1,
+   "warmup_seconds": 0.26,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d25_p0.001.stim": {
@@ -1947,7 +2004,13 @@
    "tsim_version": "0.1.5"
   },
   "metal": {
-   "skipped": "not run: the Metal build is based on Tsim 1.0.0, whose compile runs out of memory here (see gpu)"
+   "shots_per_s": 536502.4796617699,
+   "shots": 148779,
+   "seconds": 0.2773,
+   "compile_seconds": 503.22,
+   "warmup_seconds": 0.25,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d5_p0.001.stim": {
@@ -1988,7 +2051,12 @@
    "tsim_version": "0.1.5"
   },
   "metal": {
-   "error": "ValueError: 70 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 47702410.53536085,
+   "shots": 3841652,
+   "seconds": 0.0805,
+   "compile_seconds": 1.4,
+   "warmup_seconds": 0.1,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2025,7 +2093,12 @@
    "tsim_version": "0.1.5"
   },
   "metal": {
-   "error": "ValueError: 232 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 8616515.566196486,
+   "shots": 1158297,
+   "seconds": 0.1344,
+   "compile_seconds": 8.94,
+   "warmup_seconds": 0.11,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2067,11 +2140,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1408988892.17622,
+   "shots_per_s": 1753187771.6962378,
    "shots": 357913941,
-   "seconds": 0.254,
+   "seconds": 0.2042,
    "compile_seconds": 0.12,
-   "warmup_seconds": 0.25,
+   "warmup_seconds": 0.29,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -2114,10 +2187,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1053723783.469324,
+   "shots_per_s": 1301065669.0789201,
    "shots": 165191049,
-   "seconds": 0.1568,
-   "compile_seconds": 0.14,
+   "seconds": 0.127,
+   "compile_seconds": 0.13,
    "warmup_seconds": 0.18,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -2161,9 +2234,9 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 793732508.7539074,
+   "shots_per_s": 1156535813.5134068,
    "shots": 107374182,
-   "seconds": 0.1353,
+   "seconds": 0.0928,
    "compile_seconds": 0.16,
    "warmup_seconds": 0.19,
    "backend": "MetalShotSampler",
@@ -2208,11 +2281,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 848580799.7586161,
+   "shots_per_s": 1083162148.5272613,
    "shots": 126322567,
-   "seconds": 0.1489,
-   "compile_seconds": 0.16,
-   "warmup_seconds": 0.18,
+   "seconds": 0.1166,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.11,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -2255,11 +2328,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 511199601.43039685,
+   "shots_per_s": 673682523.7028519,
    "shots": 65075262,
-   "seconds": 0.1273,
-   "compile_seconds": 0.24,
-   "warmup_seconds": 0.25,
+   "seconds": 0.0966,
+   "compile_seconds": 0.25,
+   "warmup_seconds": 0.2,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -2302,11 +2375,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 347907948.8097117,
+   "shots_per_s": 478724992.96410346,
    "shots": 43826196,
-   "seconds": 0.126,
-   "compile_seconds": 0.29,
-   "warmup_seconds": 0.29,
+   "seconds": 0.0915,
+   "compile_seconds": 0.28,
+   "warmup_seconds": 0.3,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -2349,11 +2422,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 182212397.53923216,
+   "shots_per_s": 183807193.00679007,
    "shots": 134217728,
-   "seconds": 0.7366,
+   "seconds": 0.7302,
    "compile_seconds": 0.14,
-   "warmup_seconds": 0.63,
+   "warmup_seconds": 0.34,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -2389,11 +2462,11 @@
    "skipped": "clifft k_max 22 > 15"
   },
   "metal": {
-   "shots_per_s": 13569808.554134335,
+   "shots_per_s": 13549490.29510493,
    "shots": 8388608,
-   "seconds": 0.6182,
-   "compile_seconds": 0.46,
-   "warmup_seconds": 2.19,
+   "seconds": 0.6191,
+   "compile_seconds": 0.45,
+   "warmup_seconds": 1.12,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -2436,11 +2509,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1498905617.9904456,
+   "shots_per_s": 1770945263.1408901,
    "shots": 429496729,
-   "seconds": 0.2865,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.24,
+   "seconds": 0.2425,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.2,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -2483,11 +2556,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 91284223.91741647,
+   "shots_per_s": 158147482.76044282,
    "shots": 9502140,
-   "seconds": 0.1041,
-   "compile_seconds": 1.01,
-   "warmup_seconds": 0.31,
+   "seconds": 0.0601,
+   "compile_seconds": 0.99,
+   "warmup_seconds": 0.3,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -2530,10 +2603,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 49678707.65524901,
+   "shots_per_s": 103121809.7055632,
    "shots": 5998557,
-   "seconds": 0.1207,
-   "compile_seconds": 1.76,
+   "seconds": 0.0582,
+   "compile_seconds": 1.78,
    "warmup_seconds": 0.31,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -2577,7 +2650,12 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "error": "ValueError: 68 shot words do not fit the noise kernel's shared memory",
+   "shots_per_s": 41065742.651479535,
+   "shots": 4029049,
+   "seconds": 0.0981,
+   "compile_seconds": 3.16,
+   "warmup_seconds": 0.22,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2619,10 +2697,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1799096414.0198677,
+   "shots_per_s": 2554634485.6857557,
    "shots": 268435456,
-   "seconds": 0.1492,
-   "compile_seconds": 0.12,
+   "seconds": 0.1051,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.22,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -2666,11 +2744,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 617422764.3482178,
+   "shots_per_s": 999816543.5169278,
    "shots": 76695844,
-   "seconds": 0.1242,
+   "seconds": 0.0767,
    "compile_seconds": 0.17,
-   "warmup_seconds": 0.23,
+   "warmup_seconds": 0.25,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -2713,11 +2791,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 280571779.2460571,
+   "shots_per_s": 367758172.1096217,
    "shots": 32051994,
-   "seconds": 0.1142,
-   "compile_seconds": 0.32,
-   "warmup_seconds": 0.24,
+   "seconds": 0.0872,
+   "compile_seconds": 0.38,
+   "warmup_seconds": 0.27,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -2760,11 +2838,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 148720066.9142713,
+   "shots_per_s": 215167522.6611245,
    "shots": 16393004,
-   "seconds": 0.1102,
-   "compile_seconds": 0.56,
-   "warmup_seconds": 0.28,
+   "seconds": 0.0762,
+   "compile_seconds": 0.58,
+   "warmup_seconds": 0.32,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3044,11 +3122,11 @@
    "tsim_version": "0.1.5"
   },
   "metal": {
-   "shots_per_s": 13374183.881582454,
+   "shots_per_s": 13461520.188307336,
    "shots": 8388608,
-   "seconds": 0.6272,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.89,
+   "seconds": 0.6232,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.47,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3091,11 +3169,11 @@
    "tsim_version": "0.1.5"
   },
   "metal": {
-   "shots_per_s": 442528.09511093353,
-   "shots": 262144,
-   "seconds": 0.5924,
-   "compile_seconds": 0.14,
-   "warmup_seconds": 10.15,
+   "shots_per_s": 894362.5547779751,
+   "shots": 524288,
+   "seconds": 0.5862,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.99,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3138,10 +3216,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1527868442.0491576,
+   "shots_per_s": 1780641457.6310623,
    "shots": 715827882,
-   "seconds": 0.4685,
-   "compile_seconds": 0.12,
+   "seconds": 0.402,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.25,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -3185,11 +3263,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 720572491.5436398,
+   "shots_per_s": 926648601.2211001,
    "shots": 97612893,
-   "seconds": 0.1355,
-   "compile_seconds": 0.41,
-   "warmup_seconds": 0.27,
+   "seconds": 0.1053,
+   "compile_seconds": 0.39,
+   "warmup_seconds": 0.28,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3232,10 +3310,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2927287061.6210256,
+   "shots_per_s": 3898380494.5654387,
    "shots": 1073741824,
-   "seconds": 0.3668,
-   "compile_seconds": 0.1,
+   "seconds": 0.2754,
+   "compile_seconds": 0.09,
    "warmup_seconds": 0.23,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -3279,10 +3357,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2921245015.613677,
+   "shots_per_s": 3906743163.53444,
    "shots": 1073741824,
-   "seconds": 0.3676,
-   "compile_seconds": 0.1,
+   "seconds": 0.2748,
+   "compile_seconds": 0.08,
    "warmup_seconds": 0.23,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -3326,11 +3404,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 3151244024.9490085,
+   "shots_per_s": 4364645588.673179,
    "shots": 2147483648,
-   "seconds": 0.6815,
-   "compile_seconds": 0.09,
-   "warmup_seconds": 0.18,
+   "seconds": 0.492,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.17,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3373,10 +3451,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 3170985370.47254,
+   "shots_per_s": 4387135906.029032,
    "shots": 2147483648,
-   "seconds": 0.6772,
-   "compile_seconds": 0.09,
+   "seconds": 0.4895,
+   "compile_seconds": 0.08,
    "warmup_seconds": 0.18,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -3420,11 +3498,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2924037282.8364406,
+   "shots_per_s": 3910851901.278401,
    "shots": 1073741824,
-   "seconds": 0.3672,
-   "compile_seconds": 0.09,
-   "warmup_seconds": 0.11,
+   "seconds": 0.2746,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.12,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3467,10 +3545,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2934872856.5241747,
+   "shots_per_s": 3895392233.794854,
    "shots": 1073741824,
-   "seconds": 0.3659,
-   "compile_seconds": 0.1,
+   "seconds": 0.2756,
+   "compile_seconds": 0.09,
    "warmup_seconds": 0.11,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -3514,11 +3592,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1756615356.8244226,
+   "shots_per_s": 2085130263.1387696,
    "shots": 536870912,
-   "seconds": 0.3056,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.18,
+   "seconds": 0.2575,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.22,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3561,11 +3639,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1179342048.3355393,
+   "shots_per_s": 1352619889.3108387,
    "shots": 306783378,
-   "seconds": 0.2601,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.28,
+   "seconds": 0.2268,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.29,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3608,10 +3686,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1182765799.922419,
+   "shots_per_s": 1355299435.8486233,
    "shots": 306783378,
-   "seconds": 0.2594,
-   "compile_seconds": 0.12,
+   "seconds": 0.2264,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -3655,10 +3733,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1194454047.2137084,
+   "shots_per_s": 1355679994.675172,
    "shots": 306783378,
-   "seconds": 0.2568,
-   "compile_seconds": 0.12,
+   "seconds": 0.2263,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -3702,9 +3780,9 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1180258370.3245468,
+   "shots_per_s": 1352255704.089677,
    "shots": 306783378,
-   "seconds": 0.2599,
+   "seconds": 0.2269,
    "compile_seconds": 0.11,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
@@ -3749,11 +3827,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2179887678.9283886,
+   "shots_per_s": 2653767685.666266,
    "shots": 536870912,
-   "seconds": 0.2463,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.12,
+   "seconds": 0.2023,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.13,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3796,11 +3874,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1911138408.3655872,
+   "shots_per_s": 2478598345.8169026,
    "shots": 238609294,
-   "seconds": 0.1249,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.22,
+   "seconds": 0.0963,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.28,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3843,11 +3921,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1900417494.3568366,
+   "shots_per_s": 2485748668.6160746,
    "shots": 238609294,
-   "seconds": 0.1256,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.22,
+   "seconds": 0.096,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.24,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3890,11 +3968,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1701036417.538428,
+   "shots_per_s": 2961474545.241826,
    "shots": 178956970,
-   "seconds": 0.1052,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.23,
+   "seconds": 0.0604,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.26,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3937,11 +4015,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1671772434.4827628,
+   "shots_per_s": 2984473158.455359,
    "shots": 178956970,
-   "seconds": 0.107,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.23,
+   "seconds": 0.06,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.24,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -3984,11 +4062,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1924059324.9852684,
+   "shots_per_s": 3236049825.909498,
    "shots": 268435456,
-   "seconds": 0.1395,
-   "compile_seconds": 0.09,
-   "warmup_seconds": 0.18,
+   "seconds": 0.083,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.19,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4031,11 +4109,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2028233021.7165916,
+   "shots_per_s": 3217419287.689178,
    "shots": 268435456,
-   "seconds": 0.1323,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.18,
+   "seconds": 0.0834,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.19,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4078,10 +4156,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2057950456.943805,
+   "shots_per_s": 3210894432.079392,
    "shots": 268435456,
-   "seconds": 0.1304,
-   "compile_seconds": 0.1,
+   "seconds": 0.0836,
+   "compile_seconds": 0.09,
    "warmup_seconds": 0.11,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -4125,11 +4203,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2026414814.151527,
+   "shots_per_s": 3212737419.435673,
    "shots": 268435456,
-   "seconds": 0.1325,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.11,
+   "seconds": 0.0836,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.12,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4172,10 +4250,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1332104072.6016867,
+   "shots_per_s": 1492025347.5125372,
    "shots": 715827882,
-   "seconds": 0.5374,
-   "compile_seconds": 0.12,
+   "seconds": 0.4798,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -4219,11 +4297,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 204003913.76054764,
+   "shots_per_s": 210525806.61361423,
    "shots": 134217728,
-   "seconds": 0.6579,
-   "compile_seconds": 0.23,
-   "warmup_seconds": 0.45,
+   "seconds": 0.6375,
+   "compile_seconds": 0.22,
+   "warmup_seconds": 0.25,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4266,11 +4344,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 899589847.5696415,
+   "shots_per_s": 1004013581.8028421,
    "shots": 306783378,
-   "seconds": 0.341,
-   "compile_seconds": 0.14,
-   "warmup_seconds": 0.32,
+   "seconds": 0.3056,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.34,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4313,11 +4391,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 72272593.20420963,
+   "shots_per_s": 73856444.12997282,
    "shots": 67108864,
-   "seconds": 0.9286,
-   "compile_seconds": 0.45,
-   "warmup_seconds": 1.35,
+   "seconds": 0.9086,
+   "compile_seconds": 0.44,
+   "warmup_seconds": 1.39,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4353,11 +4431,11 @@
    "skipped": "clifft k_max 19 > 15"
   },
   "metal": {
-   "shots_per_s": 7195888.31734584,
+   "shots_per_s": 7193630.822811262,
    "shots": 4194304,
-   "seconds": 0.5829,
-   "compile_seconds": 2.0,
-   "warmup_seconds": 4.98,
+   "seconds": 0.5831,
+   "compile_seconds": 1.99,
+   "warmup_seconds": 2.61,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4400,11 +4478,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1221866220.9941669,
+   "shots_per_s": 1462185961.3670542,
    "shots": 357913941,
-   "seconds": 0.2929,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.23,
+   "seconds": 0.2448,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.26,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4447,10 +4525,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1338981295.9577968,
+   "shots_per_s": 1560390018.684346,
    "shots": 357913941,
-   "seconds": 0.2673,
-   "compile_seconds": 0.12,
+   "seconds": 0.2294,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.22,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -4494,11 +4572,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1159307405.491618,
+   "shots_per_s": 1363239973.739775,
    "shots": 357913941,
-   "seconds": 0.3087,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.09,
+   "seconds": 0.2625,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.1,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4541,11 +4619,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1658978866.2825415,
+   "shots_per_s": 1947920639.1592495,
    "shots": 715827882,
-   "seconds": 0.4315,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.23,
+   "seconds": 0.3675,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.25,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4588,11 +4666,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1746024048.815518,
+   "shots_per_s": 2124192407.1351233,
    "shots": 715827882,
-   "seconds": 0.41,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.21,
+   "seconds": 0.337,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.22,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4635,11 +4713,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1521650887.2064035,
+   "shots_per_s": 1758908629.242592,
    "shots": 715827882,
-   "seconds": 0.4704,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.08,
+   "seconds": 0.407,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.14,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4682,11 +4760,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1880763212.9863532,
+   "shots_per_s": 2250849013.5179477,
    "shots": 1073741824,
-   "seconds": 0.5709,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.23,
+   "seconds": 0.477,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.2,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4729,10 +4807,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2034049777.3628087,
+   "shots_per_s": 2466541002.5337176,
    "shots": 1073741824,
-   "seconds": 0.5279,
-   "compile_seconds": 0.1,
+   "seconds": 0.4353,
+   "compile_seconds": 0.08,
    "warmup_seconds": 0.22,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -4776,11 +4854,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1695428672.9979718,
+   "shots_per_s": 1982451956.4785714,
    "shots": 1073741824,
-   "seconds": 0.6333,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.15,
+   "seconds": 0.5416,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.14,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4823,11 +4901,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 303587061.48101455,
+   "shots_per_s": 405708392.1366217,
    "shots": 36398027,
-   "seconds": 0.1199,
-   "compile_seconds": 0.47,
-   "warmup_seconds": 0.25,
+   "seconds": 0.0897,
+   "compile_seconds": 0.45,
+   "warmup_seconds": 0.24,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -4870,10 +4948,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 310282958.7895344,
+   "shots_per_s": 407524804.9807642,
    "shots": 36398027,
-   "seconds": 0.1173,
-   "compile_seconds": 0.47,
+   "seconds": 0.0893,
+   "compile_seconds": 0.45,
    "warmup_seconds": 0.2,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -4917,10 +4995,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 313594612.8236258,
+   "shots_per_s": 413988316.65089494,
    "shots": 37025580,
-   "seconds": 0.1181,
-   "compile_seconds": 0.45,
+   "seconds": 0.0894,
+   "compile_seconds": 0.44,
    "warmup_seconds": 0.22,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -4964,11 +5042,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 279978271.47029686,
+   "shots_per_s": 407834360.5200735,
    "shots": 36398027,
-   "seconds": 0.13,
-   "compile_seconds": 0.47,
-   "warmup_seconds": 0.2,
+   "seconds": 0.0892,
+   "compile_seconds": 0.46,
+   "warmup_seconds": 0.18,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -5011,10 +5089,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 302973942.72688645,
+   "shots_per_s": 407498761.9064355,
    "shots": 36398027,
-   "seconds": 0.1201,
-   "compile_seconds": 0.47,
+   "seconds": 0.0893,
+   "compile_seconds": 0.46,
    "warmup_seconds": 0.2,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5058,10 +5136,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 305504953.3475282,
+   "shots_per_s": 438100558.081251,
    "shots": 37675151,
-   "seconds": 0.1233,
-   "compile_seconds": 0.5,
+   "seconds": 0.086,
+   "compile_seconds": 0.49,
    "warmup_seconds": 0.23,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5105,10 +5183,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 3769382788.1364098,
+   "shots_per_s": 5715782129.630503,
    "shots": 1073741824,
-   "seconds": 0.2849,
-   "compile_seconds": 0.1,
+   "seconds": 0.1879,
+   "compile_seconds": 0.08,
    "warmup_seconds": 0.07,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5152,11 +5230,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 876676133.0773517,
+   "shots_per_s": 974679980.4841723,
    "shots": 536870912,
-   "seconds": 0.6124,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.13,
+   "seconds": 0.5508,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.15,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -5199,11 +5277,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 3176191835.182138,
+   "shots_per_s": 4460595155.798887,
    "shots": 536870912,
-   "seconds": 0.169,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.07,
+   "seconds": 0.1204,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.08,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -5246,11 +5324,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 454679.8165658657,
+   "shots_per_s": 452648.3293535756,
    "shots": 262144,
-   "seconds": 0.5765,
-   "compile_seconds": 0.41,
-   "warmup_seconds": 1.19,
+   "seconds": 0.5791,
+   "compile_seconds": 0.4,
+   "warmup_seconds": 0.56,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -5293,10 +5371,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1325745697.4953876,
+   "shots_per_s": 1490960454.492092,
    "shots": 715827882,
-   "seconds": 0.5399,
-   "compile_seconds": 0.12,
+   "seconds": 0.4801,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5340,10 +5418,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 165833343.71039563,
+   "shots_per_s": 170247730.32612297,
    "shots": 134217728,
-   "seconds": 0.8094,
-   "compile_seconds": 0.23,
+   "seconds": 0.7884,
+   "compile_seconds": 0.22,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5387,11 +5465,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1181384238.5433474,
+   "shots_per_s": 1363189999.0399485,
    "shots": 357913941,
-   "seconds": 0.303,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.01,
+   "seconds": 0.2626,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -5434,11 +5512,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 544887723.7519149,
+   "shots_per_s": 784527428.6503707,
    "shots": 49941480,
-   "seconds": 0.0917,
-   "compile_seconds": 0.21,
-   "warmup_seconds": 0.07,
+   "seconds": 0.0637,
+   "compile_seconds": 0.2,
+   "warmup_seconds": 0.11,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -5474,11 +5552,11 @@
    "skipped": "clifft k_max 19 > 15"
   },
   "metal": {
-   "shots_per_s": 31733427.77935192,
+   "shots_per_s": 32553617.135880366,
    "shots": 16777216,
-   "seconds": 0.5287,
-   "compile_seconds": 1.4,
-   "warmup_seconds": 0.41,
+   "seconds": 0.5154,
+   "compile_seconds": 1.41,
+   "warmup_seconds": 0.47,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -5521,10 +5599,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 3762577612.798393,
+   "shots_per_s": 5700771960.349964,
    "shots": 1073741824,
-   "seconds": 0.2854,
-   "compile_seconds": 0.09,
+   "seconds": 0.1884,
+   "compile_seconds": 0.08,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5568,10 +5646,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 890895537.3513023,
+   "shots_per_s": 973947803.2082388,
    "shots": 536870912,
-   "seconds": 0.6026,
-   "compile_seconds": 0.11,
+   "seconds": 0.5512,
+   "compile_seconds": 0.09,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5615,10 +5693,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 3101852975.200188,
+   "shots_per_s": 4445253937.3564415,
    "shots": 536870912,
-   "seconds": 0.1731,
-   "compile_seconds": 0.1,
+   "seconds": 0.1208,
+   "compile_seconds": 0.08,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5662,10 +5740,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 454857.49099212984,
+   "shots_per_s": 457088.2893753473,
    "shots": 262144,
-   "seconds": 0.5763,
-   "compile_seconds": 0.41,
+   "seconds": 0.5735,
+   "compile_seconds": 0.4,
    "warmup_seconds": 0.02,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5709,10 +5787,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1205542926.8229015,
+   "shots_per_s": 1366589476.406034,
    "shots": 357913941,
-   "seconds": 0.2969,
-   "compile_seconds": 0.12,
+   "seconds": 0.2619,
+   "compile_seconds": 0.11,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5756,10 +5834,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1317547177.0044873,
+   "shots_per_s": 1490700809.9928434,
    "shots": 715827882,
-   "seconds": 0.5433,
-   "compile_seconds": 0.12,
+   "seconds": 0.4802,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5803,10 +5881,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 166134026.58450723,
+   "shots_per_s": 170547518.78971973,
    "shots": 134217728,
-   "seconds": 0.8079,
-   "compile_seconds": 0.24,
+   "seconds": 0.787,
+   "compile_seconds": 0.22,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5850,11 +5928,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 134135099.39727016,
+   "shots_per_s": 147864675.95334572,
    "shots": 56512727,
-   "seconds": 0.4213,
-   "compile_seconds": 0.48,
-   "warmup_seconds": 0.62,
+   "seconds": 0.3822,
+   "compile_seconds": 0.47,
+   "warmup_seconds": 0.35,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -5897,10 +5975,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 557605588.187689,
+   "shots_per_s": 782202008.1013771,
    "shots": 49941480,
-   "seconds": 0.0896,
-   "compile_seconds": 0.21,
+   "seconds": 0.0638,
+   "compile_seconds": 0.2,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5944,10 +6022,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 266635520.67113727,
+   "shots_per_s": 394682716.7747549,
    "shots": 23598721,
-   "seconds": 0.0885,
-   "compile_seconds": 0.39,
+   "seconds": 0.0598,
+   "compile_seconds": 0.37,
    "warmup_seconds": 0.12,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -5991,11 +6069,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1307049606.4356098,
+   "shots_per_s": 1512018274.3352413,
    "shots": 715827882,
-   "seconds": 0.5477,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.17,
+   "seconds": 0.4734,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.12,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6038,11 +6116,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1313098907.8600264,
+   "shots_per_s": 1487733652.5099378,
    "shots": 715827882,
-   "seconds": 0.5451,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.17,
+   "seconds": 0.4812,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.14,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6085,11 +6163,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 145964170.37469938,
+   "shots_per_s": 149157684.96614075,
    "shots": 134217728,
-   "seconds": 0.9195,
-   "compile_seconds": 0.24,
-   "warmup_seconds": 0.67,
+   "seconds": 0.8998,
+   "compile_seconds": 0.22,
+   "warmup_seconds": 0.37,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6132,11 +6210,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 128164089.48742045,
+   "shots_per_s": 150565066.62048963,
    "shots": 134217728,
-   "seconds": 1.0472,
-   "compile_seconds": 0.26,
-   "warmup_seconds": 0.7,
+   "seconds": 0.8914,
+   "compile_seconds": 0.24,
+   "warmup_seconds": 0.4,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6179,11 +6257,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 142675780.08745018,
+   "shots_per_s": 150610163.33817416,
    "shots": 134217728,
-   "seconds": 0.9407,
-   "compile_seconds": 0.27,
-   "warmup_seconds": 0.69,
+   "seconds": 0.8912,
+   "compile_seconds": 0.24,
+   "warmup_seconds": 0.38,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6226,11 +6304,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 137522908.34077543,
+   "shots_per_s": 143926132.51766244,
    "shots": 119304647,
-   "seconds": 0.8675,
-   "compile_seconds": 0.29,
-   "warmup_seconds": 0.72,
+   "seconds": 0.8289,
+   "compile_seconds": 0.28,
+   "warmup_seconds": 0.4,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6273,10 +6351,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1294767058.025023,
+   "shots_per_s": 1488768778.3091533,
    "shots": 715827882,
-   "seconds": 0.5529,
-   "compile_seconds": 0.11,
+   "seconds": 0.4808,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -6320,9 +6398,9 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 169894236.27469778,
+   "shots_per_s": 176602080.12811208,
    "shots": 134217728,
-   "seconds": 0.79,
+   "seconds": 0.76,
    "compile_seconds": 0.22,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
@@ -6367,11 +6445,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 12892912.401791748,
+   "shots_per_s": 13427942.499774972,
    "shots": 8388608,
-   "seconds": 0.6506,
-   "compile_seconds": 265.51,
-   "warmup_seconds": 11.69,
+   "seconds": 0.6247,
+   "compile_seconds": 259.17,
+   "warmup_seconds": 3.33,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6414,11 +6492,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 104639301.65389976,
+   "shots_per_s": 111170798.57850689,
    "shots": 67108864,
-   "seconds": 0.6413,
+   "seconds": 0.6037,
    "compile_seconds": 1.24,
-   "warmup_seconds": 1.27,
+   "warmup_seconds": 0.5,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6461,11 +6539,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 103577127.74640143,
+   "shots_per_s": 110159883.51286937,
    "shots": 67108864,
-   "seconds": 0.6479,
-   "compile_seconds": 1.21,
-   "warmup_seconds": 1.19,
+   "seconds": 0.6092,
+   "compile_seconds": 1.2,
+   "warmup_seconds": 0.5,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6508,11 +6586,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 81535892.89195205,
+   "shots_per_s": 85603955.14173211,
    "shots": 67108864,
-   "seconds": 0.8231,
-   "compile_seconds": 1.25,
-   "warmup_seconds": 1.39,
+   "seconds": 0.7839,
+   "compile_seconds": 1.24,
+   "warmup_seconds": 0.62,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6604,10 +6682,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1298124021.0464554,
+   "shots_per_s": 1500515812.0927515,
    "shots": 715827882,
-   "seconds": 0.5514,
-   "compile_seconds": 0.1,
+   "seconds": 0.4771,
+   "compile_seconds": 0.12,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -6651,10 +6729,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 164284988.73414466,
+   "shots_per_s": 171448023.6266904,
    "shots": 134217728,
-   "seconds": 0.817,
-   "compile_seconds": 0.22,
+   "seconds": 0.7828,
+   "compile_seconds": 0.24,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -6698,11 +6776,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2765179904.7317104,
+   "shots_per_s": 3737031602.5124936,
    "shots": 1073741824,
-   "seconds": 0.3883,
-   "compile_seconds": 0.08,
-   "warmup_seconds": 0.23,
+   "seconds": 0.2873,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.2,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6745,11 +6823,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1039017951.8424442,
+   "shots_per_s": 1173862911.7710404,
    "shots": 429496729,
-   "seconds": 0.4134,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.38,
+   "seconds": 0.3659,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.29,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6792,10 +6870,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 668349346.9562262,
+   "shots_per_s": 733552089.2177252,
    "shots": 357913941,
-   "seconds": 0.5355,
-   "compile_seconds": 0.11,
+   "seconds": 0.4879,
+   "compile_seconds": 0.13,
    "warmup_seconds": 0.44,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -6839,11 +6917,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 723298631.6416514,
+   "shots_per_s": 801952651.4971758,
    "shots": 306783378,
-   "seconds": 0.4241,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.43,
+   "seconds": 0.3825,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.3,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6886,10 +6964,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 530750605.92101896,
+   "shots_per_s": 576954540.2891163,
    "shots": 268435456,
-   "seconds": 0.5058,
-   "compile_seconds": 0.13,
+   "seconds": 0.4653,
+   "compile_seconds": 0.15,
    "warmup_seconds": 0.52,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -6933,11 +7011,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 570671146.432379,
+   "shots_per_s": 645280769.597991,
    "shots": 268435456,
-   "seconds": 0.4704,
+   "seconds": 0.416,
    "compile_seconds": 0.13,
-   "warmup_seconds": 0.51,
+   "warmup_seconds": 0.33,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -6980,11 +7058,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2767217739.7222557,
+   "shots_per_s": 3721960336.430455,
    "shots": 1073741824,
-   "seconds": 0.388,
-   "compile_seconds": 0.08,
-   "warmup_seconds": 0.22,
+   "seconds": 0.2885,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.21,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7027,11 +7105,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1413291686.4587848,
+   "shots_per_s": 1643077850.026605,
    "shots": 715827882,
-   "seconds": 0.5065,
-   "compile_seconds": 0.09,
-   "warmup_seconds": 0.29,
+   "seconds": 0.4357,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.28,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7074,11 +7152,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1604934874.304543,
+   "shots_per_s": 1904260964.7518926,
    "shots": 536870912,
-   "seconds": 0.3345,
-   "compile_seconds": 0.09,
-   "warmup_seconds": 0.29,
+   "seconds": 0.2819,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.23,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7121,11 +7199,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 920856606.0489836,
+   "shots_per_s": 1013081620.8863062,
    "shots": 536870912,
-   "seconds": 0.583,
+   "seconds": 0.5299,
    "compile_seconds": 0.1,
-   "warmup_seconds": 0.37,
+   "warmup_seconds": 0.36,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7168,11 +7246,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 64053238.177046,
+   "shots_per_s": 115407926.43481877,
    "shots": 7924293,
-   "seconds": 0.1237,
+   "seconds": 0.0687,
    "compile_seconds": 2.08,
-   "warmup_seconds": 0.12,
+   "warmup_seconds": 0.11,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7215,11 +7293,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 43338586.35145385,
+   "shots_per_s": 68607468.3538521,
    "shots": 6242685,
-   "seconds": 0.144,
-   "compile_seconds": 3.29,
-   "warmup_seconds": 0.12,
+   "seconds": 0.091,
+   "compile_seconds": 3.15,
+   "warmup_seconds": 0.11,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7262,9 +7340,9 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 4200559371.0489297,
+   "shots_per_s": 6646639874.813758,
    "shots": 2147483648,
-   "seconds": 0.5112,
+   "seconds": 0.3231,
    "compile_seconds": 0.08,
    "warmup_seconds": 0.07,
    "backend": "MetalShotSampler",
@@ -7309,11 +7387,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1977580634.396664,
-   "shots": 1073741824,
-   "seconds": 0.543,
-   "compile_seconds": 0.09,
-   "warmup_seconds": 0.14,
+   "shots_per_s": 2412538383.8321123,
+   "shots": 2147483648,
+   "seconds": 0.8901,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.1,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7356,10 +7434,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 4201981990.0142236,
+   "shots_per_s": 6617654160.431727,
    "shots": 2147483648,
-   "seconds": 0.5111,
-   "compile_seconds": 0.28,
+   "seconds": 0.3245,
+   "compile_seconds": 0.29,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -7395,11 +7473,11 @@
    "skipped": "no clifft k_max"
   },
   "metal": {
-   "shots_per_s": 323586501.22833574,
+   "shots_per_s": 336843448.1452307,
    "shots": 268435456,
-   "seconds": 0.8296,
-   "compile_seconds": 0.37,
-   "warmup_seconds": 0.57,
+   "seconds": 0.7969,
+   "compile_seconds": 0.39,
+   "warmup_seconds": 0.28,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7442,10 +7520,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 4199299214.1998825,
+   "shots_per_s": 6663399269.316382,
    "shots": 2147483648,
-   "seconds": 0.5114,
-   "compile_seconds": 0.08,
+   "seconds": 0.3223,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -7489,11 +7567,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2981879508.5170546,
+   "shots_per_s": 4043175508.438621,
    "shots": 2147483648,
-   "seconds": 0.7202,
-   "compile_seconds": 0.08,
-   "warmup_seconds": 0.11,
+   "seconds": 0.5311,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.08,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7536,10 +7614,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 4180340950.6798716,
+   "shots_per_s": 6681933105.332081,
    "shots": 2147483648,
-   "seconds": 0.5137,
-   "compile_seconds": 0.1,
+   "seconds": 0.3214,
+   "compile_seconds": 0.11,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -7576,11 +7654,11 @@
    "skipped": "clifft k_max 22 > 15"
   },
   "metal": {
-   "shots_per_s": 1253680129.6983716,
+   "shots_per_s": 1417283488.585141,
    "shots": 1073741824,
-   "seconds": 0.8565,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.19,
+   "seconds": 0.7576,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.12,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7623,10 +7701,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 4201478105.722106,
+   "shots_per_s": 6766726889.002881,
    "shots": 2147483648,
-   "seconds": 0.5111,
-   "compile_seconds": 0.08,
+   "seconds": 0.3174,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -7670,11 +7748,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2674237725.1403456,
+   "shots_per_s": 3530294116.808345,
    "shots": 2147483648,
-   "seconds": 0.803,
-   "compile_seconds": 0.09,
-   "warmup_seconds": 0.12,
+   "seconds": 0.6083,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.09,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7717,9 +7795,9 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 4171835909.529662,
+   "shots_per_s": 6648235423.253394,
    "shots": 2147483648,
-   "seconds": 0.5148,
+   "seconds": 0.323,
    "compile_seconds": 0.12,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
@@ -7757,11 +7835,11 @@
    "skipped": "clifft k_max 42 > 15"
   },
   "metal": {
-   "shots_per_s": 749727651.1275431,
+   "shots_per_s": 809344490.8008639,
    "shots": 536870912,
-   "seconds": 0.7161,
+   "seconds": 0.6633,
    "compile_seconds": 0.15,
-   "warmup_seconds": 0.26,
+   "warmup_seconds": 0.15,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7804,10 +7882,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 4218513074.09446,
+   "shots_per_s": 6746153497.579719,
    "shots": 2147483648,
-   "seconds": 0.5091,
-   "compile_seconds": 0.08,
+   "seconds": 0.3183,
+   "compile_seconds": 0.1,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -7851,11 +7929,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2391398525.532189,
+   "shots_per_s": 3024495642.120244,
    "shots": 2147483648,
-   "seconds": 0.898,
-   "compile_seconds": 0.09,
-   "warmup_seconds": 0.13,
+   "seconds": 0.71,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.09,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7898,10 +7976,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 4188216296.8705764,
+   "shots_per_s": 6642451855.411043,
    "shots": 2147483648,
-   "seconds": 0.5127,
-   "compile_seconds": 0.17,
+   "seconds": 0.3233,
+   "compile_seconds": 0.18,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -7937,11 +8015,11 @@
    "skipped": "no clifft k_max"
   },
   "metal": {
-   "shots_per_s": 523340255.3502184,
+   "shots_per_s": 538781745.55257,
    "shots": 268435456,
-   "seconds": 0.5129,
-   "compile_seconds": 0.2,
-   "warmup_seconds": 0.36,
+   "seconds": 0.4982,
+   "compile_seconds": 0.23,
+   "warmup_seconds": 0.19,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -7984,10 +8062,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 4183770344.280772,
+   "shots_per_s": 6648124800.183697,
    "shots": 2147483648,
-   "seconds": 0.5133,
-   "compile_seconds": 0.22,
+   "seconds": 0.323,
+   "compile_seconds": 0.23,
    "warmup_seconds": 0.0,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -8023,11 +8101,11 @@
    "skipped": "no clifft k_max"
   },
   "metal": {
-   "shots_per_s": 398557408.59728706,
+   "shots_per_s": 417193796.0617154,
    "shots": 268435456,
-   "seconds": 0.6735,
-   "compile_seconds": 0.28,
-   "warmup_seconds": 0.47,
+   "seconds": 0.6434,
+   "compile_seconds": 0.3,
+   "warmup_seconds": 0.24,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -8070,11 +8148,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1576062631.607418,
+   "shots_per_s": 1872231863.969129,
    "shots": 715827882,
-   "seconds": 0.4542,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.27,
+   "seconds": 0.3823,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.21,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -8117,10 +8195,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 201070754.47065815,
+   "shots_per_s": 212010740.66923755,
    "shots": 134217728,
-   "seconds": 0.6675,
-   "compile_seconds": 0.22,
+   "seconds": 0.6331,
+   "compile_seconds": 0.24,
    "warmup_seconds": 0.01,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -8164,11 +8242,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1968215389.7841785,
+   "shots_per_s": 2452384640.6228533,
    "shots": 715827882,
-   "seconds": 0.3637,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.13,
+   "seconds": 0.2919,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.1,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -8211,10 +8289,10 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 2334371697.3952303,
+   "shots_per_s": 3254471925.594026,
    "shots": 357913941,
-   "seconds": 0.1533,
-   "compile_seconds": 0.1,
+   "seconds": 0.11,
+   "compile_seconds": 0.13,
    "warmup_seconds": 0.09,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
@@ -8258,11 +8336,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 940902706.9170039,
+   "shots_per_s": 1080026769.548867,
    "shots": 357913941,
-   "seconds": 0.3804,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.2,
+   "seconds": 0.3314,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.14,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -8305,11 +8383,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1082679015.3783293,
+   "shots_per_s": 1479074390.7523818,
    "shots": 126322567,
-   "seconds": 0.1167,
-   "compile_seconds": 0.18,
-   "warmup_seconds": 0.08,
+   "seconds": 0.0854,
+   "compile_seconds": 0.2,
+   "warmup_seconds": 0.11,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -8345,11 +8423,11 @@
    "skipped": "clifft k_max 18 > 15"
   },
   "metal": {
-   "shots_per_s": 18814505.540868223,
+   "shots_per_s": 19056975.812986344,
    "shots": 16777216,
-   "seconds": 0.8917,
-   "compile_seconds": 0.25,
-   "warmup_seconds": 0.8,
+   "seconds": 0.8804,
+   "compile_seconds": 0.27,
+   "warmup_seconds": 0.4,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -8392,11 +8470,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 1848575469.2764366,
+   "shots_per_s": 3689901007.967501,
    "shots": 178956970,
-   "seconds": 0.0968,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.07,
+   "seconds": 0.0485,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.09,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
@@ -8439,11 +8517,11 @@
    "tsim_version": "1.0.0"
   },
   "metal": {
-   "shots_per_s": 830932691.6890275,
+   "shots_per_s": 1147495669.4528604,
    "shots": 178956970,
-   "seconds": 0.2154,
+   "seconds": 0.156,
    "compile_seconds": 0.12,
-   "warmup_seconds": 0.23,
+   "warmup_seconds": 0.16,
    "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }

@@ -61,7 +61,7 @@ def main():
         "- **Tsim:** `bloqade-tsim==1.0.0`, detector sampler, single core.",
         "- **Clifft:** 0.13.0 with `default_hir_pass_manager()` + `ActiveWidthSchedulePass()`, `sample(threads=1)`.",
         "- **Tsim GPU:** draft PR #219 at `a2af975f` on an RTX 5090. GPU speedup is the Tsim GPU rate over the Tsim single-core rate.",
-        "- **Tsim Metal:** Metal prototype (branch `metal-statevector-executor` at `3c01b549`, on the CUDA draft) on an Apple M4 Pro",
+        "- **Tsim Metal:** Metal prototype (branch `metal-statevector-executor` at `8b4700d4`, on the CUDA draft) on an Apple M4 Pro",
         "  (20-core GPU, 48 GB unified memory); measured like the CUDA column. Metal speedup vs CPU is the Metal rate over the",
         "  Tsim single-core rate (Ryzen 9 9900X), as for the CUDA GPU.",
         "- **k_max:** Tsim's largest statevector component and Clifft's `peak_active_width`.",
