@@ -9,11 +9,11 @@
    "seconds": 1.19
   },
   "cpu": {
-   "shots_per_s": 1122018.1021385847,
+   "shots_per_s": 1505670.8988041605,
    "shots": 610080,
-   "seconds": 0.5437,
-   "compile_seconds": 3.3,
-   "warmup_seconds": 0.34,
+   "seconds": 0.4052,
+   "compile_seconds": 2.27,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -25,6 +25,16 @@
    "warmup_seconds": 0.42,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 180355.76079335515,
+   "shots": 37553,
+   "seconds": 0.2082,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.01,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/hook_inject_T_d15_pd7_p0.001.stim": {
@@ -37,11 +47,11 @@
    "seconds": 0.87
   },
   "cpu": {
-   "shots_per_s": 1102277.4942512964,
+   "shots_per_s": 1483905.2372805122,
    "shots": 601873,
-   "seconds": 0.546,
-   "compile_seconds": 3.33,
-   "warmup_seconds": 0.35,
+   "seconds": 0.4056,
+   "compile_seconds": 2.3,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -53,6 +63,16 @@
    "warmup_seconds": 0.42,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 178423.3219644998,
+   "shots": 37056,
+   "seconds": 0.2077,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.01,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/li_inject_T_d15_pd5_p0.001.stim": {
@@ -65,11 +85,11 @@
    "seconds": 2.44
   },
   "cpu": {
-   "shots_per_s": 400999.4744054129,
+   "shots_per_s": 800321.315114177,
    "shots": 326167,
-   "seconds": 0.8134,
-   "compile_seconds": 7.49,
-   "warmup_seconds": 0.2,
+   "seconds": 0.4075,
+   "compile_seconds": 5.07,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -81,6 +101,16 @@
    "warmup_seconds": 0.13,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 86311.2804106296,
+   "shots": 20065,
+   "seconds": 0.2325,
+   "compile_seconds": 1.83,
+   "warmup_seconds": 0.01,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/li_inject_T_d15_pd7_p0.001.stim": {
@@ -93,11 +123,11 @@
    "seconds": 2.53
   },
   "cpu": {
-   "shots_per_s": 399605.7643516132,
+   "shots_per_s": 787538.1696271454,
    "shots": 321865,
-   "seconds": 0.8055,
-   "compile_seconds": 7.56,
-   "warmup_seconds": 0.19,
+   "seconds": 0.4087,
+   "compile_seconds": 5.19,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -109,6 +139,16 @@
    "warmup_seconds": 0.13,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 84228.90985636081,
+   "shots": 19804,
+   "seconds": 0.2351,
+   "compile_seconds": 1.87,
+   "warmup_seconds": 0.01,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/pregrown_hook_inject_T_d15_pd5_p0.001.stim": {
@@ -121,11 +161,11 @@
    "seconds": 1.36
   },
   "cpu": {
-   "shots_per_s": 999125.9519646526,
+   "shots_per_s": 1331039.0829970357,
    "shots": 547827,
-   "seconds": 0.5483,
-   "compile_seconds": 3.5,
-   "warmup_seconds": 0.35,
+   "seconds": 0.4116,
+   "compile_seconds": 2.35,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -137,6 +177,16 @@
    "warmup_seconds": 0.47,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 180460.13484245475,
+   "shots": 33773,
+   "seconds": 0.1871,
+   "compile_seconds": 0.6,
+   "warmup_seconds": 0.01,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/pregrown_hook_inject_T_d15_pd7_p0.001.stim": {
@@ -149,11 +199,11 @@
    "seconds": 1.39
   },
   "cpu": {
-   "shots_per_s": 998070.6103568365,
+   "shots_per_s": 1335439.2384680018,
    "shots": 547827,
-   "seconds": 0.5489,
-   "compile_seconds": 3.51,
-   "warmup_seconds": 0.34,
+   "seconds": 0.4102,
+   "compile_seconds": 2.36,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -165,6 +215,16 @@
    "warmup_seconds": 0.13,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 182052.0847529106,
+   "shots": 33773,
+   "seconds": 0.1855,
+   "compile_seconds": 0.6,
+   "warmup_seconds": 0.01,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/zz_inject_T_d15_pd5_p0.001.stim": {
@@ -177,11 +237,11 @@
    "seconds": 2.21
   },
   "cpu": {
-   "shots_per_s": 444417.6073261409,
+   "shots_per_s": 806609.1300786124,
    "shots": 348617,
-   "seconds": 0.7844,
-   "compile_seconds": 6.59,
-   "warmup_seconds": 0.28,
+   "seconds": 0.4322,
+   "compile_seconds": 4.17,
+   "warmup_seconds": 0.14,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -193,6 +253,16 @@
    "warmup_seconds": 0.13,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 91999.99374113964,
+   "shots": 21408,
+   "seconds": 0.2327,
+   "compile_seconds": 1.72,
+   "warmup_seconds": 0.01,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/zz_inject_T_d15_pd7_p0.001.stim": {
@@ -205,11 +275,11 @@
    "seconds": 2.21
   },
   "cpu": {
-   "shots_per_s": 429019.10078225366,
+   "shots_per_s": 797973.9850908145,
    "shots": 343707,
-   "seconds": 0.8011,
-   "compile_seconds": 6.83,
-   "warmup_seconds": 0.22,
+   "seconds": 0.4307,
+   "compile_seconds": 4.25,
+   "warmup_seconds": 0.14,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -219,6 +289,168 @@
    "seconds": 0.0405,
    "compile_seconds": 5.11,
    "warmup_seconds": 0.13,
+   "backend": "CudaShotSampler",
+   "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 90333.58652012619,
+   "shots": 21111,
+   "seconds": 0.2337,
+   "compile_seconds": 1.74,
+   "warmup_seconds": 0.01,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  }
+ },
+ "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d3_p0.001_pinj0.1.stim": {
+  "tsim": {
+   "k": 1,
+   "seconds": 0.66
+  },
+  "clifft": {
+   "k": 2,
+   "seconds": 0.01
+  },
+  "cpu": {
+   "shots_per_s": 51987823.52171376,
+   "shots": 33554432,
+   "seconds": 0.6454,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.13,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 11535004.793884564,
+   "shots": 1851279,
+   "seconds": 0.1605,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "gpu": {
+   "shots_per_s": 6698791897.067815,
+   "shots": 268435456,
+   "seconds": 0.0401,
+   "compile_seconds": 0.22,
+   "warmup_seconds": 0.39,
+   "backend": "CudaShotSampler",
+   "tsim_version": "0.1.5"
+  }
+ },
+ "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d5_p0.001_pinj0.1.stim": {
+  "tsim": {
+   "k": 1,
+   "seconds": 0.76
+  },
+  "clifft": {
+   "k": 2,
+   "seconds": 0.01
+  },
+  "cpu": {
+   "shots_per_s": 44446181.37684,
+   "shots": 16777216,
+   "seconds": 0.3775,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.13,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 6756259.043342177,
+   "shots": 885925,
+   "seconds": 0.1311,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "gpu": {
+   "shots_per_s": 3363471973.771053,
+   "shots": 134217728,
+   "seconds": 0.0399,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.3,
+   "backend": "CudaShotSampler",
+   "tsim_version": "0.1.5"
+  }
+ },
+ "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d7_p0.001_pinj0.1.stim": {
+  "tsim": {
+   "k": 1,
+   "seconds": 0.68
+  },
+  "clifft": {
+   "k": 2,
+   "seconds": 0.02
+  },
+  "cpu": {
+   "shots_per_s": 37001891.67870481,
+   "shots": 9586980,
+   "seconds": 0.2591,
+   "compile_seconds": 0.03,
+   "warmup_seconds": 0.13,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4248995.706290882,
+   "shots": 496183,
+   "seconds": 0.1168,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "gpu": {
+   "shots_per_s": 1948610155.5794098,
+   "shots": 76695844,
+   "seconds": 0.0394,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.31,
+   "backend": "CudaShotSampler",
+   "tsim_version": "0.1.5"
+  }
+ },
+ "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d9_p0.001_pinj0.1.stim": {
+  "tsim": {
+   "k": 1,
+   "seconds": 0.69
+  },
+  "clifft": {
+   "k": 2,
+   "seconds": 0.04
+  },
+  "cpu": {
+   "shots_per_s": 30070146.171530657,
+   "shots": 6100805,
+   "seconds": 0.2029,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.13,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 2767026.7791170874,
+   "shots": 312497,
+   "seconds": 0.1129,
+   "compile_seconds": 0.03,
+   "warmup_seconds": 0.0,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "gpu": {
+   "shots_per_s": 1241152545.8399138,
+   "shots": 48806446,
+   "seconds": 0.0393,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.3,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
   }
@@ -233,11 +465,11 @@
    "seconds": 0.11
   },
   "cpu": {
-   "shots_per_s": 2574847.980968233,
+   "shots_per_s": 3161602.044978579,
    "shots": 2097152,
-   "seconds": 0.8145,
-   "compile_seconds": 0.93,
-   "warmup_seconds": 0.21,
+   "seconds": 0.6633,
+   "compile_seconds": 0.83,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -249,6 +481,16 @@
    "warmup_seconds": 0.52,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 606304.2366492463,
+   "shots": 126799,
+   "seconds": 0.2091,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.07707_color_code_msd/stim/cult_growing_T_d3_to_d7_p0.001.stim": {
@@ -261,11 +503,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 7967803.1680228375,
+   "shots_per_s": 9654594.723170634,
    "shots": 7669584,
-   "seconds": 0.9626,
-   "compile_seconds": 0.18,
-   "warmup_seconds": 0.15,
+   "seconds": 0.7944,
+   "compile_seconds": 0.16,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -277,6 +519,16 @@
    "warmup_seconds": 0.5,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1925225.2290163385,
+   "shots": 464421,
+   "seconds": 0.2412,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.07707_color_code_msd/stim/cult_growing_T_d5_to_d13_p0.001.stim": {
@@ -289,11 +541,11 @@
    "seconds": 0.46
   },
   "cpu": {
-   "shots_per_s": 450314.8127329176,
-   "shots": 524288,
-   "seconds": 1.1643,
-   "compile_seconds": 2.39,
-   "warmup_seconds": 0.21,
+   "shots_per_s": 661707.4109630665,
+   "shots": 1048576,
+   "seconds": 1.5847,
+   "compile_seconds": 1.99,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -305,6 +557,16 @@
    "warmup_seconds": 1.72,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 41444.24342513804,
+   "shots": 65536,
+   "seconds": 1.5813,
+   "compile_seconds": 0.3,
+   "warmup_seconds": 0.03,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.07707_color_code_msd/stim/cult_growing_T_d5_to_d9_p0.001.stim": {
@@ -317,11 +579,11 @@
    "seconds": 0.12
   },
   "cpu": {
-   "shots_per_s": 467073.4833540431,
-   "shots": 524288,
-   "seconds": 1.1225,
-   "compile_seconds": 0.61,
-   "warmup_seconds": 0.2,
+   "shots_per_s": 890314.3467212638,
+   "shots": 1048576,
+   "seconds": 1.1778,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.14,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -333,6 +595,16 @@
    "warmup_seconds": 1.72,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 91619.81372991677,
+   "shots": 131072,
+   "seconds": 1.4306,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.17595_magic_state_cultivation/stim/end2end_d3_dsurface15_p0.001.stim": {
@@ -345,11 +617,11 @@
    "seconds": 0.9
   },
   "cpu": {
-   "shots_per_s": 1241985.2405062092,
+   "shots_per_s": 1392564.6017361986,
    "shots": 990536,
-   "seconds": 0.7975,
-   "compile_seconds": 2.83,
-   "warmup_seconds": 0.24,
+   "seconds": 0.7113,
+   "compile_seconds": 1.86,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -361,6 +633,16 @@
    "warmup_seconds": 0.57,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 168357.59315983215,
+   "shots": 60417,
+   "seconds": 0.3589,
+   "compile_seconds": 0.69,
+   "warmup_seconds": 0.01,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.17595_magic_state_cultivation/stim/end2end_d5_dsurface15_p0.001.stim": {
@@ -373,11 +655,11 @@
    "seconds": 1.77
   },
   "cpu": {
-   "shots_per_s": 264711.4993010968,
-   "shots": 262144,
-   "seconds": 0.9903,
-   "compile_seconds": 4.43,
-   "warmup_seconds": 0.2,
+   "shots_per_s": 539429.7094356489,
+   "shots": 780335,
+   "seconds": 1.4466,
+   "compile_seconds": 2.87,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -389,6 +671,16 @@
    "warmup_seconds": 0.13,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 21240.066458896745,
+   "shots": 32768,
+   "seconds": 1.5427,
+   "compile_seconds": 1.32,
+   "warmup_seconds": 0.05,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.17595_magic_state_cultivation/stim/inject_cultivate_d3_p0.001.stim": {
@@ -401,11 +693,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 27577756.64310678,
+   "shots_per_s": 29445094.462900717,
    "shots": 33554432,
-   "seconds": 1.2167,
+   "seconds": 1.1396,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.23,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -417,6 +709,16 @@
    "warmup_seconds": 0.48,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4527739.2943707565,
+   "shots": 6391320,
+   "seconds": 1.4116,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.17595_magic_state_cultivation/stim/inject_cultivate_d5_p0.001.stim": {
@@ -429,11 +731,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 799457.8834691748,
-   "shots": 524288,
-   "seconds": 0.6558,
-   "compile_seconds": 0.13,
-   "warmup_seconds": 0.22,
+   "shots_per_s": 1255309.7609962304,
+   "shots": 2097152,
+   "seconds": 1.6706,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -445,6 +747,16 @@
    "warmup_seconds": 3.1,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 123846.74123831648,
+   "shots": 131072,
+   "seconds": 1.0583,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-init-x-injection-double-HXY_d1=3_d2=11_p=0.001.stim": {
@@ -457,11 +769,11 @@
    "seconds": 0.41
   },
   "cpu": {
-   "shots_per_s": 1682121.264945894,
+   "shots_per_s": 2035084.6832690584,
    "shots": 1405421,
-   "seconds": 0.8355,
-   "compile_seconds": 1.14,
-   "warmup_seconds": 0.2,
+   "seconds": 0.6906,
+   "compile_seconds": 0.9,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -473,6 +785,16 @@
    "warmup_seconds": 11.36,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 47520.14010502731,
+   "shots": 65536,
+   "seconds": 1.3791,
+   "compile_seconds": 0.32,
+   "warmup_seconds": 0.02,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-injection-double-ghz-HXY_d1=3_d2=11_p=0.001.stim": {
@@ -485,11 +807,11 @@
    "seconds": 0.4
   },
   "cpu": {
-   "shots_per_s": 1646122.903427664,
+   "shots_per_s": 1927545.6642686985,
    "shots": 1405421,
-   "seconds": 0.8538,
-   "compile_seconds": 1.16,
-   "warmup_seconds": 0.27,
+   "seconds": 0.7291,
+   "compile_seconds": 0.93,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -501,6 +823,16 @@
    "warmup_seconds": 3.88,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 46926.87011302887,
+   "shots": 65536,
+   "seconds": 1.3966,
+   "compile_seconds": 0.32,
+   "warmup_seconds": 0.02,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-injection-syndrome-double-ghz-HXY_d1=3_d2=11_p=0.001.stim": {
@@ -513,11 +845,11 @@
    "seconds": 0.38
   },
   "cpu": {
-   "shots_per_s": 1294160.3653248956,
+   "shots_per_s": 1826883.4486976897,
    "shots": 1398101,
-   "seconds": 1.0803,
-   "compile_seconds": 1.28,
-   "warmup_seconds": 0.29,
+   "seconds": 0.7653,
+   "compile_seconds": 0.96,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -529,6 +861,16 @@
    "warmup_seconds": 4.0,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 45963.639580946896,
+   "shots": 65536,
+   "seconds": 1.4258,
+   "compile_seconds": 0.34,
+   "warmup_seconds": 0.02,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-unrotated_H_injection-ghz_d1=3_d2=11_p=0.001.stim": {
@@ -541,11 +883,11 @@
    "seconds": 0.71
   },
   "cpu": {
-   "shots_per_s": 57548.112558563436,
-   "shots": 65536,
-   "seconds": 1.1388,
-   "compile_seconds": 2.75,
-   "warmup_seconds": 0.16,
+   "shots_per_s": 105260.69904626027,
+   "shots": 131072,
+   "seconds": 1.2452,
+   "compile_seconds": 1.96,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -557,6 +899,16 @@
    "warmup_seconds": 17.41,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 7142.180476546823,
+   "shots": 8192,
+   "seconds": 1.147,
+   "compile_seconds": 0.5,
+   "warmup_seconds": 0.15,
+   "active_width": 15,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-unrotated_H_injection-syndrome-ghz_d1=3_d2=11_p=0.001.stim": {
@@ -569,11 +921,11 @@
    "seconds": 0.66
   },
   "cpu": {
-   "shots_per_s": 53090.88779716499,
-   "shots": 65536,
-   "seconds": 1.2344,
-   "compile_seconds": 2.89,
-   "warmup_seconds": 0.18,
+   "shots_per_s": 95311.45305265958,
+   "shots": 131072,
+   "seconds": 1.3752,
+   "compile_seconds": 2.0,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -585,6 +937,16 @@
    "warmup_seconds": 17.38,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 7132.469507722827,
+   "shots": 8192,
+   "seconds": 1.1486,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.15,
+   "active_width": 15,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-init-x-injection-double-HXY_d1=3_p=0.001.stim": {
@@ -597,11 +959,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 3860712.5957657285,
-   "shots": 4194304,
-   "seconds": 1.0864,
+   "shots_per_s": 4520065.760876212,
+   "shots": 8388608,
+   "seconds": 1.8559,
    "compile_seconds": 0.05,
-   "warmup_seconds": 0.22,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -613,6 +975,16 @@
    "warmup_seconds": 4.18,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 294399.54096349154,
+   "shots": 524288,
+   "seconds": 1.7809,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-init-x-injection-syndrome-double-ghz-HXY_d1=3_p=0.001.stim": {
@@ -625,11 +997,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 3155032.62980229,
+   "shots_per_s": 4015271.0155981686,
    "shots": 4194304,
-   "seconds": 1.3294,
-   "compile_seconds": 0.06,
-   "warmup_seconds": 0.24,
+   "seconds": 1.0446,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -641,6 +1013,16 @@
    "warmup_seconds": 3.83,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 276728.1432065185,
+   "shots": 524288,
+   "seconds": 1.8946,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-injection-double-ghz-HXY_d1=3_p=0.001.stim": {
@@ -653,11 +1035,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 3500151.5767024974,
+   "shots_per_s": 4173263.2081445553,
    "shots": 4194304,
-   "seconds": 1.1983,
-   "compile_seconds": 0.06,
-   "warmup_seconds": 0.24,
+   "seconds": 1.005,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -669,6 +1051,16 @@
    "warmup_seconds": 3.89,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 289691.2749148656,
+   "shots": 524288,
+   "seconds": 1.8098,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-injection-ghz-HXY_d1=3_p=0.001.stim": {
@@ -681,11 +1073,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 6817412.589491103,
+   "shots_per_s": 7630498.119092643,
    "shots": 8388608,
-   "seconds": 1.2305,
-   "compile_seconds": 0.06,
-   "warmup_seconds": 0.27,
+   "seconds": 1.0994,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -697,6 +1089,16 @@
    "warmup_seconds": 6.28,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 519371.42545623065,
+   "shots": 524288,
+   "seconds": 1.0095,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 8,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-injection-syndrome-double-ghz-HXY_d1=3_p=0.001.stim": {
@@ -709,11 +1111,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 3198163.637431095,
+   "shots_per_s": 3777458.4153690725,
    "shots": 4194304,
-   "seconds": 1.3115,
-   "compile_seconds": 0.06,
-   "warmup_seconds": 0.26,
+   "seconds": 1.1104,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -725,6 +1127,16 @@
    "warmup_seconds": 3.85,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 282588.68857191724,
+   "shots": 524288,
+   "seconds": 1.8553,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/unrotated_HXY_injection-ghz_d1=3_p=0.001.stim": {
@@ -737,11 +1149,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 5175617.254468883,
+   "shots_per_s": 5902916.094076473,
    "shots": 8388608,
-   "seconds": 1.6208,
-   "compile_seconds": 0.06,
-   "warmup_seconds": 0.3,
+   "seconds": 1.4211,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -753,6 +1165,16 @@
    "warmup_seconds": 3.63,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 320699.91170200886,
+   "shots": 524288,
+   "seconds": 1.6348,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/unrotated_HXY_injection-syndrome-ghz_d1=3_p=0.001.stim": {
@@ -765,11 +1187,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 4381252.547890708,
+   "shots_per_s": 5112827.8670771895,
    "shots": 8388608,
-   "seconds": 1.9147,
-   "compile_seconds": 0.07,
-   "warmup_seconds": 0.27,
+   "seconds": 1.6407,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -781,6 +1203,16 @@
    "warmup_seconds": 3.67,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 305517.341637783,
+   "shots": 524288,
+   "seconds": 1.7161,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/unrotated_H_injection-ghz_d1=3_p=0.001.stim": {
@@ -793,11 +1225,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 82369.845510079,
-   "shots": 131072,
-   "seconds": 1.5913,
-   "compile_seconds": 0.09,
-   "warmup_seconds": 0.29,
+   "shots_per_s": 204771.2968247653,
+   "shots": 262144,
+   "seconds": 1.2802,
+   "compile_seconds": 0.07,
+   "warmup_seconds": 0.14,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -809,6 +1241,16 @@
    "warmup_seconds": 9.87,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 8644.922538340754,
+   "shots": 16384,
+   "seconds": 1.8952,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.13,
+   "active_width": 15,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/unrotated_H_injection-syndrome-ghz_d1=3_p=0.001.stim": {
@@ -821,11 +1263,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 90331.32595974088,
-   "shots": 131072,
-   "seconds": 1.451,
-   "compile_seconds": 0.1,
-   "warmup_seconds": 0.26,
+   "shots_per_s": 172346.30981694456,
+   "shots": 262144,
+   "seconds": 1.521,
+   "compile_seconds": 0.07,
+   "warmup_seconds": 0.14,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -837,6 +1279,16 @@
    "warmup_seconds": 10.11,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 8595.045567990002,
+   "shots": 16384,
+   "seconds": 1.9062,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.13,
+   "active_width": 15,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_T_cult.stim": {
@@ -849,11 +1301,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 11693999.794552589,
+   "shots_per_s": 13315420.068690568,
    "shots": 16777216,
-   "seconds": 1.4347,
-   "compile_seconds": 0.04,
-   "warmup_seconds": 0.23,
+   "seconds": 1.26,
+   "compile_seconds": 0.03,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -865,6 +1317,16 @@
    "warmup_seconds": 0.7,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 825766.814464711,
+   "shots": 1048576,
+   "seconds": 1.2698,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 8,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_rp_5_T_cult.stim": {
@@ -877,11 +1339,11 @@
    "seconds": 0.06
   },
   "cpu": {
-   "shots_per_s": 6930.619707320353,
-   "shots": 8192,
-   "seconds": 1.182,
-   "compile_seconds": 0.18,
-   "warmup_seconds": 0.28,
+   "shots_per_s": 15625.983747272425,
+   "shots": 16384,
+   "seconds": 1.0485,
+   "compile_seconds": 0.15,
+   "warmup_seconds": 0.17,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -893,6 +1355,9 @@
    "warmup_seconds": 5.69,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 18 > 15"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_rp_5_sc_11_end2end_6_full_rds.stim": {
@@ -905,11 +1370,11 @@
    "seconds": 0.21
   },
   "cpu": {
-   "shots_per_s": 15269.552774967067,
-   "shots": 16384,
-   "seconds": 1.073,
-   "compile_seconds": 0.78,
-   "warmup_seconds": 0.3,
+   "shots_per_s": 24103.649931570733,
+   "shots": 32768,
+   "seconds": 1.3595,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.16,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -921,6 +1386,9 @@
    "warmup_seconds": 10.21,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 18 > 15"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_sc_7_end2end_4_full_rds.stim": {
@@ -933,11 +1401,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 8442357.765009841,
+   "shots_per_s": 9718967.054026386,
    "shots": 8388608,
-   "seconds": 0.9936,
-   "compile_seconds": 0.13,
-   "warmup_seconds": 0.27,
+   "seconds": 0.8631,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -949,6 +1417,16 @@
    "warmup_seconds": 0.76,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 304063.66654124344,
+   "shots": 506481,
+   "seconds": 1.6657,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 8,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2504.02935_erasure_injection/stim/hook_inject_T_d3_p0.001.stim": {
@@ -961,11 +1439,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 76208644.48980726,
+   "shots_per_s": 81600299.61729874,
    "shots": 89478485,
-   "seconds": 1.1741,
+   "seconds": 1.0965,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.32,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -977,6 +1455,16 @@
    "warmup_seconds": 0.41,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 25244396.922729842,
+   "shots": 4793490,
+   "seconds": 0.1899,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2504.02935_erasure_injection/stim/inject_cultivate_T_d3_p0.001.stim": {
@@ -989,11 +1477,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 30479574.109039742,
+   "shots_per_s": 32954219.952139325,
    "shots": 33554432,
-   "seconds": 1.1009,
+   "seconds": 1.0182,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.26,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1004,6 +1492,171 @@
    "compile_seconds": 0.21,
    "warmup_seconds": 0.51,
    "backend": "CudaShotSampler",
+   "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 6686576.224321026,
+   "shots": 6391320,
+   "seconds": 0.9558,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  }
+ },
+ "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d13_p0.001.stim": {
+  "tsim": {
+   "k": 4,
+   "seconds": 27.47
+  },
+  "clifft": {
+   "k": 4,
+   "seconds": 1329.02
+  },
+  "cpu": {
+   "shots_per_s": 210633.50591474827,
+   "shots": 69024,
+   "seconds": 0.3277,
+   "compile_seconds": 26.35,
+   "warmup_seconds": 0.11,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 23772.805442430927,
+   "shots": 5095,
+   "seconds": 0.2143,
+   "compile_seconds": 1330.11,
+   "warmup_seconds": 0.03,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "gpu": {
+   "error": "ValueError: 487 shot words do not fit the noise kernel's shared memory",
+   "tsim_version": "0.1.5"
+  }
+ },
+ "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d17_p0.001.stim": {
+  "tsim": {
+   "error": "out of memory (worker capped at 40 GB)"
+  },
+  "clifft": {
+   "error": "timeout after 1800s"
+  },
+  "cpu": {
+   "skipped": "no tsim k_max"
+  },
+  "clifft_cpu": {
+   "skipped": "no clifft k_max"
+  },
+  "gpu": {
+   "skipped": "no tsim k_max"
+  }
+ },
+ "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d21_p0.001.stim": {
+  "tsim": {
+   "error": "out of memory (worker capped at 40 GB)"
+  },
+  "clifft": {
+   "error": "timeout after 1800s"
+  },
+  "cpu": {
+   "skipped": "no tsim k_max"
+  },
+  "clifft_cpu": {
+   "skipped": "no clifft k_max"
+  },
+  "gpu": {
+   "skipped": "no tsim k_max"
+  }
+ },
+ "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d25_p0.001.stim": {
+  "tsim": {
+   "error": "MemoryError: Unable to allocate 121. GiB for an array with shape (115467, 1125210) and data type uint8"
+  },
+  "clifft": {
+   "error": "timeout after 1800s"
+  },
+  "cpu": {
+   "skipped": "no tsim k_max"
+  },
+  "clifft_cpu": {
+   "skipped": "no clifft k_max"
+  },
+  "gpu": {
+   "skipped": "no tsim k_max"
+  }
+ },
+ "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d5_p0.001.stim": {
+  "tsim": {
+   "k": 4,
+   "seconds": 1.92
+  },
+  "clifft": {
+   "k": 4,
+   "seconds": 3.84
+  },
+  "cpu": {
+   "shots_per_s": 1735137.5850250593,
+   "shots": 480206,
+   "seconds": 0.2768,
+   "compile_seconds": 1.09,
+   "warmup_seconds": 0.13,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 250349.34883443516,
+   "shots": 35283,
+   "seconds": 0.1409,
+   "compile_seconds": 3.43,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "gpu": {
+   "shots_per_s": 95559876.51721135,
+   "shots": 3841652,
+   "seconds": 0.0402,
+   "compile_seconds": 1.4,
+   "warmup_seconds": 0.51,
+   "backend": "CudaShotSampler",
+   "tsim_version": "0.1.5"
+  }
+ },
+ "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d9_p0.001.stim": {
+  "tsim": {
+   "k": 4,
+   "seconds": 8.64
+  },
+  "clifft": {
+   "k": 4,
+   "seconds": 244.62
+  },
+  "cpu": {
+   "shots_per_s": 483888.1152611691,
+   "shots": 144787,
+   "seconds": 0.2992,
+   "compile_seconds": 7.23,
+   "warmup_seconds": 0.14,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 71765.2155055237,
+   "shots": 10679,
+   "seconds": 0.1488,
+   "compile_seconds": 139.2,
+   "warmup_seconds": 0.01,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "gpu": {
+   "error": "ValueError: 232 shot words do not fit the noise kernel's shared memory",
    "tsim_version": "0.1.5"
   }
  },
@@ -1017,11 +1670,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 31220214.62738465,
+   "shots_per_s": 33570840.68817444,
    "shots": 33554432,
-   "seconds": 1.0748,
-   "compile_seconds": 0.03,
-   "warmup_seconds": 0.24,
+   "seconds": 0.9995,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1033,6 +1686,16 @@
    "warmup_seconds": 0.57,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4798674.149807582,
+   "shots": 2064888,
+   "seconds": 0.4303,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_repetition_no_preselection_pz1e-3_rounds4.stim": {
@@ -1045,11 +1708,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 19296947.14856819,
+   "shots_per_s": 21299271.42001294,
    "shots": 20648881,
-   "seconds": 1.0701,
-   "compile_seconds": 0.05,
-   "warmup_seconds": 0.21,
+   "seconds": 0.9695,
+   "compile_seconds": 0.04,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1061,6 +1724,16 @@
    "warmup_seconds": 0.47,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 3578236.990662482,
+   "shots": 1109237,
+   "seconds": 0.31,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_repetition_no_preselection_pz1e-3_rounds6.stim": {
@@ -1073,11 +1746,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 14511076.801789343,
+   "shots_per_s": 16241900.633728277,
    "shots": 13421772,
-   "seconds": 0.9249,
-   "compile_seconds": 0.07,
-   "warmup_seconds": 0.21,
+   "seconds": 0.8264,
+   "compile_seconds": 0.06,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1089,6 +1762,16 @@
    "warmup_seconds": 0.47,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 2850892.311391137,
+   "shots": 758292,
+   "seconds": 0.266,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_surface_no_bitflip_pz1e-3_rounds2.stim": {
@@ -1101,11 +1784,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 19189388.177537635,
+   "shots_per_s": 21332921.012280643,
    "shots": 15790320,
-   "seconds": 0.8229,
-   "compile_seconds": 0.07,
-   "warmup_seconds": 0.21,
+   "seconds": 0.7402,
+   "compile_seconds": 0.06,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1117,6 +1800,16 @@
    "warmup_seconds": 0.44,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 2720653.409634088,
+   "shots": 758292,
+   "seconds": 0.2787,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_surface_no_bitflip_pz1e-3_rounds4.stim": {
@@ -1129,11 +1822,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 11581528.234176844,
+   "shots_per_s": 13738461.890858334,
    "shots": 8134407,
-   "seconds": 0.7024,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.21,
+   "seconds": 0.5921,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1145,6 +1838,16 @@
    "warmup_seconds": 0.51,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1826333.723732899,
+   "shots": 440058,
+   "seconds": 0.241,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_surface_no_bitflip_pz1e-3_rounds6.stim": {
@@ -1157,11 +1860,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 8602416.957985822,
+   "shots_per_s": 10114664.35102062,
    "shots": 5478274,
-   "seconds": 0.6368,
-   "compile_seconds": 0.19,
-   "warmup_seconds": 0.21,
+   "seconds": 0.5416,
+   "compile_seconds": 0.16,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1173,6 +1876,16 @@
    "warmup_seconds": 0.54,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1373008.5108100693,
+   "shots": 309971,
+   "seconds": 0.2258,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.05212_fold_transversal_cultivation/stim/fold-d3_native_T_p0.001.stim": {
@@ -1185,11 +1898,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 15039975.86564066,
+   "shots_per_s": 16472801.608300596,
    "shots": 16777216,
-   "seconds": 1.1155,
+   "seconds": 1.0185,
    "compile_seconds": 0.04,
-   "warmup_seconds": 0.22,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1201,6 +1914,16 @@
    "warmup_seconds": 4.96,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 658029.700106965,
+   "shots": 1048576,
+   "seconds": 1.5935,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 8,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.05212_fold_transversal_cultivation/stim/fold-d5_native_T_p0.001.stim": {
@@ -1213,11 +1936,11 @@
    "seconds": 0.13
   },
   "cpu": {
-   "shots_per_s": 63935.49370655067,
-   "shots": 32768,
-   "seconds": 0.5125,
-   "compile_seconds": 0.29,
-   "warmup_seconds": 0.26,
+   "shots_per_s": 90152.40874483096,
+   "shots": 131072,
+   "seconds": 1.4539,
+   "compile_seconds": 0.25,
+   "warmup_seconds": 0.14,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1229,6 +1952,9 @@
    "warmup_seconds": 54.79,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 22 > 15"
   }
  },
  "papers/2509.08658_few_clifford_terms/stim/d3_cultivation_T_p0.001.stim": {
@@ -1241,11 +1967,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 28594575.320841204,
+   "shots_per_s": 30843568.83654116,
    "shots": 33554432,
-   "seconds": 1.1735,
-   "compile_seconds": 0.03,
-   "warmup_seconds": 0.27,
+   "seconds": 1.0879,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1257,6 +1983,16 @@
    "warmup_seconds": 0.51,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 6226595.441605893,
+   "shots": 3780781,
+   "seconds": 0.6072,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=11.stim": {
@@ -1269,11 +2005,11 @@
    "seconds": 0.19
   },
   "cpu": {
-   "shots_per_s": 2384827.716615217,
+   "shots_per_s": 2920690.8048551674,
    "shots": 1187767,
-   "seconds": 0.4981,
-   "compile_seconds": 0.99,
-   "warmup_seconds": 0.23,
+   "seconds": 0.4067,
+   "compile_seconds": 0.76,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1285,6 +2021,16 @@
    "warmup_seconds": 0.54,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 502059.9408775396,
+   "shots": 73302,
+   "seconds": 0.146,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.0,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=13.stim": {
@@ -1297,11 +2043,11 @@
    "seconds": 0.35
   },
   "cpu": {
-   "shots_per_s": 1259936.702886278,
+   "shots_per_s": 1809884.1972242172,
    "shots": 749819,
-   "seconds": 0.5951,
-   "compile_seconds": 1.84,
-   "warmup_seconds": 0.29,
+   "seconds": 0.4143,
+   "compile_seconds": 1.44,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1313,6 +2059,16 @@
    "warmup_seconds": 0.59,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 268148.5550607685,
+   "shots": 46297,
+   "seconds": 0.1727,
+   "compile_seconds": 0.28,
+   "warmup_seconds": 0.0,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=15.stim": {
@@ -1325,11 +2081,11 @@
    "seconds": 0.78
   },
   "cpu": {
-   "shots_per_s": 829015.943523946,
+   "shots_per_s": 1181153.5519994888,
    "shots": 503631,
-   "seconds": 0.6075,
-   "compile_seconds": 3.54,
-   "warmup_seconds": 0.28,
+   "seconds": 0.4264,
+   "compile_seconds": 2.59,
+   "warmup_seconds": 0.14,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1341,6 +2097,16 @@
    "warmup_seconds": 0.62,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 176817.01787645326,
+   "shots": 31119,
+   "seconds": 0.176,
+   "compile_seconds": 0.58,
+   "warmup_seconds": 0.01,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=3.stim": {
@@ -1353,11 +2119,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 33889572.11279996,
+   "shots_per_s": 37705222.123735756,
    "shots": 33554432,
-   "seconds": 0.9901,
+   "seconds": 0.8899,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.19,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1369,6 +2135,16 @@
    "warmup_seconds": 0.43,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 12674959.35325035,
+   "shots": 2274876,
+   "seconds": 0.1795,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=5.stim": {
@@ -1381,11 +2157,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 14860517.853069896,
+   "shots_per_s": 17173564.027670976,
    "shots": 9586980,
-   "seconds": 0.6451,
-   "compile_seconds": 0.08,
-   "warmup_seconds": 0.22,
+   "seconds": 0.5582,
+   "compile_seconds": 0.07,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1397,6 +2173,16 @@
    "warmup_seconds": 0.46,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 3842906.013425408,
+   "shots": 601873,
+   "seconds": 0.1566,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=7.stim": {
@@ -1409,11 +2195,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 7827293.29042114,
+   "shots_per_s": 9018327.776421003,
    "shots": 4006499,
-   "seconds": 0.5119,
-   "compile_seconds": 0.2,
-   "warmup_seconds": 0.23,
+   "seconds": 0.4443,
+   "compile_seconds": 0.17,
+   "warmup_seconds": 0.12,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1425,6 +2211,16 @@
    "warmup_seconds": 0.45,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1657652.7220875171,
+   "shots": 248091,
+   "seconds": 0.1497,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.0,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=9.stim": {
@@ -1437,10 +2233,10 @@
    "seconds": 0.06
   },
   "cpu": {
-   "shots_per_s": 4167952.9868421108,
+   "shots_per_s": 4986527.123291613,
    "shots": 2049125,
-   "seconds": 0.4916,
-   "compile_seconds": 0.55,
+   "seconds": 0.4109,
+   "compile_seconds": 0.4,
    "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
@@ -1451,6 +2247,260 @@
    "seconds": 0.0391,
    "compile_seconds": 0.68,
    "warmup_seconds": 0.5,
+   "backend": "CudaShotSampler",
+   "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 738693.5366093768,
+   "shots": 126501,
+   "seconds": 0.1712,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.0,
+   "active_width": 2,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/blp_27_3_3.stim": {
+  "tsim": {
+   "k": 26,
+   "seconds": 0.8
+  },
+  "clifft": {
+   "k": 26,
+   "seconds": 0.15
+  },
+  "cpu": {
+   "skipped": "tsim k_max 26 > 15"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 26 > 15"
+  },
+  "gpu": {
+   "skipped": "tsim k_max 26 > 11"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/toric_375_3_5.stim": {
+  "tsim": {
+   "error": "ValueError: strategy='active_statevector' needs 186 active qubits for the component with outputs [381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 44"
+  },
+  "clifft": {
+   "error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60"
+  },
+  "cpu": {
+   "skipped": "no tsim k_max"
+  },
+  "clifft_cpu": {
+   "skipped": "no clifft k_max"
+  },
+  "gpu": {
+   "skipped": "no tsim k_max"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/toric_81_3_3.stim": {
+  "tsim": {
+   "error": "ValueError: strategy='active_statevector' needs 63 active qubits for the component with outputs [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 1"
+  },
+  "clifft": {
+   "k": 59,
+   "seconds": 0.97
+  },
+  "cpu": {
+   "skipped": "no tsim k_max"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 59 > 15"
+  },
+  "gpu": {
+   "skipped": "no tsim k_max"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/tricycle_12_3_2.stim": {
+  "tsim": {
+   "k": 16,
+   "seconds": 0.62
+  },
+  "clifft": {
+   "k": 16,
+   "seconds": 0.12
+  },
+  "cpu": {
+   "skipped": "tsim k_max 16 > 15"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 16 > 15"
+  },
+  "gpu": {
+   "skipped": "tsim k_max 16 > 11"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/tricycle_15_3_2.stim": {
+  "tsim": {
+   "k": 16,
+   "seconds": 0.66
+  },
+  "clifft": {
+   "k": 16,
+   "seconds": 0.1
+  },
+  "cpu": {
+   "skipped": "tsim k_max 16 > 15"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 16 > 15"
+  },
+  "gpu": {
+   "skipped": "tsim k_max 16 > 11"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/tricycle_18_3_2.stim": {
+  "tsim": {
+   "k": 20,
+   "seconds": 0.67
+  },
+  "clifft": {
+   "k": 20,
+   "seconds": 0.1
+  },
+  "cpu": {
+   "skipped": "tsim k_max 20 > 15"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 20 > 15"
+  },
+  "gpu": {
+   "skipped": "tsim k_max 20 > 11"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/tricycle_21_3_3.stim": {
+  "tsim": {
+   "k": 23,
+   "seconds": 0.66
+  },
+  "clifft": {
+   "k": 23,
+   "seconds": 0.11
+  },
+  "cpu": {
+   "skipped": "tsim k_max 23 > 15"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 23 > 15"
+  },
+  "gpu": {
+   "skipped": "tsim k_max 23 > 11"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/tricycle_24_3_2.stim": {
+  "tsim": {
+   "k": 20,
+   "seconds": 0.75
+  },
+  "clifft": {
+   "k": 20,
+   "seconds": 0.09
+  },
+  "cpu": {
+   "skipped": "tsim k_max 20 > 15"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 20 > 15"
+  },
+  "gpu": {
+   "skipped": "tsim k_max 20 > 11"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/tricycle_27_3_3.stim": {
+  "tsim": {
+   "k": 24,
+   "seconds": 0.83
+  },
+  "clifft": {
+   "k": 24,
+   "seconds": 0.1
+  },
+  "cpu": {
+   "skipped": "tsim k_max 24 > 15"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 24 > 15"
+  },
+  "gpu": {
+   "skipped": "tsim k_max 24 > 11"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/tricycle_6_3_2.stim": {
+  "tsim": {
+   "k": 9,
+   "seconds": 0.58
+  },
+  "clifft": {
+   "k": 9,
+   "seconds": 0.08
+  },
+  "cpu": {
+   "shots_per_s": 2295209.9167123763,
+   "shots": 4194304,
+   "seconds": 1.8274,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.13,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 466400.836486624,
+   "shots": 524288,
+   "seconds": 1.1241,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 9,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "gpu": {
+   "shots_per_s": 138448522.11646196,
+   "shots": 67108864,
+   "seconds": 0.4847,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 6.03,
+   "backend": "CudaShotSampler",
+   "tsim_version": "0.1.5"
+  }
+ },
+ "papers/2510.07269_transversal_dimension_jump/stim/tricycle_9_3_2.stim": {
+  "tsim": {
+   "k": 11,
+   "seconds": 0.62
+  },
+  "clifft": {
+   "k": 13,
+   "seconds": 0.04
+  },
+  "cpu": {
+   "shots_per_s": 115965.23555283803,
+   "shots": 131072,
+   "seconds": 1.1303,
+   "compile_seconds": 0.03,
+   "warmup_seconds": 0.15,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 56324.33942600704,
+   "shots": 65536,
+   "seconds": 1.1635,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.02,
+   "active_width": 13,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "gpu": {
+   "shots_per_s": 19081752.70549252,
+   "shots": 16777216,
+   "seconds": 0.8792,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 44.52,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
   }
@@ -1465,11 +2515,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 29518435.00504274,
+   "shots_per_s": 32661387.362362307,
    "shots": 33554432,
-   "seconds": 1.1367,
+   "seconds": 1.0273,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.27,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1481,6 +2531,16 @@
    "warmup_seconds": 0.53,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 6335317.309163902,
+   "shots": 6391320,
+   "seconds": 1.0088,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2510.24615_lattice_surgery_cultivation/stim/lattice-surgery-complementary-gap-3-to-5-to-7_T.stim": {
@@ -1493,11 +2553,11 @@
    "seconds": 0.13
   },
   "cpu": {
-   "shots_per_s": 14676487.104513321,
+   "shots_per_s": 16544006.97244881,
    "shots": 12201611,
-   "seconds": 0.8314,
-   "compile_seconds": 0.44,
-   "warmup_seconds": 0.25,
+   "seconds": 0.7375,
+   "compile_seconds": 0.33,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1509,6 +2569,16 @@
    "warmup_seconds": 0.53,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 778514.4992824506,
+   "shots": 699050,
+   "seconds": 0.8979,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_cultivation_stim_X_T.stim": {
@@ -1521,11 +2591,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 88590771.3725852,
+   "shots_per_s": 97680704.88408087,
    "shots": 134217728,
-   "seconds": 1.515,
-   "compile_seconds": 0.01,
-   "warmup_seconds": 0.22,
+   "seconds": 1.374,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1537,6 +2607,16 @@
    "warmup_seconds": 0.45,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 8187116.548778518,
+   "shots": 8134407,
+   "seconds": 0.9936,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_cultivation_stim_Z_T.stim": {
@@ -1549,11 +2629,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 90402570.89135614,
+   "shots_per_s": 97687275.66233286,
    "shots": 134217728,
-   "seconds": 1.4847,
-   "compile_seconds": 0.01,
-   "warmup_seconds": 0.23,
+   "seconds": 1.374,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1565,6 +2645,16 @@
    "warmup_seconds": 0.45,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 8036490.345559948,
+   "shots": 8134407,
+   "seconds": 1.0122,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_injection_stim_X_T.stim": {
@@ -1577,11 +2667,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 89423436.98107517,
+   "shots_per_s": 97965732.81451643,
    "shots": 134217728,
-   "seconds": 1.5009,
+   "seconds": 1.37,
    "compile_seconds": 0.0,
-   "warmup_seconds": 0.21,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1593,6 +2683,16 @@
    "warmup_seconds": 0.41,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 69304376.67618918,
+   "shots": 14128181,
+   "seconds": 0.2039,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_injection_stim_Z_T.stim": {
@@ -1605,11 +2705,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 89380700.94001758,
+   "shots_per_s": 97940657.66160963,
    "shots": 134217728,
-   "seconds": 1.5016,
+   "seconds": 1.3704,
    "compile_seconds": 0.0,
-   "warmup_seconds": 0.23,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1621,6 +2721,16 @@
    "warmup_seconds": 0.41,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 72517521.7616327,
+   "shots": 14128181,
+   "seconds": 0.1948,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_simulation_stim_X_T.stim": {
@@ -1633,11 +2743,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 89739150.64411126,
+   "shots_per_s": 97725031.10645227,
    "shots": 134217728,
-   "seconds": 1.4956,
-   "compile_seconds": 0.01,
-   "warmup_seconds": 0.23,
+   "seconds": 1.3734,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1649,6 +2759,16 @@
    "warmup_seconds": 0.12,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 8169973.878471265,
+   "shots": 8134407,
+   "seconds": 0.9956,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_simulation_stim_Z_T.stim": {
@@ -1661,11 +2781,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 89981529.04952307,
+   "shots_per_s": 97764174.51198643,
    "shots": 134217728,
-   "seconds": 1.4916,
-   "compile_seconds": 0.01,
-   "warmup_seconds": 0.21,
+   "seconds": 1.3729,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1677,6 +2797,16 @@
    "warmup_seconds": 0.12,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 8026962.336484856,
+   "shots": 8134407,
+   "seconds": 1.0134,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_injection_stim_T.stim": {
@@ -1689,11 +2819,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 89698468.55536309,
+   "shots_per_s": 97517767.23888668,
    "shots": 67108864,
-   "seconds": 0.7482,
+   "seconds": 0.6882,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.22,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1705,6 +2835,16 @@
    "warmup_seconds": 0.49,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4327889.280263666,
+   "shots": 3947580,
+   "seconds": 0.9121,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_simulation_stim_T.stim": {
@@ -1717,11 +2857,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 88186526.93853863,
+   "shots_per_s": 97206769.16179402,
    "shots": 38347922,
-   "seconds": 0.4349,
+   "seconds": 0.3945,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.19,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1733,6 +2873,16 @@
    "warmup_seconds": 0.65,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 2931903.229287023,
+   "shots": 2581110,
+   "seconds": 0.8804,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_simulation_zoom_stim_T.stim": {
@@ -1745,11 +2895,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 88499273.53935502,
+   "shots_per_s": 97037923.7537254,
    "shots": 38347922,
-   "seconds": 0.4333,
+   "seconds": 0.3952,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.19,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1761,6 +2911,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 2929113.3828814873,
+   "shots": 2581110,
+   "seconds": 0.8812,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_with_idle_rounds_stim_T.stim": {
@@ -1773,11 +2933,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 91425324.88509062,
+   "shots_per_s": 97017377.964138,
    "shots": 38347922,
-   "seconds": 0.4194,
+   "seconds": 0.3953,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.22,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1789,6 +2949,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 2948465.742065463,
+   "shots": 2581110,
+   "seconds": 0.8754,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_with_idle_rounds_zoom_stim_T.stim": {
@@ -1801,11 +2971,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 91737153.78943303,
+   "shots_per_s": 97217894.67959836,
    "shots": 38347922,
-   "seconds": 0.418,
+   "seconds": 0.3945,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.18,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1817,6 +2987,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 2929576.9100341965,
+   "shots": 2581110,
+   "seconds": 0.8811,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_without_idle_rounds_stim_T.stim": {
@@ -1829,11 +3009,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 90241455.66568336,
+   "shots_per_s": 97694100.54851906,
    "shots": 67108864,
-   "seconds": 0.7437,
+   "seconds": 0.6869,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.19,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1845,6 +3025,16 @@
    "warmup_seconds": 0.38,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 7735429.548224177,
+   "shots": 4793490,
+   "seconds": 0.6197,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N2_stim_X_T.stim": {
@@ -1857,11 +3047,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 78346564.39034119,
+   "shots_per_s": 89689965.03306022,
    "shots": 29826161,
-   "seconds": 0.3807,
+   "seconds": 0.3325,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.19,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1873,6 +3063,16 @@
    "warmup_seconds": 0.46,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 6330227.771316363,
+   "shots": 1688273,
+   "seconds": 0.2667,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N2_stim_Z_T.stim": {
@@ -1885,11 +3085,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 79497503.32659343,
+   "shots_per_s": 89648456.29324476,
    "shots": 29826161,
-   "seconds": 0.3752,
+   "seconds": 0.3327,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.2,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1901,6 +3101,16 @@
    "warmup_seconds": 0.46,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 6278915.01928087,
+   "shots": 1709779,
+   "seconds": 0.2723,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N3_stim_X_T.stim": {
@@ -1913,11 +3123,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 78699713.61953896,
+   "shots_per_s": 89705007.4416122,
    "shots": 22369621,
-   "seconds": 0.2842,
+   "seconds": 0.2494,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.21,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1929,6 +3139,16 @@
    "warmup_seconds": 0.46,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 5772330.026186917,
+   "shots": 1260260,
+   "seconds": 0.2183,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N3_stim_Z_T.stim": {
@@ -1941,11 +3161,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 82360255.77309312,
+   "shots_per_s": 89249039.72027157,
    "shots": 22369621,
-   "seconds": 0.2716,
+   "seconds": 0.2506,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.25,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1957,6 +3177,16 @@
    "warmup_seconds": 0.46,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 5672961.865180478,
+   "shots": 1272205,
+   "seconds": 0.2243,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_injection_N2_stim_X_T.stim": {
@@ -1969,11 +3199,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 90918997.93115184,
+   "shots_per_s": 97866785.58205634,
    "shots": 33554432,
-   "seconds": 0.3691,
+   "seconds": 0.3429,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.22,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -1985,6 +3215,16 @@
    "warmup_seconds": 0.41,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 19606576.394438148,
+   "shots": 1826091,
+   "seconds": 0.0931,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_injection_N2_stim_Z_T.stim": {
@@ -1997,11 +3237,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 90462810.93732129,
+   "shots_per_s": 93280577.2809075,
    "shots": 33554432,
-   "seconds": 0.3709,
+   "seconds": 0.3597,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.19,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2013,6 +3253,16 @@
    "warmup_seconds": 0.41,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 19979984.392529648,
+   "shots": 1851279,
+   "seconds": 0.0927,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_simulation_injection_N2_stim_X_T.stim": {
@@ -2025,11 +3275,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 92100138.36470364,
+   "shots_per_s": 98027544.32428765,
    "shots": 33554432,
-   "seconds": 0.3643,
+   "seconds": 0.3423,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.2,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2041,6 +3291,16 @@
    "warmup_seconds": 0.12,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 19629584.971826255,
+   "shots": 1826091,
+   "seconds": 0.093,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_simulation_injection_N2_stim_Z_T.stim": {
@@ -2053,11 +3313,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 91945082.82649204,
+   "shots_per_s": 97953789.66155218,
    "shots": 33554432,
-   "seconds": 0.3649,
+   "seconds": 0.3426,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.21,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2069,6 +3329,16 @@
    "warmup_seconds": 0.12,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 19946776.960128404,
+   "shots": 1851279,
+   "seconds": 0.0928,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.23037_soft/stim/circuit_d3_p0.001.stim": {
@@ -2081,11 +3351,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 27051909.274284393,
+   "shots_per_s": 29413845.395493366,
    "shots": 33554432,
-   "seconds": 1.2404,
+   "seconds": 1.1408,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.19,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2097,6 +3367,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4506597.283662676,
+   "shots": 6391320,
+   "seconds": 1.4182,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.23037_soft/stim/circuit_d5_p0.001.stim": {
@@ -2109,11 +3389,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 180597.91048774906,
-   "shots": 262144,
-   "seconds": 1.4515,
-   "compile_seconds": 0.13,
-   "warmup_seconds": 0.2,
+   "shots_per_s": 270481.75355288194,
+   "shots": 524288,
+   "seconds": 1.9383,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2125,6 +3405,16 @@
    "warmup_seconds": 2.03,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 198810.15990086622,
+   "shots": 262144,
+   "seconds": 1.3186,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d3_T_p0.001.stim": {
@@ -2137,11 +3427,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 12609613.253514485,
+   "shots_per_s": 13622937.707852507,
    "shots": 16777216,
-   "seconds": 1.3305,
-   "compile_seconds": 0.05,
-   "warmup_seconds": 0.2,
+   "seconds": 1.2315,
+   "compile_seconds": 0.04,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2153,6 +3443,16 @@
    "warmup_seconds": 0.65,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 2612580.993179432,
+   "shots": 1903797,
+   "seconds": 0.7287,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d5_T_p0.001.stim": {
@@ -2165,11 +3465,11 @@
    "seconds": 0.05
   },
   "cpu": {
-   "shots_per_s": 101501.7491676108,
-   "shots": 131072,
-   "seconds": 1.2913,
-   "compile_seconds": 0.29,
-   "warmup_seconds": 0.23,
+   "shots_per_s": 204020.10239783177,
+   "shots": 262144,
+   "seconds": 1.2849,
+   "compile_seconds": 0.25,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2181,6 +3481,16 @@
    "warmup_seconds": 13.24,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 76397.24012140933,
+   "shots": 131072,
+   "seconds": 1.7157,
+   "compile_seconds": 0.03,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d7_T_p0.001.stim": {
@@ -2193,11 +3503,11 @@
    "seconds": 0.2
   },
   "cpu": {
-   "shots_per_s": 8015.359448219816,
-   "shots": 8192,
-   "seconds": 1.022,
-   "compile_seconds": 1.3,
-   "warmup_seconds": 0.27,
+   "shots_per_s": 14084.105100542089,
+   "shots": 16384,
+   "seconds": 1.1633,
+   "compile_seconds": 1.04,
+   "warmup_seconds": 0.17,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2209,6 +3519,9 @@
    "warmup_seconds": 87.38,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 19 > 15"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_color_d5_X.stim": {
@@ -2221,11 +3534,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 15600246.828756128,
-   "shots": 16777216,
-   "seconds": 1.0754,
-   "compile_seconds": 0.03,
-   "warmup_seconds": 0.21,
+   "shots_per_s": 16837518.23303468,
+   "shots": 33554432,
+   "seconds": 1.9928,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2237,6 +3550,16 @@
    "warmup_seconds": 0.49,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 3172623.1816346315,
+   "shots": 2064888,
+   "seconds": 0.6508,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_color_d5_Y.stim": {
@@ -2249,11 +3572,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 15796686.210211592,
-   "shots": 16777216,
-   "seconds": 1.0621,
+   "shots_per_s": 17009449.54404402,
+   "shots": 33554432,
+   "seconds": 1.9727,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.23,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2265,6 +3588,16 @@
    "warmup_seconds": 0.46,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 3470218.77294657,
+   "shots": 2064888,
+   "seconds": 0.595,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 3,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_color_d5_Z.stim": {
@@ -2277,11 +3610,11 @@
    "seconds": 0.03
   },
   "cpu": {
-   "shots_per_s": 13304827.538117317,
+   "shots_per_s": 14508344.390724624,
    "shots": 16777216,
-   "seconds": 1.261,
+   "seconds": 1.1564,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.18,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2293,6 +3626,16 @@
    "warmup_seconds": 0.39,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 3380821.1381106614,
+   "shots": 2064888,
+   "seconds": 0.6108,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 3,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_steane_d3_X.stim": {
@@ -2305,11 +3648,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 25778717.361885834,
+   "shots_per_s": 27128405.029494487,
    "shots": 33554432,
-   "seconds": 1.3016,
+   "seconds": 1.2369,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.24,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2321,6 +3664,16 @@
    "warmup_seconds": 0.5,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 5032454.751176293,
+   "shots": 4880644,
+   "seconds": 0.9698,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_steane_d3_Y.stim": {
@@ -2333,11 +3686,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 26028430.887011252,
+   "shots_per_s": 27128014.035041988,
    "shots": 33554432,
-   "seconds": 1.2891,
+   "seconds": 1.2369,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.26,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2349,6 +3702,16 @@
    "warmup_seconds": 0.47,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 5801734.037327012,
+   "shots": 4880644,
+   "seconds": 0.8412,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 3,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_steane_d3_Z.stim": {
@@ -2361,11 +3724,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 20978063.21511794,
+   "shots_per_s": 22106632.258529477,
    "shots": 33554432,
-   "seconds": 1.5995,
+   "seconds": 1.5178,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.2,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2377,6 +3740,16 @@
    "warmup_seconds": 0.38,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 5557386.518274105,
+   "shots": 4880644,
+   "seconds": 0.8782,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 3,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_unencoded_X.stim": {
@@ -2389,11 +3762,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 39148555.204613395,
+   "shots_per_s": 42704610.12937186,
    "shots": 67108864,
-   "seconds": 1.7142,
+   "seconds": 1.5715,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.18,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2405,6 +3778,16 @@
    "warmup_seconds": 0.5,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 7527216.713810092,
+   "shots": 8388608,
+   "seconds": 1.1144,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_unencoded_Y.stim": {
@@ -2417,11 +3800,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 40607491.3095813,
+   "shots_per_s": 42796442.74084877,
    "shots": 67108864,
-   "seconds": 1.6526,
+   "seconds": 1.5681,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.2,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2433,6 +3816,16 @@
    "warmup_seconds": 0.47,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 9336145.127888184,
+   "shots": 16777216,
+   "seconds": 1.797,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 3,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_unencoded_Z.stim": {
@@ -2445,11 +3838,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 31759650.60232982,
-   "shots": 33554432,
-   "seconds": 1.0565,
+   "shots_per_s": 34151643.13239553,
+   "shots": 67108864,
+   "seconds": 1.965,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.19,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2461,6 +3854,16 @@
    "warmup_seconds": 0.37,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 8682971.58165245,
+   "shots": 16777216,
+   "seconds": 1.9322,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 3,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg328_inj5_T_p0.001.stim": {
@@ -2473,11 +3876,11 @@
    "seconds": 0.07
   },
   "cpu": {
-   "shots_per_s": 5489813.229508087,
+   "shots_per_s": 6004679.09461983,
    "shots": 4549753,
-   "seconds": 0.8288,
-   "compile_seconds": 0.33,
-   "warmup_seconds": 0.2,
+   "seconds": 0.7577,
+   "compile_seconds": 0.29,
+   "warmup_seconds": 0.12,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2489,6 +3892,16 @@
    "warmup_seconds": 0.46,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1310565.456793038,
+   "shots": 256630,
+   "seconds": 0.1958,
+   "compile_seconds": 0.06,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg342_inj3_T_p0.001.stim": {
@@ -2501,11 +3914,11 @@
    "seconds": 0.06
   },
   "cpu": {
-   "shots_per_s": 6298360.241247764,
+   "shots_per_s": 6818553.643592721,
    "shots": 4549753,
-   "seconds": 0.7224,
-   "compile_seconds": 0.34,
-   "warmup_seconds": 0.2,
+   "seconds": 0.6673,
+   "compile_seconds": 0.29,
+   "warmup_seconds": 0.12,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2517,6 +3930,16 @@
    "warmup_seconds": 0.41,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1351992.1826202692,
+   "shots": 256876,
+   "seconds": 0.19,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg369_inj1_T_p0.001.stim": {
@@ -2529,11 +3952,11 @@
    "seconds": 0.04
   },
   "cpu": {
-   "shots_per_s": 7268534.836556753,
+   "shots_per_s": 7901126.075134605,
    "shots": 4628197,
-   "seconds": 0.6367,
-   "compile_seconds": 0.31,
-   "warmup_seconds": 0.18,
+   "seconds": 0.5858,
+   "compile_seconds": 0.27,
+   "warmup_seconds": 0.12,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2545,6 +3968,16 @@
    "warmup_seconds": 0.42,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1531139.3327110133,
+   "shots": 259107,
+   "seconds": 0.1692,
+   "compile_seconds": 0.04,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg422_inj2_T_p0.001.stim": {
@@ -2557,11 +3990,11 @@
    "seconds": 0.06
   },
   "cpu": {
-   "shots_per_s": 6744520.096942815,
+   "shots_per_s": 7275013.184251783,
    "shots": 4549753,
-   "seconds": 0.6746,
-   "compile_seconds": 0.33,
-   "warmup_seconds": 0.18,
+   "seconds": 0.6254,
+   "compile_seconds": 0.29,
+   "warmup_seconds": 0.12,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2573,6 +4006,16 @@
    "warmup_seconds": 0.4,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1382969.8165527855,
+   "shots": 257122,
+   "seconds": 0.1859,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg491_inj4_T_p0.001.stim": {
@@ -2585,11 +4028,11 @@
    "seconds": 0.06
   },
   "cpu": {
-   "shots_per_s": 5982716.17534831,
+   "shots_per_s": 6385598.492845891,
    "shots": 4549753,
-   "seconds": 0.7605,
-   "compile_seconds": 0.34,
-   "warmup_seconds": 0.18,
+   "seconds": 0.7125,
+   "compile_seconds": 0.29,
+   "warmup_seconds": 0.12,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2601,6 +4044,16 @@
    "warmup_seconds": 0.42,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1339693.1326445874,
+   "shots": 256140,
+   "seconds": 0.1912,
+   "compile_seconds": 0.06,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg88_inj6_T_p0.001.stim": {
@@ -2613,11 +4066,11 @@
    "seconds": 0.08
   },
   "cpu": {
-   "shots_per_s": 5420454.298247278,
+   "shots_per_s": 5708704.731958398,
    "shots": 4709393,
-   "seconds": 0.8688,
-   "compile_seconds": 0.36,
-   "warmup_seconds": 0.18,
+   "seconds": 0.8249,
+   "compile_seconds": 0.31,
+   "warmup_seconds": 0.12,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2629,6 +4082,16 @@
    "warmup_seconds": 0.42,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1298929.5805059292,
+   "shots": 258608,
+   "seconds": 0.1991,
+   "compile_seconds": 0.06,
+   "warmup_seconds": 0.0,
+   "active_width": 1,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/coherent_d3_r1.stim": {
@@ -2641,11 +4104,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 1120165833.457188,
+   "shots_per_s": 1274625348.4036417,
    "shots": 134217728,
-   "seconds": 0.1198,
+   "seconds": 0.1053,
    "compile_seconds": 0.0,
-   "warmup_seconds": 0.18,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2657,6 +4120,16 @@
    "warmup_seconds": 0.28,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 91316857.76257598,
+   "shots": 10324440,
+   "seconds": 0.1131,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/coherent_d3_r3.stim": {
@@ -2669,11 +4142,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 18639727.89104286,
+   "shots_per_s": 20799319.5344195,
    "shots": 33554432,
-   "seconds": 1.8002,
+   "seconds": 1.6132,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.2,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2685,6 +4158,16 @@
    "warmup_seconds": 0.57,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4334431.328449492,
+   "shots": 4628197,
+   "seconds": 1.0678,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/coherent_d5_r1.stim": {
@@ -2697,11 +4180,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 550635517.9781561,
+   "shots_per_s": 629794317.5884093,
    "shots": 67108864,
-   "seconds": 0.1219,
-   "compile_seconds": 0.01,
-   "warmup_seconds": 0.2,
+   "seconds": 0.1066,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2713,6 +4196,16 @@
    "warmup_seconds": 0.29,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 39824110.22950087,
+   "shots": 3627506,
+   "seconds": 0.0911,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/coherent_d5_r5.stim": {
@@ -2725,11 +4218,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 929.6113551430477,
+   "shots_per_s": 1822.2631229940034,
    "shots": 2048,
-   "seconds": 2.2031,
-   "compile_seconds": 0.17,
-   "warmup_seconds": 0.82,
+   "seconds": 1.1239,
+   "compile_seconds": 0.15,
+   "warmup_seconds": 0.55,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2741,6 +4234,16 @@
    "warmup_seconds": 2.79,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 9782.236343483642,
+   "shots": 16384,
+   "seconds": 1.6749,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.11,
+   "active_width": 13,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/cultivation_d3.stim": {
@@ -2753,11 +4256,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 26973533.6050941,
+   "shots_per_s": 29431412.60349416,
    "shots": 33554432,
-   "seconds": 1.244,
+   "seconds": 1.1401,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.2,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2769,6 +4272,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4531403.392985854,
+   "shots": 6391320,
+   "seconds": 1.4105,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/cultivation_d5.stim": {
@@ -2781,11 +4294,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 712847.4624166772,
-   "shots": 524288,
-   "seconds": 0.7355,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.19,
+   "shots_per_s": 1206943.4083120527,
+   "shots": 2097152,
+   "seconds": 1.7376,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2797,6 +4310,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 135017.99250799933,
+   "shots": 262144,
+   "seconds": 1.9415,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/distillation.stim": {
@@ -2809,11 +4332,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 13427867.35459498,
+   "shots_per_s": 14507974.823950363,
    "shots": 16777216,
-   "seconds": 1.2494,
+   "seconds": 1.1564,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.2,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2825,6 +4348,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 3381499.0044969283,
+   "shots": 2064888,
+   "seconds": 0.6106,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 3,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/surface_d7_r7.stim": {
@@ -2837,11 +4370,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 16146548.325642224,
+   "shots_per_s": 18486211.778345242,
    "shots": 6242685,
-   "seconds": 0.3866,
-   "compile_seconds": 0.12,
-   "warmup_seconds": 0.22,
+   "seconds": 0.3377,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2853,6 +4386,16 @@
    "warmup_seconds": 0.28,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 2812935.1374074994,
+   "shots": 371794,
+   "seconds": 0.1322,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/MSC_circuit_d7_p0.0005.stim": {
@@ -2865,11 +4408,11 @@
    "seconds": 0.1
   },
   "cpu": {
-   "shots_per_s": 18600.58265502509,
-   "shots": 32768,
-   "seconds": 1.7617,
-   "compile_seconds": 1.09,
-   "warmup_seconds": 0.2,
+   "shots_per_s": 35425.444999147156,
+   "shots": 65536,
+   "seconds": 1.85,
+   "compile_seconds": 0.8,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2881,6 +4424,9 @@
    "warmup_seconds": 4.98,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 19 > 15"
   }
  },
  "papers/2607.28600_symft/stim/coherent_surface_d3_r1_p1e-3_rz0p02.stim": {
@@ -2893,11 +4439,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 846088095.1678569,
+   "shots_per_s": 1280349484.8538716,
    "shots": 134217728,
-   "seconds": 0.1586,
+   "seconds": 0.1048,
    "compile_seconds": 0.0,
-   "warmup_seconds": 0.27,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2909,6 +4455,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 90743455.4343696,
+   "shots": 10324440,
+   "seconds": 0.1138,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/coherent_surface_d3_r3_p1e-3_rz0p02.stim": {
@@ -2921,11 +4477,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 18460368.40805624,
+   "shots_per_s": 20852899.02678021,
    "shots": 33554432,
-   "seconds": 1.8176,
-   "compile_seconds": 0.02,
-   "warmup_seconds": 0.29,
+   "seconds": 1.6091,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2937,6 +4493,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4328979.394401996,
+   "shots": 4628197,
+   "seconds": 1.0691,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/coherent_surface_d5_r1_p1e-3_rz0p02.stim": {
@@ -2949,11 +4515,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 530365629.679544,
+   "shots_per_s": 627321832.3279318,
    "shots": 67108864,
-   "seconds": 0.1265,
-   "compile_seconds": 0.01,
-   "warmup_seconds": 0.3,
+   "seconds": 0.107,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2965,6 +4531,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 39827996.039707124,
+   "shots": 3627506,
+   "seconds": 0.0911,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/coherent_surface_d5_r5_p1e-3_rz0p02.stim": {
@@ -2977,11 +4553,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 830.5039638765014,
+   "shots_per_s": 1820.4936608798391,
    "shots": 2048,
-   "seconds": 2.466,
-   "compile_seconds": 0.16,
-   "warmup_seconds": 1.45,
+   "seconds": 1.125,
+   "compile_seconds": 0.15,
+   "warmup_seconds": 0.55,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -2993,6 +4569,16 @@
    "warmup_seconds": 0.02,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 9807.601984006655,
+   "shots": 16384,
+   "seconds": 1.6705,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.11,
+   "active_width": 13,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/distillation.stim": {
@@ -3005,11 +4591,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 13430763.213088937,
+   "shots_per_s": 14211558.613983233,
    "shots": 16777216,
-   "seconds": 1.2492,
-   "compile_seconds": 0.03,
-   "warmup_seconds": 0.24,
+   "seconds": 1.1805,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3021,6 +4607,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 3369694.653489641,
+   "shots": 2064888,
+   "seconds": 0.6128,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 3,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/msc_d3_inject_cultivate_p1e-3.stim": {
@@ -3033,11 +4629,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 26729392.63945276,
+   "shots_per_s": 29440086.4468602,
    "shots": 33554432,
-   "seconds": 1.2553,
+   "seconds": 1.1398,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.29,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3049,6 +4645,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4493226.083717276,
+   "shots": 6391320,
+   "seconds": 1.4224,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/msc_d5_inject_cultivate_p1e-3.stim": {
@@ -3061,11 +4667,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 510780.77924397716,
-   "shots": 524288,
-   "seconds": 1.0264,
-   "compile_seconds": 0.14,
-   "warmup_seconds": 0.27,
+   "shots_per_s": 1229098.518024315,
+   "shots": 2097152,
+   "seconds": 1.7063,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3077,6 +4683,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 135042.46389692734,
+   "shots": 262144,
+   "seconds": 1.9412,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/msc_proxy_d7_unverified_p1e-3.stim": {
@@ -3089,11 +4705,11 @@
    "seconds": 0.18
   },
   "cpu": {
-   "shots_per_s": 214694.77320076767,
-   "shots": 262144,
-   "seconds": 1.221,
-   "compile_seconds": 0.37,
-   "warmup_seconds": 0.26,
+   "shots_per_s": 466066.09127634973,
+   "shots": 524288,
+   "seconds": 1.1249,
+   "compile_seconds": 0.33,
+   "warmup_seconds": 0.1,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3105,6 +4721,16 @@
    "warmup_seconds": 3.14,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 130080.1602402556,
+   "shots": 131072,
+   "seconds": 1.0076,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/pure_surface_d7_r7_p1e-3.stim": {
@@ -3117,11 +4743,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 16849880.643831395,
+   "shots_per_s": 18518456.058746487,
    "shots": 6242685,
-   "seconds": 0.3705,
-   "compile_seconds": 0.13,
-   "warmup_seconds": 0.28,
+   "seconds": 0.3371,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3133,6 +4759,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 2840302.1236867565,
+   "shots": 371794,
+   "seconds": 0.1309,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/pure_surface_d9_r9_p1e-3.stim": {
@@ -3145,11 +4781,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 7672153.182960093,
+   "shots_per_s": 8379848.13202448,
    "shots": 2949840,
-   "seconds": 0.3845,
-   "compile_seconds": 0.41,
-   "warmup_seconds": 0.14,
+   "seconds": 0.352,
+   "compile_seconds": 0.26,
+   "warmup_seconds": 0.08,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3161,6 +4797,16 @@
    "warmup_seconds": 0.29,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 1280047.8940843996,
+   "shots": 176370,
+   "seconds": 0.1378,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d3a6_inject_cultivate_T_p0.001.stim": {
@@ -3173,11 +4819,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 25675421.70784775,
+   "shots_per_s": 29378516.619450558,
    "shots": 33554432,
-   "seconds": 1.3069,
+   "seconds": 1.1421,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.24,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3189,6 +4835,16 @@
    "warmup_seconds": 0.48,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4614971.433332915,
+   "shots": 6391320,
+   "seconds": 1.3849,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d3a6f2_inject_cultivate_T_p0.001.stim": {
@@ -3201,11 +4857,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 24393256.773518633,
+   "shots_per_s": 27279180.49493121,
    "shots": 33554432,
-   "seconds": 1.3756,
-   "compile_seconds": 0.03,
-   "warmup_seconds": 0.28,
+   "seconds": 1.23,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3217,6 +4873,16 @@
    "warmup_seconds": 0.48,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4461137.798424357,
+   "shots": 5835553,
+   "seconds": 1.3081,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d5a19_inject_cultivate_T_p0.001.stim": {
@@ -3229,11 +4895,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 667250.036170224,
-   "shots": 524288,
-   "seconds": 0.7857,
-   "compile_seconds": 0.14,
-   "warmup_seconds": 0.27,
+   "shots_per_s": 1044969.2239440092,
+   "shots": 1048576,
+   "seconds": 1.0035,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3245,6 +4911,16 @@
    "warmup_seconds": 4.32,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 135095.28587893132,
+   "shots": 262144,
+   "seconds": 1.9404,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d5a19f13_inject_cultivate_T_p0.001.stim": {
@@ -3257,11 +4933,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 526998.2868442273,
-   "shots": 524288,
-   "seconds": 0.9949,
-   "compile_seconds": 0.15,
-   "warmup_seconds": 0.23,
+   "shots_per_s": 951672.2561220194,
+   "shots": 1048576,
+   "seconds": 1.1018,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3273,6 +4949,16 @@
    "warmup_seconds": 4.26,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 126408.49373414429,
+   "shots": 131072,
+   "seconds": 1.0369,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d5a19r4_inject_cultivate_T_p0.001.stim": {
@@ -3285,11 +4971,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 493152.70485757873,
-   "shots": 524288,
-   "seconds": 1.0631,
-   "compile_seconds": 0.15,
-   "warmup_seconds": 0.23,
+   "shots_per_s": 966167.0767743989,
+   "shots": 1048576,
+   "seconds": 1.0853,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3301,6 +4987,16 @@
    "warmup_seconds": 4.32,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 129807.96804029425,
+   "shots": 131072,
+   "seconds": 1.0097,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d5a19r4f13_inject_cultivate_T_p0.001.stim": {
@@ -3313,11 +5009,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 289834.03090535844,
-   "shots": 262144,
-   "seconds": 0.9045,
-   "compile_seconds": 0.18,
-   "warmup_seconds": 0.29,
+   "shots_per_s": 875609.206361502,
+   "shots": 1048576,
+   "seconds": 1.1975,
+   "compile_seconds": 0.15,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3329,6 +5025,16 @@
    "warmup_seconds": 4.09,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 126828.87774652637,
+   "shots": 131072,
+   "seconds": 1.0335,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.18922_exact_ler_cultivation/stim/clifft_d3_p001.stim": {
@@ -3341,11 +5047,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 26382881.784235224,
+   "shots_per_s": 29465437.458424367,
    "shots": 33554432,
-   "seconds": 1.2718,
+   "seconds": 1.1388,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.27,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3357,6 +5063,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4479858.550133493,
+   "shots": 6391320,
+   "seconds": 1.4267,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.18922_exact_ler_cultivation/stim/soft_cultivation_d5_p0005.stim": {
@@ -3369,11 +5085,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 111995.9509783498,
-   "shots": 65536,
-   "seconds": 0.5852,
-   "compile_seconds": 0.15,
-   "warmup_seconds": 0.31,
+   "shots_per_s": 139775.22433921392,
+   "shots": 262144,
+   "seconds": 1.8755,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3385,6 +5101,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 161875.125929592,
+   "shots": 262144,
+   "seconds": 1.6194,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t100_alpha0.5_p0.001.stim": {
@@ -3397,10 +5123,10 @@
    "seconds": 0.42
   },
   "cpu": {
-   "shots_per_s": 54197.50299130938,
+   "shots_per_s": 53150.0872490347,
    "shots": 65536,
-   "seconds": 1.2092,
-   "compile_seconds": 44.0,
+   "seconds": 1.233,
+   "compile_seconds": 42.6,
    "warmup_seconds": 0.15,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
@@ -3413,6 +5139,16 @@
    "warmup_seconds": 56.21,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 19468.331476757405,
+   "shots": 32768,
+   "seconds": 1.6831,
+   "compile_seconds": 0.43,
+   "warmup_seconds": 0.05,
+   "active_width": 6,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha0.15_p0.001.stim": {
@@ -3425,11 +5161,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 1558213.3778937906,
+   "shots_per_s": 1674837.7852539623,
    "shots": 2097152,
-   "seconds": 1.3459,
-   "compile_seconds": 0.46,
-   "warmup_seconds": 0.19,
+   "seconds": 1.2522,
+   "compile_seconds": 0.43,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3441,6 +5177,16 @@
    "warmup_seconds": 2.77,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 153955.7940056263,
+   "shots": 262144,
+   "seconds": 1.7027,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 6,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha0.5_p0.001.stim": {
@@ -3453,11 +5199,11 @@
    "seconds": 0.03
   },
   "cpu": {
-   "shots_per_s": 260084.40512346962,
-   "shots": 262144,
-   "seconds": 1.0079,
-   "compile_seconds": 0.47,
-   "warmup_seconds": 0.19,
+   "shots_per_s": 372913.375034667,
+   "shots": 524288,
+   "seconds": 1.4059,
+   "compile_seconds": 0.43,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3469,6 +5215,16 @@
    "warmup_seconds": 2.75,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 142325.62133782636,
+   "shots": 262144,
+   "seconds": 1.8419,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 6,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha1.0_p0.001.stim": {
@@ -3481,11 +5237,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 163513.63638652302,
+   "shots_per_s": 199573.35789633007,
    "shots": 262144,
-   "seconds": 1.6032,
-   "compile_seconds": 0.46,
-   "warmup_seconds": 0.18,
+   "seconds": 1.3135,
+   "compile_seconds": 0.43,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3497,6 +5253,16 @@
    "warmup_seconds": 5.76,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 129885.08862743329,
+   "shots": 131072,
+   "seconds": 1.0091,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 6,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/code_switching_bt27_p0.001.stim": {
@@ -3509,10 +5275,13 @@
    "seconds": 0.04
   },
   "cpu": {
-   "skipped": "Tsim k_max 26 > 15"
+   "skipped": "tsim k_max 26 > 15"
   },
   "gpu": {
-   "skipped": "Tsim k_max 26 > 11"
+   "skipped": "tsim k_max 26 > 11"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 27 > 15"
   }
  },
  "papers/2610.06811_merlin/stim/code_switching_bt81_p0.001.stim": {
@@ -3521,13 +5290,16 @@
   },
   "clifft": {
    "k": 52,
-   "seconds": 0.62
+   "seconds": 0.63
   },
   "cpu": {
-   "skipped": "no Tsim k_max"
+   "skipped": "no tsim k_max"
   },
   "gpu": {
-   "skipped": "no Tsim k_max"
+   "skipped": "no tsim k_max"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 52 > 15"
   }
  },
  "papers/2610.06811_merlin/stim/cultivation_d3_t.stim": {
@@ -3540,11 +5312,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 26885303.05644462,
+   "shots_per_s": 29372848.852586787,
    "shots": 33554432,
-   "seconds": 1.2481,
+   "seconds": 1.1424,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.18,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3556,6 +5328,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4487665.741011432,
+   "shots": 6391320,
+   "seconds": 1.4242,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/cultivation_d5_t.stim": {
@@ -3568,11 +5350,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 639565.7003744639,
-   "shots": 524288,
-   "seconds": 0.8198,
-   "compile_seconds": 0.13,
-   "warmup_seconds": 0.18,
+   "shots_per_s": 1228493.9140283172,
+   "shots": 2097152,
+   "seconds": 1.7071,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3584,6 +5366,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 133776.3877349975,
+   "shots": 262144,
+   "seconds": 1.9596,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_15to1_p0.001.stim": {
@@ -3596,11 +5388,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 108104806.48771092,
+   "shots_per_s": 116665726.96197025,
    "shots": 134217728,
-   "seconds": 1.2416,
+   "seconds": 1.1504,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.18,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3612,6 +5404,16 @@
    "warmup_seconds": 0.44,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 92830796.88458961,
+   "shots": 8947848,
+   "seconds": 0.0964,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh10_p0.001.stim": {
@@ -3624,11 +5426,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 98470843.5830246,
+   "shots_per_s": 110851774.42865355,
    "shots": 53687091,
-   "seconds": 0.5452,
+   "seconds": 0.4843,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.18,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3640,6 +5442,16 @@
    "warmup_seconds": 0.65,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 39401296.66833858,
+   "shots": 3532045,
+   "seconds": 0.0896,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh12_p0.001.stim": {
@@ -3652,11 +5464,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 63669221.3099158,
+   "shots_per_s": 71684509.81279495,
    "shots": 44739242,
-   "seconds": 0.7027,
-   "compile_seconds": 0.03,
-   "warmup_seconds": 0.22,
+   "seconds": 0.6241,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3668,6 +5480,16 @@
    "warmup_seconds": 1.08,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 35682961.956503615,
+   "shots": 3050402,
+   "seconds": 0.0855,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh14_p0.001.stim": {
@@ -3680,11 +5502,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 99088758.05441688,
+   "shots_per_s": 107903300.28108981,
    "shots": 38347922,
-   "seconds": 0.387,
+   "seconds": 0.3554,
    "compile_seconds": 0.03,
-   "warmup_seconds": 0.23,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3696,6 +5518,16 @@
    "warmup_seconds": 0.86,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 31121659.28715263,
+   "shots": 2684354,
+   "seconds": 0.0863,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh16_p0.001.stim": {
@@ -3708,11 +5540,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 64124446.466632575,
+   "shots_per_s": 71336719.72526003,
    "shots": 38347922,
-   "seconds": 0.598,
-   "compile_seconds": 0.04,
-   "warmup_seconds": 0.23,
+   "seconds": 0.5376,
+   "compile_seconds": 0.03,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3724,6 +5556,16 @@
    "warmup_seconds": 1.45,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 29938462.224189553,
+   "shots": 2396745,
+   "seconds": 0.0801,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh18_p0.001.stim": {
@@ -3736,11 +5578,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 100209590.4601204,
+   "shots_per_s": 105442083.25900058,
    "shots": 33554432,
-   "seconds": 0.3348,
+   "seconds": 0.3182,
    "compile_seconds": 0.04,
-   "warmup_seconds": 0.25,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3752,6 +5594,16 @@
    "warmup_seconds": 1.12,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 25334842.858597394,
+   "shots": 2164802,
+   "seconds": 0.0854,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh2_p0.001.stim": {
@@ -3764,11 +5616,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 104806249.52252853,
+   "shots_per_s": 116975889.23608321,
    "shots": 134217728,
-   "seconds": 1.2806,
+   "seconds": 1.1474,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.23,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3780,6 +5632,16 @@
    "warmup_seconds": 0.44,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 100845766.09320278,
+   "shots": 9586980,
+   "seconds": 0.0951,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh4_p0.001.stim": {
@@ -3792,11 +5654,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 66435638.656284556,
-   "shots": 67108864,
-   "seconds": 1.0101,
+   "shots_per_s": 74905147.70130126,
+   "shots": 89478485,
+   "seconds": 1.1946,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.22,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3808,6 +5670,16 @@
    "warmup_seconds": 0.61,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 71917385.11511502,
+   "shots": 6710886,
+   "seconds": 0.0933,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh6_p0.001.stim": {
@@ -3820,11 +5692,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 102502344.68878469,
+   "shots_per_s": 113966194.0232902,
    "shots": 67108864,
-   "seconds": 0.6547,
+   "seconds": 0.5888,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.21,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3836,6 +5708,16 @@
    "warmup_seconds": 0.52,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 54254667.94658537,
+   "shots": 5162220,
+   "seconds": 0.0951,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh8_p0.001.stim": {
@@ -3848,11 +5730,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 68684260.4576186,
+   "shots_per_s": 74187539.85397929,
    "shots": 67108864,
-   "seconds": 0.9771,
-   "compile_seconds": 0.02,
-   "warmup_seconds": 0.23,
+   "seconds": 0.9046,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3864,6 +5746,16 @@
    "warmup_seconds": 0.83,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 47867858.863929875,
+   "shots": 4194304,
+   "seconds": 0.0876,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06828_practical_cost_cultivation/stim/color_code_cultivation_f3_T.stim": {
@@ -3876,11 +5768,11 @@
    "seconds": 0.88
   },
   "cpu": {
-   "shots_per_s": 1159993.0064687703,
+   "shots_per_s": 1392558.5072344684,
    "shots": 990536,
-   "seconds": 0.8539,
-   "compile_seconds": 2.98,
-   "warmup_seconds": 0.25,
+   "seconds": 0.7113,
+   "compile_seconds": 1.84,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3892,6 +5784,16 @@
    "warmup_seconds": 0.13,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 168198.8635539586,
+   "shots": 60417,
+   "seconds": 0.3592,
+   "compile_seconds": 0.69,
+   "warmup_seconds": 0.01,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06828_practical_cost_cultivation/stim/color_code_cultivation_f5_T.stim": {
@@ -3904,11 +5806,11 @@
    "seconds": 1.36
   },
   "cpu": {
-   "shots_per_s": 306077.07006809686,
-   "shots": 524288,
-   "seconds": 1.7129,
-   "compile_seconds": 4.64,
-   "warmup_seconds": 0.22,
+   "shots_per_s": 539592.6377136699,
+   "shots": 780335,
+   "seconds": 1.4462,
+   "compile_seconds": 2.87,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3920,6 +5822,16 @@
    "warmup_seconds": 0.13,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 20984.788739078613,
+   "shots": 32768,
+   "seconds": 1.5615,
+   "compile_seconds": 1.32,
+   "warmup_seconds": 0.05,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh10-S.stim": {
@@ -3932,11 +5844,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 925679486.477291,
+   "shots_per_s": 1220071260.969904,
    "shots": 268435456,
-   "seconds": 0.29,
+   "seconds": 0.22,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.22,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3948,6 +5860,16 @@
    "warmup_seconds": 0.28,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 39812016.14511278,
+   "shots": 3397917,
+   "seconds": 0.0853,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh10-T.stim": {
@@ -3960,11 +5882,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 26638930.20816182,
+   "shots_per_s": 30065269.556648917,
    "shots": 33554432,
-   "seconds": 1.2596,
-   "compile_seconds": 0.02,
-   "warmup_seconds": 0.25,
+   "seconds": 1.1161,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -3976,6 +5898,16 @@
    "warmup_seconds": 0.41,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 40392.932904978916,
+   "shots": 65536,
+   "seconds": 1.6225,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.03,
+   "active_width": 13,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh100-S.stim": {
@@ -3988,11 +5920,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 268553130.60953486,
+   "shots_per_s": 291817380.5194902,
    "shots": 268435456,
-   "seconds": 0.9996,
-   "compile_seconds": 0.24,
-   "warmup_seconds": 0.2,
+   "seconds": 0.9199,
+   "compile_seconds": 0.18,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4004,6 +5936,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4683725.585227201,
+   "shots": 433659,
+   "seconds": 0.0926,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh100-T.stim": {
@@ -4015,11 +5957,11 @@
    "error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60"
   },
   "cpu": {
-   "shots_per_s": 273178.7564625769,
+   "shots_per_s": 309615.6670294366,
    "shots": 524288,
-   "seconds": 1.9192,
-   "compile_seconds": 0.24,
-   "warmup_seconds": 0.29,
+   "seconds": 1.6934,
+   "compile_seconds": 0.2,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4031,6 +5973,9 @@
    "warmup_seconds": 2.68,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "no clifft k_max"
   }
  },
  "papers/2610.22315_magna/stim/bh2-S.stim": {
@@ -4043,11 +5988,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 1365602761.450931,
+   "shots_per_s": 1766146378.69448,
    "shots": 268435456,
-   "seconds": 0.1966,
+   "seconds": 0.152,
    "compile_seconds": 0.0,
-   "warmup_seconds": 0.23,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4059,6 +6004,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 88176117.20945202,
+   "shots": 8659208,
+   "seconds": 0.0982,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh2-T.stim": {
@@ -4071,11 +6026,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 74536601.43193313,
+   "shots_per_s": 80484240.48458336,
    "shots": 134217728,
-   "seconds": 1.8007,
+   "seconds": 1.6676,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.18,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4087,6 +6042,16 @@
    "warmup_seconds": 0.34,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 3200840.9387027896,
+   "shots": 4194304,
+   "seconds": 1.3104,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 5,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh20-S.stim": {
@@ -4099,11 +6064,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 692521707.2609717,
+   "shots_per_s": 883933878.4329407,
    "shots": 268435456,
-   "seconds": 0.3876,
+   "seconds": 0.3037,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.17,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4115,6 +6080,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 21916782.84397814,
+   "shots": 1931190,
+   "seconds": 0.0881,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh20-T.stim": {
@@ -4127,11 +6102,11 @@
    "seconds": 0.03
   },
   "cpu": {
-   "shots_per_s": 1371045.92471378,
+   "shots_per_s": 1542725.9438778246,
    "shots": 2097152,
-   "seconds": 1.5296,
-   "compile_seconds": 0.04,
-   "warmup_seconds": 0.23,
+   "seconds": 1.3594,
+   "compile_seconds": 0.03,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4143,6 +6118,9 @@
    "warmup_seconds": 0.53,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 22 > 15"
   }
  },
  "papers/2610.22315_magna/stim/bh4-S.stim": {
@@ -4155,11 +6133,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 1045433557.32519,
+   "shots_per_s": 1597801011.428807,
    "shots": 268435456,
-   "seconds": 0.2568,
+   "seconds": 0.168,
    "compile_seconds": 0.0,
-   "warmup_seconds": 0.22,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4171,6 +6149,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 71598285.33320391,
+   "shots": 6242685,
+   "seconds": 0.0872,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh4-T.stim": {
@@ -4183,11 +6171,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 55885906.87043701,
+   "shots_per_s": 60800267.40964174,
    "shots": 67108864,
-   "seconds": 1.2008,
+   "seconds": 1.1038,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.19,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4199,6 +6187,16 @@
    "warmup_seconds": 0.36,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 842134.680084321,
+   "shots": 1048576,
+   "seconds": 1.2451,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 7,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh40-S.stim": {
@@ -4211,11 +6209,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 496583257.3180634,
+   "shots_per_s": 576333855.8714759,
    "shots": 268435456,
-   "seconds": 0.5406,
+   "seconds": 0.4658,
    "compile_seconds": 0.04,
-   "warmup_seconds": 0.17,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4227,6 +6225,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 11410116.601903776,
+   "shots": 1036430,
+   "seconds": 0.0908,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh40-T.stim": {
@@ -4239,11 +6247,11 @@
    "seconds": 0.14
   },
   "cpu": {
-   "shots_per_s": 707000.2052559585,
+   "shots_per_s": 805323.3259170876,
    "shots": 1048576,
-   "seconds": 1.4831,
+   "seconds": 1.3021,
    "compile_seconds": 0.06,
-   "warmup_seconds": 0.23,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4255,6 +6263,9 @@
    "warmup_seconds": 0.84,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 42 > 15"
   }
  },
  "papers/2610.22315_magna/stim/bh6-S.stim": {
@@ -4267,11 +6278,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 1028942049.298693,
+   "shots_per_s": 1442894257.1878195,
    "shots": 268435456,
-   "seconds": 0.2609,
-   "compile_seconds": 0.01,
-   "warmup_seconds": 0.23,
+   "seconds": 0.186,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4283,6 +6294,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 54812643.984091215,
+   "shots": 4880644,
+   "seconds": 0.089,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh6-T.stim": {
@@ -4295,11 +6316,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 45136051.357253045,
+   "shots_per_s": 48604162.80642911,
    "shots": 67108864,
-   "seconds": 1.4868,
+   "seconds": 1.3807,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.25,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4311,6 +6332,16 @@
    "warmup_seconds": 0.37,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 428836.60045578436,
+   "shots": 524288,
+   "seconds": 1.2226,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 9,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh60-S.stim": {
@@ -4323,11 +6354,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 403339089.3482677,
+   "shots_per_s": 430527306.56895477,
    "shots": 268435456,
-   "seconds": 0.6655,
-   "compile_seconds": 0.09,
-   "warmup_seconds": 0.18,
+   "seconds": 0.6235,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4339,6 +6370,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 7793303.602175254,
+   "shots": 708272,
+   "seconds": 0.0909,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh60-T.stim": {
@@ -4350,11 +6391,11 @@
    "error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60"
   },
   "cpu": {
-   "shots_per_s": 495026.3877816865,
-   "shots": 524288,
-   "seconds": 1.0591,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.24,
+   "shots_per_s": 547796.4713741438,
+   "shots": 1048576,
+   "seconds": 1.9142,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4366,6 +6407,9 @@
    "warmup_seconds": 1.29,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "no clifft k_max"
   }
  },
  "papers/2610.22315_magna/stim/bh80-S.stim": {
@@ -4378,11 +6422,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 322875402.7533114,
+   "shots_per_s": 346214774.03018594,
    "shots": 268435456,
-   "seconds": 0.8314,
-   "compile_seconds": 0.17,
-   "warmup_seconds": 0.21,
+   "seconds": 0.7753,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4394,6 +6438,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 5845902.450859144,
+   "shots": 537946,
+   "seconds": 0.092,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh80-T.stim": {
@@ -4405,11 +6459,11 @@
    "error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60"
   },
   "cpu": {
-   "shots_per_s": 347620.2296346666,
+   "shots_per_s": 383666.7074376041,
    "shots": 524288,
-   "seconds": 1.5082,
-   "compile_seconds": 0.16,
-   "warmup_seconds": 0.21,
+   "seconds": 1.3665,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4421,6 +6475,9 @@
    "warmup_seconds": 1.94,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "no clifft k_max"
   }
  },
  "papers/2610.22315_magna/stim/color3.stim": {
@@ -4433,11 +6490,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 30284994.46485163,
+   "shots_per_s": 33305900.010262024,
    "shots": 33554432,
-   "seconds": 1.108,
+   "seconds": 1.0075,
    "compile_seconds": 0.02,
-   "warmup_seconds": 0.22,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4449,6 +6506,16 @@
    "warmup_seconds": 0.53,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 6509901.55443087,
+   "shots": 4793490,
+   "seconds": 0.7363,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/color5.stim": {
@@ -4461,11 +6528,11 @@
    "seconds": 0.02
   },
   "cpu": {
-   "shots_per_s": 162705.92849135026,
-   "shots": 262144,
-   "seconds": 1.6112,
-   "compile_seconds": 0.13,
-   "warmup_seconds": 0.19,
+   "shots_per_s": 270585.43947812926,
+   "shots": 524288,
+   "seconds": 1.9376,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4477,6 +6544,16 @@
    "warmup_seconds": 0.01,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 198145.32995997276,
+   "shots": 262144,
+   "seconds": 1.323,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.01,
+   "active_width": 10,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/dk.stim": {
@@ -4489,11 +6566,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 39677561.2112916,
+   "shots_per_s": 41640655.81158995,
    "shots": 67108864,
-   "seconds": 1.6914,
+   "seconds": 1.6116,
    "compile_seconds": 0.01,
-   "warmup_seconds": 0.21,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4505,6 +6582,16 @@
    "warmup_seconds": 0.39,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 7857355.153016526,
+   "shots": 5263440,
+   "seconds": 0.6699,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 4,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/rp2-d3-S.stim": {
@@ -4517,11 +6604,11 @@
    "seconds": 0.0
   },
   "cpu": {
-   "shots_per_s": 34653005.44482042,
+   "shots_per_s": 36872197.135297015,
    "shots": 44739242,
-   "seconds": 1.2911,
-   "compile_seconds": 0.03,
-   "warmup_seconds": 0.21,
+   "seconds": 1.2134,
+   "compile_seconds": 0.02,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4533,6 +6620,16 @@
    "warmup_seconds": 0.29,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 16441752.515939113,
+   "shots": 2982616,
+   "seconds": 0.1814,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/rp2-d3.stim": {
@@ -4545,11 +6642,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 13542727.001145016,
+   "shots_per_s": 14687521.655417357,
    "shots": 16777216,
-   "seconds": 1.2388,
-   "compile_seconds": 0.04,
-   "warmup_seconds": 0.22,
+   "seconds": 1.1423,
+   "compile_seconds": 0.03,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4561,6 +6658,16 @@
    "warmup_seconds": 0.54,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 819597.166530811,
+   "shots": 1048576,
+   "seconds": 1.2794,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 8,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/rp2-d5-S.stim": {
@@ -4573,11 +6680,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 14231632.71793894,
+   "shots_per_s": 15550574.3077947,
    "shots": 15790320,
-   "seconds": 1.1095,
-   "compile_seconds": 0.11,
-   "warmup_seconds": 0.21,
+   "seconds": 1.0154,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4589,6 +6696,16 @@
    "warmup_seconds": 0.3,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 4589504.376272159,
+   "shots": 986895,
+   "seconds": 0.215,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/rp2-d5.stim": {
@@ -4601,11 +6718,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 59985.467106870026,
-   "shots": 65536,
-   "seconds": 1.0925,
-   "compile_seconds": 0.14,
-   "warmup_seconds": 0.21,
+   "shots_per_s": 69158.0427713173,
+   "shots": 131072,
+   "seconds": 1.8953,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.14,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4617,6 +6734,9 @@
    "warmup_seconds": 5.48,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "skipped": "clifft k_max 18 > 15"
   }
  },
  "papers/2610.22315_magna/stim/wg-S.stim": {
@@ -4629,11 +6749,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 71566399.52611868,
+   "shots_per_s": 79295125.21389158,
    "shots": 22369621,
-   "seconds": 0.3126,
+   "seconds": 0.2821,
    "compile_seconds": 0.03,
-   "warmup_seconds": 0.18,
+   "warmup_seconds": 0.11,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4645,6 +6765,16 @@
    "warmup_seconds": 0.29,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 10737254.4451139,
+   "shots": 1278264,
+   "seconds": 0.119,
+   "compile_seconds": 0.0,
+   "warmup_seconds": 0.0,
+   "active_width": 0,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/wg-T.stim": {
@@ -4657,11 +6787,11 @@
    "seconds": 0.01
   },
   "cpu": {
-   "shots_per_s": 7895280.389580929,
+   "shots_per_s": 8281907.743489822,
    "shots": 8388608,
-   "seconds": 1.0625,
+   "seconds": 1.0129,
    "compile_seconds": 0.04,
-   "warmup_seconds": 0.21,
+   "warmup_seconds": 0.13,
    "backend": "ShotSampler",
    "tsim_version": "1.0.0"
   },
@@ -4673,6 +6803,16 @@
    "warmup_seconds": 0.54,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "clifft_cpu": {
+   "shots_per_s": 3117516.2290906445,
+   "shots": 1278264,
+   "seconds": 0.41,
+   "compile_seconds": 0.01,
+   "warmup_seconds": 0.0,
+   "active_width": 5,
+   "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
   }
  }
 }

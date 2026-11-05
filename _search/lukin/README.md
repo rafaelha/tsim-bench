@@ -20,8 +20,11 @@ Three papers qualify.
 | [2406.17653](https://arxiv.org/abs/2406.17653) | Low-overhead transversal fault tolerance for universal QC (Zhou et al.) | Zenodo [16552626](https://zenodo.org/records/16552626): `s_injection` d=3–9, `s_factory` d=3–9, `two_level_s_factory` d=9 | `RY` (\|Y⟩ injection) → `RX`+`T`. **s_injection:** a valid T injection into the surface code; all 62 detectors stay deterministic and the logical observable becomes random (0.78 / 0.30), as expected for a T state. **s_factory / two-level:** the same 16 / 0 gauge detectors are random as in the proxy, but the protocol is \|Y⟩ (S-state) distillation, which has no T analogue; its four outputs become random (≈0.36), so the converted circuit is not a T factory | s_injection 1; s_factory 3; two-level 7 | s_injection 2; s_factory 7; two-level (not measured) |
 
 k values: Tsim 1.0.0 (`compile_detector_sampler()`, largest statevector component) and Clifft 0.13.0 (`default_hir_pass_manager()` +
-`ActiveWidthSchedulePass()`), compile only. Clifft needs `tools/stimtext.py` to drop target-less `DEPOLARIZE1` lines first. Nothing has
-been sampled for throughput yet.
+`ActiveWidthSchedulePass()`), compile only. Clifft needs `tools/stimtext.py` to drop target-less `DEPOLARIZE1` lines first.
+
+Both new papers now have folders and are in the benchmark: `papers/2505.13587_correlated_decoding_distillation` and
+`papers/2406.17653_transversal_algorithmic_ft`. Throughput is in the README table and in SUMMARY.md. The tricycle factory code of
+2508.10714 / 2610.03605 / 2610.10731 is benchmarked through the real-CCZ circuits in `papers/2510.07269_transversal_dimension_jump`.
 
 **Is Tsim good and fast for these?** Yes, for all of them:
 - k is at most 7.

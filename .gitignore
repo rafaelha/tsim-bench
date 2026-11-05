@@ -2,3 +2,4 @@
 __pycache__/
 *.pyc
 .venvs/
+papers/*/stim_src/_download/

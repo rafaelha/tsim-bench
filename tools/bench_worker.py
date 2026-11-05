@@ -1,8 +1,9 @@
 """One measurement on one circuit; runs inside a benchmark venv (see tools/benchmark.py).
 
-    python bench_worker.py kmax  FILE.stim     -> {"tsim_k", "clifft_k"} (each may be an error)
+    python bench_worker.py kmax  FILE.stim [tsim|clifft]  -> {"tsim": {...}, "clifft": {...}} (each may be an error)
     python bench_worker.py cpu   FILE.stim     -> detector-sampler throughput on the CPU executor
     python bench_worker.py gpu   FILE.stim     -> detector-sampler throughput; fails unless the CUDA executor is used
+    python bench_worker.py clifft_cpu FILE.stim -> Clifft ``sample(program, n, threads=1)`` throughput
 
 Prints one JSON line. Throughput: ``sampler.sample(n, append_observables=True, bit_packed=True)``
 (no postselection, every shot returned), after a warm-up call that triggers JIT/NVRTC compilation.
@@ -97,11 +98,50 @@ def throughput(text, mode, target, max_bytes):
             "backend": backend}
 
 
+def clifft_throughput(text, target, max_bytes):
+    """Clifft 0.13: compile with the default passes + ActiveWidthSchedulePass, sample(threads=1)."""
+    import clifft
+
+    t0 = time.perf_counter()
+    pm = clifft.default_hir_pass_manager()
+    pm.add(clifft.ActiveWidthSchedulePass())
+    program = clifft.compile(text, hir_passes=pm)
+    compile_s = time.perf_counter() - t0
+    m, d, o = clifft.sample(program, 16, seed=0)
+    row_bytes = max(1, m.shape[1] + d.shape[1] + o.shape[1])  # one byte per bit (unpacked arrays)
+    cap = max(1024, max_bytes // row_bytes)
+
+    def call(n):
+        t = time.perf_counter()
+        clifft.sample(program, n, threads=1)
+        return time.perf_counter() - t
+
+    t0 = time.perf_counter()
+    call(1024)  # warm-up
+    warmup_s = time.perf_counter() - t0
+    n = 1024
+    while True:
+        elapsed = call(n)
+        if elapsed >= target or n >= cap:
+            break
+        n = min(cap, n * 2 if elapsed > target / 64 else n * 16)
+    best = min([elapsed] + [call(n) for _ in range(2)])
+    return {"shots_per_s": n / best, "shots": n, "seconds": round(best, 4),
+            "compile_seconds": round(compile_s, 2), "warmup_seconds": round(warmup_s, 2),
+            "active_width": int(program.peak_active_width), "clifft_version": clifft.version()
+            if callable(getattr(clifft, "version", None)) else str(getattr(clifft, "version", "?"))}
+
+
 def main():
     mode, path = sys.argv[1], sys.argv[2]
     text = open(path).read()
     if mode == "kmax":
-        out = {"tsim": attempt(tsim_k, text), "clifft": attempt(clifft_k, text)}
+        which = sys.argv[3:] or ["tsim", "clifft"]
+        fns = {"tsim": tsim_k, "clifft": clifft_k}
+        out = {name: attempt(fns[name], text) for name in which}
+    elif mode == "clifft_cpu":
+        out = attempt(lambda: clifft_throughput(text, 1.0, 1 << 28))
+        out = out.get("k", out)
     else:
         target = 1.0 if mode == "cpu" else 0.5
         max_bytes = (1 << 28) if mode == "cpu" else (1 << 31)
