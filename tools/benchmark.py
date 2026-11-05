@@ -234,7 +234,14 @@ def speedup(cpu, gpu):
     return f"{x:.0f}x" if x > 10 else f"{x:.1f}x"
 
 
-def kcell(r, simulator):
+def gpu_cell(cpu, gpu):
+    """A GPU rate with its speedup over one CPU core, e.g. ``122 M (109x)``."""
+    cell = rate(gpu)
+    x = speedup(cpu, gpu)
+    return f"{cell} ({x})" if x != "–" else cell
+
+
+def kcell(r, simulator, short=False):
     if r is None:
         return "–"
     if r.get("k") is not None:
@@ -245,7 +252,7 @@ def kcell(r, simulator):
         return f"≥{m.group(1)} (overflow)"
     m = re.search(r"needs (\d+) active qubits", error)
     if m:
-        return f"{m.group(1)} (refused, limit 30)"
+        return f"{m.group(1)}*" if short else f"{m.group(1)} (refused, limit 30)"
     return failure(error)
 
 
@@ -269,8 +276,8 @@ def paper_meta(folder):
 def table():
     results = load()
     lines = [
-        "| paper / circuit | Tsim single-core CPU (shots/s) | Tsim GPU (shots/s) | GPU speedup | Tsim Metal (shots/s) | Metal speedup vs CPU | Tsim k_max |",
-        "|---|---|---|---|---|---|---|",
+        "| circuit | k_max | CPU, 1 core | RTX 5090 | M4 Pro |",
+        "|---|---|---|---|---|",
     ]
     by_folder = {}
     for p, r in sorted(results.items()):
@@ -279,12 +286,11 @@ def table():
     for folder, rows in sorted(by_folder.items()):
         arxiv = folder.split("_")[0]
         title, authors, year = paper_meta(folder)
-        lines.append(f"| **[{arxiv}](https://arxiv.org/abs/{arxiv})** {authors} ({year}), *{title}* | | | | | | |")
+        lines.append(f"| **[{arxiv}](https://arxiv.org/abs/{arxiv})** {authors} ({year}), *{title}* | | | | |")
         for p, r in rows:
             name = pathlib.Path(p).stem
-            lines.append(f"| [`{name}`]({REPO_URL}/{p}) | {rate(r.get('cpu'))} | {rate(r.get('gpu'))} | "
-                         f"{speedup(r.get('cpu'), r.get('gpu'))} | {rate(r.get('metal'))} | "
-                         f"{speedup(r.get('cpu'), r.get('metal'))} | {kcell(r.get('tsim'), 'tsim')} |")
+            lines.append(f"| [`{name}`]({REPO_URL}/{p}) | {kcell(r.get('tsim'), 'tsim', short=True)} | {rate(r.get('cpu'))} | "
+                         f"{gpu_cell(r.get('cpu'), r.get('gpu'))} | {gpu_cell(r.get('cpu'), r.get('metal'))} |")
     block = "\n".join([BEGIN, *lines, END])
     readme = (ROOT / "README.md").read_text()
     if BEGIN in readme:
