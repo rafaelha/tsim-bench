@@ -1,0 +1,93 @@
+[
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/blp_27_3_3.stim",
+    "non_clifford_gates": {
+      "CCZ": 54
+    },
+    "tsim_k": 26,
+    "clifft_k": 26
+  },
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/toric_375_3_5.stim",
+    "non_clifford_gates": {
+      "CCZ": 750
+    },
+    "tsim_k": null,
+    "tsim_error": "ValueError: strategy='active_statevector' needs 186 active qubits for the component with outputs [381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 44",
+    "clifft_k": null,
+    "clifft_error": "OverflowError: sampling planner active width would reach 60, but the dense-state limit is 60"
+  },
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/toric_81_3_3.stim",
+    "non_clifford_gates": {
+      "CCZ": 162
+    },
+    "tsim_k": null,
+    "tsim_error": "ValueError: strategy='active_statevector' needs 63 active qubits for the component with outputs [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 1",
+    "clifft_k": 59
+  },
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/tricycle_12_3_2.stim",
+    "non_clifford_gates": {
+      "CCZ": 24
+    },
+    "tsim_k": 16,
+    "clifft_k": 16
+  },
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/tricycle_15_3_2.stim",
+    "non_clifford_gates": {
+      "CCZ": 30
+    },
+    "tsim_k": 16,
+    "clifft_k": 16
+  },
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/tricycle_18_3_2.stim",
+    "non_clifford_gates": {
+      "CCZ": 36
+    },
+    "tsim_k": 20,
+    "clifft_k": 20
+  },
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/tricycle_21_3_3.stim",
+    "non_clifford_gates": {
+      "CCZ": 42
+    },
+    "tsim_k": 23,
+    "clifft_k": 23
+  },
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/tricycle_24_3_2.stim",
+    "non_clifford_gates": {
+      "CCZ": 48
+    },
+    "tsim_k": 20,
+    "clifft_k": 20
+  },
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/tricycle_27_3_3.stim",
+    "non_clifford_gates": {
+      "CCZ": 54
+    },
+    "tsim_k": 24,
+    "clifft_k": 24
+  },
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/tricycle_6_3_2.stim",
+    "non_clifford_gates": {
+      "CCZ": 12
+    },
+    "tsim_k": 9,
+    "clifft_k": 9
+  },
+  {
+    "file": "papers/2510.07269_transversal_dimension_jump/stim/tricycle_9_3_2.stim",
+    "non_clifford_gates": {
+      "CCZ": 18
+    },
+    "tsim_k": 11,
+    "clifft_k": 13
+  }
+]
