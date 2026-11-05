@@ -31,6 +31,10 @@ META = dict(arxiv="2509.18294", paper="Ismail et al. (2025), Transversal archite
 DS = [3, 5, 7]
 ANGLES = [0.001, 0.003, 0.01, 0.03, 0.1, 0.25]  # logical angle in units of pi
 PS = [3e-4, 5e-4, 1e-3, 2e-3, 3e-3]
+PAPER_ANGLE = 1e-2  # radians (Fig. 6a,c)
+PAPER_PS = [7.3e-4, 1.3e-3, 2.3e-3, 4.1e-3, 7.3e-3]
+PAPER_P = 7.3e-4  # Fig. 6b,d
+PAPER_ANGLES = [7.3e-4, 6e-3, 1.2e-2, 5e-2, 1e-1]  # radians
 
 
 def physical_angle(logical_angle_in_pi, num_physical_rotations):
@@ -60,11 +64,14 @@ def make(d, angle, p):
 
 def combos():
     out = {(d, a, 1e-3) for d in DS for a in ANGLES} | {(d, 0.01, p) for d in DS for p in PS}
+    # The paper's Fig. 6 grid: p sweep at a logical angle of 1e-2 rad, angle sweep at p = 7.3e-4.
+    out |= {(d, PAPER_ANGLE / math.pi, p) for d in DS for p in PAPER_PS}
+    out |= {(d, a / math.pi, PAPER_P) for d in DS for a in PAPER_ANGLES}
     return sorted(out)
 
 
 def name(d, a, p):
-    return f"d{d}_a{a:g}_p{p:g}"
+    return f"d{d}_a{a:.6g}_p{p:g}"
 
 
 def circuits():
@@ -84,34 +91,58 @@ def success_noiseless(angle, k):
     return math.cos(phi / 2) ** (2 * k) + math.sin(phi / 2) ** (2 * k)
 
 
+COLORS = {3: "#fdd36f", 5: "#f7931e", 7: "#d4590c"}
+
+
 def figures(results):
+    """The paper's Fig. 6 layout (Fig6_injection_fidelity.png): (a,c) vs error rate, (b,d) vs angle in radians."""
     import matplotlib.pyplot as plt
+    import numpy as np
 
     from repro import plotting
 
     out = common.REPORT / "figures" / STUDY
-    fig, axes = plt.subplots(2, 2, figsize=(7.0, 5.2))
-    for d, col in zip(DS, ("C0", "C1", "C2")):
-        sp = sorted((r["params"]["p"], r["totals"]) for r in results.values() if r["params"]["d"] == d and r["params"]["angle"] == 0.01)
-        sa = sorted((r["params"]["angle"], r["totals"]) for r in results.values() if r["params"]["d"] == d and r["params"]["p"] == 1e-3)
-        plotting.ler_points(axes[0, 0], sp, color=col, label=f"d={d} (k={d})")
-        plotting.ler_points(axes[0, 1], sa, color=col, label=f"d={d}")
-        plotting.accept_points(axes[1, 0], sp, color=col, label=f"d={d}")
-        plotting.accept_points(axes[1, 1], sa, color=col, label=f"d={d}")
-        xs = np.geomspace(min(ANGLES), max(ANGLES), 40)
-        axes[1, 1].plot(xs, [success_noiseless(a, d) for a in xs], ":", color=col, lw=0.8)
-    plotting.style_ler(axes[0, 0], "physical error rate $p$")
-    plotting.style_ler(axes[0, 1], "logical angle $\\theta/\\pi$")
-    plotting.style_accept(axes[1, 0], "physical error rate $p$", log=True)
-    plotting.style_accept(axes[1, 1], "logical angle $\\theta/\\pi$", log=True)
-    axes[0, 0].set_title("$\\theta = 0.01\\pi$")
-    axes[0, 1].set_title("$p = 10^{-3}$")
-    axes[0, 0].legend()
-    axes[1, 1].legend(title="dotted: noiseless", fontsize=6)
-    path = plotting.save(fig, out / "fig6_star.pdf")
+    rc = {"font.family": "serif", "mathtext.fontset": "cm", "font.size": 11}
+    with plt.rc_context(rc):
+        fig, axes = plt.subplots(2, 2, figsize=(6.6, 5.6), sharex="col")
+        for d in (7, 5, 3):
+            col = COLORS[d]
+            sp = sorted((r["params"]["p"], r["totals"]) for r in results.values()
+                        if r["params"]["d"] == d and abs(r["params"]["angle"] * math.pi - PAPER_ANGLE) < 1e-12 and r["params"]["p"] in PAPER_PS)
+            sa = sorted((r["params"]["angle"] * math.pi, r["totals"]) for r in results.values()
+                        if r["params"]["d"] == d and r["params"]["p"] == PAPER_P and any(abs(r["params"]["angle"] * math.pi - a) < 1e-12 for a in PAPER_ANGLES))
+            for (ax_l, ax_s), ser, mk in (((axes[0, 0], axes[1, 0]), sp, "o"), ((axes[0, 1], axes[1, 1]), sa, "s")):
+                xs = [x for x, t in ser if t["kept"] and t["errors"]]
+                ys = [t["errors"] / t["kept"] for x, t in ser if t["kept"] and t["errors"]]
+                es = [y / np.sqrt(t["errors"]) for (x, t), y in zip([s for s in ser if s[1]["kept"] and s[1]["errors"]], ys)]
+                if not xs:
+                    continue
+                ax_l.errorbar(xs, ys, yerr=es, color=col, marker=mk, ms=7, mec=(0.45, 0.3, 0.1, 0.5), mew=1.5, label=f"$d={d}$ PS")
+                ax_s.plot([x for x, t in ser if t["shots"]], [t["kept"] / t["shots"] for x, t in ser if t["shots"]], color=col, marker=mk,
+                          ms=7, mec=(0.45, 0.3, 0.1, 0.5), mew=1.5)
+        for ax in axes.flat:
+            ax.set_xscale("log")
+        for ax in axes[0]:
+            if ax.has_data():
+                ax.set_yscale("log")
+        for ax in axes[1]:
+            ax.set_ylim(0, 1.05)
+        axes[0, 0].set_ylabel("logical error rate")
+        axes[1, 0].set_ylabel("success rate")
+        axes[1, 0].set_xlabel("physical error rate $p$ (uniform)")
+        axes[1, 1].set_xlabel("angle (radians)")
+        axes[1, 0].set_xlim(5e-4, 1e-2)
+        axes[1, 1].set_xlim(5e-4, 1.5e-1)
+        for ax, lab in zip(axes.flat, "abcd"):
+            ax.text(0.02, 0.97, f"({lab})", transform=ax.transAxes, va="top")
+        axes[0, 0].legend(loc="lower right", frameon=False)
+        path = plotting.save(fig, out / "Fig6_injection_fidelity.pdf")
+    pts = [k for k, r in results.items() if r["params"]["p"] == PAPER_P or abs(r["params"]["angle"] * math.pi - PAPER_ANGLE) < 1e-12]
     return [common.Figure(
-        "star", path, "Ismail et al. Figs. 6, 13, 15 (protocol of the public STAR challenge circuits)",
-        "Logical error of the injected small-angle rotation (noiseless un-rotation, logical $X$ readout) and success rate, "
-        "with every detector postselected. Note the protocol differences listed above ($k=d$, $d$ postselected rounds after "
-        "the rotations, uniform noise), so the curves are not expected to coincide with the paper's.",
-        common.budget_line(results))]
+        "star", path, "Ismail et al. Fig. 6: STAR small-angle injection with full postselection (challenge circuits)",
+        "The paper's layout and grid: (a, c) logical error and success rate vs.\\ error rate at a logical angle of $10^{-2}$ rad; (b, d) vs.\\ the "
+        "logical angle at $p=7.3\\times10^{-4}$. Same colours ($d=3,5,7$) and markers as the paper. The protocol is that of QuEra's public STAR "
+        "challenge circuits ($k=d$ rotations, $d$ postselected rounds after them, uniform depolarizing noise $p$ on every gate instead of the "
+        "paper's hardware-aware model whose x-axis is the total two-qubit error rate), so the curves are not expected to coincide with the "
+        "paper's; the authors released no generator for the paper's circuits.",
+        common.budget_line(results, pts))]

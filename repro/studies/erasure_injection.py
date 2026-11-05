@@ -24,7 +24,7 @@ The no-erasure probability is computed exactly from the Pauli circuit's noise lo
 import functools
 import re
 
-from repro import common, magic_check
+from repro import common, data_sources, magic_check
 from repro.common import Point
 from repro.studies import gidney_cultivation
 
@@ -103,51 +103,91 @@ def no_erasure_probability(text, e):
     return math.exp(logp)
 
 
+def _paper_fig2():
+    """The released data of Fig. 2 (out/2024-12-24-compare_injections_5e6runs_2erasures)."""
+    import csv
+
+    path = data_sources.data_file("erasure_compare_injections_5e6runs_2erasures.csv")
+    return [{k: (float(v) if k in ("p", "e", "pe", "em", "logical_err", "std_err", "success_rate") else v) for k, v in row.items()}
+            for row in csv.DictReader(path.open())]
+
+
 def figures(results):
+    """The notebooks' figures (compare_injections.ipynb cell 3, cultivation.ipynb cell 10): two stacked panels, LER vs acceptance."""
     import matplotlib.pyplot as plt
 
     from repro import plotting
 
     out = common.REPORT / "figures" / STUDY
     g = common.load_results("gidney_cultivation")
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.9))
-    used = []
-    for ax, kind, title in ((axes[0], "hook", "Fig. 2: hook injection, $d_1=3$ (ungrown)"),
-                            (axes[1], "cult", "Fig. 5(b): unitary injection + cultivation, $d=3$")):
-        for gate, col, mk in (("s", "C0", "s"), ("t", "C3", "o")):
-            xs, ys, lo, hi, labels = [], [], [], [], []
-            for e, p in SCEN:
-                if kind == "cult" and p == 1e-3:
-                    r = g.get(gidney_cultivation.cname(3, "unitary", 1e-3, gate))
-                    circ = common.circuit_path("gidney_cultivation", gidney_cultivation.cname(3, "unitary", 1e-3, gate))
-                else:
-                    key = f"{kind}_p{p:g}_{gate}"
-                    r = results.get(key)
-                    circ = common.circuit_path(STUDY, key)
-                    used.append(key)
-                if not r or not r["totals"]["kept"] or not circ.exists():
-                    continue
-                t = r["totals"]
-                acc = t["kept"] / t["shots"] * no_erasure_probability(circ.read_text(), e)
-                b, l, h = common.binomial_interval(t["errors"], t["kept"])
-                xs.append(acc)
-                ys.append(b)
-                lo.append(b - l)
-                hi.append(h - b)
-                labels.append(f"e={e:g}, p={p:g}")
-            if xs:
-                ax.errorbar(xs, ys, yerr=[lo, hi], ls="none", marker=mk, color=col, ms=4, capsize=1.5,
-                            label="S proxy" if gate == "s" else "T")
-                if gate == "t":
-                    for x, y, lab in zip(xs, ys, labels):
-                        ax.annotate(lab, (x, y), fontsize=5, xytext=(3, 3), textcoords="offset points")
+    DBLUE, RED = "#00008B", "r"
+
+    def ours(kind, gate):
+        """(acceptance incl. erasure, LER, sigma, e, p) per scenario."""
+        pts = []
+        for e, p in SCEN:
+            if kind == "cult" and p == 1e-3:
+                r = g.get(gidney_cultivation.cname(3, "unitary", 1e-3, gate))
+                circ = common.circuit_path("gidney_cultivation", gidney_cultivation.cname(3, "unitary", 1e-3, gate))
+            else:
+                r = results.get(f"{kind}_p{p:g}_{gate}")
+                circ = common.circuit_path(STUDY, f"{kind}_p{p:g}_{gate}")
+            if not r or not r["totals"]["kept"] or not circ.exists():
+                continue
+            t = r["totals"]
+            acc = t["kept"] / t["shots"] * no_erasure_probability(circ.read_text(), e)
+            ler = t["errors"] / t["kept"]
+            pts.append((acc, ler, ler / max(t["errors"], 1) ** 0.5, e, p))
+        return pts
+
+    fig, axes = plt.subplots(2, 1, figsize=(6, 6.4))
+    with plt.rc_context({"font.family": "DejaVu Sans"}):
+        # ---- Fig. 2, hook-injection panel.
+        ax = axes[0]
+        for p, col in ((1e-3, "steelblue"), (1e-4, RED)):
+            ax.axhline(7 * p / 30, ls="--", color=col, label=f"$7p/30$ limit for $p=10^{{{int(round(__import__('math').log10(p)))}}}$")
+        pub = [r for r in _paper_fig2() if r["injection_type"] == "hook" and r["em"] == 0]
+        for r in pub:
+            col = DBLUE if r["e"] == 0 else RED
+            ax.errorbar([r["success_rate"]], [r["logical_err"]], yerr=[1.96 * r["std_err"]], fmt="o", color=col, alpha=0.6, mfc="none", ms=7)
+        ax.plot([], [], "o", color="0.4", mfc="none", label="paper (released data, $S$ state)")
+        for gate, mk, lab in (("s", "s", "Tsim GPU, $S$ state"), ("t", "^", "Tsim GPU, $T$ state")):
+            for acc, ler, sig, e, p in ours("hook", gate):
+                ax.errorbar([acc], [ler], yerr=[1.96 * sig], fmt=mk, color=DBLUE if e == 0 else RED, ms=5)
+            ax.plot([], [], mk, color="0.4", label=lab)
+        for r in pub:
+            ax.annotate(f"p={r['pe']:.0e}\ne={r['e']:.0e}" if r["e"] else f"p={r['pe']:.0e}\ne=0", (r["success_rate"], r["logical_err"]),
+                        xytext=(0, 14), textcoords="offset points", ha="center", fontsize=8)
         ax.set_yscale("log")
-        ax.set_xlabel("acceptance rate (incl. erasure postselection)")
-        ax.set_ylabel("logical error rate per kept shot")
-        ax.set_title(title)
-        ax.legend()
-    path = plotting.save(fig, out / "fig2_fig5b.pdf")
-    return [common.Figure("erasure", path, "Jacoby et al. Figs. 2 and 5(b): erasure qubits, ungrown injection and cultivation",
-                          "Each point is one erasure scenario $(e, p)$; the logical error rate comes from the Pauli-only circuit at residual rate $p$ "
-                          "(one sample serves every $e$), and the acceptance is the sampled Pauli acceptance times the exact no-erasure probability.",
-                          common.budget_line(results, used))]
+        ax.set_xlim(0.35, 1.0)
+        ax.set_ylim(1e-5, 1e-3)
+        ax.set_title("Hook Injection", fontsize=12)
+        ax.set_ylabel("Logical Error Rate", fontsize=12)
+        ax.legend(fontsize=7.5, loc="upper left")
+        ax.grid(True, which="both", alpha=0.3)
+        # ---- Fig. 5(b): injection + cultivation.
+        ax = axes[1]
+        for gate, mk, lab in (("s", "o", "Tsim GPU, $S$ state (the paper's proxy)"), ("t", "^", "Tsim GPU, $T$ state")):
+            for acc, ler, sig, e, p in ours("cult", gate):
+                ax.errorbar([acc], [ler], yerr=[1.96 * sig], fmt=mk, color=DBLUE if e == 0 else RED, ms=6, alpha=0.75)
+                if gate == "s":
+                    ax.annotate(f"p={p:.0e}\ne={e:.0e}" if e else f"p$_n$={p:.0e}", (acc, ler), xytext=(8, 4), textcoords="offset points", fontsize=8)
+            ax.plot([], [], mk, color="0.4", label=lab)
+        ax.set_yscale("log")
+        ax.set_xlim(0, 1)
+        ax.set_ylim(1e-11, 4e-6)
+        ax.set_title("Injection + Cultivation [d=3]", fontsize=12)
+        ax.set_xlabel("Acceptance Rate", fontsize=12)
+        ax.set_ylabel("Logical Error Rate", fontsize=12)
+        ax.legend(fontsize=7.5, loc="upper left")
+        ax.grid(True, which="both", alpha=0.3)
+    path = plotting.save(fig, out / "injection_comparison.pdf")
+    used = [k for k in results]
+    return [common.Figure("erasure", path, "Jacoby et al. Figs. 2 (hook-injection panel) and 5(b): erasure qubits, ungrown injection and cultivation",
+                          "Layout of the authors' notebooks (\\texttt{compare\\_injections.ipynb}, \\texttt{cultivation.ipynb}): logical error rate vs.\\ "
+                          "acceptance, blue $p=10^{-3}$ without erasures, red residual $p=10^{-4}$ with erasure rate $e$; bars $1.96\\sigma$. Top: open circles "
+                          "are the paper's released data (\\texttt{out/2024-12-24-compare\\_injections\\_5e6runs\\_2erasures}); our points use the released "
+                          "\\texttt{QEC\\_hook\\_d=3.stim} example, whose noise model differs from the circuits behind the data (its LER is about 2x higher). "
+                          "Bottom: Gidney's \\texttt{inject[unitary]+cultivate} circuit as in \\texttt{cultivation.ipynb}; the paper's values (read off the figure: "
+                          "$3.3\\times10^{-7}$ at 0.69 for $p=10^{-3}$) match our $S$ points. Our acceptances include the exact no-erasure probability. The "
+                          "Lao--Criger panel and the hybrid layouts are not reproduced.", common.budget_line(results, used))]

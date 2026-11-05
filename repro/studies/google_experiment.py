@@ -32,7 +32,7 @@ GEN = common.PAPERS / "2409.17595_magic_state_cultivation" / "stim_src" / "githu
 META = dict(arxiv="2512.13908", paper="Rosenfeld et al. (2025), Magic state cultivation on a superconducting quantum processor")
 THETAS = [2 * math.pi * k / 24 for k in range(24)]
 T_ANGLE = math.pi / 4
-KT_THETAS = sorted({T_ANGLE + math.pi / 32 * k for k in range(-8, 9)})
+KT_THETAS = sorted({T_ANGLE + math.pi / 32 * k for k in range(-8, 9)} | {2 * math.pi * k / 32 for k in range(32)})  # dense near T, full circle as in the paper
 TOMO = {  # key: (template stem without basis, p)
     "fig2_injection": ("fig2_injection_stim_{b}_T", 3.0e-3),
     "fig2_cultivation": ("fig2_cultivation_stim_{b}_T", 3.0e-3),
@@ -40,8 +40,8 @@ TOMO = {  # key: (template stem without basis, p)
     "fig4_cultivation_N2": ("fig4_cultivation_N2_stim_{b}_T", 2.3e-3),
     "fig4_cultivation_N3": ("fig4_cultivation_N3_stim_{b}_T", 2.3e-3),
 }
-KT = {"fig3_kt": "fig3_simulation_stim_T", "fig3_kt_no_qec": "fig3_without_idle_rounds_stim_T"}
-KT_P = [1.0e-3, 1.5e-3, 2.3e-3, 3.0e-3, 4.0e-3]
+KT = {"fig3_kt": "fig3_simulation_stim_T", "fig3_kt_no_qec": "fig3_without_idle_rounds_stim_T", "fig3_injection": "fig3_injection_stim_T"}
+KT_P = [3e-4, 5e-4, 1.0e-3, 1.5e-3, 2.0e-3, 2.3e-3, 2.5e-3, 3.0e-3, 3.5e-3, 4.0e-3]  # SI Fig. validating_KT grid
 
 
 @functools.lru_cache(None)
@@ -152,7 +152,33 @@ def _expect(t):
     return 1 - 2 * t["obs_ones"][0] / t["kept"] if t["kept"] else float("nan")
 
 
+# The paper's palette and markers (figures/fig2-4.pdf).
+RED, CYAN, GREY, BLUE, TEAL = "#ef4136", "#29b6d8", "#58595b", "#3a6fc4", "#0f7c80"
+
+
+def _theta_axis(ax):
+    import math
+
+    ax.set_xticks([math.pi / 4, 5 * math.pi / 4, 2 * math.pi], [r"$\pi/4$", r"$5\pi/4$", r"$2\pi$"])
+    ax.axvline(math.pi / 4, color="k", ls=":", lw=1.5)
+    ax.axvline(5 * math.pi / 4, color="0.5", ls=":", lw=1.5)
+
+
+def _kt_series(results, key, p=2.3e-3):
+    ref = kt_reference(key)
+    ser = []
+    for r in results.values():
+        pr = r["params"]
+        if pr["kind"] == "kt" and pr["key"] == key and abs(pr["p"] - p) < 1e-12:
+            t = dict(r["totals"])
+            t["errors"] = t["obs_ones"][0] if ref == 0 else t["kept"] - t["obs_ones"][0]
+            ser.append((pr["theta"], t))
+    return sorted(ser)
+
+
 def figures(results):
+    import math
+
     import matplotlib.pyplot as plt
     import numpy as np
 
@@ -160,51 +186,127 @@ def figures(results):
 
     out = common.REPORT / "figures" / STUDY
     figs = []
-    # ---- tomography (Figs. 2, 4)
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 3.4))
-    for ax, keys, title in ((axes[0], ("fig2_injection", "fig2_cultivation"), "Fig. 2: SI1000 $p=3\\times10^{-3}$"),
-                            (axes[1], ("fig4_injection_N2", "fig4_cultivation_N2", "fig4_cultivation_N3"), "Fig. 4 (grafted): $p=2.3\\times10^{-3}$")):
-        ts = np.linspace(0, 2 * np.pi, 200)
-        ax.plot(np.sin(ts), np.cos(ts), color="k", lw=0.6)
-        ax.plot([-1, 1], [-1, 1], color="0.6", lw=0.6, ls="--")
-        for key, col in zip(keys, ("C3", "C0", "C2")):
-            xs, zs = [], []
-            for k in range(len(THETAS)):
-                rx, rz = results.get(tname(key, "X", k)), results.get(tname(key, "Z", k))
-                if rx and rz:
-                    xs.append(_expect(rx["totals"]))
-                    zs.append(_expect(rz["totals"]))
-            ax.plot(xs, zs, "o", color=col, ms=3, label=key.split("_", 1)[1])
-        ax.set_aspect("equal")
-        ax.set_xlim(-1.08, 1.08)
-        ax.set_ylim(-1.08, 1.08)
-        ax.set_xlabel("$\\langle X_L\\rangle$")
-        ax.set_ylabel("$\\langle Z_L\\rangle$")
-        ax.set_title(title)
-        ax.legend(fontsize=6, loc="lower left")
-    path = plotting.save(fig, out / "fig2_fig4_tomography.pdf")
-    pts = [k for k, r in results.items() if r["params"]["kind"] == "tomo"]
-    figs.append(common.Figure("google_tomo", path, "Rosenfeld et al. Figs. 2(b) and 4(b): post-selected logical tomography vs.\\ injected angle",
-                              "Each marker is one injected angle $\\theta$ ($24$ angles in $[0,2\\pi)$), with $\\langle X_L\\rangle$ and $\\langle Z_L\\rangle$ from the "
-                              "$X$- and $Z$-basis circuits (up to $3\\times10^9$ shots each). Cultivation projects the state onto the magic axis (dashed). "
-                              "These replace the paper's grey state-vector points.", common.budget_line(results, pts)))
-    # ---- KT (Fig. 3 + SI)
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.9))
-    for key, col, lab in (("fig3_kt", "C0", "with QEC cycles"), ("fig3_kt_no_qec", "C1", "without QEC cycles")):
-        ref = kt_reference(key)
-        ser = []
-        for r in results.values():
-            pr = r["params"]
-            if pr["kind"] == "kt" and pr["key"] == key and abs(pr["p"] - 2.3e-3) < 1e-12:
-                t = dict(r["totals"])
-                t["errors"] = t["obs_ones"][0] if ref == 0 else t["kept"] - t["obs_ones"][0]
-                ser.append((pr["theta"], t))
-        plotting.ler_points(axes[0], sorted(ser), color=col, label=lab)
-    axes[0].axvline(T_ANGLE, color="0.6", lw=0.6, ls="--")
-    axes[0].set_yscale("log")
-    axes[0].set_xlabel("injected angle $\\theta$ (rad)")
-    axes[0].set_ylabel("KT logical error per kept shot")
-    axes[0].legend()
+
+    def tomo(key):
+        xs, zs, ths, acc = [], [], [], []
+        for k in range(len(THETAS)):
+            rx, rz = results.get(tname(key, "X", k)), results.get(tname(key, "Z", k))
+            if rx and rz and rx["totals"]["kept"] and rz["totals"]["kept"]:
+                xs.append(_expect(rx["totals"]))
+                zs.append(_expect(rz["totals"]))
+                ths.append(THETAS[k])
+                acc.append((rx["totals"]["kept"] + rz["totals"]["kept"]) / (rx["totals"]["shots"] + rz["totals"]["shots"]))
+        return xs, zs, ths, acc
+
+    # ---- Fig. 2(B, D): tomography in the X-Z plane, data retainment vs theta.
+    fig = plt.figure(figsize=(7.2, 4.6))
+    ax = fig.add_axes([0.08, 0.1, 0.52, 0.82])
+    axd = fig.add_axes([0.70, 0.1, 0.28, 0.36])
+    ts = np.linspace(0, 2 * np.pi, 300)
+    ax.plot(np.sin(ts), np.cos(ts), "k", lw=1.5)
+    ax.plot([-0.71, 0.71], [-0.71, 0.71], ls=":", color="0.75", lw=1.5)
+    for key, col, mk, lab in (("fig2_injection", RED, "P", "Injection only (Tsim GPU)"), ("fig2_cultivation", CYAN, "D", "Cultivation (Tsim GPU)")):
+        xs, zs, ths, acc = tomo(key)
+        ax.plot(xs, zs, mk, color=col, ms=5 if mk == "D" else 7, ls="none", label=lab)
+        axd.plot(ths, acc, mk, color=col, ms=3.5, ls="none")
+    ax.plot([np.sqrt(0.5)], [np.sqrt(0.5)], "*", color="gold", mec="k", ms=14)
+    ax.set_xlim(-1.1, 1.1)
+    ax.set_ylim(-1.1, 1.1)
+    ax.set_aspect("equal")
+    ax.set_xlabel(r"$\langle X\rangle_L$")
+    ax.set_ylabel(r"$\langle Z\rangle_L$")
+    ax.legend(loc="center", fontsize=8)
+    ax.set_title("B", loc="left", fontweight="bold")
+    _theta_axis(axd)
+    axd.set_ylim(0, 0.8)
+    axd.set_xlabel(r"Polar angle $\theta$ injected")
+    axd.set_ylabel("Data retainment rate")
+    axd.set_title("D", loc="left", fontweight="bold")
+    path = plotting.save(fig, out / "fig2.pdf")
+    pts = [k for k, r in results.items() if r["params"]["kind"] == "tomo" and r["params"]["key"].startswith("fig2")]
+    figs.append(common.Figure("google2", path, "Rosenfeld et al. Fig. 2(B, D): post-selected logical tomography and data retainment vs.\\ injected angle",
+                              "Layout and markers of the paper's Fig. 2 (panels B and D). Our points replace the paper's grey state-vector "
+                              "\\emph{simulation} points (SI1000, $p=3.0\\times10^{-3}$): red, injection only; cyan, injection + cultivation, which is "
+                              "projected onto the magic axis (dotted); star: the ideal $|T\\rangle$. 24 angles, up to $3\\times10^9$ shots per basis. "
+                              "The paper's experimental points are not released in numeric form here.", common.budget_line(results, pts)))
+
+    # ---- Fig. 3(B, C, D): kickback tomography logical error and retainment vs theta.
+    fig = plt.figure(figsize=(7.2, 4.6))
+    ax = fig.add_axes([0.09, 0.1, 0.56, 0.84])
+    axc = fig.add_axes([0.73, 0.6, 0.25, 0.34])
+    axd = fig.add_axes([0.73, 0.1, 0.25, 0.36])
+    for key, col, mk, lab in (("fig3_injection", RED, "P", "Injection only (Tsim GPU)"),
+                              ("fig3_kt_no_qec", BLUE, "o", "Cultivation without QEC cycles (Tsim GPU)"),
+                              ("fig3_kt", CYAN, "D", "Cultivation with QEC cycles (Tsim GPU)")):
+        ser = _kt_series(results, key)
+        ths = [th for th, t in ser if t["kept"]]
+        ys = [t["errors"] / t["kept"] for th, t in ser if t["kept"]]
+        es = [np.sqrt(max(t["errors"], 1)) / t["kept"] for th, t in ser if t["kept"]]
+        ax.errorbar(ths, ys, yerr=es, ls="none", marker=mk, color=col, ms=4 if mk != "P" else 6, label=lab)
+        axd.plot(ths, [t["kept"] / t["shots"] for th, t in ser if t["kept"]], mk, color=col, ms=3, ls="none")
+        if key == "fig3_kt":
+            near = [(th, y, e) for th, y, e in zip(ths, ys, es) if math.pi / 16 <= th <= 7 * math.pi / 16]
+            axc.errorbar([x[0] for x in near], [x[1] for x in near], yerr=[x[2] for x in near], ls="none", marker="D", color=col, ms=4)
+    ax.set_yscale("log")
+    ax.set_ylim(1e-5, 2)
+    _theta_axis(ax)
+    ax.set_xlabel(r"Polar angle $\theta$ injected")
+    ax.set_ylabel("Logical error probability (total circuit)")
+    ax.legend(loc="lower right", fontsize=7)
+    ax.set_title("B", loc="left", fontweight="bold")
+    axc.set_yscale("log")
+    axc.set_xticks([math.pi / 8, math.pi / 4, 3 * math.pi / 8], [r"$\pi/8$", r"$\pi/4$", r"$3\pi/8$"])
+    axc.set_xlabel(r"$\theta$")
+    axc.set_ylabel("Logical error prob.")
+    axc.set_title("C", loc="left", fontweight="bold")
+    _theta_axis(axd)
+    axd.set_ylabel("Data retainment rate")
+    axd.set_xlabel(r"$\theta$")
+    axd.set_title("D", loc="left", fontweight="bold")
+    path = plotting.save(fig, out / "fig3.pdf")
+    pts = [k for k, r in results.items() if r["params"]["kind"] == "kt" and abs(r["params"]["p"] - 2.3e-3) < 1e-12]
+    figs.append(common.Figure("google3", path, "Rosenfeld et al. Fig. 3(B, C, D): kickback tomography (KT) vs.\\ injected angle",
+                              "Layout and markers of the paper's Fig. 3: logical error of the whole KT circuit vs.\\ $\\theta$ (B), zoom near $\\pi/4$ (C), "
+                              "data retainment (D), SI1000 $p=2.3\\times10^{-3}$. All three curves are Tsim GPU simulations of the released circuits "
+                              "(the paper's grey points are its state-vector simulation of the cultivation-with-QEC circuit). Without the QEC cycles "
+                              "there is a single stabilizer measurement at the end, so single faults cause logical errors: the error is about 100x "
+                              "worse (as in the paper) and, since postselection on the cultivation checks still projects onto the $T$ axis, nearly "
+                              "independent of $\\theta$.", common.budget_line(results, pts)))
+
+    # ---- Fig. 4(B, C): grafted tomography (positive quadrant) and retainment.
+    fig = plt.figure(figsize=(7.2, 4.6))
+    ax = fig.add_axes([0.08, 0.1, 0.52, 0.84])
+    axc = fig.add_axes([0.70, 0.1, 0.28, 0.36])
+    ts = np.linspace(0, np.pi / 2, 200)
+    ax.plot(np.sin(ts), np.cos(ts), "k", lw=1.5)
+    ax.plot([0, 0.71], [0, 0.71], ls=":", color="0.75", lw=1.5)
+    for key, col, mk, lab in (("fig4_injection_N2", GREY, "P", "Simulation, injection, N = 2 (Tsim GPU)"),
+                              ("fig4_cultivation_N2", CYAN, "P", "Cultivation, N = 2 (Tsim GPU)"),
+                              ("fig4_cultivation_N3", TEAL, "P", "Cultivation, N = 3 (Tsim GPU)")):
+        xs, zs, ths, acc = tomo(key)
+        ax.plot(xs, zs, mk, color=col, ms=7, ls="none", label=lab)
+        axc.plot(ths, acc, "D" if "cult" in key else "o", color=col, ms=3, ls="none")
+    ax.plot([np.sqrt(0.5)], [np.sqrt(0.5)], "*", color="gold", mec="k", ms=14)
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.set_aspect("equal")
+    ax.set_xlabel(r"$\langle X\rangle_L$")
+    ax.set_ylabel(r"$\langle Z\rangle_L$")
+    ax.legend(loc="lower left", fontsize=7)
+    ax.set_title("B", loc="left", fontweight="bold")
+    _theta_axis(axc)
+    axc.set_xlabel(r"Polar angle $\theta$ injected")
+    axc.set_ylabel("Data retainment rate")
+    axc.set_title("C", loc="left", fontweight="bold")
+    path = plotting.save(fig, out / "fig4.pdf")
+    pts = [k for k, r in results.items() if r["params"]["kind"] == "tomo" and r["params"]["key"].startswith("fig4")]
+    figs.append(common.Figure("google4", path, "Rosenfeld et al. Fig. 4(B, C): tomography after grafting to the surface code",
+                              "Layout of the paper's Fig. 4 (positive quadrant of the $X$--$Z$ plane, data retainment vs.\\ $\\theta$), SI1000 "
+                              "$p=2.3\\times10^{-3}$, the released injection-only simulation circuit and the cultivation circuits with $N=2,3$ cycles.",
+                              common.budget_line(results, pts)))
+
+    # ---- SI Fig. validating_KT (SI_kt_sweep_p.pdf): KT error at the T angle vs p, fit to p^3.
+    fig, ax = plt.subplots(figsize=(6.2, 4.6))
     ref = kt_reference("fig3_kt")
     ser = []
     for r in results.values():
@@ -213,22 +315,24 @@ def figures(results):
             t = dict(r["totals"])
             t["errors"] = t["obs_ones"][0] if ref == 0 else t["kept"] - t["obs_ones"][0]
             ser.append((pr["p"], t))
-    plotting.ler_points(axes[1], sorted(ser), color="C0", label="KT at the $T$ angle")
+    ser = sorted(s for s in ser if s[1]["kept"] and s[1]["errors"])
     if ser:
-        p0, t0 = sorted(ser)[len(ser) // 2]
-        if t0["errors"]:
-            l0 = t0["errors"] / t0["kept"]
-            xs = np.geomspace(min(s[0] for s in ser), max(s[0] for s in ser), 20)
-            axes[1].plot(xs, l0 * (xs / p0) ** 3, ":", color="0.4", label="$\\propto p^3$")
-    plotting.style_ler(axes[1], "SI1000 noise strength $p$")
-    axes[1].legend()
-    path = plotting.save(fig, out / "fig3_kt.pdf")
-    pts = [k for k, r in results.items() if r["params"]["kind"] == "kt"]
-    figs.append(common.Figure("google_kt", path, "Rosenfeld et al. Fig. 3(b) and SI Fig.~validating\\_KT: kickback tomography of the cultivated $|T\\rangle$",
-                              "Left: KT logical error vs.\\ injected angle (SI1000 $p=2.3\\times10^{-3}$), with and without the interleaved QEC cycles. "
-                              "Without the QEC cycles there is a single stabilizer measurement at the end, so single faults cause logical errors: "
-                              "the error is about 100x worse (as in the paper) and, since postselection on the cultivation checks still projects "
-                              "onto the $T$ axis, nearly independent of $\\theta$. Right: KT error at $\\theta=\\pi/4$ vs.\\ $p$, which scales "
-                              "as $p^3$ (fault distance 3).",
-                              common.budget_line(results, pts)))
+        ps = np.array([p for p, _ in ser])
+        ys = np.array([t["errors"] / t["kept"] for _, t in ser])
+        es = np.array([np.sqrt(t["errors"]) / t["kept"] for _, t in ser])
+        c = np.exp(np.mean(np.log(ys) - 3 * np.log(ps)))
+        xs = np.geomspace(1e-4, ps.max(), 50)
+        ax.plot(xs, c * xs**3, color="#8a2be2", label=r"Fit to $p^3$")
+        ax.errorbar(ps, ys, yerr=es, ls="none", marker="o", color="tab:blue", label="KT simulation results (Tsim GPU)")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.set_xlabel("SI1000 noise strength p")
+    ax.set_ylabel("Logical error probability (total circuit)")
+    ax.legend(loc="upper left")
+    path = plotting.save(fig, out / "SI_kt_sweep_p.pdf")
+    pts = [k for k, r in results.items() if r["params"]["kind"] == "kt" and abs(r["params"]["theta"] - T_ANGLE) < 1e-9]
+    figs.append(common.Figure("google_si", path, "Rosenfeld et al. SI Fig.~validating\\_KT: KT error at the $T$ angle vs.\\ SI1000 noise strength",
+                              "Same axes as the paper (KT of the cultivated $|T\\rangle$, fit to $p^3$), at the paper's noise grid. Our values are "
+                              "somewhat below the paper's (e.g.\\ $2.2\\times10^{-4}$ vs.\\ $\\sim5\\times10^{-4}$ at $p=4\\times10^{-3}$), consistent with a "
+                              "slightly different SI1000 variant (we use Gidney's \\texttt{gen.NoiseModel.si1000}).", common.budget_line(results, pts)))
     return figs

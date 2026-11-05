@@ -30,7 +30,8 @@ HERE = common.PAPERS / "2610.22315_magna"
 EX = HERE / "stim_src" / "magna" / "examples"
 META = dict(arxiv="2610.22315", paper="Wang, Gu (2026), Magna: simulating magic state factories as cheaply as Clifford circuits")
 P8 = [1e-4, 2e-4, 5e-4, 1e-3]
-P9 = [5e-4, 1e-3, 2e-3]
+P9_D3 = [5e-4, 1e-3, 2e-3, 3e-3, 5e-3]  # the paper's Fig. 9 grid
+P9_D5 = [5e-4, 7e-4, 1e-3, 1.5e-3, 2e-3]
 BH = [2, 6, 10]
 CULT = ["color3", "color5", "rp2-d3", "rp2-d5"]
 CULT_S = ["rp2-d3-S", "rp2-d5-S"]
@@ -46,7 +47,15 @@ def _mc():
 
 
 def with_noise(source, p):
-    return re.sub(r"\(0\.001\)", f"({p:g})", source)
+    """Scale every noise argument of the p = 1e-3 example by p / 1e-3 (noise channels and measurement flips)."""
+    f = p / 1e-3
+    noise = r"(DEPOLARIZE1|DEPOLARIZE2|X_ERROR|Y_ERROR|Z_ERROR|PAULI_CHANNEL_1|PAULI_CHANNEL_2|M|MX|MY|MZ|MR|MRX|MRY|MRZ|MPP)"
+
+    def scale(m):
+        args = ", ".join(f"{float(a) * f:.12g}" for a in m[2].split(","))
+        return f"{m[1]}({args})"
+
+    return re.sub(rf"\b{noise}\(([0-9.eE+\-, ]+)\)", scale, source)
 
 
 def make(example, p):
@@ -95,9 +104,15 @@ def postselected(example):
     return _mc().postselected_detectors((EX / example / "physical.magna").read_text())
 
 
+def bh_leading(k, p):
+    """Bravyi--Haah leading order: output error (1 + 3k) p^2 (joint over the k outputs)."""
+    return (1 + 3 * k) * p**2
+
+
 def combos():
     out = [(f"bh{k}-{g}", p) for k in BH for g in ("T", "S") for p in P8]
-    out += [(e, p) for e in CULT + CULT_S for p in P9]
+    out += [(e, p) for e in ("color3", "rp2-d3", "rp2-d3-S") for p in P9_D3]
+    out += [(e, p) for e in ("color5", "rp2-d5", "rp2-d5-S") for p in P9_D5]
     return out
 
 
@@ -122,21 +137,34 @@ def points():
                              max_seconds=420, tier=1, **kw))
         elif e == "color5":
             pts.append(Point(name(e, p), name(e, p), variant, dict(example=e, p=p), target_errors=1000, max_shots=1e13,
-                             max_seconds={5e-4: 1500, 1e-3: 900, 2e-3: 600}[p], tier=3 if p < 2e-3 else 2, **kw))
+                             max_seconds={5e-4: 1500, 7e-4: 900, 1e-3: 900, 1.5e-3: 600, 2e-3: 600}[p], tier=3 if p < 2e-3 else 2, **kw))
         else:  # rp2-d5, k = 9
             pts.append(Point(name(e, p), name(e, p), variant, dict(example=e, p=p), target_errors=1000, max_shots=1e13,
-                             max_seconds={5e-4: 1800, 1e-3: 1800, 2e-3: 1200}[p], tier=3, **kw))
+                             max_seconds={5e-4: 1800, 7e-4: 1200, 1e-3: 1800, 1.5e-3: 900, 2e-3: 1200}[p], tier=3, **kw))
     return pts
 
 
-def bh_leading(k, p):
-    """Bravyi--Haah leading order: output error (1 + 3k) p^2 (joint over the k outputs)."""
-    return (1 + 3 * k) * p**2
+# The paper's figure style (multi-output-current.pdf, cultivation-comparison.pdf): serif text, no top/right spines.
+NAVY, ORANGE, GREEN, PURPLE = "#2b5c8a", "#d1693b", "#3e8a6e", "#9b59a6"
+
+
+def _style(ax):
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.grid(False)
+
+
+def _ler(t):
+    import numpy as np
+
+    if not t["kept"]:
+        return None
+    y = t["errors"] / t["kept"]
+    return y, (1.96 * y / np.sqrt(t["errors"]) if t["errors"] else 0)
 
 
 def figures(results):
     import matplotlib.pyplot as plt
-    import numpy as np
 
     from repro import plotting
     from repro.studies import gidney_cultivation, soft_d5
@@ -147,43 +175,78 @@ def figures(results):
     def ser(e):
         return sorted((r["params"]["p"], r["totals"]) for r in results.values() if r["params"]["example"] == e)
 
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.9))
-    for k, col in zip(BH, ("C0", "C1", "C2")):
-        plotting.ler_points(axes[0], ser(f"bh{k}-T"), color=col, label=f"k={k}, T")
-        plotting.ler_points(axes[0], ser(f"bh{k}-S"), color=col, ls="--", marker="s", label=f"k={k}, S")
-        plotting.accept_points(axes[1], ser(f"bh{k}-T"), color=col, label=f"k={k}")
-    plotting.style_ler(axes[0], "input error probability $p$")
-    axes[0].set_ylabel("joint output infidelity")
-    plotting.style_accept(axes[1], "input error probability $p$")
-    axes[0].legend(fontsize=5.5)
-    path = plotting.save(fig, out / "fig8a_bh.pdf")
-    pts = [k for k, r in results.items() if r["params"]["example"].startswith("bh")]
-    figs.append(common.Figure("magna8", path, "Magna Fig. 8(a): Bravyi--Haah $(3k+8)$-to-$k$ distillation",
-                              "Bare qubits, $Z$ errors of probability $p$ on the input magic states only. The $T$ and $S$ curves coincide, as they "
-                              "should when the only errors are $Z$ errors on the inputs. "
-                              "Dashed/squares: the matched Clifford circuit ($|S\\rangle$ inputs, product-$S$ target).",
-                              common.budget_line(results, pts)))
+    rc = {"font.family": "serif", "mathtext.fontset": "cm", "font.size": 9}
+    with plt.rc_context(rc):
+        # ---- Fig. 8(a): joint-output infidelity vs resource error rate.
+        fig, ax = plt.subplots(figsize=(3.6, 3.0))
+        for k, col in zip(BH, (NAVY, ORANGE, GREEN)):
+            for g, ls, mk in (("T", "-", "o"), ("S", ":", "s")):
+                xs, ys, es = [], [], []
+                for p, t in ser(f"bh{k}-{g}"):
+                    v = _ler(t)
+                    if v:
+                        xs.append(p)
+                        ys.append(v[0])
+                        es.append(v[1])
+                ax.errorbar(xs, ys, yerr=es, color=col, ls=ls, marker=mk, ms=4, capsize=2,
+                            label=f"{3 * k + 8}-to-{k}" + ("" if g == "T" else " ($S$)"))
+        ax.set_xscale("log")
+        ax.set_yscale("log")
+        ax.set_xlabel("Resource error rate $p$")
+        ax.set_ylabel("Joint-output infidelity")
+        ax.set_title("(a) Error suppression", loc="left")
+        ax.legend(frameon=False, fontsize=7)
+        _style(ax)
+        path = plotting.save(fig, out / "multi-output-current.pdf")
+        pts = [k for k, r in results.items() if r["params"]["example"].startswith("bh")]
+        figs.append(common.Figure("magna8", path, "Magna Fig. 8(a): Bravyi--Haah $(3k+8)$-to-$k$ distillation, error suppression",
+                                  "Same axes and style as the paper. Bare qubits, $Z$ errors of probability $p$ on the input magic states only; "
+                                  "bars: $1.96\\sigma$. Solid: real $T$ inputs; dotted: the matched Clifford circuit ($|S\\rangle$ inputs, product-$S$ target, "
+                                  "which the paper uses for timing only). The two coincide, as they should with $Z$ errors only. Magna's own numbers are not released.",
+                                  common.budget_line(results, pts)))
 
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.9))
-    cols = {"color3": "C0", "color5": "C3", "rp2-d3": "C2", "rp2-d5": "C1"}
-    for e, col in cols.items():
-        plotting.ler_points(axes[0], ser(e), color=col, label=f"{e}, T")
-        plotting.accept_points(axes[1], ser(e), color=col, label=e)
-        if e + "-S" in CULT_S:
-            plotting.ler_points(axes[0], ser(e + "-S"), color=col, ls="--", marker="s", label=f"{e}, S")
-    pub = [r for r in gidney_cultivation.published() if r["d"] == 3 and r["style"] == "unitary" and r["decoder"] == "vec_intercept_t" and r["p"] <= 2e-3]
-    plotting.published_ler(axes[0], pub, color="C0", label="Gidney et al. (state vector)")
-    grid = soft_d5.exact_grid()
-    axes[0].plot([g[0] for g in grid], [g[2] for g in grid], "x", color="C3", ms=6, mew=1.5, label="exact (2609.18922)")
-    axes[1].plot([g[0] for g in grid], [g[1] for g in grid], "x", color="C3", ms=6, mew=1.5)
-    plotting.style_ler(axes[0], "noise strength $p$")
-    axes[0].set_ylabel("infidelity of accepted runs")
-    plotting.style_accept(axes[1], "noise strength $p$", log=True)
-    axes[0].legend(fontsize=5.5)
-    path = plotting.save(fig, out / "fig9_cultivation.pdf")
-    pts = [k for k, r in results.items() if not r["params"]["example"].startswith("bh")]
-    figs.append(common.Figure("magna9", path, "Magna Fig. 9(a,b): colour-code and RP$^2$ cultivation at $d=3,5$",
-                              "Magna's cultivation examples (no escape). Markers as in the paper: Gidney et al.'s state-vector values for Color $d=3$ "
-                              "and the exact values of arXiv:2609.18922 for Color $d=5$. Dashed: Magna's $S$-target RP$^2$ examples.",
-                              common.budget_line(results, pts)))
+        # ---- Fig. 9(a,b): acceptance and accepted output infidelity vs p.
+        fig, (ax_a, ax_b) = plt.subplots(2, 1, figsize=(3.8, 6.0))
+        style = {"color3": (NAVY, "o", "Color $d=3$"), "color5": (ORANGE, "s", "Color $d=5$"),
+                 "rp2-d3": (GREEN, "^", "RP$^2$ $d=3$"), "rp2-d5": (PURPLE, "D", "RP$^2$ $d=5$")}
+        for e, (col, mk, lab) in style.items():
+            s = [(p, t) for p, t in ser(e) if t["shots"]]
+            ax_a.plot([p for p, _ in s], [t["kept"] / t["shots"] for _, t in s], ls="--", marker=mk, color=col, ms=5, label=lab)
+            xs, ys, es = [], [], []
+            for p, t in s:
+                v = _ler(t)
+                if v and t["errors"]:
+                    xs.append(p)
+                    ys.append(v[0])
+                    es.append(v[1])
+            ax_b.errorbar(xs, ys, yerr=es, ls="--", marker=mk, color=col, ms=5, capsize=2, label=lab)
+            if e + "-S" in CULT_S:
+                s2 = [(p, t) for p, t in ser(e + "-S") if t["kept"] and t["errors"]]
+                ax_b.plot([p for p, _ in s2], [t["errors"] / t["kept"] for _, t in s2], ls=":", marker=mk, mfc="none", color=col, ms=4,
+                          label=lab + " ($S$ target)")
+        pub3 = [r for r in gidney_cultivation.published() if r["d"] == 3 and r["style"] == "unitary" and r["decoder"] == "vec_intercept_t" and r["p"] <= 5e-3]
+        ax_a.plot([r["p"] for r in pub3], [r["kept"] / r["shots"] for r in pub3], "*", color="0.3", mec="k", ms=9, label="Published reference")
+        ax_b.plot([r["p"] for r in pub3], [r["errors"] / r["kept"] for r in pub3], "*", color="0.3", mec="k", ms=9, label="Published reference")
+        grid = soft_d5.exact_grid()
+        ax_a.plot([g[0] for g in grid], [g[1] for g in grid], "*", color="0.3", mec="k", ms=9)
+        ax_b.plot([g[0] for g in grid], [g[2] for g in grid], "*", color="0.3", mec="k", ms=9)
+        for ax in (ax_a, ax_b):
+            ax.set_xscale("log")
+            ax.set_xlabel("Physical error rate $p$")
+            _style(ax)
+        ax_a.set_ylim(0, 1)
+        ax_a.set_ylabel("Acceptance probability")
+        ax_a.set_title("(a) Acceptance", loc="left")
+        ax_b.set_yscale("log")
+        ax_b.set_ylabel("Accepted output infidelity")
+        ax_b.set_title("(b) Output infidelity", loc="left")
+        ax_a.legend(frameon=False, fontsize=6.5)
+        path = plotting.save(fig, out / "cultivation-comparison.pdf")
+        pts = [k for k, r in results.items() if not r["params"]["example"].startswith("bh")]
+        figs.append(common.Figure("magna9", path, "Magna Fig. 9(a,b): colour-code and RP$^2$ cultivation at $d=3,5$",
+                                  "Same panels, axes and markers as the paper (stars: Gidney et al.'s state-vector values for Color $d=3$ and the exact "
+                                  "values of arXiv:2609.18922 for Color $d=5$; bars: $1.96\\sigma$). Our points are Tsim GPU samples of Magna's own example "
+                                  "circuits; the paper's dashed lines are Magna's series expansions, which are not released, so ours are guides to the eye. "
+                                  "Open markers, dotted: Magna's $S$-target RP$^2$ examples.",
+                                  common.budget_line(results, pts)))
     return figs

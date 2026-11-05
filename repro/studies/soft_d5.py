@@ -63,60 +63,81 @@ def series_value(coeffs, p):
     return float(sum(c * x**k for k, c in coeffs.items()))
 
 
+def _band(ax, pts, color, label, marker="o"):
+    """SOFT's Fig. 2 style: line + markers, band = hypotheses within a Bayes factor of 1000 (binomial)."""
+    xs, ys, lo, hi = [], [], [], []
+    for p, e, k in pts:
+        if not k or not e:
+            continue
+        b, l, h = common.binomial_interval(e, k)
+        xs.append(p)
+        ys.append(b)
+        lo.append(l)
+        hi.append(h)
+    ax.plot(xs, ys, "-", marker=marker, color=color, label=label)
+    ax.fill_between(xs, lo, hi, color=color, alpha=0.2, lw=0)
+
+
 def figures(results):
     import matplotlib.pyplot as plt
-    import numpy as np
 
     from repro import plotting
 
     out = common.REPORT / "figures" / STUDY
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.9))
-    ser = sorted((r["params"]["p"], r["totals"]) for r in results.values() if r["params"]["d"] == 5)
-    plotting.ler_points(axes[0], ser, color="C3", label="Tsim GPU, T")
-    plotting.accept_points(axes[1], ser, color="C3", label="Tsim GPU")
-    pub = [dict(p=p, shots=s, kept=k, errors=e) for p, (s, k, e) in PUBLISHED.items()]
-    plotting.published_ler(axes[0], pub, color="k", label="SOFT (Table 3)")
-    plotting.published_accept(axes[1], pub, color="k")
-    grid = exact_grid()
-    axes[0].plot([g[0] for g in grid], [g[2] for g in grid], "x", color="C2", ms=6, mew=1.5, label="exact (2609.18922)", zorder=6)
-    axes[1].plot([g[0] for g in grid], [g[1] for g in grid], "x", color="C2", ms=6, mew=1.5, zorder=6)
-    xs = np.geomspace(4e-4, 2.2e-3, 50)
-    co = d5_series()
-    axes[0].plot(xs, [series_value(co, x) for x in xs], color="C2", lw=0.8, ls=":", label="exact series to $x^{10}$")
-    plotting.style_ler(axes[0], "noise strength $p$")
-    plotting.style_accept(axes[1], "noise strength $p$", log=True)
-    axes[0].legend()
-    path = plotting.save(fig, out / "fig2_d5.pdf")
-    figs = [common.Figure(
-        "soft", path, "SOFT Fig. 2 / Table 3: $d=5$ injection + cultivation with real $T$ gates",
-        "SOFT's own circuits (verbatim), all detectors postselected, noiseless final check. Black diamonds: SOFT's published "
-        "values (16 H800 GPUs, 20 days, $2.4\\times10^{11}$ shots). Green crosses and dotted line: exact values and series of "
-        "Wan and Zapirain (arXiv:2609.18922) for the same circuits.",
-        common.budget_line(results, [k for k, r in results.items() if r["params"]["d"] == 5]))]
+    figs = []
+    # ---- Fig. 2 (logical_error_rate.pdf): same axes as the paper (default figure size, p in [5e-4, 2e-3], y in [1e-11, 1e-7])
+    fig, ax = plt.subplots(figsize=(6.4, 4.8))
+    _band(ax, [(p, e, k) for p, (s, k, e) in sorted(PUBLISHED.items())], "C0", "SOFT (paper, Table 3)")
+    ours = [(r["params"]["p"], r["totals"]["errors"], r["totals"]["kept"]) for r in results.values()
+            if r["params"]["d"] == 5 and r["params"]["p"] <= 2e-3]
+    _band(ax, sorted(ours), "C3", "Tsim GPU", marker="s")
+    grid = [g for g in exact_grid()]
+    ax.plot([g[0] for g in grid], [g[2] for g in grid], "x", color="C2", ms=7, mew=1.5, label="exact (arXiv:2609.18922)")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.set_ylim(1e-11, 1e-7)
+    ax.set_xlabel("Physical Error Rate")
+    ax.set_ylabel("Logical Error Rate")
+    ax.grid(True, which="major", alpha=1.0, color="0.7", lw=0.8)
+    ax.grid(False, which="minor")
+    ax.legend(loc="lower right", fontsize=8)
+    path = plotting.save(fig, out / "logical_error_rate.pdf")
+    figs.append(common.Figure(
+        "soft", path, "SOFT Fig. 2: logical error rate of $d=5$ magic state injection + cultivation (real $T$ gates)",
+        "Same axes as the paper. Blue: SOFT's published points (16 H800 GPUs, 20 days, $2.4\\times10^{11}$ shots); red: Tsim GPU on "
+        "SOFT's own circuits; green crosses: exact values of Wan and Zapirain (arXiv:2609.18922) for the same circuits. Bands: hypotheses "
+        "with a Bayes factor of at most 1000 relative to the maximum-likelihood hypothesis (binomial), as in the paper. "
+        "Our points at $p>2\\times10^{-3}$ are in the table below.",
+        common.budget_line(results, [k for k, r in results.items() if r["params"]["d"] == 5])))
+
+    # ---- Table 3, in the paper's format, published rows and ours
     rows = []
-    gmap = {round(g[0], 6): g for g in grid}
-    for p in PS:
+    for p in sorted(PS, reverse=True):
+        if p in PUBLISHED:
+            s, k, e = PUBLISHED[p]
+            rows.append(f"{p:g} & SOFT (paper) & {s / 1e9:.1f}B & {k / 1e9:.2f}B & {100 * (1 - k / s):.2f}\\% & {e} & ${tex_sci(e / k)}$ & 16 H800, $\\sim$20 days total \\\\")
         r = results.get(f"d5_p{p:g}")
-        pubc = PUBLISHED.get(p)
-        cells = [f"{p:g}"]
-        cells.append(f"{pubc[2] / pubc[1]:.3g} ({pubc[2]}/{common.fmt_count(pubc[1])})" if pubc else "--")
-        g = gmap.get(round(p, 6))
-        cells.append(f"{g[2]:.4g}, $A$={g[1]:.4f}" if g else "--")
         if r:
             t = r["totals"]
-            b, lo, hi = common.binomial_interval(t["errors"], t["kept"])
-            cells.append(f"{b:.3g} [{lo:.2g}, {hi:.2g}] ({t['errors']}/{common.fmt_count(t['kept'])}), $A$={t['kept'] / t['shots']:.4f}")
-            cells.append(f"{common.fmt_count(t['shots'])}, {common.fmt_seconds(t['seconds'])}")
-        else:
-            cells += ["--", "--"]
-        rows.append(" & ".join(cells) + r" \\")
+            rows.append(f"{p:g} & Tsim GPU & {t['shots'] / 1e9:.1f}B & {t['kept'] / 1e9:.2f}B & {100 * (1 - t['kept'] / t['shots']):.2f}\\% & "
+                        f"{t['errors']} & ${tex_sci(t['errors'] / t['kept'])}$ & 1 RTX 5090, {common.fmt_seconds(t['seconds'])} \\\\")
+        g = {round(x[0], 6): x for x in exact_grid()}.get(round(p, 6))
+        if g:
+            rows.append(f"{p:g} & exact (2609.18922) & & & {100 * (1 - g[1]):.2f}\\% & & ${tex_sci(g[2])}$ & \\\\")
+        rows.append("\\midrule")
     tpath = out / "table3.tex"
-    tpath.write_text("\\begin{tabular}{l l l l l}\n\\toprule\n$p$ & SOFT (Table 3) & exact (2609.18922) & Tsim GPU & shots, GPU time\\\\\n\\midrule\n"
-                     + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
-    figs.append(common.Figure("soft_table", tpath, "SOFT Table 3 vs. exact values vs. Tsim GPU",
-                              "LER of kept shots (errors / kept); $A$ is the acceptance rate; Tsim brackets are 1000x likelihood intervals.",
+    tpath.write_text("\\begin{tabular}{c l c c c c c l}\n\\toprule\nNoise Strength & & Total Shots & Preserved Shots & Discard Rate & "
+                     "Detected Logical Errors & Logical Error Rate & hardware, time\\\\\n\\midrule\n" + "\n".join(rows[:-1]) +
+                     "\n\\bottomrule\n\\end{tabular}\n")
+    figs.append(common.Figure("soft_table", tpath, "SOFT Table 3: performance of $d=5$ cultivation (1 B = 1 billion), paper vs.\\ Tsim GPU vs.\\ exact",
+                              "Same columns as the paper's Table 3, with our rows (and the exact values) added.",
                               common.budget_line(results), kind="table"))
     return figs
+
+
+def tex_sci(x):
+    m, e = f"{x:.2e}".split("e")
+    return f"{m}\\times 10^{{{int(e)}}}"
 
 
 def checks(results):

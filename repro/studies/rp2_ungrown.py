@@ -50,29 +50,40 @@ def points():
 
 
 def figures(results):
+    """Table 1 in the paper's layout (rows: MSC-3, MSC d_color=3, MSC-5, MSC d_color=5; ungrown columns), with our columns."""
+    from repro.studies import gidney_cultivation as gc
+
     out = common.REPORT / "figures" / STUDY
     out.mkdir(parents=True, exist_ok=True)
+    g = common.load_results("gidney_cultivation")
+    # Table 1 of the paper, ungrown columns (the end-to-end columns need a decoder).
+    paper_rows = [("MSC-3 (this work)", 8.3e-7, 48.6, results, "msc3"),
+                  ("MSC ($d_{\\text{color}}=3$)~[Gidney et al.]", 3.4e-7, 31.3, g, gc.cname(3, "unitary", 1e-3, "{g}")),
+                  ("MSC-5 (this work)", 3.6e-10, 90.5, results, "msc5"),
+                  ("MSC ($d_{\\text{color}}=5$)~[Gidney et al.]", 3.5e-10, 85.6, g, gc.cname(5, "unitary", 1e-3, "{g}"))]
     rows = []
-    for key, label in (("msc3", "MSC-3"), ("msc5", "MSC-5")):
-        pl, disc = TABLE[key]
-        cells = [label, f"{pl:.2g}", f"{100 * disc:.1f}\\%"]
-        for g in ("s", "t"):
-            r = results.get(f"{key}_{g}")
-            if r:
+    for label, pl, disc, res, key in paper_rows:
+        cells = [label, f"${pl / 10**int(f'{pl:e}'.split('e')[1]):.1f}\\times 10^{{{int(f'{pl:e}'.split('e')[1])}}}$", f"${disc:.1f}\\%$"]
+        for gate in ("s", "t"):
+            k = key.replace("{g}", gate) if "{g}" in key else f"{key}_{gate}"
+            r = res.get(k)
+            if r and r["totals"]["kept"]:
                 t = r["totals"]
                 b, lo, hi = common.binomial_interval(t["errors"], t["kept"])
-                cells.append(f"{b:.3g} [{lo:.2g}, {hi:.2g}] ({t['errors']})")
-                cells.append(f"{100 * (1 - t['kept'] / t['shots']):.2f}\\%")
-                cells.append(f"{common.fmt_count(t['shots'])}, {common.fmt_seconds(t['seconds'])}")
+                cells.append(f"{b:.2g} ({t['errors']})" if t["errors"] else f"$<${hi:.1g}")
+                cells.append(f"{100 * (1 - t['kept'] / t['shots']):.1f}\\%")
             else:
-                cells += ["--", "--", "--"]
+                cells += ["--", "--"]
         rows.append(" & ".join(cells) + r" \\")
     path = out / "table1.tex"
-    path.write_text("\\begin{tabular}{l ll | lll | lll}\n\\toprule\n & \\multicolumn{2}{c|}{paper ($S$ proxy)} & \\multicolumn{3}{c|}{Tsim GPU, $S$ proxy} & \\multicolumn{3}{c}{Tsim GPU, $T$}\\\\\n"
-                    "protocol & LER & discard & LER [1000x interval] (errors) & discard & shots, time & LER (errors) & discard & shots, time\\\\\n\\midrule\n"
+    path.write_text("\\begin{tabular}{l cc | cc | cc}\n\\toprule\n & \\multicolumn{2}{c|}{paper ($S$ proxy, Stim)} & \\multicolumn{2}{c|}{Tsim GPU, $S$ proxy} & "
+                    "\\multicolumn{2}{c}{Tsim GPU, $T$}\\\\\nMSC protocol & Logical Error rate & Discard Rate & Logical Error rate & Discard Rate & "
+                    "Logical Error rate & Discard Rate\\\\\n & (Ungrown) & (Ungrown) & (errors) & & (errors) & \\\\\n\\midrule\n"
                     + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
-    return [common.Figure("rp2", path, "Chen et al. Table 1 (ungrown columns): RP$^2$ cultivation without escape, $p=10^{-3}$",
-                          "Every detector postselected, perfect final stabilizer round and logical readout.",
+    return [common.Figure("rp2", path, "Chen et al. Table 1, ungrown columns: cultivation without escape, $p=10^{-3}$",
+                          "The paper's Table 1 rows and ungrown columns (the end-to-end columns need a decoder). MSC-3/5: the authors' RP$^2$ "
+                          "circuits; MSC ($d_\\text{color}=3,5$): Gidney et al.'s colour-code cultivation, whose Tsim GPU values are the Gidney "
+                          "study's points. Every detector postselected, perfect final stabilizer round and logical readout.",
                           common.budget_line(results), kind="table")]
 
 

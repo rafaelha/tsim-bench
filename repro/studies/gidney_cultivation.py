@@ -107,12 +107,9 @@ def points():
 
 
 def published():
-    path = common.REPRO / "data" / "zenodo_13777072_stats.csv"
-    if not path.exists():
-        import urllib.request
+    from repro import data_sources
 
-        path.parent.mkdir(parents=True, exist_ok=True)
-        urllib.request.urlretrieve(STATS_URL, path)
+    path = data_sources.data_file("zenodo_13777072_stats.csv")
     rows = []
     for x in csv.DictReader(path.open(), skipinitialspace=True):
         j = json.loads(x["json_metadata"])
@@ -138,70 +135,97 @@ def _series(results, d, style, gate):
     return sorted(xs, key=lambda x: x[0])
 
 
-def figures(results):
-    import matplotlib.pyplot as plt
+def _stats_path():
+    from repro import data_sources
 
+    return data_sources.data_file("zenodo_13777072_stats.csv")
+
+
+# The authors' `sinter plot` arguments (step3_plot at 871e68f). The only changes: the filters also
+# admit our decoders, the point labels stay on the paper's series, and in Fig. 21 our series get
+# their own group label (otherwise they would merge with the paper's).
+GROUP_13 = (
+    "{'sort': 'tsz'.index(decoder.split('_')[-1]), 'color': decoder.split('_')[-1], "
+    "'linestyle': decoder.split('_')[0][::-1], "
+    "'label': f'''gate={decoder.split('_')[-1].upper()}, sim={'stabilizer[twirl-T]' if decoder == 'twirl_intercept_t' "
+    "else decoder.split('_')[0].replace('twirl', 'stabilizer').replace('vec', 'Vector').replace('tsimGPU', 'Tsim GPU')}'''}"
+)
+LABEL_21 = ("f'''p={round(m.p / 10**math.floor(math.log10(m.p * 1.01)))}e{math.floor(math.log10(m.p * 1.01))}''' "
+            "if 'unitary' in m.c and decoder == 'perfectionist' else ''")
+GROUP_21 = ("{'color': str(m.d1) + m.c, 'marker': str(m.d1) + m.c, "
+            "'linestyle': 0 if decoder == 'perfectionist' else (1 if decoder.endswith('S') else 2), "
+            "'sort': (m.d1, m.c, decoder), "
+            "'label': f'''d1={m.d1} c={m.c}''' + (' [' + decoder.replace('tsimGPU-', 'Tsim GPU, ') + ']' "
+            "if decoder.startswith('tsimGPU') else ' [paper, S]')}")
+
+
+def figures(results):
+    """Figs. 13 and 21 with the authors' own ``sinter plot`` commands on their released stats plus ours."""
     from repro import plotting
 
     figs = []
-    pub = published()
     out = common.REPORT / "figures" / STUDY
     out.mkdir(parents=True, exist_ok=True)
+    src = HERE / "stim_src" / "github_magic-state-cultivation" / "src"
+    ours13, ours21 = [], []
+    for r in results.values():
+        pr, t = r["params"], r["totals"]
+        md = dict(b="Y", c=f"inject[{pr['style']}]+cultivate", d1=pr["d"], g="css", noise="uniform", p=pr["p"])
+        if pr["d"] == 3 and pr["style"] == "unitary" and pr["p"] in P13:
+            ours13.append(plotting.sinter_stats(t, f"tsimGPU_intercept_{pr['gate']}", dict(md, q=15, r=4)))
+        if pr["p"] in P21 and pr["gate"] in ("s", "t"):
+            ours21.append(plotting.sinter_stats(t, "tsimGPU-S" if pr["gate"] == "s" else "tsimGPU-T", md))
+    csv13 = plotting.write_sinter_csv(out / "ours_fig13.csv", ours13)
+    csv21 = plotting.write_sinter_csv(out / "ours_fig21.csv", ours21)
 
-    # ---- Fig. 13
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.9))
-    colors = {"t": "C3", "s": "C0", "z": "C2"}
-    for g in ("t", "s", "z"):
-        ser = _series(results, 3, "unitary", g)
-        plotting.ler_points(axes[0], ser, color=colors[g], label=f"Tsim GPU, {g.upper()}")
-        plotting.accept_points(axes[1], ser, color=colors[g], label=f"Tsim GPU, {g.upper()}")
-        prow = [r for r in pub if r["d"] == 3 and r["style"] == "unitary" and r["decoder"] == f"vec_intercept_{g}"]
-        plotting.published_ler(axes[0], prow, color=colors[g], label=f"paper (state vector), {g.upper()}")
-        plotting.published_accept(axes[1], prow, color=colors[g])
-    plotting.style_ler(axes[0], "noise strength $p$")
-    plotting.style_accept(axes[1], "noise strength $p$")
-    axes[0].legend(fontsize=6)
+    f13 = out / "t-vs-s.png"
+    plotting.sinter_plot([
+        "--in", _stats_path(), csv13,
+        "--title", "Comparing Cultivation of T|+>, S|+>, and Z|+> States",
+        "--subtitle", "c=inject[unitary]+cultivate, d1=3, g=css, noise=uniform, q=15, r=4",
+        "--type", "error_rate",
+        "--x_func", "(stat.shots + 1) / (stat.shots - stat.discards + 2)",
+        "--xmin", "1", "--xmax", "100",
+        "--xaxis", "[log]Expected Attempts per Kept Shot",
+        "--yaxis", "[log]Logical Error Rate (per kept shot)",
+        "--group_func", GROUP_13,
+        "--point_label_func", "f'''p={m.p}''' * (decoder.split('_')[-1] == 't' and decoder.startswith('vec'))",
+        "--ymax", "1e-2", "--ymin", "1e-7",
+        "--fig_size", "2048", "1024", "--dpi", "200",
+        "--filter_func", "'intercept' in decoder and ('vec' in decoder or 'tsimGPU' in decoder)",
+        "--out", f13])
     pts = [k for k, r in results.items() if r["params"]["d"] == 3 and r["params"]["style"] == "unitary" and r["params"]["p"] in P13]
-    path = out / "fig13_t_vs_s.pdf"
-    fig.tight_layout()
-    fig.savefig(path)
-    plt.close(fig)
     figs.append(common.Figure(
-        "gidney13", path, "Gidney et al. Fig. 13: cultivating $T$, $S$, $Z$ states ($d=3$, no escape)",
-        "Unitary injection followed by $d=3$ cultivation; every detector postselected; noiseless final logical check "
-        "(for $T$: $T^{\\dagger}$-rotated $Y_L$). Open markers: the paper's state-vector simulation (Zenodo stats.csv). "
-        "Filled markers: Tsim GPU. $S$ and $Z$ are Clifford proxies of the same circuit.",
+        "gidney13", f13, "Gidney et al. Fig. 13: cultivating $T|+\\rangle$, $S|+\\rangle$, $Z|+\\rangle$ states ($d=3$, no escape)",
+        "Drawn with the authors' own \\texttt{sinter plot} command (\\texttt{step3\\_plot}) on the paper's released stats "
+        "(sim=Vector: their state-vector simulation) plus ours (sim=Tsim GPU). Every detector postselected; noiseless final "
+        "logical check. $S$ and $Z$ are Clifford proxies of the same circuit.",
         common.budget_line(results, pts)))
 
-    # ---- Fig. 21
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.9))
-    cols = {("bell", 3): "C0", ("teleport", 3): "C1", ("unitary", 3): "C2", ("unitary", 5): "C3"}
-    for (style, d), col in cols.items():
-        for g, ls in (("s", "--"), ("t", "-")):
-            ser = [(p, t) for p, t in _series(results, d, style, g) if p in P21]
-            plotting.ler_points(axes[0], ser, color=col, ls=ls, marker="o" if g == "t" else "s",
-                                label=f"{style} d={d}, {'T' if g == 't' else 'S proxy'}")
-            if g == "s":
-                plotting.accept_points(axes[1], ser, color=col, label=f"{style} d={d}")
-        prow = [r for r in pub if r["d"] == d and r["style"] == style and r["decoder"] == "perfectionist"]
-        plotting.published_ler(axes[0], prow, color=col, label=None)
-        plotting.published_accept(axes[1], prow, color=col)
-    plotting.style_ler(axes[0], "noise strength $p$")
-    plotting.style_accept(axes[1], "noise strength $p$")
-    axes[0].legend(fontsize=5.5, ncol=1)
-    pts = [k for k, r in results.items() if r["params"]["p"] in P21 and (r["params"]["style"] != "unitary" or r["params"]["gate"] != "z")]
-    path = out / "fig21_inject_only_sampled.pdf"
-    fig.tight_layout()
-    fig.savefig(path)
-    plt.close(fig)
+    f21 = out / "inject-only-sampled.png"
+    plotting.sinter_plot([
+        "--in", _stats_path(), csv21,
+        "--preprocess_stats_func", "__import__('cultiv').split_by_gap_threshold(stats, gap_rounding=5)",
+        "--type", "error_rate",
+        "--group_func", GROUP_21,
+        "--x_func", "(stat.shots + 1) / (stat.shots - stat.discards + 2)",
+        "--title", "Cost of Injection+Cultivation without the Escape Stage by Monte Carlo Sampling",
+        "--subtitle", "({common})",
+        "--point_label_func", LABEL_21,
+        "--filter_func", "']+cultivate' in m.c and (decoder == 'perfectionist' or decoder.startswith('tsimGPU')) and m.noise == 'uniform' and m.b == 'Y'",
+        "--fig_size", "2048", "1024", "--dpi", "200",
+        "--xaxis", "[log]Expected Attempts per Kept Shot",
+        "--yaxis", "[log]Error Rate (per Kept Shot)",
+        "--xmin", "1e0", "--xmax", "1e2", "--ymax", "1e-0", "--ymin", "1e-15",
+        "--out", f21], pythonpath=[src])
+    pts = [k for k, r in results.items() if r["params"]["p"] in P21 and r["params"]["gate"] in ("s", "t")]
     figs.append(common.Figure(
-        "gidney21", path, "Gidney et al. Fig. 21: injection + cultivation, sampled",
-        "Three injection styles with $d=3$ cultivation and unitary injection with $d=5$ cultivation, all detectors postselected. "
-        "Dashed/squares: the $S$ proxy (the paper's Clifford simulation); solid/circles: real $T$ gates. "
-        "Open diamonds: the paper's Stim data (Zenodo stats.csv, up to $10^{12}$ shots per point). "
-        "The right panel shows discard rates of the $S$ proxy.",
+        "gidney21", f21, "Gidney et al. Fig. 21: injection + cultivation without escape, Monte Carlo sampling",
+        "Drawn with the authors' own \\texttt{sinter plot} command on the paper's released stats ([paper, S]: Stim, $S$ proxy, "
+        "up to $10^{12}$ shots per point) plus ours: [Tsim GPU, S] the same $S$ proxy on the GPU, [Tsim GPU, T] the real $T$ circuit. "
+        "Shaded: hypotheses within a factor 1000 of the maximum likelihood.",
         common.budget_line(results, pts)))
-    figs.append(table(results, pub))
+    figs.append(table(results, published()))
     return figs
 
 

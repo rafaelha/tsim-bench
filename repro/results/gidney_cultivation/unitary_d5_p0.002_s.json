@@ -18,29 +18,30 @@
  "segments": [
   {
    "seed": 1525491188,
-   "shots": 759646424966,
-   "kept": 15824186446,
-   "errors": 160,
+   "shots": 4000000000000,
+   "kept": 83324069586,
+   "errors": 874,
    "obs_ones": [
-    160
+    874
    ],
-   "seconds": 119.896,
+   "seconds": 643.828,
    "compile_seconds": 0.61,
    "backend": "CudaShotSampler",
    "gpu": "NVIDIA GeForce RTX 5090",
    "host": "rafaelha-B850-EAGLE-WIFI6E",
    "started": "2026-11-05T09:48:29",
-   "finished": "2026-11-05T09:50:29"
+   "finished": "2026-11-05T09:59:14",
+   "stop_reason": "max_shots"
   }
  ],
  "totals": {
-  "shots": 759646424966,
-  "kept": 15824186446,
-  "errors": 160,
-  "seconds": 119.896,
+  "shots": 4000000000000,
+  "kept": 83324069586,
+  "errors": 874,
+  "seconds": 643.828,
   "compile_seconds": 0.61,
   "obs_ones": [
-   160
+   874
   ]
  }
 }

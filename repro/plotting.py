@@ -104,3 +104,50 @@ def no_data(ax):
 
 __all__ = ["ler_points", "accept_points", "published_ler", "published_accept", "published_value", "style_ler",
            "style_accept", "save", "np", "plt"]
+
+
+# ---------------------------------------------------------------------------------------------
+# sinter-based figures: export our results as sinter stats and run the authors' own `sinter plot`
+# commands on them (plus the authors' published stats where released).
+
+
+def sinter_stats(totals, decoder, metadata):
+    """Our point totals -> a sinter.TaskStats (discards = shots - kept)."""
+    import hashlib
+    import json
+
+    import sinter
+
+    sid = hashlib.sha256(json.dumps([decoder, metadata], sort_keys=True).encode()).hexdigest()
+    return sinter.TaskStats(strong_id=sid, decoder=decoder, json_metadata=metadata, shots=int(totals["shots"]),
+                            errors=int(totals["errors"]), discards=int(totals["shots"] - totals["kept"]),
+                            seconds=float(totals["seconds"]))
+
+
+def write_sinter_csv(path, stats, extra_lines=()):
+    import sinter
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w") as f:
+        print(sinter.CSV_HEADER, file=f)
+        for line in extra_lines:
+            print(line.rstrip("\n"), file=f)
+        for s in stats:
+            print(s.to_csv_line(), file=f)
+    return path
+
+
+def sinter_plot(args, cwd=None, pythonpath=()):
+    """Run ``sinter plot`` (the CLI the authors used) with the given argument list."""
+    import os
+    import subprocess
+    import sys
+
+    env = dict(os.environ)
+    if pythonpath:
+        env["PYTHONPATH"] = os.pathsep.join([*map(str, pythonpath), env.get("PYTHONPATH", "")])
+    # Exactly how the authors call it (tools/sinter_plot_echo.py): sinter's CLI main with 'plot'.
+    code = "import sys; from sinter._command._main import main; main(command_line_args=['plot', *sys.argv[1:]])"
+    p = subprocess.run([sys.executable, "-c", code, *map(str, args)], cwd=cwd, env=env, capture_output=True, text=True)
+    if p.returncode:
+        raise RuntimeError(f"sinter plot failed:\n{p.stderr[-3000:]}")

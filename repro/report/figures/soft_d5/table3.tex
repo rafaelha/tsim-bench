@@ -1,12 +1,21 @@
-\begin{tabular}{l l l l l}
+\begin{tabular}{c l c c c c c l}
 \toprule
-$p$ & SOFT (Table 3) & exact (2609.18922) & Tsim GPU & shots, GPU time\\
+Noise Strength & & Total Shots & Preserved Shots & Discard Rate & Detected Logical Errors & Logical Error Rate & hardware, time\\
 \midrule
-0.0005 & 1.57e-10 (8/5.1e10) & 2.846e-10, $A$=0.3792 & -- & -- \\
-0.001 & 4.62e-09 (49/1.1e10) & 3.328e-09, $A$=0.1440 & -- & -- \\
-0.002 & 3.67e-08 (22/6e8) & 5.175e-08, $A$=0.0208 & -- & -- \\
-0.003 & -- & -- & -- & -- \\
-0.004 & -- & -- & -- & -- \\
-0.005 & -- & -- & -- & -- \\
+0.005 & Tsim GPU & 600.0B & 0.04B & 99.99\% & 116 & $2.97\times 10^{-6}$ & 1 RTX 5090, 2.1 min \\
+\midrule
+0.004 & Tsim GPU & 600.0B & 0.27B & 99.96\% & 295 & $1.11\times 10^{-6}$ & 1 RTX 5090, 1.7 min \\
+\midrule
+0.003 & Tsim GPU & 600.0B & 1.82B & 99.70\% & 555 & $3.05\times 10^{-7}$ & 1 RTX 5090, 1.4 min \\
+\midrule
+0.002 & SOFT (paper) & 28.9B & 0.60B & 97.92\% & 22 & $3.67\times 10^{-8}$ & 16 H800, $\sim$20 days total \\
+0.002 & Tsim GPU & 1000.0B & 20.83B & 97.92\% & 1111 & $5.33\times 10^{-8}$ & 1 RTX 5090, 2.5 min \\
+0.002 & exact (2609.18922) & & & 97.92\% & & $5.18\times 10^{-8}$ & \\
+\midrule
+0.001 & SOFT (paper) & 74.0B & 10.60B & 85.68\% & 49 & $4.62\times 10^{-9}$ & 16 H800, $\sim$20 days total \\
+0.001 & exact (2609.18922) & & & 85.60\% & & $3.33\times 10^{-9}$ & \\
+\midrule
+0.0005 & SOFT (paper) & 134.4B & 50.90B & 62.13\% & 8 & $1.57\times 10^{-10}$ & 16 H800, $\sim$20 days total \\
+0.0005 & exact (2609.18922) & & & 62.08\% & & $2.85\times 10^{-10}$ & \\
 \bottomrule
 \end{tabular}

@@ -4,7 +4,7 @@
 
 Uses the authors' generator (papers/2502.01743_surface_code_cultivation/stim_src/repo_ec28f6b,
 tomirendo/surface-code-magic-state-cultivation at ec28f6b) in its pinned environment
-(requirements.txt: qutip, pennylane, ...). Writes, for the "unrotated_H_injection-ghz" protocol
+(requirements.txt: qutip, pennylane, ...). Writes, for the "unrotated_H_injection-syndrome-ghz" protocol
 (d1 = 3, the protocol of the paper's full-vector comparison, Fig. 26):
 
 - ``proxy.stim``: ``to_stim_circuit(apply_non_cliffords=False, noise_model, p)``, the Clifford
@@ -38,8 +38,11 @@ def main():
     s = Simulation(d=3)
     first = s.generate_syndrome_circuit(generate_unitary=False, detect_x=False)
     injection = s.generate_injection_circuit(generate_unitary=False)
+    syndrome = s.generate_syndrome_circuit(generate_unitary=False)
     double = s.generate_double_ghz(generate_unitary=False)
-    circuit = first + injection + double
+    # "injection-syndrome-ghz" (generate_circuits.py): the variant whose acceptance matches the paper's Fig. 26
+    # (2.18 attempts per kept shot at p = 1e-3, released init-H-injection-syndrome-ghz,d1=3).
+    circuit = first + injection + syndrome + double
     (out / "proxy.stim").write_text(str(circuit.to_stim_circuit(apply_non_cliffords=False, noise_model=noise, p=p, non_clifford_noise_strategy="CZ")) + "\n")
     (out / "placeholder.stim").write_text(str(circuit.to_stim_circuit(apply_non_cliffords=True, noise_model=noise, p=p)) + "\n")
     (out / "logicals.json").write_text(json.dumps({"x": [q.index for q in s.logical_x_qubits], "z": [q.index for q in s.logical_z_qubits]}))

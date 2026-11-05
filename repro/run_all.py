@@ -15,7 +15,9 @@ re-running continues a point until its stopping rule (errors / shots / GPU secon
 raising a budget in a study file and re-running only samples the difference. A changed circuit or
 Tsim build restarts the point (the old result is kept as ``*.stale-*.json``).
 
-After sampling, ``repro.make_report`` rebuilds figures and the PDF (skip with ``--no-report``).
+After sampling, the CPU cross-checks run (``repro/stim_check.py`` on every Clifford point, ``repro/clifft_check.py``
+on selected non-Clifford points; skip with ``--no-crosscheck``), and ``repro.make_report`` rebuilds figures and the
+PDF (skip with ``--no-report``). Published inputs are fetched by ``repro/data_sources.py`` (pinned URLs, sha256).
 """
 
 import argparse
@@ -98,6 +100,7 @@ def main():
     ap.add_argument("--regenerate", action="store_true")
     ap.add_argument("--fresh", action="store_true")
     ap.add_argument("--no-report", action="store_true")
+    ap.add_argument("--no-crosscheck", action="store_true", help="skip the Stim / Clifft CPU cross-checks after sampling")
     ap.add_argument("--max-hours", type=float, default=float("inf"))
     ap.add_argument("--scale", type=float, default=1.0)
     args = ap.parse_args()
@@ -136,6 +139,12 @@ def main():
             print("max-hours reached; stopping", flush=True)
             break
         run_point(s, pt, args.scale, args.fresh)
+    if not args.no_crosscheck:
+        # Independent CPU cross-checks (skip points already checked): Stim on every Clifford point, Clifft on selected T points.
+        subprocess.run([sys.executable, "-m", "repro.stim_check"] + (["--only", *args.only] if args.only else []))
+        clifft_py = common.ROOT / ".venvs" / "clifft" / "bin" / "python"
+        if clifft_py.exists():
+            subprocess.run([str(clifft_py), str(common.REPRO / "clifft_check.py")])
     if not args.no_report:
         subprocess.run([sys.executable, "-m", "repro.make_report"] + (["--only", *args.only] if args.only else []))
 
