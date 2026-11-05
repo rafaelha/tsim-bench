@@ -4,7 +4,8 @@ Shots per second and active width (k_max) for 189 circuits from 27 papers. Every
 own non-Clifford circuits, or their Clifford stand-ins (S for T, |Y⟩ for |T⟩) converted back to real gates. Click a circuit to see
 its `.stim` file; each paper's folder explains where the circuits came from and how they were converted.
 
-The GPU columns show the speedup over one CPU core in brackets. [`SUMMARY.md`](SUMMARY.md) has the same table with
+The GPU columns show the speedup over one CPU core in brackets. The CUDA and Metal kernels currently support only circuits with
+k_max ≤ 11; larger circuits show – there. [`SUMMARY.md`](SUMMARY.md) has the same table with
 Clifft's numbers added.
 
 <!-- benchmark-table:begin -->
