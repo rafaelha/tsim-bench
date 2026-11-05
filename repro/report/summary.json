@@ -1,0 +1,14 @@
+{
+ "gidney_cultivation": {
+  "seconds": 884.2489999999998,
+  "compile": 10.01,
+  "shots": 2366229884178,
+  "points": 32
+ },
+ "clifft_inject_cultivate": {
+  "seconds": 0.0,
+  "compile": 0.0,
+  "shots": 0,
+  "points": 0
+ }
+}
