@@ -3,6 +3,7 @@
     python bench_worker.py kmax  FILE.stim [tsim|clifft]  -> {"tsim": {...}, "clifft": {...}} (each may be an error)
     python bench_worker.py cpu   FILE.stim     -> detector-sampler throughput on the CPU executor
     python bench_worker.py gpu   FILE.stim     -> detector-sampler throughput; fails unless the CUDA executor is used
+    python bench_worker.py metal FILE.stim     -> detector-sampler throughput; fails unless the Metal executor is used
     python bench_worker.py clifft_cpu FILE.stim -> Clifft ``sample(program, n, threads=1)`` throughput
 
 Prints one JSON line. Throughput: ``sampler.sample(n, append_observables=True, bit_packed=True)``
@@ -72,7 +73,8 @@ def throughput(text, mode, target, max_bytes):
     sampler = tsim.Circuit(text).compile_detector_sampler()
     compile_s = time.perf_counter() - t0
     backend = type(getattr(sampler, "_shots", None)).__name__
-    if mode == "gpu" and backend != "CudaShotSampler":
+    expected = {"gpu": "CudaShotSampler", "metal": "MetalShotSampler"}.get(mode)
+    if expected and backend != expected:
         raise RuntimeError(f"not on the GPU (shot sampler: {backend})")
     c = tsim.Circuit(text)
     row_bytes = max(1, (c.num_detectors + c.num_observables + 7) // 8)

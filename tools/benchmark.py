@@ -6,6 +6,7 @@ Steps (each writes/updates results/benchmark.json; rerunning a step overwrites i
     uv run python tools/benchmark.py kmax  [--jobs 8]
     uv run python tools/benchmark.py cpu   --jobs 1    # throughput: one circuit at a time
     uv run python tools/benchmark.py gpu
+    uv run python tools/benchmark.py metal         # on an Apple-silicon Mac
     uv run python tools/benchmark.py clifft --jobs 1   # Clifft single-core CPU throughput
     uv run python tools/benchmark.py table         # rewrite the table in README.md
     uv run python tools/benchmark.py all           # everything above
@@ -14,6 +15,9 @@ Environments (in .venvs/, git-ignored):
 - tsim-cpu: bloqade-tsim==1.0.0 (PyPI) and clifft==0.13.0. Used for k_max and the CPU throughput.
 - tsim-gpu: Tsim draft PR #219 (``cuda-statevector-executor``, head a2af975f) with its ``gpu`` extra
   (CuPy for CUDA 13).
+- tsim-metal: the Metal prototype (local branch ``metal-statevector-executor`` at 3c01b549, rebased on
+  the CUDA draft) with its ``metal`` extra (PyObjC Metal). Set TSIM_METAL_REPO to the tsim checkout
+  that has the commit.
 
 k_max: Tsim ``compile_detector_sampler()`` (default ``active_statevector``), largest statevector
 component width; Clifft ``default_hir_pass_manager()`` + ``ActiveWidthSchedulePass()`` (default
@@ -35,6 +39,8 @@ excluded.
   the device-to-host copy. The worker lets the draft's packing kernels use more than 48 KB of shared
   memory (see ``allow_large_shared_memory`` in bench_worker.py); without that, circuits with more than
   ~6000 output columns fail to launch.
+- Metal: like GPU (one circuit at a time, Tsim k_max <= 11, calls capped at 2 GiB of output), on an
+  Apple M4 Pro (20-core GPU, 48 GB unified memory). Runs without systemd/taskset (macOS).
 """
 
 import argparse
@@ -58,11 +64,15 @@ ENVS = {
     # Tsim PR #270 (sparse error basis): same samples and k as 1.0.0, far less compile memory. Used
     # with --tsim-env tsim-sparse only for circuits that 1.0.0 cannot compile; marked in the tables.
     "tsim-sparse": ["bloqade-tsim @ git+https://github.com/QuEraComputing/tsim@96b86e8b", "clifft==0.13.0"],
+    "tsim-metal": ["bloqade-tsim[metal] @ git+file://"
+                   + os.environ.get("TSIM_METAL_REPO", str(pathlib.Path.home() / "Documents/quera/tsim"))
+                   + "@3c01b549"],
 }
+PLATFORM_ENVS = {"tsim-cpu": "linux", "tsim-gpu": "linux", "tsim-sparse": "linux", "tsim-metal": "darwin"}
 BUILD_LABEL = {"tsim-sparse": "Tsim PR #270 (96b86e8b)"}
 TSIM_ENV = "tsim-cpu"  # set by --tsim-env
 CPU_MAX_K, GPU_MAX_K = 15, 11
-TIMEOUT = {"kmax": 1800, "cpu": 1200, "gpu": 900, "clifft_cpu": 3600}
+TIMEOUT = {"kmax": 1800, "cpu": 1200, "gpu": 900, "metal": 900, "clifft_cpu": 3600}
 # Memory: every worker runs in its own systemd scope with a hard MemoryMax (no swap), so a worker that
 # blows up is killed alone instead of exhausting the machine (60 GB). Parallel workers share
 # MEMORY_BUDGET_GB; circuits whose file is at least LARGE_BYTES run afterwards, one at a time, with
@@ -74,6 +84,8 @@ BEGIN, END = "<!-- benchmark-table:begin -->", "<!-- benchmark-table:end -->"
 
 def setup():
     for name, packages in ENVS.items():
+        if not sys.platform.startswith(PLATFORM_ENVS[name]):
+            continue
         venv = VENVS / name
         subprocess.run(["uv", "venv", "-q", "--allow-existing", "-p", "3.12", str(venv)], check=True)
         subprocess.run(["uv", "pip", "install", "-q", "-p", str(venv), *packages], check=True)
@@ -95,7 +107,7 @@ def save(results):
 
 def run_worker(mode, path, core=None, extra=(), memory_gb=MEMORY_BUDGET_GB):
     tsim_run = mode == "cpu" or (mode == "kmax" and list(extra) == ["tsim"])
-    venv = "tsim-gpu" if mode == "gpu" else (TSIM_ENV if tsim_run else "tsim-cpu")
+    venv = {"gpu": "tsim-gpu", "metal": "tsim-metal"}.get(mode, TSIM_ENV if tsim_run else "tsim-cpu")
     cmd = [str(VENVS / venv / "bin" / "python"), str(WORKER), mode, str(ROOT / path), *extra]
     env = dict(os.environ)
     if mode in ("cpu", "clifft_cpu"):
@@ -104,8 +116,9 @@ def run_worker(mode, path, core=None, extra=(), memory_gb=MEMORY_BUDGET_GB):
         cmd = ["taskset", "-c", str(core), *cmd]
     if mode != "gpu":
         env["CUDA_VISIBLE_DEVICES"] = ""
-    cmd = ["systemd-run", "--user", "--scope", "--quiet", "-p", f"MemoryMax={memory_gb}G",
-           "-p", "MemorySwapMax=0", *cmd]
+    if sys.platform.startswith("linux"):
+        cmd = ["systemd-run", "--user", "--scope", "--quiet", "-p", f"MemoryMax={memory_gb}G",
+               "-p", "MemorySwapMax=0", *cmd]
     try:
         proc = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=TIMEOUT[mode])
     except subprocess.TimeoutExpired:
@@ -121,8 +134,8 @@ def run_worker(mode, path, core=None, extra=(), memory_gb=MEMORY_BUDGET_GB):
 def run_step(mode, jobs, only_errors=False, only=None, sims=("tsim", "clifft")):
     results = load()
     paths = [p for p in circuits() if not only or only in p]
-    if mode in ("cpu", "gpu", "clifft_cpu"):
-        limit = GPU_MAX_K if mode == "gpu" else CPU_MAX_K
+    if mode in ("cpu", "gpu", "metal", "clifft_cpu"):
+        limit = GPU_MAX_K if mode in ("gpu", "metal") else CPU_MAX_K
         simulator = "clifft" if mode == "clifft_cpu" else "tsim"
         todo = []
         for p in paths:
@@ -136,7 +149,7 @@ def run_step(mode, jobs, only_errors=False, only=None, sims=("tsim", "clifft")):
         todo = paths
     if only_errors:
         todo = [p for p in todo if "error" in results.get(p, {}).get(mode if mode != "kmax" else "tsim", {"error": 1})]
-    jobs = 1 if mode == "gpu" else jobs
+    jobs = 1 if mode in ("gpu", "metal") else jobs
     small = [p for p in todo if (ROOT / p).stat().st_size < LARGE_BYTES]
     large = [p for p in todo if (ROOT / p).stat().st_size >= LARGE_BYTES]
     done = 0
@@ -214,7 +227,7 @@ def failure(error):
 
 
 def speedup(cpu, gpu):
-    """GPU rate / single-core CPU rate: an integer above 10, one decimal otherwise."""
+    """GPU (CUDA or Metal) rate / single-core CPU rate: an integer above 10, one decimal otherwise."""
     if not (cpu and gpu and "shots_per_s" in cpu and "shots_per_s" in gpu):
         return "–"
     x = gpu["shots_per_s"] / cpu["shots_per_s"]
@@ -256,8 +269,8 @@ def paper_meta(folder):
 def table():
     results = load()
     lines = [
-        "| paper / circuit | Tsim single-core CPU (shots/s) | Tsim GPU (shots/s) | GPU speedup | Tsim k_max |",
-        "|---|---|---|---|---|",
+        "| paper / circuit | Tsim single-core CPU (shots/s) | Tsim GPU (shots/s) | GPU speedup | Tsim Metal (shots/s) | Metal speedup vs CPU | Tsim k_max |",
+        "|---|---|---|---|---|---|---|",
     ]
     by_folder = {}
     for p, r in sorted(results.items()):
@@ -266,11 +279,12 @@ def table():
     for folder, rows in sorted(by_folder.items()):
         arxiv = folder.split("_")[0]
         title, authors, year = paper_meta(folder)
-        lines.append(f"| **[{arxiv}](https://arxiv.org/abs/{arxiv})** {authors} ({year}), *{title}* | | | | |")
+        lines.append(f"| **[{arxiv}](https://arxiv.org/abs/{arxiv})** {authors} ({year}), *{title}* | | | | | | |")
         for p, r in rows:
             name = pathlib.Path(p).stem
             lines.append(f"| [`{name}`]({REPO_URL}/{p}) | {rate(r.get('cpu'))} | {rate(r.get('gpu'))} | "
-                         f"{speedup(r.get('cpu'), r.get('gpu'))} | {kcell(r.get('tsim'), 'tsim')} |")
+                         f"{speedup(r.get('cpu'), r.get('gpu'))} | {rate(r.get('metal'))} | "
+                         f"{speedup(r.get('cpu'), r.get('metal'))} | {kcell(r.get('tsim'), 'tsim')} |")
     block = "\n".join([BEGIN, *lines, END])
     readme = (ROOT / "README.md").read_text()
     if BEGIN in readme:
@@ -283,7 +297,7 @@ def table():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("step", choices=["setup", "kmax", "cpu", "gpu", "clifft", "table", "all"])
+    parser.add_argument("step", choices=["setup", "kmax", "cpu", "gpu", "metal", "clifft", "table", "all"])
     parser.add_argument("--jobs", type=int, default=8)
     parser.add_argument("--tsim-env", default="tsim-cpu", choices=["tsim-cpu", "tsim-sparse"],
                         help="environment for Tsim k_max and CPU throughput (default: Tsim 1.0.0)")

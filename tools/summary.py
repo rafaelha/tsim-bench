@@ -1,7 +1,7 @@
 """Write SUMMARY.md from results/benchmark.json (tools/benchmark.py) and papers/*/k_max.json.
 
 Per paper: number of circuits and the k_max ranges. Per circuit: non-Clifford gate counts, single-core
-CPU throughput of Tsim and Clifft, Tsim GPU throughput, and k_max of Tsim and Clifft.
+CPU throughput of Tsim and Clifft, Tsim GPU (CUDA) and Metal throughput, and k_max of Tsim and Clifft.
 
 Usage: uv run python tools/summary.py
 """
@@ -47,11 +47,12 @@ def main():
         tk = [benchmark.kcell(r.get("tsim"), "tsim") for _, r in items]
         ck = [benchmark.kcell(r.get("clifft"), "clifft") for _, r in items]
         overview.append(f"| [{arxiv}](papers/{folder}) | {authors} ({year}), {title} | {len(items)} | {k_range(tk)} | {k_range(ck)} |")
-        rows.append(f"| **[{arxiv}](https://arxiv.org/abs/{arxiv})** {authors} ({year}), *{title}* | | | | | | | |")
+        rows.append(f"| **[{arxiv}](https://arxiv.org/abs/{arxiv})** {authors} ({year}), *{title}* | | | | | | | | | |")
         for (p, r), t, c in zip(items, tk, ck):
             rows.append(f"| [`{pathlib.Path(p).stem}`]({p}) | {gates.get(p, '?')} | {benchmark.rate(r.get('cpu'))} | "
                         f"{benchmark.rate(r.get('clifft_cpu'))} | {benchmark.rate(r.get('gpu'))} | "
-                        f"{benchmark.speedup(r.get('cpu'), r.get('gpu'))} | {t} | {c} |")
+                        f"{benchmark.speedup(r.get('cpu'), r.get('gpu'))} | {benchmark.rate(r.get('metal'))} | "
+                        f"{benchmark.speedup(r.get('cpu'), r.get('metal'))} | {t} | {c} |")
     text = [
         "# Throughput and active width k_max of published non-Clifford circuits",
         "",
@@ -60,9 +61,12 @@ def main():
         "- **Tsim:** `bloqade-tsim==1.0.0`, detector sampler, single core.",
         "- **Clifft:** 0.13.0 with `default_hir_pass_manager()` + `ActiveWidthSchedulePass()`, `sample(threads=1)`.",
         "- **Tsim GPU:** draft PR #219 at `a2af975f` on an RTX 5090. GPU speedup is the Tsim GPU rate over the Tsim single-core rate.",
+        "- **Tsim Metal:** Metal prototype (branch `metal-statevector-executor` at `3c01b549`, on the CUDA draft) on an Apple M4 Pro",
+        "  (20-core GPU, 48 GB unified memory); measured like the CUDA column. Metal speedup vs CPU is the Metal rate over the",
+        "  Tsim single-core rate (Ryzen 9 9900X), as for the CUDA GPU.",
         "- **k_max:** Tsim's largest statevector component and Clifft's `peak_active_width`.",
         "- **Markers:**",
-        "  - `–`: skipped (k_max > 15 for CPU, > 11 for GPU).",
+        "  - `–`: skipped (k_max > 15 for CPU, > 11 for GPU and Metal).",
         "  - `≥60 (overflow)`: Clifft's planner would exceed its dense-state limit.",
         "  - `63 (refused, limit 30)`: Tsim's active_statevector strategy would need that many active qubits.",
         "- **Gate counts** count each `REPEAT` body once.",
@@ -79,8 +83,8 @@ def main():
         "",
         "## Per circuit",
         "",
-        "| paper / circuit | non-Clifford gates | Tsim CPU (shots/s) | Clifft CPU (shots/s) | Tsim GPU (shots/s) | GPU speedup | Tsim k_max | Clifft k_max |",
-        "|---|---|---|---|---|---|---|---|",
+        "| paper / circuit | non-Clifford gates | Tsim CPU (shots/s) | Clifft CPU (shots/s) | Tsim GPU (shots/s) | GPU speedup | Tsim Metal (shots/s) | Metal speedup vs CPU | Tsim k_max | Clifft k_max |",
+        "|---|---|---|---|---|---|---|---|---|---|",
         *rows,
         "",
     ]

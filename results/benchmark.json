@@ -35,6 +35,10 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "error": "ValueError: 55 shot words do not fit the noise kernel's shared memory",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/hook_inject_T_d15_pd7_p0.001.stim": {
@@ -72,6 +76,10 @@
    "warmup_seconds": 0.01,
    "active_width": 1,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "error": "ValueError: 56 shot words do not fit the noise kernel's shared memory",
    "tsim_version": "1.0.0"
   }
  },
@@ -111,6 +119,10 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "error": "ValueError: 103 shot words do not fit the noise kernel's shared memory",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/li_inject_T_d15_pd7_p0.001.stim": {
@@ -148,6 +160,10 @@
    "warmup_seconds": 0.01,
    "active_width": 1,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "error": "ValueError: 105 shot words do not fit the noise kernel's shared memory",
    "tsim_version": "1.0.0"
   }
  },
@@ -187,6 +203,10 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "error": "ValueError: 62 shot words do not fit the noise kernel's shared memory",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/pregrown_hook_inject_T_d15_pd7_p0.001.stim": {
@@ -224,6 +244,10 @@
    "warmup_seconds": 0.01,
    "active_width": 1,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "error": "ValueError: 62 shot words do not fit the noise kernel's shared memory",
    "tsim_version": "1.0.0"
   }
  },
@@ -263,6 +287,10 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "error": "ValueError: 97 shot words do not fit the noise kernel's shared memory",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2302.12292_hook_injection/stim/zz_inject_T_d15_pd7_p0.001.stim": {
@@ -300,6 +328,10 @@
    "warmup_seconds": 0.01,
    "active_width": 1,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "error": "ValueError: 98 shot words do not fit the noise kernel's shared memory",
    "tsim_version": "1.0.0"
   }
  },
@@ -339,6 +371,15 @@
    "warmup_seconds": 0.39,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "metal": {
+   "shots_per_s": 1735930416.8875332,
+   "shots": 268435456,
+   "seconds": 0.1546,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.11,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d5_p0.001_pinj0.1.stim": {
@@ -377,6 +418,15 @@
    "warmup_seconds": 0.3,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "metal": {
+   "shots_per_s": 1375077141.4822803,
+   "shots": 134217728,
+   "seconds": 0.0976,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.15,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d7_p0.001_pinj0.1.stim": {
@@ -415,6 +465,15 @@
    "warmup_seconds": 0.31,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "metal": {
+   "shots_per_s": 708334057.2583542,
+   "shots": 76695844,
+   "seconds": 0.1083,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.13,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d9_p0.001_pinj0.1.stim": {
@@ -453,6 +512,15 @@
    "warmup_seconds": 0.3,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "metal": {
+   "shots_per_s": 478839027.54832244,
+   "shots": 48806446,
+   "seconds": 0.1019,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.12,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.07707_color_code_msd/stim/cult_growing_T_d3_to_d11_p0.001.stim": {
@@ -490,6 +558,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 119412950.47427021,
+   "shots": 16777216,
+   "seconds": 0.1405,
+   "compile_seconds": 1.07,
+   "warmup_seconds": 1.86,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -529,6 +606,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 469537041.7954054,
+   "shots": 61356675,
+   "seconds": 0.1307,
+   "compile_seconds": 0.3,
+   "warmup_seconds": 0.26,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.07707_color_code_msd/stim/cult_growing_T_d5_to_d13_p0.001.stim": {
@@ -566,6 +652,15 @@
    "warmup_seconds": 0.03,
    "active_width": 10,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 64491415.78331594,
+   "shots": 9761289,
+   "seconds": 0.1514,
+   "compile_seconds": 2.4,
+   "warmup_seconds": 0.56,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -605,6 +700,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 127712124.25879313,
+   "shots": 26512143,
+   "seconds": 0.2076,
+   "compile_seconds": 0.71,
+   "warmup_seconds": 0.55,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.17595_magic_state_cultivation/stim/end2end_d3_dsurface15_p0.001.stim": {
@@ -642,6 +746,15 @@
    "warmup_seconds": 0.01,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 67339472.21200149,
+   "shots": 7924293,
+   "seconds": 0.1177,
+   "compile_seconds": 2.02,
+   "warmup_seconds": 0.29,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -681,6 +794,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 43889279.97211633,
+   "shots": 6242685,
+   "seconds": 0.1422,
+   "compile_seconds": 3.14,
+   "warmup_seconds": 0.33,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2409.17595_magic_state_cultivation/stim/inject_cultivate_d3_p0.001.stim": {
@@ -718,6 +840,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1332172661.0244513,
+   "shots": 715827882,
+   "seconds": 0.5373,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -757,6 +888,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 165749660.2650498,
+   "shots": 134217728,
+   "seconds": 0.8098,
+   "compile_seconds": 0.22,
+   "warmup_seconds": 0.29,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-init-x-injection-double-HXY_d1=3_d2=11_p=0.001.stim": {
@@ -794,6 +934,15 @@
    "warmup_seconds": 0.02,
    "active_width": 10,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 34712416.31697809,
+   "shots": 11243369,
+   "seconds": 0.3239,
+   "compile_seconds": 1.08,
+   "warmup_seconds": 0.77,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -833,6 +982,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 36505699.156044036,
+   "shots": 11243369,
+   "seconds": 0.308,
+   "compile_seconds": 1.11,
+   "warmup_seconds": 0.61,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-injection-syndrome-double-ghz-HXY_d1=3_d2=11_p=0.001.stim": {
@@ -870,6 +1028,15 @@
    "warmup_seconds": 0.02,
    "active_width": 10,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 36351382.54285616,
+   "shots": 11184810,
+   "seconds": 0.3077,
+   "compile_seconds": 1.14,
+   "warmup_seconds": 0.64,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -909,6 +1076,15 @@
    "active_width": 15,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 7015410.403793303,
+   "shots": 4194304,
+   "seconds": 0.5979,
+   "compile_seconds": 2.35,
+   "warmup_seconds": 1.51,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-unrotated_H_injection-syndrome-ghz_d1=3_d2=11_p=0.001.stim": {
@@ -946,6 +1122,15 @@
    "warmup_seconds": 0.15,
    "active_width": 15,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 7006164.955848568,
+   "shots": 4194304,
+   "seconds": 0.5987,
+   "compile_seconds": 2.41,
+   "warmup_seconds": 1.51,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -985,6 +1170,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 52573459.15932522,
+   "shots": 33554432,
+   "seconds": 0.6382,
+   "compile_seconds": 0.15,
+   "warmup_seconds": 0.61,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-init-x-injection-syndrome-double-ghz-HXY_d1=3_p=0.001.stim": {
@@ -1022,6 +1216,15 @@
    "warmup_seconds": 0.0,
    "active_width": 10,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 52072139.77203325,
+   "shots": 33554432,
+   "seconds": 0.6444,
+   "compile_seconds": 0.16,
+   "warmup_seconds": 0.64,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -1061,6 +1264,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 52513477.97732619,
+   "shots": 33554432,
+   "seconds": 0.639,
+   "compile_seconds": 0.16,
+   "warmup_seconds": 0.61,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-injection-ghz-HXY_d1=3_p=0.001.stim": {
@@ -1098,6 +1310,15 @@
    "warmup_seconds": 0.0,
    "active_width": 8,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 184350397.70195678,
+   "shots": 134217728,
+   "seconds": 0.7281,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.71,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -1137,6 +1358,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 52307885.75042248,
+   "shots": 33554432,
+   "seconds": 0.6415,
+   "compile_seconds": 0.15,
+   "warmup_seconds": 0.61,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/unrotated_HXY_injection-ghz_d1=3_p=0.001.stim": {
@@ -1174,6 +1404,15 @@
    "warmup_seconds": 0.0,
    "active_width": 10,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 110258047.7894409,
+   "shots": 67108864,
+   "seconds": 0.6087,
+   "compile_seconds": 0.15,
+   "warmup_seconds": 0.57,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -1213,6 +1452,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 109243602.62670662,
+   "shots": 67108864,
+   "seconds": 0.6143,
+   "compile_seconds": 0.16,
+   "warmup_seconds": 0.57,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/unrotated_H_injection-ghz_d1=3_p=0.001.stim": {
@@ -1250,6 +1498,15 @@
    "warmup_seconds": 0.13,
    "active_width": 15,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 14567714.916187221,
+   "shots": 8388608,
+   "seconds": 0.5758,
+   "compile_seconds": 0.19,
+   "warmup_seconds": 1.03,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -1289,6 +1546,15 @@
    "active_width": 15,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 14457392.437635796,
+   "shots": 8388608,
+   "seconds": 0.5802,
+   "compile_seconds": 0.2,
+   "warmup_seconds": 1.03,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_T_cult.stim": {
@@ -1327,6 +1593,15 @@
    "active_width": 8,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 843270842.8644584,
+   "shots": 357913941,
+   "seconds": 0.4244,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.31,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_rp_5_T_cult.stim": {
@@ -1358,6 +1633,15 @@
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 18 > 15"
+  },
+  "metal": {
+   "shots_per_s": 6808834.204613542,
+   "shots": 4194304,
+   "seconds": 0.616,
+   "compile_seconds": 0.33,
+   "warmup_seconds": 1.15,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_rp_5_sc_11_end2end_6_full_rds.stim": {
@@ -1389,6 +1673,15 @@
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 18 > 15"
+  },
+  "metal": {
+   "shots_per_s": 11245399.620105036,
+   "shots": 8388608,
+   "seconds": 0.746,
+   "compile_seconds": 0.85,
+   "warmup_seconds": 1.28,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_sc_7_end2end_4_full_rds.stim": {
@@ -1426,6 +1719,15 @@
    "warmup_seconds": 0.0,
    "active_width": 8,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 435497537.20739436,
+   "shots": 67108864,
+   "seconds": 0.1541,
+   "compile_seconds": 0.22,
+   "warmup_seconds": 0.36,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -1465,6 +1767,15 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2474251553.804312,
+   "shots": 715827882,
+   "seconds": 0.2893,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2504.02935_erasure_injection/stim/inject_cultivate_T_d3_p0.001.stim": {
@@ -1503,6 +1814,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1620132834.9796085,
+   "shots": 715827882,
+   "seconds": 0.4418,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.24,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d13_p0.001.stim": {
@@ -1536,6 +1856,10 @@
   "gpu": {
    "error": "ValueError: 487 shot words do not fit the noise kernel's shared memory",
    "tsim_version": "0.1.5"
+  },
+  "metal": {
+   "error": "ValueError: 487 shot words do not fit the noise kernel's shared memory",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d17_p0.001.stim": {
@@ -1562,6 +1886,9 @@
   },
   "gpu": {
    "error": "out of memory (worker capped at 40 GB)"
+  },
+  "metal": {
+   "skipped": "not run: the Metal build is based on Tsim 1.0.0, whose compile runs out of memory here (see gpu)"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d21_p0.001.stim": {
@@ -1588,6 +1915,9 @@
   },
   "gpu": {
    "error": "out of memory (worker capped at 40 GB)"
+  },
+  "metal": {
+   "skipped": "not run: the Metal build is based on Tsim 1.0.0, whose compile runs out of memory here (see gpu)"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d25_p0.001.stim": {
@@ -1615,6 +1945,9 @@
   "gpu": {
    "error": "MemoryError: Unable to allocate 121. GiB for an array with shape (115467, 1125210) and data type uint8",
    "tsim_version": "0.1.5"
+  },
+  "metal": {
+   "skipped": "not run: the Metal build is based on Tsim 1.0.0, whose compile runs out of memory here (see gpu)"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d5_p0.001.stim": {
@@ -1653,6 +1986,10 @@
    "warmup_seconds": 0.51,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "metal": {
+   "error": "ValueError: 70 shot words do not fit the noise kernel's shared memory",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d9_p0.001.stim": {
@@ -1686,6 +2023,10 @@
   "gpu": {
    "error": "ValueError: 232 shot words do not fit the noise kernel's shared memory",
    "tsim_version": "0.1.5"
+  },
+  "metal": {
+   "error": "ValueError: 232 shot words do not fit the noise kernel's shared memory",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_repetition_no_preselection_pz1e-3_rounds2.stim": {
@@ -1723,6 +2064,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1408988892.17622,
+   "shots": 357913941,
+   "seconds": 0.254,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.25,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -1762,6 +2112,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1053723783.469324,
+   "shots": 165191049,
+   "seconds": 0.1568,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_repetition_no_preselection_pz1e-3_rounds6.stim": {
@@ -1799,6 +2158,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 793732508.7539074,
+   "shots": 107374182,
+   "seconds": 0.1353,
+   "compile_seconds": 0.16,
+   "warmup_seconds": 0.19,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -1838,6 +2206,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 848580799.7586161,
+   "shots": 126322567,
+   "seconds": 0.1489,
+   "compile_seconds": 0.16,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_surface_no_bitflip_pz1e-3_rounds4.stim": {
@@ -1875,6 +2252,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 511199601.43039685,
+   "shots": 65075262,
+   "seconds": 0.1273,
+   "compile_seconds": 0.24,
+   "warmup_seconds": 0.25,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -1914,6 +2300,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 347907948.8097117,
+   "shots": 43826196,
+   "seconds": 0.126,
+   "compile_seconds": 0.29,
+   "warmup_seconds": 0.29,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.05212_fold_transversal_cultivation/stim/fold-d3_native_T_p0.001.stim": {
@@ -1952,6 +2347,15 @@
    "active_width": 8,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 182212397.53923216,
+   "shots": 134217728,
+   "seconds": 0.7366,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.63,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.05212_fold_transversal_cultivation/stim/fold-d5_native_T_p0.001.stim": {
@@ -1983,6 +2387,15 @@
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 22 > 15"
+  },
+  "metal": {
+   "shots_per_s": 13569808.554134335,
+   "shots": 8388608,
+   "seconds": 0.6182,
+   "compile_seconds": 0.46,
+   "warmup_seconds": 2.19,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.08658_few_clifford_terms/stim/d3_cultivation_T_p0.001.stim": {
@@ -2020,6 +2433,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1498905617.9904456,
+   "shots": 429496729,
+   "seconds": 0.2865,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.24,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2059,6 +2481,15 @@
    "active_width": 2,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 91284223.91741647,
+   "shots": 9502140,
+   "seconds": 0.1041,
+   "compile_seconds": 1.01,
+   "warmup_seconds": 0.31,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=13.stim": {
@@ -2096,6 +2527,15 @@
    "warmup_seconds": 0.0,
    "active_width": 2,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 49678707.65524901,
+   "shots": 5998557,
+   "seconds": 0.1207,
+   "compile_seconds": 1.76,
+   "warmup_seconds": 0.31,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2135,6 +2575,10 @@
    "active_width": 2,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "error": "ValueError: 68 shot words do not fit the noise kernel's shared memory",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=3.stim": {
@@ -2172,6 +2616,15 @@
    "warmup_seconds": 0.0,
    "active_width": 2,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1799096414.0198677,
+   "shots": 268435456,
+   "seconds": 0.1492,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.22,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2211,6 +2664,15 @@
    "active_width": 2,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 617422764.3482178,
+   "shots": 76695844,
+   "seconds": 0.1242,
+   "compile_seconds": 0.17,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=7.stim": {
@@ -2248,6 +2710,15 @@
    "warmup_seconds": 0.0,
    "active_width": 2,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 280571779.2460571,
+   "shots": 32051994,
+   "seconds": 0.1142,
+   "compile_seconds": 0.32,
+   "warmup_seconds": 0.24,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2287,6 +2758,15 @@
    "active_width": 2,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 148720066.9142713,
+   "shots": 16393004,
+   "seconds": 0.1102,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.28,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/blp_27_3_3.stim": {
@@ -2306,6 +2786,9 @@
   },
   "gpu": {
    "skipped": "tsim k_max 26 > 11"
+  },
+  "metal": {
+   "skipped": "tsim k_max 26 > 11"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/toric_375_3_5.stim": {
@@ -2322,6 +2805,9 @@
    "skipped": "no clifft k_max"
   },
   "gpu": {
+   "skipped": "no tsim k_max"
+  },
+  "metal": {
    "skipped": "no tsim k_max"
   }
  },
@@ -2340,6 +2826,9 @@
    "skipped": "clifft k_max 59 > 15"
   },
   "gpu": {
+   "skipped": "no tsim k_max"
+  },
+  "metal": {
    "skipped": "no tsim k_max"
   }
  },
@@ -2360,6 +2849,9 @@
   },
   "gpu": {
    "skipped": "tsim k_max 16 > 11"
+  },
+  "metal": {
+   "skipped": "tsim k_max 16 > 11"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_15_3_2.stim": {
@@ -2378,6 +2870,9 @@
    "skipped": "clifft k_max 16 > 15"
   },
   "gpu": {
+   "skipped": "tsim k_max 16 > 11"
+  },
+  "metal": {
    "skipped": "tsim k_max 16 > 11"
   }
  },
@@ -2398,6 +2893,9 @@
   },
   "gpu": {
    "skipped": "tsim k_max 20 > 11"
+  },
+  "metal": {
+   "skipped": "tsim k_max 20 > 11"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_21_3_3.stim": {
@@ -2416,6 +2914,9 @@
    "skipped": "clifft k_max 23 > 15"
   },
   "gpu": {
+   "skipped": "tsim k_max 23 > 11"
+  },
+  "metal": {
    "skipped": "tsim k_max 23 > 11"
   }
  },
@@ -2436,6 +2937,9 @@
   },
   "gpu": {
    "skipped": "tsim k_max 20 > 11"
+  },
+  "metal": {
+   "skipped": "tsim k_max 20 > 11"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_27_3_3.stim": {
@@ -2454,6 +2958,9 @@
    "skipped": "clifft k_max 24 > 15"
   },
   "gpu": {
+   "skipped": "tsim k_max 24 > 11"
+  },
+  "metal": {
    "skipped": "tsim k_max 24 > 11"
   }
  },
@@ -2493,6 +3000,15 @@
    "warmup_seconds": 6.03,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "metal": {
+   "shots_per_s": 13374183.881582454,
+   "shots": 8388608,
+   "seconds": 0.6272,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.89,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_9_3_2.stim": {
@@ -2531,6 +3047,15 @@
    "warmup_seconds": 44.52,
    "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
+  },
+  "metal": {
+   "shots_per_s": 442528.09511093353,
+   "shots": 262144,
+   "seconds": 0.5924,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 10.15,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2510.24615_lattice_surgery_cultivation/stim/inject-check-3_T.stim": {
@@ -2568,6 +3093,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1527868442.0491576,
+   "shots": 715827882,
+   "seconds": 0.4685,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.25,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2607,6 +3141,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 720572491.5436398,
+   "shots": 97612893,
+   "seconds": 0.1355,
+   "compile_seconds": 0.41,
+   "warmup_seconds": 0.27,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_cultivation_stim_X_T.stim": {
@@ -2644,6 +3187,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2927287061.6210256,
+   "shots": 1073741824,
+   "seconds": 0.3668,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2683,6 +3235,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2921245015.613677,
+   "shots": 1073741824,
+   "seconds": 0.3676,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_injection_stim_X_T.stim": {
@@ -2720,6 +3281,15 @@
    "warmup_seconds": 0.0,
    "active_width": 1,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 3151244024.9490085,
+   "shots": 2147483648,
+   "seconds": 0.6815,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2759,6 +3329,15 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 3170985370.47254,
+   "shots": 2147483648,
+   "seconds": 0.6772,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_simulation_stim_X_T.stim": {
@@ -2796,6 +3375,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2924037282.8364406,
+   "shots": 1073741824,
+   "seconds": 0.3672,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.11,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2835,6 +3423,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2934872856.5241747,
+   "shots": 1073741824,
+   "seconds": 0.3659,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.11,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_injection_stim_T.stim": {
@@ -2872,6 +3469,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1756615356.8244226,
+   "shots": 536870912,
+   "seconds": 0.3056,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2911,6 +3517,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1179342048.3355393,
+   "shots": 306783378,
+   "seconds": 0.2601,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.28,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_simulation_zoom_stim_T.stim": {
@@ -2948,6 +3563,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1182765799.922419,
+   "shots": 306783378,
+   "seconds": 0.2594,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -2987,6 +3611,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1194454047.2137084,
+   "shots": 306783378,
+   "seconds": 0.2568,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_with_idle_rounds_zoom_stim_T.stim": {
@@ -3024,6 +3657,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1180258370.3245468,
+   "shots": 306783378,
+   "seconds": 0.2599,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3063,6 +3705,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2179887678.9283886,
+   "shots": 536870912,
+   "seconds": 0.2463,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.12,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N2_stim_X_T.stim": {
@@ -3100,6 +3751,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1911138408.3655872,
+   "shots": 238609294,
+   "seconds": 0.1249,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.22,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3139,6 +3799,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1900417494.3568366,
+   "shots": 238609294,
+   "seconds": 0.1256,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.22,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N3_stim_X_T.stim": {
@@ -3176,6 +3845,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1701036417.538428,
+   "shots": 178956970,
+   "seconds": 0.1052,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3215,6 +3893,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1671772434.4827628,
+   "shots": 178956970,
+   "seconds": 0.107,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_injection_N2_stim_X_T.stim": {
@@ -3252,6 +3939,15 @@
    "warmup_seconds": 0.0,
    "active_width": 1,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1924059324.9852684,
+   "shots": 268435456,
+   "seconds": 0.1395,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3291,6 +3987,15 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2028233021.7165916,
+   "shots": 268435456,
+   "seconds": 0.1323,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.18,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_simulation_injection_N2_stim_X_T.stim": {
@@ -3328,6 +4033,15 @@
    "warmup_seconds": 0.0,
    "active_width": 1,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2057950456.943805,
+   "shots": 268435456,
+   "seconds": 0.1304,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.11,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3367,6 +4081,15 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2026414814.151527,
+   "shots": 268435456,
+   "seconds": 0.1325,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.11,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2512.23037_soft/stim/circuit_d3_p0.001.stim": {
@@ -3404,6 +4127,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1332104072.6016867,
+   "shots": 715827882,
+   "seconds": 0.5374,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3443,6 +4175,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 204003913.76054764,
+   "shots": 134217728,
+   "seconds": 0.6579,
+   "compile_seconds": 0.23,
+   "warmup_seconds": 0.45,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d3_T_p0.001.stim": {
@@ -3480,6 +4221,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 899589847.5696415,
+   "shots": 306783378,
+   "seconds": 0.341,
+   "compile_seconds": 0.14,
+   "warmup_seconds": 0.32,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3519,6 +4269,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 72272593.20420963,
+   "shots": 67108864,
+   "seconds": 0.9286,
+   "compile_seconds": 0.45,
+   "warmup_seconds": 1.35,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d7_T_p0.001.stim": {
@@ -3550,6 +4309,15 @@
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 19 > 15"
+  },
+  "metal": {
+   "shots_per_s": 7195888.31734584,
+   "shots": 4194304,
+   "seconds": 0.5829,
+   "compile_seconds": 2.0,
+   "warmup_seconds": 4.98,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_color_d5_X.stim": {
@@ -3587,6 +4355,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1221866220.9941669,
+   "shots": 357913941,
+   "seconds": 0.2929,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3626,6 +4403,15 @@
    "active_width": 3,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1338981295.9577968,
+   "shots": 357913941,
+   "seconds": 0.2673,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.22,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_color_d5_Z.stim": {
@@ -3663,6 +4449,15 @@
    "warmup_seconds": 0.0,
    "active_width": 3,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1159307405.491618,
+   "shots": 357913941,
+   "seconds": 0.3087,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.09,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3702,6 +4497,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1658978866.2825415,
+   "shots": 715827882,
+   "seconds": 0.4315,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_steane_d3_Y.stim": {
@@ -3739,6 +4543,15 @@
    "warmup_seconds": 0.0,
    "active_width": 3,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1746024048.815518,
+   "shots": 715827882,
+   "seconds": 0.41,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.21,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3778,6 +4591,15 @@
    "active_width": 3,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1521650887.2064035,
+   "shots": 715827882,
+   "seconds": 0.4704,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.08,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_unencoded_X.stim": {
@@ -3815,6 +4637,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1880763212.9863532,
+   "shots": 1073741824,
+   "seconds": 0.5709,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3854,6 +4685,15 @@
    "active_width": 3,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2034049777.3628087,
+   "shots": 1073741824,
+   "seconds": 0.5279,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.22,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_unencoded_Z.stim": {
@@ -3891,6 +4731,15 @@
    "warmup_seconds": 0.0,
    "active_width": 3,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1695428672.9979718,
+   "shots": 1073741824,
+   "seconds": 0.6333,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.15,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -3930,6 +4779,15 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 303587061.48101455,
+   "shots": 36398027,
+   "seconds": 0.1199,
+   "compile_seconds": 0.47,
+   "warmup_seconds": 0.25,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg342_inj3_T_p0.001.stim": {
@@ -3967,6 +4825,15 @@
    "warmup_seconds": 0.0,
    "active_width": 1,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 310282958.7895344,
+   "shots": 36398027,
+   "seconds": 0.1173,
+   "compile_seconds": 0.47,
+   "warmup_seconds": 0.2,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4006,6 +4873,15 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 313594612.8236258,
+   "shots": 37025580,
+   "seconds": 0.1181,
+   "compile_seconds": 0.45,
+   "warmup_seconds": 0.22,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg422_inj2_T_p0.001.stim": {
@@ -4043,6 +4919,15 @@
    "warmup_seconds": 0.0,
    "active_width": 1,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 279978271.47029686,
+   "shots": 36398027,
+   "seconds": 0.13,
+   "compile_seconds": 0.47,
+   "warmup_seconds": 0.2,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4082,6 +4967,15 @@
    "active_width": 1,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 302973942.72688645,
+   "shots": 36398027,
+   "seconds": 0.1201,
+   "compile_seconds": 0.47,
+   "warmup_seconds": 0.2,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg88_inj6_T_p0.001.stim": {
@@ -4119,6 +5013,15 @@
    "warmup_seconds": 0.0,
    "active_width": 1,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 305504953.3475282,
+   "shots": 37675151,
+   "seconds": 0.1233,
+   "compile_seconds": 0.5,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4158,6 +5061,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 3769382788.1364098,
+   "shots": 1073741824,
+   "seconds": 0.2849,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.07,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/coherent_d3_r3.stim": {
@@ -4195,6 +5107,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 876676133.0773517,
+   "shots": 536870912,
+   "seconds": 0.6124,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.13,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4234,6 +5155,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 3176191835.182138,
+   "shots": 536870912,
+   "seconds": 0.169,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.07,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/coherent_d5_r5.stim": {
@@ -4271,6 +5201,15 @@
    "warmup_seconds": 0.11,
    "active_width": 13,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 454679.8165658657,
+   "shots": 262144,
+   "seconds": 0.5765,
+   "compile_seconds": 0.41,
+   "warmup_seconds": 1.19,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4310,6 +5249,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1325745697.4953876,
+   "shots": 715827882,
+   "seconds": 0.5399,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/cultivation_d5.stim": {
@@ -4347,6 +5295,15 @@
    "warmup_seconds": 0.01,
    "active_width": 10,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 165833343.71039563,
+   "shots": 134217728,
+   "seconds": 0.8094,
+   "compile_seconds": 0.23,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4386,6 +5343,15 @@
    "active_width": 3,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1181384238.5433474,
+   "shots": 357913941,
+   "seconds": 0.303,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2604.27058_clifft/stim/surface_d7_r7.stim": {
@@ -4424,6 +5390,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 544887723.7519149,
+   "shots": 49941480,
+   "seconds": 0.0917,
+   "compile_seconds": 0.21,
+   "warmup_seconds": 0.07,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/MSC_circuit_d7_p0.0005.stim": {
@@ -4455,6 +5430,15 @@
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 19 > 15"
+  },
+  "metal": {
+   "shots_per_s": 31733427.77935192,
+   "shots": 16777216,
+   "seconds": 0.5287,
+   "compile_seconds": 1.4,
+   "warmup_seconds": 0.41,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/coherent_surface_d3_r1_p1e-3_rz0p02.stim": {
@@ -4492,6 +5476,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 3762577612.798393,
+   "shots": 1073741824,
+   "seconds": 0.2854,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4531,6 +5524,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 890895537.3513023,
+   "shots": 536870912,
+   "seconds": 0.6026,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/coherent_surface_d5_r1_p1e-3_rz0p02.stim": {
@@ -4568,6 +5570,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 3101852975.200188,
+   "shots": 536870912,
+   "seconds": 0.1731,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4607,6 +5618,15 @@
    "active_width": 13,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 454857.49099212984,
+   "shots": 262144,
+   "seconds": 0.5763,
+   "compile_seconds": 0.41,
+   "warmup_seconds": 0.02,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/distillation.stim": {
@@ -4644,6 +5664,15 @@
    "warmup_seconds": 0.0,
    "active_width": 3,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1205542926.8229015,
+   "shots": 357913941,
+   "seconds": 0.2969,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4683,6 +5712,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1317547177.0044873,
+   "shots": 715827882,
+   "seconds": 0.5433,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/msc_d5_inject_cultivate_p1e-3.stim": {
@@ -4720,6 +5758,15 @@
    "warmup_seconds": 0.01,
    "active_width": 10,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 166134026.58450723,
+   "shots": 134217728,
+   "seconds": 0.8079,
+   "compile_seconds": 0.24,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4759,6 +5806,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 134135099.39727016,
+   "shots": 56512727,
+   "seconds": 0.4213,
+   "compile_seconds": 0.48,
+   "warmup_seconds": 0.62,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2607.28600_symft/stim/pure_surface_d7_r7_p1e-3.stim": {
@@ -4796,6 +5852,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 557605588.187689,
+   "shots": 49941480,
+   "seconds": 0.0896,
+   "compile_seconds": 0.21,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4835,6 +5900,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 266635520.67113727,
+   "shots": 23598721,
+   "seconds": 0.0885,
+   "compile_seconds": 0.39,
+   "warmup_seconds": 0.12,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d3a6_inject_cultivate_T_p0.001.stim": {
@@ -4872,6 +5946,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1307049606.4356098,
+   "shots": 715827882,
+   "seconds": 0.5477,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.17,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4911,6 +5994,15 @@
    "active_width": 4,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1313098907.8600264,
+   "shots": 715827882,
+   "seconds": 0.5451,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.17,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d5a19_inject_cultivate_T_p0.001.stim": {
@@ -4948,6 +6040,15 @@
    "warmup_seconds": 0.01,
    "active_width": 10,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 145964170.37469938,
+   "shots": 134217728,
+   "seconds": 0.9195,
+   "compile_seconds": 0.24,
+   "warmup_seconds": 0.67,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -4987,6 +6088,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 128164089.48742045,
+   "shots": 134217728,
+   "seconds": 1.0472,
+   "compile_seconds": 0.26,
+   "warmup_seconds": 0.7,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d5a19r4_inject_cultivate_T_p0.001.stim": {
@@ -5024,6 +6134,15 @@
    "warmup_seconds": 0.01,
    "active_width": 10,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 142675780.08745018,
+   "shots": 134217728,
+   "seconds": 0.9407,
+   "compile_seconds": 0.27,
+   "warmup_seconds": 0.69,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5063,6 +6182,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 137522908.34077543,
+   "shots": 119304647,
+   "seconds": 0.8675,
+   "compile_seconds": 0.29,
+   "warmup_seconds": 0.72,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2609.18922_exact_ler_cultivation/stim/clifft_d3_p001.stim": {
@@ -5100,6 +6228,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1294767058.025023,
+   "shots": 715827882,
+   "seconds": 0.5529,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5139,6 +6276,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 169894236.27469778,
+   "shots": 134217728,
+   "seconds": 0.79,
+   "compile_seconds": 0.22,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t100_alpha0.5_p0.001.stim": {
@@ -5176,6 +6322,15 @@
    "warmup_seconds": 0.05,
    "active_width": 6,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 12892912.401791748,
+   "shots": 8388608,
+   "seconds": 0.6506,
+   "compile_seconds": 265.51,
+   "warmup_seconds": 11.69,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5215,6 +6370,15 @@
    "active_width": 6,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 104639301.65389976,
+   "shots": 67108864,
+   "seconds": 0.6413,
+   "compile_seconds": 1.24,
+   "warmup_seconds": 1.27,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha0.5_p0.001.stim": {
@@ -5252,6 +6416,15 @@
    "warmup_seconds": 0.01,
    "active_width": 6,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 103577127.74640143,
+   "shots": 67108864,
+   "seconds": 0.6479,
+   "compile_seconds": 1.21,
+   "warmup_seconds": 1.19,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5291,6 +6464,15 @@
    "active_width": 6,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 81535892.89195205,
+   "shots": 67108864,
+   "seconds": 0.8231,
+   "compile_seconds": 1.25,
+   "warmup_seconds": 1.39,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/code_switching_bt27_p0.001.stim": {
@@ -5310,6 +6492,9 @@
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 27 > 15"
+  },
+  "metal": {
+   "skipped": "tsim k_max 26 > 11"
   }
  },
  "papers/2610.06811_merlin/stim/code_switching_bt81_p0.001.stim": {
@@ -5328,6 +6513,9 @@
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 52 > 15"
+  },
+  "metal": {
+   "skipped": "no tsim k_max"
   }
  },
  "papers/2610.06811_merlin/stim/cultivation_d3_t.stim": {
@@ -5365,6 +6553,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1298124021.0464554,
+   "shots": 715827882,
+   "seconds": 0.5514,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5404,6 +6601,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 164284988.73414466,
+   "shots": 134217728,
+   "seconds": 0.817,
+   "compile_seconds": 0.22,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_15to1_p0.001.stim": {
@@ -5441,6 +6647,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2765179904.7317104,
+   "shots": 1073741824,
+   "seconds": 0.3883,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5480,6 +6695,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1039017951.8424442,
+   "shots": 429496729,
+   "seconds": 0.4134,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.38,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh12_p0.001.stim": {
@@ -5517,6 +6741,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 668349346.9562262,
+   "shots": 357913941,
+   "seconds": 0.5355,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.44,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5556,6 +6789,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 723298631.6416514,
+   "shots": 306783378,
+   "seconds": 0.4241,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.43,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh16_p0.001.stim": {
@@ -5593,6 +6835,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 530750605.92101896,
+   "shots": 268435456,
+   "seconds": 0.5058,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.52,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5632,6 +6883,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 570671146.432379,
+   "shots": 268435456,
+   "seconds": 0.4704,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 0.51,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh2_p0.001.stim": {
@@ -5669,6 +6929,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2767217739.7222557,
+   "shots": 1073741824,
+   "seconds": 0.388,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.22,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5708,6 +6977,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1413291686.4587848,
+   "shots": 715827882,
+   "seconds": 0.5065,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.29,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh6_p0.001.stim": {
@@ -5745,6 +7023,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1604934874.304543,
+   "shots": 536870912,
+   "seconds": 0.3345,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.29,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5784,6 +7071,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 920856606.0489836,
+   "shots": 536870912,
+   "seconds": 0.583,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.37,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.06828_practical_cost_cultivation/stim/color_code_cultivation_f3_T.stim": {
@@ -5821,6 +7117,15 @@
    "warmup_seconds": 0.01,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 64053238.177046,
+   "shots": 7924293,
+   "seconds": 0.1237,
+   "compile_seconds": 2.08,
+   "warmup_seconds": 0.12,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5860,6 +7165,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 43338586.35145385,
+   "shots": 6242685,
+   "seconds": 0.144,
+   "compile_seconds": 3.29,
+   "warmup_seconds": 0.12,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh10-S.stim": {
@@ -5897,6 +7211,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 4200559371.0489297,
+   "shots": 2147483648,
+   "seconds": 0.5112,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.07,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -5936,6 +7259,15 @@
    "active_width": 13,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1977580634.396664,
+   "shots": 1073741824,
+   "seconds": 0.543,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.14,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh100-S.stim": {
@@ -5974,6 +7306,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 4201981990.0142236,
+   "shots": 2147483648,
+   "seconds": 0.5111,
+   "compile_seconds": 0.28,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh100-T.stim": {
@@ -6004,6 +7345,15 @@
   },
   "clifft_cpu": {
    "skipped": "no clifft k_max"
+  },
+  "metal": {
+   "shots_per_s": 323586501.22833574,
+   "shots": 268435456,
+   "seconds": 0.8296,
+   "compile_seconds": 0.37,
+   "warmup_seconds": 0.57,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh2-S.stim": {
@@ -6041,6 +7391,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 4199299214.1998825,
+   "shots": 2147483648,
+   "seconds": 0.5114,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -6080,6 +7439,15 @@
    "active_width": 5,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2981879508.5170546,
+   "shots": 2147483648,
+   "seconds": 0.7202,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.11,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh20-S.stim": {
@@ -6118,6 +7486,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 4180340950.6798716,
+   "shots": 2147483648,
+   "seconds": 0.5137,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh20-T.stim": {
@@ -6149,6 +7526,15 @@
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 22 > 15"
+  },
+  "metal": {
+   "shots_per_s": 1253680129.6983716,
+   "shots": 1073741824,
+   "seconds": 0.8565,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.19,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh4-S.stim": {
@@ -6186,6 +7572,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 4201478105.722106,
+   "shots": 2147483648,
+   "seconds": 0.5111,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -6225,6 +7620,15 @@
    "active_width": 7,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2674237725.1403456,
+   "shots": 2147483648,
+   "seconds": 0.803,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.12,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh40-S.stim": {
@@ -6263,6 +7667,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 4171835909.529662,
+   "shots": 2147483648,
+   "seconds": 0.5148,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh40-T.stim": {
@@ -6294,6 +7707,15 @@
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 42 > 15"
+  },
+  "metal": {
+   "shots_per_s": 749727651.1275431,
+   "shots": 536870912,
+   "seconds": 0.7161,
+   "compile_seconds": 0.15,
+   "warmup_seconds": 0.26,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh6-S.stim": {
@@ -6331,6 +7753,15 @@
    "warmup_seconds": 0.0,
    "active_width": 0,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 4218513074.09446,
+   "shots": 2147483648,
+   "seconds": 0.5091,
+   "compile_seconds": 0.08,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -6370,6 +7801,15 @@
    "active_width": 9,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2391398525.532189,
+   "shots": 2147483648,
+   "seconds": 0.898,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.13,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh60-S.stim": {
@@ -6408,6 +7848,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 4188216296.8705764,
+   "shots": 2147483648,
+   "seconds": 0.5127,
+   "compile_seconds": 0.17,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh60-T.stim": {
@@ -6438,6 +7887,15 @@
   },
   "clifft_cpu": {
    "skipped": "no clifft k_max"
+  },
+  "metal": {
+   "shots_per_s": 523340255.3502184,
+   "shots": 268435456,
+   "seconds": 0.5129,
+   "compile_seconds": 0.2,
+   "warmup_seconds": 0.36,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh80-S.stim": {
@@ -6476,6 +7934,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 4183770344.280772,
+   "shots": 2147483648,
+   "seconds": 0.5133,
+   "compile_seconds": 0.22,
+   "warmup_seconds": 0.0,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/bh80-T.stim": {
@@ -6506,6 +7973,15 @@
   },
   "clifft_cpu": {
    "skipped": "no clifft k_max"
+  },
+  "metal": {
+   "shots_per_s": 398557408.59728706,
+   "shots": 268435456,
+   "seconds": 0.6735,
+   "compile_seconds": 0.28,
+   "warmup_seconds": 0.47,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/color3.stim": {
@@ -6543,6 +8019,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1576062631.607418,
+   "shots": 715827882,
+   "seconds": 0.4542,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.27,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -6582,6 +8067,15 @@
    "active_width": 10,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 201070754.47065815,
+   "shots": 134217728,
+   "seconds": 0.6675,
+   "compile_seconds": 0.22,
+   "warmup_seconds": 0.01,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/dk.stim": {
@@ -6619,6 +8113,15 @@
    "warmup_seconds": 0.0,
    "active_width": 4,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1968215389.7841785,
+   "shots": 715827882,
+   "seconds": 0.3637,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.13,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -6658,6 +8161,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 2334371697.3952303,
+   "shots": 357913941,
+   "seconds": 0.1533,
+   "compile_seconds": 0.1,
+   "warmup_seconds": 0.09,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/rp2-d3.stim": {
@@ -6695,6 +8207,15 @@
    "warmup_seconds": 0.0,
    "active_width": 8,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 940902706.9170039,
+   "shots": 357913941,
+   "seconds": 0.3804,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.2,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  },
@@ -6734,6 +8255,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1082679015.3783293,
+   "shots": 126322567,
+   "seconds": 0.1167,
+   "compile_seconds": 0.18,
+   "warmup_seconds": 0.08,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/rp2-d5.stim": {
@@ -6765,6 +8295,15 @@
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 18 > 15"
+  },
+  "metal": {
+   "shots_per_s": 18814505.540868223,
+   "shots": 16777216,
+   "seconds": 0.8917,
+   "compile_seconds": 0.25,
+   "warmup_seconds": 0.8,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/wg-S.stim": {
@@ -6803,6 +8342,15 @@
    "active_width": 0,
    "clifft_version": "0.13.0",
    "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 1848575469.2764366,
+   "shots": 178956970,
+   "seconds": 0.0968,
+   "compile_seconds": 0.11,
+   "warmup_seconds": 0.07,
+   "backend": "MetalShotSampler",
+   "tsim_version": "1.0.0"
   }
  },
  "papers/2610.22315_magna/stim/wg-T.stim": {
@@ -6840,6 +8388,15 @@
    "warmup_seconds": 0.0,
    "active_width": 5,
    "clifft_version": "0.13.0",
+   "tsim_version": "1.0.0"
+  },
+  "metal": {
+   "shots_per_s": 830932691.6890275,
+   "shots": 178956970,
+   "seconds": 0.2154,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 0.23,
+   "backend": "MetalShotSampler",
    "tsim_version": "1.0.0"
   }
  }
