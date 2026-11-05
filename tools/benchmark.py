@@ -211,7 +211,7 @@ def rate(r):
     mark = "‡" if r.get("build") else ""
     for unit, scale in (("B", 1e9), ("M", 1e6), ("k", 1e3)):
         if x >= scale:
-            return f"{x / scale:.3g} {unit}{mark}"
+            return f"{x / scale:.3g}&nbsp;{unit}{mark}"  # no line break between number and unit
     return f"{x:.3g}{mark}"
 
 
@@ -238,7 +238,7 @@ def gpu_cell(cpu, gpu):
     """A GPU rate with its speedup over one CPU core, e.g. ``122 M (109x)``."""
     cell = rate(gpu)
     x = speedup(cpu, gpu)
-    return f"{cell} ({x})" if x != "–" else cell
+    return f"{cell}&nbsp;({x})" if x != "–" else cell
 
 
 def kcell(r, simulator, short=False):
@@ -276,7 +276,7 @@ def paper_meta(folder):
 def table():
     results = load()
     lines = [
-        "| circuit | k_max | CPU, 1 core | RTX 5090 | M4 Pro |",
+        "| circuit | k_max | CPU&nbsp;(single-core) | RTX&nbsp;5090 | M4&nbsp;Pro |",
         "|---|---|---|---|---|",
     ]
     by_folder = {}
