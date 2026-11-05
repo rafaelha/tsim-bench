@@ -38,8 +38,34 @@ def attempt(fn, *args):
         return {"error": f"{type(error).__name__}: {error}"[:400]}
 
 
+def allow_large_shared_memory():
+    """Work around a launch failure in the GPU draft (PR #219 at a2af975f).
+
+    For rows of more than ~6000 output columns, ``gather_columns`` needs more than the 48 KB of
+    shared memory a kernel gets without opting in, and fails with CUDA_ERROR_INVALID_VALUE. This lets
+    the packing kernels use the device maximum (99 KB on the RTX 5090); it changes no results.
+    """
+    import cupy
+    from tsim.statevector.cuda import sampler as cuda_sampler
+
+    limit = cupy.cuda.Device().attributes["MaxSharedMemoryPerBlockOptin"]
+    original = cuda_sampler.CudaShotSampler._pack
+
+    def _pack(self, module, *args, **kwargs):
+        for name in ("gather_columns", "noise_kept"):
+            kernel = getattr(module, name, None)
+            if kernel is not None:
+                kernel.max_dynamic_shared_size_bytes = limit - kernel.attributes["shared_size_bytes"]
+        return original(self, module, *args, **kwargs)
+
+    cuda_sampler.CudaShotSampler._pack = _pack
+
+
 def throughput(text, mode, target, max_bytes):
     import tsim
+
+    if mode == "gpu":
+        allow_large_shared_memory()
 
     t0 = time.perf_counter()
     sampler = tsim.Circuit(text).compile_detector_sampler()

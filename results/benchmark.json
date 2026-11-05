@@ -74,7 +74,12 @@
    "tsim_version": "1.0.0"
   },
   "gpu": {
-   "error": "CUDADriverError: CUDA_ERROR_INVALID_VALUE: invalid argument",
+   "shots_per_s": 63915654.15581232,
+   "shots": 2609336,
+   "seconds": 0.0408,
+   "compile_seconds": 5.97,
+   "warmup_seconds": 0.13,
+   "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
   }
  },
@@ -97,7 +102,12 @@
    "tsim_version": "1.0.0"
   },
   "gpu": {
-   "error": "CUDADriverError: CUDA_ERROR_INVALID_VALUE: invalid argument",
+   "shots_per_s": 62621551.92142449,
+   "shots": 2574920,
+   "seconds": 0.0411,
+   "compile_seconds": 6.1,
+   "warmup_seconds": 0.13,
+   "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
   }
  },
@@ -176,7 +186,12 @@
    "tsim_version": "1.0.0"
   },
   "gpu": {
-   "error": "CUDADriverError: CUDA_ERROR_INVALID_VALUE: invalid argument",
+   "shots_per_s": 68020934.79639202,
+   "shots": 2788939,
+   "seconds": 0.041,
+   "compile_seconds": 5.05,
+   "warmup_seconds": 0.13,
+   "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
   }
  },
@@ -199,7 +214,12 @@
    "tsim_version": "1.0.0"
   },
   "gpu": {
-   "error": "CUDADriverError: CUDA_ERROR_INVALID_VALUE: invalid argument",
+   "shots_per_s": 67916770.59551795,
+   "shots": 2749658,
+   "seconds": 0.0405,
+   "compile_seconds": 5.11,
+   "warmup_seconds": 0.13,
+   "backend": "CudaShotSampler",
    "tsim_version": "0.1.5"
   }
  },

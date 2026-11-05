@@ -26,7 +26,9 @@ excluded.
   Only circuits with Tsim k_max <= 15.
 - GPU: one circuit at a time, only circuits with Tsim k_max <= 11 (the CUDA executor's limit).
   Calls are capped at 2 GiB of output, so for circuits with many detectors the rate is bounded by
-  the device-to-host copy.
+  the device-to-host copy. The worker lets the draft's packing kernels use more than 48 KB of shared
+  memory (see ``allow_large_shared_memory`` in bench_worker.py); without that, circuits with more than
+  ~6000 output columns fail to launch.
 """
 
 import argparse
@@ -43,7 +45,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 VENVS = ROOT / ".venvs"
 RESULTS = ROOT / "results" / "benchmark.json"
 WORKER = ROOT / "tools" / "bench_worker.py"
-REPO_URL = "https://github.com/rafaelha/tsim-active-width/blob/master"
+REPO_URL = "https://github.com/rafaelha/tsim-bench/blob/master"
 ENVS = {
     "tsim-cpu": ["bloqade-tsim==1.0.0", "clifft==0.13.0"],
     "tsim-gpu": ["bloqade-tsim[gpu] @ git+https://github.com/QuEraComputing/tsim@a2af975f"],
@@ -94,7 +96,7 @@ def run_worker(mode, path, core=None):
     return json.loads(lines[-1])
 
 
-def run_step(mode, jobs):
+def run_step(mode, jobs, only_errors=False):
     results = load()
     paths = circuits()
     if mode in ("cpu", "gpu"):
@@ -109,6 +111,8 @@ def run_step(mode, jobs):
                                                    else "no Tsim k_max"}
     else:
         todo = paths
+    if only_errors:
+        todo = [p for p in todo if "error" in results.get(p, {}).get(mode if mode != "kmax" else "tsim", {"error": 1})]
     jobs = 1 if mode == "gpu" else jobs
     cores = queue.Queue()
     for c in range(jobs):
@@ -191,6 +195,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", choices=["setup", "kmax", "cpu", "gpu", "table", "all"])
     parser.add_argument("--jobs", type=int, default=8)
+    parser.add_argument("--only-errors", action="store_true", help="rerun only circuits whose last result was an error")
     args = parser.parse_args()
     steps = ["setup", "kmax", "cpu", "gpu", "table"] if args.step == "all" else [args.step]
     for step in steps:
@@ -199,7 +204,7 @@ def main():
         elif step == "table":
             table()
         else:
-            run_step(step, args.jobs)
+            run_step(step, args.jobs, args.only_errors)
 
 
 if __name__ == "__main__":
