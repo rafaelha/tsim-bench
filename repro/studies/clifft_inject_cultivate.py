@@ -102,6 +102,11 @@ def _plot_ic_single(t_stats, s_stats, dcolor, output_path, published=None):
                             yerr=[r["std_error"] for r in rows], color=_GATE_COLOR[gate], ls="--", marker="o", mfc="white",
                             ms=5, lw=0.9, capsize=2, label=f"{'T-Gate' if gate == 'T' else 'S-Proxy'} (Clifft paper)")
     if dcolor == 5:
+        from repro.studies import soft_d5
+
+        ex = soft_d5.exact_grid()
+        ax_top.plot([1 / a for _, a, _ in ex], [pl for _, _, pl in ex], "x", color="C2", ms=8, mew=1.8, zorder=6,
+                    label="exact (Wan, Zapirain)")
         soft_x = [total / kept for _, total, kept, _ in _SOFT_IC_D5]
         soft_y = [rate for _, _, _, rate in _SOFT_IC_D5]
         ax_top.scatter(soft_x, soft_y, marker="*", s=140, facecolors="none", edgecolors="black", linewidths=1.2, zorder=5,
@@ -176,7 +181,9 @@ def figures(results):
             "Drawn with the Clifft paper's own plotting code (\\texttt{plot\\_results.py}) on the Gidney study's samples (filled, solid; "
             "shaded: 1000x likelihood). Open markers, dashed: the Clifft paper's published importance-sampling values "
             "(\\texttt{analysis.json}" + (", $d=5$ only)" if d == 5 else "; $d=3$ values are not in it)") +
-            (". Stars: SOFT." if d == 5 else ".") + " Bottom: $T/S$ ratio, median and 95\\% credible interval (bootstrap, as in the paper).",
+            (". Stars: SOFT." if d == 5 else ".") + " Bottom: $T/S$ ratio, median and 95\\% credible interval (bootstrap, as in the paper)." +
+            (" Crosses: exact $T$-gate values of Wan and Zapirain (arXiv:2609.18922); our direct samples agree with them, "
+             "while the paper's importance-sampling values at $p\\le10^{-3}$ lie 2--3$\\sigma$ below." if d == 5 else ""),
             common.budget_line(g, used, label="(Gidney study points)")))
     return figs
 
@@ -185,9 +192,19 @@ def checks(results):
     from repro.studies import gidney_cultivation as gc
 
     g = common.load_results("gidney_cultivation")
+    published = json.loads(data_sources.data_file("clifft_paper_inject_cultivate_analysis.json").read_text())
+    sigma = {row["p"]: row["std_error"] for row in published.get("t_gate_d5", [])}
     rows = []
     for p, v in TABLE2.items():
         r = g.get(gc.cname(5, "unitary", p, "t"))
         if r:
-            rows.append(common.check_row(f"d=5 p={p:g} T (Clifft Table 2, importance sampling)", "t", dict(value=v), r["totals"]))
+            rows.append(common.check_row(f"d=5 p={p:g} T (Clifft Table 2, importance sampling)", "t",
+                                         dict(value=v, sigma=sigma.get(p, float("nan"))), r["totals"]))
+    # The exact values (Wan, Zapirain, arXiv:2609.18922) for the same circuits: the reference the sampled values should hit.
+    from repro.studies import soft_d5
+
+    for p, _, pl in soft_d5.exact_grid():
+        r = g.get(gc.cname(5, "unitary", p, "t"))
+        if r:
+            rows.append(common.check_row(f"d=5 p={p:g} T (exact, 2609.18922)", "t", dict(value=pl, sigma=0.0), r["totals"]))
     return [x for x in rows if x]
