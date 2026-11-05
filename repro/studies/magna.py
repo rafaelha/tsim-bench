@@ -151,8 +151,6 @@ def figures(results):
     for k, col in zip(BH, ("C0", "C1", "C2")):
         plotting.ler_points(axes[0], ser(f"bh{k}-T"), color=col, label=f"k={k}, T")
         plotting.ler_points(axes[0], ser(f"bh{k}-S"), color=col, ls="--", marker="s", label=f"k={k}, S")
-        xs = np.geomspace(1e-4, 1e-3, 20)
-        axes[0].plot(xs, bh_leading(k, xs), color=col, lw=0.7, ls=":")
         plotting.accept_points(axes[1], ser(f"bh{k}-T"), color=col, label=f"k={k}")
     plotting.style_ler(axes[0], "input error probability $p$")
     axes[0].set_ylabel("joint output infidelity")
@@ -161,7 +159,8 @@ def figures(results):
     path = plotting.save(fig, out / "fig8a_bh.pdf")
     pts = [k for k, r in results.items() if r["params"]["example"].startswith("bh")]
     figs.append(common.Figure("magna8", path, "Magna Fig. 8(a): Bravyi--Haah $(3k+8)$-to-$k$ distillation",
-                              "Bare qubits, $Z$ errors of probability $p$ on the input magic states only. Dotted: the leading order $(1+3k)p^2$. "
+                              "Bare qubits, $Z$ errors of probability $p$ on the input magic states only. The $T$ and $S$ curves coincide, as they "
+                              "should when the only errors are $Z$ errors on the inputs. "
                               "Dashed/squares: the matched Clifford circuit ($|S\\rangle$ inputs, product-$S$ target).",
                               common.budget_line(results, pts)))
 

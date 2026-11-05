@@ -182,14 +182,39 @@ def checks_section(studies):
             z = "--" if r["z"] != r["z"] else f"{r['z']:+.1f}"
             lines.append(f"{esc(st)} & {esc(r['label'])} & {r['variant']} & {r['quantity']} & {fmt_rate(r['paper'], r['paper_sigma'])} & "
                          f"{fmt_rate(r['ours'], r['ours_sigma'])} & {r['ratio']:.3f} & {z} \\\\")
-    if not lines:
+    from repro import stim_check
+
+    slines = []
+    for st in studies:
+        sr = stim_check.load(st)
+        for name, r in sorted(common.load_results(st).items()):
+            x = sr.get(name)
+            if not x:
+                continue
+            for q in ("acceptance", "LER"):
+                ref = dict(kept=x["kept"], shots=x["shots"]) if q == "acceptance" else dict(errors=x["errors"], kept=x["kept"])
+                if q == "LER" and not x["errors"]:
+                    continue
+                c = common.check_row(name, "clifford", ref, r["totals"], quantity=q)
+                if c:
+                    z = "--" if c["z"] != c["z"] else f"{c['z']:+.1f}"
+                    slines.append(f"{esc(st)} & {esc(name)} & {q} & {fmt_rate(c['paper'], c['paper_sigma'])} & "
+                                  f"{fmt_rate(c['ours'], c['ours_sigma'])} & {common.fmt_count(x['shots'])} & {z} \\\\")
+    stim_tab = ""
+    if slines:
+        stim_tab = ("\\subsection*{GPU kernel vs.\\ Stim on the same Clifford circuits}\n"
+                    "Every Clifford-proxy point re-sampled with Stim on the CPU (\\texttt{repro/stim\\_check.py}), "
+                    "same circuit file and postselection: an independent test of the Tsim GPU kernel.\n\n"
+                    "{\\scriptsize\n\\begin{longtable}{l l l l l r r}\n\\toprule\nstudy & point & quantity & Stim (CPU) & Tsim GPU & Stim shots & $z$ \\\\\n"
+                    "\\midrule\n\\endhead\n" + "\n".join(slines) + "\n\\bottomrule\n\\end{longtable}}\n")
+    if not lines and not stim_tab:
         return ""
     return ("\\section*{Reproduction checks against published numbers}\\addcontentsline{toc}{section}{Reproduction checks}\n"
             "Every published number (tables, released data) that a sampled point can be compared with. $\\pm$: one standard "
             "deviation (Poisson for error counts, binomial for acceptance; published values without an uncertainty, or exact "
             "values, have none). $z$: difference over the combined standard deviation.\n\n"
             "{\\scriptsize\n\\begin{longtable}{l l l l l l r r}\n\\toprule\nstudy & point & variant & quantity & published & Tsim GPU & ratio & $z$ \\\\\n"
-            "\\midrule\n\\endhead\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{longtable}}\n\\clearpage\n")
+            "\\midrule\n\\endhead\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{longtable}}\n" + stim_tab + "\\clearpage\n")
 
 
 def main():

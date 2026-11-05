@@ -1,0 +1,45 @@
+{
+ "study": "rp2_ungrown",
+ "point": "msc3_s",
+ "spec_key": "c64b1a61e2fd0a49",
+ "circuit": "msc3_s",
+ "circuit_sha256": "23c5735d189fa332d33a65d2e3d65687e0a67e4075ff3fb529104ddf33956b42",
+ "tsim": {
+  "version": "0.1.5",
+  "commit": "a2af975fbcc2d41dda3b4104caba415b87f36a91"
+ },
+ "params": {
+  "code": "msc3",
+  "gate": "s",
+  "variant": "clifford"
+ },
+ "segments": [
+  {
+   "seed": 2236483541,
+   "shots": 47356784665,
+   "kept": 24342991604,
+   "errors": 20095,
+   "obs_ones": [
+    20095
+   ],
+   "seconds": 13.335,
+   "compile_seconds": 0.26,
+   "backend": "CudaShotSampler",
+   "gpu": "NVIDIA GeForce RTX 5090",
+   "host": "rafaelha-B850-EAGLE-WIFI6E",
+   "started": "2026-11-05T09:28:17",
+   "finished": "2026-11-05T09:28:31",
+   "stop_reason": "target_errors"
+  }
+ ],
+ "totals": {
+  "shots": 47356784665,
+  "kept": 24342991604,
+  "errors": 20095,
+  "seconds": 13.335,
+  "compile_seconds": 0.26,
+  "obs_ones": [
+   20095
+  ]
+ }
+}

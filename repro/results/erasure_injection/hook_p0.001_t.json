@@ -1,0 +1,46 @@
+{
+ "study": "erasure_injection",
+ "point": "hook_p0.001_t",
+ "spec_key": "314b939716a90e9b",
+ "circuit": "hook_p0.001_t",
+ "circuit_sha256": "20752f99cbb6856f4e714b595e157c83b0d2638e79c6e6f584b7d6409cbddea2",
+ "tsim": {
+  "version": "0.1.5",
+  "commit": "a2af975fbcc2d41dda3b4104caba415b87f36a91"
+ },
+ "params": {
+  "kind": "hook",
+  "p": 0.001,
+  "gate": "t",
+  "variant": "t"
+ },
+ "segments": [
+  {
+   "seed": 2525501414,
+   "shots": 357564416,
+   "kept": 322381662,
+   "errors": 176210,
+   "obs_ones": [
+    176210
+   ],
+   "seconds": 0.332,
+   "compile_seconds": 0.57,
+   "backend": "CudaShotSampler",
+   "gpu": "NVIDIA GeForce RTX 5090",
+   "host": "rafaelha-B850-EAGLE-WIFI6E",
+   "started": "2026-11-05T09:39:59",
+   "finished": "2026-11-05T09:40:00",
+   "stop_reason": "target_errors"
+  }
+ ],
+ "totals": {
+  "shots": 357564416,
+  "kept": 322381662,
+  "errors": 176210,
+  "seconds": 0.332,
+  "compile_seconds": 0.57,
+  "obs_ones": [
+   176210
+  ]
+ }
+}

@@ -11,7 +11,8 @@ Circuits: the authors' generator (tomirendo/surface-code-magic-state-cultivation
 ``generate_double_ghz``) in its own pinned environment (``.venvs/vaknin``,
 ``repro/external/vaknin_generate.py``), with their ``NoiseModel().uniform_depolarizing(p)``:
 
-- Clifford approximation: ``to_stim_circuit(apply_non_cliffords=False)`` (non-Clifford gates replaced, their
+- Clifford approximation: ``to_stim_circuit(apply_non_cliffords=False, non_clifford_noise_strategy="CZ")``, identical to the
+  authors' released ``init-H-injection-ghz`` circuit at $p=10^{-3}$ (CH checks replaced by CZ, which measures $Z_L$; their
   noise kept), final $Z_L$ readout;
 - non-Clifford: ``apply_non_cliffords=True``, placeholders replaced by $T$/$T^\dagger$/CCZ/CH/CSWAP
   decompositions (our ``make_circuits.py``); the final noiseless readout is set to $Z_L$, preceded by the noiseless logical rotation $\exp(\mp i\pi Y_L/8)$

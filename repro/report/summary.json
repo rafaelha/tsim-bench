@@ -24,57 +24,57 @@
   "points": 0
  },
  "gauging_cultivation": {
-  "seconds": 60.035,
-  "compile": 0.65,
-  "shots": 145198193182,
-  "points": 1
+  "seconds": 184.86700000000005,
+  "compile": 4.23,
+  "shots": 541323626556,
+  "points": 12
  },
  "fold_transversal": {
-  "seconds": 0.0,
-  "compile": 0.0,
-  "shots": 0,
-  "points": 0
+  "seconds": 2782.72,
+  "compile": 9.669999999999998,
+  "shots": 3688967067707,
+  "points": 12
  },
  "chan_flags": {
-  "seconds": 0.0,
-  "compile": 0.0,
-  "shots": 0,
-  "points": 0
+  "seconds": 1192.6639999999998,
+  "compile": 10.76,
+  "shots": 1183551920017,
+  "points": 28
  },
  "magna": {
-  "seconds": 0.0,
-  "compile": 0.0,
-  "shots": 0,
-  "points": 0
+  "seconds": 1516.0459999999998,
+  "compile": 13.16,
+  "shots": 7156151553926,
+  "points": 36
  },
  "google_experiment": {
-  "seconds": 0.0,
-  "compile": 0.0,
-  "shots": 0,
-  "points": 0
+  "seconds": 265.5450000000001,
+  "compile": 169.09000000000012,
+  "shots": 1480000000000,
+  "points": 278
  },
  "star_injection": {
-  "seconds": 0.0,
-  "compile": 0.0,
-  "shots": 0,
-  "points": 0
+  "seconds": 1226.6309999999999,
+  "compile": 16.059999999999995,
+  "shots": 7632431423807,
+  "points": 30
  },
  "rp2_ungrown": {
-  "seconds": 0.0,
-  "compile": 0.0,
-  "shots": 0,
-  "points": 0
+  "seconds": 22.93,
+  "compile": 0.54,
+  "shots": 78692155670,
+  "points": 2
  },
  "erasure_injection": {
-  "seconds": 0.0,
-  "compile": 0.0,
-  "shots": 0,
-  "points": 0
+  "seconds": 2.5180000000000002,
+  "compile": 1.27,
+  "shots": 2876819979,
+  "points": 4
  },
  "vaknin_full_vector": {
-  "seconds": 0.0,
-  "compile": 0.0,
-  "shots": 0,
-  "points": 0
+  "seconds": 48.229,
+  "compile": 11.31,
+  "shots": 2222842736,
+  "points": 4
  }
 }

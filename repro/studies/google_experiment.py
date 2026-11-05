@@ -226,6 +226,9 @@ def figures(results):
     pts = [k for k, r in results.items() if r["params"]["kind"] == "kt"]
     figs.append(common.Figure("google_kt", path, "Rosenfeld et al. Fig. 3(b) and SI Fig.~validating\\_KT: kickback tomography of the cultivated $|T\\rangle$",
                               "Left: KT logical error vs.\\ injected angle (SI1000 $p=2.3\\times10^{-3}$), with and without the interleaved QEC cycles. "
-                              "Right: KT error at $\\theta=\\pi/4$ vs.\\ $p$, which scales as $p^3$ (fault distance 3).",
+                              "Without the QEC cycles there is a single stabilizer measurement at the end, so single faults cause logical errors: "
+                              "the error is about 100x worse (as in the paper) and, since postselection on the cultivation checks still projects "
+                              "onto the $T$ axis, nearly independent of $\\theta$. Right: KT error at $\\theta=\\pi/4$ vs.\\ $p$, which scales "
+                              "as $p^3$ (fault distance 3).",
                               common.budget_line(results, pts)))
     return figs

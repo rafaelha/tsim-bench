@@ -8,7 +8,8 @@ tomirendo/surface-code-magic-state-cultivation at ec28f6b) in its pinned environ
 (d1 = 3, the protocol of the paper's full-vector comparison, Fig. 26):
 
 - ``proxy.stim``: ``to_stim_circuit(apply_non_cliffords=False, noise_model, p)``, the Clifford
-  approximation (non-Clifford gates replaced, their noise kept);
+  approximation with ``non_clifford_noise_strategy="CZ"``, exactly as the authors' generate_circuits.py
+  makes their released ``injection-ghz`` proxies;
 - ``placeholder.stim``: ``to_stim_circuit(apply_non_cliffords=True, noise_model, p)`` with each
   non-Clifford gate encoded as an otherwise unused Stim gate (``convertion_dict``);
 - ``logicals.json``: the qubit indices of the logical X and Z operators.
@@ -39,7 +40,7 @@ def main():
     injection = s.generate_injection_circuit(generate_unitary=False)
     double = s.generate_double_ghz(generate_unitary=False)
     circuit = first + injection + double
-    (out / "proxy.stim").write_text(str(circuit.to_stim_circuit(apply_non_cliffords=False, noise_model=noise, p=p)) + "\n")
+    (out / "proxy.stim").write_text(str(circuit.to_stim_circuit(apply_non_cliffords=False, noise_model=noise, p=p, non_clifford_noise_strategy="CZ")) + "\n")
     (out / "placeholder.stim").write_text(str(circuit.to_stim_circuit(apply_non_cliffords=True, noise_model=noise, p=p)) + "\n")
     (out / "logicals.json").write_text(json.dumps({"x": [q.index for q in s.logical_x_qubits], "z": [q.index for q in s.logical_z_qubits]}))
 

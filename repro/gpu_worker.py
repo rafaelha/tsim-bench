@@ -30,6 +30,9 @@ import numpy as np
 SAVE_EVERY = 60.0
 TARGET_CALL_SECONDS = 4.0
 MAX_ROW_BYTES = 1 << 30  # host memory for the kept rows of one call
+# The GPU sampler allocates pinned host buffers by requested shots, not kept ones: bound the rows of
+# one call even when almost nothing is kept (STAR d=7 at high p ran out of pinned memory).
+MAX_CALL_BYTES = 4 << 30
 
 
 def tsim_build():
@@ -191,7 +194,7 @@ def main():
         expected_accept = accept
         # Grow the call size toward TARGET_CALL_SECONDS, bounded by host memory for kept rows.
         grow = TARGET_CALL_SECONDS / max(dt, 1e-3)
-        n = int(min(n * min(grow, 4.0), MAX_ROW_BYTES / (row_bytes * expected_accept), 2**34))
+        n = int(min(n * min(grow, 4.0), MAX_ROW_BYTES / (row_bytes * expected_accept), MAX_CALL_BYTES / row_bytes, 2**34))
         if time.perf_counter() - last_save > SAVE_EVERY:
             save()
             last_save = time.perf_counter()
