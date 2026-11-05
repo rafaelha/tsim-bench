@@ -117,3 +117,17 @@ def figures(results):
                               "LER of kept shots (errors / kept); $A$ is the acceptance rate; Tsim brackets are 1000x likelihood intervals.",
                               common.budget_line(results), kind="table"))
     return figs
+
+
+def checks(results):
+    rows = []
+    for p, (s, k, e) in PUBLISHED.items():
+        r = results.get(f"d5_p{p:g}")
+        if r:
+            rows.append(common.check_row(f"d=5 p={p:g} T (SOFT Table 3)", "t", dict(errors=e, kept=k), r["totals"]))
+    for p, a, pl in exact_grid():
+        r = results.get(f"d5_p{p:g}")
+        if r:
+            rows.append(common.check_row(f"d=5 p={p:g} T (exact, 2609.18922)", "t", dict(value=pl, sigma=0.0), r["totals"]))
+            rows.append(common.check_row(f"d=5 p={p:g} T (exact, 2609.18922)", "t", dict(value=a, sigma=0.0), r["totals"], quantity="acceptance"))
+    return [x for x in rows if x]

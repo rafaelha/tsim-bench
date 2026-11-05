@@ -5,7 +5,73 @@
   "shots": 2366229884178,
   "points": 32
  },
+ "wan_few_clifford_terms": {
+  "seconds": 267.2989999999999,
+  "compile": 5.32,
+  "shots": 647991207588,
+  "points": 16
+ },
+ "soft_d5": {
+  "seconds": 12.405,
+  "compile": 0.33,
+  "shots": 32668554185,
+  "points": 1
+ },
  "clifft_inject_cultivate": {
+  "seconds": 0.0,
+  "compile": 0.0,
+  "shots": 0,
+  "points": 0
+ },
+ "gauging_cultivation": {
+  "seconds": 60.035,
+  "compile": 0.65,
+  "shots": 145198193182,
+  "points": 1
+ },
+ "fold_transversal": {
+  "seconds": 0.0,
+  "compile": 0.0,
+  "shots": 0,
+  "points": 0
+ },
+ "chan_flags": {
+  "seconds": 0.0,
+  "compile": 0.0,
+  "shots": 0,
+  "points": 0
+ },
+ "magna": {
+  "seconds": 0.0,
+  "compile": 0.0,
+  "shots": 0,
+  "points": 0
+ },
+ "google_experiment": {
+  "seconds": 0.0,
+  "compile": 0.0,
+  "shots": 0,
+  "points": 0
+ },
+ "star_injection": {
+  "seconds": 0.0,
+  "compile": 0.0,
+  "shots": 0,
+  "points": 0
+ },
+ "rp2_ungrown": {
+  "seconds": 0.0,
+  "compile": 0.0,
+  "shots": 0,
+  "points": 0
+ },
+ "erasure_injection": {
+  "seconds": 0.0,
+  "compile": 0.0,
+  "shots": 0,
+  "points": 0
+ },
+ "vaknin_full_vector": {
   "seconds": 0.0,
   "compile": 0.0,
   "shots": 0,

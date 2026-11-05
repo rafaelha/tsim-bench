@@ -70,3 +70,15 @@ def figures(results):
         "Same samples as the Gidney study (unitary injection). Error bars on the ratio are $\\pm1\\sigma$ (Poisson). "
         "Open diamonds: Clifft's Table 2 $d=5$ values (stratified importance sampling).",
         common.budget_line(g, used, label="(Gidney study points)"))]
+
+
+def checks(results):
+    from repro.studies import gidney_cultivation as gc
+
+    g = common.load_results("gidney_cultivation")
+    rows = []
+    for p, v in TABLE2.items():
+        r = g.get(gc.cname(5, "unitary", p, "t"))
+        if r:
+            rows.append(common.check_row(f"d=5 p={p:g} T (Clifft Table 2, importance sampling)", "t", dict(value=v), r["totals"]))
+    return [x for x in rows if x]

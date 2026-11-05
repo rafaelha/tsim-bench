@@ -74,3 +74,13 @@ def figures(results):
     return [common.Figure("rp2", path, "Chen et al. Table 1 (ungrown columns): RP$^2$ cultivation without escape, $p=10^{-3}$",
                           "Every detector postselected, perfect final stabilizer round and logical readout.",
                           common.budget_line(results), kind="table")]
+
+
+def checks(results):
+    rows = []
+    for key, (pl, disc) in TABLE.items():
+        r = results.get(f"{key}_s")
+        if r:
+            rows.append(common.check_row(f"{key.upper()} S proxy", "clifford", dict(value=pl), r["totals"]))
+            rows.append(common.check_row(f"{key.upper()} S proxy", "clifford", dict(value=1 - disc), r["totals"], quantity="acceptance"))
+    return [x for x in rows if x]

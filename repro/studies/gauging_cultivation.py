@@ -111,3 +111,13 @@ def figures(results):
         "Dashed: the $|{+i}\\rangle$ Clifford proxy; solid: real $T$ gates with a noiseless $T$-basis readout. "
         "Open diamonds: the paper's Table 1 (proxy, Stim). The $d=7$ point of the paper is not attempted.",
         common.budget_line(results))]
+
+
+def checks(results):
+    rows = []
+    for (p, d), (pl, e, ps) in TABLE.items():
+        r = results.get(name(d, p, "s"))
+        if r:
+            rows.append(common.check_row(f"d={d} p={p:g} |+i> proxy", "clifford", dict(value=pl, sigma=e), r["totals"]))
+            rows.append(common.check_row(f"d={d} p={p:g} |+i> proxy", "clifford", dict(value=ps), r["totals"], quantity="acceptance"))
+    return [x for x in rows if x]

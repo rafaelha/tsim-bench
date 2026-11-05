@@ -78,7 +78,10 @@ def figures(results):
         "wan", path, "Wan et al. Figs. 15--17, 19: $d=3$ $T$ cultivation, LER and post-selection rate",
         "Injection + double check with a noiseless $T$-projection readout; every detector postselected. "
         "Open diamonds: the paper's exact non-Clifford results (Table v3-results, $2^{29}$--$2^{32}$ shots, Apple M4 Pro CPU). "
-        "Red: real $T$ gates; blue: the $S$ proxy (the paper's Stim reference).",
+        "Red: real $T$ gates; blue: the $S$ proxy (the paper's Stim reference). The LERs agree with the table; the published "
+        "post-selection rates are 0.3--0.6\\% higher than ours, also for the $S$ proxy sampled with Stim ($10^8$ shots: "
+        "0.80367 vs.\\ Tsim GPU 0.80365 at $p=5\\times10^{-4}$), so the circuit the repo generates is slightly different from the "
+        "one behind the table. The $T$ circuit keeps about 0.1\\% more shots than its $S$ proxy.",
         common.budget_line(results))]
     rows = []
     for p in PS:
@@ -97,3 +100,13 @@ def figures(results):
     figs.append(common.Figure("wan_table", tpath, "Wan et al. Table v3-results vs. Tsim GPU", "",
                               common.budget_line(results, [f"d3_p{p:g}_t" for p in PS]), kind="table"))
     return figs
+
+
+def checks(results):
+    rows = []
+    for p, (s, psr, e, k) in PUBLISHED_T.items():
+        r = results.get(f"d3_p{p:g}_t")
+        if r:
+            rows.append(common.check_row(f"d=3 p={p:g} T", "t", dict(errors=e, kept=k), r["totals"]))
+            rows.append(common.check_row(f"d=3 p={p:g} T", "t", dict(kept=k, shots=s), r["totals"], quantity="acceptance"))
+    return [x for x in rows if x]

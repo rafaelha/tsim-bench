@@ -198,7 +198,7 @@ def figures(results):
         "gidney21", path, "Gidney et al. Fig. 21: injection + cultivation, sampled",
         "Three injection styles with $d=3$ cultivation and unitary injection with $d=5$ cultivation, all detectors postselected. "
         "Dashed/squares: the $S$ proxy (the paper's Clifford simulation); solid/circles: real $T$ gates. "
-        "Open black-edged markers: the paper's Stim data (Zenodo stats.csv, up to $10^{12}$ shots per point). "
+        "Open diamonds: the paper's Stim data (Zenodo stats.csv, up to $10^{12}$ shots per point). "
         "The right panel shows discard rates of the $S$ proxy.",
         common.budget_line(results, pts)))
     figs.append(table(results, pub))
@@ -236,3 +236,21 @@ def plotting_fmt(errors, kept, shots, seconds=None):
     if seconds is not None:
         s += f", {common.fmt_seconds(seconds)}"
     return s
+
+
+def checks(results):
+    rows = []
+    gate_of = {"perfectionist": "s", "vec_intercept_t": "t", "vec_intercept_s": "s", "vec_intercept_z": "z"}
+    for r in published():
+        g = gate_of.get(r["decoder"])
+        if g is None:
+            continue
+        mine = results.get(cname(r["d"], r["style"], r["p"], g))
+        if not mine:
+            continue
+        lab = f"{r['style']} d={r['d']} p={r['p']:g} {g.upper()} ({'Stim' if r['decoder'] == 'perfectionist' else 'state vector'})"
+        variant = "t" if g == "t" else "clifford"
+        if r["errors"]:
+            rows.append(common.check_row(lab, variant, dict(errors=r["errors"], kept=r["kept"]), mine["totals"]))
+        rows.append(common.check_row(lab, variant, dict(kept=r["kept"], shots=r["shots"]), mine["totals"], quantity="acceptance"))
+    return [x for x in rows if x]

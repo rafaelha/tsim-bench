@@ -220,3 +220,37 @@ def budget_line(results, points=None, label=None):
     head = f"{label}: " if label else ""
     return (f"{head}{fmt_seconds(sec)} GPU sampling + {fmt_seconds(comp)} compile, {fmt_count(shots)} shots, "
             f"{len(rs)} points ({', '.join(gpus)}, Tsim {', '.join(commits)})")
+
+
+# ---------------------------------------------------------------------------------------------
+# Published-vs-GPU checks (collected by make_report into one table)
+
+
+def check_row(label, variant, paper, ours, quantity="LER"):
+    """One comparison. ``paper``: (value, sigma) or (errors, kept) with ``kind``; ``ours``: totals dict.
+
+    ``paper`` is a dict with ``value`` and optional ``sigma`` (absolute), or ``errors``/``kept``.
+    The z-score uses Poisson errors on both sides.
+    """
+    import math
+
+    if ours is None or not ours.get("kept"):
+        return None
+    if quantity == "LER":
+        mine = ours["errors"] / ours["kept"]
+        s_mine = mine / math.sqrt(ours["errors"]) if ours["errors"] else float("nan")
+    else:  # acceptance
+        mine = ours["kept"] / ours["shots"]
+        s_mine = math.sqrt(mine * (1 - mine) / ours["shots"])
+    if "errors" in paper:
+        pv = paper["errors"] / paper["kept"]
+        sp = pv / math.sqrt(paper["errors"]) if paper["errors"] else float("nan")
+    elif "shots" in paper:
+        pv = paper["kept"] / paper["shots"]
+        sp = math.sqrt(pv * (1 - pv) / paper["shots"])
+    else:
+        pv, sp = paper["value"], paper.get("sigma", float("nan"))
+    sig = math.sqrt(sp**2 + s_mine**2) if not math.isnan(sp) else s_mine
+    z = (mine - pv) / sig if sig and not math.isnan(sig) else float("nan")
+    return dict(label=label, variant=variant, quantity=quantity, paper=pv, paper_sigma=sp, ours=mine, ours_sigma=s_mine,
+                ours_errors=ours.get("errors"), z=z, ratio=mine / pv if pv else float("nan"))
