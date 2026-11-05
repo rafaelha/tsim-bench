@@ -32,12 +32,16 @@ The paper assumes "reliable" |T⟩ inputs, for example from cultivation. Stim ca
 | circuit | non-Clifford gates | Tsim k | Clifft k (ActiveWidthSchedulePass) |
 |---|---|---|---|
 | `distillation_15to1_T_d13_p0.001.stim` | 16 T | 4 | 4 |
-| `distillation_15to1_T_d17_p0.001.stim` | 16 T | OOM | timeout |
-| `distillation_15to1_T_d21_p0.001.stim` | 16 T | OOM | timeout |
-| `distillation_15to1_T_d25_p0.001.stim` | 16 T | OOM | timeout |
+| `distillation_15to1_T_d17_p0.001.stim` | 16 T | 4‡ | timeout |
+| `distillation_15to1_T_d21_p0.001.stim` | 16 T | 4‡ | timeout |
+| `distillation_15to1_T_d25_p0.001.stim` | 16 T | 4‡ | timeout |
 | `distillation_15to1_T_d5_p0.001.stim` | 16 T | 4 | 4 |
 | `distillation_15to1_T_d9_p0.001.stim` | 16 T | 4 | 4 |
 
 Tsim 1.0.0, default `active_statevector` strategy, largest statevector component width. Clifft 0.13.0: default HIR passes +
 `ActiveWidthSchedulePass()` (default settings), `peak_active_width`. Compile only, from `results/benchmark.json`
 (`tools/benchmark.py`). Each simulator ran in its own process, capped at 40 GB of memory and 30 min.
+
+‡ Tsim [PR #270](https://github.com/QuEraComputing/tsim/pull/270) (`96b86e8b`). Tsim 1.0.0 runs out of memory compiling d = 17–25:
+`transform_error_basis` builds a dense vertices × error-bits matrix (121 GiB at d = 25). With the PR's sparse error basis, all three
+compile at k = 4 in 1.8 / 2.7 / 4.5 GB (56 / 120 / 231 s). Clifft's compile still exceeds 30 min.

@@ -1540,53 +1540,81 @@
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d17_p0.001.stim": {
   "tsim": {
-   "error": "out of memory (worker capped at 40 GB)"
+   "k": 4,
+   "seconds": 56.12,
+   "build": "Tsim PR #270 (96b86e8b)"
   },
   "clifft": {
    "error": "timeout after 1800s"
   },
   "cpu": {
-   "skipped": "no tsim k_max"
+   "shots_per_s": 106150.76384943166,
+   "shots": 40281,
+   "seconds": 0.3795,
+   "compile_seconds": 55.57,
+   "warmup_seconds": 8.12,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0",
+   "build": "Tsim PR #270 (96b86e8b)"
   },
   "clifft_cpu": {
    "skipped": "no clifft k_max"
   },
   "gpu": {
-   "skipped": "no tsim k_max"
+   "error": "out of memory (worker capped at 40 GB)"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d21_p0.001.stim": {
   "tsim": {
-   "error": "out of memory (worker capped at 40 GB)"
+   "k": 4,
+   "seconds": 120.06,
+   "build": "Tsim PR #270 (96b86e8b)"
   },
   "clifft": {
    "error": "timeout after 1800s"
   },
   "cpu": {
-   "skipped": "no tsim k_max"
+   "shots_per_s": 54131.894748063736,
+   "shots": 26371,
+   "seconds": 0.4872,
+   "compile_seconds": 121.59,
+   "warmup_seconds": 0.13,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0",
+   "build": "Tsim PR #270 (96b86e8b)"
   },
   "clifft_cpu": {
    "skipped": "no clifft k_max"
   },
   "gpu": {
-   "skipped": "no tsim k_max"
+   "error": "out of memory (worker capped at 40 GB)"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d25_p0.001.stim": {
   "tsim": {
-   "error": "MemoryError: Unable to allocate 121. GiB for an array with shape (115467, 1125210) and data type uint8"
+   "k": 4,
+   "seconds": 230.85,
+   "build": "Tsim PR #270 (96b86e8b)"
   },
   "clifft": {
    "error": "timeout after 1800s"
   },
   "cpu": {
-   "skipped": "no tsim k_max"
+   "shots_per_s": 43173.39130662105,
+   "shots": 18597,
+   "seconds": 0.4308,
+   "compile_seconds": 230.45,
+   "warmup_seconds": 0.14,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0",
+   "build": "Tsim PR #270 (96b86e8b)"
   },
   "clifft_cpu": {
    "skipped": "no clifft k_max"
   },
   "gpu": {
-   "skipped": "no tsim k_max"
+   "error": "MemoryError: Unable to allocate 121. GiB for an array with shape (115467, 1125210) and data type uint8",
+   "tsim_version": "0.1.5"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d5_p0.001.stim": {

@@ -35,6 +35,10 @@ Produced by [`tools/benchmark.py`](tools/benchmark.py) (`uv run python tools/ben
 - **GPU "unsupported":** for the 2505.13587 distillation at d = 9 and 13, the draft's noise kernel itself refuses the rows (232 and
   487 shot words "do not fit the noise kernel's shared memory").
 - **GPU speedup:** Tsim GPU rate over Tsim single-core rate.
+- **‡:** measured with Tsim [PR #270](https://github.com/QuEraComputing/tsim/pull/270) (`96b86e8b`, sparse error basis) instead of
+  1.0.0. It is used only where 1.0.0 runs out of memory while compiling (2505.13587 at d = 17–25). The PR leaves sampling unchanged:
+  seeded samples are bit-identical to 1.0.0 on 26 test circuits. The GPU draft lacks the fix, so its compile of these circuits still runs
+  out of memory.
 - **k_max:** Tsim 1.0.0 `compile_detector_sampler()` (largest statevector component).
 - **Clifft:** [`SUMMARY.md`](SUMMARY.md) has, per circuit, the same columns plus Clifft 0.13.0's single-core throughput and k_max. Clifft
   always runs with `default_hir_pass_manager()` + `ActiveWidthSchedulePass()` at default settings, and samples with
@@ -92,9 +96,9 @@ Produced by [`tools/benchmark.py`](tools/benchmark.py) (`uv run python tools/ben
 | [`inject_cultivate_T_d3_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2504.02935_erasure_injection/stim/inject_cultivate_T_d3_p0.001.stim) | 33 M | 16.7 B | 508x | 4 |
 | **[2505.13587](https://arxiv.org/abs/2505.13587)** Cain et al. (2025), *Fast correlated decoding of transversal logical algorithms* | | | | |
 | [`distillation_15to1_T_d13_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d13_p0.001.stim) | 211 k | unsupported | – | 4 |
-| [`distillation_15to1_T_d17_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d17_p0.001.stim) | – | – | – | OOM |
-| [`distillation_15to1_T_d21_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d21_p0.001.stim) | – | – | – | OOM |
-| [`distillation_15to1_T_d25_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d25_p0.001.stim) | – | – | – | OOM |
+| [`distillation_15to1_T_d17_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d17_p0.001.stim) | 106 k‡ | OOM | – | 4‡ |
+| [`distillation_15to1_T_d21_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d21_p0.001.stim) | 54.1 k‡ | OOM | – | 4‡ |
+| [`distillation_15to1_T_d25_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d25_p0.001.stim) | 43.2 k‡ | OOM | – | 4‡ |
 | [`distillation_15to1_T_d5_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d5_p0.001.stim) | 1.74 M | 95.6 M | 55x | 4 |
 | [`distillation_15to1_T_d9_p0.001`](https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d9_p0.001.stim) | 484 k | unsupported | – | 4 |
 | **[2507.12511](https://arxiv.org/abs/2507.12511)** Ruiz et al. (2025), *Unfolded distillation: very low-cost magic state preparation for biased-noise qubits* | | | | |
@@ -322,7 +326,9 @@ A few generators need the authors' own environment; the folder README says when.
     - Tsim's `active_statevector` refuses Merlin's bt81 (it would need 63 active qubits, against a limit of 30; Clifft 52) and the
       3D toric tricycle factories: `toric_81_3_3`, where Tsim would need 63 and Clifft gets 59, and `toric_375_3_5`, where Tsim would
       need 186 and Clifft overflows.
-    - Neither finishes on the 2505.13587 distillation at d = 17, 21, 25 (6k–40k qubits). Tsim's compile exceeds the 40 GB memory cap
-      (d = 25 asks for a 121 GiB matrix), and Clifft's compile takes more than 30 min. At d = 13 Tsim compiles in 28 s and Clifft in
-      22 min, both to k = 4.
+    - The 2505.13587 distillation at d = 17, 21, 25 (18k–40k qubits):
+      - **Tsim 1.0.0:** cannot compile it. A dense vertices × error-bits matrix exceeds the 40 GB cap (d = 25 asks for 121 GiB).
+      - **Tsim with [PR #270](https://github.com/QuEraComputing/tsim/pull/270)**, which keeps that matrix sparse: compiles all three at
+        k = 4, in 1.8–4.5 GB and 56–231 s. These cells are marked ‡.
+      - **Clifft:** its compile takes more than 30 min. At d = 13 Tsim compiles in 28 s and Clifft in 22 min, both to k = 4.
   - `ActiveWidthSchedulePass` matters most on the STAR circuits, where it brings Clifft from k=d down to 2.

@@ -55,7 +55,12 @@ REPO_URL = "https://github.com/rafaelha/tsim-bench/blob/master"
 ENVS = {
     "tsim-cpu": ["bloqade-tsim==1.0.0", "clifft==0.13.0"],
     "tsim-gpu": ["bloqade-tsim[gpu] @ git+https://github.com/QuEraComputing/tsim@a2af975f"],
+    # Tsim PR #270 (sparse error basis): same samples and k as 1.0.0, far less compile memory. Used
+    # with --tsim-env tsim-sparse only for circuits that 1.0.0 cannot compile; marked in the tables.
+    "tsim-sparse": ["bloqade-tsim @ git+https://github.com/QuEraComputing/tsim@96b86e8b", "clifft==0.13.0"],
 }
+BUILD_LABEL = {"tsim-sparse": "Tsim PR #270 (96b86e8b)"}
+TSIM_ENV = "tsim-cpu"  # set by --tsim-env
 CPU_MAX_K, GPU_MAX_K = 15, 11
 TIMEOUT = {"kmax": 1800, "cpu": 1200, "gpu": 900, "clifft_cpu": 3600}
 # Memory: every worker runs in its own systemd scope with a hard MemoryMax (no swap), so a worker that
@@ -89,7 +94,8 @@ def save(results):
 
 
 def run_worker(mode, path, core=None, extra=(), memory_gb=MEMORY_BUDGET_GB):
-    venv = "tsim-gpu" if mode == "gpu" else "tsim-cpu"
+    tsim_run = mode == "cpu" or (mode == "kmax" and list(extra) == ["tsim"])
+    venv = "tsim-gpu" if mode == "gpu" else (TSIM_ENV if tsim_run else "tsim-cpu")
     cmd = [str(VENVS / venv / "bin" / "python"), str(WORKER), mode, str(ROOT / path), *extra]
     env = dict(os.environ)
     if mode in ("cpu", "clifft_cpu"):
@@ -112,7 +118,7 @@ def run_worker(mode, path, core=None, extra=(), memory_gb=MEMORY_BUDGET_GB):
     return json.loads(lines[-1])
 
 
-def run_step(mode, jobs, only_errors=False, only=None):
+def run_step(mode, jobs, only_errors=False, only=None, sims=("tsim", "clifft")):
     results = load()
     paths = [p for p in circuits() if not only or only in p]
     if mode in ("cpu", "gpu", "clifft_cpu"):
@@ -140,7 +146,8 @@ def run_step(mode, jobs, only_errors=False, only=None):
         done += 1
         entry = results.setdefault(p, {})
         if mode == "kmax":
-            entry["tsim"], entry["clifft"] = r.get("tsim", r), r.get("clifft", r)
+            for name in sims:
+                entry[name] = r.get(name, r)
         else:
             entry[mode] = r
         save(results)
@@ -150,11 +157,16 @@ def run_step(mode, jobs, only_errors=False, only=None):
     def measure(p, core, memory_gb):
         if mode == "kmax":  # one process per simulator, so a Clifft timeout keeps Tsim's k
             out = {}
-            for name in ("tsim", "clifft"):
+            for name in sims:
                 r = run_worker(mode, p, core, [name], memory_gb)
                 out[name] = r.get(name, r)  # a timeout or crash comes back without the key
+                if name == "tsim" and TSIM_ENV in BUILD_LABEL:
+                    out[name]["build"] = BUILD_LABEL[TSIM_ENV]
             return out
-        return run_worker(mode, p, core, memory_gb=memory_gb)
+        r = run_worker(mode, p, core, memory_gb=memory_gb)
+        if mode == "cpu" and TSIM_ENV in BUILD_LABEL:
+            r["build"] = BUILD_LABEL[TSIM_ENV]
+        return r
 
     cores = queue.Queue()
     for c in range(jobs):
@@ -183,10 +195,11 @@ def rate(r):
     if "error" in r:
         return failure(r["error"])
     x = r["shots_per_s"]
+    mark = "‡" if r.get("build") else ""
     for unit, scale in (("B", 1e9), ("M", 1e6), ("k", 1e3)):
         if x >= scale:
-            return f"{x / scale:.3g} {unit}"
-    return f"{x:.3g}"
+            return f"{x / scale:.3g} {unit}{mark}"
+    return f"{x:.3g}{mark}"
 
 
 def failure(error):
@@ -212,7 +225,7 @@ def kcell(r, simulator):
     if r is None:
         return "–"
     if r.get("k") is not None:
-        return str(r["k"])
+        return str(r["k"]) + ("‡" if r.get("build") else "")
     error = r.get("error", "")
     m = re.search(r"active width would reach (\d+)", error)
     if m:
@@ -272,9 +285,14 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("step", choices=["setup", "kmax", "cpu", "gpu", "clifft", "table", "all"])
     parser.add_argument("--jobs", type=int, default=8)
+    parser.add_argument("--tsim-env", default="tsim-cpu", choices=["tsim-cpu", "tsim-sparse"],
+                        help="environment for Tsim k_max and CPU throughput (default: Tsim 1.0.0)")
+    parser.add_argument("--sims", default="tsim,clifft", help="kmax: which simulators to measure")
     parser.add_argument("--only", default=None, help="restrict to circuits whose path contains this substring")
     parser.add_argument("--only-errors", action="store_true", help="run only circuits without a result for this step, or whose last result was an error")
     args = parser.parse_args()
+    global TSIM_ENV
+    TSIM_ENV = args.tsim_env
     steps = ["setup", "kmax", "cpu", "clifft", "gpu", "table"] if args.step == "all" else [args.step]
     for step in steps:
         if step == "setup":
@@ -282,7 +300,8 @@ def main():
         elif step == "table":
             table()
         else:
-            run_step("clifft_cpu" if step == "clifft" else step, args.jobs, args.only_errors, args.only)
+            run_step("clifft_cpu" if step == "clifft" else step, args.jobs, args.only_errors, args.only,
+                     tuple(args.sims.split(",")))
 
 
 if __name__ == "__main__":

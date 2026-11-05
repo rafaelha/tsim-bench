@@ -12,30 +12,30 @@
     "non_clifford_gates": {
       "T": 16
     },
-    "tsim_k": null,
-    "tsim_error": "out of memory (worker capped at 40 GB)",
+    "tsim_k": 4,
     "clifft_k": null,
-    "clifft_error": "timeout after 1800s"
+    "clifft_error": "timeout after 1800s",
+    "tsim_build": "Tsim PR #270 (96b86e8b)"
   },
   {
     "file": "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d21_p0.001.stim",
     "non_clifford_gates": {
       "T": 16
     },
-    "tsim_k": null,
-    "tsim_error": "out of memory (worker capped at 40 GB)",
+    "tsim_k": 4,
     "clifft_k": null,
-    "clifft_error": "timeout after 1800s"
+    "clifft_error": "timeout after 1800s",
+    "tsim_build": "Tsim PR #270 (96b86e8b)"
   },
   {
     "file": "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d25_p0.001.stim",
     "non_clifford_gates": {
       "T": 16
     },
-    "tsim_k": null,
-    "tsim_error": "MemoryError: Unable to allocate 121. GiB for an array with shape (115467, 1125210) and data type uint8",
+    "tsim_k": 4,
     "clifft_k": null,
-    "clifft_error": "timeout after 1800s"
+    "clifft_error": "timeout after 1800s",
+    "tsim_build": "Tsim PR #270 (96b86e8b)"
   },
   {
     "file": "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d5_p0.001.stim",

@@ -66,6 +66,8 @@ def main():
         "  - `≥60 (overflow)`: Clifft's planner would exceed its dense-state limit.",
         "  - `63 (refused, limit 30)`: Tsim's active_statevector strategy would need that many active qubits.",
         "- **Gate counts** count each `REPEAT` body once.",
+        "- **‡:** Tsim [PR #270](https://github.com/QuEraComputing/tsim/pull/270) (`96b86e8b`, sparse error basis), used only where",
+        "  Tsim 1.0.0 runs out of memory while compiling (2505.13587 at d = 17–25). Samples and k are unchanged by the PR.",
         "- **Merlin (2610.06811) distillation:** Clifft gives k=0 because, with Merlin's Z-only noise and target scoring, the circuit is Clifford",
         "  as an operator (triorthogonality). See [the Merlin README](papers/2610.06811_merlin/README.md).",
         "",
