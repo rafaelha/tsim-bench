@@ -1,0 +1,56 @@
+[
+  {
+    "file": "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d13_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 16
+    },
+    "tsim_k": 4,
+    "clifft_k": 4
+  },
+  {
+    "file": "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d17_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 16
+    },
+    "tsim_k": null,
+    "tsim_error": "out of memory (worker capped at 40 GB)",
+    "clifft_k": null,
+    "clifft_error": "timeout after 1800s"
+  },
+  {
+    "file": "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d21_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 16
+    },
+    "tsim_k": null,
+    "tsim_error": "out of memory (worker capped at 40 GB)",
+    "clifft_k": null,
+    "clifft_error": "timeout after 1800s"
+  },
+  {
+    "file": "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d25_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 16
+    },
+    "tsim_k": null,
+    "tsim_error": "MemoryError: Unable to allocate 121. GiB for an array with shape (115467, 1125210) and data type uint8",
+    "clifft_k": null,
+    "clifft_error": "timeout after 1800s"
+  },
+  {
+    "file": "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d5_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 16
+    },
+    "tsim_k": 4,
+    "clifft_k": 4
+  },
+  {
+    "file": "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d9_p0.001.stim",
+    "non_clifford_gates": {
+      "T": 16
+    },
+    "tsim_k": 4,
+    "clifft_k": 4
+  }
+]
