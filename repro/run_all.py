@@ -56,6 +56,11 @@ def generate(study, mod, regenerate):
         print(f"  circuit {study}/{name} ({time.perf_counter() - t0:.1f} s)", flush=True)
 
 
+def capped(cmd):
+    """``cmd`` inside a systemd user scope with the memory cap (no swap), so a runaway job is killed alone."""
+    return ["systemd-run", "--user", "--scope", "-q", "-p", f"MemoryMax={MEMORY_MAX}", "-p", "MemorySwapMax=0", *cmd]
+
+
 def run_point(study, pt, scale, fresh):
     out = common.result_path(study, pt.name)
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -72,8 +77,7 @@ def run_point(study, pt, scale, fresh):
     }
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
         json.dump(spec, f)
-    cmd = ["systemd-run", "--user", "--scope", "-q", "-p", f"MemoryMax={MEMORY_MAX}", "-p", "MemorySwapMax=0",
-           str(common.GPU_PYTHON), str(common.REPRO / "gpu_worker.py"), f.name]
+    cmd = capped([str(common.GPU_PYTHON), str(common.REPRO / "gpu_worker.py"), f.name])
     t0 = time.perf_counter()
     timeout = pt.max_seconds * scale * 1.3 + 1800
     try:
@@ -141,12 +145,12 @@ def main():
         run_point(s, pt, args.scale, args.fresh)
     if not args.no_crosscheck:
         # Independent CPU cross-checks (skip points already checked): Stim on every Clifford point, Clifft on selected T points.
-        subprocess.run([sys.executable, "-m", "repro.stim_check"] + (["--only", *args.only] if args.only else []))
+        subprocess.run(capped([sys.executable, "-m", "repro.stim_check"] + (["--only", *args.only] if args.only else [])))
         clifft_py = common.ROOT / ".venvs" / "clifft" / "bin" / "python"
         if clifft_py.exists():
-            subprocess.run([str(clifft_py), str(common.REPRO / "clifft_check.py")])
+            subprocess.run(capped([str(clifft_py), str(common.REPRO / "clifft_check.py")]))
     if not args.no_report:
-        subprocess.run([sys.executable, "-m", "repro.make_report"] + (["--only", *args.only] if args.only else []))
+        subprocess.run(capped([sys.executable, "-m", "repro.make_report"] + (["--only", *args.only] if args.only else [])))
 
 
 if __name__ == "__main__":

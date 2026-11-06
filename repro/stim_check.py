@@ -17,6 +17,7 @@ import time
 from repro import common
 
 OUT = common.REPRO / "results_stim"
+CHUNK_BYTES = 1 << 28  # 256 MB of detector data per sample() call and job
 
 
 def run(study, point, circuit, postselect, shots, seed):
@@ -33,7 +34,8 @@ def run(study, point, circuit, postselect, shots, seed):
         mask[postselect] = True
     kept = errors = done = 0
     t0 = time.perf_counter()
-    chunk = 10_000_000
+    # Bounded memory per job: the detector array is shots x detectors bytes (bool), plus the masked copy.
+    chunk = int(max(10_000, min(10_000_000, CHUNK_BYTES // max(1, nd + no))))
     while done < shots:
         n = int(min(chunk, shots - done))
         det, obs = s.sample(n, separate_observables=True)
