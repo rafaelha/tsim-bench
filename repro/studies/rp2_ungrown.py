@@ -93,5 +93,5 @@ def checks(results):
         r = results.get(f"{key}_s")
         if r:
             rows.append(common.check_row(f"{key.upper()} S proxy", "clifford", dict(value=pl), r["totals"]))
-            rows.append(common.check_row(f"{key.upper()} S proxy", "clifford", dict(value=1 - disc), r["totals"], quantity="acceptance"))
+            rows.append(common.check_row(f"{key.upper()} S proxy", "clifford", dict(value=1 - disc, sigma=0.001 / 12 ** .5), r["totals"], quantity="acceptance"))
     return [x for x in rows if x]
