@@ -1,6 +1,6 @@
 """Cross-check the GPU kernel against Stim on every Clifford-proxy point (CPU, independent of Tsim).
 
-    uv run python -m repro.stim_check [--shots 1e9] [--jobs 8] [--only study ...]
+    uv run python -m repro.stim_check [--shots 1e9] [--max-seconds 300] [--jobs 8] [--only study ...]
 
 For each sampled point with ``variant == "clifford"`` (the circuit is Clifford, so Stim can sample
 it), draws ``--shots`` shots with Stim's detector sampler, applies the same postselection and error
@@ -13,6 +13,7 @@ import argparse
 import concurrent.futures as cf
 import json
 import time
+import zlib
 
 from repro import common
 
@@ -20,7 +21,7 @@ OUT = common.REPRO / "results_stim"
 CHUNK_BYTES = 1 << 28  # 256 MB of detector data per sample() call and job
 
 
-def run(study, point, circuit, postselect, shots, seed):
+def run(study, point, circuit, postselect, shots, seed, max_seconds):
     import numpy as np
     import stim
 
@@ -36,7 +37,7 @@ def run(study, point, circuit, postselect, shots, seed):
     t0 = time.perf_counter()
     # Bounded memory per job: the detector array is shots x detectors bytes (bool), plus the masked copy.
     chunk = int(max(10_000, min(10_000_000, CHUNK_BYTES // max(1, nd + no))))
-    while done < shots:
+    while done < shots and time.perf_counter() - t0 < max_seconds:
         n = int(min(chunk, shots - done))
         det, obs = s.sample(n, separate_observables=True)
         keep = ~(det[:, mask].any(1))
@@ -54,6 +55,7 @@ def run(study, point, circuit, postselect, shots, seed):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--shots", type=float, default=1e9)
+    ap.add_argument("--max-seconds", type=float, default=300, help="per point; the shots drawn by then are used")
     ap.add_argument("--jobs", type=int, default=8)
     ap.add_argument("--only", nargs="*", default=None)
     args = ap.parse_args()
@@ -70,10 +72,11 @@ def main():
                 continue
             if (OUT / st / f"{name}.json").exists():
                 continue
-            todo.append((st, name, p.circuit, p.postselect, args.shots, hash(name) & 0xFFFF))
+            todo.append((st, name, p.circuit, p.postselect, args.shots, zlib.crc32(f"{st}/{name}".encode()) & 0xFFFFFFFF, args.max_seconds))
     print(f"{len(todo)} Clifford points to cross-check with Stim", flush=True)
     with cf.ProcessPoolExecutor(args.jobs) as ex:
-        for out in ex.map(run, *zip(*todo)) if todo else []:
+        for fut in cf.as_completed([ex.submit(run, *x) for x in todo]):
+            out = fut.result()
             print(f"  {out['study']}/{out['point']}: acc {out['kept'] / out['shots']:.5f}, {out['errors']} errors ({out['seconds']} s)", flush=True)
 
 
