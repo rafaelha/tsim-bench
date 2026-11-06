@@ -10,3 +10,5 @@ repro/report/*.out
 repro/report/*.toc
 repro/report/*.fls
 repro/report/*.fdb_latexmk
+repro/results*/**/*.stale-*
+repro/results/*.log

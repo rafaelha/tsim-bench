@@ -193,7 +193,7 @@ def checks_section(studies):
                 continue
             for q in ("acceptance", "LER"):
                 ref = dict(kept=x["kept"], shots=x["shots"]) if q == "acceptance" else dict(errors=x["errors"], kept=x["kept"])
-                if q == "LER" and not x["errors"]:
+                if q == "LER" and (not x["errors"] or r["params"].get("kind") == "yield"):  # yield points: acceptance only (raw observable)
                     continue
                 c = common.check_row(name, "clifford", ref, r["totals"], quantity=q)
                 if c:

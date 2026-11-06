@@ -1,1 +1,1 @@
-{"study": "magna", "point": "bh10-S_p0.0002", "shots": 1000000000, "kept": 992431265, "errors": 5521, "seconds": 82.3, "stim": "1.16.0"}
+{"study": "magna", "point": "bh10-S_p0.0002", "shots": 1000000000, "kept": 992437972, "errors": 5547, "seconds": 122.5, "stim": "1.16.0", "circuit_sha256": "71dfdd78f590eedda02dda5d11cb3db45b8d712f78e165e98f3673a1ddcdca4c"}

@@ -1,1 +1,1 @@
-{"study": "gauging_cultivation", "point": "d3_p0.003_s", "shots": 1000000000, "kept": 98329421, "errors": 2608, "seconds": 1024.3, "stim": "1.16.0"}
+{"study": "gauging_cultivation", "point": "d3_p0.003_s", "shots": 206488800, "kept": 20313994, "errors": 607, "seconds": 305.7, "stim": "1.16.0", "circuit_sha256": "817343e8cd496c807246969c44c8fe7a0a7b70960c5a4d06dd1ff54f1944ddb6"}
