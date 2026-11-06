@@ -332,7 +332,7 @@ def checks(results):
         r = results.get(name(d, p, "s"))
         if r:
             rows.append(common.check_row(f"d={d} p={p:g} |+i> proxy", "clifford", dict(value=pl, sigma=e), r["totals"]))
-            rows.append(common.check_row(f"d={d} p={p:g} |+i> proxy", "clifford", dict(value=ps), r["totals"], quantity="acceptance"))
+            rows.append(common.check_row(f"d={d} p={p:g} |+i> proxy", "clifford", dict(value=ps, sigma=0.01 / 12 ** .5), r["totals"], quantity="acceptance"))  # printed to 2 decimals: rounding sigma
     for key, nb in (("stim_Y", "s"),):
         for p, y, lf, le in zip(NB_A[key]["err_list"], NB_A[key]["yield_list"], NB_A[key]["LF_list"], NB_A[key]["LF_errlist"]):
             r = results.get(name(3, p, nb))
