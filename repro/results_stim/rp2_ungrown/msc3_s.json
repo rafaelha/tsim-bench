@@ -1,1 +1,1 @@
-{"study": "rp2_ungrown", "point": "msc3_s", "shots": 1000000000, "kept": 514005466, "errors": 390, "seconds": 502.7, "stim": "1.16.0"}
+{"study": "rp2_ungrown", "point": "msc3_s", "shots": 1000000000, "kept": 514005466, "errors": 390, "seconds": 502.7, "stim": "1.16.0", "circuit_sha256": "23c5735d189fa332d33a65d2e3d65687e0a67e4075ff3fb529104ddf33956b42"}

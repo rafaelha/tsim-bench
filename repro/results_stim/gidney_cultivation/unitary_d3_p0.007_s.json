@@ -1,1 +1,1 @@
-{"study": "gidney_cultivation", "point": "unitary_d3_p0.007_s", "shots": 1000000000, "kept": 74158514, "errors": 13540, "seconds": 270.3, "stim": "1.16.0"}
+{"study": "gidney_cultivation", "point": "unitary_d3_p0.007_s", "shots": 1000000000, "kept": 74158514, "errors": 13540, "seconds": 270.3, "stim": "1.16.0", "circuit_sha256": "240eac18a2bf0e59f2c73f02066c9ab685c166b1e9edb4ea2e319858eaf4ef2d"}

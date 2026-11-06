@@ -1,1 +1,1 @@
-{"study": "vaknin_full_vector", "point": "unrotH_p0.003_clifford", "shots": 1000000000, "kept": 160967421, "errors": 4474, "seconds": 269.4, "stim": "1.16.0"}
+{"study": "vaknin_full_vector", "point": "unrotH_p0.003_clifford", "shots": 1000000000, "kept": 160967421, "errors": 4474, "seconds": 269.4, "stim": "1.16.0", "circuit_sha256": "c8ab443e53a03415e4607b81a1a7865624d6f35c28f64a9718fe0fd1ade6af89"}

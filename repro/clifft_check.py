@@ -10,6 +10,7 @@ the noiseless reference, which is all zeros for these circuits).
 """
 
 import argparse
+import hashlib
 import json
 import pathlib
 import time
@@ -31,8 +32,13 @@ def main():
     for study, point in POINTS:
         out = ROOT / "repro" / "results_clifft" / study / f"{point}.json"
         circ = ROOT / "repro" / "circuits" / study / f"{point}.stim"
-        if out.exists() or not circ.exists():
+        if not circ.exists():
             continue
+        digest = hashlib.sha256(circ.read_bytes()).hexdigest()
+        if out.exists():
+            if json.loads(out.read_text()).get("circuit_sha256") == digest:
+                continue
+            out.rename(out.with_name(f"{point}.stale-circuit.json.bak"))
         pm = clifft.default_hir_pass_manager()
         pm.add(clifft.ActiveWidthSchedulePass())
         prog = clifft.compile(circ.read_text(), hir_passes=pm)
@@ -48,7 +54,8 @@ def main():
             tot += len(d)
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(dict(study=study, point=point, shots=tot, kept=kept, errors=errors,
-                                       seconds=round(time.perf_counter() - t0, 1), clifft=clifft.__version__)))
+                                       seconds=round(time.perf_counter() - t0, 1), clifft=clifft.__version__,
+                                       circuit_sha256=digest)))
         print(f"{study}/{point}: acceptance {kept / tot:.6f} ({tot:.3g} shots)", flush=True)
 
 

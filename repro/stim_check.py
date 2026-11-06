@@ -18,6 +18,14 @@ import zlib
 from repro import common
 
 OUT = common.REPRO / "results_stim"
+
+
+def sha256(text):
+    import hashlib
+
+    return hashlib.sha256(text.encode()).hexdigest()
+
+
 CHUNK_BYTES = 1 << 28  # 256 MB of detector data per sample() call and job
 
 
@@ -25,7 +33,8 @@ def run(study, point, circuit, postselect, shots, seed, max_seconds):
     import numpy as np
     import stim
 
-    c = stim.Circuit(common.circuit_path(study, circuit).read_text())
+    text = common.circuit_path(study, circuit).read_text()
+    c = stim.Circuit(text)
     nd, no = c.num_detectors, c.num_observables
     s = c.compile_detector_sampler(seed=seed)
     mask = np.zeros(nd, bool)
@@ -45,7 +54,7 @@ def run(study, point, circuit, postselect, shots, seed, max_seconds):
         errors += int(obs[keep].any(1).sum()) if no else 0
         done += n
     out = dict(study=study, point=point, shots=done, kept=kept, errors=errors, seconds=round(time.perf_counter() - t0, 1),
-               stim=stim.__version__)
+               stim=stim.__version__, circuit_sha256=sha256(text))
     path = OUT / study / f"{point}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(out))
@@ -70,8 +79,12 @@ def main():
             p = pts.get(name)
             if p is None or p.variant != "clifford" or p.mode != "ler":
                 continue
-            if (OUT / st / f"{name}.json").exists():
-                continue
+            done = OUT / st / f"{name}.json"
+            if done.exists():
+                # Re-check when the circuit changed since (results record the circuit's sha256).
+                if json.loads(done.read_text()).get("circuit_sha256") == sha256(common.circuit_path(st, p.circuit).read_text()):
+                    continue
+                done.rename(done.with_name(f"{name}.stale-circuit.json.bak"))
             todo.append((st, name, p.circuit, p.postselect, args.shots, zlib.crc32(f"{st}/{name}".encode()) & 0xFFFFFFFF, args.max_seconds))
     print(f"{len(todo)} Clifford points to cross-check with Stim", flush=True)
     with cf.ProcessPoolExecutor(args.jobs) as ex:

@@ -1,1 +1,1 @@
-{"study": "wan_few_clifford_terms", "point": "d3_p0.0005_s", "shots": 1000000000, "kept": 803649887, "errors": 48, "seconds": 539.1, "stim": "1.16.0"}
+{"study": "wan_few_clifford_terms", "point": "d3_p0.0005_s", "shots": 1000000000, "kept": 803649887, "errors": 48, "seconds": 539.1, "stim": "1.16.0", "circuit_sha256": "5f34de695ed3789437ce23c8c963c6836ef1996e1ec32df6f0f18b6134aa1843"}

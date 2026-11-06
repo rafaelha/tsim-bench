@@ -1,9 +1,9 @@
 {
  "gidney_cultivation": {
-  "seconds": 2086.7699999999995,
-  "compile": 16.61,
-  "shots": 8740158534596,
-  "points": 35
+  "seconds": 5947.919000000001,
+  "compile": 17.7,
+  "shots": 21345504830012,
+  "points": 38
  },
  "wan_few_clifford_terms": {
   "seconds": 267.2989999999999,
@@ -12,10 +12,10 @@
   "points": 16
  },
  "soft_d5": {
-  "seconds": 474.55099999999993,
-  "compile": 4.5200000000000005,
-  "shots": 2832668554185,
-  "points": 5
+  "seconds": 2086.8590000000004,
+  "compile": 5.26,
+  "shots": 7332668554185,
+  "points": 7
  },
  "clifft_inject_cultivate": {
   "seconds": 0.0,
@@ -24,10 +24,10 @@
   "points": 0
  },
  "gauging_cultivation": {
-  "seconds": 1995.6609999999996,
-  "compile": 287.0100000000001,
-  "shots": 9330614992532,
-  "points": 116
+  "seconds": 10395.804999999997,
+  "compile": 289.03000000000014,
+  "shots": 45757414914411,
+  "points": 120
  },
  "fold_transversal": {
   "seconds": 2789.7579999999994,
@@ -36,16 +36,16 @@
   "points": 16
  },
  "chan_flags": {
-  "seconds": 5525.303000000002,
-  "compile": 28.54,
-  "shots": 18209140678788,
-  "points": 48
+  "seconds": 13237.813000000002,
+  "compile": 30.830000000000002,
+  "shots": 38869779238819,
+  "points": 54
  },
  "magna": {
-  "seconds": 2162.417,
-  "compile": 14.189999999999998,
-  "shots": 12177821511845,
-  "points": 45
+  "seconds": 12022.618,
+  "compile": 23.089999999999996,
+  "shots": 27105759324314,
+  "points": 54
  },
  "google_experiment": {
   "seconds": 556.4609999999991,
@@ -60,10 +60,10 @@
   "points": 60
  },
  "rp2_ungrown": {
-  "seconds": 22.93,
-  "compile": 0.54,
-  "shots": 78692155670,
-  "points": 2
+  "seconds": 5808.219,
+  "compile": 5.37,
+  "shots": 21496373137115,
+  "points": 4
  },
  "erasure_injection": {
   "seconds": 1022.4830000000001,

@@ -1,1 +1,1 @@
-{"study": "erasure_injection", "point": "hook_p0.0001_s", "shots": 1000000000, "kept": 989696299, "errors": 52837, "seconds": 230.4, "stim": "1.16.0"}
+{"study": "erasure_injection", "point": "hook_p0.0001_s", "shots": 1000000000, "kept": 989696299, "errors": 52837, "seconds": 230.4, "stim": "1.16.0", "circuit_sha256": "c6e529763e9e4d0720f1aef09ebe47d221751a106ad394916215650ecf924aeb"}

@@ -1,1 +1,1 @@
-{"study": "fold_transversal", "point": "fd3_p0.0007_y", "shots": 1000000000, "kept": 858306181, "errors": 21, "seconds": 229.8, "stim": "1.16.0"}
+{"study": "fold_transversal", "point": "fd3_p0.0007_y", "shots": 1000000000, "kept": 858306181, "errors": 21, "seconds": 229.8, "stim": "1.16.0", "circuit_sha256": "d9074fabbe1b989e5893aa9546f8a13dfd953b9be0fd8c01c2a84562f8d2312c"}

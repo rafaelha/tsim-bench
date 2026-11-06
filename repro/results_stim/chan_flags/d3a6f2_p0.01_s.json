@@ -1,1 +1,1 @@
-{"study": "chan_flags", "point": "d3a6f2_p0.01_s", "shots": 1000000000, "kept": 12446580, "errors": 11673, "seconds": 276.9, "stim": "1.16.0"}
+{"study": "chan_flags", "point": "d3a6f2_p0.01_s", "shots": 1000000000, "kept": 12446580, "errors": 11673, "seconds": 276.9, "stim": "1.16.0", "circuit_sha256": "d101ca638baa2c4035decc0f2635a1d142a89a609dcfc71e5b89926c96f2f159"}
