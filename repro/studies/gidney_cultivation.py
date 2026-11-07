@@ -117,7 +117,7 @@ def published():
             continue
         s, e, dsc = int(x["shots"]), int(x["errors"]), int(x["discards"])
         style = j["c"].split("[")[1].split("]")[0]
-        rows.append(dict(style=style, d=j["d1"], p=j["p"], decoder=x["decoder"], shots=s, kept=s - dsc, errors=e))
+        rows.append(dict(style=style, d=j["d1"], p=j["p"], decoder=x["decoder"], shots=s, kept=s - dsc, errors=e, seconds=float(x["seconds"])))
     return rows
 
 

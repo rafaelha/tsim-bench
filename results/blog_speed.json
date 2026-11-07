@@ -1,0 +1,3009 @@
+{
+ "source": "https://github.com/rafaelha/tsim-bench",
+ "gpu_max_k": 11,
+ "machines": {
+  "cpu": "AMD Ryzen 9 9900X, one core (Tsim 1.0.0)",
+  "gpu": "NVIDIA RTX 5090 (Tsim CUDA backend, in development)",
+  "metal": "Apple M4 Pro GPU (Tsim Metal backend, in development)"
+ },
+ "papers": [
+  {
+   "arxiv": "2302.12292",
+   "title": "Cleaner magic states with hook injection",
+   "authors": "Gidney",
+   "year": "2023",
+   "circuits": [
+    {
+     "name": "hook_inject_T_d15_pd5_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2302.12292_hook_injection/stim/hook_inject_T_d15_pd5_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 1505670.8988041605
+     },
+     "gpu": {
+      "rate": 121776766.04986142
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    },
+    {
+     "name": "hook_inject_T_d15_pd7_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2302.12292_hook_injection/stim/hook_inject_T_d15_pd7_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 1483905.2372805122
+     },
+     "gpu": {
+      "rate": 119376479.48342726
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    },
+    {
+     "name": "li_inject_T_d15_pd5_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2302.12292_hook_injection/stim/li_inject_T_d15_pd5_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 800321.315114177
+     },
+     "gpu": {
+      "rate": 63915654.15581232
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    },
+    {
+     "name": "li_inject_T_d15_pd7_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2302.12292_hook_injection/stim/li_inject_T_d15_pd7_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 787538.1696271454
+     },
+     "gpu": {
+      "rate": 62621551.92142449
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    },
+    {
+     "name": "pregrown_hook_inject_T_d15_pd5_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2302.12292_hook_injection/stim/pregrown_hook_inject_T_d15_pd5_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 1331039.0829970357
+     },
+     "gpu": {
+      "rate": 107903961.69364703
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    },
+    {
+     "name": "pregrown_hook_inject_T_d15_pd7_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2302.12292_hook_injection/stim/pregrown_hook_inject_T_d15_pd7_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 1335439.2384680018
+     },
+     "gpu": {
+      "rate": 108303963.98299399
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    },
+    {
+     "name": "zz_inject_T_d15_pd5_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2302.12292_hook_injection/stim/zz_inject_T_d15_pd5_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 806609.1300786124
+     },
+     "gpu": {
+      "rate": 68020934.79639202
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    },
+    {
+     "name": "zz_inject_T_d15_pd7_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2302.12292_hook_injection/stim/zz_inject_T_d15_pd7_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 797973.9850908145
+     },
+     "gpu": {
+      "rate": 67916770.59551795
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2406.17653",
+   "title": "Low-Overhead Transversal Fault Tolerance for Universal Quantum Computation",
+   "authors": "Zhou et al.",
+   "year": "2024",
+   "circuits": [
+    {
+     "name": "s_injection_T_d3_p0.001_pinj0.1",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d3_p0.001_pinj0.1.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 51987823.52171376
+     },
+     "gpu": {
+      "rate": 6698791897.067815
+     },
+     "metal": {
+      "rate": 1735930416.8875332
+     }
+    },
+    {
+     "name": "s_injection_T_d5_p0.001_pinj0.1",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d5_p0.001_pinj0.1.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 44446181.37684
+     },
+     "gpu": {
+      "rate": 3363471973.771053
+     },
+     "metal": {
+      "rate": 1375077141.4822803
+     }
+    },
+    {
+     "name": "s_injection_T_d7_p0.001_pinj0.1",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d7_p0.001_pinj0.1.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 37001891.67870481
+     },
+     "gpu": {
+      "rate": 1948610155.5794098
+     },
+     "metal": {
+      "rate": 708334057.2583542
+     }
+    },
+    {
+     "name": "s_injection_T_d9_p0.001_pinj0.1",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d9_p0.001_pinj0.1.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 30070146.171530657
+     },
+     "gpu": {
+      "rate": 1241152545.8399138
+     },
+     "metal": {
+      "rate": 478839027.54832244
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2409.07707",
+   "title": "Low-overhead magic state distillation with color codes",
+   "authors": "Lee et al.",
+   "year": "2024",
+   "circuits": [
+    {
+     "name": "cult_growing_T_d3_to_d11_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2409.07707_color_code_msd/stim/cult_growing_T_d3_to_d11_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 3161602.044978579
+     },
+     "gpu": {
+      "rate": 424877306.00596434
+     },
+     "metal": {
+      "rate": 119412950.47427021
+     }
+    },
+    {
+     "name": "cult_growing_T_d3_to_d7_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2409.07707_color_code_msd/stim/cult_growing_T_d3_to_d7_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 9654594.723170634
+     },
+     "gpu": {
+      "rate": 1554850921.7412636
+     },
+     "metal": {
+      "rate": 469537041.7954054
+     }
+    },
+    {
+     "name": "cult_growing_T_d5_to_d13_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2409.07707_color_code_msd/stim/cult_growing_T_d5_to_d13_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 661707.4109630665
+     },
+     "gpu": {
+      "rate": 245157300.9331154
+     },
+     "metal": {
+      "rate": 64491415.78331594
+     }
+    },
+    {
+     "name": "cult_growing_T_d5_to_d9_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2409.07707_color_code_msd/stim/cult_growing_T_d5_to_d9_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 890314.3467212638
+     },
+     "gpu": {
+      "rate": 673105778.6956476
+     },
+     "metal": {
+      "rate": 127712124.25879313
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2409.17595",
+   "title": "Magic state cultivation: growing T states as cheap as CNOT gates",
+   "authors": "Gidney et al.",
+   "year": "2024",
+   "circuits": [
+    {
+     "name": "end2end_d3_dsurface15_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2409.17595_magic_state_cultivation/stim/end2end_d3_dsurface15_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 1392564.6017361986
+     },
+     "gpu": {
+      "rate": 198076345.8945563
+     },
+     "metal": {
+      "rate": 67339472.21200149
+     }
+    },
+    {
+     "name": "end2end_d5_dsurface15_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2409.17595_magic_state_cultivation/stim/end2end_d5_dsurface15_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 539429.7094356489
+     },
+     "gpu": {
+      "rate": 155214550.83293214
+     },
+     "metal": {
+      "rate": 43889279.97211633
+     }
+    },
+    {
+     "name": "inject_cultivate_d3_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2409.17595_magic_state_cultivation/stim/inject_cultivate_d3_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 29445094.462900717
+     },
+     "gpu": {
+      "rate": 13428262241.708227
+     },
+     "metal": {
+      "rate": 1332172661.0244513
+     }
+    },
+    {
+     "name": "inject_cultivate_d5_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2409.17595_magic_state_cultivation/stim/inject_cultivate_d5_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 1255309.7609962304
+     },
+     "gpu": {
+      "rate": 1399237113.5558884
+     },
+     "metal": {
+      "rate": 165749660.2650498
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2502.01743",
+   "title": "Efficient Magic State Cultivation on the Surface Code",
+   "authors": "Vaknin et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "expanded-rotated-init-x-injection-double-HXY_d1=3_d2=11_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-init-x-injection-double-HXY_d1=3_d2=11_p=0.001.stim",
+     "k": 8,
+     "k_label": "8",
+     "cpu": {
+      "rate": 2035084.6832690584
+     },
+     "gpu": {
+      "rate": 209162991.73933193
+     },
+     "metal": {
+      "rate": 34712416.31697809
+     }
+    },
+    {
+     "name": "expanded-rotated-injection-double-ghz-HXY_d1=3_d2=11_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-injection-double-ghz-HXY_d1=3_d2=11_p=0.001.stim",
+     "k": 8,
+     "k_label": "8",
+     "cpu": {
+      "rate": 1927545.6642686985
+     },
+     "gpu": {
+      "rate": 251631534.027553
+     },
+     "metal": {
+      "rate": 36505699.156044036
+     }
+    },
+    {
+     "name": "expanded-rotated-injection-syndrome-double-ghz-HXY_d1=3_d2=11_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-injection-syndrome-double-ghz-HXY_d1=3_d2=11_p=0.001.stim",
+     "k": 8,
+     "k_label": "8",
+     "cpu": {
+      "rate": 1826883.4486976897
+     },
+     "gpu": {
+      "rate": 251551232.75458544
+     },
+     "metal": {
+      "rate": 36351382.54285616
+     }
+    },
+    {
+     "name": "expanded-unrotated_H_injection-ghz_d1=3_d2=11_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/expanded-unrotated_H_injection-ghz_d1=3_d2=11_p=0.001.stim",
+     "k": 9,
+     "k_label": "9",
+     "cpu": {
+      "rate": 105260.69904626027
+     },
+     "gpu": {
+      "rate": 57077056.578481495
+     },
+     "metal": {
+      "rate": 7015410.403793303
+     }
+    },
+    {
+     "name": "expanded-unrotated_H_injection-syndrome-ghz_d1=3_d2=11_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/expanded-unrotated_H_injection-syndrome-ghz_d1=3_d2=11_p=0.001.stim",
+     "k": 9,
+     "k_label": "9",
+     "cpu": {
+      "rate": 95311.45305265958
+     },
+     "gpu": {
+      "rate": 56968524.03765879
+     },
+     "metal": {
+      "rate": 7006164.955848568
+     }
+    },
+    {
+     "name": "rotated-init-x-injection-double-HXY_d1=3_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/rotated-init-x-injection-double-HXY_d1=3_p=0.001.stim",
+     "k": 8,
+     "k_label": "8",
+     "cpu": {
+      "rate": 4520065.760876212
+     },
+     "gpu": {
+      "rate": 327391277.0205406
+     },
+     "metal": {
+      "rate": 52573459.15932522
+     }
+    },
+    {
+     "name": "rotated-init-x-injection-syndrome-double-ghz-HXY_d1=3_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/rotated-init-x-injection-syndrome-double-ghz-HXY_d1=3_p=0.001.stim",
+     "k": 8,
+     "k_label": "8",
+     "cpu": {
+      "rate": 4015271.0155981686
+     },
+     "gpu": {
+      "rate": 328696087.3958173
+     },
+     "metal": {
+      "rate": 52072139.77203325
+     }
+    },
+    {
+     "name": "rotated-injection-double-ghz-HXY_d1=3_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/rotated-injection-double-ghz-HXY_d1=3_p=0.001.stim",
+     "k": 8,
+     "k_label": "8",
+     "cpu": {
+      "rate": 4173263.2081445553
+     },
+     "gpu": {
+      "rate": 332150887.169649
+     },
+     "metal": {
+      "rate": 52513477.97732619
+     }
+    },
+    {
+     "name": "rotated-injection-ghz-HXY_d1=3_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/rotated-injection-ghz-HXY_d1=3_p=0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 7630498.119092643
+     },
+     "gpu": {
+      "rate": 1001476195.0729635
+     },
+     "metal": {
+      "rate": 184350397.70195678
+     }
+    },
+    {
+     "name": "rotated-injection-syndrome-double-ghz-HXY_d1=3_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/rotated-injection-syndrome-double-ghz-HXY_d1=3_p=0.001.stim",
+     "k": 8,
+     "k_label": "8",
+     "cpu": {
+      "rate": 3777458.4153690725
+     },
+     "gpu": {
+      "rate": 332464430.17991793
+     },
+     "metal": {
+      "rate": 52307885.75042248
+     }
+    },
+    {
+     "name": "unrotated_HXY_injection-ghz_d1=3_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/unrotated_HXY_injection-ghz_d1=3_p=0.001.stim",
+     "k": 7,
+     "k_label": "7",
+     "cpu": {
+      "rate": 5902916.094076473
+     },
+     "gpu": {
+      "rate": 738136680.0513225
+     },
+     "metal": {
+      "rate": 110258047.7894409
+     }
+    },
+    {
+     "name": "unrotated_HXY_injection-syndrome-ghz_d1=3_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/unrotated_HXY_injection-syndrome-ghz_d1=3_p=0.001.stim",
+     "k": 7,
+     "k_label": "7",
+     "cpu": {
+      "rate": 5112827.8670771895
+     },
+     "gpu": {
+      "rate": 732887984.6637427
+     },
+     "metal": {
+      "rate": 109243602.62670662
+     }
+    },
+    {
+     "name": "unrotated_H_injection-ghz_d1=3_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/unrotated_H_injection-ghz_d1=3_p=0.001.stim",
+     "k": 9,
+     "k_label": "9",
+     "cpu": {
+      "rate": 204771.2968247653
+     },
+     "gpu": {
+      "rate": 104604826.84787972
+     },
+     "metal": {
+      "rate": 14567714.916187221
+     }
+    },
+    {
+     "name": "unrotated_H_injection-syndrome-ghz_d1=3_p=0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2502.01743_surface_code_cultivation/stim/unrotated_H_injection-syndrome-ghz_d1=3_p=0.001.stim",
+     "k": 9,
+     "k_label": "9",
+     "cpu": {
+      "rate": 172346.30981694456
+     },
+     "gpu": {
+      "rate": 104864530.72597301
+     },
+     "metal": {
+      "rate": 14457392.437635796
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2503.18657",
+   "title": "Efficient Magic State Cultivation on RP\u00b2",
+   "authors": "Chen et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "rp_3_T_cult",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2503.18657_rp2_cultivation/stim/rp_3_T_cult.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 13315420.068690568
+     },
+     "gpu": {
+      "rate": 8418057650.788088
+     },
+     "metal": {
+      "rate": 843270842.8644584
+     }
+    },
+    {
+     "name": "rp_3_rp_5_T_cult",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2503.18657_rp2_cultivation/stim/rp_3_rp_5_T_cult.stim",
+     "k": 10,
+     "k_label": "10",
+     "cpu": {
+      "rate": 15625.983747272425
+     },
+     "gpu": {
+      "rate": 43981791.53760739
+     },
+     "metal": {
+      "rate": 6808834.204613542
+     }
+    },
+    {
+     "name": "rp_3_rp_5_sc_11_end2end_6_full_rds",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2503.18657_rp2_cultivation/stim/rp_3_rp_5_sc_11_end2end_6_full_rds.stim",
+     "k": 9,
+     "k_label": "9",
+     "cpu": {
+      "rate": 24103.649931570733
+     },
+     "gpu": {
+      "rate": 94512481.01835464
+     },
+     "metal": {
+      "rate": 11245399.620105036
+     }
+    },
+    {
+     "name": "rp_3_sc_7_end2end_4_full_rds",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2503.18657_rp2_cultivation/stim/rp_3_sc_7_end2end_4_full_rds.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 9718967.054026386
+     },
+     "gpu": {
+      "rate": 1697622187.8059385
+     },
+     "metal": {
+      "rate": 435497537.20739436
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2504.02935",
+   "title": "Magic State Injection with Erasure Qubits",
+   "authors": "Jacoby et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "hook_inject_T_d3_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2504.02935_erasure_injection/stim/hook_inject_T_d3_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 81600299.61729874
+     },
+     "gpu": {
+      "rate": 17866566508.4158
+     },
+     "metal": {
+      "rate": 2474251553.804312
+     }
+    },
+    {
+     "name": "inject_cultivate_T_d3_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2504.02935_erasure_injection/stim/inject_cultivate_T_d3_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 32954219.952139325
+     },
+     "gpu": {
+      "rate": 16745667021.034555
+     },
+     "metal": {
+      "rate": 1620132834.9796085
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2505.13587",
+   "title": "Fast correlated decoding of transversal logical algorithms",
+   "authors": "Cain et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "distillation_15to1_T_d13_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d13_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 210633.50591474827
+     },
+     "gpu": {
+      "state": "unsupported"
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    },
+    {
+     "name": "distillation_15to1_T_d17_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d17_p0.001.stim",
+     "k": 4,
+     "k_label": "4\u2021",
+     "cpu": {
+      "rate": 106150.76384943166,
+      "build": "Tsim PR #270 (96b86e8b)"
+     },
+     "gpu": {
+      "state": "OOM"
+     },
+     "metal": null
+    },
+    {
+     "name": "distillation_15to1_T_d21_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d21_p0.001.stim",
+     "k": 4,
+     "k_label": "4\u2021",
+     "cpu": {
+      "rate": 54131.894748063736,
+      "build": "Tsim PR #270 (96b86e8b)"
+     },
+     "gpu": {
+      "state": "OOM"
+     },
+     "metal": null
+    },
+    {
+     "name": "distillation_15to1_T_d25_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d25_p0.001.stim",
+     "k": 4,
+     "k_label": "4\u2021",
+     "cpu": {
+      "rate": 43173.39130662105,
+      "build": "Tsim PR #270 (96b86e8b)"
+     },
+     "gpu": {
+      "state": "OOM"
+     },
+     "metal": null
+    },
+    {
+     "name": "distillation_15to1_T_d5_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d5_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 1735137.5850250593
+     },
+     "gpu": {
+      "rate": 95559876.51721135
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    },
+    {
+     "name": "distillation_15to1_T_d9_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d9_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 483888.1152611691
+     },
+     "gpu": {
+      "state": "unsupported"
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2507.12511",
+   "title": "Unfolded distillation: very low-cost magic state preparation for biased-noise qubits",
+   "authors": "Ruiz et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "unfolded_repetition_no_preselection_pz1e-3_rounds2",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2507.12511_unfolded_distillation/stim/unfolded_repetition_no_preselection_pz1e-3_rounds2.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 33570840.68817444
+     },
+     "gpu": {
+      "rate": 8954374698.881792
+     },
+     "metal": {
+      "rate": 1408988892.17622
+     }
+    },
+    {
+     "name": "unfolded_repetition_no_preselection_pz1e-3_rounds4",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2507.12511_unfolded_distillation/stim/unfolded_repetition_no_preselection_pz1e-3_rounds4.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 21299271.42001294
+     },
+     "gpu": {
+      "rate": 4130962637.6066647
+     },
+     "metal": {
+      "rate": 1053723783.469324
+     }
+    },
+    {
+     "name": "unfolded_repetition_no_preselection_pz1e-3_rounds6",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2507.12511_unfolded_distillation/stim/unfolded_repetition_no_preselection_pz1e-3_rounds6.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 16241900.633728277
+     },
+     "gpu": {
+      "rate": 2703552475.407823
+     },
+     "metal": {
+      "rate": 793732508.7539074
+     }
+    },
+    {
+     "name": "unfolded_surface_no_bitflip_pz1e-3_rounds2",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2507.12511_unfolded_distillation/stim/unfolded_surface_no_bitflip_pz1e-3_rounds2.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 21332921.012280643
+     },
+     "gpu": {
+      "rate": 3169731004.275418
+     },
+     "metal": {
+      "rate": 848580799.7586161
+     }
+    },
+    {
+     "name": "unfolded_surface_no_bitflip_pz1e-3_rounds4",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2507.12511_unfolded_distillation/stim/unfolded_surface_no_bitflip_pz1e-3_rounds4.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 13738461.890858334
+     },
+     "gpu": {
+      "rate": 1649662732.4719417
+     },
+     "metal": {
+      "rate": 511199601.43039685
+     }
+    },
+    {
+     "name": "unfolded_surface_no_bitflip_pz1e-3_rounds6",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2507.12511_unfolded_distillation/stim/unfolded_surface_no_bitflip_pz1e-3_rounds6.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 10114664.35102062
+     },
+     "gpu": {
+      "rate": 1119009610.1362474
+     },
+     "metal": {
+      "rate": 347907948.8097117
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2509.05212",
+   "title": "Fold-transversal surface code cultivation",
+   "authors": "Sahay et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "fold-d3_native_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.05212_fold_transversal_cultivation/stim/fold-d3_native_T_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 16472801.608300596
+     },
+     "gpu": {
+      "rate": 1333148571.3071187
+     },
+     "metal": {
+      "rate": 182212397.53923216
+     }
+    },
+    {
+     "name": "fold-d5_native_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.05212_fold_transversal_cultivation/stim/fold-d5_native_T_p0.001.stim",
+     "k": 8,
+     "k_label": "8",
+     "cpu": {
+      "rate": 90152.40874483096
+     },
+     "gpu": {
+      "rate": 82015809.32206331
+     },
+     "metal": {
+      "rate": 13569808.554134335
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2509.08658",
+   "title": "Simulating magic state cultivation with few Clifford terms",
+   "authors": "Wan et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "d3_cultivation_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.08658_few_clifford_terms/stim/d3_cultivation_T_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 30843568.83654116
+     },
+     "gpu": {
+      "rate": 10707552990.954372
+     },
+     "metal": {
+      "rate": 1498905617.9904456
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2509.18294",
+   "title": "Transversal architecture for megaquop-scale quantum simulation with neutral atoms (transversal STAR)",
+   "authors": "Ismail et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "star_d=11",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.18294_transversal_star/stim/star_d=11.stim",
+     "k": 2,
+     "k_label": "2",
+     "cpu": {
+      "rate": 2920690.8048551674
+     },
+     "gpu": {
+      "rate": 242000778.6368918
+     },
+     "metal": {
+      "rate": 91284223.91741647
+     }
+    },
+    {
+     "name": "star_d=13",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.18294_transversal_star/stim/star_d=13.stim",
+     "k": 2,
+     "k_label": "2",
+     "cpu": {
+      "rate": 1809884.1972242172
+     },
+     "gpu": {
+      "rate": 143883173.90167105
+     },
+     "metal": {
+      "rate": 49678707.65524901
+     }
+    },
+    {
+     "name": "star_d=15",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.18294_transversal_star/stim/star_d=15.stim",
+     "k": 2,
+     "k_label": "2",
+     "cpu": {
+      "rate": 1181153.5519994888
+     },
+     "gpu": {
+      "rate": 100128104.78335775
+     },
+     "metal": {
+      "state": "unsupported"
+     }
+    },
+    {
+     "name": "star_d=3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.18294_transversal_star/stim/star_d=3.stim",
+     "k": 2,
+     "k_label": "2",
+     "cpu": {
+      "rate": 37705222.123735756
+     },
+     "gpu": {
+      "rate": 6715356644.87077
+     },
+     "metal": {
+      "rate": 1799096414.0198677
+     }
+    },
+    {
+     "name": "star_d=5",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.18294_transversal_star/stim/star_d=5.stim",
+     "k": 2,
+     "k_label": "2",
+     "cpu": {
+      "rate": 17173564.027670976
+     },
+     "gpu": {
+      "rate": 1941219523.3170803
+     },
+     "metal": {
+      "rate": 617422764.3482178
+     }
+    },
+    {
+     "name": "star_d=7",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.18294_transversal_star/stim/star_d=7.stim",
+     "k": 2,
+     "k_label": "2",
+     "cpu": {
+      "rate": 9018327.776421003
+     },
+     "gpu": {
+      "rate": 817082305.3225507
+     },
+     "metal": {
+      "rate": 280571779.2460571
+     }
+    },
+    {
+     "name": "star_d=9",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2509.18294_transversal_star/stim/star_d=9.stim",
+     "k": 2,
+     "k_label": "2",
+     "cpu": {
+      "rate": 4986527.123291613
+     },
+     "gpu": {
+      "rate": 419491130.0094383
+     },
+     "metal": {
+      "rate": 148720066.9142713
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2510.07269",
+   "title": "Transversal dimension jump for product qLDPC codes",
+   "authors": "Li et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "blp_27_3_3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/blp_27_3_3.stim",
+     "k": 26,
+     "k_label": "26",
+     "cpu": {
+      "rate": 0.0285287399809741
+     },
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "toric_375_3_5",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/toric_375_3_5.stim",
+     "k": null,
+     "k_label": "186*",
+     "cpu": null,
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "toric_81_3_3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/toric_81_3_3.stim",
+     "k": null,
+     "k_label": "63*",
+     "cpu": null,
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "tricycle_12_3_2",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_12_3_2.stim",
+     "k": 16,
+     "k_label": "16",
+     "cpu": {
+      "rate": 450.7590495515145
+     },
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "tricycle_15_3_2",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_15_3_2.stim",
+     "k": 16,
+     "k_label": "16",
+     "cpu": {
+      "rate": 194.64905375018068
+     },
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "tricycle_18_3_2",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_18_3_2.stim",
+     "k": 20,
+     "k_label": "20",
+     "cpu": {
+      "rate": 10.383652391207262
+     },
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "tricycle_21_3_3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_21_3_3.stim",
+     "k": 23,
+     "k_label": "23",
+     "cpu": {
+      "rate": 0.24317434981403843
+     },
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "tricycle_24_3_2",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_24_3_2.stim",
+     "k": 20,
+     "k_label": "20",
+     "cpu": {
+      "rate": 3.1898393439912542
+     },
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "tricycle_27_3_3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_27_3_3.stim",
+     "k": 24,
+     "k_label": "24",
+     "cpu": {
+      "rate": 0.08707982449154425
+     },
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "tricycle_6_3_2",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_6_3_2.stim",
+     "k": 9,
+     "k_label": "9",
+     "cpu": {
+      "rate": 2295209.9167123763
+     },
+     "gpu": {
+      "rate": 138448522.11646196
+     },
+     "metal": {
+      "rate": 13374183.881582454
+     }
+    },
+    {
+     "name": "tricycle_9_3_2",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.07269_transversal_dimension_jump/stim/tricycle_9_3_2.stim",
+     "k": 11,
+     "k_label": "11",
+     "cpu": {
+      "rate": 115965.23555283803
+     },
+     "gpu": {
+      "rate": 19081752.70549252
+     },
+     "metal": {
+      "rate": 442528.09511093353
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2510.24615",
+   "title": "Efficient magic state cultivation with lattice surgery",
+   "authors": "Hirano et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "inject-check-3_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.24615_lattice_surgery_cultivation/stim/inject-check-3_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 32661387.362362307
+     },
+     "gpu": {
+      "rate": 14198690613.31322
+     },
+     "metal": {
+      "rate": 1527868442.0491576
+     }
+    },
+    {
+     "name": "lattice-surgery-complementary-gap-3-to-5-to-7_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2510.24615_lattice_surgery_cultivation/stim/lattice-surgery-complementary-gap-3-to-5-to-7_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 16544006.97244881
+     },
+     "gpu": {
+      "rate": 2457013246.1235604
+     },
+     "metal": {
+      "rate": 720572491.5436398
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2512.13908",
+   "title": "Magic state cultivation on a superconducting quantum processor",
+   "authors": "Rosenfeld et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "fig2_cultivation_stim_X_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig2_cultivation_stim_X_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 97680704.88408087
+     },
+     "gpu": {
+      "rate": 26671031357.875515
+     },
+     "metal": {
+      "rate": 2927287061.6210256
+     }
+    },
+    {
+     "name": "fig2_cultivation_stim_Z_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig2_cultivation_stim_Z_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 97687275.66233286
+     },
+     "gpu": {
+      "rate": 26548311786.79479
+     },
+     "metal": {
+      "rate": 2921245015.613677
+     }
+    },
+    {
+     "name": "fig2_injection_stim_X_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig2_injection_stim_X_T.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 97965732.81451643
+     },
+     "gpu": {
+      "rate": 36942167266.06052
+     },
+     "metal": {
+      "rate": 3151244024.9490085
+     }
+    },
+    {
+     "name": "fig2_injection_stim_Z_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig2_injection_stim_Z_T.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 97940657.66160963
+     },
+     "gpu": {
+      "rate": 36913091952.29313
+     },
+     "metal": {
+      "rate": 3170985370.47254
+     }
+    },
+    {
+     "name": "fig2_simulation_stim_X_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig2_simulation_stim_X_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 97725031.10645227
+     },
+     "gpu": {
+      "rate": 26678580584.817078
+     },
+     "metal": {
+      "rate": 2924037282.8364406
+     }
+    },
+    {
+     "name": "fig2_simulation_stim_Z_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig2_simulation_stim_Z_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 97764174.51198643
+     },
+     "gpu": {
+      "rate": 26366075731.578835
+     },
+     "metal": {
+      "rate": 2934872856.5241747
+     }
+    },
+    {
+     "name": "fig3_injection_stim_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig3_injection_stim_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 97517767.23888668
+     },
+     "gpu": {
+      "rate": 13154503224.13243
+     },
+     "metal": {
+      "rate": 1756615356.8244226
+     }
+    },
+    {
+     "name": "fig3_simulation_stim_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig3_simulation_stim_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 97206769.16179402
+     },
+     "gpu": {
+      "rate": 7550579763.321165
+     },
+     "metal": {
+      "rate": 1179342048.3355393
+     }
+    },
+    {
+     "name": "fig3_simulation_zoom_stim_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig3_simulation_zoom_stim_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 97037923.7537254
+     },
+     "gpu": {
+      "rate": 7552541025.57674
+     },
+     "metal": {
+      "rate": 1182765799.922419
+     }
+    },
+    {
+     "name": "fig3_with_idle_rounds_stim_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig3_with_idle_rounds_stim_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 97017377.964138
+     },
+     "gpu": {
+      "rate": 7549343787.551321
+     },
+     "metal": {
+      "rate": 1194454047.2137084
+     }
+    },
+    {
+     "name": "fig3_with_idle_rounds_zoom_stim_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig3_with_idle_rounds_zoom_stim_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 97217894.67959836
+     },
+     "gpu": {
+      "rate": 7548798393.4582405
+     },
+     "metal": {
+      "rate": 1180258370.3245468
+     }
+    },
+    {
+     "name": "fig3_without_idle_rounds_stim_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig3_without_idle_rounds_stim_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 97694100.54851906
+     },
+     "gpu": {
+      "rate": 13138563185.249413
+     },
+     "metal": {
+      "rate": 2179887678.9283886
+     }
+    },
+    {
+     "name": "fig4_cultivation_N2_stim_X_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N2_stim_X_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 89689965.03306022
+     },
+     "gpu": {
+      "rate": 5832907020.088834
+     },
+     "metal": {
+      "rate": 1911138408.3655872
+     }
+    },
+    {
+     "name": "fig4_cultivation_N2_stim_Z_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N2_stim_Z_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 89648456.29324476
+     },
+     "gpu": {
+      "rate": 5834620433.929384
+     },
+     "metal": {
+      "rate": 1900417494.3568366
+     }
+    },
+    {
+     "name": "fig4_cultivation_N3_stim_X_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N3_stim_X_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 89705007.4416122
+     },
+     "gpu": {
+      "rate": 4331713448.678742
+     },
+     "metal": {
+      "rate": 1701036417.538428
+     }
+    },
+    {
+     "name": "fig4_cultivation_N3_stim_Z_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N3_stim_Z_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 89249039.72027157
+     },
+     "gpu": {
+      "rate": 4342491156.331199
+     },
+     "metal": {
+      "rate": 1671772434.4827628
+     }
+    },
+    {
+     "name": "fig4_injection_N2_stim_X_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig4_injection_N2_stim_X_T.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 97866785.58205634
+     },
+     "gpu": {
+      "rate": 6534135901.74122
+     },
+     "metal": {
+      "rate": 1924059324.9852684
+     }
+    },
+    {
+     "name": "fig4_injection_N2_stim_Z_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig4_injection_N2_stim_Z_T.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 93280577.2809075
+     },
+     "gpu": {
+      "rate": 6528404120.251862
+     },
+     "metal": {
+      "rate": 2028233021.7165916
+     }
+    },
+    {
+     "name": "fig4_simulation_injection_N2_stim_X_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig4_simulation_injection_N2_stim_X_T.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 98027544.32428765
+     },
+     "gpu": {
+      "rate": 6542220435.861729
+     },
+     "metal": {
+      "rate": 2057950456.943805
+     }
+    },
+    {
+     "name": "fig4_simulation_injection_N2_stim_Z_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.13908_google_cultivation_experiment/stim/fig4_simulation_injection_N2_stim_Z_T.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 97953789.66155218
+     },
+     "gpu": {
+      "rate": 6510688272.921239
+     },
+     "metal": {
+      "rate": 2026414814.151527
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2512.23037",
+   "title": "SOFT: a high-performance simulator for universal fault-tolerant quantum circuits",
+   "authors": "Li et al.",
+   "year": "2025",
+   "circuits": [
+    {
+     "name": "circuit_d3_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.23037_soft/stim/circuit_d3_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 29413845.395493366
+     },
+     "gpu": {
+      "rate": 13445479353.782347
+     },
+     "metal": {
+      "rate": 1332104072.6016867
+     }
+    },
+    {
+     "name": "circuit_d5_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2512.23037_soft/stim/circuit_d5_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 270481.75355288194
+     },
+     "gpu": {
+      "rate": 1739385015.3329713
+     },
+     "metal": {
+      "rate": 204003913.76054764
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2603.05429",
+   "title": "Constant-depth magic state cultivation with Clifford measurements by gauging",
+   "authors": "Het\u00e9nyi et al.",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "gauging_cultivation_d3_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d3_T_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 13622937.707852507
+     },
+     "gpu": {
+      "rate": 7654523979.862229
+     },
+     "metal": {
+      "rate": 899589847.5696415
+     }
+    },
+    {
+     "name": "gauging_cultivation_d5_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d5_T_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 204020.10239783177
+     },
+     "gpu": {
+      "rate": 504261429.2081136
+     },
+     "metal": {
+      "rate": 72272593.20420963
+     }
+    },
+    {
+     "name": "gauging_cultivation_d7_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d7_T_p0.001.stim",
+     "k": 8,
+     "k_label": "8",
+     "cpu": {
+      "rate": 14084.105100542089
+     },
+     "gpu": {
+      "rate": 55414237.54347848
+     },
+     "metal": {
+      "rate": 7195888.31734584
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2604.01059",
+   "title": "Tsim: Fast Universal Simulator for Quantum Error Correction",
+   "authors": "Haenel et al.",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "distillation_color_d5_X",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.01059_tsim/stim/distillation_color_d5_X.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 16837518.23303468
+     },
+     "gpu": {
+      "rate": 8933017255.25771
+     },
+     "metal": {
+      "rate": 1221866220.9941669
+     }
+    },
+    {
+     "name": "distillation_color_d5_Y",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.01059_tsim/stim/distillation_color_d5_Y.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 17009449.54404402
+     },
+     "gpu": {
+      "rate": 8780299551.350447
+     },
+     "metal": {
+      "rate": 1338981295.9577968
+     }
+    },
+    {
+     "name": "distillation_color_d5_Z",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.01059_tsim/stim/distillation_color_d5_Z.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 14508344.390724624
+     },
+     "gpu": {
+      "rate": 8950242040.864302
+     },
+     "metal": {
+      "rate": 1159307405.491618
+     }
+    },
+    {
+     "name": "distillation_steane_d3_X",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.01059_tsim/stim/distillation_steane_d3_X.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 27128405.029494487
+     },
+     "gpu": {
+      "rate": 16335703154.338451
+     },
+     "metal": {
+      "rate": 1658978866.2825415
+     }
+    },
+    {
+     "name": "distillation_steane_d3_Y",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.01059_tsim/stim/distillation_steane_d3_Y.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 27128014.035041988
+     },
+     "gpu": {
+      "rate": 17981062594.773235
+     },
+     "metal": {
+      "rate": 1746024048.815518
+     }
+    },
+    {
+     "name": "distillation_steane_d3_Z",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.01059_tsim/stim/distillation_steane_d3_Z.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 22106632.258529477
+     },
+     "gpu": {
+      "rate": 15516579146.024055
+     },
+     "metal": {
+      "rate": 1521650887.2064035
+     }
+    },
+    {
+     "name": "distillation_unencoded_X",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.01059_tsim/stim/distillation_unencoded_X.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 42704610.12937186
+     },
+     "gpu": {
+      "rate": 17577767109.221786
+     },
+     "metal": {
+      "rate": 1880763212.9863532
+     }
+    },
+    {
+     "name": "distillation_unencoded_Y",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.01059_tsim/stim/distillation_unencoded_Y.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 42796442.74084877
+     },
+     "gpu": {
+      "rate": 20180038021.307045
+     },
+     "metal": {
+      "rate": 2034049777.3628087
+     }
+    },
+    {
+     "name": "distillation_unencoded_Z",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.01059_tsim/stim/distillation_unencoded_Z.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 34151643.13239553
+     },
+     "gpu": {
+      "rate": 16696676454.609753
+     },
+     "metal": {
+      "rate": 1695428672.9979718
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2604.05126",
+   "title": "In-Situ Simultaneous Magic State Injection on Arbitrary CSS qLDPC Codes",
+   "authors": "Liu et al.",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "bb144_cfg328_inj5_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg328_inj5_T_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 6004679.09461983
+     },
+     "gpu": {
+      "rate": 923254799.8581295
+     },
+     "metal": {
+      "rate": 303587061.48101455
+     }
+    },
+    {
+     "name": "bb144_cfg342_inj3_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg342_inj3_T_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 6818553.643592721
+     },
+     "gpu": {
+      "rate": 892240088.362759
+     },
+     "metal": {
+      "rate": 310282958.7895344
+     }
+    },
+    {
+     "name": "bb144_cfg369_inj1_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg369_inj1_T_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 7901126.075134605
+     },
+     "gpu": {
+      "rate": 924768045.302193
+     },
+     "metal": {
+      "rate": 313594612.8236258
+     }
+    },
+    {
+     "name": "bb144_cfg422_inj2_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg422_inj2_T_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 7275013.184251783
+     },
+     "gpu": {
+      "rate": 912132496.5642198
+     },
+     "metal": {
+      "rate": 279978271.47029686
+     }
+    },
+    {
+     "name": "bb144_cfg491_inj4_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg491_inj4_T_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 6385598.492845891
+     },
+     "gpu": {
+      "rate": 924029277.0171419
+     },
+     "metal": {
+      "rate": 302973942.72688645
+     }
+    },
+    {
+     "name": "bb144_cfg88_inj6_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg88_inj6_T_p0.001.stim",
+     "k": 1,
+     "k_label": "1",
+     "cpu": {
+      "rate": 5708704.731958398
+     },
+     "gpu": {
+      "rate": 947441869.902461
+     },
+     "metal": {
+      "rate": 305504953.3475282
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2604.27058",
+   "title": "Clifft: Fast Exact Simulation of Near-Clifford Quantum Circuits",
+   "authors": "Chase and Labib",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "coherent_d3_r1",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.27058_clifft/stim/coherent_d3_r1.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 1274625348.4036417
+     },
+     "gpu": {
+      "rate": 23440550236.003376
+     },
+     "metal": {
+      "rate": 3769382788.1364098
+     }
+    },
+    {
+     "name": "coherent_d3_r3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.27058_clifft/stim/coherent_d3_r3.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 20799319.5344195
+     },
+     "gpu": {
+      "rate": 10267390253.47384
+     },
+     "metal": {
+      "rate": 876676133.0773517
+     }
+    },
+    {
+     "name": "coherent_d5_r1",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.27058_clifft/stim/coherent_d5_r1.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 629794317.5884093
+     },
+     "gpu": {
+      "rate": 12891769282.2336
+     },
+     "metal": {
+      "rate": 3176191835.182138
+     }
+    },
+    {
+     "name": "coherent_d5_r5",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.27058_clifft/stim/coherent_d5_r5.stim",
+     "k": 11,
+     "k_label": "11",
+     "cpu": {
+      "rate": 1822.2631229940034
+     },
+     "gpu": {
+      "rate": 2533494.6941429395
+     },
+     "metal": {
+      "rate": 454679.8165658657
+     }
+    },
+    {
+     "name": "cultivation_d3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.27058_clifft/stim/cultivation_d3.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 29431412.60349416
+     },
+     "gpu": {
+      "rate": 13382187101.97759
+     },
+     "metal": {
+      "rate": 1325745697.4953876
+     }
+    },
+    {
+     "name": "cultivation_d5",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.27058_clifft/stim/cultivation_d5.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 1206943.4083120527
+     },
+     "gpu": {
+      "rate": 1404733598.8091962
+     },
+     "metal": {
+      "rate": 165833343.71039563
+     }
+    },
+    {
+     "name": "distillation",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.27058_clifft/stim/distillation.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 14507974.823950363
+     },
+     "gpu": {
+      "rate": 8930150524.626057
+     },
+     "metal": {
+      "rate": 1181384238.5433474
+     }
+    },
+    {
+     "name": "surface_d7_r7",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2604.27058_clifft/stim/surface_d7_r7.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 18486211.778345242
+     },
+     "gpu": {
+      "rate": 1272802957.1132205
+     },
+     "metal": {
+      "rate": 544887723.7519149
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2607.28600",
+   "title": "SymFT: Universal Fault-Tolerant Quantum Circuit Simulation via Symbolic Clifford\u2013Pauli Frames and Stabilizer Coordinates",
+   "authors": "Fang et al.",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "MSC_circuit_d7_p0.0005",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/MSC_circuit_d7_p0.0005.stim",
+     "k": 8,
+     "k_label": "8",
+     "cpu": {
+      "rate": 35425.444999147156
+     },
+     "gpu": {
+      "rate": 240490864.90314937
+     },
+     "metal": {
+      "rate": 31733427.77935192
+     }
+    },
+    {
+     "name": "coherent_surface_d3_r1_p1e-3_rz0p02",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/coherent_surface_d3_r1_p1e-3_rz0p02.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 1280349484.8538716
+     },
+     "gpu": {
+      "rate": 25108919734.631165
+     },
+     "metal": {
+      "rate": 3762577612.798393
+     }
+    },
+    {
+     "name": "coherent_surface_d3_r3_p1e-3_rz0p02",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/coherent_surface_d3_r3_p1e-3_rz0p02.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 20852899.02678021
+     },
+     "gpu": {
+      "rate": 9835114360.059673
+     },
+     "metal": {
+      "rate": 890895537.3513023
+     }
+    },
+    {
+     "name": "coherent_surface_d5_r1_p1e-3_rz0p02",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/coherent_surface_d5_r1_p1e-3_rz0p02.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 627321832.3279318
+     },
+     "gpu": {
+      "rate": 13067274627.669348
+     },
+     "metal": {
+      "rate": 3101852975.200188
+     }
+    },
+    {
+     "name": "coherent_surface_d5_r5_p1e-3_rz0p02",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/coherent_surface_d5_r5_p1e-3_rz0p02.stim",
+     "k": 11,
+     "k_label": "11",
+     "cpu": {
+      "rate": 1820.4936608798391
+     },
+     "gpu": {
+      "rate": 2530099.28543505
+     },
+     "metal": {
+      "rate": 454857.49099212984
+     }
+    },
+    {
+     "name": "distillation",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/distillation.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 14211558.613983233
+     },
+     "gpu": {
+      "rate": 8758376810.351294
+     },
+     "metal": {
+      "rate": 1205542926.8229015
+     }
+    },
+    {
+     "name": "msc_d3_inject_cultivate_p1e-3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/msc_d3_inject_cultivate_p1e-3.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 29440086.4468602
+     },
+     "gpu": {
+      "rate": 13392274290.428495
+     },
+     "metal": {
+      "rate": 1317547177.0044873
+     }
+    },
+    {
+     "name": "msc_d5_inject_cultivate_p1e-3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/msc_d5_inject_cultivate_p1e-3.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 1229098.518024315
+     },
+     "gpu": {
+      "rate": 1404042996.8484082
+     },
+     "metal": {
+      "rate": 166134026.58450723
+     }
+    },
+    {
+     "name": "msc_proxy_d7_unverified_p1e-3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/msc_proxy_d7_unverified_p1e-3.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 466066.09127634973
+     },
+     "gpu": {
+      "rate": 1088254133.4497676
+     },
+     "metal": {
+      "rate": 134135099.39727016
+     }
+    },
+    {
+     "name": "pure_surface_d7_r7_p1e-3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/pure_surface_d7_r7_p1e-3.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 18518456.058746487
+     },
+     "gpu": {
+      "rate": 1268090383.6002736
+     },
+     "metal": {
+      "rate": 557605588.187689
+     }
+    },
+    {
+     "name": "pure_surface_d9_r9_p1e-3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2607.28600_symft/stim/pure_surface_d9_r9_p1e-3.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 8379848.13202448
+     },
+     "gpu": {
+      "rate": 602336615.8785014
+     },
+     "metal": {
+      "rate": 266635520.67113727
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2609.17706",
+   "title": "Diagnosing and Restoring the Degraded Fault Distance of Magic State Cultivation",
+   "authors": "Chan et al.",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "d3a6_inject_cultivate_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2609.17706_chan_color_code_cultivation/stim/d3a6_inject_cultivate_T_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 29378516.619450558
+     },
+     "gpu": {
+      "rate": 13725482633.409988
+     },
+     "metal": {
+      "rate": 1307049606.4356098
+     }
+    },
+    {
+     "name": "d3a6f2_inject_cultivate_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2609.17706_chan_color_code_cultivation/stim/d3a6f2_inject_cultivate_T_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 27279180.49493121
+     },
+     "gpu": {
+      "rate": 13633256633.268396
+     },
+     "metal": {
+      "rate": 1313098907.8600264
+     }
+    },
+    {
+     "name": "d5a19_inject_cultivate_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2609.17706_chan_color_code_cultivation/stim/d5a19_inject_cultivate_T_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 1044969.2239440092
+     },
+     "gpu": {
+      "rate": 1128568841.7091477
+     },
+     "metal": {
+      "rate": 145964170.37469938
+     }
+    },
+    {
+     "name": "d5a19f13_inject_cultivate_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2609.17706_chan_color_code_cultivation/stim/d5a19f13_inject_cultivate_T_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 951672.2561220194
+     },
+     "gpu": {
+      "rate": 1120383131.82207
+     },
+     "metal": {
+      "rate": 128164089.48742045
+     }
+    },
+    {
+     "name": "d5a19r4_inject_cultivate_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2609.17706_chan_color_code_cultivation/stim/d5a19r4_inject_cultivate_T_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 966167.0767743989
+     },
+     "gpu": {
+      "rate": 1125385532.0208669
+     },
+     "metal": {
+      "rate": 142675780.08745018
+     }
+    },
+    {
+     "name": "d5a19r4f13_inject_cultivate_T_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2609.17706_chan_color_code_cultivation/stim/d5a19r4f13_inject_cultivate_T_p0.001.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 875609.206361502
+     },
+     "gpu": {
+      "rate": 1100677138.1677027
+     },
+     "metal": {
+      "rate": 137522908.34077543
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2609.18922",
+   "title": "Exact logical error rates for magic state cultivation",
+   "authors": "Wan and Zapirain",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "clifft_d3_p001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2609.18922_exact_ler_cultivation/stim/clifft_d3_p001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 29465437.458424367
+     },
+     "gpu": {
+      "rate": 13505371291.281574
+     },
+     "metal": {
+      "rate": 1294767058.025023
+     }
+    },
+    {
+     "name": "soft_cultivation_d5_p0005",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2609.18922_exact_ler_cultivation/stim/soft_cultivation_d5_p0005.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 139775.22433921392
+     },
+     "gpu": {
+      "rate": 1500249168.6426895
+     },
+     "metal": {
+      "rate": 169894236.27469778
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2610.03869",
+   "title": "Modular Neural Decoder for Surface Code Memory and Logic on Superconducting Processors",
+   "authors": "Lange et al.",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "stability_d3_X_t100_alpha0.5_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t100_alpha0.5_p0.001.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 53150.0872490347
+     },
+     "gpu": {
+      "rate": 282871447.91810054
+     },
+     "metal": {
+      "rate": 12892912.401791748
+     }
+    },
+    {
+     "name": "stability_d3_X_t20_alpha0.15_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha0.15_p0.001.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 1674837.7852539623
+     },
+     "gpu": {
+      "rate": 1555405343.255425
+     },
+     "metal": {
+      "rate": 104639301.65389976
+     }
+    },
+    {
+     "name": "stability_d3_X_t20_alpha0.5_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha0.5_p0.001.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 372913.375034667
+     },
+     "gpu": {
+      "rate": 1503444997.5984135
+     },
+     "metal": {
+      "rate": 103577127.74640143
+     }
+    },
+    {
+     "name": "stability_d3_X_t20_alpha1.0_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha1.0_p0.001.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 199573.35789633007
+     },
+     "gpu": {
+      "rate": 973946755.4509748
+     },
+     "metal": {
+      "rate": 81535892.89195205
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2610.06811",
+   "title": "Polynomial-time simulation of non-Clifford quantum error correction (Merlin)",
+   "authors": "Cercelescu et al.",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "code_switching_bt27_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/code_switching_bt27_p0.001.stim",
+     "k": 26,
+     "k_label": "26",
+     "cpu": {
+      "rate": 0.024381870840922432
+     },
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "code_switching_bt81_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/code_switching_bt81_p0.001.stim",
+     "k": null,
+     "k_label": "63*",
+     "cpu": null,
+     "gpu": null,
+     "metal": null
+    },
+    {
+     "name": "cultivation_d3_t",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/cultivation_d3_t.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 29372848.852586787
+     },
+     "gpu": {
+      "rate": 13446004422.386162
+     },
+     "metal": {
+      "rate": 1298124021.0464554
+     }
+    },
+    {
+     "name": "cultivation_d5_t",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/cultivation_d5_t.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 1228493.9140283172
+     },
+     "gpu": {
+      "rate": 1401075013.4678426
+     },
+     "metal": {
+      "rate": 164284988.73414466
+     }
+    },
+    {
+     "name": "distillation_15to1_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/distillation_15to1_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 116665726.96197025
+     },
+     "gpu": {
+      "rate": 25854705876.89066
+     },
+     "metal": {
+      "rate": 2765179904.7317104
+     }
+    },
+    {
+     "name": "distillation_bh10_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/distillation_bh10_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 110851774.42865355
+     },
+     "gpu": {
+      "rate": 10389254062.97011
+     },
+     "metal": {
+      "rate": 1039017951.8424442
+     }
+    },
+    {
+     "name": "distillation_bh12_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/distillation_bh12_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 71684509.81279495
+     },
+     "gpu": {
+      "rate": 6085996991.325892
+     },
+     "metal": {
+      "rate": 668349346.9562262
+     }
+    },
+    {
+     "name": "distillation_bh14_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/distillation_bh14_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 107903300.28108981
+     },
+     "gpu": {
+      "rate": 7522423284.316403
+     },
+     "metal": {
+      "rate": 723298631.6416514
+     }
+    },
+    {
+     "name": "distillation_bh16_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/distillation_bh16_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 71336719.72526003
+     },
+     "gpu": {
+      "rate": 5091496021.272674
+     },
+     "metal": {
+      "rate": 530750605.92101896
+     }
+    },
+    {
+     "name": "distillation_bh18_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/distillation_bh18_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 105442083.25900058
+     },
+     "gpu": {
+      "rate": 6578542087.428869
+     },
+     "metal": {
+      "rate": 570671146.432379
+     }
+    },
+    {
+     "name": "distillation_bh2_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/distillation_bh2_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 116975889.23608321
+     },
+     "gpu": {
+      "rate": 25835091528.407715
+     },
+     "metal": {
+      "rate": 2767217739.7222557
+     }
+    },
+    {
+     "name": "distillation_bh4_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/distillation_bh4_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 74905147.70130126
+     },
+     "gpu": {
+      "rate": 13909238663.639069
+     },
+     "metal": {
+      "rate": 1413291686.4587848
+     }
+    },
+    {
+     "name": "distillation_bh6_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/distillation_bh6_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 113966194.0232902
+     },
+     "gpu": {
+      "rate": 13134943715.137665
+     },
+     "metal": {
+      "rate": 1604934874.304543
+     }
+    },
+    {
+     "name": "distillation_bh8_p0.001",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06811_merlin/stim/distillation_bh8_p0.001.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 74187539.85397929
+     },
+     "gpu": {
+      "rate": 9234189358.722631
+     },
+     "metal": {
+      "rate": 920856606.0489836
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2610.06828",
+   "title": "The practical cost of magic state cultivation",
+   "authors": "Mehta et al.",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "color_code_cultivation_f3_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06828_practical_cost_cultivation/stim/color_code_cultivation_f3_T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 1392558.5072344684
+     },
+     "gpu": {
+      "rate": 198712115.3238877
+     },
+     "metal": {
+      "rate": 64053238.177046
+     }
+    },
+    {
+     "name": "color_code_cultivation_f5_T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.06828_practical_cost_cultivation/stim/color_code_cultivation_f5_T.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 539592.6377136699
+     },
+     "gpu": {
+      "rate": 154264330.28327334
+     },
+     "metal": {
+      "rate": 43338586.35145385
+     }
+    }
+   ]
+  },
+  {
+   "arxiv": "2610.22315",
+   "title": "Magna: simulating magic state factories as cheaply as Clifford circuits",
+   "authors": "Wang and Gu",
+   "year": "2026",
+   "circuits": [
+    {
+     "name": "bh10-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh10-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 1220071260.969904
+     },
+     "gpu": {
+      "rate": 48280825270.48835
+     },
+     "metal": {
+      "rate": 4200559371.0489297
+     }
+    },
+    {
+     "name": "bh10-T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh10-T.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 30065269.556648917
+     },
+     "gpu": {
+      "rate": 17522127928.92404
+     },
+     "metal": {
+      "rate": 1977580634.396664
+     }
+    },
+    {
+     "name": "bh100-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh100-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 291817380.5194902
+     },
+     "gpu": {
+      "rate": 47756666020.86588
+     },
+     "metal": {
+      "rate": 4201981990.0142236
+     }
+    },
+    {
+     "name": "bh100-T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh100-T.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 309615.6670294366
+     },
+     "gpu": {
+      "rate": 1664386124.8680887
+     },
+     "metal": {
+      "rate": 323586501.22833574
+     }
+    },
+    {
+     "name": "bh2-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh2-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 1766146378.69448
+     },
+     "gpu": {
+      "rate": 47778393442.43978
+     },
+     "metal": {
+      "rate": 4199299214.1998825
+     }
+    },
+    {
+     "name": "bh2-T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh2-T.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 80484240.48458336
+     },
+     "gpu": {
+      "rate": 29492843088.431183
+     },
+     "metal": {
+      "rate": 2981879508.5170546
+     }
+    },
+    {
+     "name": "bh20-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh20-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 883933878.4329407
+     },
+     "gpu": {
+      "rate": 47911606909.83226
+     },
+     "metal": {
+      "rate": 4180340950.6798716
+     }
+    },
+    {
+     "name": "bh20-T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh20-T.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 1542725.9438778246
+     },
+     "gpu": {
+      "rate": 11073324436.353405
+     },
+     "metal": {
+      "rate": 1253680129.6983716
+     }
+    },
+    {
+     "name": "bh4-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh4-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 1597801011.428807
+     },
+     "gpu": {
+      "rate": 47666327568.016716
+     },
+     "metal": {
+      "rate": 4201478105.722106
+     }
+    },
+    {
+     "name": "bh4-T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh4-T.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 60800267.40964174
+     },
+     "gpu": {
+      "rate": 26139849422.869408
+     },
+     "metal": {
+      "rate": 2674237725.1403456
+     }
+    },
+    {
+     "name": "bh40-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh40-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 576333855.8714759
+     },
+     "gpu": {
+      "rate": 47765074566.335945
+     },
+     "metal": {
+      "rate": 4171835909.529662
+     }
+    },
+    {
+     "name": "bh40-T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh40-T.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 805323.3259170876
+     },
+     "gpu": {
+      "rate": 5938029582.256496
+     },
+     "metal": {
+      "rate": 749727651.1275431
+     }
+    },
+    {
+     "name": "bh6-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh6-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 1442894257.1878195
+     },
+     "gpu": {
+      "rate": 47659429219.247215
+     },
+     "metal": {
+      "rate": 4218513074.09446
+     }
+    },
+    {
+     "name": "bh6-T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh6-T.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 48604162.80642911
+     },
+     "gpu": {
+      "rate": 23045622912.10721
+     },
+     "metal": {
+      "rate": 2391398525.532189
+     }
+    },
+    {
+     "name": "bh60-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh60-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 430527306.56895477
+     },
+     "gpu": {
+      "rate": 47646175531.10101
+     },
+     "metal": {
+      "rate": 4188216296.8705764
+     }
+    },
+    {
+     "name": "bh60-T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh60-T.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 547796.4713741438
+     },
+     "gpu": {
+      "rate": 3656972981.809908
+     },
+     "metal": {
+      "rate": 523340255.3502184
+     }
+    },
+    {
+     "name": "bh80-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh80-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 346214774.03018594
+     },
+     "gpu": {
+      "rate": 47475334203.54394
+     },
+     "metal": {
+      "rate": 4183770344.280772
+     }
+    },
+    {
+     "name": "bh80-T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/bh80-T.stim",
+     "k": 3,
+     "k_label": "3",
+     "cpu": {
+      "rate": 383666.7074376041
+     },
+     "gpu": {
+      "rate": 2851526460.7222347
+     },
+     "metal": {
+      "rate": 398557408.59728706
+     }
+    },
+    {
+     "name": "color3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/color3.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 33305900.010262024
+     },
+     "gpu": {
+      "rate": 15976278219.528692
+     },
+     "metal": {
+      "rate": 1576062631.607418
+     }
+    },
+    {
+     "name": "color5",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/color5.stim",
+     "k": 6,
+     "k_label": "6",
+     "cpu": {
+      "rate": 270585.43947812926
+     },
+     "gpu": {
+      "rate": 1723118390.8065395
+     },
+     "metal": {
+      "rate": 201070754.47065815
+     }
+    },
+    {
+     "name": "dk",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/dk.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 41640655.81158995
+     },
+     "gpu": {
+      "rate": 16895418965.83266
+     },
+     "metal": {
+      "rate": 1968215389.7841785
+     }
+    },
+    {
+     "name": "rp2-d3-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/rp2-d3-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 36872197.135297015
+     },
+     "gpu": {
+      "rate": 8035309017.022121
+     },
+     "metal": {
+      "rate": 2334371697.3952303
+     }
+    },
+    {
+     "name": "rp2-d3",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/rp2-d3.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 14687521.655417357
+     },
+     "gpu": {
+      "rate": 8407593190.370728
+     },
+     "metal": {
+      "rate": 940902706.9170039
+     }
+    },
+    {
+     "name": "rp2-d5-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/rp2-d5-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 15550574.3077947
+     },
+     "gpu": {
+      "rate": 2992736365.462842
+     },
+     "metal": {
+      "rate": 1082679015.3783293
+     }
+    },
+    {
+     "name": "rp2-d5",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/rp2-d5.stim",
+     "k": 9,
+     "k_label": "9",
+     "cpu": {
+      "rate": 69158.0427713173
+     },
+     "gpu": {
+      "rate": 126240930.22562054
+     },
+     "metal": {
+      "rate": 18814505.540868223
+     }
+    },
+    {
+     "name": "wg-S",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/wg-S.stim",
+     "k": 0,
+     "k_label": "0",
+     "cpu": {
+      "rate": 79295125.21389158
+     },
+     "gpu": {
+      "rate": 4230381405.58285
+     },
+     "metal": {
+      "rate": 1848575469.2764366
+     }
+    },
+    {
+     "name": "wg-T",
+     "url": "https://github.com/rafaelha/tsim-bench/blob/master/papers/2610.22315_magna/stim/wg-T.stim",
+     "k": 4,
+     "k_label": "4",
+     "cpu": {
+      "rate": 8281907.743489822
+     },
+     "gpu": {
+      "rate": 4214251749.2353554
+     },
+     "metal": {
+      "rate": 830932691.6890275
+     }
+    }
+   ]
+  }
+ ]
+}

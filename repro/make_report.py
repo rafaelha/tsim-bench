@@ -246,6 +246,12 @@ def main():
         compile_pdf(tex)
     summary = {s: summarize(common.load_results(s)) for s in studies}
     (common.REPORT / "summary.json").write_text(json.dumps(summary, indent=1))
+    try:  # the blog post's gallery data follows the results
+        from repro import blog_export
+
+        blog_export.main([])
+    except Exception:  # noqa: BLE001
+        traceback.print_exc()
 
 
 if __name__ == "__main__":

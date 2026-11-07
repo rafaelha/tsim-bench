@@ -1,0 +1,1197 @@
+{
+ "source": "https://github.com/rafaelha/tsim-bench/tree/master/repro",
+ "tsim_builds": [
+  "a2af975f"
+ ],
+ "slides": [
+  {
+   "id": "gidney-fig13",
+   "kind": "figure",
+   "arxiv": "2409.17595",
+   "cite": "cultivation",
+   "authors": "Gidney, Shutty, Jones (2024)",
+   "ref": "Fig. 13",
+   "tab": "Cultivation, Fig. 13",
+   "title": "Cultivating T|+⟩, S|+⟩ and Z|+⟩ states",
+   "caption": "Unitary injection and d=3 cultivation, uniform depolarizing noise p from 0.1% to 1% (labels). The paper ran a state-vector simulation for every gate; Tsim samples the same circuits.",
+   "x": {
+    "label": "Expected attempts per kept shot",
+    "min": 1,
+    "max": 100
+   },
+   "y": {
+    "label": "Logical error rate (per kept shot)",
+    "min": 1e-07,
+    "max": 0.01
+   },
+   "paper": {
+    "label": "Paper (state vector)",
+    "series": [
+     {
+      "id": "t",
+      "label": "T|+⟩",
+      "slot": 1,
+      "points": [
+       {
+        "x": 1.456,
+        "y": 9.731e-07,
+        "lo": 7.894e-07,
+        "hi": 1.183e-06,
+        "errors": 338,
+        "kept": 347339102,
+        "shots": 505758066,
+        "p": 0.001
+       },
+       {
+        "x": 2.117,
+        "y": 5.859e-06,
+        "lo": 5.324e-06,
+        "hi": 6.429e-06,
+        "errors": 1555,
+        "kept": 265390443,
+        "shots": 561960533,
+        "p": 0.002
+       },
+       {
+        "x": 3.076,
+        "y": 1.813e-05,
+        "lo": 1.608e-05,
+        "hi": 2.035e-05,
+        "errors": 1000,
+        "kept": 55151891,
+        "shots": 169644385,
+        "p": 0.003
+       },
+       {
+        "x": 6.456,
+        "y": 8.752e-05,
+        "lo": 7.763e-05,
+        "hi": 9.822e-05,
+        "errors": 1000,
+        "kept": 11425806,
+        "shots": 73760419,
+        "p": 0.005
+       },
+       {
+        "x": 13.5,
+        "y": 0.0002599,
+        "lo": 0.0002306,
+        "hi": 0.0002917,
+        "errors": 1000,
+        "kept": 3846930,
+        "shots": 51914716,
+        "p": 0.007
+       },
+       {
+        "x": 40.09,
+        "y": 0.00091,
+        "lo": 0.0008073,
+        "hi": 0.001021,
+        "errors": 1000,
+        "kept": 1098864,
+        "shots": 44049581,
+        "p": 0.01
+       }
+      ]
+     },
+     {
+      "id": "s",
+      "label": "S|+⟩",
+      "slot": 2,
+      "points": [
+       {
+        "x": 1.456,
+        "y": 3.895e-07,
+        "lo": 2.751e-07,
+        "hi": 5.318e-07,
+        "errors": 128,
+        "kept": 328642525,
+        "shots": 478504269,
+        "p": 0.001
+       },
+       {
+        "x": 2.117,
+        "y": 2.872e-06,
+        "lo": 2.499e-06,
+        "hi": 3.28e-06,
+        "errors": 748,
+        "kept": 260449460,
+        "shots": 551461523,
+        "p": 0.002
+       },
+       {
+        "x": 3.075,
+        "y": 1.025e-05,
+        "lo": 8.884e-06,
+        "hi": 1.175e-05,
+        "errors": 708,
+        "kept": 69072385,
+        "shots": 212392842,
+        "p": 0.003
+       },
+       {
+        "x": 6.46,
+        "y": 5.808e-05,
+        "lo": 5.152e-05,
+        "hi": 6.517e-05,
+        "errors": 1000,
+        "kept": 17218494,
+        "shots": 111237541,
+        "p": 0.005
+       },
+       {
+        "x": 13.49,
+        "y": 0.0001903,
+        "lo": 0.0001688,
+        "hi": 0.0002136,
+        "errors": 1000,
+        "kept": 5253800,
+        "shots": 70855180,
+        "p": 0.007
+       },
+       {
+        "x": 40.15,
+        "y": 0.0006665,
+        "lo": 0.0005913,
+        "hi": 0.0007479,
+        "errors": 1001,
+        "kept": 1501822,
+        "shots": 60296074,
+        "p": 0.01
+       }
+      ]
+     },
+     {
+      "id": "z",
+      "label": "Z|+⟩",
+      "slot": 3,
+      "points": [
+       {
+        "x": 1.456,
+        "y": 2.93e-07,
+        "lo": 1.912e-07,
+        "hi": 4.257e-07,
+        "errors": 87,
+        "kept": 296970978,
+        "shots": 432423639,
+        "p": 0.001
+       },
+       {
+        "x": 2.117,
+        "y": 2.533e-06,
+        "lo": 2.168e-06,
+        "hi": 2.937e-06,
+        "errors": 601,
+        "kept": 237248481,
+        "shots": 502271107,
+        "p": 0.002
+       },
+       {
+        "x": 3.075,
+        "y": 9.285e-06,
+        "lo": 7.929e-06,
+        "hi": 1.079e-05,
+        "errors": 584,
+        "kept": 62899932,
+        "shots": 193396881,
+        "p": 0.003
+       },
+       {
+        "x": 6.453,
+        "y": 4.923e-05,
+        "lo": 4.367e-05,
+        "hi": 5.525e-05,
+        "errors": 1000,
+        "kept": 20312289,
+        "shots": 131072873,
+        "p": 0.005
+       },
+       {
+        "x": 13.46,
+        "y": 0.0001537,
+        "lo": 0.0001364,
+        "hi": 0.0001725,
+        "errors": 1000,
+        "kept": 6505003,
+        "shots": 87554724,
+        "p": 0.007
+       },
+       {
+        "x": 39.94,
+        "y": 0.0005726,
+        "lo": 0.0005079,
+        "hi": 0.0006425,
+        "errors": 1000,
+        "kept": 1746492,
+        "shots": 69749152,
+        "p": 0.01
+       }
+      ]
+     }
+    ],
+    "budget": {
+     "core_seconds": 228600000.0,
+     "shots": 4308303505
+    }
+   },
+   "tsim": {
+    "label": "Tsim GPU",
+    "series": [
+     {
+      "id": "t",
+      "label": "T|+⟩",
+      "slot": 1,
+      "points": [
+       {
+        "x": 1.456,
+        "y": 8.98e-07,
+        "lo": 8.746e-07,
+        "hi": 9.217e-07,
+        "errors": 20147,
+        "kept": 22436220367,
+        "shots": 32668547437,
+        "p": 0.001
+       },
+       {
+        "x": 2.118,
+        "y": 5.692e-06,
+        "lo": 5.548e-06,
+        "hi": 5.839e-06,
+        "errors": 21335,
+        "kept": 3748008329,
+        "shots": 7936457006,
+        "p": 0.002
+       },
+       {
+        "x": 3.076,
+        "y": 1.814e-05,
+        "lo": 1.768e-05,
+        "hi": 1.86e-05,
+        "errors": 21424,
+        "kept": 1181213736,
+        "shots": 3632841018,
+        "p": 0.003
+       },
+       {
+        "x": 6.46,
+        "y": 8.477e-05,
+        "lo": 8.335e-05,
+        "hi": 8.62e-05,
+        "errors": 49117,
+        "kept": 579440202,
+        "shots": 3743259278,
+        "p": 0.005
+       },
+       {
+        "x": 13.49,
+        "y": 0.0002522,
+        "lo": 0.0002465,
+        "hi": 0.000258,
+        "errors": 26769,
+        "kept": 106129772,
+        "shots": 1431306240,
+        "p": 0.007
+       },
+       {
+        "x": 40.15,
+        "y": 0.0008657,
+        "lo": 0.0008475,
+        "hi": 0.0008841,
+        "errors": 30860,
+        "kept": 35648825,
+        "shots": 1431306240,
+        "p": 0.01
+       }
+      ]
+     },
+     {
+      "id": "s",
+      "label": "S|+⟩",
+      "slot": 2,
+      "points": [
+       {
+        "x": 1.456,
+        "y": 3.427e-07,
+        "lo": 3.338e-07,
+        "hi": 3.518e-07,
+        "errors": 20079,
+        "kept": 58585534769,
+        "shots": 85304368277,
+        "p": 0.001
+       },
+       {
+        "x": 2.117,
+        "y": 2.952e-06,
+        "lo": 2.876e-06,
+        "hi": 3.029e-06,
+        "errors": 20570,
+        "kept": 6969184470,
+        "shots": 14756944531,
+        "p": 0.002
+       },
+       {
+        "x": 3.075,
+        "y": 1.052e-05,
+        "lo": 1.027e-05,
+        "hi": 1.078e-05,
+        "errors": 23733,
+        "kept": 2254950938,
+        "shots": 6934783495,
+        "p": 0.003
+       },
+       {
+        "x": 6.46,
+        "y": 5.693e-05,
+        "lo": 5.577e-05,
+        "hi": 5.81e-05,
+        "errors": 32992,
+        "kept": 579514200,
+        "shots": 3743396799,
+        "p": 0.005
+       },
+       {
+        "x": 13.48,
+        "y": 0.0001839,
+        "lo": 0.0001814,
+        "hi": 0.0001863,
+        "errors": 78092,
+        "kept": 424702001,
+        "shots": 5726273536,
+        "p": 0.007
+       },
+       {
+        "x": 40.1,
+        "y": 0.0006854,
+        "lo": 0.0006692,
+        "hi": 0.0007018,
+        "errors": 24462,
+        "kept": 35691706,
+        "shots": 1431306240,
+        "p": 0.01
+       }
+      ]
+     },
+     {
+      "id": "z",
+      "label": "Z|+⟩",
+      "slot": 3,
+      "points": [
+       {
+        "x": 1.456,
+        "y": 2.88e-07,
+        "lo": 2.805e-07,
+        "hi": 2.957e-07,
+        "errors": 20070,
+        "kept": 69680876640,
+        "shots": 101455989677,
+        "p": 0.001
+       },
+       {
+        "x": 2.117,
+        "y": 2.464e-06,
+        "lo": 2.401e-06,
+        "hi": 2.528e-06,
+        "errors": 20702,
+        "kept": 8400894066,
+        "shots": 17786231267,
+        "p": 0.002
+       },
+       {
+        "x": 3.074,
+        "y": 9.003e-06,
+        "lo": 8.77e-06,
+        "hi": 9.239e-06,
+        "errors": 20302,
+        "kept": 2255145982,
+        "shots": 6933027066,
+        "p": 0.003
+       },
+       {
+        "x": 6.453,
+        "y": 4.838e-05,
+        "lo": 4.731e-05,
+        "hi": 4.946e-05,
+        "errors": 28045,
+        "kept": 579722365,
+        "shots": 3741087634,
+        "p": 0.005
+       },
+       {
+        "x": 13.46,
+        "y": 0.0001542,
+        "lo": 0.000152,
+        "hi": 0.0001565,
+        "errors": 65631,
+        "kept": 425586892,
+        "shots": 5726273536,
+        "p": 0.007
+       },
+       {
+        "x": 39.92,
+        "y": 0.0005848,
+        "lo": 0.0005699,
+        "hi": 0.0005999,
+        "errors": 20964,
+        "kept": 35850317,
+        "shots": 1431306240,
+        "p": 0.01
+       }
+      ]
+     }
+    ],
+    "budget": {
+     "gpu_seconds": 93.7,
+     "shots": 305814705517,
+     "points": 18,
+     "gpu": "NVIDIA GeForce RTX 5090"
+    }
+   }
+  },
+  {
+   "id": "gidney-fig21",
+   "kind": "figure",
+   "arxiv": "2409.17595",
+   "cite": "cultivation",
+   "authors": "Gidney, Shutty, Jones (2024)",
+   "ref": "Fig. 21",
+   "tab": "Cultivation, Fig. 21",
+   "title": "Injection and cultivation without escape",
+   "caption": "Three injection styles with d=3 cultivation, and unitary injection with d=5, at p = 0.05%, 0.1% and 0.2%. The paper sampled the S-gate stand-in with Stim (up to 10¹² shots per point); Tsim samples both the stand-in and the real T gates.",
+   "x": {
+    "label": "Expected attempts per kept shot",
+    "min": 1,
+    "max": 100
+   },
+   "y": {
+    "label": "Logical error rate (per kept shot)",
+    "min": 1e-13,
+    "max": 0.0001
+   },
+   "paper": {
+    "label": "Paper (Stim, S stand-in)",
+    "series": [
+     {
+      "id": "bell3-s",
+      "label": "Bell injection, d=3, S",
+      "slot": 4,
+      "gate": "S",
+      "points": [
+       {
+        "x": 1.182,
+        "y": 4.913e-08,
+        "lo": 4.36e-08,
+        "hi": 5.511e-08,
+        "errors": 1008,
+        "kept": 20516865759,
+        "shots": 24244004659,
+        "p": 0.0005
+       },
+       {
+        "x": 1.396,
+        "y": 3.92e-07,
+        "lo": 3.507e-07,
+        "hi": 4.365e-07,
+        "errors": 1155,
+        "kept": 2946273442,
+        "shots": 4113329698,
+        "p": 0.001
+       },
+       {
+        "x": 1.948,
+        "y": 3.254e-06,
+        "lo": 2.886e-06,
+        "hi": 3.652e-06,
+        "errors": 1000,
+        "kept": 307318877,
+        "shots": 598547729,
+        "p": 0.002
+       }
+      ]
+     },
+     {
+      "id": "teleport3-s",
+      "label": "Teleport injection, d=3, S",
+      "slot": 3,
+      "gate": "S",
+      "points": [
+       {
+        "x": 1.244,
+        "y": 7.276e-08,
+        "lo": 6.461e-08,
+        "hi": 8.157e-08,
+        "errors": 1017,
+        "kept": 13977345247,
+        "shots": 17392245282,
+        "p": 0.0005
+       },
+       {
+        "x": 1.548,
+        "y": 5.792e-07,
+        "lo": 5.151e-07,
+        "hi": 6.484e-07,
+        "errors": 1043,
+        "kept": 1800795754,
+        "shots": 2787598882,
+        "p": 0.001
+       },
+       {
+        "x": 2.394,
+        "y": 4.81e-06,
+        "lo": 4.267e-06,
+        "hi": 5.398e-06,
+        "errors": 1000,
+        "kept": 207893565,
+        "shots": 497664273,
+        "p": 0.002
+       }
+      ]
+     },
+     {
+      "id": "unitary3-s",
+      "label": "Unitary injection, d=3, S",
+      "slot": 2,
+      "gate": "S",
+      "points": [
+       {
+        "x": 1.207,
+        "y": 4e-08,
+        "lo": 3.554e-08,
+        "hi": 4.483e-08,
+        "errors": 1026,
+        "kept": 25646926717,
+        "shots": 30952001331,
+        "p": 0.0005
+       },
+       {
+        "x": 1.456,
+        "y": 3.423e-07,
+        "lo": 3.041e-07,
+        "hi": 3.835e-07,
+        "errors": 1029,
+        "kept": 3006229654,
+        "shots": 4377310754,
+        "p": 0.001
+       },
+       {
+        "x": 2.117,
+        "y": 2.846e-06,
+        "lo": 2.524e-06,
+        "hi": 3.193e-06,
+        "errors": 1000,
+        "kept": 351415893,
+        "shots": 744115473,
+        "p": 0.002
+       }
+      ]
+     },
+     {
+      "id": "unitary5-s",
+      "label": "Unitary injection, d=5, S",
+      "slot": 1,
+      "gate": "S",
+      "points": [
+       {
+        "x": 2.637,
+        "y": null,
+        "lo": 0.0,
+        "hi": 1.822e-11,
+        "errors": 0,
+        "kept": 379188308301,
+        "shots": 1000000000000,
+        "p": 0.0005
+       },
+       {
+        "x": 6.946,
+        "y": 3.473e-10,
+        "lo": 1.953e-10,
+        "hi": 5.632e-10,
+        "errors": 50,
+        "kept": 143962902536,
+        "shots": 1000000000000,
+        "p": 0.001
+       },
+       {
+        "x": 48.01,
+        "y": 1.263e-08,
+        "lo": 9.949e-09,
+        "hi": 1.574e-08,
+        "errors": 263,
+        "kept": 20830759097,
+        "shots": 1000000000000,
+        "p": 0.002
+       }
+      ]
+     }
+    ],
+    "budget": {
+     "core_seconds": 3052000.0,
+     "shots": 3085706818081
+    }
+   },
+   "tsim": {
+    "label": "Tsim GPU",
+    "series": [
+     {
+      "id": "bell3-s",
+      "label": "Bell injection, d=3, S",
+      "slot": 4,
+      "gate": "S",
+      "points": [
+       {
+        "x": 1.182,
+        "y": 4.894e-08,
+        "lo": 4.767e-08,
+        "hi": 5.024e-08,
+        "errors": 20002,
+        "kept": 408682411429,
+        "shots": 482922930711,
+        "p": 0.0005
+       },
+       {
+        "x": 1.396,
+        "y": 3.994e-07,
+        "lo": 3.89e-07,
+        "hi": 4.1e-07,
+        "errors": 20114,
+        "kept": 50364071308,
+        "shots": 70312397996,
+        "p": 0.001
+       },
+       {
+        "x": 1.948,
+        "y": 3.318e-06,
+        "lo": 3.233e-06,
+        "hi": 3.404e-06,
+        "errors": 20795,
+        "kept": 6268096025,
+        "shots": 12208757959,
+        "p": 0.002
+       }
+      ]
+     },
+     {
+      "id": "bell3-t",
+      "label": "Bell injection, d=3, T",
+      "slot": 4,
+      "gate": "T",
+      "points": [
+       {
+        "x": 1.182,
+        "y": 1.724e-07,
+        "lo": 1.679e-07,
+        "hi": 1.77e-07,
+        "errors": 20043,
+        "kept": 116266719126,
+        "shots": 137385541510,
+        "p": 0.0005
+       },
+       {
+        "x": 1.396,
+        "y": 9.371e-07,
+        "lo": 9.126e-07,
+        "hi": 9.62e-07,
+        "errors": 20028,
+        "kept": 21373089854,
+        "shots": 29838034975,
+        "p": 0.001
+       },
+       {
+        "x": 1.948,
+        "y": 6.14e-06,
+        "lo": 5.984e-06,
+        "hi": 6.3e-06,
+        "errors": 20907,
+        "kept": 3404837175,
+        "shots": 6631337473,
+        "p": 0.002
+       }
+      ]
+     },
+     {
+      "id": "teleport3-s",
+      "label": "Teleport injection, d=3, S",
+      "slot": 3,
+      "gate": "S",
+      "points": [
+       {
+        "x": 1.244,
+        "y": 7.115e-08,
+        "lo": 6.93e-08,
+        "hi": 7.304e-08,
+        "errors": 20007,
+        "kept": 281177233307,
+        "shots": 349875869148,
+        "p": 0.0005
+       },
+       {
+        "x": 1.548,
+        "y": 5.894e-07,
+        "lo": 5.74e-07,
+        "hi": 6.051e-07,
+        "errors": 20008,
+        "kept": 33946469825,
+        "shots": 52549169159,
+        "p": 0.001
+       },
+       {
+        "x": 2.394,
+        "y": 4.835e-06,
+        "lo": 4.71e-06,
+        "hi": 4.962e-06,
+        "errors": 20449,
+        "kept": 4229548175,
+        "shots": 10126146368,
+        "p": 0.002
+       }
+      ]
+     },
+     {
+      "id": "teleport3-t",
+      "label": "Teleport injection, d=3, T",
+      "slot": 3,
+      "gate": "T",
+      "points": [
+       {
+        "x": 1.243,
+        "y": 1.798e-07,
+        "lo": 1.751e-07,
+        "hi": 1.845e-07,
+        "errors": 20009,
+        "kept": 111311351477,
+        "shots": 138364534472,
+        "p": 0.0005
+       },
+       {
+        "x": 1.545,
+        "y": 1.045e-06,
+        "lo": 1.018e-06,
+        "hi": 1.073e-06,
+        "errors": 20220,
+        "kept": 19344059876,
+        "shots": 29883336026,
+        "p": 0.001
+       },
+       {
+        "x": 2.384,
+        "y": 6.859e-06,
+        "lo": 6.681e-06,
+        "hi": 7.04e-06,
+        "errors": 20178,
+        "kept": 2941720156,
+        "shots": 7014106715,
+        "p": 0.002
+       }
+      ]
+     },
+     {
+      "id": "unitary3-s",
+      "label": "Unitary injection, d=3, S",
+      "slot": 2,
+      "gate": "S",
+      "points": [
+       {
+        "x": 1.207,
+        "y": 4.11e-08,
+        "lo": 4.003e-08,
+        "hi": 4.219e-08,
+        "errors": 20003,
+        "kept": 486701308870,
+        "shots": 587378111094,
+        "p": 0.0005
+       },
+       {
+        "x": 1.456,
+        "y": 3.427e-07,
+        "lo": 3.338e-07,
+        "hi": 3.518e-07,
+        "errors": 20079,
+        "kept": 58585534769,
+        "shots": 85304368277,
+        "p": 0.001
+       },
+       {
+        "x": 2.117,
+        "y": 2.952e-06,
+        "lo": 2.876e-06,
+        "hi": 3.029e-06,
+        "errors": 20570,
+        "kept": 6969184470,
+        "shots": 14756944531,
+        "p": 0.002
+       }
+      ]
+     },
+     {
+      "id": "unitary3-t",
+      "label": "Unitary injection, d=3, T",
+      "slot": 2,
+      "gate": "T",
+      "points": [
+       {
+        "x": 1.207,
+        "y": 1.655e-07,
+        "lo": 1.611e-07,
+        "hi": 1.699e-07,
+        "errors": 20007,
+        "kept": 120913280081,
+        "shots": 145924905055,
+        "p": 0.0005
+       },
+       {
+        "x": 1.456,
+        "y": 8.98e-07,
+        "lo": 8.746e-07,
+        "hi": 9.217e-07,
+        "errors": 20147,
+        "kept": 22436220367,
+        "shots": 32668547437,
+        "p": 0.001
+       },
+       {
+        "x": 2.118,
+        "y": 5.692e-06,
+        "lo": 5.548e-06,
+        "hi": 5.839e-06,
+        "errors": 21335,
+        "kept": 3748008329,
+        "shots": 7936457006,
+        "p": 0.002
+       }
+      ]
+     },
+     {
+      "id": "unitary5-s",
+      "label": "Unitary injection, d=5, S",
+      "slot": 1,
+      "gate": "S",
+      "points": [
+       {
+        "x": 2.637,
+        "y": 6.593e-12,
+        "lo": 1.536e-12,
+        "hi": 1.764e-11,
+        "errors": 10,
+        "kept": 1516755432336,
+        "shots": 4000000000000,
+        "p": 0.0005
+       },
+       {
+        "x": 6.946,
+        "y": 3.178e-10,
+        "lo": 2.383e-10,
+        "hi": 4.133e-10,
+        "errors": 183,
+        "kept": 575852098606,
+        "shots": 4000000000000,
+        "p": 0.001
+       },
+       {
+        "x": 48.01,
+        "y": 1.049e-08,
+        "lo": 9.225e-09,
+        "hi": 1.186e-08,
+        "errors": 874,
+        "kept": 83324069586,
+        "shots": 4000000000000,
+        "p": 0.002
+       }
+      ]
+     },
+     {
+      "id": "unitary5-t",
+      "label": "Unitary injection, d=5, T",
+      "slot": 1,
+      "gate": "T",
+      "points": [
+       {
+        "x": 2.637,
+        "y": 2.683e-10,
+        "lo": 2.219e-10,
+        "hi": 3.209e-10,
+        "errors": 407,
+        "kept": 1516737336574,
+        "shots": 4000000000000,
+        "p": 0.0005
+       },
+       {
+        "x": 6.947,
+        "y": 3.418e-09,
+        "lo": 3.032e-09,
+        "hi": 3.835e-09,
+        "errors": 1000,
+        "kept": 292588842937,
+        "shots": 2032490660288,
+        "p": 0.001
+       },
+       {
+        "x": 48.02,
+        "y": 5.071e-08,
+        "lo": 4.498e-08,
+        "hi": 5.691e-08,
+        "errors": 1000,
+        "kept": 19718244280,
+        "shots": 946784285546,
+        "p": 0.002
+       }
+      ]
+     }
+    ],
+    "budget": {
+     "gpu_seconds": 5901.0,
+     "shots": 21180356441746,
+     "points": 24,
+     "gpu": "NVIDIA GeForce RTX 5090"
+    }
+   }
+  },
+  {
+   "id": "rp2-table1",
+   "kind": "table",
+   "arxiv": "2503.18657",
+   "cite": "rp2",
+   "authors": "Chen et al. (2025)",
+   "ref": "Table 1",
+   "tab": "RP², Table 1",
+   "standin": "S gates",
+   "title": "Cultivation on RP² vs. the colour code",
+   "caption": "Ungrown cultivation at p = 0.1%: logical error rate per kept shot and acceptance. The paper sampled the S-gate stand-in with Stim; Tsim samples the stand-in and the real T gates.",
+   "columns": [
+    "Logical error rate",
+    "Acceptance"
+   ],
+   "paper_label": "Paper (Stim, S stand-in)",
+   "rows": [
+    {
+     "label": "MSC-3 (RP²)",
+     "paper": {
+      "rate": 8.3e-07,
+      "acceptance": 0.514
+     },
+     "tsim_s": {
+      "rate": 8.255e-07,
+      "sigma": 5.823e-09,
+      "upper": null,
+      "errors": 20095,
+      "kept": 24342991604,
+      "shots": 47356784665,
+      "acceptance": 0.514
+     },
+     "tsim_t": {
+      "rate": 1.251e-06,
+      "sigma": 8.813e-09,
+      "upper": null,
+      "errors": 20161,
+      "kept": 16111027250,
+      "shots": 31335371005,
+      "acceptance": 0.5141
+     }
+    },
+    {
+     "label": "MSC, colour code d=3",
+     "paper": {
+      "rate": 3.4e-07,
+      "acceptance": 0.687
+     },
+     "tsim_s": {
+      "rate": 3.427e-07,
+      "sigma": 2.419e-09,
+      "upper": null,
+      "errors": 20079,
+      "kept": 58585534769,
+      "shots": 85304368277,
+      "acceptance": 0.6868
+     },
+     "tsim_t": {
+      "rate": 8.98e-07,
+      "sigma": 6.326e-09,
+      "upper": null,
+      "errors": 20147,
+      "kept": 22436220367,
+      "shots": 32668547437,
+      "acceptance": 0.6868
+     }
+    },
+    {
+     "label": "MSC-5 (RP²)",
+     "paper": {
+      "rate": 3.6e-10,
+      "acceptance": 0.095
+     },
+     "tsim_s": {
+      "rate": 3.592e-10,
+      "sigma": 1.379e-11,
+      "upper": null,
+      "errors": 679,
+      "kept": 1890287097021,
+      "shots": 20000000000000,
+      "acceptance": 0.09451
+     },
+     "tsim_t": {
+      "rate": 1.627e-09,
+      "sigma": 1.102e-10,
+      "upper": null,
+      "errors": 218,
+      "kept": 134012236167,
+      "shots": 1417680981445,
+      "acceptance": 0.09453
+     }
+    },
+    {
+     "label": "MSC, colour code d=5",
+     "paper": {
+      "rate": 3.5e-10,
+      "acceptance": 0.144
+     },
+     "tsim_s": {
+      "rate": 3.178e-10,
+      "sigma": 2.349e-11,
+      "upper": null,
+      "errors": 183,
+      "kept": 575852098606,
+      "shots": 4000000000000,
+      "acceptance": 0.144
+     },
+     "tsim_t": {
+      "rate": 3.418e-09,
+      "sigma": 1.081e-10,
+      "upper": null,
+      "errors": 1000,
+      "kept": 292588842937,
+      "shots": 2032490660288,
+      "acceptance": 0.144
+     }
+    }
+   ],
+   "tsim_budget": {
+    "gpu_seconds": 6779.0,
+    "shots": 27646836713117,
+    "points": 8,
+    "gpu": "NVIDIA GeForce RTX 5090"
+   }
+  },
+  {
+   "id": "gauging-table1",
+   "kind": "table",
+   "arxiv": "2603.05429",
+   "cite": "gauging",
+   "authors": "Hetényi, Brown, Williamson (2026)",
+   "ref": "Table 1",
+   "tab": "Gauging, Table 1",
+   "standin": "|+i⟩ state",
+   "title": "Cultivation with Clifford measurements by gauging",
+   "caption": "Logical error rate per kept shot of the gauging protocol at final distance 3 and 5. The paper sampled the |+i⟩ stand-in with Stim; Tsim samples the stand-in and the real T state.",
+   "columns": [
+    "Logical error rate"
+   ],
+   "paper_label": "Paper (Stim, |+i⟩ stand-in)",
+   "rows": [
+    {
+     "label": "p = 0.1%, d = 3",
+     "paper": {
+      "rate": 8.8e-07,
+      "sigma": 8e-08
+     },
+     "tsim_s": {
+      "rate": 8.765e-07,
+      "sigma": 6.191e-09,
+      "upper": null,
+      "errors": 20043,
+      "kept": 22866712682,
+      "shots": 49629459643,
+      "acceptance": 0.4607
+     },
+     "tsim_t": {
+      "rate": 1.494e-06,
+      "sigma": 1.052e-08,
+      "upper": null,
+      "errors": 20180,
+      "kept": 13509840313,
+      "shots": 29321183837,
+      "acceptance": 0.4608
+     }
+    },
+    {
+     "label": "p = 0.1%, d = 5",
+     "paper": {
+      "rate": 3.2e-10,
+      "sigma": 4e-11
+     },
+     "tsim_s": {
+      "rate": 3.151e-10,
+      "sigma": 2.18e-11,
+      "upper": null,
+      "errors": 209,
+      "kept": 663208768379,
+      "shots": 16531913739733,
+      "acceptance": 0.04012
+     },
+     "tsim_t": {
+      "rate": 4.141e-10,
+      "sigma": 3.948e-11,
+      "upper": null,
+      "errors": 110,
+      "kept": 265657526003,
+      "shots": 6621937519174,
+      "acceptance": 0.04012
+     }
+    },
+    {
+     "label": "p = 0.05%, d = 3",
+     "paper": {
+      "rate": 1.2e-07,
+      "sigma": 2e-08
+     },
+     "tsim_s": {
+      "rate": 1.069e-07,
+      "sigma": 7.562e-10,
+      "upper": null,
+      "errors": 20004,
+      "kept": 187044957121,
+      "shots": 275615669244,
+      "acceptance": 0.6786
+     },
+     "tsim_t": {
+      "rate": 2.553e-07,
+      "sigma": 1.804e-09,
+      "upper": null,
+      "errors": 20030,
+      "kept": 78443627816,
+      "shots": 115589058769,
+      "acceptance": 0.6786
+     }
+    },
+    {
+     "label": "p = 0.05%, d = 5",
+     "paper": {
+      "rate": 1.1e-11,
+      "sigma": 3e-12
+     },
+     "tsim_s": {
+      "rate": 1.079e-11,
+      "sigma": 2.3e-12,
+      "upper": null,
+      "errors": 22,
+      "kept": 2039678395868,
+      "shots": 10192542043309,
+      "acceptance": 0.2001
+     },
+     "tsim_t": {
+      "rate": 1.136e-11,
+      "sigma": 4.292e-12,
+      "upper": null,
+      "errors": 7,
+      "kept": 616438772185,
+      "shots": 3080406619663,
+      "acceptance": 0.2001
+     }
+    }
+   ],
+   "tsim_budget": {
+    "gpu_seconds": 8575.0,
+    "shots": 36896955293372,
+    "points": 8,
+    "gpu": "NVIDIA GeForce RTX 5090"
+   }
+  }
+ ]
+}
