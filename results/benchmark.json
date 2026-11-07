@@ -2779,7 +2779,13 @@
    "seconds": 0.15
   },
   "cpu": {
-   "skipped": "tsim k_max 26 > 15"
+   "shots_per_s": 0.0285287399809741,
+   "shots": 1,
+   "seconds": 35.0524,
+   "compile_seconds": 0.22,
+   "warmup_seconds": 71.07,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 26 > 15"
@@ -2842,7 +2848,13 @@
    "seconds": 0.12
   },
   "cpu": {
-   "skipped": "tsim k_max 16 > 15"
+   "shots_per_s": 450.7590495515145,
+   "shots": 410,
+   "seconds": 0.9096,
+   "compile_seconds": 0.05,
+   "warmup_seconds": 0.22,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 16 > 15"
@@ -2864,7 +2876,13 @@
    "seconds": 0.1
   },
   "cpu": {
-   "skipped": "tsim k_max 16 > 15"
+   "shots_per_s": 194.64905375018068,
+   "shots": 282,
+   "seconds": 1.4488,
+   "compile_seconds": 0.07,
+   "warmup_seconds": 0.21,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 16 > 15"
@@ -2886,7 +2904,13 @@
    "seconds": 0.1
   },
   "cpu": {
-   "skipped": "tsim k_max 20 > 15"
+   "shots_per_s": 10.383652391207262,
+   "shots": 16,
+   "seconds": 1.5409,
+   "compile_seconds": 0.09,
+   "warmup_seconds": 0.62,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 20 > 15"
@@ -2908,7 +2932,13 @@
    "seconds": 0.11
   },
   "cpu": {
-   "skipped": "tsim k_max 23 > 15"
+   "shots_per_s": 0.24317434981403843,
+   "shots": 1,
+   "seconds": 4.1123,
+   "compile_seconds": 0.13,
+   "warmup_seconds": 8.44,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 23 > 15"
@@ -2930,7 +2960,13 @@
    "seconds": 0.09
   },
   "cpu": {
-   "skipped": "tsim k_max 20 > 15"
+   "shots_per_s": 3.1898393439912542,
+   "shots": 5,
+   "seconds": 1.5675,
+   "compile_seconds": 0.16,
+   "warmup_seconds": 0.59,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 20 > 15"
@@ -2952,7 +2988,13 @@
    "seconds": 0.1
   },
   "cpu": {
-   "skipped": "tsim k_max 24 > 15"
+   "shots_per_s": 0.08707982449154425,
+   "shots": 1,
+   "seconds": 11.4837,
+   "compile_seconds": 0.2,
+   "warmup_seconds": 23.95,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
   },
   "clifft_cpu": {
    "skipped": "clifft k_max 24 > 15"
@@ -6485,7 +6527,13 @@
    "seconds": 0.04
   },
   "cpu": {
-   "skipped": "tsim k_max 26 > 15"
+   "shots_per_s": 0.024381870840922432,
+   "shots": 1,
+   "seconds": 41.0141,
+   "compile_seconds": 0.12,
+   "warmup_seconds": 104.58,
+   "backend": "ShotSampler",
+   "tsim_version": "1.0.0"
   },
   "gpu": {
    "skipped": "tsim k_max 26 > 11"
