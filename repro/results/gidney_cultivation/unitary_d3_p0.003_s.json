@@ -1,0 +1,47 @@
+{
+ "study": "gidney_cultivation",
+ "point": "unitary_d3_p0.003_s",
+ "spec_key": "89601a4b3262e02a",
+ "circuit": "unitary_d3_p0.003_s",
+ "circuit_sha256": "b48d42e1e7e4f1c524d4f783eabf9511fe20859b41ae4faf930a36cd7d92caa8",
+ "tsim": {
+  "version": "0.1.5",
+  "commit": "a2af975fbcc2d41dda3b4104caba415b87f36a91"
+ },
+ "params": {
+  "d": 3,
+  "style": "unitary",
+  "p": 0.003,
+  "gate": "s",
+  "variant": "clifford"
+ },
+ "segments": [
+  {
+   "seed": 3554282067,
+   "shots": 6934783495,
+   "kept": 2254950938,
+   "errors": 23733,
+   "obs_ones": [
+    23733
+   ],
+   "seconds": 1.564,
+   "compile_seconds": 0.27,
+   "backend": "CudaShotSampler",
+   "gpu": "NVIDIA GeForce RTX 5090",
+   "host": "rafaelha-B850-EAGLE-WIFI6E",
+   "started": "2026-11-05T07:29:54",
+   "finished": "2026-11-05T07:29:56",
+   "stop_reason": "target_errors"
+  }
+ ],
+ "totals": {
+  "shots": 6934783495,
+  "kept": 2254950938,
+  "errors": 23733,
+  "seconds": 1.564,
+  "compile_seconds": 0.27,
+  "obs_ones": [
+   23733
+  ]
+ }
+}

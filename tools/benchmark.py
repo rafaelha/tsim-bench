@@ -303,9 +303,46 @@ def table():
     print(f"wrote table with {len(by_folder)} papers to README.md")
 
 
+def blog(out=None):
+    """The per-paper speed data of the README table as JSON, for the blog post's speed widget.
+
+    Every rate is attempted shots per second. A state that is not a rate (unsupported, OOM, timeout,
+    not run) is kept as its README label so the widget can say why a lane is empty.
+    """
+    results = load()
+
+    def cell(r):
+        if r is None or "skipped" in r:
+            return None
+        if "error" in r:
+            return {"state": failure(r["error"])}
+        return {"rate": r["shots_per_s"], **({"build": r["build"]} if r.get("build") else {})}
+
+    papers = {}
+    for p, r in sorted(results.items()):
+        if not (ROOT / p).exists():
+            continue
+        folder = pathlib.Path(p).parts[1]
+        if folder not in papers:
+            title, authors, year = paper_meta(folder)
+            papers[folder] = dict(arxiv=folder.split("_")[0], title=title, authors=authors, year=year, circuits=[])
+        k = r.get("tsim") or {}
+        papers[folder]["circuits"].append(dict(
+            name=pathlib.Path(p).stem, url=f"{REPO_URL}/{p}", k=k.get("k"), k_label=kcell(r.get("tsim"), "tsim", short=True),
+            cpu=cell(r.get("cpu")), gpu=cell(r.get("gpu")), metal=cell(r.get("metal"))))
+    data = dict(
+        source="https://github.com/rafaelha/tsim-bench", gpu_max_k=GPU_MAX_K,
+        machines=dict(cpu="AMD Ryzen 9 9900X, one core (Tsim 1.0.0)", gpu="NVIDIA RTX 5090 (Tsim CUDA backend, in development)",
+                      metal="Apple M4 Pro GPU (Tsim Metal backend, in development)"),
+        papers=list(papers.values()))
+    out = pathlib.Path(out) if out else RESULTS.with_name("blog_speed.json")
+    out.write_text(json.dumps(data, indent=1) + "\n")
+    print(f"wrote {out} ({len(papers)} papers, {sum(len(x['circuits']) for x in papers.values())} circuits)")
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("step", choices=["setup", "kmax", "cpu", "gpu", "metal", "clifft", "table", "all"])
+    parser.add_argument("step", choices=["setup", "kmax", "cpu", "gpu", "metal", "clifft", "table", "blog", "all"])
     parser.add_argument("--jobs", type=int, default=8)
     parser.add_argument("--tsim-env", default="tsim-cpu", choices=["tsim-cpu", "tsim-sparse"],
                         help="environment for Tsim k_max and CPU throughput (default: Tsim 1.0.0)")
@@ -323,6 +360,8 @@ def main():
             setup()
         elif step == "table":
             table()
+        elif step == "blog":
+            blog()
         else:
             run_step("clifft_cpu" if step == "clifft" else step, args.jobs, args.only_errors, args.only,
                      tuple(args.sims.split(",")), args.max_k)

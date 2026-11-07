@@ -1,0 +1,45 @@
+{
+ "study": "fold_transversal",
+ "point": "fd3_p0.007_y",
+ "spec_key": "73813719bd1f309d",
+ "circuit": "fd3_p0.007_y",
+ "circuit_sha256": "e3e97a7bd61e05a4c60f5497f63d8501cdf201c34951974354ab7b1002d7992a",
+ "tsim": {
+  "version": "0.1.5",
+  "commit": "a2af975fbcc2d41dda3b4104caba415b87f36a91"
+ },
+ "params": {
+  "p": 0.007,
+  "gate": "y",
+  "variant": "clifford"
+ },
+ "segments": [
+  {
+   "seed": 1069941661,
+   "shots": 5726273536,
+   "kept": 1252797527,
+   "errors": 23190,
+   "obs_ones": [
+    23190
+   ],
+   "seconds": 0.814,
+   "compile_seconds": 0.23,
+   "backend": "CudaShotSampler",
+   "gpu": "NVIDIA GeForce RTX 5090",
+   "host": "rafaelha-B850-EAGLE-WIFI6E",
+   "started": "2026-11-05T11:35:15",
+   "finished": "2026-11-05T11:35:16",
+   "stop_reason": "target_errors"
+  }
+ ],
+ "totals": {
+  "shots": 5726273536,
+  "kept": 1252797527,
+  "errors": 23190,
+  "seconds": 0.814,
+  "compile_seconds": 0.23,
+  "obs_ones": [
+   23190
+  ]
+ }
+}

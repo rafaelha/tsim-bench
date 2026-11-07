@@ -1,0 +1,45 @@
+{
+ "study": "rp2_ungrown",
+ "point": "msc5_s",
+ "spec_key": "18b7efb68216d233",
+ "circuit": "msc5_s",
+ "circuit_sha256": "78260e20d9a8a28bc8719c70e1f7704ad954ad3530c5386a5d78d595c63c4802",
+ "tsim": {
+  "version": "0.1.5",
+  "commit": "a2af975fbcc2d41dda3b4104caba415b87f36a91"
+ },
+ "params": {
+  "code": "msc5",
+  "gate": "s",
+  "variant": "clifford"
+ },
+ "segments": [
+  {
+   "seed": 2902007346,
+   "shots": 20000000000000,
+   "kept": 1890287097021,
+   "errors": 679,
+   "obs_ones": [
+    679
+   ],
+   "seconds": 2185.067,
+   "compile_seconds": 0.34,
+   "backend": "CudaShotSampler",
+   "gpu": "NVIDIA GeForce RTX 5090",
+   "host": "rafaelha-B850-EAGLE-WIFI6E",
+   "started": "2026-11-05T23:29:55",
+   "finished": "2026-11-06T00:06:21",
+   "stop_reason": "max_shots"
+  }
+ ],
+ "totals": {
+  "shots": 20000000000000,
+  "kept": 1890287097021,
+  "errors": 679,
+  "seconds": 2185.067,
+  "compile_seconds": 0.34,
+  "obs_ones": [
+   679
+  ]
+ }
+}

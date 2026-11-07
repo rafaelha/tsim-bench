@@ -1,0 +1,48 @@
+{
+ "study": "google_experiment",
+ "point": "fig2_injection_X_th09",
+ "spec_key": "344c4cdc49a11911",
+ "circuit": "fig2_injection_X_th09",
+ "circuit_sha256": "01632f9c4fe5ebbc27925d0b3f658c69876422731a97b91e1e67e9efc479cb55",
+ "tsim": {
+  "version": "0.1.5",
+  "commit": "a2af975fbcc2d41dda3b4104caba415b87f36a91"
+ },
+ "params": {
+  "kind": "tomo",
+  "key": "fig2_injection",
+  "basis": "X",
+  "theta": 2.356194490192345,
+  "p": 0.003,
+  "variant": "t"
+ },
+ "segments": [
+  {
+   "seed": 361794465,
+   "shots": 3000000000,
+   "kept": 2317746140,
+   "errors": 357739907,
+   "obs_ones": [
+    357739907
+   ],
+   "seconds": 0.954,
+   "compile_seconds": 0.52,
+   "backend": "CudaShotSampler",
+   "gpu": "NVIDIA GeForce RTX 5090",
+   "host": "rafaelha-B850-EAGLE-WIFI6E",
+   "started": "2026-11-05T09:29:05",
+   "finished": "2026-11-05T09:29:06",
+   "stop_reason": "max_shots"
+  }
+ ],
+ "totals": {
+  "shots": 3000000000,
+  "kept": 2317746140,
+  "errors": 357739907,
+  "seconds": 0.954,
+  "compile_seconds": 0.52,
+  "obs_ones": [
+   357739907
+  ]
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "study": "gauging_cultivation",
+ "point": "yield_cultivation_d7_p8e-04",
+ "spec_key": "daaabc0fe80706cd",
+ "circuit": "yield_cultivation_d7_p8e-04",
+ "circuit_sha256": "b9c0c2223aee17da5c0cdaa7a87027f089ad162c7858194a760af42ff3a52fc9",
+ "tsim": {
+  "version": "0.1.5",
+  "commit": "a2af975fbcc2d41dda3b4104caba415b87f36a91"
+ },
+ "params": {
+  "kind": "yield",
+  "proto": "cultivation",
+  "d": 7,
+  "p": 0.0008,
+  "gate": "s",
+  "variant": "clifford"
+ },
+ "segments": [
+  {
+   "seed": 1201255447,
+   "shots": 100000000,
+   "kept": 376671,
+   "errors": 0,
+   "obs_ones": [
+    0
+   ],
+   "seconds": 0.02,
+   "compile_seconds": 0.74,
+   "backend": "CudaShotSampler",
+   "gpu": "NVIDIA GeForce RTX 5090",
+   "host": "rafaelha-B850-EAGLE-WIFI6E",
+   "started": "2026-11-05T13:54:10",
+   "finished": "2026-11-05T13:54:10",
+   "stop_reason": "max_shots"
+  }
+ ],
+ "totals": {
+  "shots": 100000000,
+  "kept": 376671,
+  "errors": 0,
+  "seconds": 0.02,
+  "compile_seconds": 0.74,
+  "obs_ones": [
+   0
+  ]
+ }
+}

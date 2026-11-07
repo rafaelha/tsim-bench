@@ -1,0 +1,45 @@
+{
+ "study": "vaknin_full_vector",
+ "point": "unrotH_p0.008_clifford",
+ "spec_key": "f3344839241bdb03",
+ "circuit": "unrotH_p0.008_clifford",
+ "circuit_sha256": "9bf55af789729e8d5d26b11ab5c92566d422564b724a0d8c221ceac59b081d69",
+ "tsim": {
+  "version": "0.1.5",
+  "commit": "a2af975fbcc2d41dda3b4104caba415b87f36a91"
+ },
+ "params": {
+  "p": 0.008,
+  "gate": "clifford",
+  "variant": "clifford"
+ },
+ "segments": [
+  {
+   "seed": 647439155,
+   "shots": 37294283153,
+   "kept": 79811684,
+   "errors": 20280,
+   "obs_ones": [
+    20280
+   ],
+   "seconds": 3.001,
+   "compile_seconds": 0.26,
+   "backend": "CudaShotSampler",
+   "gpu": "NVIDIA GeForce RTX 5090",
+   "host": "rafaelha-B850-EAGLE-WIFI6E",
+   "started": "2026-11-05T13:49:34",
+   "finished": "2026-11-05T13:49:37",
+   "stop_reason": "target_errors"
+  }
+ ],
+ "totals": {
+  "shots": 37294283153,
+  "kept": 79811684,
+  "errors": 20280,
+  "seconds": 3.001,
+  "compile_seconds": 0.26,
+  "obs_ones": [
+   20280
+  ]
+ }
+}

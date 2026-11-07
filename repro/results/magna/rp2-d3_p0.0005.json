@@ -1,0 +1,45 @@
+{
+ "study": "magna",
+ "point": "rp2-d3_p0.0005",
+ "spec_key": "c4eea3d70b78ffb8",
+ "circuit": "rp2-d3_p0.0005",
+ "circuit_sha256": "47c164a9079c8152f20f6eabc476b6fbb9bb69688cab67a9ec5ff0c2fc224e41",
+ "tsim": {
+  "version": "0.1.5",
+  "commit": "a2af975fbcc2d41dda3b4104caba415b87f36a91"
+ },
+ "params": {
+  "example": "rp2-d3",
+  "p": 0.0005,
+  "variant": "t"
+ },
+ "segments": [
+  {
+   "seed": 3091729838,
+   "shots": 145868414591,
+   "kept": 104574779990,
+   "errors": 20014,
+   "obs_ones": [
+    20014
+   ],
+   "seconds": 55.201,
+   "compile_seconds": 0.28,
+   "backend": "CudaShotSampler",
+   "gpu": "NVIDIA GeForce RTX 5090",
+   "host": "rafaelha-B850-EAGLE-WIFI6E",
+   "started": "2026-11-05T12:27:49",
+   "finished": "2026-11-05T12:28:44",
+   "stop_reason": "target_errors"
+  }
+ ],
+ "totals": {
+  "shots": 145868414591,
+  "kept": 104574779990,
+  "errors": 20014,
+  "seconds": 55.201,
+  "compile_seconds": 0.28,
+  "obs_ones": [
+   20014
+  ]
+ }
+}
