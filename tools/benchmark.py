@@ -6,6 +6,7 @@ Steps (each writes/updates results/benchmark.json; rerunning a step overwrites i
     uv run python tools/benchmark.py kmax  [--jobs 8]
     uv run python tools/benchmark.py cpu   --jobs 1    # throughput: one circuit at a time
     uv run python tools/benchmark.py gpu
+    uv run python tools/benchmark.py deferral --jobs 1   # T-deferral column (single core, every circuit)
     uv run python tools/benchmark.py metal         # on an Apple-silicon Mac
     uv run python tools/benchmark.py clifft --jobs 1   # Clifft single-core CPU throughput
     uv run python tools/benchmark.py table         # rewrite the table in README.md
@@ -58,21 +59,31 @@ VENVS = ROOT / ".venvs"
 RESULTS = ROOT / "results" / "benchmark.json"
 WORKER = ROOT / "tools" / "bench_worker.py"
 REPO_URL = "https://github.com/rafaelha/tsim-bench/blob/master"
+DEFERRAL_COMMIT = "a9c50036"
+DEFERRAL_SPARSE_COMMIT = "b61335e8"  # 2a60a01d with PR #270 (96b86e8b) cherry-picked
 ENVS = {
     "tsim-cpu": ["bloqade-tsim==1.0.0", "clifft==0.13.0"],
     "tsim-gpu": ["bloqade-tsim[gpu] @ git+https://github.com/QuEraComputing/tsim@a2af975f"],
     # Tsim PR #270 (sparse error basis): same samples and k as 1.0.0, far less compile memory. Used
     # with --tsim-env tsim-sparse only for circuits that 1.0.0 cannot compile; marked in the tables.
     "tsim-sparse": ["bloqade-tsim @ git+https://github.com/QuEraComputing/tsim@96b86e8b", "clifft==0.13.0"],
+    # Local Tsim build for the T-deferral column; TSIM_DEFERRAL_REPO is the tsim checkout that has the
+    # commit, TSIM_DEFERRAL_STRATEGY the sampling strategy to compile with.
+    "tsim-deferral": ["bloqade-tsim @ git+file://"
+                      + os.environ.get("TSIM_DEFERRAL_REPO", str(pathlib.Path.home() / "quera/tsim"))
+                      + "@" + DEFERRAL_COMMIT],
+    "tsim-deferral-sparse": ["bloqade-tsim @ git+file://"
+                             + os.environ.get("TSIM_DEFERRAL_REPO", str(pathlib.Path.home() / "quera/tsim"))
+                             + "@" + DEFERRAL_SPARSE_COMMIT],
     "tsim-metal": ["bloqade-tsim[metal] @ git+file://"
                    + os.environ.get("TSIM_METAL_REPO", str(pathlib.Path.home() / "Documents/quera/tsim"))
                    + "@8b4700d4"],
 }
-PLATFORM_ENVS = {"tsim-cpu": "linux", "tsim-gpu": "linux", "tsim-sparse": "linux", "tsim-metal": "darwin"}
+PLATFORM_ENVS = {"tsim-deferral": "linux", "tsim-deferral-sparse": "linux", "tsim-cpu": "linux", "tsim-gpu": "linux", "tsim-sparse": "linux", "tsim-metal": "darwin"}
 BUILD_LABEL = {"tsim-sparse": "Tsim PR #270 (96b86e8b)"}
 TSIM_ENV = "tsim-cpu"  # set by --tsim-env
 CPU_MAX_K, GPU_MAX_K = 15, 11
-TIMEOUT = {"kmax": 1800, "cpu": 3600, "gpu": 900, "metal": 900, "clifft_cpu": 3600}
+TIMEOUT = {"kmax": 1800, "cpu": 3600, "deferral": 1800, "gpu": 900, "metal": 900, "clifft_cpu": 3600}
 # Memory: every worker runs in its own systemd scope with a hard MemoryMax (no swap), so a worker that
 # blows up is killed alone instead of exhausting the machine (60 GB). Parallel workers share
 # MEMORY_BUDGET_GB; circuits whose file is at least LARGE_BYTES run afterwards, one at a time, with
@@ -107,10 +118,11 @@ def save(results):
 
 def run_worker(mode, path, core=None, extra=(), memory_gb=MEMORY_BUDGET_GB):
     tsim_run = mode == "cpu" or (mode == "kmax" and list(extra) == ["tsim"])
-    venv = {"gpu": "tsim-gpu", "metal": "tsim-metal"}.get(mode, TSIM_ENV if tsim_run else "tsim-cpu")
+    deferral = "tsim-deferral-sparse" if TSIM_ENV == "tsim-sparse" else "tsim-deferral"
+    venv = {"gpu": "tsim-gpu", "metal": "tsim-metal", "deferral": deferral}.get(mode, TSIM_ENV if tsim_run else "tsim-cpu")
     cmd = [str(VENVS / venv / "bin" / "python"), str(WORKER), mode, str(ROOT / path), *extra]
     env = dict(os.environ)
-    if mode in ("cpu", "clifft_cpu"):
+    if mode in ("cpu", "clifft_cpu", "deferral"):
         env.update(NUMBA_NUM_THREADS="1", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",
                    MKL_NUM_THREADS="1", XLA_FLAGS="--xla_force_host_platform_device_count=1")
         cmd = ["taskset", "-c", str(core), *cmd]
@@ -134,7 +146,7 @@ def run_worker(mode, path, core=None, extra=(), memory_gb=MEMORY_BUDGET_GB):
 def run_step(mode, jobs, only_errors=False, only=None, sims=("tsim", "clifft"), max_k=None):
     results = load()
     paths = [p for p in circuits() if not only or only in p]
-    if mode in ("cpu", "gpu", "metal", "clifft_cpu"):
+    if mode in ("cpu", "gpu", "metal", "clifft_cpu") or (mode == "deferral" and max_k):
         limit = GPU_MAX_K if mode in ("gpu", "metal") else (max_k or CPU_MAX_K)
         simulator = "clifft" if mode == "clifft_cpu" else "tsim"
         todo = []
@@ -177,6 +189,10 @@ def run_step(mode, jobs, only_errors=False, only=None, sims=("tsim", "clifft"), 
                     out[name]["build"] = BUILD_LABEL[TSIM_ENV]
             return out
         r = run_worker(mode, p, core, memory_gb=memory_gb)
+        if mode == "deferral":
+            r["commit"] = DEFERRAL_SPARSE_COMMIT if TSIM_ENV == "tsim-sparse" else DEFERRAL_COMMIT
+            if TSIM_ENV in BUILD_LABEL:
+                r["build"] = BUILD_LABEL[TSIM_ENV]
         if mode == "cpu" and TSIM_ENV in BUILD_LABEL:
             r["build"] = BUILD_LABEL[TSIM_ENV]
         return r
@@ -278,8 +294,8 @@ def paper_meta(folder):
 def table():
     results = load()
     lines = [
-        "| circuit | k_max | CPU&nbsp;(single-core) | RTX&nbsp;5090 | M4&nbsp;Pro&nbsp;(GPU/Metal) |",
-        "|---|---|---|---|---|",
+        "| circuit | k_max | CPU&nbsp;(single-core) | T-deferral | RTX&nbsp;5090 | M4&nbsp;Pro&nbsp;(GPU/Metal) |",
+        "|---|---|---|---|---|---|",
     ]
     by_folder = {}
     for p, r in sorted(results.items()):
@@ -288,11 +304,11 @@ def table():
     for folder, rows in sorted(by_folder.items()):
         arxiv = folder.split("_")[0]
         title, authors, year = paper_meta(folder)
-        lines.append(f"| **[{arxiv}](https://arxiv.org/abs/{arxiv})** {authors} ({year}), *{title}* | | | | |")
+        lines.append(f"| **[{arxiv}](https://arxiv.org/abs/{arxiv})** {authors} ({year}), *{title}* | | | | | |")
         for p, r in rows:
             name = pathlib.Path(p).stem
             lines.append(f"| [`{name}`]({REPO_URL}/{p}) | {kcell(r.get('tsim'), 'tsim', short=True)} | {rate(r.get('cpu'))} | "
-                         f"{gpu_cell(r.get('cpu'), r.get('gpu'))} | {gpu_cell(r.get('cpu'), r.get('metal'))} |")
+                         f"{rate(r.get('deferral'))} | {gpu_cell(r.get('cpu'), r.get('gpu'))} | {gpu_cell(r.get('cpu'), r.get('metal'))} |")
     block = "\n".join([BEGIN, *lines, END])
     readme = (ROOT / "README.md").read_text()
     if BEGIN in readme:
@@ -305,7 +321,7 @@ def table():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("step", choices=["setup", "kmax", "cpu", "gpu", "metal", "clifft", "table", "all"])
+    parser.add_argument("step", choices=["setup", "kmax", "cpu", "deferral", "gpu", "metal", "clifft", "table", "all"])
     parser.add_argument("--jobs", type=int, default=8)
     parser.add_argument("--tsim-env", default="tsim-cpu", choices=["tsim-cpu", "tsim-sparse"],
                         help="environment for Tsim k_max and CPU throughput (default: Tsim 1.0.0)")

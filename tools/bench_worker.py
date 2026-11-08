@@ -2,6 +2,7 @@
 
     python bench_worker.py kmax  FILE.stim [tsim|clifft]  -> {"tsim": {...}, "clifft": {...}} (each may be an error)
     python bench_worker.py cpu   FILE.stim     -> detector-sampler throughput on the CPU executor
+    python bench_worker.py deferral FILE.stim  -> the same with the T-deferral build (strategy from the environment)
     python bench_worker.py gpu   FILE.stim     -> detector-sampler throughput; fails unless the CUDA executor is used
     python bench_worker.py metal FILE.stim     -> detector-sampler throughput; fails unless the Metal executor is used
     python bench_worker.py clifft_cpu FILE.stim -> Clifft ``sample(program, n, threads=1)`` throughput
@@ -70,7 +71,12 @@ def throughput(text, mode, target, max_bytes):
         allow_large_shared_memory()
 
     t0 = time.perf_counter()
-    sampler = tsim.Circuit(text).compile_detector_sampler()
+    if mode == "deferral":
+        import os
+
+        sampler = tsim.Circuit(text).compile_detector_sampler(strategy=os.environ["TSIM_DEFERRAL_STRATEGY"])
+    else:
+        sampler = tsim.Circuit(text).compile_detector_sampler()
     compile_s = time.perf_counter() - t0
     backend = type(getattr(sampler, "_shots", None)).__name__
     expected = {"gpu": "CudaShotSampler", "metal": "MetalShotSampler"}.get(mode)
@@ -150,8 +156,8 @@ def main():
         out = attempt(lambda: clifft_throughput(text, 1.0, 1 << 28))
         out = out.get("k", out)
     else:
-        target = 1.0 if mode == "cpu" else 0.5
-        max_bytes = (1 << 28) if mode == "cpu" else (1 << 31)
+        target = 1.0 if mode in ("cpu", "deferral") else 0.5
+        max_bytes = (1 << 28) if mode in ("cpu", "deferral") else (1 << 31)
         out = attempt(lambda: throughput(text, mode, target, max_bytes))
         out = out.get("k", out)
     import tsim
