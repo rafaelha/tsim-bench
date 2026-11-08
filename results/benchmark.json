@@ -54,6 +54,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 42592.057776633905,
+   "shots": 65536,
+   "seconds": 1.5387,
+   "compile_seconds": 1.44,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3514,
+   "detectors": 3514,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 306978.12866922526,
+   "shots": 262144,
+   "seconds": 0.854,
+   "compile_seconds": 1.74,
+   "warmup_seconds": 0.63,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3514,
+   "detectors": 3514,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2302.12292_hook_injection/stim/hook_inject_T_d15_pd7_p0.001.stim": {
@@ -111,6 +154,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 42507.80056894383,
+   "shots": 65536,
+   "seconds": 1.5417,
+   "compile_seconds": 1.42,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3562,
+   "detectors": 3562,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 302477.96651911514,
+   "shots": 262144,
+   "seconds": 0.8667,
+   "compile_seconds": 1.45,
+   "warmup_seconds": 0.56,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3562,
+   "detectors": 3562,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2302.12292_hook_injection/stim/li_inject_T_d15_pd5_p0.001.stim": {
@@ -168,6 +254,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 20964.475011177157,
+   "shots": 32768,
+   "seconds": 1.563,
+   "compile_seconds": 2.79,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 6576,
+   "detectors": 6576,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 91784.71005475524,
+   "shots": 65536,
+   "seconds": 0.714,
+   "compile_seconds": 2.8,
+   "warmup_seconds": 1.37,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 6576,
+   "detectors": 6576,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2302.12292_hook_injection/stim/li_inject_T_d15_pd7_p0.001.stim": {
@@ -225,6 +354,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 20689.235359187736,
+   "shots": 32768,
+   "seconds": 1.5838,
+   "compile_seconds": 2.8,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 6664,
+   "detectors": 6664,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 60293.567019207774,
+   "shots": 65536,
+   "seconds": 1.0869,
+   "compile_seconds": 2.83,
+   "warmup_seconds": 1.73,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 6664,
+   "detectors": 6664,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2302.12292_hook_injection/stim/pregrown_hook_inject_T_d15_pd5_p0.001.stim": {
@@ -282,6 +454,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 40747.78168148409,
+   "shots": 65536,
+   "seconds": 1.6083,
+   "compile_seconds": 1.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3914,
+   "detectors": 3914,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 376204.1555083834,
+   "shots": 262144,
+   "seconds": 0.6968,
+   "compile_seconds": 1.54,
+   "warmup_seconds": 0.59,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3914,
+   "detectors": 3914,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2302.12292_hook_injection/stim/pregrown_hook_inject_T_d15_pd7_p0.001.stim": {
@@ -339,6 +554,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 40775.670065168495,
+   "shots": 65536,
+   "seconds": 1.6072,
+   "compile_seconds": 1.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3914,
+   "detectors": 3914,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 376143.414446378,
+   "shots": 262144,
+   "seconds": 0.6969,
+   "compile_seconds": 1.55,
+   "warmup_seconds": 0.52,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3914,
+   "detectors": 3914,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2302.12292_hook_injection/stim/zz_inject_T_d15_pd5_p0.001.stim": {
@@ -396,6 +654,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_ZZ"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_ZZ"
   }
  },
  "papers/2302.12292_hook_injection/stim/zz_inject_T_d15_pd7_p0.001.stim": {
@@ -453,6 +717,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_ZZ"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_ZZ"
   }
  },
  "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d3_p0.001_pinj0.1.stim": {
@@ -510,6 +780,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 171148.9932761561,
+   "shots": 262144,
+   "seconds": 1.5317,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.8558540344238281,
+    "error": 0.5976743698120117,
+    "conditional_error": 0.6983368025067191
+   },
+   "reference_refused": false,
+   "postselected_detectors": 62,
+   "detectors": 62,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 460686101.517217,
+   "shots": 268435456,
+   "seconds": 0.5827,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.36,
+   "estimates": {
+    "acceptance": 0.8558363579213618,
+    "error": 0.5977736366912726,
+    "conditional_error": 0.6984672141566096
+   },
+   "reference_refused": false,
+   "postselected_detectors": 62,
+   "detectors": 62,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d5_p0.001_pinj0.1.stim": {
@@ -567,6 +880,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 174024.8264563839,
+   "shots": 262144,
+   "seconds": 1.5064,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.7764968872070312,
+    "error": 0.5421562194824219,
+    "conditional_error": 0.698207846566513
+   },
+   "reference_refused": false,
+   "postselected_detectors": 124,
+   "detectors": 124,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 222314659.29934993,
+   "shots": 134217728,
+   "seconds": 0.6037,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.31,
+   "estimates": {
+    "acceptance": 0.7766133621335027,
+    "error": 0.542441776022315,
+    "conditional_error": 0.6984708253436763
+   },
+   "reference_refused": false,
+   "postselected_detectors": 124,
+   "detectors": 124,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d7_p0.001_pinj0.1.stim": {
@@ -624,6 +980,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 177378.03639878207,
+   "shots": 262144,
+   "seconds": 1.4779,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.6733589172363281,
+    "error": 0.4702577590942383,
+    "conditional_error": 0.6983760770917249
+   },
+   "reference_refused": false,
+   "postselected_detectors": 218,
+   "detectors": 218,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 116234208.80046912,
+   "shots": 67108864,
+   "seconds": 0.5774,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.32,
+   "estimates": {
+    "acceptance": 0.6733900457620617,
+    "error": 0.4703536741435528,
+    "conditional_error": 0.6984862296431233
+   },
+   "reference_refused": false,
+   "postselected_detectors": 218,
+   "detectors": 218,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2406.17653_transversal_algorithmic_ft/stim/s_injection_T_d9_p0.001_pinj0.1.stim": {
@@ -681,6 +1080,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 169135.43469130978,
+   "shots": 262144,
+   "seconds": 1.5499,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.5568161010742188,
+    "error": 0.389007568359375,
+    "conditional_error": 0.6986284477207021
+   },
+   "reference_refused": false,
+   "postselected_detectors": 344,
+   "detectors": 344,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 68563949.59432963,
+   "shots": 67108864,
+   "seconds": 0.9788,
+   "compile_seconds": 0.59,
+   "warmup_seconds": 0.32,
+   "estimates": {
+    "acceptance": 0.5581238567829128,
+    "error": 0.3898444622755052,
+    "conditional_error": 0.6984909488059003
+   },
+   "reference_refused": false,
+   "postselected_detectors": 344,
+   "detectors": 344,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2409.07707_color_code_msd/stim/cult_growing_T_d3_to_d11_p0.001.stim": {
@@ -738,6 +1180,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 110484.52906429587,
+   "shots": 131072,
+   "seconds": 1.1863,
+   "compile_seconds": 0.92,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 1021,
+   "detectors": 1021,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 0,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 3787123.8641332537,
+   "shots": 2097152,
+   "seconds": 0.5538,
+   "compile_seconds": 0.94,
+   "warmup_seconds": 0.35,
+   "estimates": {
+    "acceptance": 9.059906005859375e-06,
+    "error": 1.326792516101741e-06,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 1021,
+   "detectors": 1021,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2409.07707_color_code_msd/stim/cult_growing_T_d3_to_d7_p0.001.stim": {
@@ -795,6 +1280,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 193064.34758015364,
+   "shots": 262144,
+   "seconds": 1.3578,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.03612327575683594,
+    "error": 0.005290131255252815,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 274,
+   "detectors": 274,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 0,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 60865379.22392624,
+   "shots": 33554432,
+   "seconds": 0.5513,
+   "compile_seconds": 0.58,
+   "warmup_seconds": 0.33,
+   "estimates": {
+    "acceptance": 0.035287927836179726,
+    "error": 0.005167892215006904,
+    "conditional_error": 0.14644929673961782
+   },
+   "reference_refused": false,
+   "postselected_detectors": 274,
+   "detectors": 274,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2409.07707_color_code_msd/stim/cult_growing_T_d5_to_d13_p0.001.stim": {
@@ -852,6 +1380,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 66929.7140803255,
+   "shots": 131072,
+   "seconds": 1.9584,
+   "compile_seconds": 1.76,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 1754,
+   "detectors": 1754,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 0,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2409.07707_color_code_msd/stim/cult_growing_T_d5_to_d9_p0.001.stim": {
@@ -909,6 +1462,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 132215.23372788908,
+   "shots": 262144,
+   "seconds": 1.9827,
+   "compile_seconds": 0.73,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.00025177001953125,
+    "error": 0.00021489915382063318,
+    "conditional_error": 0.8535533905932737
+   },
+   "reference_refused": false,
+   "postselected_detectors": 645,
+   "detectors": 645,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 0,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2409.17595_magic_state_cultivation/stim/end2end_d3_dsurface15_p0.001.stim": {
@@ -966,6 +1544,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 37808.20031220767,
+   "shots": 65536,
+   "seconds": 1.7334,
+   "compile_seconds": 1.14,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 2162,
+   "detectors": 2162,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 341276.02965659724,
+   "shots": 262144,
+   "seconds": 0.7681,
+   "compile_seconds": 1.16,
+   "warmup_seconds": 0.48,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 2162,
+   "detectors": 2162,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2409.17595_magic_state_cultivation/stim/end2end_d5_dsurface15_p0.001.stim": {
@@ -1023,6 +1644,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 24637.75627911232,
+   "shots": 32768,
+   "seconds": 1.33,
+   "compile_seconds": 1.36,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 2744,
+   "detectors": 2744,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2409.17595_magic_state_cultivation/stim/inject_cultivate_d3_p0.001.stim": {
@@ -1080,6 +1726,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 215535.03831672814,
+   "shots": 262144,
+   "seconds": 1.2162,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.687283992767334,
+    "error": 9.5367431640625e-07,
+    "conditional_error": 1.3875986148990627e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 389829225.74958044,
+   "shots": 268435456,
+   "seconds": 0.6886,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 0.6867917561903597,
+    "error": 5.865003913640976e-07,
+    "conditional_error": 8.539712162787462e-07
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2409.17595_magic_state_cultivation/stim/inject_cultivate_d5_p0.001.stim": {
@@ -1137,6 +1822,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 227603.5382115355,
+   "shots": 262144,
+   "seconds": 1.1518,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.1448373794555664,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 95565929.54553817,
+   "shots": 67108864,
+   "seconds": 0.7022,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.16,
+   "estimates": {
+    "acceptance": 0.1439629010856151,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-init-x-injection-double-HXY_d1=3_d2=11_p=0.001.stim": {
@@ -1194,6 +1918,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 54392.81768561646,
+   "shots": 65536,
+   "seconds": 1.2049,
+   "compile_seconds": 0.91,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 1520,
+   "detectors": 1520,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-injection-double-ghz-HXY_d1=3_d2=11_p=0.001.stim": {
@@ -1251,6 +2000,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 52640.96659582502,
+   "shots": 65536,
+   "seconds": 1.245,
+   "compile_seconds": 0.92,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 3.0517578125e-05,
+    "error": 1.52587890625e-05,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 1520,
+   "detectors": 1520,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 724853.3096173363,
+   "shots": 524288,
+   "seconds": 0.7233,
+   "compile_seconds": 0.95,
+   "warmup_seconds": 0.44,
+   "estimates": {
+    "acceptance": 3.814697265625e-05,
+    "error": 1.9073486328125e-05,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 1520,
+   "detectors": 1520,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-rotated-injection-syndrome-double-ghz-HXY_d1=3_d2=11_p=0.001.stim": {
@@ -1308,6 +2100,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 49681.027275209846,
+   "shots": 65536,
+   "seconds": 1.3191,
+   "compile_seconds": 0.92,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 4.57763671875e-05,
+    "error": 2.288818359375e-05,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 1528,
+   "detectors": 1528,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 604461.1291730762,
+   "shots": 524288,
+   "seconds": 0.8674,
+   "compile_seconds": 0.95,
+   "warmup_seconds": 0.41,
+   "estimates": {
+    "acceptance": 1.52587890625e-05,
+    "error": 7.62939453125e-06,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 1528,
+   "detectors": 1528,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-unrotated_H_injection-ghz_d1=3_d2=11_p=0.001.stim": {
@@ -1365,6 +2200,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ResourceLimit: phase coordinates left after Clifford elimination exceed the rank budget (max_quotient_rank = 12, needs at least 34); reference coordinates 34, retained labels 0"
+  },
+  "magna_gpu": {
+   "error": "ResourceLimit: phase coordinates left after Clifford elimination exceed the rank budget (max_quotient_rank = 12, needs at least 34); reference coordinates 34, retained labels 0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/expanded-unrotated_H_injection-syndrome-ghz_d1=3_d2=11_p=0.001.stim": {
@@ -1422,6 +2263,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ResourceLimit: phase coordinates left after Clifford elimination exceed the rank budget (max_quotient_rank = 12, needs at least 34); reference coordinates 34, retained labels 0"
+  },
+  "magna_gpu": {
+   "error": "ResourceLimit: phase coordinates left after Clifford elimination exceed the rank budget (max_quotient_rank = 12, needs at least 34); reference coordinates 34, retained labels 0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-init-x-injection-double-HXY_d1=3_p=0.001.stim": {
@@ -1479,6 +2326,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 168097.6088042959,
+   "shots": 262144,
+   "seconds": 1.5595,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.624066948890686,
+    "error": 0.312033474445343,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 28,
+   "detectors": 28,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 163944942.169817,
+   "shots": 134217728,
+   "seconds": 0.8187,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.42,
+   "estimates": {
+    "acceptance": 0.6240186192444527,
+    "error": 0.31200930962222634,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 28,
+   "detectors": 28,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-init-x-injection-syndrome-double-ghz-HXY_d1=3_p=0.001.stim": {
@@ -1536,6 +2426,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 174654.92822218649,
+   "shots": 262144,
+   "seconds": 1.5009,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.5716792345046997,
+    "error": 0.28583961725234985,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 36,
+   "detectors": 36,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 159806145.82941675,
+   "shots": 134217728,
+   "seconds": 0.8399,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.39,
+   "estimates": {
+    "acceptance": 0.5711603717354595,
+    "error": 0.28558018586772976,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 36,
+   "detectors": 36,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-injection-double-ghz-HXY_d1=3_p=0.001.stim": {
@@ -1593,6 +2526,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 167806.78168060086,
+   "shots": 262144,
+   "seconds": 1.5622,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.6043774485588074,
+    "error": 0.3021887242794037,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 28,
+   "detectors": 28,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 162292560.4398031,
+   "shots": 134217728,
+   "seconds": 0.827,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 0.6035002740100024,
+    "error": 0.3017501370050012,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 28,
+   "detectors": 28,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-injection-ghz-HXY_d1=3_p=0.001.stim": {
@@ -1650,6 +2626,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 178044.60174301453,
+   "shots": 262144,
+   "seconds": 1.4724,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.5582704544067383,
+    "error": 0.27913522720336914,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 42,
+   "detectors": 42,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 161928455.3243533,
+   "shots": 134217728,
+   "seconds": 0.8289,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.39,
+   "estimates": {
+    "acceptance": 0.5579877950949594,
+    "error": 0.2789938975474797,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 42,
+   "detectors": 42,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/rotated-injection-syndrome-double-ghz-HXY_d1=3_p=0.001.stim": {
@@ -1707,6 +2726,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 175047.55692118677,
+   "shots": 262144,
+   "seconds": 1.4976,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.5524328351020813,
+    "error": 0.27621641755104065,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 36,
+   "detectors": 36,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 160527192.19358566,
+   "shots": 134217728,
+   "seconds": 0.8361,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.39,
+   "estimates": {
+    "acceptance": 0.5523533628438598,
+    "error": 0.2761766814219299,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 36,
+   "detectors": 36,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/unrotated_HXY_injection-ghz_d1=3_p=0.001.stim": {
@@ -1764,6 +2826,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 170540.53706870368,
+   "shots": 262144,
+   "seconds": 1.5371,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.5613777041435242,
+    "error": 0.2806888520717621,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 26,
+   "detectors": 26,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 155568225.89418423,
+   "shots": 134217728,
+   "seconds": 0.8628,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 0.5613918776653007,
+    "error": 0.28069593883265037,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 26,
+   "detectors": 26,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/unrotated_HXY_injection-syndrome-ghz_d1=3_p=0.001.stim": {
@@ -1821,6 +2926,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 187076.19893275795,
+   "shots": 262144,
+   "seconds": 1.4013,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.4745352864265442,
+    "error": 0.2372676432132721,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 38,
+   "detectors": 38,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 155996932.76469314,
+   "shots": 134217728,
+   "seconds": 0.8604,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.39,
+   "estimates": {
+    "acceptance": 0.474284808296943,
+    "error": 0.2371424041484715,
+    "conditional_error": 0.5
+   },
+   "reference_refused": false,
+   "postselected_detectors": 38,
+   "detectors": 38,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/unrotated_H_injection-ghz_d1=3_p=0.001.stim": {
@@ -1878,6 +3026,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ResourceLimit: phase coordinates left after Clifford elimination exceed the rank budget (max_quotient_rank = 12, needs at least 34); reference coordinates 34, retained labels 0"
+  },
+  "magna_gpu": {
+   "error": "ResourceLimit: phase coordinates left after Clifford elimination exceed the rank budget (max_quotient_rank = 12, needs at least 34); reference coordinates 34, retained labels 0"
   }
  },
  "papers/2502.01743_surface_code_cultivation/stim/unrotated_H_injection-syndrome-ghz_d1=3_p=0.001.stim": {
@@ -1935,6 +3089,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ResourceLimit: phase coordinates left after Clifford elimination exceed the rank budget (max_quotient_rank = 12, needs at least 34); reference coordinates 34, retained labels 0"
+  },
+  "magna_gpu": {
+   "error": "ResourceLimit: phase coordinates left after Clifford elimination exceed the rank budget (max_quotient_rank = 12, needs at least 34); reference coordinates 34, retained labels 0"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_T_cult.stim": {
@@ -1992,6 +3152,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 60282.28693342081,
+   "shots": 65536,
+   "seconds": 1.0872,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.5133514404296875,
+    "error": 0.07517857788498673,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 44,
+   "detectors": 44,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_rp_5_T_cult.stim": {
@@ -2042,6 +3227,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 155094.96047863443,
+   "shots": 262144,
+   "seconds": 1.6902,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.09491610527038574,
+    "error": 0.013900141794939891,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 132,
+   "detectors": 132,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_rp_5_sc_11_end2end_6_full_rds.stim": {
@@ -2092,6 +3302,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 135937.94961502426,
+   "shots": 262144,
+   "seconds": 1.9284,
+   "compile_seconds": 0.74,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0001983642578125,
+    "error": 2.904977298412233e-05,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 894,
+   "detectors": 894,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2503.18657_rp2_cultivation/stim/rp_3_sc_7_end2end_4_full_rds.stim": {
@@ -2149,6 +3384,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 163949.63323165098,
+   "shots": 262144,
+   "seconds": 1.5989,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.09299373626708984,
+    "error": 0.013618617372378619,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 252,
+   "detectors": 252,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2504.02935_erasure_injection/stim/hook_inject_T_d3_p0.001.stim": {
@@ -2206,6 +3466,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 40911.101259575385,
+   "shots": 65536,
+   "seconds": 1.6019,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9016876220703125,
+    "error": 0.7692285225317876,
+    "conditional_error": 0.8530986826298078
+   },
+   "reference_refused": false,
+   "postselected_detectors": 22,
+   "detectors": 22,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 716248346.1604996,
+   "shots": 536870912,
+   "seconds": 0.7496,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.39,
+   "estimates": {
+    "acceptance": 0.9016058705747126,
+    "error": 0.7692194887280381,
+    "conditional_error": 0.8531660161415241
+   },
+   "reference_refused": false,
+   "postselected_detectors": 22,
+   "detectors": 22,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2504.02935_erasure_injection/stim/inject_cultivate_T_d3_p0.001.stim": {
@@ -2263,6 +3566,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 48763.75412041149,
+   "shots": 65536,
+   "seconds": 1.3439,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.6866722106933594,
+    "error": 0.10056621182647302,
+    "conditional_error": 0.14645446584321134
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 129329976.25751959,
+   "shots": 67108864,
+   "seconds": 0.5189,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.34,
+   "estimates": {
+    "acceptance": 0.6868205917999148,
+    "error": 0.10058291704183217,
+    "conditional_error": 0.14644714826944802
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d13_p0.001.stim": {
@@ -2315,6 +3661,29 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 8509.660976464378,
+   "shots": 16384,
+   "seconds": 1.9253,
+   "compile_seconds": 19.31,
+   "warmup_seconds": 0.02,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 31080,
+   "detectors": 31112,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "out of memory (worker capped at 40 GB)"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d17_p0.001.stim": {
@@ -2361,6 +3730,29 @@
    "tsim_version": "1.0.0",
    "commit": "b61335e8",
    "build": "Tsim PR #270 (96b86e8b)"
+  },
+  "magna_cpu": {
+   "shots_per_s": 4464.600485497848,
+   "shots": 8192,
+   "seconds": 1.8349,
+   "compile_seconds": 52.91,
+   "warmup_seconds": 0.03,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 53280,
+   "detectors": 53312,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "out of memory (worker capped at 40 GB)"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d21_p0.001.stim": {
@@ -2407,6 +3799,29 @@
    "tsim_version": "1.0.0",
    "commit": "b61335e8",
    "build": "Tsim PR #270 (96b86e8b)"
+  },
+  "magna_cpu": {
+   "shots_per_s": 2760.5643348267163,
+   "shots": 4096,
+   "seconds": 1.4838,
+   "compile_seconds": 124.28,
+   "warmup_seconds": 0.06,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 81400,
+   "detectors": 81432,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "MemoryError: "
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d25_p0.001.stim": {
@@ -2454,6 +3869,12 @@
    "tsim_version": "1.0.0",
    "commit": "b61335e8",
    "build": "Tsim PR #270 (96b86e8b)"
+  },
+  "magna_cpu": {
+   "error": "ResourceLimit: compiled network exceeds the path-variable budget (max_path_bits = 65536, needs at least 65537)"
+  },
+  "magna_gpu": {
+   "error": "ResourceLimit: compiled network exceeds the path-variable budget (max_path_bits = 65536, needs at least 65537)"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d5_p0.001.stim": {
@@ -2511,6 +3932,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 65417.32923579694,
+   "shots": 65536,
+   "seconds": 1.0018,
+   "compile_seconds": 1.16,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 3.0517578125e-05,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 4440,
+   "detectors": 4472,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 838372.67404546,
+   "shots": 524288,
+   "seconds": 0.6254,
+   "compile_seconds": 1.2,
+   "warmup_seconds": 0.31,
+   "estimates": {
+    "acceptance": 3.4332275390625e-05,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 4440,
+   "detectors": 4472,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2505.13587_correlated_decoding_distillation/stim/distillation_15to1_T_d9_p0.001.stim": {
@@ -2563,6 +4023,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 19431.993334062263,
+   "shots": 32768,
+   "seconds": 1.6863,
+   "compile_seconds": 5.33,
+   "warmup_seconds": 0.01,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14800,
+   "detectors": 14832,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 49629.12632803425,
+   "shots": 65536,
+   "seconds": 1.3205,
+   "compile_seconds": 5.4,
+   "warmup_seconds": 2.22,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14800,
+   "detectors": 14832,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_repetition_no_preselection_pz1e-3_rounds2.stim": {
@@ -2620,6 +4119,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_repetition_no_preselection_pz1e-3_rounds4.stim": {
@@ -2677,6 +4182,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_repetition_no_preselection_pz1e-3_rounds6.stim": {
@@ -2734,6 +4245,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_surface_no_bitflip_pz1e-3_rounds2.stim": {
@@ -2791,6 +4308,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_surface_no_bitflip_pz1e-3_rounds4.stim": {
@@ -2848,6 +4371,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2507.12511_unfolded_distillation/stim/unfolded_surface_no_bitflip_pz1e-3_rounds6.stim": {
@@ -2905,6 +4434,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2509.05212_fold_transversal_cultivation/stim/fold-d3_native_T_p0.001.stim": {
@@ -2962,6 +4497,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 290878.23673825554,
+   "shots": 524288,
+   "seconds": 1.8024,
+   "compile_seconds": 0.6,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.7498750686645508,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 26,
+   "detectors": 26,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 374344695.69328135,
+   "shots": 268435456,
+   "seconds": 0.7171,
+   "compile_seconds": 0.63,
+   "warmup_seconds": 0.29,
+   "estimates": {
+    "acceptance": 0.7495862457435586,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 26,
+   "detectors": 26,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2509.05212_fold_transversal_cultivation/stim/fold-d5_native_T_p0.001.stim": {
@@ -3006,6 +4580,45 @@
   "deferral": {
    "error": "timeout after 1800s",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 240704.19413272082,
+   "shots": 262144,
+   "seconds": 1.0891,
+   "compile_seconds": 0.74,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.16121864318847656,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 118,
+   "detectors": 118,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 40356692.912027225,
+   "shots": 33554432,
+   "seconds": 0.8314,
+   "compile_seconds": 0.77,
+   "warmup_seconds": 0.37,
+   "estimates": {
+    "acceptance": 0.16003416758030653,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 118,
+   "detectors": 118,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2509.08658_few_clifford_terms/stim/d3_cultivation_T_p0.001.stim": {
@@ -3063,6 +4676,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 228011.6729042688,
+   "shots": 262144,
+   "seconds": 1.1497,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.6470189094543457,
+    "error": 9.5367431640625e-07,
+    "conditional_error": 1.4739512284278026e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 32,
+   "detectors": 32,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 423572101.2114034,
+   "shots": 268435456,
+   "seconds": 0.6337,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.36,
+   "estimates": {
+    "acceptance": 0.6473380322568113,
+    "error": 6.998889148235317e-07,
+    "conditional_error": 1.0811799708160395e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 32,
+   "detectors": 32,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=11.stim": {
@@ -3120,6 +4772,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=13.stim": {
@@ -3177,6 +4835,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=15.stim": {
@@ -3234,6 +4898,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=3.stim": {
@@ -3291,6 +4961,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=5.stim": {
@@ -3348,6 +5024,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=7.stim": {
@@ -3405,6 +5087,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2509.18294_transversal_star/stim/star_d=9.stim": {
@@ -3462,6 +5150,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/blp_27_3_3.stim": {
@@ -3500,6 +5194,39 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 1014.9819423771007,
+   "shots": 1024,
+   "seconds": 1.0089,
+   "compile_seconds": 319.59,
+   "warmup_seconds": 0.02,
+   "estimates": {
+    "acceptance": 0.59783935546875,
+    "error": 0.5271962285041809,
+    "conditional_error": 0.8818359375
+   },
+   "reference_refused": false,
+   "postselected_detectors": 60,
+   "detectors": 60,
+   "observables": 9,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "terms": 64,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/toric_375_3_5.stim": {
@@ -3525,6 +5252,12 @@
    "error": "MemoryError: Unable to allocate 69.9 GiB for an array with shape (9377905681,) and data type int64",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "RuntimeError: magna run failed: [{'phase': 'sampling', 'shot': 1, 'type': 'RuntimeError', 'message': 'reference network does not cover this reduced phase coordinate domain'}]"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/toric_81_3_3.stim": {
@@ -3556,6 +5289,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "RuntimeError: magna run failed: [{'phase': 'sampling', 'shot': 4, 'type': 'RuntimeError', 'message': 'reference network does not cover this reduced phase coordinate domain'}]"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_12_3_2.stim": {
@@ -3594,6 +5333,39 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 1504.9797557829152,
+   "shots": 2048,
+   "seconds": 1.3608,
+   "compile_seconds": 0.61,
+   "warmup_seconds": 0.01,
+   "estimates": {
+    "acceptance": 0.7620849609375,
+    "error": 0.6720372438430786,
+    "conditional_error": 0.8818403174054942
+   },
+   "reference_refused": false,
+   "postselected_detectors": 30,
+   "detectors": 30,
+   "observables": 9,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "terms": 64,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_15_3_2.stim": {
@@ -3632,6 +5404,39 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 1435.6206504823301,
+   "shots": 2048,
+   "seconds": 1.4266,
+   "compile_seconds": 0.64,
+   "warmup_seconds": 0.01,
+   "estimates": {
+    "acceptance": 0.714599609375,
+    "error": 0.6301596164703369,
+    "conditional_error": 0.8818359375
+   },
+   "reference_refused": false,
+   "postselected_detectors": 36,
+   "detectors": 36,
+   "observables": 9,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "terms": 64,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_18_3_2.stim": {
@@ -3670,6 +5475,39 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 1251.525198529277,
+   "shots": 2048,
+   "seconds": 1.6364,
+   "compile_seconds": 1.51,
+   "warmup_seconds": 0.02,
+   "estimates": {
+    "acceptance": 0.676483154296875,
+    "error": 0.5965471565723419,
+    "conditional_error": 0.8818359375
+   },
+   "reference_refused": false,
+   "postselected_detectors": 42,
+   "detectors": 42,
+   "observables": 9,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "terms": 64,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_21_3_3.stim": {
@@ -3708,6 +5546,39 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 1263.5238831346796,
+   "shots": 2048,
+   "seconds": 1.6209,
+   "compile_seconds": 12.89,
+   "warmup_seconds": 0.02,
+   "estimates": {
+    "acceptance": 0.635955810546875,
+    "error": 0.5608086884021759,
+    "conditional_error": 0.8818359375
+   },
+   "reference_refused": false,
+   "postselected_detectors": 48,
+   "detectors": 48,
+   "observables": 9,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "terms": 64,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_24_3_2.stim": {
@@ -3746,6 +5617,39 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 1177.1695184163214,
+   "shots": 2048,
+   "seconds": 1.7398,
+   "compile_seconds": 3.4,
+   "warmup_seconds": 0.01,
+   "estimates": {
+    "acceptance": 0.60968017578125,
+    "error": 0.5376378893852234,
+    "conditional_error": 0.8818359375
+   },
+   "reference_refused": false,
+   "postselected_detectors": 54,
+   "detectors": 54,
+   "observables": 9,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "terms": 64,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_27_3_3.stim": {
@@ -3784,6 +5688,39 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 1121.0276528364382,
+   "shots": 2048,
+   "seconds": 1.8269,
+   "compile_seconds": 125.73,
+   "warmup_seconds": 0.02,
+   "estimates": {
+    "acceptance": 0.572021484375,
+    "error": 0.5044291019439697,
+    "conditional_error": 0.8818359375
+   },
+   "reference_refused": false,
+   "postselected_detectors": 60,
+   "detectors": 60,
+   "observables": 9,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "terms": 64,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_6_3_2.stim": {
@@ -3841,6 +5778,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "RuntimeError: magna run failed: [{'phase': 'sampling', 'shot': 58, 'type': 'RuntimeError', 'message': 'reference network does not cover this reduced phase coordinate domain'}]"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.07269_transversal_dimension_jump/stim/tricycle_9_3_2.stim": {
@@ -3898,6 +5841,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "RuntimeError: magna run failed: [{'phase': 'sampling', 'shot': 351, 'type': 'RuntimeError', 'message': 'reference network does not cover this reduced phase coordinate domain'}]"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA exact query requires a fixed phase certificate"
   }
  },
  "papers/2510.24615_lattice_surgery_cultivation/stim/inject-check-3_T.stim": {
@@ -3955,6 +5904,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 45502.36151260635,
+   "shots": 65536,
+   "seconds": 1.4403,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.7293357849121094,
+    "error": 0.10680875281937179,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 126004243.4612282,
+   "shots": 67108864,
+   "seconds": 0.5326,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.45,
+   "estimates": {
+    "acceptance": 0.7300439430400731,
+    "error": 0.10691269527652518,
+    "conditional_error": 0.14644693144266877
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2510.24615_lattice_surgery_cultivation/stim/lattice-surgery-complementary-gap-3-to-5-to-7_T.stim": {
@@ -4012,6 +6004,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 47768.48264304258,
+   "shots": 65536,
+   "seconds": 1.372,
+   "compile_seconds": 0.66,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.2358856201171875,
+    "error": 0.20134097084322233,
+    "conditional_error": 0.8535533905932737
+   },
+   "reference_refused": false,
+   "postselected_detectors": 173,
+   "detectors": 174,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 16770806.56673187,
+   "shots": 8388608,
+   "seconds": 0.5002,
+   "compile_seconds": 0.69,
+   "warmup_seconds": 0.37,
+   "estimates": {
+    "acceptance": 0.23612149059772491,
+    "error": 0.2015419827902621,
+    "conditional_error": 0.8535520518698775
+   },
+   "reference_refused": false,
+   "postselected_detectors": 173,
+   "detectors": 174,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_cultivation_stim_X_T.stim": {
@@ -4069,6 +6104,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 36137.8987762598,
+   "shots": 65536,
+   "seconds": 1.8135,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14,
+   "detectors": 14,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 158482176.6842604,
+   "shots": 134217728,
+   "seconds": 0.8469,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14,
+   "detectors": 14,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_cultivation_stim_Z_T.stim": {
@@ -4126,6 +6204,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 35948.995724207256,
+   "shots": 65536,
+   "seconds": 1.823,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14,
+   "detectors": 14,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 158008191.36420143,
+   "shots": 134217728,
+   "seconds": 0.8494,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.35,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14,
+   "detectors": 14,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_injection_stim_X_T.stim": {
@@ -4183,6 +6304,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 37816.02917622292,
+   "shots": 65536,
+   "seconds": 1.733,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 7,
+   "detectors": 7,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 1837973504.8197536,
+   "shots": 1073741824,
+   "seconds": 0.5842,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.29,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 7,
+   "detectors": 7,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_injection_stim_Z_T.stim": {
@@ -4240,6 +6404,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 36886.49481588002,
+   "shots": 65536,
+   "seconds": 1.7767,
+   "compile_seconds": 0.5,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 7,
+   "detectors": 7,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 1837438208.951438,
+   "shots": 1073741824,
+   "seconds": 0.5844,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.23,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 7,
+   "detectors": 7,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_simulation_stim_X_T.stim": {
@@ -4297,6 +6504,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 35989.264066540745,
+   "shots": 65536,
+   "seconds": 1.821,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14,
+   "detectors": 14,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 157347680.46698952,
+   "shots": 134217728,
+   "seconds": 0.853,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.16,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14,
+   "detectors": 14,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig2_simulation_stim_Z_T.stim": {
@@ -4354,6 +6604,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 35024.26165810226,
+   "shots": 65536,
+   "seconds": 1.8712,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14,
+   "detectors": 14,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 156942646.55777898,
+   "shots": 134217728,
+   "seconds": 0.8552,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.16,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14,
+   "detectors": 14,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_injection_stim_T.stim": {
@@ -4411,6 +6704,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 200363.89209752472,
+   "shots": 262144,
+   "seconds": 1.3083,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 31,
+   "detectors": 31,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 503538348.11555517,
+   "shots": 268435456,
+   "seconds": 0.5331,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.42,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 31,
+   "detectors": 31,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_simulation_stim_T.stim": {
@@ -4468,6 +6800,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 177732.1127915621,
+   "shots": 262144,
+   "seconds": 1.4749,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 49,
+   "detectors": 49,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 338195359.0468627,
+   "shots": 268435456,
+   "seconds": 0.7937,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 49,
+   "detectors": 49,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_simulation_zoom_stim_T.stim": {
@@ -4525,6 +6896,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 174327.4695250071,
+   "shots": 262144,
+   "seconds": 1.5037,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 49,
+   "detectors": 49,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 338307270.8012905,
+   "shots": 268435456,
+   "seconds": 0.7935,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.16,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 49,
+   "detectors": 49,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_with_idle_rounds_stim_T.stim": {
@@ -4582,6 +6992,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 178112.0570147654,
+   "shots": 262144,
+   "seconds": 1.4718,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 49,
+   "detectors": 49,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 338090900.9445394,
+   "shots": 268435456,
+   "seconds": 0.794,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.16,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 49,
+   "detectors": 49,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_with_idle_rounds_zoom_stim_T.stim": {
@@ -4639,6 +7088,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 179273.92405199172,
+   "shots": 262144,
+   "seconds": 1.4623,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 49,
+   "detectors": 49,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 337910132.7374763,
+   "shots": 268435456,
+   "seconds": 0.7944,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.16,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 49,
+   "detectors": 49,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig3_without_idle_rounds_stim_T.stim": {
@@ -4696,6 +7184,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 196804.91708203,
+   "shots": 262144,
+   "seconds": 1.332,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 25,
+   "detectors": 25,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 475843725.7946725,
+   "shots": 268435456,
+   "seconds": 0.5641,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.42,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 25,
+   "detectors": 25,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N2_stim_X_T.stim": {
@@ -4753,6 +7280,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 35747.64838998885,
+   "shots": 65536,
+   "seconds": 1.8333,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 67,
+   "detectors": 67,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 137740904.67515633,
+   "shots": 134217728,
+   "seconds": 0.9744,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.4,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 67,
+   "detectors": 67,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N2_stim_Z_T.stim": {
@@ -4810,6 +7380,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 35706.481772155224,
+   "shots": 65536,
+   "seconds": 1.8354,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 65,
+   "detectors": 65,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 139688055.0026433,
+   "shots": 134217728,
+   "seconds": 0.9608,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 65,
+   "detectors": 65,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N3_stim_X_T.stim": {
@@ -4867,6 +7480,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 34766.27102523937,
+   "shots": 65536,
+   "seconds": 1.885,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 94,
+   "detectors": 94,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 126631839.56818904,
+   "shots": 67108864,
+   "seconds": 0.53,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 94,
+   "detectors": 94,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_cultivation_N3_stim_Z_T.stim": {
@@ -4924,6 +7580,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 35326.35987020108,
+   "shots": 65536,
+   "seconds": 1.8552,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 92,
+   "detectors": 92,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 128399522.44497022,
+   "shots": 67108864,
+   "seconds": 0.5227,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 92,
+   "detectors": 92,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_injection_N2_stim_X_T.stim": {
@@ -4981,6 +7680,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 36708.47672077063,
+   "shots": 65536,
+   "seconds": 1.7853,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 61,
+   "detectors": 61,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 762039162.7727573,
+   "shots": 536870912,
+   "seconds": 0.7045,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.29,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 61,
+   "detectors": 61,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_injection_N2_stim_Z_T.stim": {
@@ -5038,6 +7780,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 37017.93462380658,
+   "shots": 65536,
+   "seconds": 1.7704,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 59,
+   "detectors": 59,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 779212406.8171912,
+   "shots": 536870912,
+   "seconds": 0.689,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.29,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 59,
+   "detectors": 59,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_simulation_injection_N2_stim_X_T.stim": {
@@ -5095,6 +7880,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 36052.50383952294,
+   "shots": 65536,
+   "seconds": 1.8178,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 61,
+   "detectors": 61,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 762084114.345208,
+   "shots": 536870912,
+   "seconds": 0.7045,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.16,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 61,
+   "detectors": 61,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.13908_google_cultivation_experiment/stim/fig4_simulation_injection_N2_stim_Z_T.stim": {
@@ -5152,6 +7980,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 36869.6910400292,
+   "shots": 65536,
+   "seconds": 1.7775,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 59,
+   "detectors": 59,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 777168145.8965336,
+   "shots": 536870912,
+   "seconds": 0.6908,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.16,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.14644660940672624,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 59,
+   "detectors": 59,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.23037_soft/stim/circuit_d3_p0.001.stim": {
@@ -5209,6 +8080,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 215330.9878904058,
+   "shots": 262144,
+   "seconds": 1.2174,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.687283992767334,
+    "error": 9.5367431640625e-07,
+    "conditional_error": 1.3875986148990627e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 388721003.98264295,
+   "shots": 268435456,
+   "seconds": 0.6906,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.16,
+   "estimates": {
+    "acceptance": 0.6867917561903597,
+    "error": 5.865003913640976e-07,
+    "conditional_error": 8.539712162787462e-07
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2512.23037_soft/stim/circuit_d5_p0.001.stim": {
@@ -5266,6 +8176,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 226487.68989880668,
+   "shots": 262144,
+   "seconds": 1.1574,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.1448373794555664,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 109286659.08463198,
+   "shots": 67108864,
+   "seconds": 0.6141,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.41,
+   "estimates": {
+    "acceptance": 0.1439629010856151,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d3_T_p0.001.stim": {
@@ -5323,6 +8272,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 64781.90730619721,
+   "shots": 65536,
+   "seconds": 1.0116,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.4603919982910156,
+    "error": 0.06742284714770654,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 51,
+   "detectors": 51,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d5_T_p0.001.stim": {
@@ -5380,6 +8354,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 147750.7866838011,
+   "shots": 262144,
+   "seconds": 1.7742,
+   "compile_seconds": 0.62,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.040328025817871094,
+    "error": 0.00590590264509414,
+    "conditional_error": 0.14644660940672624
+   },
+   "reference_refused": false,
+   "postselected_detectors": 206,
+   "detectors": 206,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA large query has varying quadratic geometry on the noise span"
   }
  },
  "papers/2603.05429_gauging_clifford_cultivation/stim/gauging_cultivation_d7_T_p0.001.stim": {
@@ -5430,6 +8429,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 93728.71964168531,
+   "shots": 131072,
+   "seconds": 1.3984,
+   "compile_seconds": 1.04,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0002288818359375,
+    "error": 0.00019536286710966654,
+    "conditional_error": 0.8535533905932737
+   },
+   "reference_refused": false,
+   "postselected_detectors": 531,
+   "detectors": 531,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA large query has varying quadratic geometry on the noise span"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_color_d5_X.stim": {
@@ -5487,6 +8511,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_color_d5_Y.stim": {
@@ -5544,6 +8574,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_color_d5_Z.stim": {
@@ -5601,6 +8637,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_steane_d3_X.stim": {
@@ -5658,6 +8700,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_steane_d3_Y.stim": {
@@ -5715,6 +8763,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_steane_d3_Z.stim": {
@@ -5772,6 +8826,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_unencoded_X.stim": {
@@ -5829,6 +8889,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_unencoded_Y.stim": {
@@ -5886,6 +8952,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2604.01059_tsim/stim/distillation_unencoded_Z.stim": {
@@ -5943,6 +9015,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg328_inj5_T_p0.001.stim": {
@@ -6000,6 +9078,57 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 172985.31406709994,
+   "shots": 262144,
+   "seconds": 1.5154,
+   "compile_seconds": 0.65,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.01082611083984375,
+    "error": 0.010666043759767221,
+    "conditional_error": 0.9852147200001474
+   },
+   "reference_refused": false,
+   "postselected_detectors": 460,
+   "detectors": 460,
+   "observables": 5,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "terms": 32,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 23594410.216557134,
+   "shots": 16777216,
+   "seconds": 0.7111,
+   "compile_seconds": 0.68,
+   "warmup_seconds": 0.49,
+   "estimates": {
+    "acceptance": 0.010495603084564209,
+    "error": 0.010337856681718577,
+    "conditional_error": 0.9849702392921443
+   },
+   "reference_refused": false,
+   "postselected_detectors": 460,
+   "detectors": 460,
+   "observables": 5,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg342_inj3_T_p0.001.stim": {
@@ -6057,6 +9186,53 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 178557.69415304894,
+   "shots": 262144,
+   "seconds": 1.4681,
+   "compile_seconds": 0.63,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0108795166015625,
+    "error": 0.010677728439019325,
+    "conditional_error": 0.9814524698170695
+   },
+   "reference_refused": false,
+   "postselected_detectors": 463,
+   "detectors": 463,
+   "observables": 3,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2
+   ],
+   "terms": 8,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 24831149.763290837,
+   "shots": 16777216,
+   "seconds": 0.6757,
+   "compile_seconds": 0.66,
+   "warmup_seconds": 0.39,
+   "estimates": {
+    "acceptance": 0.010436415672302244,
+    "error": 0.010242719878344745,
+    "conditional_error": 0.9814403910270114
+   },
+   "reference_refused": false,
+   "postselected_detectors": 463,
+   "detectors": 463,
+   "observables": 3,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg369_inj1_T_p0.001.stim": {
@@ -6114,6 +9290,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 183519.18164766108,
+   "shots": 262144,
+   "seconds": 1.4284,
+   "compile_seconds": 0.62,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.01114654541015625,
+    "error": 0.0016431633751342785,
+    "conditional_error": 0.14741458583545525
+   },
+   "reference_refused": false,
+   "postselected_detectors": 458,
+   "detectors": 458,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 25254376.157256577,
+   "shots": 16777216,
+   "seconds": 0.6643,
+   "compile_seconds": 0.64,
+   "warmup_seconds": 0.34,
+   "estimates": {
+    "acceptance": 0.010683655738830566,
+    "error": 0.00157453181526902,
+    "conditional_error": 0.1473776255768204
+   },
+   "reference_refused": false,
+   "postselected_detectors": 458,
+   "detectors": 458,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg422_inj2_T_p0.001.stim": {
@@ -6171,6 +9390,51 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 181668.3914984053,
+   "shots": 262144,
+   "seconds": 1.443,
+   "compile_seconds": 0.62,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.010906219482421875,
+    "error": 0.0029788752876990375,
+    "conditional_error": 0.27313546114675635
+   },
+   "reference_refused": false,
+   "postselected_detectors": 464,
+   "detectors": 464,
+   "observables": 2,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1
+   ],
+   "terms": 4,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 25093824.034206357,
+   "shots": 16777216,
+   "seconds": 0.6686,
+   "compile_seconds": 0.65,
+   "warmup_seconds": 0.4,
+   "estimates": {
+    "acceptance": 0.0104411244392395,
+    "error": 0.0028528848095365146,
+    "conditional_error": 0.27323539970607896
+   },
+   "reference_refused": false,
+   "postselected_detectors": 464,
+   "detectors": 464,
+   "observables": 2,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg491_inj4_T_p0.001.stim": {
@@ -6228,6 +9492,55 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 184885.0190303803,
+   "shots": 262144,
+   "seconds": 1.4179,
+   "compile_seconds": 0.63,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.01081085205078125,
+    "error": 0.010641045135162605,
+    "conditional_error": 0.9842929202230296
+   },
+   "reference_refused": false,
+   "postselected_detectors": 464,
+   "detectors": 464,
+   "observables": 4,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 24412627.122403614,
+   "shots": 16777216,
+   "seconds": 0.6872,
+   "compile_seconds": 0.66,
+   "warmup_seconds": 0.42,
+   "estimates": {
+    "acceptance": 0.010390222072601317,
+    "error": 0.010225832512438176,
+    "conditional_error": 0.9841784363207567
+   },
+   "reference_refused": false,
+   "postselected_detectors": 464,
+   "detectors": 464,
+   "observables": 4,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2604.05126_qldpc_magic_state_injection/stim/bb144_cfg88_inj6_T_p0.001.stim": {
@@ -6285,6 +9598,59 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 165268.20756182368,
+   "shots": 262144,
+   "seconds": 1.5862,
+   "compile_seconds": 0.66,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.01131439208984375,
+    "error": 0.011163145996197067,
+    "conditional_error": 0.9866324153833729
+   },
+   "reference_refused": false,
+   "postselected_detectors": 450,
+   "detectors": 450,
+   "observables": 6,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "terms": 64,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 19406340.06847088,
+   "shots": 16777216,
+   "seconds": 0.8645,
+   "compile_seconds": 0.69,
+   "warmup_seconds": 0.48,
+   "estimates": {
+    "acceptance": 0.010981261730194088,
+    "error": 0.010836917754170186,
+    "conditional_error": 0.9868554288595988
+   },
+   "reference_refused": false,
+   "postselected_detectors": 450,
+   "detectors": 450,
+   "observables": 6,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2604.27058_clifft/stim/coherent_d3_r1.stim": {
@@ -6342,6 +9708,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2604.27058_clifft/stim/coherent_d3_r3.stim": {
@@ -6399,6 +9771,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2604.27058_clifft/stim/coherent_d5_r1.stim": {
@@ -6456,6 +9834,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2604.27058_clifft/stim/coherent_d5_r5.stim": {
@@ -6513,6 +9897,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2604.27058_clifft/stim/cultivation_d3.stim": {
@@ -6570,6 +9960,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 214563.01214328464,
+   "shots": 262144,
+   "seconds": 1.2218,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.687283992767334,
+    "error": 9.5367431640625e-07,
+    "conditional_error": 1.3875986148990627e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 388751627.88097733,
+   "shots": 268435456,
+   "seconds": 0.6905,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.17,
+   "estimates": {
+    "acceptance": 0.6867917561903597,
+    "error": 5.865003913640976e-07,
+    "conditional_error": 8.539712162787462e-07
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2604.27058_clifft/stim/cultivation_d5.stim": {
@@ -6627,6 +10056,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 225035.7797235819,
+   "shots": 262144,
+   "seconds": 1.1649,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.1448373794555664,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 95373372.44999285,
+   "shots": 67108864,
+   "seconds": 0.7036,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.17,
+   "estimates": {
+    "acceptance": 0.1439629010856151,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2604.27058_clifft/stim/distillation.stim": {
@@ -6684,6 +10152,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2604.27058_clifft/stim/surface_d7_r7.stim": {
@@ -6741,6 +10215,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 254369.03492860796,
+   "shots": 262144,
+   "seconds": 1.0306,
+   "compile_seconds": 0.77,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.08838653564453125,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 336,
+   "detectors": 336,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 73250437.25828315,
+   "shots": 67108864,
+   "seconds": 0.9162,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.27,
+   "estimates": {
+    "acceptance": 0.08789961040019988,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 336,
+   "detectors": 336,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2607.28600_symft/stim/MSC_circuit_d7_p0.0005.stim": {
@@ -6791,6 +10304,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 119191.90970206325,
+   "shots": 131072,
+   "seconds": 1.0997,
+   "compile_seconds": 0.65,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.04075813293457031,
+    "error": 0.019480959272366514,
+    "conditional_error": 0.4779649574145021
+   },
+   "reference_refused": false,
+   "postselected_detectors": 332,
+   "detectors": 344,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2607.28600_symft/stim/coherent_surface_d3_r1_p1e-3_rz0p02.stim": {
@@ -6848,6 +10386,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2607.28600_symft/stim/coherent_surface_d3_r3_p1e-3_rz0p02.stim": {
@@ -6905,6 +10449,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2607.28600_symft/stim/coherent_surface_d5_r1_p1e-3_rz0p02.stim": {
@@ -6962,6 +10512,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2607.28600_symft/stim/coherent_surface_d5_r5_p1e-3_rz0p02.stim": {
@@ -7019,6 +10575,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_Z"
   }
  },
  "papers/2607.28600_symft/stim/distillation.stim": {
@@ -7076,6 +10638,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2607.28600_symft/stim/msc_d3_inject_cultivate_p1e-3.stim": {
@@ -7133,6 +10701,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 215292.75778904284,
+   "shots": 262144,
+   "seconds": 1.2176,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.687283992767334,
+    "error": 9.5367431640625e-07,
+    "conditional_error": 1.3875986148990627e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 388459403.9733135,
+   "shots": 268435456,
+   "seconds": 0.691,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.2,
+   "estimates": {
+    "acceptance": 0.6867917561903597,
+    "error": 5.865003913640976e-07,
+    "conditional_error": 8.539712162787462e-07
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2607.28600_symft/stim/msc_d5_inject_cultivate_p1e-3.stim": {
@@ -7190,6 +10797,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 225430.15602342525,
+   "shots": 262144,
+   "seconds": 1.1629,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.1448373794555664,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 95353625.62453687,
+   "shots": 67108864,
+   "seconds": 0.7038,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.16,
+   "estimates": {
+    "acceptance": 0.1439629010856151,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2607.28600_symft/stim/msc_proxy_d7_unverified_p1e-3.stim": {
@@ -7247,6 +10893,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 149868.6665675217,
+   "shots": 262144,
+   "seconds": 1.7492,
+   "compile_seconds": 0.6,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.009868621826171875,
+    "error": 0.004629015922546387,
+    "conditional_error": 0.4690640703517588
+   },
+   "reference_refused": false,
+   "postselected_detectors": 293,
+   "detectors": 299,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2607.28600_symft/stim/pure_surface_d7_r7_p1e-3.stim": {
@@ -7304,6 +10975,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 253255.6989952572,
+   "shots": 262144,
+   "seconds": 1.0351,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.08838653564453125,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 336,
+   "detectors": 336,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 73229466.11707728,
+   "shots": 67108864,
+   "seconds": 0.9164,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.18,
+   "estimates": {
+    "acceptance": 0.08789961040019988,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 336,
+   "detectors": 336,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2607.28600_symft/stim/pure_surface_d9_r9_p1e-3.stim": {
@@ -7361,6 +11071,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 177308.0139937638,
+   "shots": 262144,
+   "seconds": 1.4785,
+   "compile_seconds": 0.59,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.005481719970703125,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 720,
+   "detectors": 720,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 12205962.410322774,
+   "shots": 8388608,
+   "seconds": 0.6873,
+   "compile_seconds": 0.62,
+   "warmup_seconds": 0.31,
+   "estimates": {
+    "acceptance": 0.005320072174072266,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 720,
+   "detectors": 720,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d3a6_inject_cultivate_T_p0.001.stim": {
@@ -7418,6 +11167,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 217710.41596048832,
+   "shots": 262144,
+   "seconds": 1.2041,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.687283992767334,
+    "error": 9.5367431640625e-07,
+    "conditional_error": 1.3875986148990627e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 395905031.4381602,
+   "shots": 268435456,
+   "seconds": 0.678,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.36,
+   "estimates": {
+    "acceptance": 0.6867917561903597,
+    "error": 5.865003913640976e-07,
+    "conditional_error": 8.539712162787462e-07
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d3a6f2_inject_cultivate_T_p0.001.stim": {
@@ -7475,6 +11263,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 224647.85375149918,
+   "shots": 262144,
+   "seconds": 1.1669,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.6384067535400391,
+    "error": 2.384185791015625e-07,
+    "conditional_error": 3.734587357973643e-07
+   },
+   "reference_refused": false,
+   "postselected_detectors": 22,
+   "detectors": 22,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 383055599.4696801,
+   "shots": 268435456,
+   "seconds": 0.7008,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.36,
+   "estimates": {
+    "acceptance": 0.6393883191049099,
+    "error": 3.629829734563824e-07,
+    "conditional_error": 5.677034794200309e-07
+   },
+   "reference_refused": false,
+   "postselected_detectors": 22,
+   "detectors": 22,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d5a19_inject_cultivate_T_p0.001.stim": {
@@ -7532,6 +11359,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 227610.31854081352,
+   "shots": 262144,
+   "seconds": 1.1517,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.1448502540588379,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 95376619.49052751,
+   "shots": 67108864,
+   "seconds": 0.7036,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 0.14396233228035277,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d5a19f13_inject_cultivate_T_p0.001.stim": {
@@ -7589,6 +11455,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 210917.05108381773,
+   "shots": 262144,
+   "seconds": 1.2429,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.10431385040283203,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 122,
+   "detectors": 122,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 86473931.74371824,
+   "shots": 67108864,
+   "seconds": 0.7761,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.37,
+   "estimates": {
+    "acceptance": 0.10570234013721348,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 122,
+   "detectors": 122,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d5a19r4_inject_cultivate_T_p0.001.stim": {
@@ -7646,6 +11551,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 228169.29689597763,
+   "shots": 262144,
+   "seconds": 1.1489,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.11090517044067383,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 125,
+   "detectors": 125,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 91615483.67862466,
+   "shots": 67108864,
+   "seconds": 0.7325,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 0.11051861243322492,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 125,
+   "detectors": 125,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2609.17706_chan_color_code_cultivation/stim/d5a19r4f13_inject_cultivate_T_p0.001.stim": {
@@ -7703,6 +11647,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 205795.6853488515,
+   "shots": 262144,
+   "seconds": 1.2738,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.08043336868286133,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 140,
+   "detectors": 140,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 74291897.66599287,
+   "shots": 67108864,
+   "seconds": 0.9033,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 0.08110889978706835,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 140,
+   "detectors": 140,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2609.18922_exact_ler_cultivation/stim/clifft_d3_p001.stim": {
@@ -7760,6 +11743,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 215170.05948523252,
+   "shots": 262144,
+   "seconds": 1.2183,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.687283992767334,
+    "error": 9.5367431640625e-07,
+    "conditional_error": 1.3875986148990627e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 388009748.8378406,
+   "shots": 268435456,
+   "seconds": 0.6918,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.17,
+   "estimates": {
+    "acceptance": 0.6867917561903597,
+    "error": 5.865003913640976e-07,
+    "conditional_error": 8.539712162787462e-07
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2609.18922_exact_ler_cultivation/stim/soft_cultivation_d5_p0005.stim": {
@@ -7817,6 +11839,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 202138.30952881213,
+   "shots": 262144,
+   "seconds": 1.2969,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 4.57763671875e-05,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 98786605.26269056,
+   "shots": 67108864,
+   "seconds": 0.6793,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.17,
+   "estimates": {
+    "acceptance": 6.375554949045183e-05,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t100_alpha0.5_p0.001.stim": {
@@ -7874,6 +11935,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha0.15_p0.001.stim": {
@@ -7931,6 +11998,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha0.5_p0.001.stim": {
@@ -7988,6 +12061,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2610.03869_modular_neural_decoder/stim/stability_d3_X_t20_alpha1.0_p0.001.stim": {
@@ -8045,6 +12124,12 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "a9c50036"
+  },
+  "magna_cpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
+  },
+  "magna_gpu": {
+   "error": "ValueError: unsupported by Magna: R_X"
   }
  },
  "papers/2610.06811_merlin/stim/code_switching_bt27_p0.001.stim": {
@@ -8077,6 +12162,29 @@
   "deferral": {
    "error": "timeout after 1800s",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 87105.41751124678,
+   "shots": 131072,
+   "seconds": 1.5048,
+   "compile_seconds": 269.95,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9218826293945312,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 72,
+   "detectors": 72,
+   "observables": 9,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA large query has varying quadratic geometry on the noise span"
   }
  },
  "papers/2610.06811_merlin/stim/code_switching_bt81_p0.001.stim": {
@@ -8103,6 +12211,39 @@
    "error": "TooWide: ",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 34685.71428105259,
+   "shots": 65536,
+   "seconds": 1.8894,
+   "compile_seconds": 1.94,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 1.0,
+    "error": 0.1608867347240448,
+    "conditional_error": 0.1608867347240448
+   },
+   "reference_refused": true,
+   "postselected_detectors": 0,
+   "detectors": 234,
+   "observables": 9,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA large query has varying quadratic geometry on the noise span"
   }
  },
  "papers/2610.06811_merlin/stim/cultivation_d3_t.stim": {
@@ -8160,6 +12301,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 213742.48024471584,
+   "shots": 262144,
+   "seconds": 1.2264,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.687283992767334,
+    "error": 9.5367431640625e-07,
+    "conditional_error": 1.3875986148990627e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 390505418.3337984,
+   "shots": 268435456,
+   "seconds": 0.6874,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.27,
+   "estimates": {
+    "acceptance": 0.6867917561903597,
+    "error": 5.865003913640976e-07,
+    "conditional_error": 8.539712162787462e-07
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/cultivation_d5_t.stim": {
@@ -8217,6 +12397,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 226101.55396047852,
+   "shots": 262144,
+   "seconds": 1.1594,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.1448373794555664,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 95696005.4913279,
+   "shots": 67108864,
+   "seconds": 0.7013,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.17,
+   "estimates": {
+    "acceptance": 0.1439629010856151,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_15to1_p0.001.stim": {
@@ -8274,6 +12493,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 196978.0891904064,
+   "shots": 262144,
+   "seconds": 1.3308,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9850273132324219,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14,
+   "detectors": 14,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 697041555.0368263,
+   "shots": 536870912,
+   "seconds": 0.7702,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.33,
+   "estimates": {
+    "acceptance": 0.9851086419075723,
+    "error": 3.91155481338501e-08,
+    "conditional_error": 3.970683686025374e-08
+   },
+   "reference_refused": false,
+   "postselected_detectors": 14,
+   "detectors": 14,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh10_p0.001.stim": {
@@ -8331,6 +12589,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 171394.5492934422,
+   "shots": 262144,
+   "seconds": 1.5295,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9626312255859375,
+    "error": 0.0001373291015625,
+    "conditional_error": 0.00014266013600266298
+   },
+   "reference_refused": false,
+   "postselected_detectors": 28,
+   "detectors": 28,
+   "observables": 10,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 324649154.08137137,
+   "shots": 268435456,
+   "seconds": 0.8268,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 0.962838247418404,
+    "error": 0.00013531371951103205,
+    "conditional_error": 0.00014053629451659197
+   },
+   "reference_refused": false,
+   "postselected_detectors": 28,
+   "detectors": 28,
+   "observables": 10,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh12_p0.001.stim": {
@@ -8388,6 +12685,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 164186.91555989007,
+   "shots": 262144,
+   "seconds": 1.5966,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9571151733398438,
+    "error": 0.00023651123046875,
+    "conditional_error": 0.00024710843277454944
+   },
+   "reference_refused": false,
+   "postselected_detectors": 32,
+   "detectors": 32,
+   "observables": 12,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 293533260.0783848,
+   "shots": 268435456,
+   "seconds": 0.9145,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.41,
+   "estimates": {
+    "acceptance": 0.9571368396282199,
+    "error": 0.000194992870092392,
+    "conditional_error": 0.00020372517493750733
+   },
+   "reference_refused": false,
+   "postselected_detectors": 32,
+   "detectors": 32,
+   "observables": 12,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh14_p0.001.stim": {
@@ -8445,6 +12781,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 160392.00573620552,
+   "shots": 262144,
+   "seconds": 1.6344,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9517478942871094,
+    "error": 0.0003204345703125,
+    "conditional_error": 0.00033668009378945467
+   },
+   "reference_refused": false,
+   "postselected_detectors": 36,
+   "detectors": 36,
+   "observables": 14,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 252867057.82406563,
+   "shots": 134217728,
+   "seconds": 0.5308,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.42,
+   "estimates": {
+    "acceptance": 0.9514692053198816,
+    "error": 0.00026589632034301763,
+    "conditional_error": 0.00027945867176397366
+   },
+   "reference_refused": false,
+   "postselected_detectors": 36,
+   "detectors": 36,
+   "observables": 14,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh16_p0.001.stim": {
@@ -8502,6 +12877,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 155433.50074411678,
+   "shots": 262144,
+   "seconds": 1.6865,
+   "compile_seconds": 0.56,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9460029602050781,
+    "error": 0.000400543212890625,
+    "conditional_error": 0.000423405876873571
+   },
+   "reference_refused": false,
+   "postselected_detectors": 40,
+   "detectors": 40,
+   "observables": 16,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 233821433.52732396,
+   "shots": 134217728,
+   "seconds": 0.574,
+   "compile_seconds": 0.58,
+   "warmup_seconds": 0.42,
+   "estimates": {
+    "acceptance": 0.9458564445376396,
+    "error": 0.00034826248884201066,
+    "conditional_error": 0.000368198039832832
+   },
+   "reference_refused": false,
+   "postselected_detectors": 40,
+   "detectors": 40,
+   "observables": 16,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh18_p0.001.stim": {
@@ -8559,6 +12973,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 153291.31309205122,
+   "shots": 262144,
+   "seconds": 1.7101,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9404830932617188,
+    "error": 0.000484466552734375,
+    "conditional_error": 0.0005151252119314356
+   },
+   "reference_refused": false,
+   "postselected_detectors": 44,
+   "detectors": 44,
+   "observables": 18,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 195777938.0585738,
+   "shots": 134217728,
+   "seconds": 0.6856,
+   "compile_seconds": 0.59,
+   "warmup_seconds": 0.42,
+   "estimates": {
+    "acceptance": 0.9402921646833425,
+    "error": 0.000440269708633423,
+    "conditional_error": 0.0004682264993473496
+   },
+   "reference_refused": false,
+   "postselected_detectors": 44,
+   "detectors": 44,
+   "observables": 18,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh2_p0.001.stim": {
@@ -8616,6 +13069,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 197047.76186956867,
+   "shots": 262144,
+   "seconds": 1.3304,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9860382080078125,
+    "error": 3.814697265625e-06,
+    "conditional_error": 3.868711409603689e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 12,
+   "detectors": 12,
+   "observables": 2,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 711063713.987954,
+   "shots": 536870912,
+   "seconds": 0.755,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.33,
+   "estimates": {
+    "acceptance": 0.9861006513237958,
+    "error": 7.124617695808416e-06,
+    "conditional_error": 7.225041060711132e-06
+   },
+   "reference_refused": false,
+   "postselected_detectors": 12,
+   "detectors": 12,
+   "observables": 2,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh4_p0.001.stim": {
@@ -8673,6 +13165,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 184445.55604911907,
+   "shots": 262144,
+   "seconds": 1.4213,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9800567626953125,
+    "error": 1.9073486328125e-05,
+    "conditional_error": 1.9461613912718552e-05
+   },
+   "reference_refused": false,
+   "postselected_detectors": 16,
+   "detectors": 16,
+   "observables": 4,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 520675004.6332943,
+   "shots": 268435456,
+   "seconds": 0.5156,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.35,
+   "estimates": {
+    "acceptance": 0.9802145771682262,
+    "error": 2.2009015083312995e-05,
+    "conditional_error": 2.2453262373321925e-05
+   },
+   "reference_refused": false,
+   "postselected_detectors": 16,
+   "detectors": 16,
+   "observables": 4,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh6_p0.001.stim": {
@@ -8730,6 +13261,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 182232.9038879811,
+   "shots": 262144,
+   "seconds": 1.4385,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9742050170898438,
+    "error": 4.9591064453125e-05,
+    "conditional_error": 5.0904135765245786e-05
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 6,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 433523847.77032816,
+   "shots": 268435456,
+   "seconds": 0.6192,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.35,
+   "estimates": {
+    "acceptance": 0.9743781946599478,
+    "error": 4.8320740461349535e-05,
+    "conditional_error": 4.9591360650484574e-05
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 6,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06811_merlin/stim/distillation_bh8_p0.001.stim": {
@@ -8787,6 +13357,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 175988.07941005428,
+   "shots": 262144,
+   "seconds": 1.4896,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9683723449707031,
+    "error": 9.5367431640625e-05,
+    "conditional_error": 9.84821924499612e-05
+   },
+   "reference_refused": false,
+   "postselected_detectors": 24,
+   "detectors": 24,
+   "observables": 8,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 371344586.76289874,
+   "shots": 268435456,
+   "seconds": 0.7229,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.38,
+   "estimates": {
+    "acceptance": 0.9685862809419632,
+    "error": 8.619576692581178e-05,
+    "conditional_error": 8.89913150968701e-05
+   },
+   "reference_refused": false,
+   "postselected_detectors": 24,
+   "detectors": 24,
+   "observables": 8,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06828_practical_cost_cultivation/stim/color_code_cultivation_f3_T.stim": {
@@ -8844,6 +13453,49 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 37662.25543969252,
+   "shots": 65536,
+   "seconds": 1.7401,
+   "compile_seconds": 1.15,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 2162,
+   "detectors": 2162,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 341286.3771108659,
+   "shots": 262144,
+   "seconds": 0.7681,
+   "compile_seconds": 1.17,
+   "warmup_seconds": 0.33,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 2162,
+   "detectors": 2162,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.06828_practical_cost_cultivation/stim/color_code_cultivation_f5_T.stim": {
@@ -8901,6 +13553,31 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 24519.84964768396,
+   "shots": 32768,
+   "seconds": 1.3364,
+   "compile_seconds": 1.37,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.0,
+    "error": 0.0,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 2744,
+   "detectors": 2744,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [
+    0
+   ],
+   "terms": 2,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "error": "ValueError: CUDA non-Clifford histogram dimension exceeds 12; no CPU fallback"
   }
  },
  "papers/2610.22315_magna/stim/bh10-S.stim": {
@@ -8958,6 +13635,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 377439.71128245356,
+   "shots": 524288,
+   "seconds": 1.3891,
+   "compile_seconds": 0.5,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9628276824951172,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 1079882691.3175108,
+   "shots": 1073741824,
+   "seconds": 0.9943,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.25,
+   "estimates": {
+    "acceptance": 0.9628360690549006,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh10-T.stim": {
@@ -9015,6 +13731,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 221363.69554099545,
+   "shots": 262144,
+   "seconds": 1.1842,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9626312255859375,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 191182174.72588065,
+   "shots": 134217728,
+   "seconds": 0.702,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.31,
+   "estimates": {
+    "acceptance": 0.9628364369273184,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh100-S.stim": {
@@ -9072,6 +13827,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 363085.38167122606,
+   "shots": 524288,
+   "seconds": 1.444,
+   "compile_seconds": 0.78,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.7464771270751953,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 131312270.91176695,
+   "shots": 67108864,
+   "seconds": 0.5111,
+   "compile_seconds": 0.8,
+   "warmup_seconds": 0.26,
+   "estimates": {
+    "acceptance": 0.746626660227776,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh100-T.stim": {
@@ -9121,6 +13915,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 58696.54488311726,
+   "shots": 65536,
+   "seconds": 1.1165,
+   "compile_seconds": 0.89,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.7458038330078125,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 5951040.833319597,
+   "shots": 4194304,
+   "seconds": 0.7048,
+   "compile_seconds": 0.97,
+   "warmup_seconds": 0.29,
+   "estimates": {
+    "acceptance": 0.7464993000030518,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh2-S.stim": {
@@ -9178,6 +14011,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 377733.32127423456,
+   "shots": 524288,
+   "seconds": 1.388,
+   "compile_seconds": 0.49,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9860992431640625,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 1259531849.2072427,
+   "shots": 1073741824,
+   "seconds": 0.8525,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.21,
+   "estimates": {
+    "acceptance": 0.9861011253669854,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh2-T.stim": {
@@ -9235,6 +14107,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 292179.7832594875,
+   "shots": 524288,
+   "seconds": 1.7944,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9860992431640625,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 583101959.6376703,
+   "shots": 536870912,
+   "seconds": 0.9207,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.26,
+   "estimates": {
+    "acceptance": 0.9861006513237958,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh20-S.stim": {
@@ -9292,6 +14203,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 375386.9417224241,
+   "shots": 524288,
+   "seconds": 1.3967,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9352588653564453,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 779614698.5010567,
+   "shots": 536870912,
+   "seconds": 0.6886,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.21,
+   "estimates": {
+    "acceptance": 0.934780901297926,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh20-T.stim": {
@@ -9342,6 +14292,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 175326.73508657783,
+   "shots": 262144,
+   "seconds": 1.4952,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9350128173828125,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 51531182.66993598,
+   "shots": 33554432,
+   "seconds": 0.6511,
+   "compile_seconds": 0.58,
+   "warmup_seconds": 0.39,
+   "estimates": {
+    "acceptance": 0.9348050355911253,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh4-S.stim": {
@@ -9399,6 +14388,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 371322.9744765627,
+   "shots": 524288,
+   "seconds": 1.4119,
+   "compile_seconds": 0.49,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9802417755126953,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 1182179518.3450122,
+   "shots": 1073741824,
+   "seconds": 0.9083,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.21,
+   "estimates": {
+    "acceptance": 0.9802173245698221,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh4-T.stim": {
@@ -9456,6 +14484,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 272122.6725412914,
+   "shots": 524288,
+   "seconds": 1.9267,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9802417755126953,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 413273457.22376984,
+   "shots": 268435456,
+   "seconds": 0.6495,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.27,
+   "estimates": {
+    "acceptance": 0.9802145771682262,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh40-S.stim": {
@@ -9513,6 +14580,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 372129.27974875784,
+   "shots": 524288,
+   "seconds": 1.4089,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.8822650909423828,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 498065022.421691,
+   "shots": 268435456,
+   "seconds": 0.539,
+   "compile_seconds": 0.58,
+   "warmup_seconds": 0.21,
+   "estimates": {
+    "acceptance": 0.8819113858044147,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh40-T.stim": {
@@ -9563,6 +14669,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 123878.89562322067,
+   "shots": 131072,
+   "seconds": 1.0581,
+   "compile_seconds": 0.6,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.88177490234375,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 24093223.631110705,
+   "shots": 16777216,
+   "seconds": 0.6963,
+   "compile_seconds": 0.63,
+   "warmup_seconds": 0.28,
+   "estimates": {
+    "acceptance": 0.8820815682411195,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh6-S.stim": {
@@ -9620,6 +14765,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 376577.8508941921,
+   "shots": 524288,
+   "seconds": 1.3922,
+   "compile_seconds": 0.49,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9744453430175781,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 1138731461.5600243,
+   "shots": 1073741824,
+   "seconds": 0.9429,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.21,
+   "estimates": {
+    "acceptance": 0.9743764577433451,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh6-T.stim": {
@@ -9677,6 +14861,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 259872.06535770197,
+   "shots": 262144,
+   "seconds": 1.0087,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.9742050170898438,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 314034069.30553716,
+   "shots": 268435456,
+   "seconds": 0.8548,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.28,
+   "estimates": {
+    "acceptance": 0.9743781946599478,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh60-S.stim": {
@@ -9734,6 +14957,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 371480.93091188074,
+   "shots": 524288,
+   "seconds": 1.4113,
+   "compile_seconds": 0.62,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.8333377838134766,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 325877869.92254925,
+   "shots": 268435456,
+   "seconds": 0.8237,
+   "compile_seconds": 0.64,
+   "warmup_seconds": 0.22,
+   "estimates": {
+    "acceptance": 0.8331357687711706,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh60-T.stim": {
@@ -9783,6 +15045,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 95720.2910351574,
+   "shots": 131072,
+   "seconds": 1.3693,
+   "compile_seconds": 0.67,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.83282470703125,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 12042097.321436165,
+   "shots": 8388608,
+   "seconds": 0.6966,
+   "compile_seconds": 0.7,
+   "warmup_seconds": 0.28,
+   "estimates": {
+    "acceptance": 0.8331873416900636,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh80-S.stim": {
@@ -9840,6 +15141,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 369731.53282347956,
+   "shots": 524288,
+   "seconds": 1.418,
+   "compile_seconds": 0.7,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.7883758544921875,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 206239251.0809151,
+   "shots": 134217728,
+   "seconds": 0.6508,
+   "compile_seconds": 0.73,
+   "warmup_seconds": 0.22,
+   "estimates": {
+    "acceptance": 0.7881341502070423,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/bh80-T.stim": {
@@ -9889,6 +15229,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 76730.47287241407,
+   "shots": 131072,
+   "seconds": 1.7082,
+   "compile_seconds": 0.75,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.7875289916992188,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 7637828.868511209,
+   "shots": 4194304,
+   "seconds": 0.5491,
+   "compile_seconds": 0.78,
+   "warmup_seconds": 0.34,
+   "estimates": {
+    "acceptance": 0.788109302520752,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 3,
+   "detectors": 3,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/color3.stim": {
@@ -9946,6 +15325,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 222413.1550912773,
+   "shots": 262144,
+   "seconds": 1.1786,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.6877846717834473,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 459628469.66593844,
+   "shots": 268435456,
+   "seconds": 0.584,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.35,
+   "estimates": {
+    "acceptance": 0.6867625326849522,
+    "error": 5.869660526514058e-07,
+    "conditional_error": 8.546856077844197e-07
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/color5.stim": {
@@ -10003,6 +15421,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 225911.52814674305,
+   "shots": 262144,
+   "seconds": 1.1604,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.1448373794555664,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 99787713.4028419,
+   "shots": 67108864,
+   "seconds": 0.6725,
+   "compile_seconds": 0.57,
+   "warmup_seconds": 0.4,
+   "estimates": {
+    "acceptance": 0.1439629010856151,
+    "error": 0.0,
+    "conditional_error": 0.0
+   },
+   "reference_refused": false,
+   "postselected_detectors": 107,
+   "detectors": 107,
+   "observables": 1,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/dk.stim": {
@@ -10060,6 +15517,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 337428.6168466121,
+   "shots": 524288,
+   "seconds": 1.5538,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.8456740379333496,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 740230309.2006252,
+   "shots": 536870912,
+   "seconds": 0.7253,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.26,
+   "estimates": {
+    "acceptance": 0.8451679300051184,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 20,
+   "detectors": 20,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/rp2-d3-S.stim": {
@@ -10117,6 +15613,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 383604.09089920734,
+   "shots": 524288,
+   "seconds": 1.3667,
+   "compile_seconds": 0.49,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.5135135650634766,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 44,
+   "detectors": 44,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 716662414.1196756,
+   "shots": 536870912,
+   "seconds": 0.7491,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.22,
+   "estimates": {
+    "acceptance": 0.514020195230841,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 44,
+   "detectors": 44,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/rp2-d3.stim": {
@@ -10174,6 +15709,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 336210.1827130258,
+   "shots": 524288,
+   "seconds": 1.5594,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.51358962059021,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 44,
+   "detectors": 44,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 471512708.85188097,
+   "shots": 268435456,
+   "seconds": 0.5693,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.27,
+   "estimates": {
+    "acceptance": 0.5141619116766366,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 44,
+   "detectors": 44,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/rp2-d5-S.stim": {
@@ -10231,6 +15805,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 316469.6691899512,
+   "shots": 524288,
+   "seconds": 1.6567,
+   "compile_seconds": 0.51,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.09463310241699219,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 132,
+   "detectors": 132,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 303107207.1277452,
+   "shots": 268435456,
+   "seconds": 0.8856,
+   "compile_seconds": 0.54,
+   "warmup_seconds": 0.21,
+   "estimates": {
+    "acceptance": 0.09453335031867025,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 132,
+   "detectors": 132,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/rp2-d5.stim": {
@@ -10281,6 +15894,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 286976.61998470203,
+   "shots": 524288,
+   "seconds": 1.8269,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.09460628032684326,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 132,
+   "detectors": 132,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 132409433.00912152,
+   "shots": 67108864,
+   "seconds": 0.5068,
+   "compile_seconds": 0.58,
+   "warmup_seconds": 0.17,
+   "estimates": {
+    "acceptance": 0.09455436794087292,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 132,
+   "detectors": 132,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/wg-S.stim": {
@@ -10338,6 +15990,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 358725.94595506665,
+   "shots": 524288,
+   "seconds": 1.4615,
+   "compile_seconds": 0.5,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.5497169494628906,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 91,
+   "detectors": 91,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 438033480.634176,
+   "shots": 268435456,
+   "seconds": 0.6128,
+   "compile_seconds": 0.53,
+   "warmup_seconds": 0.21,
+   "estimates": {
+    "acceptance": 0.5505779907107355,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 91,
+   "detectors": 91,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  },
  "papers/2610.22315_magna/stim/wg-T.stim": {
@@ -10395,6 +16086,45 @@
    "backend": "ShotSampler",
    "tsim_version": "1.0.0",
    "commit": "2a60a01d"
+  },
+  "magna_cpu": {
+   "shots_per_s": 308315.4039543373,
+   "shots": 524288,
+   "seconds": 1.7005,
+   "compile_seconds": 0.52,
+   "warmup_seconds": 0.0,
+   "estimates": {
+    "acceptance": 0.5497384071350098,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 91,
+   "detectors": 91,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "terms": 1,
+   "magna_version": "0.2.0@e595744"
+  },
+  "magna_gpu": {
+   "shots_per_s": 261084078.71834645,
+   "shots": 134217728,
+   "seconds": 0.5141,
+   "compile_seconds": 0.55,
+   "warmup_seconds": 0.26,
+   "estimates": {
+    "acceptance": 0.5506422240287069,
+    "error": null,
+    "conditional_error": null
+   },
+   "reference_refused": false,
+   "postselected_detectors": 91,
+   "detectors": 91,
+   "observables": 0,
+   "observables_noiseless_one": [],
+   "nondeterministic_observables": [],
+   "magna_version": "0.2.0@e595744"
   }
  }
 }

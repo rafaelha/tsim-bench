@@ -6,6 +6,8 @@
     python bench_worker.py gpu   FILE.stim     -> detector-sampler throughput; fails unless the CUDA executor is used
     python bench_worker.py metal FILE.stim     -> detector-sampler throughput; fails unless the Metal executor is used
     python bench_worker.py clifft_cpu FILE.stim -> Clifft ``sample(program, n, threads=1)`` throughput
+    python bench_worker.py magna_cpu FILE.stim  -> Magna ``run`` draws per second (task from magna_task.py)
+    python bench_worker.py magna_gpu FILE.stim  -> Magna ``CudaSampler.run`` draws per second
 
 Prints one JSON line. Throughput: ``sampler.sample(n, append_observables=True, bit_packed=True)``
 (no postselection, every shot returned), after a warm-up call that triggers JIT/NVRTC compilation.
@@ -145,6 +147,69 @@ def clifft_throughput(text, target, max_bytes):
             if callable(getattr(clifft, "version", None)) else str(getattr(clifft, "version", "?"))}
 
 
+# The options of every packaged Magna example (examples/*/run.json); Magna's built-in defaults are smaller.
+MAGNA_OPTIONS = {"max_path_bits": 65536, "max_doubled_path_bits": 131072, "max_quotient_rank": 12, "max_terms": 4096}
+
+
+def magna_throughput(text, mode, target):
+    """Magna draws per second for the task of tools/magna_task.py; compilation and warm-up excluded."""
+    import os
+    import pathlib
+    import tempfile
+
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    from magna import compile_circuit, run
+    from magna_task import build
+
+    t0 = time.perf_counter()
+    mtext, task, info = build(text)
+    with tempfile.TemporaryDirectory() as d:
+        circuit, task_path = os.path.join(d, "physical.magna"), os.path.join(d, "task.json")
+        pathlib.Path(circuit).write_text(mtext + "\n")
+        pathlib.Path(task_path).write_text(json.dumps(task))
+        compiled = compile_circuit(circuit, task=task_path, options=MAGNA_OPTIONS)
+    compile_s = time.perf_counter() - t0
+    if mode == "magna_gpu":
+        from magna.cuda_sampler import CudaSampler
+
+        sampler = CudaSampler(compiled)
+
+        def call(n, seed):
+            t = time.perf_counter()
+            result = sampler.run(n, seed=seed, batch_size=min(n, 1 << 19))
+            return time.perf_counter() - t, result
+
+        n, floor = 1 << 16, 1 << 16
+    else:
+        def call(n, seed):
+            t = time.perf_counter()
+            result = run(compiled, shots=n, seed=seed)
+            if result["status"] != "complete":
+                raise RuntimeError(f"magna run {result['status']}: {result.get('failures')}"[:300])
+            return time.perf_counter() - t, result
+
+        n, floor = 16, 16
+    t0 = time.perf_counter()
+    call(floor, 0)  # warm-up (first GPU call compiles its kernels)
+    warmup_s = time.perf_counter() - t0
+    while True:
+        elapsed, result = call(n, 1)
+        if elapsed >= target or n >= (1 << 34):
+            break
+        n = n * 2 if elapsed > target / 64 else n * 16
+    best = min([elapsed] + [call(n, 2 + i)[0] for i in range(2)])
+    out = {"shots_per_s": n / best, "shots": n, "seconds": round(best, 4), "compile_seconds": round(compile_s, 2),
+           "warmup_seconds": round(warmup_s, 2), "estimates": {k: v for k, v in result["estimates"].items() if k != "moments"},
+           **info}
+    if mode == "magna_cpu":
+        families = result["resources"]["compilation"].get("query_families", {})
+        out["terms"] = max((f.get("reference_terms", 0) for fam in families.values() for f in fam), default=None)
+    import magna
+
+    out["magna_version"] = getattr(magna, "__version__", "0.2.0@e595744")
+    return out
+
+
 def main():
     mode, path = sys.argv[1], sys.argv[2]
     text = open(path).read()
@@ -152,6 +217,11 @@ def main():
         which = sys.argv[3:] or ["tsim", "clifft"]
         fns = {"tsim": tsim_k, "clifft": clifft_k}
         out = {name: attempt(fns[name], text) for name in which}
+    elif mode in ("magna_cpu", "magna_gpu"):
+        out = attempt(lambda: magna_throughput(text, mode, 1.0 if mode == "magna_cpu" else 0.5))
+        out = out.get("k", out)
+        print(json.dumps(out), flush=True)
+        return
     elif mode == "clifft_cpu":
         out = attempt(lambda: clifft_throughput(text, 1.0, 1 << 28))
         out = out.get("k", out)

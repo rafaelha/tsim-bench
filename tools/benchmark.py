@@ -7,6 +7,8 @@ Steps (each writes/updates results/benchmark.json; rerunning a step overwrites i
     uv run python tools/benchmark.py cpu   --jobs 1    # throughput: one circuit at a time
     uv run python tools/benchmark.py gpu
     uv run python tools/benchmark.py deferral --jobs 1   # T-deferral column (single core, every circuit)
+    uv run python tools/benchmark.py magna_cpu --jobs 1  # Magna draws/s, one core (task: tools/magna_task.py)
+    uv run python tools/benchmark.py magna_gpu     # Magna's CUDA sampler
     uv run python tools/benchmark.py metal         # on an Apple-silicon Mac
     uv run python tools/benchmark.py clifft --jobs 1   # Clifft single-core CPU throughput
     uv run python tools/benchmark.py table         # rewrite the table in README.md
@@ -50,6 +52,7 @@ import json
 import os
 import pathlib
 import queue
+import resource
 import re
 import subprocess
 import sys
@@ -75,15 +78,20 @@ ENVS = {
     "tsim-deferral-sparse": ["bloqade-tsim @ git+file://"
                              + os.environ.get("TSIM_DEFERRAL_REPO", str(pathlib.Path.home() / "quera/tsim"))
                              + "@" + DEFERRAL_SPARSE_COMMIT],
+    # Magna (github.com/itpyi/magna, arXiv:2610.22315) with its CUDA 12 sampler; Tsim (PR #270, which
+    # compiles the largest circuits in little memory) only finds the noiseless detector values for the Magna
+    # task (tools/magna_task.py).
+    "magna": ["magna-quantum[cuda12] @ git+https://github.com/itpyi/magna@e595744", "cupy-cuda12x[ctk]>=14,<15",
+              "bloqade-tsim @ git+https://github.com/QuEraComputing/tsim@96b86e8b"],
     "tsim-metal": ["bloqade-tsim[metal] @ git+file://"
                    + os.environ.get("TSIM_METAL_REPO", str(pathlib.Path.home() / "Documents/quera/tsim"))
                    + "@8b4700d4"],
 }
-PLATFORM_ENVS = {"tsim-deferral": "linux", "tsim-deferral-sparse": "linux", "tsim-cpu": "linux", "tsim-gpu": "linux", "tsim-sparse": "linux", "tsim-metal": "darwin"}
+PLATFORM_ENVS = {"magna": "linux", "tsim-deferral": "linux", "tsim-deferral-sparse": "linux", "tsim-cpu": "linux", "tsim-gpu": "linux", "tsim-sparse": "linux", "tsim-metal": "darwin"}
 BUILD_LABEL = {"tsim-sparse": "Tsim PR #270 (96b86e8b)"}
 TSIM_ENV = "tsim-cpu"  # set by --tsim-env
 CPU_MAX_K, GPU_MAX_K = 15, 11
-TIMEOUT = {"kmax": 1800, "cpu": 3600, "deferral": 1800, "gpu": 900, "metal": 900, "clifft_cpu": 3600}
+TIMEOUT = {"kmax": 1800, "cpu": 3600, "deferral": 1800, "magna_cpu": 1800, "magna_gpu": 900, "gpu": 900, "metal": 900, "clifft_cpu": 3600}
 # Memory: every worker runs in its own systemd scope with a hard MemoryMax (no swap), so a worker that
 # blows up is killed alone instead of exhausting the machine (60 GB). Parallel workers share
 # MEMORY_BUDGET_GB; circuits whose file is at least LARGE_BYTES run afterwards, one at a time, with
@@ -119,20 +127,24 @@ def save(results):
 def run_worker(mode, path, core=None, extra=(), memory_gb=MEMORY_BUDGET_GB):
     tsim_run = mode == "cpu" or (mode == "kmax" and list(extra) == ["tsim"])
     deferral = "tsim-deferral-sparse" if TSIM_ENV == "tsim-sparse" else "tsim-deferral"
-    venv = {"gpu": "tsim-gpu", "metal": "tsim-metal", "deferral": deferral}.get(mode, TSIM_ENV if tsim_run else "tsim-cpu")
+    venv = {"gpu": "tsim-gpu", "metal": "tsim-metal", "deferral": deferral, "magna_cpu": "magna",
+            "magna_gpu": "magna"}.get(mode, TSIM_ENV if tsim_run else "tsim-cpu")
     cmd = [str(VENVS / venv / "bin" / "python"), str(WORKER), mode, str(ROOT / path), *extra]
     env = dict(os.environ)
-    if mode in ("cpu", "clifft_cpu", "deferral"):
+    if mode in ("cpu", "clifft_cpu", "deferral", "magna_cpu"):
         env.update(NUMBA_NUM_THREADS="1", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",
                    MKL_NUM_THREADS="1", XLA_FLAGS="--xla_force_host_platform_device_count=1")
         cmd = ["taskset", "-c", str(core), *cmd]
-    if mode != "gpu":
+    if mode not in ("gpu", "magna_gpu"):
         env["CUDA_VISIBLE_DEVICES"] = ""
     if sys.platform.startswith("linux"):
         cmd = ["systemd-run", "--user", "--scope", "--quiet", "-p", f"MemoryMax={memory_gb}G",
                "-p", "MemorySwapMax=0", *cmd]
     try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=TIMEOUT[mode])
+        # NOTE: Magna's native circuit parser overflows the default 8 MB stack on large files
+        stack = (lambda: resource.setrlimit(resource.RLIMIT_STACK, (resource.RLIM_INFINITY, resource.RLIM_INFINITY))
+                 ) if mode.startswith("magna") else None
+        proc = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=TIMEOUT[mode], preexec_fn=stack)
     except subprocess.TimeoutExpired:
         return {"error": f"timeout after {TIMEOUT[mode]}s"}
     lines = [l for l in proc.stdout.splitlines() if l.startswith("{")]
@@ -161,7 +173,7 @@ def run_step(mode, jobs, only_errors=False, only=None, sims=("tsim", "clifft"), 
         todo = paths
     if only_errors:
         todo = [p for p in todo if "error" in results.get(p, {}).get(mode if mode != "kmax" else "tsim", {"error": 1})]
-    jobs = 1 if mode in ("gpu", "metal") else jobs
+    jobs = 1 if mode in ("gpu", "metal", "magna_gpu") else jobs
     small = [p for p in todo if (ROOT / p).stat().st_size < LARGE_BYTES]
     large = [p for p in todo if (ROOT / p).stat().st_size >= LARGE_BYTES]
     done = 0
@@ -241,6 +253,13 @@ def failure(error):
         return "OOM"
     if "do not fit" in error:  # the GPU draft's noise kernel rejects rows this wide
         return "unsupported"
+    if "unsupported by Magna" in error or error.startswith("ValueError: CUDA"):  # Magna's CudaSampler refuses it
+        return "unsupported"
+    m = re.search(r"rank budget \(max_quotient_rank = \d+, needs at least (\d+)\)", error)
+    if m:  # Magna: phase coordinates left after Clifford elimination
+        return f"rank&nbsp;{m.group(1)}"
+    if "ResourceLimit" in error:  # Magna: another preparation budget (path variables, terms)
+        return "limit"
     return "error"
 
 
@@ -321,7 +340,7 @@ def table():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("step", choices=["setup", "kmax", "cpu", "deferral", "gpu", "metal", "clifft", "table", "all"])
+    parser.add_argument("step", choices=["setup", "kmax", "cpu", "deferral", "magna_cpu", "magna_gpu", "gpu", "metal", "clifft", "table", "all"])
     parser.add_argument("--jobs", type=int, default=8)
     parser.add_argument("--tsim-env", default="tsim-cpu", choices=["tsim-cpu", "tsim-sparse"],
                         help="environment for Tsim k_max and CPU throughput (default: Tsim 1.0.0)")

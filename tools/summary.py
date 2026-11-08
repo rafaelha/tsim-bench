@@ -1,7 +1,8 @@
 """Write SUMMARY.md from results/benchmark.json (tools/benchmark.py) and papers/*/k_max.json.
 
 Per paper: number of circuits and the k_max ranges. Per circuit: non-Clifford gate counts, single-core
-CPU throughput of Tsim and Clifft, Tsim GPU (CUDA) and Metal throughput, and k_max of Tsim and Clifft.
+CPU throughput of Tsim, Clifft and Magna, Tsim and Magna GPU (CUDA) and Tsim Metal throughput, and k_max of Tsim
+and Clifft.
 
 Usage: uv run python tools/summary.py
 """
@@ -47,11 +48,12 @@ def main():
         tk = [benchmark.kcell(r.get("tsim"), "tsim") for _, r in items]
         ck = [benchmark.kcell(r.get("clifft"), "clifft") for _, r in items]
         overview.append(f"| [{arxiv}](papers/{folder}) | {authors} ({year}), {title} | {len(items)} | {k_range(tk)} | {k_range(ck)} |")
-        rows.append(f"| **[{arxiv}](https://arxiv.org/abs/{arxiv})** {authors} ({year}), *{title}* | | | | | | | | | |")
+        rows.append(f"| **[{arxiv}](https://arxiv.org/abs/{arxiv})** {authors} ({year}), *{title}* | | | | | | | | | | | |")
         for (p, r), t, c in zip(items, tk, ck):
             rows.append(f"| [`{pathlib.Path(p).stem}`]({p}) | {gates.get(p, '?')} | {benchmark.rate(r.get('cpu'))} | "
-                        f"{benchmark.rate(r.get('clifft_cpu'))} | {benchmark.rate(r.get('gpu'))} | "
-                        f"{benchmark.speedup(r.get('cpu'), r.get('gpu'))} | {benchmark.rate(r.get('metal'))} | "
+                        f"{benchmark.rate(r.get('clifft_cpu'))} | {benchmark.rate(r.get('magna_cpu'))} | "
+                        f"{benchmark.rate(r.get('gpu'))} | {benchmark.speedup(r.get('cpu'), r.get('gpu'))} | "
+                        f"{benchmark.rate(r.get('magna_gpu'))} | {benchmark.rate(r.get('metal'))} | "
                         f"{benchmark.speedup(r.get('cpu'), r.get('metal'))} | {t} | {c} |")
     text = [
         "# Throughput and active width k_max of published non-Clifford circuits",
@@ -64,6 +66,15 @@ def main():
         "- **Tsim Metal:** Metal prototype (branch `metal-statevector-executor` at `8b4700d4`, on the CUDA draft) on an Apple M4 Pro",
         "  (20-core GPU, 48 GB unified memory); measured like the CUDA column. Metal speedup vs CPU is the Metal rate over the",
         "  Tsim single-core rate (Ryzen 9 9900X), as for the CUDA GPU.",
+        "- **Magna:** [Magna](https://github.com/itpyi/magna) at `e595744` ([arXiv:2610.22315](https://arxiv.org/abs/2610.22315)),",
+        "  `run` on one core (CPU) and `CudaSampler.run` on the RTX 5090 (GPU), with the resource options of Magna's own examples",
+        "  (`max_path_bits` 65536, `max_doubled_path_bits` 131072, `max_quotient_rank` 12, `max_terms` 4096). Magna returns no",
+        "  per-shot samples: a *draw* samples one fault configuration and gives its exact acceptance and error probability. The",
+        "  task (`tools/magna_task.py`) postselects on every detector that is deterministic without noise and counts an error",
+        "  when any observable flips; draws/s are therefore not the same unit as shots/s. `rank N`: Magna needs N phase",
+        "  coordinates, above its limit of 12; `limit`: another preparation budget; `unsupported`: a gate Magna lacks",
+        "  (arbitrary-angle rotations), or a task the CUDA sampler refuses; `error`: Magna stopped while sampling (\"reference",
+        "  network does not cover this reduced phase coordinate domain\"). `MPAD` is rewritten as the measurement of a fresh qubit.",
         "- **k_max:** Tsim's largest statevector component and Clifft's `peak_active_width`.",
         "- **Markers:**",
         "  - `–`: skipped (k_max > 15 for CPU, > 11 for GPU and Metal).",
@@ -83,8 +94,8 @@ def main():
         "",
         "## Per circuit",
         "",
-        "| paper / circuit | non-Clifford gates | Tsim CPU (shots/s) | Clifft CPU (shots/s) | Tsim GPU (shots/s) | GPU speedup | Tsim Metal (shots/s) | Metal speedup vs CPU | Tsim k_max | Clifft k_max |",
-        "|---|---|---|---|---|---|---|---|---|---|",
+        "| paper / circuit | non-Clifford gates | Tsim CPU (shots/s) | Clifft CPU (shots/s) | Magna CPU (draws/s) | Tsim GPU (shots/s) | GPU speedup | Magna GPU (draws/s) | Tsim Metal (shots/s) | Metal speedup vs CPU | Tsim k_max | Clifft k_max |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|",
         *rows,
         "",
     ]

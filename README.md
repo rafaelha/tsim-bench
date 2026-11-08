@@ -6,7 +6,7 @@ its `.stim` file; each paper's folder explains where the circuits came from and 
 
 The GPU columns show the speedup over one CPU core in brackets. The CUDA and Metal kernels currently support only circuits with
 k_max ≤ 11; larger circuits show – there. [`SUMMARY.md`](SUMMARY.md) has the same table with
-Clifft's numbers added.
+Clifft's and Magna's numbers added.
 
 <!-- benchmark-table:begin -->
 | circuit | k_max | CPU&nbsp;(single-core) | T-deferral | RTX&nbsp;5090 | M4&nbsp;Pro&nbsp;(GPU/Metal) |
