@@ -13,6 +13,9 @@ sampler of a postselected case samples every shot (the mask is of detectors). Th
 which device sampled (``sampler.stats.device`` where Tsim has it, else ``cpu``), the output
 format and the numba thread count, since each changes the rate severalfold.
 
+``serve`` compiles and warms up once, then times calls on request (``serve``), so that a
+comparison's rounds share one process per side.
+
 ``width`` compiles each circuit, samples nothing, and prints ``START <name>`` then
 ``RESULT <json>`` for each, in one process; the caller enforces time limits. A circuit that Tsim refuses as too wide reports
 the width in the error as a lower bound (``"refused": true``).
@@ -135,7 +138,7 @@ def main(argv=None):
     parser.add_argument("--case", action="append", default=[], help="corpus circuit id")
     parser.add_argument("--circuit", action="append", default=[], help="a .stim file")
     parser.add_argument("--root", default=None, help="tsim-bench checkout (default: this one)")
-    parser.add_argument("--mode", default="bench", choices=["bench", "prime", "inspect", "profile", "width"])
+    parser.add_argument("--mode", default="bench", choices=["bench", "prime", "inspect", "profile", "width", "serve"])
     parser.add_argument(
         "--sampler", default="auto", help="detector, measurement, or auto (a case: its manifest's)"
     )
@@ -217,6 +220,7 @@ def main(argv=None):
     warm = time.perf_counter()
     sample(16)
     result["warmup_s"] = time.perf_counter() - warm
+    result["cache_misses"] = cache_misses()
     if args.mode == "prime":
         print("RESULT " + json.dumps(result))
         return
@@ -225,28 +229,79 @@ def main(argv=None):
     if kind == "measurement":
         outputs = circuit.num_measurements
     # NOTE: one call returns at most about 256 MB of unpacked samples.
-    shots, calls = calibrate(sample, args.min_seconds, (1 << 28) // max(1, outputs))
+    max_shots = (1 << 28) // max(1, outputs)
+    if args.mode == "serve":
+        serve(sample, result, max_shots)
+        return
+    shots, calls = calibrate(sample, args.min_seconds, max_shots)
     if args.mode == "profile":
         phase_sample(sample, shots, args.min_seconds * 10)
         result["shots"] = shots
         print("RESULT " + json.dumps(result))
         return
 
+    result.update(timed(sample, shots, calls, args.repeats))
+    print("RESULT " + json.dumps(result))
+
+
+def cache_misses() -> int:
+    """Return how many of Tsim's numba kernels were compiled here, not loaded from the cache.
+
+    Kernels loaded from numba's on-disk cache have run differently from freshly compiled
+    ones, so a timing is valid only once the cache is warm.
+    """
+    import gc
+
+    from numba.core.dispatcher import Dispatcher
+
+    return sum(
+        sum(obj.stats.cache_misses.values())
+        for obj in gc.get_objects()
+        if isinstance(obj, Dispatcher) and obj.py_func.__module__.startswith("tsim")
+    )
+
+
+def timed(sample, shots, calls, repeats) -> dict:
+    """Time ``repeats`` runs of ``calls`` calls of ``shots`` shots; keep the fastest."""
     times, kept = [], 0
-    for _ in range(args.repeats):
+    for _ in range(repeats):
         start = time.perf_counter()
         for _ in range(calls):
             kept += sample(shots)
         times.append(time.perf_counter() - start)
     total = shots * calls
     # shots_per_s counts requested shots, kept or not; acceptance is the kept fraction.
-    result.update(
-        shots=total,
-        seconds=min(times),
-        shots_per_s=total / min(times),
-        acceptance=kept / (total * args.repeats),
-    )
-    print("RESULT " + json.dumps(result))
+    return {
+        "shots": total,
+        "seconds": min(times),
+        "shots_per_s": total / min(times),
+        "acceptance": kept / (total * repeats),
+    }
+
+
+def serve(sample, result, max_shots) -> None:
+    """Answer timing requests on stdin, one per line, after ``READY <json>``.
+
+    ``calibrate SECONDS`` prints ``SHOTS {"shots": n, "calls": c}``, a call size and count
+    that together take about SECONDS; ``time SHOTS CALLS REPEATS`` prints
+    ``RESULT <json>``: the compile-time fields of ``result`` and the timing. The process
+    compiles once, so the rounds of a comparison skip the import and the compile.
+    ``cache_misses`` counts the kernels compiled in this process (``READY``: by the warmup).
+    """
+    print("READY " + json.dumps(result), flush=True)
+    for line in sys.stdin:
+        words = line.split()
+        if not words:
+            continue
+        if words[0] == "calibrate":
+            shots, calls = calibrate(sample, float(words[1]), max_shots)
+            print("SHOTS " + json.dumps({"shots": shots, "calls": calls}), flush=True)
+        elif words[0] == "time":
+            shots, calls, repeats = (int(w) for w in words[1:4])
+            timing = timed(sample, shots, calls, repeats)
+            print("RESULT " + json.dumps({**result, **timing, "cache_misses": cache_misses()}), flush=True)
+        else:
+            print(f"ERROR unknown request {words[0]!r}", flush=True)
 
 
 if __name__ == "__main__":
