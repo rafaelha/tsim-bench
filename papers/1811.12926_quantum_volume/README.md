@@ -9,9 +9,14 @@ sampler. Its active width equals the qubit count, so it stresses Tsim's state-ve
 
 `stim/qv_q10.stim` comes from Tsim's development benchmark registry (`dev/circuits/` of
 [QuEraComputing/tsim#281](https://github.com/QuEraComputing/tsim/pull/281)): 10 qubits,
-400 `U3` gates and 150 `CX` gates, a final `M` on every qubit and one observable. It is
-a quantum-volume-style model circuit (random two-qubit layers decomposed into U3 and CX); the seed
-and generator were not recorded.
+400 `U3` gates and 150 `CX` gates, and a final `M` on every qubit. It is a quantum-volume-style
+model circuit (random two-qubit layers decomposed into U3 and CX); the seed and generator were not
+recorded.
+
+The registry file had one observable (qubit 9). Here every final measurement is an observable
+(`OBSERVABLE_INCLUDE(i)` on qubit `i`), as in the Clifft QV benchmark. With one observable the
+detector sampler keeps only that bit, so a shot becomes one biased coin and the detector sampler
+looks far faster than it is.
 
 ## Active width k_max
 
