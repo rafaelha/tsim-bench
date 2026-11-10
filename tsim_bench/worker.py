@@ -3,9 +3,15 @@
 Run by path, or with ``-m``, from the Python environment of the Tsim under test (Tsim 1.1 or
 later): it uses only the standard library, numpy, Tsim's public API and this package.
 
-    python -m tsim_bench.worker --case <id> [--no-postselect] [--mode bench|prime|inspect|profile]
+    python -m tsim_bench.worker --case <id> [--no-postselect] [--sampler detector|measurement]
+                                [--mode bench|prime|inspect|profile] [--bit-packed]
     python -m tsim_bench.worker --circuit FILE.stim [--postselect all|none]
     python -m tsim_bench.worker --mode width --case ID [--case ID ...] [--circuit FILE ...]
+
+A case uses the sampler its manifest records unless ``--sampler`` names one; a measurement
+sampler of a postselected case samples every shot (the mask is of detectors). The result says
+which device sampled (``sampler.stats.device`` where Tsim has it, else ``cpu``), the output
+format and the numba thread count, since each changes the rate severalfold.
 
 ``width`` compiles each circuit, samples nothing, and prints ``START <name>`` then
 ``RESULT <json>`` for each, in one process; the caller enforces time limits. A circuit that Tsim refuses as too wide reports
@@ -130,7 +136,9 @@ def main(argv=None):
     parser.add_argument("--circuit", action="append", default=[], help="a .stim file")
     parser.add_argument("--root", default=None, help="tsim-bench checkout (default: this one)")
     parser.add_argument("--mode", default="bench", choices=["bench", "prime", "inspect", "profile", "width"])
-    parser.add_argument("--sampler", default="auto", help="for --circuit only")
+    parser.add_argument(
+        "--sampler", default="auto", help="detector, measurement, or auto (a case: its manifest's)"
+    )
     parser.add_argument("--postselect", default="none", choices=["all", "none"], help="for --circuit only")
     parser.add_argument("--no-postselect", action="store_true", help="ignore the recorded mask")
     parser.add_argument("--strategy", default="")
@@ -160,8 +168,11 @@ def main(argv=None):
     if args.case:
         case = corpus[args.case]
         path, kind = case.path, case.sampler
-        indices = [] if args.no_postselect else mask_indices(case)
-        references = (case.detector_reference, case.observable_reference)
+        if args.sampler != "auto":
+            kind = args.sampler
+        indices = [] if args.no_postselect or kind != "detector" else mask_indices(case)
+        if kind == "detector":
+            references = (case.detector_reference, case.observable_reference)
     else:
         path, kind, indices = Path(args.circuit), args.sampler, None
 
@@ -180,9 +191,14 @@ def main(argv=None):
         mask = np.zeros(circuit.num_detectors, dtype=np.bool_)
         mask[indices] = True
 
+    import numba
+
     result = {
         "tsim_version": getattr(tsim, "__version__", "?"),
         "sampler": kind,
+        "device": getattr(sampler.stats, "device", "cpu"),
+        "bit_packed": args.bit_packed,
+        "threads": numba.get_num_threads(),
         "postselected_detectors": len(indices),
         "import_s": imported - start,
         "compile_s": compiled - imported,
