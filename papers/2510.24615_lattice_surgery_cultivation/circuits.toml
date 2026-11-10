@@ -1,0 +1,12 @@
+arxiv = "2510.24615"
+
+[circuits."inject-check-3_T"]
+num_detectors = 20
+postselect = "all"
+reason = "Injection + double check on the Steane code: src/inject_cultivate.py discards a shot if any detectors_for_post_selection fires, and every detector of this circuit (steane_code.py, incl. the noiseless tomography stabilizer MPPs of perform_tomography_after_check_stage) is placed with post_selection=True; the bundled data file predates the DETECTOR[POST-SELECTION] tag, hence the empty postselection.json."
+
+[circuits."lattice-surgery-complementary-gap-3-to-5-to-7_T"]
+num_detectors = 174
+postselect = "only"
+detectors = "0-14, 25-26, 31-36, 55-59, 64-67, 86-90"
+reason = "End-to-end protocol: only the DETECTOR[POST-SELECTION]-tagged detectors (src/util.py detectors_for_post_selection; indices in stim/*.postselection.json) are discarded on; the surface-code lattice-surgery/escape detectors go to the complementary-gap decoder (lattice_surgery_complementary_gap.py), and the last detector 173 is the random logical-Y readout used for the gap."

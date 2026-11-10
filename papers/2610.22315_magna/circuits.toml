@@ -1,0 +1,167 @@
+arxiv = "2610.22315"
+
+[circuits."bh2-T"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh2-T/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks."
+
+[circuits."bh2-S"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh2-S/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks. This is Magna's Clifford S control."
+
+[circuits."bh4-T"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh4-T/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks."
+
+[circuits."bh4-S"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh4-S/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks. This is Magna's Clifford S control."
+
+[circuits."bh6-T"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh6-T/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks."
+
+[circuits."bh6-S"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh6-S/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks. This is Magna's Clifford S control."
+
+[circuits."bh10-T"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh10-T/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks."
+
+[circuits."bh10-S"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh10-S/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks. This is Magna's Clifford S control."
+
+[circuits."bh20-T"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh20-T/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks."
+
+[circuits."bh20-S"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh20-S/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks. This is Magna's Clifford S control."
+
+[circuits."bh40-T"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh40-T/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks."
+
+[circuits."bh40-S"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh40-S/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks. This is Magna's Clifford S control."
+
+[circuits."bh60-T"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh60-T/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks."
+
+[circuits."bh60-S"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh60-S/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks. This is Magna's Clifford S control."
+
+[circuits."bh80-T"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh80-T/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks."
+
+[circuits."bh80-S"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh80-S/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks. This is Magna's Clifford S control."
+
+[circuits."bh100-T"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh100-T/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks."
+
+[circuits."bh100-S"]
+arxiv = "1209.2426"
+num_detectors = 3
+postselect = "all"
+reason = "Bravyi-Haah distillation accepts only a trivial syndrome; Magna's examples/bh100-S/physical.magna ends with POSTSELECT det[0] det[1] det[2], i.e. all 3 checks. This is Magna's Clifford S control."
+
+[circuits."color3"]
+arxiv = "2409.17595"
+num_detectors = 20
+postselect = "all"
+reason = "Gidney et al. d=3 unitary-injection cultivation without escape (Magna Sec. cultivation); examples/color3/physical.magna POSTSELECTs det[0..19], i.e. every detector, including detectors 14-19 of the noiseless final readout, as in Gidney's published infidelity."
+
+[circuits."color5"]
+arxiv = "2512.23037"
+num_detectors = 107
+postselect = "all"
+reason = "SOFT's d=5 cultivation circuit (vendored header), used via Wan et al. 2609.18922, without escape; examples/color5/physical.magna POSTSELECTs every detector (det[0..106]), including detectors 89-106 of the noiseless final readout, as in Wan et al.'s acceptance."
+
+[circuits."rp2-d3"]
+arxiv = "2503.18657"
+num_detectors = 44
+postselect = "all"
+reason = "Ungrown RP2 cultivation uses full postselection (2503.18657 Tab. I); examples/rp2-d3/physical.magna POSTSELECTs every detector, including 28-43 of the noiseless final readout, with !det (expected 1) on 13, 15-17, so detector_reference is set."
+detector_reference = true
+
+[circuits."rp2-d3-S"]
+arxiv = "2503.18657"
+num_detectors = 44
+postselect = "all"
+reason = "Ungrown RP2 cultivation uses full postselection (2503.18657 Tab. I); examples/rp2-d3-S/physical.magna POSTSELECTs every detector, including 28-43 of the noiseless final readout, with !det (expected 1) on 13, 15-17, so detector_reference is set. Clifford S control."
+detector_reference = true
+
+[circuits."rp2-d5"]
+arxiv = "2503.18657"
+num_detectors = 132
+postselect = "all"
+reason = "Ungrown RP2 cultivation uses full postselection (2503.18657 Tab. I); examples/rp2-d5/physical.magna POSTSELECTs every detector, including 96-131 of the noiseless final readout, with !det (expected 1) on 13, 15-17, 47, 49, 68, 70, 72, 75, 77, 79, 97, 99, 101, 103, 105, so detector_reference is set."
+detector_reference = true
+
+[circuits."rp2-d5-S"]
+arxiv = "2503.18657"
+num_detectors = 132
+postselect = "all"
+reason = "Ungrown RP2 cultivation uses full postselection (2503.18657 Tab. I); examples/rp2-d5-S/physical.magna POSTSELECTs every detector, including 96-131 of the noiseless final readout, with !det (expected 1) on 13, 15-17, 47, 49, 68, 70, 72, 75, 77, 79, 97, 99, 101, 103, 105, so detector_reference is set. Clifford S control."
+detector_reference = true
+
+[circuits."dk"]
+arxiv = "2410.07327"
+num_detectors = 20
+postselect = "all"
+reason = "Daguerre-Kim code-switching magic state preparation is postselected; examples/dk/physical.magna POSTSELECTs det[0..19], i.e. every detector."
+
+[circuits."wg-T"]
+arxiv = "2503.19758"
+num_detectors = 91
+postselect = "all"
+reason = "Wang-Gu T-gate teleportation from the [[15,1,3]] code by generalized lattice surgery, offline (postselected) variant; examples/wg-T/physical.magna POSTSELECTs det[0..90], i.e. every detector, including 75-90 of the noiseless final readout."
+
+[circuits."wg-S"]
+arxiv = "2503.19758"
+num_detectors = 91
+postselect = "all"
+reason = "Wang-Gu T-gate teleportation from the [[15,1,3]] code by generalized lattice surgery, offline (postselected) variant; examples/wg-S/physical.magna POSTSELECTs det[0..90], i.e. every detector, including 75-90 of the noiseless final readout. Clifford S control."

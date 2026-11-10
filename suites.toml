@@ -1,0 +1,69 @@
+# Named benchmark suites: lists of circuit ids (<paper folder>/<file stem>).
+# quick: one small circuit per family, for every A/B run (a few minutes with a reference).
+# full:  one or two circuits per family and paper, widths up to 16, before claiming a speedup.
+# hard:  widths 16 to 26 (tricycle and BLP CCZ factories): slow, opt-in, run as a job.
+
+[quick]
+circuits = [
+    "2409.17595_magic_state_cultivation/inject_cultivate_d3_p0.001",
+    "2409.17595_magic_state_cultivation/inject_cultivate_d5_p0.001",
+    "2409.17595_magic_state_cultivation/end2end_d3_dsurface15_p0.001",
+    "2302.12292_hook_injection/hook_inject_T_d15_pd5_p0.001",
+    "2604.01059_tsim/distillation_color_d5_Z",
+    "2604.27058_clifft/coherent_d3_r3",
+    "2604.27058_clifft/surface_d7_r7",
+    "1811.12926_quantum_volume/qv_q10",
+]
+
+[full]
+circuits = [
+    # the quick suite
+    "2409.17595_magic_state_cultivation/inject_cultivate_d3_p0.001",
+    "2409.17595_magic_state_cultivation/inject_cultivate_d5_p0.001",
+    "2409.17595_magic_state_cultivation/end2end_d3_dsurface15_p0.001",
+    "2302.12292_hook_injection/hook_inject_T_d15_pd5_p0.001",
+    "2604.01059_tsim/distillation_color_d5_Z",
+    "2604.27058_clifft/coherent_d3_r3",
+    "2604.27058_clifft/surface_d7_r7",
+    "1811.12926_quantum_volume/qv_q10",
+    # cultivation and its variants
+    "2409.17595_magic_state_cultivation/end2end_d5_dsurface15_p0.001",
+    "2409.07707_color_code_msd/cult_growing_T_d3_to_d7_p0.001",
+    "2502.01743_surface_code_cultivation/unrotated_H_injection-ghz_d1=3_p=0.001",
+    "2502.01743_surface_code_cultivation/expanded-rotated-injection-double-ghz-HXY_d1=3_d2=11_p=0.001",
+    "2503.18657_rp2_cultivation/rp_3_T_cult",
+    "2503.18657_rp2_cultivation/rp_3_rp_5_T_cult",
+    "2509.05212_fold_transversal_cultivation/fold-d5_native_T_p0.001",
+    "2504.02935_erasure_injection/inject_cultivate_T_d3_p0.001",
+    "2603.05429_gauging_clifford_cultivation/gauging_cultivation_d5_T_p0.001",
+    "2609.17706_chan_color_code_cultivation/d5a19_inject_cultivate_T_p0.001",
+    "2510.24615_lattice_surgery_cultivation/lattice-surgery-complementary-gap-3-to-5-to-7_T",
+    # injection
+    "2406.17653_transversal_algorithmic_ft/s_injection_T_d5_p0.001_pinj0.1",
+    "2604.05126_qldpc_magic_state_injection/bb144_cfg369_inj1_T_p0.001",
+    "2509.18294_transversal_star/star_d=5",
+    # distillation
+    "2604.01059_tsim/distillation_steane_d3_Z",
+    "2505.13587_correlated_decoding_distillation/distillation_15to1_T_d9_p0.001",
+    "2507.12511_unfolded_distillation/unfolded_surface_no_bitflip_pz1e-3_rounds4",
+    "2610.06811_merlin/distillation_15to1_p0.001",
+    "2610.22315_magna/bh10-T",
+    # coherent noise
+    "2604.27058_clifft/coherent_d5_r5",
+    "2610.03869_modular_neural_decoder/stability_d3_X_t20_alpha0.5_p0.001",
+    # CCZ factories
+    "2510.07269_transversal_dimension_jump/tricycle_6_3_2",
+    "2510.07269_transversal_dimension_jump/tricycle_9_3_2",
+    "2510.07269_transversal_dimension_jump/tricycle_12_3_2",
+]
+
+[hard]
+circuits = [
+    "2510.07269_transversal_dimension_jump/tricycle_15_3_2",
+    "2510.07269_transversal_dimension_jump/tricycle_18_3_2",
+    "2510.07269_transversal_dimension_jump/tricycle_24_3_2",
+    "2510.07269_transversal_dimension_jump/tricycle_21_3_3",
+    "2510.07269_transversal_dimension_jump/tricycle_27_3_3",
+    "2510.07269_transversal_dimension_jump/blp_27_3_3",
+    "2610.06811_merlin/code_switching_bt27_p0.001",
+]

@@ -1,0 +1,6 @@
+arxiv = "2509.08658"
+
+[circuits."d3_cultivation_T_p0.001"]
+num_detectors = 32
+postselect = "all"
+reason = "d=3 injection plus double-checking cultivation with no escape; the paper postselects on all detecting regions (Sec. 9, 'Post-selected closed Pauli webs'). The noiseless T-projection readout appended by run.py (_projection_T_Proj_measure, coordinate[4] == -9) is masked too: it is the perfect final check of the cultivated state."

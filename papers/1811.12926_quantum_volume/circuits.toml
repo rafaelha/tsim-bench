@@ -1,0 +1,7 @@
+arxiv = "1811.12926"
+
+[circuits.qv_q10]
+sampler = "measurement"
+num_detectors = 0
+postselect = "none"
+reason = "Quantum volume samples raw measurement outcomes (heavy-output test, Sec. II); the circuit has no detectors."

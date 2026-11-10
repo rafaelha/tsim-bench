@@ -1,0 +1,49 @@
+arxiv = "2604.27058"
+
+[circuits.coherent_d3_r1]
+arxiv = "2603.14670"
+num_detectors = 8
+postselect = "none"
+reason = "Coherent-noise rotated surface-code Z memory (throughput-table footnote e, adapted from Tuloup-Ayral; run_all.py _coherent_noise_circuit replaces each DEPOLARIZE by R_Z(0.02)): a memory experiment whose detectors go to a decoder, so no mask; with r>1 the X-type detectors are random even without stochastic noise."
+
+[circuits.coherent_d3_r3]
+arxiv = "2603.14670"
+num_detectors = 24
+postselect = "none"
+reason = "Coherent-noise rotated surface-code Z memory (throughput-table footnote e, adapted from Tuloup-Ayral; run_all.py _coherent_noise_circuit replaces each DEPOLARIZE by R_Z(0.02)): a memory experiment whose detectors go to a decoder, so no mask; with r>1 the X-type detectors are random even without stochastic noise."
+
+[circuits.coherent_d5_r1]
+arxiv = "2603.14670"
+num_detectors = 24
+postselect = "none"
+reason = "Coherent-noise rotated surface-code Z memory (throughput-table footnote e, adapted from Tuloup-Ayral; run_all.py _coherent_noise_circuit replaces each DEPOLARIZE by R_Z(0.02)): a memory experiment whose detectors go to a decoder, so no mask; with r>1 the X-type detectors are random even without stochastic noise."
+
+[circuits.coherent_d5_r5]
+arxiv = "2603.14670"
+num_detectors = 120
+postselect = "none"
+reason = "Coherent-noise rotated surface-code Z memory (throughput-table footnote e, adapted from Tuloup-Ayral; run_all.py _coherent_noise_circuit replaces each DEPOLARIZE by R_Z(0.02)): a memory experiment whose detectors go to a decoder, so no mask; with r>1 the X-type detectors are random even without stochastic noise."
+
+[circuits.cultivation_d3]
+arxiv = "2409.17595"
+num_detectors = 20
+postselect = "all"
+reason = "Gidney et al. inject+cultivate stages only (Clifft Sec. Benchmarks, throughput-table footnote c; no escape stage), which discard a shot on any detection (Clifft Sec. End-to-End Cultivation: inject and cultivation rely on detector post-selection), so every detector is masked."
+
+[circuits.cultivation_d5]
+arxiv = "2409.17595"
+num_detectors = 107
+postselect = "all"
+reason = "Gidney et al. inject+cultivate stages only (Clifft Sec. Benchmarks, throughput-table footnote c; no escape stage), which discard a shot on any detection (Clifft Sec. End-to-End Cultivation: inject and cultivation rely on detector post-selection), so every detector is masked."
+
+[circuits.distillation]
+arxiv = "2412.15165"
+num_detectors = 40
+postselect = "all"
+reason = "85-qubit d=5 color-code 5-to-1 distillation (throughput-table footnote d; same as ../2604.01059_tsim distillation_color_d5_Z): Tsim's tutorial keeps only shots with all 40 final-readout stabilizer detectors 0; the [1,0,1,1] syndrome on observables 1-4 is an observable condition the mask cannot express."
+
+[circuits.surface_d7_r7]
+arxiv = "2103.02202"
+num_detectors = 336
+postselect = "none"
+reason = "Clifford control: Stim-generated surface_code:rotated_memory_z (throughput-table footnote b, run_all.py _clifford_circuit), a decoded memory experiment, so no postselection."

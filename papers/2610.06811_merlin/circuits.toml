@@ -1,0 +1,85 @@
+arxiv = "2610.06811"
+
+[circuits."cultivation_d3_t"]
+arxiv = "2409.17595"
+num_detectors = 20
+postselect = "all"
+reason = "Gidney et al. inject+cultivate without escape (Merlin numerics Sec. 7); experiments/cultivation/sample.py postselects every detector (postselect=list(range(num_detectors))), including detectors 14-19 of the noiseless final stabilizer readout, as in Gidney's Fig. 13."
+
+[circuits."cultivation_d5_t"]
+arxiv = "2409.17595"
+num_detectors = 107
+postselect = "all"
+reason = "Gidney et al. inject+cultivate without escape (Merlin numerics Sec. 7); experiments/cultivation/sample.py postselects every detector (postselect=list(range(num_detectors))), including detectors 89-106 of the noiseless final stabilizer readout, as in Gidney's Fig. 13."
+
+[circuits."distillation_15to1_p0.001"]
+arxiv = "quant-ph/0403025"
+num_detectors = 14
+postselect = "all"
+reason = "15-to-1 distillation (Bravyi-Kitaev) accepts only a trivial syndrome; the 14 detectors are exactly the code checks measured after decoding (benchmarks/protocols/distillation.py append_detectors over check_qubits), so all are masked."
+
+[circuits."distillation_bh2_p0.001"]
+arxiv = "1209.2426"
+num_detectors = 12
+postselect = "all"
+reason = "Bravyi-Haah (3k+8)-to-k distillation accepts only a trivial syndrome; the 12 detectors are exactly the code checks measured after decoding (benchmarks/protocols/distillation.py append_detectors over check_qubits), so all are masked."
+
+[circuits."distillation_bh4_p0.001"]
+arxiv = "1209.2426"
+num_detectors = 16
+postselect = "all"
+reason = "Bravyi-Haah (3k+8)-to-k distillation accepts only a trivial syndrome; the 16 detectors are exactly the code checks measured after decoding (benchmarks/protocols/distillation.py append_detectors over check_qubits), so all are masked."
+
+[circuits."distillation_bh6_p0.001"]
+arxiv = "1209.2426"
+num_detectors = 20
+postselect = "all"
+reason = "Bravyi-Haah (3k+8)-to-k distillation accepts only a trivial syndrome; the 20 detectors are exactly the code checks measured after decoding (benchmarks/protocols/distillation.py append_detectors over check_qubits), so all are masked."
+
+[circuits."distillation_bh8_p0.001"]
+arxiv = "1209.2426"
+num_detectors = 24
+postselect = "all"
+reason = "Bravyi-Haah (3k+8)-to-k distillation accepts only a trivial syndrome; the 24 detectors are exactly the code checks measured after decoding (benchmarks/protocols/distillation.py append_detectors over check_qubits), so all are masked."
+
+[circuits."distillation_bh10_p0.001"]
+arxiv = "1209.2426"
+num_detectors = 28
+postselect = "all"
+reason = "Bravyi-Haah (3k+8)-to-k distillation accepts only a trivial syndrome; the 28 detectors are exactly the code checks measured after decoding (benchmarks/protocols/distillation.py append_detectors over check_qubits), so all are masked."
+
+[circuits."distillation_bh12_p0.001"]
+arxiv = "1209.2426"
+num_detectors = 32
+postselect = "all"
+reason = "Bravyi-Haah (3k+8)-to-k distillation accepts only a trivial syndrome; the 32 detectors are exactly the code checks measured after decoding (benchmarks/protocols/distillation.py append_detectors over check_qubits), so all are masked."
+
+[circuits."distillation_bh14_p0.001"]
+arxiv = "1209.2426"
+num_detectors = 36
+postselect = "all"
+reason = "Bravyi-Haah (3k+8)-to-k distillation accepts only a trivial syndrome; the 36 detectors are exactly the code checks measured after decoding (benchmarks/protocols/distillation.py append_detectors over check_qubits), so all are masked."
+
+[circuits."distillation_bh16_p0.001"]
+arxiv = "1209.2426"
+num_detectors = 40
+postselect = "all"
+reason = "Bravyi-Haah (3k+8)-to-k distillation accepts only a trivial syndrome; the 40 detectors are exactly the code checks measured after decoding (benchmarks/protocols/distillation.py append_detectors over check_qubits), so all are masked."
+
+[circuits."distillation_bh18_p0.001"]
+arxiv = "1209.2426"
+num_detectors = 44
+postselect = "all"
+reason = "Bravyi-Haah (3k+8)-to-k distillation accepts only a trivial syndrome; the 44 detectors are exactly the code checks measured after decoding (benchmarks/protocols/distillation.py append_detectors over check_qubits), so all are masked."
+
+[circuits."code_switching_bt27_p0.001"]
+arxiv = "2510.07269"
+num_detectors = 72
+postselect = "all"
+reason = "Li-Preskill-Xu CCZ preparation by error detection (their appendix: 'perform postselection whenever these detectors are nontrivial'); in Merlin's version (benchmarks/protocols/code_switching.py) every detector is a 3D-code check measured after the CCZ by unencoding, with no decoder, so all are masked (a CCZ-free Stim stand-in gives every detector deterministically 0)."
+
+[circuits."code_switching_bt81_p0.001"]
+arxiv = "2510.07269"
+num_detectors = 234
+postselect = "all"
+reason = "Li-Preskill-Xu CCZ preparation by error detection (their appendix: 'perform postselection whenever these detectors are nontrivial'); in Merlin's version (benchmarks/protocols/code_switching.py) every detector is a 3D-code check measured after the CCZ by unencoding, with no decoder, so all are masked (a CCZ-free Stim stand-in gives every detector deterministically 0)."

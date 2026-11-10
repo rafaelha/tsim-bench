@@ -1,0 +1,37 @@
+arxiv = "2604.05126"
+
+[circuits."bb144_cfg328_inj5_T_p0.001"]
+num_detectors = 460
+postselect = "only"
+detectors = "0-171"
+reason = "Evaluation, Injection procedure steps 3-5 and psel_dec with n_psel_cycles=2 (src/qldpc_msi/msi/psel_dec.py _get_postsel_det_ids): discard on the |F|=28 fixed-stabilizer detectors of SE round 1 and the 144 round-parity detectors of round 2, i.e. detectors 0..|F|+143 (|F| = num_detectors - 432, matching the paper's table); the round-3 parity and final noiseless MPP-readout detectors are decoded with BP-OSD, not masked."
+
+[circuits."bb144_cfg342_inj3_T_p0.001"]
+num_detectors = 463
+postselect = "only"
+detectors = "0-174"
+reason = "Evaluation, Injection procedure steps 3-5 and psel_dec with n_psel_cycles=2 (src/qldpc_msi/msi/psel_dec.py _get_postsel_det_ids): discard on the |F|=31 fixed-stabilizer detectors of SE round 1 and the 144 round-parity detectors of round 2, i.e. detectors 0..|F|+143 (|F| = num_detectors - 432, matching the paper's table); the round-3 parity and final noiseless MPP-readout detectors are decoded with BP-OSD, not masked."
+
+[circuits."bb144_cfg369_inj1_T_p0.001"]
+num_detectors = 458
+postselect = "only"
+detectors = "0-169"
+reason = "Evaluation, Injection procedure steps 3-5 and psel_dec with n_psel_cycles=2 (src/qldpc_msi/msi/psel_dec.py _get_postsel_det_ids): discard on the |F|=26 fixed-stabilizer detectors of SE round 1 and the 144 round-parity detectors of round 2, i.e. detectors 0..|F|+143 (|F| = num_detectors - 432, matching the paper's table); the round-3 parity and final noiseless MPP-readout detectors are decoded with BP-OSD, not masked."
+
+[circuits."bb144_cfg422_inj2_T_p0.001"]
+num_detectors = 464
+postselect = "only"
+detectors = "0-175"
+reason = "Evaluation, Injection procedure steps 3-5 and psel_dec with n_psel_cycles=2 (src/qldpc_msi/msi/psel_dec.py _get_postsel_det_ids): discard on the |F|=32 fixed-stabilizer detectors of SE round 1 and the 144 round-parity detectors of round 2, i.e. detectors 0..|F|+143 (|F| = num_detectors - 432, matching the paper's table); the round-3 parity and final noiseless MPP-readout detectors are decoded with BP-OSD, not masked."
+
+[circuits."bb144_cfg491_inj4_T_p0.001"]
+num_detectors = 464
+postselect = "only"
+detectors = "0-175"
+reason = "Evaluation, Injection procedure steps 3-5 and psel_dec with n_psel_cycles=2 (src/qldpc_msi/msi/psel_dec.py _get_postsel_det_ids): discard on the |F|=32 fixed-stabilizer detectors of SE round 1 and the 144 round-parity detectors of round 2, i.e. detectors 0..|F|+143 (|F| = num_detectors - 432, matching the paper's table); the round-3 parity and final noiseless MPP-readout detectors are decoded with BP-OSD, not masked."
+
+[circuits."bb144_cfg88_inj6_T_p0.001"]
+num_detectors = 450
+postselect = "only"
+detectors = "0-161"
+reason = "Evaluation, Injection procedure steps 3-5 and psel_dec with n_psel_cycles=2 (src/qldpc_msi/msi/psel_dec.py _get_postsel_det_ids): discard on the |F|=18 fixed-stabilizer detectors of SE round 1 and the 144 round-parity detectors of round 2, i.e. detectors 0..|F|+143 (|F| = num_detectors - 432, matching the paper's table); the round-3 parity and final noiseless MPP-readout detectors are decoded with BP-OSD, not masked."

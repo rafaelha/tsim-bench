@@ -1,0 +1,31 @@
+arxiv = "2609.17706"
+
+[circuits."d3a6f2_inject_cultivate_T_p0.001"]
+num_detectors = 22
+postselect = "all"
+reason = "Inject+cultivate with no escape stage; the package postselects every detector (cliffordea/sim/README.md 'postselects every detector', msc_framework.py postselect_detectors=True), including detectors 16-21 of the noiseless final stabilizer readout, as in the paper's accepted-shot LER."
+
+[circuits."d3a6_inject_cultivate_T_p0.001"]
+num_detectors = 20
+postselect = "all"
+reason = "Inject+cultivate with no escape stage; the package postselects every detector (cliffordea/sim/README.md 'postselects every detector', msc_framework.py postselect_detectors=True), including detectors 14-19 of the noiseless final stabilizer readout, as in the paper's accepted-shot LER."
+
+[circuits."d5a19f13_inject_cultivate_T_p0.001"]
+num_detectors = 122
+postselect = "all"
+reason = "Inject+cultivate with no escape stage; the package postselects every detector (cliffordea/sim/README.md 'postselects every detector', msc_framework.py postselect_detectors=True), including detectors 104-121 of the noiseless final stabilizer readout, as in the paper's accepted-shot LER."
+
+[circuits."d5a19_inject_cultivate_T_p0.001"]
+num_detectors = 107
+postselect = "all"
+reason = "Inject+cultivate with no escape stage; the package postselects every detector (cliffordea/sim/README.md 'postselects every detector', msc_framework.py postselect_detectors=True), including detectors 89-106 of the noiseless final stabilizer readout, as in the paper's accepted-shot LER."
+
+[circuits."d5a19r4f13_inject_cultivate_T_p0.001"]
+num_detectors = 140
+postselect = "all"
+reason = "Inject+cultivate with no escape stage; the package postselects every detector (cliffordea/sim/README.md 'postselects every detector', msc_framework.py postselect_detectors=True), including detectors 122-139 of the noiseless final stabilizer readout, as in the paper's accepted-shot LER."
+
+[circuits."d5a19r4_inject_cultivate_T_p0.001"]
+num_detectors = 125
+postselect = "all"
+reason = "Inject+cultivate with no escape stage; the package postselects every detector (cliffordea/sim/README.md 'postselects every detector', msc_framework.py postselect_detectors=True), including detectors 107-124 of the noiseless final stabilizer readout, as in the paper's accepted-shot LER."

@@ -1,0 +1,11 @@
+arxiv = "2512.23037"
+
+[circuits."circuit_d3_p0.001"]
+num_detectors = 20
+postselect = "all"
+reason = "Inject + cultivate without escape: SOFT discards a shot as soon as any detector fires (main.tex Sec. on MSC results, 'discard rate (fraction of shots rejected by the detectors)'; stim_src README: error code i = discarded by the i-th detector), so every detector is masked."
+
+[circuits."circuit_d5_p0.001"]
+num_detectors = 107
+postselect = "all"
+reason = "Inject + cultivate without escape: SOFT discards a shot as soon as any detector fires (main.tex Sec. on MSC results, 'discard rate (fraction of shots rejected by the detectors)'; stim_src README: error code i = discarded by the i-th detector), so every detector is masked."

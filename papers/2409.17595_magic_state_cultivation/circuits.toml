@@ -1,0 +1,23 @@
+arxiv = "2409.17595"
+
+[circuits."end2end_d3_dsurface15_p0.001"]
+num_detectors = 2162
+postselect = "only"
+detectors = "0-13, 15-18, 20, 22, 126, 131, 138, 352, 357, 583"
+reason = """The fixed discard set of the paper's desaturation sampler (Sec. 'Decoding'; cultiv/_decoding/_desaturation_sampler.py): all injection/cultivation detectors (3 coords or coordinate[4] == -9), red-X/green-Z color-code detectors of the grafted code (coordinate[4] in {0, 4}), and the endpoints of observable-flipping single-basis pair errors in the DEM of the Zenodo p=0.001 proxy (same detector coordinates); the rest of the escape is gap-decoded, not masked."""
+
+[circuits."end2end_d5_dsurface15_p0.001"]
+num_detectors = 2744
+postselect = "only"
+detectors = "0-88, 91-94, 96-101, 104-106, 108-110, 114, 118, 211, 216, 219, 226, 229, 238-239, 254, 441, 446, 449, 456, 459, 468, 671, 676, 679, 686, 689, 698, 901, 906, 909, 916, 919, 928, 1138, 1147"
+reason = """The fixed discard set of the paper's desaturation sampler (Sec. 'Decoding'; cultiv/_decoding/_desaturation_sampler.py): all injection/cultivation detectors (3 coords or coordinate[4] == -9), red-X/green-Z color-code detectors of the grafted code (coordinate[4] in {0, 4}), and the endpoints of observable-flipping single-basis pair errors in the DEM of the Zenodo p=0.001 proxy (same detector coordinates); the rest of the escape is gap-decoded, not masked."""
+
+[circuits."inject_cultivate_d3_p0.001"]
+num_detectors = 20
+postselect = "all"
+reason = """Injection and cultivation use full postselection (Sec. 'Decoding': 'If any detector from these stages fires, we discard'; Zenodo for_perfectionist_decoding). Every detector is an injection/cultivation detector (3 coords or coordinate[4] == -9), including the final noiseless MPP stabilizer checks, which the authors' circuits also tag -9 and postselect."""
+
+[circuits."inject_cultivate_d5_p0.001"]
+num_detectors = 107
+postselect = "all"
+reason = """Injection and cultivation use full postselection (Sec. 'Decoding': 'If any detector from these stages fires, we discard'; Zenodo for_perfectionist_decoding). Every detector is an injection/cultivation detector (3 coords or coordinate[4] == -9), including the final noiseless MPP stabilizer checks, which the authors' circuits also tag -9 and postselect."""

@@ -1,0 +1,55 @@
+arxiv = "2604.01059"
+
+[circuits.distillation_color_d5_X]
+arxiv = "2412.15165"
+num_detectors = 40
+postselect = "all"
+reason = "5-to-1 logical distillation of Rodriguez et al. as reproduced in Tsim's tutorial (stim_src/magic_state_distillation.ipynb, sample_and_post_select): every detector is a final-readout stabilizer of the d=5 color code (ColorEncoder5) and stage (a) keeps only shots with all detectors 0; stage (b), the [1,0,1,1] distillation syndrome on observables 1-4, is an observable condition the mask cannot express."
+
+[circuits.distillation_steane_d3_X]
+arxiv = "2412.15165"
+num_detectors = 15
+postselect = "all"
+reason = "5-to-1 logical distillation of Rodriguez et al. as reproduced in Tsim's tutorial (stim_src/magic_state_distillation.ipynb, sample_and_post_select): every detector is a final-readout stabilizer of the d=3 Steane code (SteaneEncoder) and stage (a) keeps only shots with all detectors 0; stage (b), the [1,0,1,1] distillation syndrome on observables 1-4, is an observable condition the mask cannot express."
+
+[circuits.distillation_unencoded_X]
+arxiv = "2412.15165"
+num_detectors = 5
+postselect = "none"
+reason = "Unencoded 5-to-1 distillation: detectors are the raw readouts of q0..q4, and the tutorial (stim_src/magic_state_distillation.ipynb, post_select) keeps shots whose syndrome q1..q4 equals [1,0,1,1], a value pattern that is random without noise and not expressible as an all-zero mask."
+
+[circuits.distillation_color_d5_Y]
+arxiv = "2412.15165"
+num_detectors = 40
+postselect = "all"
+reason = "5-to-1 logical distillation of Rodriguez et al. as reproduced in Tsim's tutorial (stim_src/magic_state_distillation.ipynb, sample_and_post_select): every detector is a final-readout stabilizer of the d=5 color code (ColorEncoder5) and stage (a) keeps only shots with all detectors 0; stage (b), the [1,0,1,1] distillation syndrome on observables 1-4, is an observable condition the mask cannot express."
+
+[circuits.distillation_steane_d3_Y]
+arxiv = "2412.15165"
+num_detectors = 15
+postselect = "all"
+reason = "5-to-1 logical distillation of Rodriguez et al. as reproduced in Tsim's tutorial (stim_src/magic_state_distillation.ipynb, sample_and_post_select): every detector is a final-readout stabilizer of the d=3 Steane code (SteaneEncoder) and stage (a) keeps only shots with all detectors 0; stage (b), the [1,0,1,1] distillation syndrome on observables 1-4, is an observable condition the mask cannot express."
+
+[circuits.distillation_unencoded_Y]
+arxiv = "2412.15165"
+num_detectors = 5
+postselect = "none"
+reason = "Unencoded 5-to-1 distillation: detectors are the raw readouts of q0..q4, and the tutorial (stim_src/magic_state_distillation.ipynb, post_select) keeps shots whose syndrome q1..q4 equals [1,0,1,1], a value pattern that is random without noise and not expressible as an all-zero mask."
+
+[circuits.distillation_color_d5_Z]
+arxiv = "2412.15165"
+num_detectors = 40
+postselect = "all"
+reason = "5-to-1 logical distillation of Rodriguez et al. as reproduced in Tsim's tutorial (stim_src/magic_state_distillation.ipynb, sample_and_post_select): every detector is a final-readout stabilizer of the d=5 color code (ColorEncoder5) and stage (a) keeps only shots with all detectors 0; stage (b), the [1,0,1,1] distillation syndrome on observables 1-4, is an observable condition the mask cannot express."
+
+[circuits.distillation_steane_d3_Z]
+arxiv = "2412.15165"
+num_detectors = 15
+postselect = "all"
+reason = "5-to-1 logical distillation of Rodriguez et al. as reproduced in Tsim's tutorial (stim_src/magic_state_distillation.ipynb, sample_and_post_select): every detector is a final-readout stabilizer of the d=3 Steane code (SteaneEncoder) and stage (a) keeps only shots with all detectors 0; stage (b), the [1,0,1,1] distillation syndrome on observables 1-4, is an observable condition the mask cannot express."
+
+[circuits.distillation_unencoded_Z]
+arxiv = "2412.15165"
+num_detectors = 5
+postselect = "none"
+reason = "Unencoded 5-to-1 distillation: detectors are the raw readouts of q0..q4, and the tutorial (stim_src/magic_state_distillation.ipynb, post_select) keeps shots whose syndrome q1..q4 equals [1,0,1,1], a value pattern that is random without noise and not expressible as an all-zero mask."

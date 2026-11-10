@@ -1,0 +1,15 @@
+arxiv = "2610.06828"
+
+[circuits."color_code_cultivation_f3_T"]
+arxiv = "2409.17595"
+num_detectors = 2162
+postselect = "only"
+detectors = "0-13, 15-18, 20, 22"
+reason = "Gidney et al.'s end-to-end colour-to-grafted circuit (MSC-data README): injection+cultivation detectors are hard-postselected, marked by coordinate[4] == -9 or fewer than 5 coordinates (cultiv/_decoding/_desaturation_sampler.py); the escape-stage and final noiseless grafted-code readout detectors go to the decoder, whose gap (closed boundary) or Caliper score (this paper) postselects afterwards."
+
+[circuits."color_code_cultivation_f5_T"]
+arxiv = "2409.17595"
+num_detectors = 2744
+postselect = "only"
+detectors = "0-88, 91-94, 96-101, 104-106, 108-110, 114, 118"
+reason = "Gidney et al.'s end-to-end colour-to-grafted circuit (MSC-data README): injection+cultivation detectors are hard-postselected, marked by coordinate[4] == -9 or fewer than 5 coordinates (cultiv/_decoding/_desaturation_sampler.py); the escape-stage and final noiseless grafted-code readout detectors go to the decoder, whose gap (closed boundary) or Caliper score (this paper) postselects afterwards."

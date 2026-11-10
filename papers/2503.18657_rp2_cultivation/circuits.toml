@@ -1,0 +1,27 @@
+arxiv = "2503.18657"
+
+[circuits."rp_3_T_cult"]
+num_detectors = 44
+postselect = "all"
+reason = "Ungrown MSC-3 cultivation uses full postselection, discarding any shot that triggers a detector (Tab. I caption, Sec. I); this includes the appended noiseless SE round and logical readout (stage 5), which the paper defines as part of the ungrown benchmark. Every detector carries the generator's 4th (stage) coordinate, the t_gadget.py marker for postselected detectors."
+detector_reference = true  # the cultivation checks include detectors that are deterministically 1 without noise (e.g. 13, 15-17)
+
+[circuits."rp_3_rp_5_T_cult"]
+num_detectors = 132
+postselect = "all"
+reason = "Ungrown MSC-5 cultivation uses full postselection, discarding any shot that triggers a detector (Tab. I caption, Sec. I); this includes the appended noiseless SE round and logical readout (stage 10), which the paper defines as part of the ungrown benchmark. Every detector carries the generator's 4th (stage) coordinate, the t_gadget.py marker for postselected detectors."
+detector_reference = true  # the cultivation checks include detectors that are deterministically 1 without noise (e.g. 13, 15-17)
+
+[circuits."rp_3_sc_7_end2end_4_full_rds"]
+num_detectors = 252
+postselect = "only"
+detectors = "0-33"
+reason = "End-to-end MSC-3: every cultivation detector is postselected (Sec. I). The expansion/SE stage into the d=7 surface code is decoded and then gap-postselected via 2D soft outputs (Sec. VI), so it is not masked. Mask = detectors with a 4th (stage) coordinate, which t_gadget.py emits only for post=True cultivation checks; the stage-3 escape detectors have 3 coordinates."
+detector_reference = true  # the cultivation checks include detectors that are deterministically 1 without noise (e.g. 13, 15-17)
+
+[circuits."rp_3_rp_5_sc_11_end2end_6_full_rds"]
+num_detectors = 894
+postselect = "only"
+detectors = "0-105"
+reason = "End-to-end MSC-5: every cultivation detector is postselected (Sec. I). The expansion/SE stage into the d=11 surface code is decoded and then gap-postselected via 2D soft outputs (Sec. VI), so it is not masked. Mask = detectors with a 4th (stage) coordinate, which t_gadget.py emits only for post=True cultivation checks; the escape detectors have 3 coordinates."
+detector_reference = true  # the cultivation checks include detectors that are deterministically 1 without noise (e.g. 13, 15-17)

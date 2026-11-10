@@ -1,0 +1,49 @@
+arxiv = "2302.12292"
+
+[circuits."hook_inject_T_d15_pd5_p0.001"]
+num_detectors = 3514
+postselect = "only"
+detectors = "0-34"
+reason = """Only the injection-stage detectors (first postselected_rounds=2 rounds within postselected_diameter) are postselected; the d=15 memory rounds and final readout are decoded (Sec. 'Benchmarking', Fig. construction_comparison: teal measurements are postselected; stim_src README: postselected detectors have 4th coordinate 999). Indices = detectors with coordinate[3] == 999."""
+
+[circuits."hook_inject_T_d15_pd7_p0.001"]
+num_detectors = 3562
+postselect = "only"
+detectors = "0-69"
+reason = """Only the injection-stage detectors (first postselected_rounds=2 rounds within postselected_diameter) are postselected; the d=15 memory rounds and final readout are decoded (Sec. 'Benchmarking', Fig. construction_comparison: teal measurements are postselected; stim_src README: postselected detectors have 4th coordinate 999). Indices = detectors with coordinate[3] == 999."""
+
+[circuits."li_inject_T_d15_pd5_p0.001"]
+num_detectors = 6576
+postselect = "only"
+detectors = "0-55"
+reason = """Only the injection-stage detectors (first postselected_rounds=2 rounds within postselected_diameter) are postselected; the d=15 memory rounds and final readout are decoded (Sec. 'Benchmarking', Fig. construction_comparison: teal measurements are postselected; stim_src README: postselected detectors have 4th coordinate 999). Indices = detectors with coordinate[3] == 999."""
+
+[circuits."li_inject_T_d15_pd7_p0.001"]
+num_detectors = 6664
+postselect = "only"
+detectors = "0-119"
+reason = """Only the injection-stage detectors (first postselected_rounds=2 rounds within postselected_diameter) are postselected; the d=15 memory rounds and final readout are decoded (Sec. 'Benchmarking', Fig. construction_comparison: teal measurements are postselected; stim_src README: postselected detectors have 4th coordinate 999). Indices = detectors with coordinate[3] == 999."""
+
+[circuits."pregrown_hook_inject_T_d15_pd5_p0.001"]
+num_detectors = 3914
+postselect = "only"
+detectors = "0-2, 8-9, 15-16, 22-23, 29-30, 106-107, 113-118, 128-132, 143-148, 158-162, 173-178"
+reason = """Only the injection-stage detectors (first postselected_rounds=2 rounds within postselected_diameter) are postselected; the d=15 memory rounds and final readout are decoded (Sec. 'Benchmarking', Fig. construction_comparison: teal measurements are postselected; stim_src README: postselected detectors have 4th coordinate 999). Indices = detectors with coordinate[3] == 999."""
+
+[circuits."pregrown_hook_inject_T_d15_pd7_p0.001"]
+num_detectors = 3914
+postselect = "only"
+detectors = "0-3, 8-10, 15-17, 22-24, 29-31, 36-38, 43-45, 106-108, 113-120, 128-134, 143-150, 158-164, 173-180, 188-194, 203-210"
+reason = """Only the injection-stage detectors (first postselected_rounds=2 rounds within postselected_diameter) are postselected; the d=15 memory rounds and final readout are decoded (Sec. 'Benchmarking', Fig. construction_comparison: teal measurements are postselected; stim_src README: postselected detectors have 4th coordinate 999). Indices = detectors with coordinate[3] == 999."""
+
+[circuits."zz_inject_T_d15_pd5_p0.001"]
+num_detectors = 6157
+postselect = "only"
+detectors = "0-56"
+reason = """Only the injection-stage detectors (first postselected_rounds=2 rounds within postselected_diameter) are postselected; the d=15 memory rounds and final readout are decoded (Sec. 'Benchmarking', Fig. construction_comparison: teal measurements are postselected; stim_src README: postselected detectors have 4th coordinate 999). Indices = detectors with coordinate[3] == 999."""
+
+[circuits."zz_inject_T_d15_pd7_p0.001"]
+num_detectors = 6245
+postselect = "only"
+detectors = "0-120"
+reason = """Only the injection-stage detectors (first postselected_rounds=2 rounds within postselected_diameter) are postselected; the d=15 memory rounds and final readout are decoded (Sec. 'Benchmarking', Fig. construction_comparison: teal measurements are postselected; stim_src README: postselected detectors have 4th coordinate 999). Indices = detectors with coordinate[3] == 999."""

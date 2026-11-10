@@ -8,6 +8,9 @@ The GPU columns show the speedup over one CPU core in brackets. The CUDA and Met
 k_max ≤ 11; larger circuits show – there. [`SUMMARY.md`](SUMMARY.md) has the same table with
 Clifft's and Magna's numbers added.
 
+Every circuit's folder has a `circuits.toml` with its arXiv paper and how that paper postselects; `suites.toml` names benchmark
+suites. [`BENCHMARKS.md`](BENCHMARKS.md) explains the format and the `tsim_bench` package that simulators use to read it.
+
 <!-- benchmark-table:begin -->
 | circuit | k_max | CPU&nbsp;(single-core) | T-deferral | RTX&nbsp;5090 | M4&nbsp;Pro&nbsp;(GPU/Metal) |
 |---|---|---|---|---|---|

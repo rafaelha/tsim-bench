@@ -1,0 +1,21 @@
+arxiv = "2610.03869"
+
+[circuits."stability_d3_X_t100_alpha0.5_p0.001"]
+num_detectors = 796
+postselect = "none"
+reason = "Stability experiment decoded by the paper's GNN-RNN decoder (README; gnnrnn/circuits.py stability_circuit), with no postselection; the inserted R_X(alpha) readout rotations make nearly every detector random without noise, so no mask is possible."
+
+[circuits."stability_d3_X_t20_alpha0.15_p0.001"]
+num_detectors = 156
+postselect = "none"
+reason = "Stability experiment decoded by the paper's GNN-RNN decoder (README; gnnrnn/circuits.py stability_circuit), with no postselection; the inserted R_X(alpha) readout rotations make most detectors random without noise, so no mask is possible."
+
+[circuits."stability_d3_X_t20_alpha0.5_p0.001"]
+num_detectors = 156
+postselect = "none"
+reason = "Stability experiment decoded by the paper's GNN-RNN decoder (README; gnnrnn/circuits.py stability_circuit), with no postselection; the inserted R_X(alpha) readout rotations make every detector random without noise, so no mask is possible."
+
+[circuits."stability_d3_X_t20_alpha1.0_p0.001"]
+num_detectors = 156
+postselect = "none"
+reason = "Stability experiment decoded by the paper's GNN-RNN decoder (README; gnnrnn/circuits.py stability_circuit), with no postselection; the inserted R_X(alpha) readout rotations make every detector random without noise, so no mask is possible."

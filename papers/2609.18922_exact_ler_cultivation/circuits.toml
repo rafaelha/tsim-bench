@@ -1,0 +1,11 @@
+arxiv = "2609.18922"
+
+[circuits."clifft_d3_p001"]
+num_detectors = 20
+postselect = "all"
+reason = "The paper's acceptance A(p) postselects on all +1 parity detectors and excludes the escape stage (results.tex Eq. 1, circuits.tex 'acceptance occurs when all these detectors return bit 0'); this includes the 6 detectors 14-19 of the noiseless final stabilizer MPP readout, which the paper counts in A."
+
+[circuits."soft_cultivation_d5_p0005"]
+num_detectors = 107
+postselect = "all"
+reason = "The paper's acceptance A(p) postselects on all +1 parity detectors and excludes the escape stage (results.tex Eq. 1, circuits.tex 'acceptance occurs when all these detectors return bit 0'); this includes the 18 detectors 89-106 of the noiseless final stabilizer readout, which the paper counts in A."

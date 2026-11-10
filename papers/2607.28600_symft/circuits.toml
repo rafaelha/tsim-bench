@@ -1,0 +1,65 @@
+arxiv = "2607.28600"
+
+[circuits.coherent_surface_d3_r1_p1e-3_rz0p02]
+arxiv = "2603.14670"
+num_detectors = 8
+postselect = "none"
+reason = "Coherent-noise surface-code Z memory following Clifft's benchmark (Tuloup-Ayral construction; benchmark/README.md): a decoded memory experiment, so no mask; SymFT's config.json postselects all detectors only as a throughput convention, which for r>1 would reject noiseless shots (X-type detectors are random under R_Z)."
+
+[circuits.coherent_surface_d3_r3_p1e-3_rz0p02]
+arxiv = "2603.14670"
+num_detectors = 24
+postselect = "none"
+reason = "Coherent-noise surface-code Z memory following Clifft's benchmark (Tuloup-Ayral construction; benchmark/README.md): a decoded memory experiment, so no mask; SymFT's config.json postselects all detectors only as a throughput convention, which for r>1 would reject noiseless shots (X-type detectors are random under R_Z)."
+
+[circuits.coherent_surface_d5_r1_p1e-3_rz0p02]
+arxiv = "2603.14670"
+num_detectors = 24
+postselect = "none"
+reason = "Coherent-noise surface-code Z memory following Clifft's benchmark (Tuloup-Ayral construction; benchmark/README.md): a decoded memory experiment, so no mask; SymFT's config.json postselects all detectors only as a throughput convention, which for r>1 would reject noiseless shots (X-type detectors are random under R_Z)."
+
+[circuits.coherent_surface_d5_r5_p1e-3_rz0p02]
+arxiv = "2603.14670"
+num_detectors = 120
+postselect = "none"
+reason = "Coherent-noise surface-code Z memory following Clifft's benchmark (Tuloup-Ayral construction; benchmark/README.md): a decoded memory experiment, so no mask; SymFT's config.json postselects all detectors only as a throughput convention, which for r>1 would reject noiseless shots (X-type detectors are random under R_Z)."
+
+[circuits.distillation]
+arxiv = "2412.15165"
+num_detectors = 40
+postselect = "all"
+reason = "Clifft's 85-qubit d=5 color-code 5-to-1 distillation (byte-identical; Rodriguez et al. via Tsim's tutorial): keep only shots with all 40 final-readout stabilizer detectors 0, as in the tutorial and SymFT config.json; the [1,0,1,1] syndrome on observables 1-4 is an observable condition the mask cannot express."
+
+[circuits.msc_d3_inject_cultivate_p1e-3]
+arxiv = "2409.17595"
+num_detectors = 20
+postselect = "all"
+reason = "Byte copy of Clifft's inject+cultivate circuit from Gidney et al. (no escape stage); cultivation discards on any detection, and SymFT Sec. Near-Clifford results (MSC tables) / config.json postselect all detectors."
+
+[circuits.msc_d5_inject_cultivate_p1e-3]
+arxiv = "2409.17595"
+num_detectors = 107
+postselect = "all"
+reason = "Byte copy of Clifft's inject+cultivate circuit from Gidney et al. (no escape stage); cultivation discards on any detection, and SymFT Sec. Near-Clifford results (MSC tables) / config.json postselect all detectors."
+
+[circuits."MSC_circuit_d7_p0.0005"]
+num_detectors = 344
+postselect = "none"
+reason = "Exploratory d=7 MSC workload: SymFT Sec. Near-Clifford results and config.json (msc_d7, postselect false) disable postselection and make no correctness claim; 12 of its detectors (e.g. 69, 106, 270) are random without noise, so an all-detector mask is not a valid protocol."
+
+[circuits.msc_proxy_d7_unverified_p1e-3]
+num_detectors = 299
+postselect = "none"
+reason = "Performance-only d=7 proxy that benchmark/README.md says not to use for detector statistics or acceptance; 6 detectors (263, 265, 269, 271, 279, 281) are random without noise, so no mask."
+
+[circuits.pure_surface_d7_r7_p1e-3]
+arxiv = "2103.02202"
+num_detectors = 336
+postselect = "none"
+reason = "Clifford control: Stim surface_code:rotated_memory_z memory experiment (decoded); SymFT Sec. Pure-Clifford results and config.json postselect no detector."
+
+[circuits.pure_surface_d9_r9_p1e-3]
+arxiv = "2103.02202"
+num_detectors = 720
+postselect = "none"
+reason = "Clifford control: Stim surface_code:rotated_memory_z memory experiment (decoded); SymFT Sec. Pure-Clifford results and config.json postselect no detector."

@@ -1,0 +1,109 @@
+arxiv = "2512.13908"
+
+[circuits."fig2_cultivation_stim_X_T"]
+num_detectors = 14
+postselect = "all"
+reason = "Fig. 2 experiments keep only shots with no detection event in any circuit detector (main.tex Fig. 2 text: 'no events were observed in all of the circuit detectors'; Example_usage.ipynb Fig. 2 postselects on any detector), so every detector is masked."
+
+[circuits."fig2_cultivation_stim_Z_T"]
+num_detectors = 14
+postselect = "all"
+reason = "Fig. 2 experiments keep only shots with no detection event in any circuit detector (main.tex Fig. 2 text: 'no events were observed in all of the circuit detectors'; Example_usage.ipynb Fig. 2 postselects on any detector), so every detector is masked."
+
+[circuits."fig2_injection_stim_X_T"]
+num_detectors = 7
+postselect = "all"
+reason = "Fig. 2 experiments keep only shots with no detection event in any circuit detector (main.tex Fig. 2 text: 'no events were observed in all of the circuit detectors'; Example_usage.ipynb Fig. 2 postselects on any detector), so every detector is masked."
+
+[circuits."fig2_injection_stim_Z_T"]
+num_detectors = 7
+postselect = "all"
+reason = "Fig. 2 experiments keep only shots with no detection event in any circuit detector (main.tex Fig. 2 text: 'no events were observed in all of the circuit detectors'; Example_usage.ipynb Fig. 2 postselects on any detector), so every detector is masked."
+
+[circuits."fig2_simulation_stim_X_T"]
+num_detectors = 14
+postselect = "all"
+reason = "Fig. 2 experiments keep only shots with no detection event in any circuit detector (main.tex Fig. 2 text: 'no events were observed in all of the circuit detectors'; Example_usage.ipynb Fig. 2 postselects on any detector), so every detector is masked."
+
+[circuits."fig2_simulation_stim_Z_T"]
+num_detectors = 14
+postselect = "all"
+reason = "Fig. 2 experiments keep only shots with no detection event in any circuit detector (main.tex Fig. 2 text: 'no events were observed in all of the circuit detectors'; Example_usage.ipynb Fig. 2 postselects on any detector), so every detector is masked."
+
+[circuits."fig3_injection_stim_T"]
+num_detectors = 31
+postselect = "all"
+reason = "Kickback tomography postselects on no detection events in the entire circuit, including the final transversal X-stabilizer readout of Fig. 3(a) (main.tex Fig. 3 text: 'filtering the data for no detection events in the entire circuit'), so every detector is masked."
+
+[circuits."fig3_simulation_stim_T"]
+num_detectors = 49
+postselect = "all"
+reason = "Kickback tomography postselects on no detection events in the entire circuit, including the final transversal X-stabilizer readout of Fig. 3(a) (main.tex Fig. 3 text: 'filtering the data for no detection events in the entire circuit'), so every detector is masked."
+
+[circuits."fig3_simulation_zoom_stim_T"]
+num_detectors = 49
+postselect = "all"
+reason = "Kickback tomography postselects on no detection events in the entire circuit, including the final transversal X-stabilizer readout of Fig. 3(a) (main.tex Fig. 3 text: 'filtering the data for no detection events in the entire circuit'), so every detector is masked."
+
+[circuits."fig3_with_idle_rounds_stim_T"]
+num_detectors = 49
+postselect = "all"
+reason = "Kickback tomography postselects on no detection events in the entire circuit, including the final transversal X-stabilizer readout of Fig. 3(a) (main.tex Fig. 3 text: 'filtering the data for no detection events in the entire circuit'), so every detector is masked."
+
+[circuits."fig3_with_idle_rounds_zoom_stim_T"]
+num_detectors = 49
+postselect = "all"
+reason = "Kickback tomography postselects on no detection events in the entire circuit, including the final transversal X-stabilizer readout of Fig. 3(a) (main.tex Fig. 3 text: 'filtering the data for no detection events in the entire circuit'), so every detector is masked."
+
+[circuits."fig3_without_idle_rounds_stim_T"]
+num_detectors = 25
+postselect = "all"
+reason = "Kickback tomography postselects on no detection events in the entire circuit, including the final transversal X-stabilizer readout of Fig. 3(a) (main.tex Fig. 3 text: 'filtering the data for no detection events in the entire circuit'), so every detector is masked."
+
+[circuits."fig4_cultivation_N2_stim_X_T"]
+num_detectors = 67
+postselect = "only"
+detectors = "0-15"
+reason = "Grafting: only the state-preparation (injection/cultivation) detectors before grafting are postselected, the grafted-code detectors are decoded with Tesseract (main.tex Sec. 'Grafting to a surface code'); per Example_usage.ipynb these are the detectors with 4 coordinates (len(coords) == 4), indices 0-15."
+
+[circuits."fig4_cultivation_N2_stim_Z_T"]
+num_detectors = 65
+postselect = "only"
+detectors = "0-15"
+reason = "Grafting: only the state-preparation (injection/cultivation) detectors before grafting are postselected, the grafted-code detectors are decoded with Tesseract (main.tex Sec. 'Grafting to a surface code'); per Example_usage.ipynb these are the detectors with 4 coordinates (len(coords) == 4), indices 0-15."
+
+[circuits."fig4_cultivation_N3_stim_X_T"]
+num_detectors = 94
+postselect = "only"
+detectors = "0-15"
+reason = "Grafting: only the state-preparation (injection/cultivation) detectors before grafting are postselected, the grafted-code detectors are decoded with Tesseract (main.tex Sec. 'Grafting to a surface code'); per Example_usage.ipynb these are the detectors with 4 coordinates (len(coords) == 4), indices 0-15."
+
+[circuits."fig4_cultivation_N3_stim_Z_T"]
+num_detectors = 92
+postselect = "only"
+detectors = "0-15"
+reason = "Grafting: only the state-preparation (injection/cultivation) detectors before grafting are postselected, the grafted-code detectors are decoded with Tesseract (main.tex Sec. 'Grafting to a surface code'); per Example_usage.ipynb these are the detectors with 4 coordinates (len(coords) == 4), indices 0-15."
+
+[circuits."fig4_injection_N2_stim_X_T"]
+num_detectors = 61
+postselect = "only"
+detectors = "0-9"
+reason = "Grafting: only the state-preparation (injection/cultivation) detectors before grafting are postselected, the grafted-code detectors are decoded with Tesseract (main.tex Sec. 'Grafting to a surface code'); per Example_usage.ipynb these are the detectors with 4 coordinates (len(coords) == 4), indices 0-9."
+
+[circuits."fig4_injection_N2_stim_Z_T"]
+num_detectors = 59
+postselect = "only"
+detectors = "0-9"
+reason = "Grafting: only the state-preparation (injection/cultivation) detectors before grafting are postselected, the grafted-code detectors are decoded with Tesseract (main.tex Sec. 'Grafting to a surface code'); per Example_usage.ipynb these are the detectors with 4 coordinates (len(coords) == 4), indices 0-9."
+
+[circuits."fig4_simulation_injection_N2_stim_X_T"]
+num_detectors = 61
+postselect = "only"
+detectors = "0-9"
+reason = "Grafting: only the state-preparation (injection/cultivation) detectors before grafting are postselected, the grafted-code detectors are decoded with Tesseract (main.tex Sec. 'Grafting to a surface code'); per Example_usage.ipynb these are the detectors with 4 coordinates (len(coords) == 4), indices 0-9."
+
+[circuits."fig4_simulation_injection_N2_stim_Z_T"]
+num_detectors = 59
+postselect = "only"
+detectors = "0-9"
+reason = "Grafting: only the state-preparation (injection/cultivation) detectors before grafting are postselected, the grafted-code detectors are decoded with Tesseract (main.tex Sec. 'Grafting to a surface code'); per Example_usage.ipynb these are the detectors with 4 coordinates (len(coords) == 4), indices 0-9."

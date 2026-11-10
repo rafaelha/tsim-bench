@@ -1,0 +1,76 @@
+arxiv = "2502.01743"
+
+[circuits."expanded-rotated-init-x-injection-double-HXY_d1=3_d2=11_p=0.001"]
+num_detectors = 1520
+postselect = "only"
+detectors = "0-19"
+reason = """Injection and cultivation discard on any syndrome; after expansion to d2=11 the paper uses complementary-gap soft decoding, not detector postselection (Sec. 'Code Expansion' and 'Protocol', Algorithm in App. 'Full protocol as pseudo-code'). Indices = the cultivation detectors, which the authors' to_stim_circuit emits without coordinates; expansion detectors (2 coordinates) are not masked."""
+
+[circuits."expanded-rotated-injection-double-ghz-HXY_d1=3_d2=11_p=0.001"]
+num_detectors = 1520
+postselect = "only"
+detectors = "0-19"
+reason = """Injection and cultivation discard on any syndrome; after expansion to d2=11 the paper uses complementary-gap soft decoding, not detector postselection (Sec. 'Code Expansion' and 'Protocol', Algorithm in App. 'Full protocol as pseudo-code'). Indices = the cultivation detectors, which the authors' to_stim_circuit emits without coordinates; expansion detectors (2 coordinates) are not masked."""
+
+[circuits."expanded-rotated-injection-syndrome-double-ghz-HXY_d1=3_d2=11_p=0.001"]
+num_detectors = 1528
+postselect = "only"
+detectors = "0-27"
+reason = """Injection and cultivation discard on any syndrome; after expansion to d2=11 the paper uses complementary-gap soft decoding, not detector postselection (Sec. 'Code Expansion' and 'Protocol', Algorithm in App. 'Full protocol as pseudo-code'). Indices = the cultivation detectors, which the authors' to_stim_circuit emits without coordinates; expansion detectors (2 coordinates) are not masked."""
+
+[circuits."expanded-unrotated_H_injection-ghz_d1=3_d2=11_p=0.001"]
+num_detectors = 2762
+postselect = "only"
+detectors = "0-13"
+reason = """Injection and cultivation discard on any syndrome; after expansion to d2=11 the paper uses complementary-gap soft decoding, not detector postselection (Sec. 'Code Expansion' and 'Protocol', Algorithm in App. 'Full protocol as pseudo-code'). Indices = the cultivation detectors, which the authors' to_stim_circuit emits without coordinates; expansion detectors (2 coordinates) are not masked."""
+
+[circuits."expanded-unrotated_H_injection-syndrome-ghz_d1=3_d2=11_p=0.001"]
+num_detectors = 2774
+postselect = "only"
+detectors = "0-25"
+reason = """Injection and cultivation discard on any syndrome; after expansion to d2=11 the paper uses complementary-gap soft decoding, not detector postselection (Sec. 'Code Expansion' and 'Protocol', Algorithm in App. 'Full protocol as pseudo-code'). Indices = the cultivation detectors, which the authors' to_stim_circuit emits without coordinates; expansion detectors (2 coordinates) are not masked."""
+
+[circuits."rotated-init-x-injection-double-HXY_d1=3_p=0.001"]
+num_detectors = 28
+postselect = "all"
+reason = """Cultivation-only circuit: every stage postselects on any -1 syndrome (Sec. 'Protocol' and App. 'Full protocol as pseudo-code'). Includes the final noiseless MPP stabilizer checks that to_stim_circuit(post_select_syndromes=True) appends for postselection."""
+
+[circuits."rotated-init-x-injection-syndrome-double-ghz-HXY_d1=3_p=0.001"]
+num_detectors = 36
+postselect = "all"
+reason = """Cultivation-only circuit: every stage postselects on any -1 syndrome (Sec. 'Protocol' and App. 'Full protocol as pseudo-code'). Includes the final noiseless MPP stabilizer checks that to_stim_circuit(post_select_syndromes=True) appends for postselection."""
+
+[circuits."rotated-injection-double-ghz-HXY_d1=3_p=0.001"]
+num_detectors = 28
+postselect = "all"
+reason = """Cultivation-only circuit: every stage postselects on any -1 syndrome (Sec. 'Protocol' and App. 'Full protocol as pseudo-code'). Includes the final noiseless MPP stabilizer checks that to_stim_circuit(post_select_syndromes=True) appends for postselection."""
+
+[circuits."rotated-injection-ghz-HXY_d1=3_p=0.001"]
+num_detectors = 42
+postselect = "all"
+reason = """Cultivation-only circuit: every stage postselects on any -1 syndrome (Sec. 'Protocol' and App. 'Full protocol as pseudo-code'). Includes the final noiseless MPP stabilizer checks that to_stim_circuit(post_select_syndromes=True) appends for postselection."""
+
+[circuits."rotated-injection-syndrome-double-ghz-HXY_d1=3_p=0.001"]
+num_detectors = 36
+postselect = "all"
+reason = """Cultivation-only circuit: every stage postselects on any -1 syndrome (Sec. 'Protocol' and App. 'Full protocol as pseudo-code'). Includes the final noiseless MPP stabilizer checks that to_stim_circuit(post_select_syndromes=True) appends for postselection."""
+
+[circuits."unrotated_HXY_injection-ghz_d1=3_p=0.001"]
+num_detectors = 26
+postselect = "all"
+reason = """Cultivation-only circuit: every stage postselects on any -1 syndrome (Sec. 'Protocol' and App. 'Full protocol as pseudo-code'). Includes the final noiseless MPP stabilizer checks that to_stim_circuit(post_select_syndromes=True) appends for postselection."""
+
+[circuits."unrotated_HXY_injection-syndrome-ghz_d1=3_p=0.001"]
+num_detectors = 38
+postselect = "all"
+reason = """Cultivation-only circuit: every stage postselects on any -1 syndrome (Sec. 'Protocol' and App. 'Full protocol as pseudo-code'). Includes the final noiseless MPP stabilizer checks that to_stim_circuit(post_select_syndromes=True) appends for postselection."""
+
+[circuits."unrotated_H_injection-ghz_d1=3_p=0.001"]
+num_detectors = 26
+postselect = "all"
+reason = """Cultivation-only circuit: every stage postselects on any -1 syndrome (Sec. 'Protocol' and App. 'Full protocol as pseudo-code'). Includes the final noiseless MPP stabilizer checks that to_stim_circuit(post_select_syndromes=True) appends for postselection."""
+
+[circuits."unrotated_H_injection-syndrome-ghz_d1=3_p=0.001"]
+num_detectors = 38
+postselect = "all"
+reason = """Cultivation-only circuit: every stage postselects on any -1 syndrome (Sec. 'Protocol' and App. 'Full protocol as pseudo-code'). Includes the final noiseless MPP stabilizer checks that to_stim_circuit(post_select_syndromes=True) appends for postselection."""

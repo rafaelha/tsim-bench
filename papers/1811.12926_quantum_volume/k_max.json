@@ -1,0 +1,14 @@
+[
+  {
+    "file": "stim/qv_q10.stim",
+    "non_clifford_gates": {
+      "U3": 400
+    },
+    "tsim_k": 10,
+    "tsim_seconds": 0.53,
+    "clifft_k": 10,
+    "clifft_seconds": 0.07,
+    "clifft_noschedule_k": 10,
+    "clifft_noschedule_seconds": 0.07
+  }
+]

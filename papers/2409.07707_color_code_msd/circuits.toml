@@ -1,0 +1,25 @@
+arxiv = "2409.07707"
+
+[circuits."cult_growing_T_d3_to_d11_p0.001"]
+num_detectors = 1021
+postselect = "only"
+detectors = "0-13, 42-44, 73-75"
+reason = """Cultivation and cultivation/growth interface detectors are postselected; the growth stage is decoded with concatenated MWPM and gap postselection (Sec. 'Growing operation' and 'Method'; color_code_stim ConcatMatchingDecoder discards on cult_detector_ids + interface_detector_ids). Indices = 6-coordinate detectors with last coordinate -2 (cultivation) or -1 (interface)."""
+
+[circuits."cult_growing_T_d3_to_d7_p0.001"]
+num_detectors = 274
+postselect = "only"
+detectors = "0-13, 24-26, 37-39"
+reason = """Cultivation and cultivation/growth interface detectors are postselected; the growth stage is decoded with concatenated MWPM and gap postselection (Sec. 'Growing operation' and 'Method'; color_code_stim ConcatMatchingDecoder discards on cult_detector_ids + interface_detector_ids). Indices = 6-coordinate detectors with last coordinate -2 (cultivation) or -1 (interface)."""
+
+[circuits."cult_growing_T_d5_to_d13_p0.001"]
+num_detectors = 1754
+postselect = "only"
+detectors = "0-88, 125-133, 170-178"
+reason = """Cultivation and cultivation/growth interface detectors are postselected; the growth stage is decoded with concatenated MWPM and gap postselection (Sec. 'Growing operation' and 'Method'; color_code_stim ConcatMatchingDecoder discards on cult_detector_ids + interface_detector_ids). Indices = 6-coordinate detectors with last coordinate -2 (cultivation) or -1 (interface)."""
+
+[circuits."cult_growing_T_d5_to_d9_p0.001"]
+num_detectors = 645
+postselect = "only"
+detectors = "0-88, 103-111, 126-134"
+reason = """Cultivation and cultivation/growth interface detectors are postselected; the growth stage is decoded with concatenated MWPM and gap postselection (Sec. 'Growing operation' and 'Method'; color_code_stim ConcatMatchingDecoder discards on cult_detector_ids + interface_detector_ids). Indices = 6-coordinate detectors with last coordinate -2 (cultivation) or -1 (interface)."""

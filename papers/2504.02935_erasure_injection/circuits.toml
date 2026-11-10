@@ -1,0 +1,11 @@
+arxiv = "2504.02935"
+
+[circuits."hook_inject_T_d3_p0.001"]
+num_detectors = 22
+postselect = "all"
+reason = "Ungrown hook injection (Sec. III, steps 1-2): the shot is discarded on any deterministic first-round stabilizer or any later flip, and the state is checked with a noiseless SE round plus readout (App. C). Every detector is masked, including the noiseless final round, because the paper's injection logical error counts only undetectable faults (Eq. 4; error_counter.ipynb drops every fault that trips a detector). The circuit has no detector coordinates."
+
+[circuits."inject_cultivate_T_d3_p0.001"]
+num_detectors = 20
+postselect = "all"
+reason = "Gidney et al.'s d=3 inject+cultivate circuit with no escape stage. The authors' cultivation.ipynb keeps a shot only if no detector fires (np.sum(detection_events, axis=1) == 0), so the noiseless final checks (coordinate[4] == -9) are masked too."

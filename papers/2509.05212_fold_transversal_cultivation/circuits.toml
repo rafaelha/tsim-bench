@@ -1,0 +1,11 @@
+arxiv = "2509.05212"
+
+[circuits."fold-d3_native_T_p0.001"]
+num_detectors = 26
+postselect = "all"
+reason = "Injection and cultivation only (no escape): the protocol postselects on every stabilizer measurement and decoded GHZ check outcome (Sec. II, Protocol), and the native-T model (scope field of model.json) ends in a noiseless code projection whose detectors are masked too, as in the Wan-Zapirain exact calculation the circuit comes from."
+
+[circuits."fold-d5_native_T_p0.001"]
+num_detectors = 118
+postselect = "all"
+reason = "Hook injection, growth and four H_XY checks with r2=0 and no escape or decoder (model.json scope): every stabilizer and GHZ check is postselected (Sec. II, Protocol). The noiseless terminal code projection is masked too, as in the Wan-Zapirain exact calculation the model comes from."

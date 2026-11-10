@@ -1,0 +1,16 @@
+arxiv = "2603.05429"
+
+[circuits."gauging_cultivation_d3_T_p0.001"]
+num_detectors = 51
+postselect = "all"
+reason = "Gauging cultivation (no escape stage) uses full postselection, including the noiseless final stabilizer round (main.tex, 'Simulations and comparison with cultivation': 'full post-selection ... the post selection on the final perfect round is included in the success probability'); every detector of get_stim_circ_w_growing is masked."
+
+[circuits."gauging_cultivation_d5_T_p0.001"]
+num_detectors = 206
+postselect = "all"
+reason = "Gauging cultivation (no escape stage) uses full postselection, including the noiseless final stabilizer round (main.tex, 'Simulations and comparison with cultivation': 'full post-selection ... the post selection on the final perfect round is included in the success probability'); every detector of get_stim_circ_w_growing is masked."
+
+[circuits."gauging_cultivation_d7_T_p0.001"]
+num_detectors = 531
+postselect = "all"
+reason = "Gauging cultivation (no escape stage) uses full postselection, including the noiseless final stabilizer round (main.tex, 'Simulations and comparison with cultivation': 'full post-selection ... the post selection on the final perfect round is included in the success probability'); every detector of get_stim_circ_w_growing is masked."

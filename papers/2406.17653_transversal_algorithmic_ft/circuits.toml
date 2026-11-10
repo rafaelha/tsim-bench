@@ -1,0 +1,25 @@
+arxiv = "2406.17653"
+
+[circuits."s_injection_T_d3_p0.001_pinj0.1"]
+num_detectors = 62
+postselect = "only"
+detectors = "0-10"
+reason = """Injection test only: discard if any detector of the two d0=3 syndrome rounds of the noisy injection fires; growth to d and the rest are decoded (Methods 'State Distillation Factories': injection test; SI 'Details of Numerical Simulations'). Indices = detectors whose generator comment reads 'Inject(P2 => YBasis) (phase 1, ...'; the noiseless reference patch P4 is not masked."""
+
+[circuits."s_injection_T_d5_p0.001_pinj0.1"]
+num_detectors = 124
+postselect = "only"
+detectors = "0-10"
+reason = """Injection test only: discard if any detector of the two d0=3 syndrome rounds of the noisy injection fires; growth to d and the rest are decoded (Methods 'State Distillation Factories': injection test; SI 'Details of Numerical Simulations'). Indices = detectors whose generator comment reads 'Inject(P2 => YBasis) (phase 1, ...'; the noiseless reference patch P4 is not masked."""
+
+[circuits."s_injection_T_d7_p0.001_pinj0.1"]
+num_detectors = 218
+postselect = "only"
+detectors = "0-10"
+reason = """Injection test only: discard if any detector of the two d0=3 syndrome rounds of the noisy injection fires; growth to d and the rest are decoded (Methods 'State Distillation Factories': injection test; SI 'Details of Numerical Simulations'). Indices = detectors whose generator comment reads 'Inject(P2 => YBasis) (phase 1, ...'; the noiseless reference patch P4 is not masked."""
+
+[circuits."s_injection_T_d9_p0.001_pinj0.1"]
+num_detectors = 344
+postselect = "only"
+detectors = "0-10"
+reason = """Injection test only: discard if any detector of the two d0=3 syndrome rounds of the noisy injection fires; growth to d and the rest are decoded (Methods 'State Distillation Factories': injection test; SI 'Details of Numerical Simulations'). Indices = detectors whose generator comment reads 'Inject(P2 => YBasis) (phase 1, ...'; the noiseless reference patch P4 is not masked."""
