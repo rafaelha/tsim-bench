@@ -8,23 +8,14 @@ folder's ``k_max.json``.
 from __future__ import annotations
 
 import json
+import tomllib
 from dataclasses import dataclass, field
 from pathlib import Path
-
-try:
-    import tomllib
-except ModuleNotFoundError:  # Python 3.10, for the worker in an older Tsim's environment
-    try:
-        import tomli as tomllib
-    except ModuleNotFoundError:
-        tomllib = None
 
 ROOT = Path(__file__).resolve().parent.parent
 
 
 def _toml(path: Path) -> dict:
-    if tomllib is None:
-        raise RuntimeError("reading tsim-bench manifests needs Python 3.11+, or tomli installed")
     return tomllib.loads(path.read_text())
 POSTSELECT_KINDS = ("all", "none", "only", "all_except")
 

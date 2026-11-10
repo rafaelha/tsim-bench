@@ -1,7 +1,7 @@
 """Time one corpus circuit in a fresh process and print ``RESULT <json>``.
 
-Run by path, or with ``-m``, from the Python environment of the Tsim under test, which may be an
-older Tsim: it uses only the standard library, numpy, Tsim's public API and this package.
+Run by path, or with ``-m``, from the Python environment of the Tsim under test (Tsim 1.1 or
+later): it uses only the standard library, numpy, Tsim's public API and this package.
 
     python -m tsim_bench.worker --case <id> [--no-postselect] [--mode bench|prime|inspect|profile]
     python -m tsim_bench.worker --circuit FILE.stim [--postselect all|none]
@@ -34,18 +34,6 @@ def phase_import():
     return tsim
 
 
-def cuda_available() -> bool:
-    """Return whether this Tsim has a CUDA executor that can run in this process."""
-    try:
-        from tsim.statevector.cuda import runtime
-    except ImportError:
-        return False
-    try:
-        return bool(runtime.available())
-    except Exception:  # noqa: BLE001
-        return False
-
-
 def phase_compile(tsim, path, kind, args):
     """Parse the circuit and compile the sampler."""
     circuit = tsim.Circuit.from_file(str(path))
@@ -74,6 +62,18 @@ def make_sample(kind, sampler, mask, references, args):
         if detector_ref:
             kwargs["use_detector_reference_sample"] = True
         if observable_ref:
+            kwargs["use_observable_reference_sample"] = True
+    if mask is not None:
+        if kind != "detector":
+            raise ValueError("postselection needs the detector sampler")
+        kwargs["postselection_mask"] = mask
+
+    def sample(shots):
+        return len(sampler.sample(shots, **kwargs))
+
+    return sample
+
+
 REFUSED = re.compile(r"needs (\d+) active qubits")
 
 
@@ -95,26 +95,6 @@ def widths(tsim, items, args) -> None:
                 result["error"] = f"{type(error).__name__}: {error}"[:300]
         result["compile_s"] = time.perf_counter() - start
         print("RESULT " + json.dumps(result), flush=True)
-
-
-            kwargs["use_observable_reference_sample"] = True
-    if mask is not None:
-        if kind != "detector":
-            raise ValueError("postselection needs the detector sampler")
-        kwargs["postselection_mask"] = mask
-
-    def sample(shots):
-        try:
-            return len(sampler.sample(shots, **kwargs))
-        except TypeError as error:
-            if "postselection_mask" in str(error) or "reference_sample" in str(error):
-                raise RuntimeError(
-                    f"this Tsim does not support {error}; postselection needs Tsim 0.1.5 "
-                    "or later (use --no-postselect for older versions)"
-                ) from error
-            raise
-
-    return sample
 
 
 def phase_sample(sample, shots, seconds):
@@ -140,19 +120,6 @@ def calibrate(sample, min_seconds, max_shots):
         if shots >= max_shots:
             return shots, max(1, round(min_seconds / max(elapsed, 1e-6)))
         grow = min(16.0, max(2.0, 1.2 * min_seconds / max(elapsed, 1e-6)))
-    corpus = None
-    if args.case:
-        corpus = load(Path(args.root)) if args.root else load()
-
-    if args.mode == "width":
-        items = [(c, corpus[c].path, corpus[c].sampler) for c in args.case]
-        items += [(f, Path(f), args.sampler) for f in args.circuit]
-        widths(phase_import(), items, args)
-        return
-    if len(args.case) + len(args.circuit) != 1:
-        parser.error("give exactly one --case or --circuit")
-    args.case = args.case[0] if args.case else None
-    args.circuit = args.circuit[0] if args.circuit else None
         shots = min(max_shots, int(shots * grow))
 
 
@@ -173,6 +140,19 @@ def main(argv=None):
     parser.add_argument("--min-seconds", type=float, default=0.5)
     parser.add_argument("--repeats", type=int, default=3)
     args = parser.parse_args(argv)
+    corpus = None
+    if args.case:
+        corpus = load(Path(args.root)) if args.root else load()
+
+    if args.mode == "width":
+        items = [(c, corpus[c].path, corpus[c].sampler) for c in args.case]
+        items += [(f, Path(f), args.sampler) for f in args.circuit]
+        widths(phase_import(), items, args)
+        return
+    if len(args.case) + len(args.circuit) != 1:
+        parser.error("give exactly one --case or --circuit")
+    args.case = args.case[0] if args.case else None
+    args.circuit = args.circuit[0] if args.circuit else None
 
     import numpy as np
 
@@ -202,19 +182,18 @@ def main(argv=None):
 
     result = {
         "tsim_version": getattr(tsim, "__version__", "?"),
-        "cuda": cuda_available(),
         "sampler": kind,
         "postselected_detectors": len(indices),
         "import_s": imported - start,
         "compile_s": compiled - imported,
-        "active_width": getattr(sampler, "active_width", None),
+        "active_width": sampler.active_width,
         "qubits": circuit.num_qubits,
         "detectors": circuit.num_detectors,
         "measurements": circuit.num_measurements,
         "tcount": circuit.tcount(),
     }
     if args.mode == "inspect":
-        result["stats"] = str(getattr(sampler, "stats", ""))
+        result["stats"] = str(sampler.stats)
         print("RESULT " + json.dumps(result))
         return
 
