@@ -28,6 +28,18 @@ def phase_import():
     return tsim
 
 
+def cuda_available() -> bool:
+    """Return whether this Tsim has a CUDA executor that can run in this process."""
+    try:
+        from tsim.statevector.cuda import runtime
+    except ImportError:
+        return False
+    try:
+        return bool(runtime.available())
+    except Exception:  # noqa: BLE001
+        return False
+
+
 def phase_compile(tsim, path, kind, args):
     """Parse the circuit and compile the sampler."""
     circuit = tsim.Circuit.from_file(str(path))
@@ -142,6 +154,7 @@ def main(argv=None):
 
     result = {
         "tsim_version": getattr(tsim, "__version__", "?"),
+        "cuda": cuda_available(),
         "sampler": kind,
         "postselected_detectors": len(indices),
         "import_s": imported - start,
