@@ -4,12 +4,12 @@ arxiv = "2610.06828"
 arxiv = "2409.17595"
 num_detectors = 2162
 postselect = "only"
-detectors = "0-13, 15-18, 20, 22"
-reason = "Gidney et al.'s end-to-end colour-to-grafted circuit (MSC-data README): injection+cultivation detectors are hard-postselected, marked by coordinate[4] == -9 or fewer than 5 coordinates (cultiv/_decoding/_desaturation_sampler.py); the escape-stage and final noiseless grafted-code readout detectors go to the decoder, whose gap (closed boundary) or Caliper score (this paper) postselects afterwards."
+detectors = "0-13, 15-18, 20, 22, 126, 131, 138, 352, 357, 583"
+reason = "Gidney et al.'s end-to-end colour-to-grafted circuit (MSC-data README), postselected as in 2409.17595: the fixed discard set of its desaturation sampler (cultiv/_decoding/_desaturation_sampler.py), i.e. the injection and cultivation detectors, the red-X/green-Z grafted-code detectors (coordinate[4] in {0, 4}) and the endpoints of observable-flipping pair errors; the same indices as ../2409.17595_magic_state_cultivation (f5 is byte-identical to end2end_d5_dsurface15_p0.001, f3 has the same detector layout as end2end_d3). The remaining escape-stage detectors go to the decoder, whose gap (closed boundary) or Caliper score (this paper) postselects afterwards."
 
 [circuits."color_code_cultivation_f5_T"]
 arxiv = "2409.17595"
 num_detectors = 2744
 postselect = "only"
-detectors = "0-88, 91-94, 96-101, 104-106, 108-110, 114, 118"
-reason = "Gidney et al.'s end-to-end colour-to-grafted circuit (MSC-data README): injection+cultivation detectors are hard-postselected, marked by coordinate[4] == -9 or fewer than 5 coordinates (cultiv/_decoding/_desaturation_sampler.py); the escape-stage and final noiseless grafted-code readout detectors go to the decoder, whose gap (closed boundary) or Caliper score (this paper) postselects afterwards."
+detectors = "0-88, 91-94, 96-101, 104-106, 108-110, 114, 118, 211, 216, 219, 226, 229, 238-239, 254, 441, 446, 449, 456, 459, 468, 671, 676, 679, 686, 689, 698, 901, 906, 909, 916, 919, 928, 1138, 1147"
+reason = "Gidney et al.'s end-to-end colour-to-grafted circuit (MSC-data README), postselected as in 2409.17595: the fixed discard set of its desaturation sampler (cultiv/_decoding/_desaturation_sampler.py), i.e. the injection and cultivation detectors, the red-X/green-Z grafted-code detectors (coordinate[4] in {0, 4}) and the endpoints of observable-flipping pair errors; the same indices as ../2409.17595_magic_state_cultivation (f5 is byte-identical to end2end_d5_dsurface15_p0.001, f3 has the same detector layout as end2end_d3). The remaining escape-stage detectors go to the decoder, whose gap (closed boundary) or Caliper score (this paper) postselects afterwards."

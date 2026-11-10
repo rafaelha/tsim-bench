@@ -75,7 +75,15 @@ def make_sample(kind, sampler, mask, references, args):
         kwargs["postselection_mask"] = mask
 
     def sample(shots):
-        return len(sampler.sample(shots, **kwargs))
+        try:
+            return len(sampler.sample(shots, **kwargs))
+        except TypeError as error:
+            if "postselection_mask" in str(error) or "reference_sample" in str(error):
+                raise RuntimeError(
+                    f"this Tsim does not support {error}; postselection needs Tsim 0.1.5 "
+                    "or later (use --no-postselect for older versions)"
+                ) from error
+            raise
 
     return sample
 

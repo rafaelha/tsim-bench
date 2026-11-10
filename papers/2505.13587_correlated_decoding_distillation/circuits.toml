@@ -3,29 +3,29 @@ arxiv = "2505.13587"
 [circuits."distillation_15to1_T_d5_p0.001"]
 num_detectors = 4472
 postselect = "none"
-reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask."
+reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask. The 15-to-1 accept condition is a parity over the logical-readout detectors, which are random without noise, so a detector mask cannot express it."
 
 [circuits."distillation_15to1_T_d9_p0.001"]
 num_detectors = 14832
 postselect = "none"
-reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask."
+reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask. The 15-to-1 accept condition is a parity over the logical-readout detectors, which are random without noise, so a detector mask cannot express it."
 
 [circuits."distillation_15to1_T_d13_p0.001"]
 num_detectors = 31112
 postselect = "none"
-reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask."
+reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask. The 15-to-1 accept condition is a parity over the logical-readout detectors, which are random without noise, so a detector mask cannot express it."
 
 [circuits."distillation_15to1_T_d17_p0.001"]
 num_detectors = 53312
 postselect = "none"
-reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask."
+reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask. The 15-to-1 accept condition is a parity over the logical-readout detectors, which are random without noise, so a detector mask cannot express it."
 
 [circuits."distillation_15to1_T_d21_p0.001"]
 num_detectors = 81432
 postselect = "none"
-reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask."
+reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask. The 15-to-1 accept condition is a parity over the logical-readout detectors, which are random without noise, so a detector mask cannot express it."
 
 [circuits."distillation_15to1_T_d25_p0.001"]
 num_detectors = 115472
 postselect = "none"
-reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask."
+reason = "Decoded benchmark: the factory is decoded by correlated MWPM in three committed stages, and the reported quantity is the fidelity of the decoded output (Sec. III, Fig. 4). The 32 logical readouts are random gauge detectors (one per patch MPP), which feed the decoder; there is no detector-level mask. The 15-to-1 accept condition is a parity over the logical-readout detectors, which are random without noise, so a detector mask cannot express it."

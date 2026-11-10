@@ -5,46 +5,46 @@ num_detectors = 56
 postselect = "only"
 detectors = "0-23"
 random_detectors = "12,14"
-reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 24 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
+reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 24 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol, which has 2 initialization rounds where this circuit has 1 (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
 
 [circuits."star_d=5"]
 num_detectors = 216
 postselect = "only"
 detectors = "0-71"
 random_detectors = "36,39,42,45"
-reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 72 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
+reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 72 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol, which has 2 initialization rounds where this circuit has 1 (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
 
 [circuits."star_d=7"]
 num_detectors = 528
 postselect = "only"
 detectors = "0-143"
 random_detectors = "72,76,80,84,88,92"
-reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 144 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
+reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 144 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol, which has 2 initialization rounds where this circuit has 1 (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
 
 [circuits."star_d=9"]
 num_detectors = 1040
 postselect = "only"
 detectors = "0-239"
 random_detectors = "120,125,130,135,140,145,150,155"
-reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 240 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
+reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 240 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol, which has 2 initialization rounds where this circuit has 1 (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
 
 [circuits."star_d=11"]
 num_detectors = 1800
 postselect = "only"
 detectors = "0-359"
 random_detectors = "180,186,192,198,204,210,216,222,228,234"
-reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 360 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
+reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 360 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol, which has 2 initialization rounds where this circuit has 1 (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
 
 [circuits."star_d=13"]
 num_detectors = 2856
 postselect = "only"
 detectors = "0-503"
 random_detectors = "252,259,266,273,280,287,294,301,308,315,322,329"
-reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 504 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
+reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 504 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol, which has 2 initialization rounds where this circuit has 1 (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
 
 [circuits."star_d=15"]
 num_detectors = 4256
 postselect = "only"
 detectors = "0-671"
 random_detectors = "336,344,352,360,368,376,384,392,400,408,416,424,432,440"
-reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 672 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."
+reason = "The circuit's own comment says to postselect on all 3*(d**2 - 1) = 672 detectors of the first three rounds (coordinate[2] <= 2: initialization plus two rounds after the rotations), as in the paper's full-PS TMR protocol, which has 2 initialization rounds where this circuit has 1 (App. G, Fig. 5). The later d rounds, ending in a noiseless round, are not masked. Some masked detectors are random without noise because postselection selects the target rotation angle (success about cos^(2d) of the half-angle)."

@@ -29,7 +29,9 @@ reason = "Injection and cultivation discard every shot in which a check fails (S
 ```
 
 - `postselect` follows the protocol of the paper, not convenience: a stage that the paper decodes
-  (for example the escape stage of end-to-end cultivation) is not masked. `reason` says where the
+  (for example most of the escape stage of end-to-end cultivation, which goes to a gap
+  decoder) is not masked; where the authors' code also discards on some of its detectors,
+  those are masked too. `reason` says where the
   paper or its code defines the postselected detectors (section, figure, coordinate convention,
   tag), and how the ranges were derived.
 - `"none"` is a decision too: say why (a memory experiment, a decoded protocol, ...).

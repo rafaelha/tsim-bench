@@ -8,11 +8,24 @@ folder's ``k_max.json``.
 from __future__ import annotations
 
 import json
-import tomllib
 from dataclasses import dataclass, field
 from pathlib import Path
 
+try:
+    import tomllib
+except ModuleNotFoundError:  # Python 3.10, for the worker in an older Tsim's environment
+    try:
+        import tomli as tomllib
+    except ModuleNotFoundError:
+        tomllib = None
+
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def _toml(path: Path) -> dict:
+    if tomllib is None:
+        raise RuntimeError("reading tsim-bench manifests needs Python 3.11+, or tomli installed")
+    return tomllib.loads(path.read_text())
 POSTSELECT_KINDS = ("all", "none", "only", "all_except")
 
 
@@ -86,7 +99,7 @@ def load(root: Path = ROOT) -> dict[str, Case]:
     out: dict[str, Case] = {}
     for manifest in sorted(root.glob("papers/*/circuits.toml")):
         folder = manifest.parent
-        table = tomllib.loads(manifest.read_text())
+        table = _toml(manifest)
         arxiv = table["arxiv"]
         widths = _widths(folder)
         for name, entry in table.get("circuits", {}).items():
@@ -111,13 +124,15 @@ def load(root: Path = ROOT) -> dict[str, Case]:
                 widths=widths.get(file, {}),
             )
             mask_indices(case)  # validates the ranges
+            if case.id in out:
+                raise ValueError(f"{case.id}: listed twice")
             out[case.id] = case
     return out
 
 
 def suites(root: Path = ROOT) -> dict[str, list[str]]:
     """Return the named suites of ``suites.toml``: suite name -> circuit ids."""
-    table = tomllib.loads((root / "suites.toml").read_text())
+    table = _toml(root / "suites.toml")
     return {name: list(entry["circuits"]) for name, entry in table.items()}
 
 

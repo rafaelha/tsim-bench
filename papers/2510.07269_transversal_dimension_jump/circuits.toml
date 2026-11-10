@@ -4,64 +4,64 @@ arxiv = "2510.07269"
 num_detectors = 60
 postselect = "only"
 detectors = "33-59"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (33-59), the 33 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (33-59), the 33 meta-check detectors before it are not masked (generate.py factory_circuit order)."
 
 [circuits."toric_375_3_5"]
 num_detectors = 756
 postselect = "only"
 detectors = "381-755"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (381-755), the 381 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (381-755), the 381 meta-check detectors before it are not masked (generate.py factory_circuit order)."
 
 [circuits."toric_81_3_3"]
 num_detectors = 168
 postselect = "only"
 detectors = "87-167"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (87-167), the 87 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (87-167), the 87 meta-check detectors before it are not masked (generate.py factory_circuit order)."
 
 [circuits."tricycle_12_3_2"]
 num_detectors = 30
 postselect = "only"
 detectors = "18-29"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (18-29), the 18 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (18-29), the 18 meta-check detectors before it are not masked (generate.py factory_circuit order)."
 
 [circuits."tricycle_15_3_2"]
 num_detectors = 36
 postselect = "only"
 detectors = "21-35"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (21-35), the 21 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (21-35), the 21 meta-check detectors before it are not masked (generate.py factory_circuit order)."
 
 [circuits."tricycle_18_3_2"]
 num_detectors = 42
 postselect = "only"
 detectors = "24-41"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (24-41), the 24 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (24-41), the 24 meta-check detectors before it are not masked (generate.py factory_circuit order)."
 
 [circuits."tricycle_21_3_3"]
 num_detectors = 48
 postselect = "only"
 detectors = "27-47"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (27-47), the 27 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (27-47), the 27 meta-check detectors before it are not masked (generate.py factory_circuit order)."
 
 [circuits."tricycle_24_3_2"]
 num_detectors = 54
 postselect = "only"
 detectors = "30-53"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (30-53), the 30 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (30-53), the 30 meta-check detectors before it are not masked (generate.py factory_circuit order)."
 
 [circuits."tricycle_27_3_3"]
 num_detectors = 60
 postselect = "only"
 detectors = "33-59"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (33-59), the 33 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (33-59), the 33 meta-check detectors before it are not masked (generate.py factory_circuit order)."
 
 [circuits."tricycle_6_3_2"]
 num_detectors = 18
 postselect = "only"
 detectors = "12-17"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (12-17), the 12 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (12-17), the 12 meta-check detectors before it are not masked (generate.py factory_circuit order)."
 
 [circuits."tricycle_9_3_2"]
 num_detectors = 24
 postselect = "only"
 detectors = "15-23"
-reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is fixed single-shot using the meta checks; masked = detectors after the MX (15-23), the 15 meta-check detectors before it are not masked (generate.py factory_circuit order)."
+reason = "Error-detection CCZ preparation: the paper postselects on the X detectors built from the final transversal MX (main_arXiv_v2.tex appendix, protocol of Fig. simulation_circuits(d): 'construct X detectors using these final transversal measurements and perform postselection'), while the one-round Z syndrome is handled single-shot in the paper (the circuits apply the X correction from the raw outcomes and model no meta-check decoding); masked = detectors after the MX (15-23), the 15 meta-check detectors before it are not masked (generate.py factory_circuit order)."
