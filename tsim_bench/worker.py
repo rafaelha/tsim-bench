@@ -5,12 +5,18 @@ older Tsim: it uses only the standard library, numpy, Tsim's public API and this
 
     python -m tsim_bench.worker --case <id> [--no-postselect] [--mode bench|prime|inspect|profile]
     python -m tsim_bench.worker --circuit FILE.stim [--postselect all|none]
+    python -m tsim_bench.worker --mode width --case ID [--case ID ...] [--circuit FILE ...]
+
+``width`` compiles each circuit, samples nothing, and prints ``START <name>`` then
+``RESULT <json>`` for each, in one process; the caller enforces time limits. A circuit that Tsim refuses as too wide reports
+the width in the error as a lower bound (``"refused": true``).
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -68,6 +74,29 @@ def make_sample(kind, sampler, mask, references, args):
         if detector_ref:
             kwargs["use_detector_reference_sample"] = True
         if observable_ref:
+REFUSED = re.compile(r"needs (\d+) active qubits")
+
+
+def widths(tsim, items, args) -> None:
+    """Compile each ``(name, path, sampler)`` and print its active width; sample nothing."""
+    for name, path, kind in items:
+        print(f"START {name}", flush=True)
+        result = {"name": name}
+        start = time.perf_counter()
+        try:
+            circuit, kind, sampler = phase_compile(tsim, path, kind, args)
+            result.update(width=sampler.active_width, sampler=kind)
+            result["components"] = len(sampler.stats.component_widths)
+        except Exception as error:  # noqa: BLE001
+            refused = REFUSED.search(str(error))
+            if refused:
+                result.update(width=int(refused.group(1)), refused=True)
+            else:
+                result["error"] = f"{type(error).__name__}: {error}"[:300]
+        result["compile_s"] = time.perf_counter() - start
+        print("RESULT " + json.dumps(result), flush=True)
+
+
             kwargs["use_observable_reference_sample"] = True
     if mask is not None:
         if kind != "detector":
@@ -111,17 +140,29 @@ def calibrate(sample, min_seconds, max_shots):
         if shots >= max_shots:
             return shots, max(1, round(min_seconds / max(elapsed, 1e-6)))
         grow = min(16.0, max(2.0, 1.2 * min_seconds / max(elapsed, 1e-6)))
+    corpus = None
+    if args.case:
+        corpus = load(Path(args.root)) if args.root else load()
+
+    if args.mode == "width":
+        items = [(c, corpus[c].path, corpus[c].sampler) for c in args.case]
+        items += [(f, Path(f), args.sampler) for f in args.circuit]
+        widths(phase_import(), items, args)
+        return
+    if len(args.case) + len(args.circuit) != 1:
+        parser.error("give exactly one --case or --circuit")
+    args.case = args.case[0] if args.case else None
+    args.circuit = args.circuit[0] if args.circuit else None
         shots = min(max_shots, int(shots * grow))
 
 
 def main(argv=None):
     """Run the requested mode and print ``RESULT <json>``."""
     parser = argparse.ArgumentParser()
-    source = parser.add_mutually_exclusive_group(required=True)
-    source.add_argument("--case", help="corpus circuit id")
-    source.add_argument("--circuit", help="a .stim file outside the corpus")
+    parser.add_argument("--case", action="append", default=[], help="corpus circuit id")
+    parser.add_argument("--circuit", action="append", default=[], help="a .stim file")
     parser.add_argument("--root", default=None, help="tsim-bench checkout (default: this one)")
-    parser.add_argument("--mode", default="bench", choices=["bench", "prime", "inspect", "profile"])
+    parser.add_argument("--mode", default="bench", choices=["bench", "prime", "inspect", "profile", "width"])
     parser.add_argument("--sampler", default="auto", help="for --circuit only")
     parser.add_argument("--postselect", default="none", choices=["all", "none"], help="for --circuit only")
     parser.add_argument("--no-postselect", action="store_true", help="ignore the recorded mask")
@@ -137,8 +178,7 @@ def main(argv=None):
 
     references = (False, False)
     if args.case:
-        root = Path(args.root) if args.root else None
-        case = (load(root) if root else load())[args.case]
+        case = corpus[args.case]
         path, kind = case.path, case.sampler
         indices = [] if args.no_postselect else mask_indices(case)
         references = (case.detector_reference, case.observable_reference)

@@ -8,7 +8,9 @@ only; put this checkout on `sys.path`):
     python -m tsim_bench check [--max-width 20]   # needs Tsim
     python -m tsim_bench run   [--suite quick] [--no-postselect]
 
-Tsim's `tsim-dev bench` uses the same package at a pinned commit of this repo.
+Tsim's `tsim-dev bench` uses the same package at a pinned commit of this repo; `tsim-dev bench
+--width` compiles every circuit with the worker's `width` mode and compares active widths without
+sampling.
 
 ## `papers/<folder>/circuits.toml`
 
