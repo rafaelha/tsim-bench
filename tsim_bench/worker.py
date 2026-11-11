@@ -113,23 +113,54 @@ def phase_sample(sample, shots, seconds):
         sample(shots)
 
 
-def calibrate(sample, min_seconds, max_shots):
+# One call returns at most about 256 MB and samples at most 2^27 shots.
+RETURN_BYTES = 1 << 28
+MAX_SHOTS = 1 << 27
+# Calls at the timed size that run before it is timed: the first calls at a new size are
+# slower (on a GPU, the first allocates pinned host buffers and the second is still slow).
+WARM_CALLS = 2
+
+
+def call_limit(outputs, bit_packed):
+    """Return ``limit(kept, total) -> shots``, the largest call that returns ``RETURN_BYTES``.
+
+    A returned row has ``outputs`` bytes, or ``outputs / 8`` bit-packed, and a postselected
+    call returns only its kept rows; the acceptance is estimated from the calls so far
+    (``kept`` of ``total`` shots), rounded up by one shot so that it is not underestimated.
+    """
+    row_bytes = max(1, -(-outputs // 8) if bit_packed else outputs)
+
+    def limit(kept, total):
+        acceptance = min(1.0, (kept + 1) / max(1, total))
+        return max(16, min(MAX_SHOTS, int(RETURN_BYTES / row_bytes / acceptance)))
+
+    return limit
+
+
+def calibrate(sample, min_seconds, limit):
     """Find a shot count and a number of calls that together take ``min_seconds``.
 
-    The shot count grows until one call is long enough, up to ``max_shots``, which bounds the
-    size of the returned array; faster circuits are timed over several calls instead.
+    The shot count grows until one call is long enough, up to ``limit`` (see `call_limit`),
+    which bounds the size of the returned array; faster circuits are timed over several calls
+    instead, and their call count comes from a call after ``WARM_CALLS`` calls at that size.
     """
-    shots = 16
+    shots, kept, total = 16, 0, 0
     while True:
         start = time.perf_counter()
-        sample(shots)
+        kept += sample(shots)
         elapsed = time.perf_counter() - start
+        total += shots
         if elapsed >= min_seconds:
             return shots, 1
-        if shots >= max_shots:
+        cap = limit(kept, total)
+        if shots >= cap:
+            for _ in range(WARM_CALLS):
+                start = time.perf_counter()
+                sample(shots)
+                elapsed = time.perf_counter() - start
             return shots, max(1, round(min_seconds / max(elapsed, 1e-6)))
         grow = min(16.0, max(2.0, 1.2 * min_seconds / max(elapsed, 1e-6)))
-        shots = min(max_shots, int(shots * grow))
+        shots = min(cap, int(shots * grow))
 
 
 def main(argv=None):
@@ -228,19 +259,18 @@ def main(argv=None):
     outputs = circuit.num_detectors + circuit.num_observables
     if kind == "measurement":
         outputs = circuit.num_measurements
-    # NOTE: one call returns at most about 256 MB of unpacked samples.
-    max_shots = (1 << 28) // max(1, outputs)
+    limit = call_limit(outputs, args.bit_packed)
     if args.mode == "serve":
-        serve(sample, result, max_shots)
+        serve(sample, result, limit)
         return
-    shots, calls = calibrate(sample, args.min_seconds, max_shots)
+    shots, calls = calibrate(sample, args.min_seconds, limit)
     if args.mode == "profile":
         phase_sample(sample, shots, args.min_seconds * 10)
         result["shots"] = shots
         print("RESULT " + json.dumps(result))
         return
 
-    result.update(timed(sample, shots, calls, args.repeats))
+    result.update(timed(sample, shots, calls, args.repeats, warmed=True))
     print("RESULT " + json.dumps(result))
 
 
@@ -261,8 +291,16 @@ def cache_misses() -> int:
     )
 
 
-def timed(sample, shots, calls, repeats) -> dict:
-    """Time ``repeats`` runs of ``calls`` calls of ``shots`` shots; keep the fastest."""
+def timed(sample, shots, calls, repeats, warmed=False) -> dict:
+    """Time ``repeats`` runs of ``calls`` calls of ``shots`` shots; keep the fastest.
+
+    Unless this process has ``warmed`` up at ``shots`` (by calibrating it), up to
+    ``WARM_CALLS`` untimed calls run first, fewer than ``calls`` so that they cost less than
+    one run; a single long call is warmed up by the runs themselves.
+    """
+    if not warmed:
+        for _ in range(min(WARM_CALLS, calls - 1)):
+            sample(shots)
     times, kept = [], 0
     for _ in range(repeats):
         start = time.perf_counter()
@@ -279,7 +317,7 @@ def timed(sample, shots, calls, repeats) -> dict:
     }
 
 
-def serve(sample, result, max_shots) -> None:
+def serve(sample, result, limit) -> None:
     """Answer timing requests on stdin, one per line, after ``READY <json>``.
 
     ``calibrate SECONDS`` prints ``SHOTS {"shots": n, "calls": c}``, a call size and count
@@ -288,17 +326,19 @@ def serve(sample, result, max_shots) -> None:
     compiles once, so the rounds of a comparison skip the import and the compile.
     ``cache_misses`` counts the kernels compiled in this process (``READY``: by the warmup).
     """
+    calibrated = None
     print("READY " + json.dumps(result), flush=True)
     for line in sys.stdin:
         words = line.split()
         if not words:
             continue
         if words[0] == "calibrate":
-            shots, calls = calibrate(sample, float(words[1]), max_shots)
+            shots, calls = calibrate(sample, float(words[1]), limit)
+            calibrated = shots
             print("SHOTS " + json.dumps({"shots": shots, "calls": calls}), flush=True)
         elif words[0] == "time":
             shots, calls, repeats = (int(w) for w in words[1:4])
-            timing = timed(sample, shots, calls, repeats)
+            timing = timed(sample, shots, calls, repeats, warmed=shots == calibrated)
             print("RESULT " + json.dumps({**result, **timing, "cache_misses": cache_misses()}), flush=True)
         else:
             print(f"ERROR unknown request {words[0]!r}", flush=True)
